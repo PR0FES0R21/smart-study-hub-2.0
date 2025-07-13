@@ -1,53 +1,98 @@
 # ==============================================================================
 # File: app/api/v1/deps.py
-# --- DIUBAH TOTAL --- (Beralih ke Bearer Token)
+# Deskripsi: Dependency Injection untuk otentikasi dan otorisasi.
+# --- DIUBAH --- (Membaca token dari HttpOnly Cookie)
 # ==============================================================================
 from fastapi import Depends, HTTPException, status, Cookie, WebSocket, Path
-from fastapi.security import OAuth2PasswordBearer
-from motor.motor_asyncio import AsyncIOMotorDatabase
 from jose import jwt, JWTError
-
+from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.core.config import settings
 from app.core import security
 from app.core.db import db
 from app.schemas.token import TokenData
+from app.crud import crud_users, crud_exams
 from app.crud import crud_users, crud_exams, crud_academic_periods
 from app.core.cache import get_cache, set_cache 
 
-# Skema OAuth2, menunjuk ke endpoint login untuk dokumentasi
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f"{settings.API_V1_STR}/auth/login")
-
-def get_database() -> AsyncIOMotorDatabase: return db
+def get_database() -> AsyncIOMotorDatabase:
+    """Dependency untuk mendapatkan instance database."""
+    return db
 
 async def get_current_user(
-    token: str = Depends(oauth2_scheme),
+    access_token: str | None = Cookie(None), # <-- Baca token dari cookie
     db: AsyncIOMotorDatabase = Depends(get_database)
 ) -> dict:
-    """
-    Mendekode token JWT dari header Authorization dan mendapatkan data user.
-    """
+    """Membaca dan memvalidasi token dari cookie, lalu mengembalikan data user."""
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
     )
+    
+    if access_token is None:
+        raise credentials_exception
+
+    # Token dari cookie biasanya memiliki format "Bearer <token>"
+    # Kita perlu memisahkan "Bearer" dari token sebenarnya.
+    try:
+        token_prefix, token = access_token.split()
+        if token_prefix.lower() != "bearer":
+            raise credentials_exception
+    except ValueError:
+        # Jika formatnya tidak "Bearer <token>", anggap seluruh string adalah tokennya
+        # Ini memberikan fleksibilitas jika kita memutuskan untuk tidak menggunakan prefix
+        token = access_token
+    
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[security.ALGORITHM])
+        # Subject token kita adalah email, sesuai logika saat membuat token
         email: str = payload.get("sub")
-        if email is None: raise credentials_exception
+        if email is None:
+            raise credentials_exception
         token_data = TokenData(email=email)
     except JWTError:
         raise credentials_exception
     
     user = await crud_users.get_user_by_email(db, email=token_data.email)
-    if user is None: raise credentials_exception
+    if user is None:
+        raise credentials_exception
     return user
 
-async def get_current_active_user(current_user: dict = Depends(get_current_user)) -> dict:
+async def get_current_active_user(
+        current_user: dict = Depends(get_current_user)
+) -> dict:
+    if not current_user.get("is_active"):
+        raise HTTPException(
+            status_code=400, 
+            detail="Inactive user"
+        )
+    return current_user
+
+async def get_current_active_admin(
+    current_user: dict = Depends(get_current_user)
+) -> dict:
+    """
+    Mendapatkan user saat ini dan memeriksa apakah dia aktif dan seorang admin.
+    """
     if not current_user.get("is_active"):
         raise HTTPException(status_code=400, detail="Inactive user")
+    if "admin" not in current_user.get("roles", []):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="The user doesn't have enough privileges"
+        )
     return current_user
+
+async def get_current_active_teacher(
+        current_user: dict = Depends(get_current_active_user)
+) -> dict:
+    if "teacher" not in current_user.get("roles", []):
+        raise HTTPException(
+            status_code=403, 
+            detail="The user doesn't have enough privileges"
+        )
+    return current_user
+
 
 async def get_current_user_for_ws(
     websocket: WebSocket,
@@ -64,6 +109,14 @@ async def get_current_user_for_ws(
         await websocket.close(code=status.WS_1008_POLICY_VIOLATION)
         return None
     return user
+
+async def get_current_active_teacher(current_user: dict = Depends(get_current_active_user)) -> dict:
+    if "teacher" not in current_user.get("roles", []): raise HTTPException(status_code=403, detail="The user doesn't have enough privileges")
+    return current_user
+
+async def get_current_active_admin(current_user: dict = Depends(get_current_active_user)) -> dict:
+    if "admin" not in current_user.get("roles", []): raise HTTPException(status_code=403, detail="The user doesn't have enough privileges")
+    return current_user
 
 async def get_exam_room_participant(
     websocket: WebSocket,
@@ -102,6 +155,14 @@ async def get_exam_room_participant(
     user["participant_role"] = participant_role
     return user
 
+async def get_current_active_teacher(current_user: dict = Depends(get_current_active_user)) -> dict:
+    if "teacher" not in current_user.get("roles", []): raise HTTPException(status_code=403, detail="The user doesn't have enough privileges")
+    return current_user
+
+async def get_current_active_admin(current_user: dict = Depends(get_current_active_user)) -> dict:
+    if "admin" not in current_user.get("roles", []): raise HTTPException(status_code=403, detail="The user doesn't have enough privileges")
+    return current_user
+
 async def get_current_academic_period(db: AsyncIOMotorDatabase = Depends(get_database)) -> dict:
     """
     Dependency 'pintar' untuk mendapatkan periode akademik aktif.
@@ -124,11 +185,3 @@ async def get_current_academic_period(db: AsyncIOMotorDatabase = Depends(get_dat
     await set_cache(crud_academic_periods.ACADEMIC_PERIOD_ACTIVE_CACHE_KEY, active_period)
     
     return active_period
-
-async def get_current_active_teacher(current_user: dict = Depends(get_current_active_user)) -> dict:
-    if "teacher" not in current_user.get("roles", []): raise HTTPException(status_code=403, detail="The user doesn't have enough privileges")
-    return current_user
-
-async def get_current_active_admin(current_user: dict = Depends(get_current_active_user)) -> dict:
-    if "admin" not in current_user.get("roles", []): raise HTTPException(status_code=403, detail="The user doesn't have enough privileges")
-    return current_user
