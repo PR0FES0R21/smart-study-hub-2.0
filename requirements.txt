@@ -1,0 +1,16 @@
+# ==============================================================================
+# File: requirements.txt
+# Deskripsi: Daftar semua library Python yang dibutuhkan oleh proyek ini.
+# Cara install: pip install -r requirements.txt
+# ==============================================================================
+fastapi
+uvicorn[standard]
+pydantic-settings
+motor
+redis
+python-dotenv
+passlib[bcrypt]
+python-jose[cryptography]
+celery[redis]
+openpyxl
+boto3

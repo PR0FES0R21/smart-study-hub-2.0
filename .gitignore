@@ -1,0 +1,5 @@
+.env.example
+venv/
+tasks/
+temp_uploads/
+__pycache_/
