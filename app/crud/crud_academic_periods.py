@@ -63,3 +63,30 @@ async def update_academic_period(db: AsyncIOMotorDatabase, period_id: str, perio
     await invalidate_cache(ACADEMIC_PERIOD_ACTIVE_CACHE_KEY)
     
     return await db["academic_periods"].find_one({"_id": ObjectId(period_id)})
+
+async def set_active_period(db: AsyncIOMotorDatabase, period_id: str) -> dict | None:
+    """Mengatur satu periode sebagai aktif dan menonaktifkan yang lain."""
+    if not ObjectId.is_valid(period_id): return None
+    
+    now = datetime.utcnow()
+    
+    # 1. Nonaktifkan semua periode yang saat ini aktif
+    await db["academic_periods"].update_many(
+        {"status": "active"},
+        {"$set": {"status": "archived", "updated_at": now}}
+    )
+
+    # 2. Aktifkan periode yang ditargetkan
+    result = await db["academic_periods"].update_one(
+        {"_id": ObjectId(period_id)},
+        {"$set": {"status": "active", "updated_at": now}}
+    )
+
+    if result.modified_count == 0:
+        return None # Gagal mengupdate, mungkin ID tidak ada
+
+    # 3. Hapus cache lama
+    await invalidate_cache(ACADEMIC_PERIOD_ACTIVE_CACHE_KEY)
+    
+    # 4. Ambil dan kembalikan periode yang baru aktif
+    return await get_active_period(db)

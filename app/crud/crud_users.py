@@ -135,15 +135,15 @@ async def create_user(db: AsyncIOMotorDatabase, user: UserCreate) -> dict:
 
     db_obj = user.model_dump(mode='python', exclude={"password"}, round_trip=True)
     db_obj["hashed_password"] = get_password_hash(user.password)
-    print("db_obj:", db_obj)
-    print("Tipe class_id:", type(db_obj["class_id"]))
 
     result = await db["users"].insert_one(db_obj)
     created_user = await db["users"].find_one({"_id": result.inserted_id})
     return created_user
 
 async def update_user(db: AsyncIOMotorDatabase, user_id: str, user_update: UserUpdate) -> dict | None:
+    print("crud: ", user_update)
     update_data = user_update.model_dump(mode='python', exclude_unset=True)
+    print("setelah dump: ", update_data)
     
     if "password" in update_data and update_data["password"]:
         update_data["hashed_password"] = get_password_hash(update_data["password"])
@@ -199,34 +199,56 @@ async def create_user_and_profile(db: AsyncIOMotorDatabase, user_in: UserCreate)
 async def get_users_with_profiles_for_datatables(
     db: AsyncIOMotorDatabase, 
     dt_params: Dict[str, Any],
-    role: Optional[str] = None
+    role: Optional[str] = None,
+    grade_level: Optional[int] = None,
+    expertise_id: Optional[str] = None,
+    class_id: Optional[str] = None
 ) -> Dict[str, Any]:
-    draw = int(dt_params.get('draw', 1)); start = int(dt_params.get('start', 0)); length = int(dt_params.get('length', 10)); search_value = dt_params.get('search', {}).get('value', '')
-    
-    order_column_index = int(dt_params.get('order[0][column]', 0))
-    order_column_dir = dt_params.get('order[0][dir]', 'asc')
-    
-    column_mapping = {
-        0: "login_id",
-        1: "profile_details.full_name",
-        2: "email",
-        3: "roles"
-    }
+    draw = int(dt_params.get('draw', 1))
+    start = int(dt_params.get('start', 0))
+    length = int(dt_params.get('length', 10))
+    search_value = dt_params.get('search', '')
+
+    order_column_index = int(dt_params.get('order[0][column]', 0)); order_column_dir = dt_params.get('order[0][dir]', 'asc')
+    column_mapping = {0: "login_id", 1: "profile_details.full_name", 2: "email", 3: "roles"}
     sort_field = column_mapping.get(order_column_index, "login_id")
     sort_dir = 1 if order_column_dir == 'asc' else -1
     sort_stage = {"$sort": {sort_field: sort_dir}}
 
     pipeline = []
+    
+    # Tahap 0: Filter berdasarkan peran di awal
     if role: pipeline.append({"$match": {"roles": role}})
     
+    # Tahap 1: Mengembalikan pipeline lookup yang sudah terbukti bekerja
     pipeline.extend([
         {"$lookup": {"from": "profiles", "localField": "profile_id", "foreignField": "_id", "as": "profile_details"}},
         {"$unwind": {"path": "$profile_details", "preserveNullAndEmptyArrays": True}},
         {"$lookup": {"from": "classes", "localField": "profile_details.class_id", "foreignField": "_id", "as": "class_details"}},
         {"$unwind": {"path": "$class_details", "preserveNullAndEmptyArrays": True}},
+    ])
+
+    # --- PERBAIKAN: Menyisipkan filter dinamis di tempat yang tepat ---
+    filter_stage = {}
+    if class_id:
+        filter_stage["class_details._id"] = ObjectId(class_id)
+    else:
+        if grade_level:
+            filter_stage["class_details.grade_level"] = grade_level
+        if expertise_id:
+            filter_stage["class_details.expertise_id"] = ObjectId(expertise_id)
+            
+    if filter_stage:
+        pipeline.append({"$match": filter_stage})
+    # --- AKHIR PERBAIKAN ---
+
+    # Lanjutkan dengan sisa pipeline yang sudah bekerja
+    pipeline.extend([
+        {"$lookup": {"from": "expertise_programs", "localField": "class_details.expertise_id", "foreignField": "_id", "as": "expertise_details"}},
+        {"$unwind": {"path": "$expertise_details", "preserveNullAndEmptyArrays": True}},
         {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
         {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
-        {"$addFields": {"expertise_details": {"$ifNull": ["$class_details.expertise_details", "$department_details"]}}},
+        {"$addFields": {"expertise_details": {"$ifNull": ["$expertise_details", "$department_details"]}}},
         {"$lookup": {"from": "teaching_assignments", "let": {"teacher_id": "$_id"},
             "pipeline": [
                 {"$match": {"$expr": {"$eq": ["$teacher_id", "$$teacher_id"]}}},
@@ -256,7 +278,7 @@ async def get_users_with_profiles_for_datatables(
     
     data_pipeline = pipeline.copy()
     if match_stage: data_pipeline.append({"$match": match_stage})
-    data_pipeline.extend([sort_stage, {"$skip": start}, {"$limit": length}]) # --- DIUBAH: Menambahkan sort_stage ---
+    data_pipeline.extend([sort_stage, {"$skip": start}, {"$limit": length}])
     data = await db["users"].aggregate(data_pipeline).to_list(length)
     
     records_total = await db["users"].count_documents({})
@@ -372,15 +394,25 @@ async def update_profile_picture(db: AsyncIOMotorDatabase, profile_id: ObjectId,
     )
     return result.modified_count > 0
 
-async def get_user_with_details_by_id(db: AsyncIOMotorDatabase, user_id: ObjectId) -> dict | None:
+async def get_user_with_details_by_id(db: AsyncIOMotorDatabase, user_id: str) -> dict | None:
     """Mengambil satu user dengan semua data gabungannya."""
+    try:
+        user_id_obj = ObjectId(user_id)  # Konversi string ke ObjectId
+    except:
+        return None
+    
     pipeline = [
-        {"$match": {"_id": user_id}},
+        {"$match": {"_id": user_id_obj}},
+        # Gabungkan dengan semua data relevan, mirip dengan datatables
         {"$lookup": {"from": "profiles", "localField": "profile_id", "foreignField": "_id", "as": "profile_details"}},
         {"$unwind": {"path": "$profile_details", "preserveNullAndEmptyArrays": True}},
-        # ... (lookup lain bisa ditambahkan di sini jika perlu)
+        {"$lookup": {"from": "classes", "localField": "profile_details.class_id", "foreignField": "_id", "as": "class_details"}},
+        {"$unwind": {"path": "$class_details", "preserveNullAndEmptyArrays": True}},
+        {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
+        {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
     ]
     result = await db["users"].aggregate(pipeline).to_list(1)
+    print(result)
     return result[0] if result else None
 
 async def update_self_data(db: AsyncIOMotorDatabase, current_user: dict, data_in: SelfDataUpdate) -> dict:
@@ -410,3 +442,12 @@ async def update_self_data(db: AsyncIOMotorDatabase, current_user: dict, data_in
     # Ambil data user terbaru setelah update
     updated_user = await get_user_by_id(db, str(user_id))
     return updated_user
+
+async def set_user_active_status(db: AsyncIOMotorDatabase, user_id: str, is_active: bool) -> dict | None:
+    """Mengubah status aktif pengguna."""
+    if not ObjectId.is_valid(user_id): return None
+    await db["users"].update_one(
+        {"_id": ObjectId(user_id)},
+        {"$set": {"is_active": is_active, "updated_at": datetime.utcnow()}}
+    )
+    return await get_user_by_id(db, user_id)

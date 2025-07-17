@@ -11,10 +11,12 @@ from .core.db import close_db_connection, close_redis_connection
 from .api.v1.api import api_router
 from .core import r2_setup
 from .middleware.onboarding import OnboardingMiddleware
+from .core.startup_tasks import initialize_active_period_cache
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print(f"Memulai aplikasi: {settings.PROJECT_NAME}")
+    await initialize_active_period_cache()
     yield
     print("Mematikan aplikasi...")
     await close_db_connection()

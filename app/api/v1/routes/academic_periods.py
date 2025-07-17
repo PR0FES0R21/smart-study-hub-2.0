@@ -42,3 +42,22 @@ async def update_existing_academic_period(
     if not updated_period:
         raise HTTPException(status_code=404, detail="Academic period not found")
     return updated_period
+
+@router.get("/active", response_model=AcademicPeriodPublic)
+async def get_current_active_period_route(
+    active_period: dict = Depends(deps.get_current_academic_period)
+):
+    """Mengambil detail periode akademik yang sedang aktif dari cache."""
+    return active_period
+
+@router.post("/{period_id}/set-active", response_model=AcademicPeriodPublic)
+async def set_period_as_active(
+    period_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    """Mengatur sebuah periode akademik menjadi aktif."""
+    new_active_period = await crud_academic_periods.set_active_period(db, period_id)
+    if not new_active_period:
+        raise HTTPException(status_code=404, detail="Academic period not found")
+    return new_active_period

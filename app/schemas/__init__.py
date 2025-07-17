@@ -15,7 +15,7 @@ from .classes import (
 )
 from .teaching_assignment import TeachingAssignmentWithDetails
 from .question_bank import QuestionBankPublic
-from .exam import ExamPublic
+from .exam import ExamPublic, ExamWithDetails
 from .exam_session import ExamSessionPublic
 from .analytics import StudentCountByMajor, StudentGrowthDataPoint
 
@@ -27,6 +27,7 @@ TeachingAssignmentWithDetails.model_rebuild()
 QuestionBankPublic.model_rebuild()
 ExamPublic.model_rebuild()
 ExamSessionPublic.model_rebuild()
+ExamWithDetails.model_rebuild()
 
 # Export semua model agar bisa digunakan dengan mudah
 __all__ = [

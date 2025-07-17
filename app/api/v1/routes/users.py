@@ -40,130 +40,44 @@ async def create_new_user(
 async def read_all_users_for_datatables(
     request: Request,
     role: Optional[str] = None,
+    grade_level: Optional[int] = None,
+    expertise_id: Optional[str] = None,
+    class_id: Optional[str] = None,
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_admin)
 ):
     """
-    Mengambil daftar semua user dengan data profil tergabung.
+    Mengambil daftar semua user dengan filter dinamis dan dukungan DataTables.
     """
     dt_params = dict(request.query_params)
     response_data = await crud_users.get_users_with_profiles_for_datatables(
-        db=db, dt_params=dt_params, role=role
+        db=db, 
+        dt_params=dt_params, 
+        role=role,
+        grade_level=grade_level,
+        expertise_id=expertise_id,
+        class_id=class_id
     )
     return response_data
 
-@router.get("/{user_id}", response_model=UserPublic)
-async def read_user_by_id(
-    user_id: str,
-    db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_admin)
-):
-    """
-    Mengambil detail satu user. Hanya bisa diakses oleh admin.
-    """
-    user = await crud_users.get_user_by_id(db=db, user_id=user_id)
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-    return user
-
-@router.put("/{user_id}", response_model=UserPublic)
-async def update_existing_user(
-    user_id: str,
-    user_in: UserUpdate,
-    db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_admin)
-):
-    """
-    Memperbarui data user. Hanya bisa diakses oleh admin.
-    """
-    user = await crud_users.get_user_by_id(db, user_id=user_id)
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-    
-    updated_user = await crud_users.update_user(db=db, user_id=user_id, user_update=user_in)
-    return updated_user
-
-@router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_existing_user(
-    user_id: str,
-    db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_admin)
-):
-    """
-    Menghapus user. Hanya bisa diakses oleh admin.
-    """
-    user = await crud_users.get_user_by_id(db, user_id=user_id)
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-        
-    deleted = await crud_users.delete_user(db=db, user_id=user_id)
-    if not deleted:
-        raise HTTPException(status_code=404, detail="User not found during deletion")
-    return
-
-@router.post("/me/change-password", status_code=status.HTTP_204_NO_CONTENT)
-async def change_current_user_password(
-    password_in: PasswordChange,
-    db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_user),
-    request: Request = None,
-    background_tasks: BackgroundTasks = None
-):
-    """
-    Endpoint untuk pengguna yang sedang login mengubah password mereka sendiri.
-    """
-    # 1. Verifikasi password saat ini
-    if not security.verify_password(password_in.current_password, current_user["hashed_password"]):
-        raise HTTPException(status_code=400, detail="Incorrect current password")
-    
-    # 2. Verifikasi password baru sudah dilakukan oleh Pydantic validator
-    
-    # 3. Update password di database
-    await crud_users.update_user_password(db, user_id=current_user["_id"], new_password=password_in.new_password)
-    
-    # 4. Buat log aktivitas
-    background_tasks.add_task(
-        create_activity_log,
-        db=db,
-        request=request,
-        user_data=current_user,
-        activity="PASSWORD_CHANGE",
-        description=f"User '{current_user['login_id']}' successfully changed their password."
-    )
-
 @router.get("/me", response_model=UserWithDetails)
-async def read_own_data(
+async def debug_read_own_data(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_user)
 ):
     """
-    Endpoint untuk pengguna mengambil data lengkap mereka sendiri.
+    Endpoint tes sementara untuk mengisolasi masalah.
+    Ini memanggil fungsi CRUD secara langsung dan mengembalikan hasilnya.
     """
-    # Kita menggunakan fungsi CRUD baru untuk mengambil data user beserta profilnya
+    print(f"DEBUG: Memulai get_user_with_details_by_id untuk user_id: {current_user['_id']}")
     user_details = await crud_users.get_user_with_details_by_id(db, user_id=current_user["_id"])
+    
     if not user_details:
-        raise HTTPException(status_code=404, detail="User not found")
+        print("DEBUG: get_user_with_details_by_id mengembalikan None.")
+        raise HTTPException(status_code=404, detail="DEBUG: User details not found in aggregation.")
+    
+    print("DEBUG: Data berhasil diambil dari agregasi.")
     return user_details
-
-@router.post("/me/change-password", status_code=status.HTTP_204_NO_CONTENT)
-async def change_current_user_password(
-    password_in: PasswordChange,
-    db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_user),
-    request: Request = None,
-    background_tasks: BackgroundTasks = None
-):
-    if not security.verify_password(password_in.current_password, current_user["hashed_password"]):
-        raise HTTPException(status_code=400, detail="Incorrect current password")
-    
-    await crud_users.update_user_password(db, user_id=current_user["_id"], new_password=password_in.new_password)
-    
-    background_tasks.add_task(
-        create_activity_log,
-        db=db, request=request, user_data=current_user,
-        activity="PASSWORD_CHANGE",
-        description=f"User '{current_user['login_id']}' successfully changed their password."
-    )
 
 @router.put("/me", response_model=UserPublic)
 async def update_own_data(
@@ -187,3 +101,159 @@ async def update_own_data(
     )
     
     return updated_user
+
+@router.get("/{user_id}", response_model=UserWithDetails)
+async def read_user_by_id(
+    user_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    """
+    Mengambil detail satu user. Hanya bisa diakses oleh admin.
+    """
+    user = await crud_users.get_user_with_details_by_id(db=db, user_id=user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+@router.put("/{user_id}", response_model=UserPublic)
+async def update_existing_user(
+    user_id: str,
+    user_in: UserUpdate,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    print("routes: ", user_in)
+    """
+    Memperbarui data user. Hanya bisa diakses oleh admin.
+    """
+    user = await crud_users.get_user_by_id(db, user_id=user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    updated_user = await crud_users.update_user_and_profile(db=db, user_id=user_id, user_in=user_in)
+    return updated_user
+
+@router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_existing_user(
+    user_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    """
+    Menghapus user. Hanya bisa diakses oleh admin.
+    """
+    user = await crud_users.get_user_by_id(db, user_id=user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+        
+    deleted = await crud_users.delete_user_and_profile(db=db, user_id=user_id)
+    if not deleted:
+        raise HTTPException(status_code=404, detail="User not found during deletion")
+    return
+
+# @router.post("/me/change-password", status_code=status.HTTP_204_NO_CONTENT)
+# async def change_current_user_password(
+#     password_in: PasswordChange,
+#     db: AsyncIOMotorDatabase = Depends(deps.get_database),
+#     current_user: dict = Depends(deps.get_current_active_user),
+#     request: Request = None,
+#     background_tasks: BackgroundTasks = None
+# ):
+#     """
+#     Endpoint untuk pengguna yang sedang login mengubah password mereka sendiri.
+#     """
+#     # 1. Verifikasi password saat ini
+#     if not security.verify_password(password_in.current_password, current_user["hashed_password"]):
+#         raise HTTPException(status_code=400, detail="Incorrect current password")
+    
+#     # 2. Verifikasi password baru sudah dilakukan oleh Pydantic validator
+    
+#     # 3. Update password di database
+#     await crud_users.update_user_password(db, user_id=current_user["_id"], new_password=password_in.new_password)
+    
+#     # 4. Buat log aktivitas
+#     background_tasks.add_task(
+#         create_activity_log,
+#         db=db,
+#         request=request,
+#         user_data=current_user,
+#         activity="PASSWORD_CHANGE",
+#         description=f"User '{current_user['login_id']}' successfully changed their password."
+#     )
+
+
+@router.post("/me/change-password", status_code=status.HTTP_204_NO_CONTENT)
+async def change_current_user_password(
+    password_in: PasswordChange,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_user),
+    request: Request = None,
+    background_tasks: BackgroundTasks = None
+):
+    if not security.verify_password(password_in.current_password, current_user["hashed_password"]):
+        raise HTTPException(status_code=400, detail="Incorrect current password")
+    
+    await crud_users.update_user_password(db, user_id=current_user["_id"], new_password=password_in.new_password)
+    
+    background_tasks.add_task(
+        create_activity_log,
+        db=db, request=request, user_data=current_user,
+        activity="PASSWORD_CHANGE",
+        description=f"User '{current_user['login_id']}' successfully changed their password."
+    )
+
+@router.put("/{user_id}/deactivate", response_model=UserPublic)
+async def deactivate_user_account(
+    user_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin),
+    request: Request = None,
+    background_tasks: BackgroundTasks = None
+):
+    """
+    Menonaktifkan akun pengguna. Hanya untuk admin.
+    """
+    user_to_deactivate = await crud_users.get_user_by_id(db, user_id)
+    if not user_to_deactivate:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    if user_to_deactivate["_id"] == current_user["_id"]:
+        raise HTTPException(status_code=400, detail="Admin cannot deactivate their own account.")
+
+    deactivated_user = await crud_users.set_user_active_status(db, user_id=user_id, is_active=False)
+    
+    background_tasks.add_task(
+        create_activity_log,
+        db=db, request=request, user_data=current_user,
+        activity="USER_DEACTIVATED",
+        description=f"Admin '{current_user['login_id']}' deactivated user '{deactivated_user['login_id']}'."
+    )
+    
+    return deactivated_user
+
+@router.put("/{user_id}/reactivate", response_model=UserPublic)
+async def reactivate_user_account(
+    user_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin),
+    request: Request = None,
+    background_tasks: BackgroundTasks = None
+):
+    """
+    Mengaktifkan kembali akun pengguna. Hanya untuk admin.
+    """
+    user_to_reactivate = await crud_users.get_user_by_id(db, user_id)
+    if not user_to_reactivate:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    reactivated_user = await crud_users.set_user_active_status(db, user_id=user_id, is_active=True)
+    
+    background_tasks.add_task(
+        create_activity_log,
+        db=db, request=request, user_data=current_user,
+        activity="USER_REACTIVATED",
+        description=f"Admin '{current_user['login_id']}' reactivated user '{reactivated_user['login_id']}'."
+    )
+    
+    return reactivated_user

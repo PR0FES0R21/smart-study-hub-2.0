@@ -5,6 +5,7 @@
 # ==============================================================================
 import json
 from .db import redis_client
+from typing import Optional
 
 async def get_cache(key: str):
     """Mengambil data dari cache Redis."""
@@ -13,10 +14,10 @@ async def get_cache(key: str):
         return json.loads(cached_data)
     return None
 
-async def set_cache(key: str, data: any):
+async def set_cache(key: str, data: any, ttl: Optional[int] = None):
     """Menyimpan data ke cache Redis."""
     # Kita menggunakan json.dumps untuk menyimpan list/dict sebagai string
-    await redis_client.set(key, json.dumps(data))
+    await redis_client.set(key, json.dumps(data, default=str), ex=ttl)
 
 async def invalidate_cache(key_pattern: str):
     """Menghapus cache berdasarkan pola kunci (misal: 'analytics:*')."""

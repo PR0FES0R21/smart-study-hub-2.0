@@ -4,9 +4,15 @@
 # --- DITAMBAHKAN ---
 # ==============================================================================
 from pydantic import BaseModel, Field
-from typing import Optional, List
+from typing import Optional, List, TYPE_CHECKING
 from datetime import datetime
 from .base import PyObjectId
+
+from .teaching_assignment import TeachingAssignmentWithDetails
+from .academic_period import AcademicPeriodPublic
+
+if TYPE_CHECKING:
+    from .question_bank import QuestionBankPublic
 
 class ExamSettings(BaseModel):
     shuffle_questions: bool = True
@@ -21,11 +27,22 @@ class ExamBase(BaseModel):
     availability_end_time: datetime
     status: str = "pending_questions" # Default status
     settings: ExamSettings = Field(default_factory=ExamSettings)
+    academic_period_id: PyObjectId
 
 class ExamCreate(ExamBase):
     teaching_assignment_id: PyObjectId
     question_ids: List[PyObjectId] = []
     proctor_ids: List[PyObjectId] = []
+
+class ExamUpdate(BaseModel):
+    title: Optional[str] = None
+    exam_type: Optional[str] = None
+    duration_minutes: Optional[int] = None
+    availability_start_time: Optional[datetime] = None
+    availability_end_time: Optional[datetime] = None
+    status: Optional[str] = None
+    proctor_ids: Optional[List[PyObjectId]] = None
+    settings: Optional[ExamSettings] = None
 
 class ExamPublic(ExamBase):
     id: PyObjectId = Field(alias="_id")
@@ -52,3 +69,15 @@ class BulkExamCreate(BaseModel):
 
 class ExamQuestionUpdate(BaseModel):
     question_ids: List[PyObjectId]
+
+class ExamWithDetails(ExamPublic):
+    teaching_assignment_details: Optional[TeachingAssignmentWithDetails] = None
+    academic_period_details: Optional[AcademicPeriodPublic] = None
+    questions: Optional[List['QuestionBankPublic']] = None
+
+class PaginatedExamResponse(BaseModel):
+    total_items: int
+    total_pages: int
+    current_page: int
+    limit: int
+    data: List[ExamWithDetails]

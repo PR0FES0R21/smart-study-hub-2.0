@@ -18,7 +18,7 @@ class Settings(BaseSettings):
 
     # Kunci Rahasia untuk JWT
     SECRET_KEY: str
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 300000
 
     R2_ACCOUNT_ID: str
     R2_ACCESS_KEY_ID: str

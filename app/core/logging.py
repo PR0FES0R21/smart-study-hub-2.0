@@ -68,7 +68,8 @@ async def create_activity_log(
             "full_name": full_name,
             "description": description,
             "browser_name": user_agent.browser.family,
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.utcnow().isoformat(),
+            "device_type": "desktop" if user_agent.is_pc else "mobile" if user_agent.is_mobile else "tablet" if user_agent.is_tablet else "other" 
         }
     }
     

@@ -124,10 +124,10 @@ async def download_task_result(
 
     return FileResponse(path=file_path, filename=Path(file_path).name, media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
-@router.get("/tasks/{task_id}", response_model=TaskStatus)
-async def get_task_status(task_id: str, current_user: dict = Depends(deps.get_current_active_admin)):
-    # ... (kode tidak berubah) ...
-    task_result = AsyncResult(task_id, app=celery_app); result = task_result.result
-    return {"task_id": task_id, "status": task_result.status, "result": result}
+# @router.get("/tasks/{task_id}", response_model=TaskStatus)
+# async def get_task_status(task_id: str, current_user: dict = Depends(deps.get_current_active_admin)):
+#     # ... (kode tidak berubah) ...
+#     task_result = AsyncResult(task_id, app=celery_app); result = task_result.result
+#     return {"task_id": task_id, "status": task_result.status, "result": result}
 
 

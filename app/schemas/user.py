@@ -37,7 +37,6 @@ class UserBase(BaseModel):
 class UserCreate(BaseModel):
     login_id: str
     email: EmailStr
-    password: str
     roles: List[str] = []
     is_active: bool = True
     profile: ProfileCreate
@@ -59,6 +58,7 @@ class UserPublic(UserBase):
 
 class UserWithDetails(UserPublic):
     # Detail untuk siswa
+    profile_details: Optional[ProfilePublic]
     class_details: Optional['ClassPublic'] = None
     department_details: Optional[ExpertiseProgramPublic] = None
     teaching_summary: Optional[List[TeachingSummaryItem]] = None

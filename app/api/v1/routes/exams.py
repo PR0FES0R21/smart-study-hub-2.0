@@ -3,14 +3,20 @@
 # Deskripsi: Endpoint API untuk manajemen Ujian.
 # --- DITAMBAHKAN ---
 # ==============================================================================
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from typing import List
+from typing import List, Optional
+from bson import ObjectId
 
 from app.api.v1 import deps
-from app.crud import crud_exams, crud_teaching_assignments
-from app.schemas.exam import ExamCreate, ExamPublic, BulkExamCreate, ExamQuestionUpdate
+from app.crud import crud_exams, crud_teaching_assignments, crud_academic_periods
+from app.schemas.exam import (
+    ExamCreate, ExamPublic, BulkExamCreate, 
+    ExamQuestionUpdate, ExamWithDetails,
+    PaginatedExamResponse, ExamUpdate
+)
 from app.schemas.exam_session import ExamSessionPublic
+from app.core.websocket import manager
 
 router = APIRouter()
 
@@ -19,10 +25,10 @@ async def create_bulk_exams(
     *,
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     bulk_exam_in: BulkExamCreate,
-    current_user: dict = Depends(deps.get_current_active_admin)
+    current_user: dict = Depends(deps.get_current_active_admin),
+    active_period: dict = Depends(deps.get_current_academic_period)
 ):
     
-    print(bulk_exam_in)
     """
     Membuat ujian resmi secara massal untuk target tertentu.
     Hanya bisa diakses oleh admin.
@@ -38,7 +44,10 @@ async def create_bulk_exams(
 
     if not target_assignments:
         raise HTTPException(status_code=404, detail="No matching classes or teachers found for the given criteria.")
-
+    
+    if not active_period:
+        raise HTTPException(status_code=400, detail="Gagal membuat ujian karena belum ada semester aktif. Harap atur semester aktif terlebih dahulu.")
+    
     created_exams_count = 0
     for assignment in target_assignments:
         exam_data = ExamCreate(
@@ -49,7 +58,8 @@ async def create_bulk_exams(
             availability_end_time=bulk_exam_in.availability_end_time,
             settings=bulk_exam_in.settings,
             teaching_assignment_id=assignment["_id"],
-            proctor_ids=bulk_exam_in.proctor_ids
+            proctor_ids=bulk_exam_in.proctor_ids,
+            academic_period_id=active_period["_id"]
         )
         await crud_exams.create_exam(db=db, exam=exam_data)
         created_exams_count += 1
@@ -62,7 +72,8 @@ async def create_quiz_or_daily_test(
     *,
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     exam_in: ExamCreate,
-    current_user: dict = Depends(deps.get_current_active_teacher)
+    current_user: dict = Depends(deps.get_current_active_teacher),
+    active_period: dict = Depends(deps.get_current_academic_period)
 ):
     """
     Membuat ujian lokal (kuis/ulangan harian). Hanya bisa diakses oleh guru.
@@ -72,7 +83,60 @@ async def create_quiz_or_daily_test(
     if not assignment or assignment["teacher_id"] != current_user["_id"]:
         raise HTTPException(status_code=403, detail="You can only create exams for your own assignments.")
 
-    return await crud_exams.create_exam(db=db, exam=exam_in)
+    exam_data_with_period = exam_in.model_copy(update={"academic_period_id": active_period["_id"]})
+    return await crud_exams.create_exam(db=db, exam=exam_data_with_period)
+
+@router.get("/", response_model=PaginatedExamResponse)
+async def read_all_exams(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user),
+    active_period: dict = Depends(deps.get_current_academic_period),
+    # --- DITAMBAHKAN: Parameter filter, paginasi, dan pencarian ---
+    academic_period_id: Optional[str] = Query(None),
+    exam_type: Optional[str] = Query(None),
+    search: Optional[str] = Query(None),
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100)
+):
+    """
+    Mengambil daftar ujian dengan filter dinamis, paginasi, dan pencarian.
+    """
+    filters = {}
+    skip = (page - 1) * limit
+
+    # 1. Tentukan periode akademik
+    # Jika tidak ada filter, gunakan periode aktif sebagai default
+    target_period_id = academic_period_id or str(active_period["_id"])
+    if target_period_id != 'all': # Tambahkan opsi 'all' untuk melihat semua periode
+        filters["academic_period_id"] = ObjectId(target_period_id)
+
+    # 2. Terapkan filter berdasarkan peran pengguna
+    if "admin" in current_user["roles"]:
+        default_exam_type = 'official'
+        if exam_type and exam_type != 'all':
+            filters["exam_type"] = {"$in": ["official_uts", "official_uas"]} if exam_type == 'official' else exam_type
+        elif not exam_type:
+            filters["exam_type"] = {"$in": ["official_uts", "official_uas"]}
+        
+    elif "teacher" in current_user["roles"]:
+        filters["teacher_id"] = current_user["_id"]
+        if exam_type and exam_type != 'all':
+            filters["exam_type"] = {"$in": ["official_uts", "official_uas"]} if exam_type == 'official' else exam_type
+    
+    result = await crud_exams.get_all_exams_with_details(
+        db=db, filters=filters, skip=skip, limit=limit, search=search
+    )
+    
+    total_items = result["total_items"]
+    total_pages = (total_items + limit - 1) // limit
+
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": result["data"]
+    }
 
 
 @router.put("/{exam_id}/questions", response_model=ExamPublic)
@@ -121,3 +185,82 @@ async def start_exam(
     student_id = current_user["_id"]
     session = await crud_exams.start_exam_session(db=db, exam=exam, student_id=student_id)
     return session
+
+@router.put("/{exam_id}", response_model=ExamPublic)
+async def update_existing_exam(
+    exam_id: str,
+    exam_in: ExamUpdate,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Memperbarui detail ujian.
+    Hanya bisa dilakukan oleh admin atau guru yang ditugaskan.
+    """
+    exam = await crud_exams.get_exam_by_id(db, exam_id)
+    if not exam:
+        raise HTTPException(status_code=404, detail="Exam not found")
+
+    # Otorisasi: Cek apakah user adalah admin atau guru yang bersangkutan
+    is_admin = "admin" in current_user.get("roles", [])
+    
+    assignment = await db["teaching_assignments"].find_one({"_id": exam["teaching_assignment_id"]})
+    is_assigned_teacher = assignment and assignment["teacher_id"] == current_user["_id"]
+
+    if not is_admin and not is_assigned_teacher:
+        raise HTTPException(status_code=403, detail="Not authorized to modify this exam")
+
+    updated_exam = await crud_exams.update_exam(db, exam_id=exam_id, exam_update=exam_in)
+    return updated_exam
+
+@router.post("/{exam_id}/start-manually", response_model=ExamPublic)
+async def start_exam_manually(
+    exam_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user) # Pengawas bisa guru atau admin
+):
+    """
+    Memulai ujian secara manual. Hanya bisa dilakukan oleh pengawas yang ditugaskan.
+    Akan mengirim trigger WebSocket ke semua siswa di ruangan ujian.
+    """
+    exam = await crud_exams.get_exam_by_id(db, exam_id)
+    if not exam:
+        raise HTTPException(status_code=404, detail="Exam not found")
+
+    # Otorisasi: Cek apakah pengguna adalah pengawas untuk ujian ini
+    proctor_ids_as_str = [str(p_id) for p_id in exam.get("proctor_ids", [])]
+    if str(current_user["_id"]) not in proctor_ids_as_str:
+        raise HTTPException(status_code=403, detail="You are not an authorized proctor for this exam.")
+
+    # Ubah status ujian
+    updated_exam = await crud_exams.set_exam_status(db, exam_id=exam_id, status="ongoing")
+    
+    # Kirim trigger WebSocket ke siswa di ruangan ini
+    await manager.broadcast_to_students(exam_id, {"type": "EXAM_STARTED", "exam_id": exam_id})
+    
+    return updated_exam
+
+@router.delete("/{exam_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_existing_exam(
+    exam_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Menghapus ujian. Hanya bisa dilakukan oleh admin atau guru yang ditugaskan.
+    """
+    exam = await crud_exams.get_exam_by_id(db, exam_id)
+    if not exam:
+        raise HTTPException(status_code=404, detail="Exam not found")
+
+    is_admin = "admin" in current_user.get("roles", [])
+    assignment = await db["teaching_assignments"].find_one({"_id": exam["teaching_assignment_id"]})
+    is_assigned_teacher = assignment and assignment["teacher_id"] == current_user["_id"]
+
+    if not is_admin and not is_assigned_teacher:
+        raise HTTPException(status_code=403, detail="Not authorized to delete this exam")
+
+    deleted = await crud_exams.delete_exam_and_sessions(db, exam_id=exam_id)
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Exam not found during deletion")
+    return
