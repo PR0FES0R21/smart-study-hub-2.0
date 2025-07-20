@@ -125,8 +125,6 @@ async def get_users_for_datatables(
     }
 
 async def create_user(db: AsyncIOMotorDatabase, user: UserCreate) -> dict:
-    print("class_id:", user.class_id, type(user.class_id))
-    print("department_id:", user.department_id, type(user.department_id))
 
     if await get_user_by_login_id(db, user.login_id):
         raise HTTPException(status_code=400, detail=f"Login ID '{user.login_id}' already registered")
@@ -141,9 +139,7 @@ async def create_user(db: AsyncIOMotorDatabase, user: UserCreate) -> dict:
     return created_user
 
 async def update_user(db: AsyncIOMotorDatabase, user_id: str, user_update: UserUpdate) -> dict | None:
-    print("crud: ", user_update)
     update_data = user_update.model_dump(mode='python', exclude_unset=True)
-    print("setelah dump: ", update_data)
     
     if "password" in update_data and update_data["password"]:
         update_data["hashed_password"] = get_password_hash(update_data["password"])
@@ -286,15 +282,20 @@ async def get_users_with_profiles_for_datatables(
     return {"draw": draw, "recordsTotal": records_total, "recordsFiltered": records_filtered, "data": data}
 
 async def update_user_and_profile(db: AsyncIOMotorDatabase, user_id: str, user_in: UserUpdate) -> dict | None:
-    """Memperbarui dokumen user dan/atau profile terkait."""
+    print("crud :", user_in)
+    """Memperbarui dokumen user dan/atau profile terkait dengan benar."""
     now = datetime.utcnow()
     user_to_update = await get_user_by_id(db, user_id)
     if not user_to_update:
         return None
 
     # 1. Update dokumen profile jika ada data profile di input
-    if user_in.profile:
-        profile_update_data = user_in.profile.model_dump(mode='python', exclude_unset=True)
+    if user_in.profile and user_in.profile.model_fields_set:
+        profile_update_data = {}
+        # --- PERBAIKAN: Gunakan model_fields_set untuk menangani null ---
+        for field in user_in.profile.model_fields_set:
+            profile_update_data[field] = getattr(user_in.profile, field)
+        
         if profile_update_data:
             profile_update_data["updated_at"] = now
             await db["profiles"].update_one(
@@ -303,7 +304,12 @@ async def update_user_and_profile(db: AsyncIOMotorDatabase, user_id: str, user_i
             )
 
     # 2. Update dokumen user
-    user_update_data = user_in.model_dump(exclude={"profile"}, exclude_unset=True)
+    user_update_data = {}
+    # --- PERBAIKAN: Gunakan model_fields_set untuk menangani null ---
+    for field in user_in.model_fields_set:
+        if field != "profile": # Abaikan field profile
+            user_update_data[field] = getattr(user_in, field)
+
     if user_update_data:
         if "password" in user_update_data and user_update_data["password"]:
             user_update_data["hashed_password"] = get_password_hash(user_update_data["password"])
@@ -317,7 +323,6 @@ async def update_user_and_profile(db: AsyncIOMotorDatabase, user_id: str, user_i
             {"$set": user_update_data}
         )
         
-    await invalidate_cache("analytics:*")
     return await get_user_by_id(db, user_id)
 
 async def delete_user_and_profile(db: AsyncIOMotorDatabase, user_id: str) -> bool:
@@ -412,7 +417,6 @@ async def get_user_with_details_by_id(db: AsyncIOMotorDatabase, user_id: str) ->
         {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
     ]
     result = await db["users"].aggregate(pipeline).to_list(1)
-    print(result)
     return result[0] if result else None
 
 async def update_self_data(db: AsyncIOMotorDatabase, current_user: dict, data_in: SelfDataUpdate) -> dict:

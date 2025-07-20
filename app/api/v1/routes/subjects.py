@@ -3,13 +3,13 @@
 # Deskripsi: Endpoint API untuk manajemen Mata Pelajaran.
 # --- DITAMBAHKAN ---
 # ==============================================================================
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from typing import List
+from typing import List, Optional
 
 from app.api.v1 import deps
 from app.crud import crud_subjects
-from app.schemas.subject import SubjectCreate, SubjectUpdate, SubjectPublic
+from app.schemas.subject import SubjectCreate, SubjectUpdate, SubjectPublic, PaginatedSubjectResponse
 
 router = APIRouter()
 
@@ -25,15 +25,31 @@ async def create_new_subject(
     """
     return await crud_subjects.create_subject(db=db, subject=subject_in)
 
-@router.get("/", response_model=List[SubjectPublic])
+@router.get("/", response_model=PaginatedSubjectResponse)
 async def read_subjects(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_user) # Bisa diakses semua user yang login
+    current_user: dict = Depends(deps.get_current_user),
+    search: Optional[str] = Query(None, description="Cari mata pelajaran berdasarkan nama atau kode"),
+    page: int = Query(1, ge=1, description="Nomor halaman"),
+    limit: int = Query(10, ge=1, le=100, description="Jumlah item per halaman")
 ):
     """
-    Mengambil daftar semua mata pelajaran.
+    Mengambil daftar mata pelajaran dengan paginasi dan pencarian.
     """
-    return await crud_subjects.get_all_subjects(db=db)
+    skip = (page - 1) * limit
+    result = await crud_subjects.get_all_subjects(db=db, search=search, skip=skip, limit=limit)
+    print(result)
+    
+    total_items = result["total_items"]
+    total_pages = (total_items + limit - 1) // limit
+
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": result["data"]
+    }
 
 @router.get("/{subject_id}", response_model=SubjectPublic)
 async def read_subject_by_id(

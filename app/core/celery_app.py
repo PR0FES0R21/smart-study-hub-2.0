@@ -19,5 +19,5 @@ celery_app = Celery(
 celery_app.conf.update(
     task_track_started=True,
     # Menemukan semua file tasks.py secara otomatis
-    imports=('app.tasks.excel_tasks', 'app.tasks.analytics_tasks',) 
+    imports=('app.tasks.excel_tasks', 'app.tasks.analytics_tasks', 'app.tasks.bulk_operations_tasks',) 
 )

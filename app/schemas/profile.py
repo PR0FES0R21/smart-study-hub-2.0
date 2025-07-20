@@ -2,7 +2,7 @@
 # File: app/schemas/profile.py
 # --- DIUBAH --- (Menambahkan start_year dan end_year)
 # ==============================================================================
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from typing import Optional
 from datetime import datetime
 from .base import PyObjectId
@@ -47,6 +47,13 @@ class ProfileUpdate(BaseModel):
     department_id: Optional[PyObjectId] = None
     start_year: Optional[int] = None
     end_year: Optional[int] = None
+
+    @field_validator('class_id', 'department_id', mode='before')
+    @classmethod
+    def empty_str_to_none(cls, v):
+        if v == "":
+            return None
+        return v
 
 class ProfilePublic(ProfileBase):
     id: PyObjectId = Field(alias="_id")

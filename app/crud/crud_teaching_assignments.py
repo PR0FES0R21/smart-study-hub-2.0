@@ -70,3 +70,16 @@ async def find_assignments_by_criteria(
     ])
     
     return await db["teaching_assignments"].aggregate(pipeline).to_list(1000)
+
+async def update_teaching_assignment(db: AsyncIOMotorDatabase, assignment_id: ObjectId, assignment_update: TeachingAssignmentUpdate) -> dict | None:
+    """Memperbarui penugasan mengajar (misalnya, mengganti guru)."""
+    update_data = assignment_update.model_dump(mode='python', exclude_unset=True)
+    if not update_data:
+        return await db["teaching_assignments"].find_one({"_id": assignment_id})
+        
+    await db["teaching_assignments"].update_one(
+        {"_id": assignment_id},
+        {"$set": update_data}
+    )
+    return await db["teaching_assignments"].find_one({"_id": assignment_id})
+

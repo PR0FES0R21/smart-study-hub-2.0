@@ -3,13 +3,13 @@
 # Deskripsi: Endpoint API untuk manajemen Kelas.
 # --- DITAMBAHKAN ---
 # ==============================================================================
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from typing import List
+from typing import Optional
 
 from app.api.v1 import deps
 from app.crud import crud_classes
-from app.schemas.classes import ClassCreate, ClassUpdate, ClassPublic, ClassWithDetails
+from app.schemas.classes import ClassCreate, ClassUpdate, ClassPublic, PaginatedClassResponse
 
 router = APIRouter()
 
@@ -25,15 +25,45 @@ async def create_new_class(
     """
     return await crud_classes.create_class(db=db, class_in=class_in)
 
-@router.get("/", response_model=List[ClassWithDetails])
+@router.get("/", response_model=PaginatedClassResponse)
 async def read_classes(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_user)
+    current_user: dict = Depends(deps.get_current_user),
+    # --- DITAMBAHKAN: Parameter filter, paginasi, dan pencarian ---
+    search: Optional[str] = Query(None),
+    grade_level: Optional[int] = Query(None),
+    expertise_id: Optional[str] = Query(None),
+    academic_year: Optional[str] = Query(None),
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100)
 ):
     """
-    Mengambil daftar semua kelas dengan detail jurusan dan wali kelas.
+    Mengambil daftar kelas dengan filter dinamis, paginasi, dan pencarian.
     """
-    return await crud_classes.get_all_classes_with_details(db=db)
+    skip = (page - 1) * limit
+    result = await crud_classes.get_paginated_classes_with_details(
+        db=db, 
+        skip=skip, 
+        limit=limit, 
+        search=search,
+        grade_level=grade_level,
+        expertise_id=expertise_id,
+        academic_year=academic_year
+    )
+    
+    total_items = result["total_items"]
+    total_pages = (total_items + limit - 1) // limit
+
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": result["data"],
+        "grade_10_total": result["grade_10_total"],
+        "grade_11_total": result["grade_11_total"],
+        "grade_12_total": result["grade_12_total"],
+    }
 
 @router.get("/{class_id}", response_model=ClassPublic)
 async def read_class_by_id(

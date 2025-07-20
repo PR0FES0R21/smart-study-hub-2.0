@@ -18,6 +18,8 @@ from .question_bank import QuestionBankPublic
 from .exam import ExamPublic, ExamWithDetails
 from .exam_session import ExamSessionPublic
 from .analytics import StudentCountByMajor, StudentGrowthDataPoint
+from .coordination_assignment import CoordinationAssignmentPublic
+from .question_set import QuestionSetPublic
 
 # Rebuild model untuk menyelesaikan forward references
 # Ini harus dilakukan setelah semua model diimpor

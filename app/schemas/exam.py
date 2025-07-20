@@ -73,7 +73,7 @@ class ExamQuestionUpdate(BaseModel):
 class ExamWithDetails(ExamPublic):
     teaching_assignment_details: Optional[TeachingAssignmentWithDetails] = None
     academic_period_details: Optional[AcademicPeriodPublic] = None
-    questions: Optional[List['QuestionBankPublic']] = None
+    question_ids: List[PyObjectId]
 
 class PaginatedExamResponse(BaseModel):
     total_items: int

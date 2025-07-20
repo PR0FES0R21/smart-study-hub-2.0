@@ -12,6 +12,12 @@ from .expertise_program import ExpertiseProgramPublic
 if TYPE_CHECKING:
     from .user import UserPublic
 
+class TeacherInfo(BaseModel):
+    id: PyObjectId = Field(alias="_id")
+    full_name: str
+    gender: Optional[str] = None
+    profile_picture_url: Optional[str] = None
+
 class ClassBase(BaseModel):
     grade_level: int
     expertise_id: PyObjectId
@@ -35,5 +41,20 @@ class ClassPublic(ClassBase):
 
 # Skema untuk menampilkan data kelas yang sudah digabung
 class ClassWithDetails(ClassPublic):
-    homeroom_teacher_details: Optional['UserPublic'] = None
+    homeroom_teacher_details: Optional[TeacherInfo] = None
     expertise_details: Optional[ExpertiseProgramPublic] = None
+
+class TeacherInfo(BaseModel):
+    id: PyObjectId = Field(alias="_id")
+    full_name: str
+
+class PaginatedClassResponse(BaseModel):
+    total_items: int
+    total_pages: int
+    current_page: int
+    limit: int
+    data: List[ClassWithDetails]
+    # Statistik tambahan
+    grade_10_total: int
+    grade_11_total: int
+    grade_12_total: int

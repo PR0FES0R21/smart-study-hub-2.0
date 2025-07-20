@@ -264,3 +264,18 @@ async def delete_existing_exam(
     if not deleted:
         raise HTTPException(status_code=404, detail="Exam not found during deletion")
     return
+
+@router.get("/{exam_id}/details", response_model=ExamWithDetails)
+async def read_exam_details(
+    exam_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    """
+    Mengambil detail lengkap sebuah ujian, TANPA daftar soalnya.
+    Hanya untuk admin.
+    """
+    exam_details = await crud_exams.get_exam_details_by_id(db, exam_id=exam_id)
+    if not exam_details:
+        raise HTTPException(status_code=404, detail="Exam not found")
+    return exam_details

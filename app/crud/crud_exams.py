@@ -176,3 +176,26 @@ async def delete_exam_and_sessions(db: AsyncIOMotorDatabase, exam_id: str) -> bo
     # Hapus dokumen ujian utama
     result = await db["exams"].delete_one({"_id": ObjectId(exam_id)})
     return result.deleted_count > 0
+
+async def get_exam_details_by_id(db: AsyncIOMotorDatabase, exam_id: str) -> dict | None:
+    """Mengambil detail ujian lengkap, TAPI tanpa isi soalnya."""
+    if not ObjectId.is_valid(exam_id): return None
+    
+    # Kita gunakan pipeline yang sama dengan get_all_exams, tapi dengan $match di awal
+    pipeline = [
+        {"$match": {"_id": ObjectId(exam_id)}},
+        {"$lookup": {"from": "academic_periods", "localField": "academic_period_id", "foreignField": "_id", "as": "academic_period_details"}},
+        {"$unwind": {"path": "$academic_period_details", "preserveNullAndEmptyArrays": True}},
+        {"$lookup": {"from": "teaching_assignments", "localField": "teaching_assignment_id", "foreignField": "_id", "as": "teaching_assignment_details"}},
+        {"$unwind": {"path": "$teaching_assignment_details", "preserveNullAndEmptyArrays": True}},
+        {"$lookup": {"from": "subjects", "localField": "teaching_assignment_details.subject_id", "foreignField": "_id", "as": "teaching_assignment_details.subject_details"}},
+        {"$unwind": {"path": "$teaching_assignment_details.subject_details", "preserveNullAndEmptyArrays": True}},
+        {"$lookup": {"from": "classes", "localField": "teaching_assignment_details.class_id", "foreignField": "_id", "as": "teaching_assignment_details.class_details"}},
+        {"$unwind": {"path": "$teaching_assignment_details.class_details", "preserveNullAndEmptyArrays": True}},
+        {"$lookup": {"from": "users", "localField": "teaching_assignment_details.teacher_id", "foreignField": "_id", "as": "teaching_assignment_details.teacher_details"}},
+        {"$unwind": {"path": "$teaching_assignment_details.teacher_details", "preserveNullAndEmptyArrays": True}},
+        {"$project": {"teaching_assignment_details.teacher_details.hashed_password": 0}},
+    ]
+    
+    result = await db["exams"].aggregate(pipeline).to_list(1)
+    return result[0] if result else None

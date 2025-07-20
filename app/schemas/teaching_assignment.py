@@ -4,7 +4,7 @@
 # --- DITAMBAHKAN ---
 # ==============================================================================
 from pydantic import BaseModel, Field
-from typing import Optional, List
+from typing import Optional, List, Literal, Dict, Any
 from .base import PyObjectId
 from .classes import ClassPublic
 from .subject import SubjectPublic
@@ -32,3 +32,11 @@ class TeachingAssignmentWithDetails(TeachingAssignmentPublic):
     class_details: Optional[ClassPublic] = None
     subject_details: Optional[SubjectPublic] = None
     teacher_details: Optional[UserPublic] = None
+
+class BulkUpdateAction(BaseModel):
+    type: Literal["create", "update", "delete"]
+    assignment_id: Optional[PyObjectId] = None # Diperlukan untuk update & delete
+    data: Optional[Dict[str, Any]] = None # Diperlukan untuk create & update
+
+class BulkUpdateRequest(BaseModel):
+    actions: List[BulkUpdateAction]

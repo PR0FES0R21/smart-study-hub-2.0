@@ -123,7 +123,7 @@ async def update_existing_user(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_admin)
 ):
-    print("routes: ", user_in)
+    print("routes", user_in)
     """
     Memperbarui data user. Hanya bisa diakses oleh admin.
     """

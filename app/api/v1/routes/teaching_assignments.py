@@ -9,7 +9,13 @@ from typing import List
 
 from app.api.v1 import deps
 from app.crud import crud_teaching_assignments
-from app.schemas.teaching_assignment import TeachingAssignmentCreate, TeachingAssignmentPublic, TeachingAssignmentWithDetails
+from app.schemas.teaching_assignment import (
+    TeachingAssignmentCreate, TeachingAssignmentPublic, 
+    TeachingAssignmentWithDetails, BulkUpdateRequest
+)
+from app.schemas.task import TaskStatus
+from app.core.celery_app import celery_app
+
 
 router = APIRouter()
 
@@ -48,3 +54,22 @@ async def delete_existing_assignment(
     if not deleted:
         raise HTTPException(status_code=404, detail="Teaching assignment not found")
     return
+
+@router.post("/bulk-update", response_model=TaskStatus, status_code=202)
+async def bulk_update_assignments(
+    request_in: BulkUpdateRequest,
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    """
+    Memulai proses operasi massal (create, update, delete) untuk penugasan mengajar
+    di latar belakang.
+    """
+    # Mengubah objek Pydantic menjadi dictionary biasa agar aman untuk Celery
+    actions_dict = [action.model_dump(mode='json') for action in request_in.actions]
+    admin_user_id = str(current_user["_id"])
+
+    task = celery_app.send_task(
+        "app.tasks.bulk_operations_tasks.bulk_update_assignments_task",
+        args=[actions_dict, admin_user_id]
+    )
+    return {"task_id": task.id, "status": "Processing"}

@@ -21,6 +21,7 @@ class QuestionBankBase(BaseModel):
     options: Optional[List[QuestionOption]] = None
     points: int = 10
     tags: Optional[List[str]] = []
+    status: str = "private"
 
 class QuestionBankCreate(QuestionBankBase):
     pass
@@ -37,3 +38,6 @@ class QuestionBankUpdate(BaseModel):
 class QuestionBankPublic(QuestionBankBase):
     id: PyObjectId = Field(alias="_id")
     class Config: from_attributes = True; arbitrary_types_allowed = True
+
+class QuestionIdsList(BaseModel):
+    ids: List[PyObjectId]
