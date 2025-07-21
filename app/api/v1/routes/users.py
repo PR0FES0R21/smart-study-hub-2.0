@@ -36,8 +36,22 @@ async def create_new_user(
     created_user = await crud_users.create_user_and_profile(db=db, user_in=user_in)
     return created_user
 
-@router.get("/", response_model=DataTablesUserResponse)
-async def read_all_users_for_datatables(
+# ==============================================================================
+# File: app/api/v1/routes/users.py
+# --- DIUBAH --- (Menggunakan struktur respons standar)
+# ==============================================================================
+from fastapi import APIRouter, Depends, Request
+from motor.motor_asyncio import AsyncIOMotorDatabase
+from typing import Optional
+
+from app.api.v1 import deps
+from app.crud import crud_users
+from app.schemas.user import PaginatedUserResponse
+
+router = APIRouter()
+
+@router.get("/", response_model=PaginatedUserResponse)
+async def read_all_users(
     request: Request,
     role: Optional[str] = None,
     grade_level: Optional[int] = None,
@@ -46,19 +60,28 @@ async def read_all_users_for_datatables(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_admin)
 ):
-    """
-    Mengambil daftar semua user dengan filter dinamis dan dukungan DataTables.
-    """
-    dt_params = dict(request.query_params)
-    response_data = await crud_users.get_users_with_profiles_for_datatables(
-        db=db, 
-        dt_params=dt_params, 
-        role=role,
-        grade_level=grade_level,
-        expertise_id=expertise_id,
-        class_id=class_id
+    # Mengambil parameter paginasi dari query
+    page = int(request.query_params.get('page', 1))
+    limit = int(request.query_params.get('limit', 10))
+    search = request.query_params.get('search', None)
+    skip = (page - 1) * limit
+    
+    result = await crud_users.get_users_with_profiles(
+        db=db, skip=skip, limit=limit, role=role, 
+        grade_level=grade_level, expertise_id=expertise_id, class_id=class_id,
+        search=search
     )
-    return response_data
+    
+    total_items = result["total_items"]
+    total_pages = (total_items + limit - 1) // limit
+
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": result["data"]
+    }
 
 @router.get("/me", response_model=UserWithDetails)
 async def debug_read_own_data(

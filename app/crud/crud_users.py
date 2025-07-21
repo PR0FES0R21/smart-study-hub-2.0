@@ -10,7 +10,7 @@ from app.core.security import get_password_hash
 from bson import ObjectId
 from typing import List, Dict, Any, Optional
 from datetime import datetime
-from app.core.cache import invalidate_cache
+from app.core.cache import invalidate_cache, flush_all_cache
 
 async def get_user_by_login_id(db: AsyncIOMotorDatabase, login_id: str) -> dict | None:
     user = await db["users"].find_one({"login_id": login_id})
@@ -342,35 +342,30 @@ async def graduate_students_by_grade(db: AsyncIOMotorDatabase, grade_level: int)
     """Mencari semua siswa di tingkat kelas tertentu dan meluluskan mereka."""
     now = datetime.utcnow()
     
-    # 1. Cari semua kelas di tingkat yang ditentukan
     target_classes = await db["classes"].find({"grade_level": grade_level}).to_list(1000)
-    if not target_classes:
-        return 0
+    if not target_classes: return 0
     target_class_ids = [c["_id"] for c in target_classes]
 
-    # 2. Cari semua profil siswa yang ada di kelas-kelas tersebut
     student_profiles_cursor = db["profiles"].find({"class_id": {"$in": target_class_ids}})
     student_profiles = await student_profiles_cursor.to_list(None)
-    if not student_profiles:
-        return 0
+    if not student_profiles: return 0
     
-    student_user_ids = [p["user_id"] for p in student_profiles]
+    student_user_ids = [p["user_id"] for p in student_profiles if p.get("user_id")]
     student_profile_ids = [p["_id"] for p in student_profiles]
 
-    # 3. Update collection 'users'
     user_update_result = await db["users"].update_many(
         {"_id": {"$in": student_user_ids}},
         {"$set": {"is_active": False, "roles": ["alumni"], "updated_at": now}}
     )
 
-    # 4. Update collection 'profiles'
     await db["profiles"].update_many(
         {"_id": {"$in": student_profile_ids}},
         {"$set": {"class_id": None, "updated_at": now}}
     )
-
+    
     if user_update_result.modified_count > 0:
-        await invalidate_cache("analytics:*")
+        await flush_all_cache() # --- PERBAIKAN: Flush semua cache ---
+        
     return user_update_result.modified_count
 
 async def update_user_password(db: AsyncIOMotorDatabase, user_id: ObjectId, new_password: str):
@@ -455,3 +450,41 @@ async def set_user_active_status(db: AsyncIOMotorDatabase, user_id: str, is_acti
         {"$set": {"is_active": is_active, "updated_at": datetime.utcnow()}}
     )
     return await get_user_by_id(db, user_id)
+
+async def promote_students(db: AsyncIOMotorDatabase, from_grade: int, from_year: str, to_year: str) -> int:
+    """Menaikkan kelas semua siswa dari satu angkatan ke angkatan berikutnya."""
+    to_grade = from_grade + 1
+    
+    # 1. Cari semua siswa di angkatan asal
+    from_classes = await db["classes"].find({"grade_level": from_grade, "academic_year": from_year}).to_list(None)
+    if not from_classes: return 0
+    from_class_ids = [c["_id"] for c in from_classes]
+    
+    students_to_promote = await db["profiles"].find({"class_id": {"$in": from_class_ids}}).to_list(None)
+    if not students_to_promote: return 0
+
+    # 2. Siapkan "peta" kelas tujuan
+    to_classes_cursor = db["classes"].find({"grade_level": to_grade, "academic_year": to_year})
+    to_classes_map = {f"{c['expertise_id']}_{c['name']}": c["_id"] for c in await to_classes_cursor.to_list(None)}
+
+    # 3. Lakukan pembaruan massal
+    bulk_operations = []
+    for profile in students_to_promote:
+        current_class = next((c for c in from_classes if c["_id"] == profile["class_id"]), None)
+        if not current_class: continue
+        
+        # Cari kelas baru yang cocok
+        new_class_key = f"{current_class['expertise_id']}_{current_class['name']}"
+        new_class_id = to_classes_map.get(new_class_key)
+        
+        if new_class_id:
+            from pymongo import UpdateOne
+            bulk_operations.append(
+                UpdateOne({"_id": profile["_id"]}, {"$set": {"class_id": new_class_id}})
+            )
+
+    if not bulk_operations:
+        return 0
+        
+    result = await db["profiles"].bulk_write(bulk_operations)
+    return result.modified_count

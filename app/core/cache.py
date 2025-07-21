@@ -28,3 +28,8 @@ async def invalidate_cache(key_pattern: str):
     if keys_to_delete:
         await redis_client.delete(*keys_to_delete)
         print(f"Cache invalidated for keys: {keys_to_delete}")
+
+async def flush_all_cache():
+    """Menghapus semua kunci dari database Redis saat ini."""
+    await redis_client.flushall()
+    print("All cache has been flushed.")

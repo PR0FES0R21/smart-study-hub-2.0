@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 from .base import PyObjectId
 from datetime import datetime
+from .pagination import PaginatedResponse
 
 # Skema dasar: untuk validasi umum
 class SubjectBase(BaseModel):
@@ -35,9 +36,5 @@ class SubjectPublic(SubjectBase):
         arbitrary_types_allowed = True
 
 # Skema paginasi
-class PaginatedSubjectResponse(BaseModel):
-    total_items: int
-    total_pages: int
-    current_page: int
-    limit: int
-    data: List[SubjectPublic]
+class PaginatedSubjectResponse(PaginatedResponse[SubjectPublic]):
+    pass

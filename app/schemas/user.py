@@ -9,6 +9,7 @@ from .base import PyObjectId
 from .expertise_program import ExpertiseProgramPublic
 from .profile import ProfilePublic, ProfileCreate, ProfileUpdate, SelfProfileUpdate
 from datetime import datetime
+from .pagination import PaginatedResponse
 
 if TYPE_CHECKING:
     from .classes import ClassPublic
@@ -62,6 +63,9 @@ class UserWithDetails(UserPublic):
     class_details: Optional['ClassPublic'] = None
     department_details: Optional[ExpertiseProgramPublic] = None
     teaching_summary: Optional[List[TeachingSummaryItem]] = None
+
+class PaginatedUserResponse(PaginatedResponse[UserWithDetails]):
+    pass
 
 class DataTablesUserResponse(BaseModel):
     draw: int

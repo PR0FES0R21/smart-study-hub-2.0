@@ -153,3 +153,26 @@ async def delete_class(db: AsyncIOMotorDatabase, class_id: str) -> bool:
     if result.deleted_count > 0:
         await invalidate_cache("analytics:dashboard_stats")
     return result.deleted_count > 0
+
+async def create_classes_for_next_year(db: AsyncIOMotorDatabase, current_year: str, next_year: str) -> int:
+    """Menduplikasi struktur kelas dari tahun saat ini ke tahun berikutnya."""
+    current_year_classes = await db["classes"].find({"academic_year": current_year}).to_list(None)
+    if not current_year_classes:
+        raise HTTPException(status_code=404, detail=f"No classes found for academic year {current_year}")
+
+    new_classes_to_create = []
+    for old_class in current_year_classes:
+        new_class_doc = {
+            "grade_level": old_class["grade_level"],
+            "expertise_id": old_class["expertise_id"],
+            "name": old_class["name"],
+            "academic_year": next_year,
+            "homeroom_teacher_id": None # Dikosongkan untuk diisi kembali
+        }
+        new_classes_to_create.append(new_class_doc)
+
+    if not new_classes_to_create:
+        return 0
+
+    result = await db["classes"].insert_many(new_classes_to_create)
+    return len(result.inserted_ids)

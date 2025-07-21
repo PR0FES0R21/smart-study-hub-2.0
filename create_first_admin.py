@@ -42,7 +42,7 @@ async def create_admin(db: AsyncIOMotorDatabase):
 
     # Buat objek user untuk disimpan
     admin_user_data = {
-        "login_id": login_id, # --- DIUBAH ---
+        "login_id": login_id,
         "email": email,
         "full_name": full_name,
         "hashed_password": get_password_hash(password),

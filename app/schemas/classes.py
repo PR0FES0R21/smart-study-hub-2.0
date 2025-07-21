@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 from typing import Optional, List, TYPE_CHECKING
 from .base import PyObjectId
 from .expertise_program import ExpertiseProgramPublic
+from .pagination import PaginatedResponse
 
 # Import hanya untuk type checking, tidak di runtime
 if TYPE_CHECKING:
@@ -48,13 +49,6 @@ class TeacherInfo(BaseModel):
     id: PyObjectId = Field(alias="_id")
     full_name: str
 
-class PaginatedClassResponse(BaseModel):
-    total_items: int
-    total_pages: int
-    current_page: int
-    limit: int
-    data: List[ClassWithDetails]
-    # Statistik tambahan
-    grade_10_total: int
-    grade_11_total: int
-    grade_12_total: int
+class PaginatedClassResponse(PaginatedResponse[ClassWithDetails]):
+    # Statistik tambahan bisa ditaruh di sini jika perlu
+    pass
