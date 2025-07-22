@@ -655,3 +655,23 @@ async def promote_students(db: AsyncIOMotorDatabase, from_grade: int, from_year:
         
     result = await db["profiles"].bulk_write(bulk_operations)
     return result.modified_count
+
+async def get_user_with_details_by_id(db: AsyncIOMotorDatabase, user_id: str) -> dict | None:
+    """Mengambil satu user dengan semua data gabungannya."""
+    try:
+        user_id_obj = ObjectId(user_id)  # Konversi string ke ObjectId
+    except:
+        return None
+    
+    pipeline = [
+        {"$match": {"_id": user_id_obj}},
+        # Gabungkan dengan semua data relevan, mirip dengan datatables
+        {"$lookup": {"from": "profiles", "localField": "profile_id", "foreignField": "_id", "as": "profile_details"}},
+        {"$unwind": {"path": "$profile_details", "preserveNullAndEmptyArrays": True}},
+        {"$lookup": {"from": "classes", "localField": "profile_details.class_id", "foreignField": "_id", "as": "class_details"}},
+        {"$unwind": {"path": "$class_details", "preserveNullAndEmptyArrays": True}},
+        {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
+        {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
+    ]
+    result = await db["users"].aggregate(pipeline).to_list(1)
+    return result[0] if result else None
