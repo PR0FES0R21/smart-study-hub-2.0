@@ -19,7 +19,7 @@ api_router.include_router(users.router, prefix="/users", tags=["users"])
 api_router.include_router(subjects.router, prefix="/subjects", tags=["subjects"])
 api_router.include_router(expertise_programs.router, prefix="/expertise-programs", tags=["expertise-programs"])
 api_router.include_router(classes.router, prefix="/classes", tags=["classes"])
-api_router.include_router(teaching_assignments.router, prefix="/teaching-assignments", tags=["teaching-assignments"]) # --- DITAMBAHKAN ---
+api_router.include_router(teaching_assignments.router, prefix="/teaching-assignments", tags=["teaching-assignments"])
 api_router.include_router(question_banks.router, prefix="/question-banks", tags=["question-banks"])
 api_router.include_router(exams.router, prefix="/exams", tags=["exams"])
 api_router.include_router(exam_sessions.router, prefix="/exam-sessions", tags=["exam-sessions"])

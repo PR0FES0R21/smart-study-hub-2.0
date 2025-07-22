@@ -9,6 +9,8 @@ from .base import PyObjectId
 from .classes import ClassPublic
 from .subject import SubjectPublic
 from .user import UserPublic
+from .pagination import PaginatedResponse
+
 
 class TeachingAssignmentBase(BaseModel):
     # academic_period_id: PyObjectId # Akan kita tambahkan nanti
@@ -40,3 +42,6 @@ class BulkUpdateAction(BaseModel):
 
 class BulkUpdateRequest(BaseModel):
     actions: List[BulkUpdateAction]
+
+class PaginatedTeachingAssignmentResponse(PaginatedResponse[TeachingAssignmentWithDetails]):
+    pass

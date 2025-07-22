@@ -6,6 +6,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import Optional
+from bson import ObjectId
 
 from app.api.v1 import deps
 from app.crud import crud_classes
@@ -29,7 +30,6 @@ async def create_new_class(
 async def read_classes(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_user),
-    # --- DITAMBAHKAN: Parameter filter, paginasi, dan pencarian ---
     search: Optional[str] = Query(None),
     grade_level: Optional[int] = Query(None),
     expertise_id: Optional[str] = Query(None),
@@ -38,31 +38,49 @@ async def read_classes(
     limit: int = Query(10, ge=1, le=100)
 ):
     """
-    Mengambil daftar kelas dengan filter dinamis, paginasi, dan pencarian.
+    Mengambil daftar kelas dengan filter, paginasi, dan pencarian
+    menggunakan strategi caching "Katalog ID".
     """
     skip = (page - 1) * limit
-    result = await crud_classes.get_paginated_classes_with_details(
-        db=db, 
-        skip=skip, 
-        limit=limit, 
-        search=search,
-        grade_level=grade_level,
-        expertise_id=expertise_id,
-        academic_year=academic_year
-    )
     
-    total_items = result["total_items"]
+    if search:
+        # Jika ada pencarian, bypass cache
+        result = await crud_classes.search_classes_with_details(db, search=search, skip=skip, limit=limit)
+        data = result["data"]
+        total_items = result["total_items"]
+    else:
+        # Jika tidak ada pencarian, gunakan strategi cache
+        filters = {
+            "grade_level": grade_level,
+            "expertise_id": expertise_id,
+            "academic_year": academic_year
+        }
+        active_filters = {k: v for k, v in filters.items() if v is not None}
+        
+        all_filtered_ids_str = await crud_classes.get_filtered_class_ids(db, active_filters)
+        total_items = len(all_filtered_ids_str)
+        
+        ids_for_page_str = all_filtered_ids_str[skip : skip + limit]
+        ids_for_page_obj = [ObjectId(id_str) for id_str in ids_for_page_str]
+        
+        data = await crud_classes.get_classes_details_by_ids(db, class_ids=ids_for_page_obj)
+
     total_pages = (total_items + limit - 1) // limit
+
+    # Statistik total per angkatan (contoh sederhana, bisa dioptimalkan)
+    grade_10_total = await db["classes"].count_documents({"grade_level": 10})
+    grade_11_total = await db["classes"].count_documents({"grade_level": 11})
+    grade_12_total = await db["classes"].count_documents({"grade_level": 12})
 
     return {
         "total_items": total_items,
         "total_pages": total_pages,
         "current_page": page,
         "limit": limit,
-        "data": result["data"],
-        "grade_10_total": result["grade_10_total"],
-        "grade_11_total": result["grade_11_total"],
-        "grade_12_total": result["grade_12_total"],
+        "data": data,
+        "grade_10_total": grade_10_total,
+        "grade_11_total": grade_11_total,
+        "grade_12_total": grade_12_total,
     }
 
 @router.get("/{class_id}", response_model=ClassPublic)

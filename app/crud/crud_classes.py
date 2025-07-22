@@ -10,6 +10,9 @@ from bson import ObjectId
 
 from app.schemas.classes import ClassCreate, ClassUpdate
 from app.core.cache import invalidate_cache
+from app.core.cache import get_cache, set_cache
+
+CLASSES_IDS_CACHE_PATTERN = "classes:ids:*"
 
 async def create_class(db: AsyncIOMotorDatabase, class_in: ClassCreate) -> dict:
     """Membuat kelas baru."""
@@ -26,108 +29,102 @@ async def create_class(db: AsyncIOMotorDatabase, class_in: ClassCreate) -> dict:
     class_dict = class_in.dict(exclude_unset=True)
     result = await db["classes"].insert_one(class_dict)
     created_class = await db["classes"].find_one({"_id": result.inserted_id})
+    await invalidate_cache(CLASSES_IDS_CACHE_PATTERN)
     await invalidate_cache("analytics:dashboard_stats")
     return created_class
 
-async def get_paginated_classes_with_details(
-    db: AsyncIOMotorDatabase, 
-    skip: int, 
-    limit: int, 
-    search: Optional[str] = None,
-    grade_level: Optional[int] = None,
-    expertise_id: Optional[str] = None,
-    academic_year: Optional[str] = None
-) -> Dict[str, Any]:
-    """
-    Mengambil semua kelas dengan detail, filter, paginasi, dan statistik.
-    """
-    # Tahap 1: Bangun pipeline lookup dasar
-    base_pipeline = [
+def generate_class_ids_cache_key(filters: Dict[str, Any]) -> str:
+    """Membuat kunci cache yang unik untuk daftar ID kelas berdasarkan filter."""
+    if not filters:
+        return "classes:ids:all"
+    
+    sorted_filters = sorted(filters.items())
+    filter_str = "_".join([f"{k}={v}" for k, v in sorted_filters])
+    return f"classes:ids:{filter_str}"
+
+async def get_filtered_class_ids(db: AsyncIOMotorDatabase, filters: Dict[str, Any]) -> List[str]:
+    """Mengambil daftar ID kelas yang sudah difilter, menggunakan cache."""
+    cache_key = generate_class_ids_cache_key(filters)
+    cached_ids = await get_cache(cache_key)
+    if cached_ids is not None:
+        print(f"HIT: Mengambil ID kelas dari cache untuk filter: {filters}")
+        return cached_ids
+
+    print(f"MISS: Mengambil ID kelas dari database untuk filter: {filters}")
+    
+    query = {}
+    if filters.get("grade_level"):
+        query["grade_level"] = filters["grade_level"]
+    if filters.get("expertise_id"):
+        query["expertise_id"] = ObjectId(filters["expertise_id"])
+    if filters.get("academic_year"):
+        query["academic_year"] = filters["academic_year"]
+
+    cursor = db["classes"].find(query, {"_id": 1})
+    all_ids = [str(doc["_id"]) for doc in await cursor.to_list(None)]
+    
+    if all_ids:
+        await set_cache(cache_key, all_ids)
+        
+    return all_ids
+
+async def get_classes_details_by_ids(db: AsyncIOMotorDatabase, class_ids: List[ObjectId]) -> List[dict]:
+    """Mengambil detail lengkap kelas berdasarkan daftar ID."""
+    if not class_ids:
+        return []
+        
+    pipeline = [
+        {"$match": {"_id": {"$in": class_ids}}},
         {"$lookup": {"from": "expertise_programs", "localField": "expertise_id", "foreignField": "_id", "as": "expertise_details"}},
         {"$unwind": {"path": "$expertise_details", "preserveNullAndEmptyArrays": True}},
         {"$lookup": {"from": "users", "localField": "homeroom_teacher_id", "foreignField": "_id", "as": "teacher_user_info"}},
         {"$unwind": {"path": "$teacher_user_info", "preserveNullAndEmptyArrays": True}},
         {"$lookup": {"from": "profiles", "localField": "teacher_user_info.profile_id", "foreignField": "_id", "as": "teacher_profile_info"}},
         {"$unwind": {"path": "$teacher_profile_info", "preserveNullAndEmptyArrays": True}},
-        # --- PERBAIKAN: Menambahkan field baru ke $project ---
         {"$project": {
             "grade_level": 1, "expertise_id": 1, "name": 1, "academic_year": 1, "homeroom_teacher_id": 1,
             "expertise_details": 1,
             "homeroom_teacher_details": {
                 "$cond": {
                     "if": "$teacher_profile_info",
-                    "then": {
-                        "_id": "$teacher_user_info._id",
-                        "full_name": "$teacher_profile_info.full_name",
-                        "gender": "$teacher_profile_info.gender",
-                        "profile_picture_url": "$teacher_profile_info.profile_picture_url"
-                    },
+                    "then": {"_id": "$teacher_user_info._id", "full_name": "$teacher_profile_info.full_name", "gender": "$teacher_profile_info.gender", "profile_picture_url": "$teacher_profile_info.profile_picture_url"},
                     "else": None
                 }
             }
         }}
     ]
+    return await db["classes"].aggregate(pipeline).to_list(None)
 
-    # Tahap 2: Bangun query filter dinamis
-    match_query = {}
-    if grade_level:
-        match_query["grade_level"] = grade_level
-    if expertise_id:
-        match_query["expertise_id"] = ObjectId(expertise_id)
-    if academic_year:
-        match_query["academic_year"] = academic_year
-    if search:
-        match_query["$or"] = [
+async def search_classes_with_details(db: AsyncIOMotorDatabase, search: str, skip: int, limit: int) -> Dict[str, Any]:
+    """Melakukan pencarian langsung ke DB (bypass cache) dan mengembalikan data lengkap."""
+    # Pipeline lookup dasar
+    lookup_pipeline = [
+        {"$lookup": {"from": "expertise_programs", "localField": "expertise_id", "foreignField": "_id", "as": "expertise_details"}},
+        {"$unwind": "$expertise_details"},
+        # (Tambahkan lookup lain jika pencarian perlu mencakup nama wali kelas)
+    ]
+    
+    # Query pencarian
+    match_query = {"$match": {
+        "$or": [
             {"name": {"$regex": search, "$options": "i"}},
             {"academic_year": {"$regex": search, "$options": "i"}},
             {"expertise_details.name": {"$regex": search, "$options": "i"}},
-            {"homeroom_teacher_details.full_name": {"$regex": search, "$options": "i"}},
         ]
+    }}
     
-    # Gabungkan pipeline lookup dengan filter
-    full_pipeline = base_pipeline + [{"$match": match_query}] if match_query else base_pipeline
-
-    # Tahap 3: Gunakan $facet untuk mendapatkan data dan statistik dalam satu query
-    facet_stage = {
-        "$facet": {
-            "paginated_data": [
-                {"$sort": {"grade_level": 1, "name": 1}},
-                {"$skip": skip},
-                {"$limit": limit}
-            ],
-            "total_filtered_count": [{"$count": "count"}],
-            "grade_10_total": [{"$match": {"grade_level": 10}}, {"$count": "count"}],
-            "grade_11_total": [{"$match": {"grade_level": 11}}, {"$count": "count"}],
-            "grade_12_total": [{"$match": {"grade_level": 12}}, {"$count": "count"}]
-        }
-    }
+    full_pipeline = lookup_pipeline + [match_query]
     
-    # Jalankan query utama
-    main_query_pipeline = [{"$match": match_query}] if match_query else []
-    main_query_pipeline.extend(base_pipeline)
-    main_query_pipeline.append(facet_stage)
+    # Hitung total item yang cocok
+    count_pipeline = full_pipeline + [{"$count": "count"}]
+    total_items_result = await db["classes"].aggregate(count_pipeline).to_list(1)
+    total_items = total_items_result[0]['count'] if total_items_result else 0
     
-    # Jalankan query yang sedikit berbeda untuk statistik total (tanpa filter pencarian)
-    stats_pipeline = [{"$match": {k:v for k,v in match_query.items() if k != '$or'}}] if match_query else []
-    stats_pipeline.append(facet_stage)
-
-    result = await db["classes"].aggregate(main_query_pipeline).to_list(1)
-    stats_result = await db["classes"].aggregate(stats_pipeline).to_list(1)
-
-    data = result[0]['paginated_data'] if result and result[0]['paginated_data'] else []
-    total_items = result[0]['total_filtered_count'][0]['count'] if result and result[0]['total_filtered_count'] else 0
+    # Ambil data dengan paginasi
+    data_pipeline = full_pipeline + [{"$skip": skip}, {"$limit": limit}]
+    data = await db["classes"].aggregate(data_pipeline).to_list(limit)
     
-    grade_10_total = stats_result[0]['grade_10_total'][0]['count'] if stats_result and stats_result[0]['grade_10_total'] else 0
-    grade_11_total = stats_result[0]['grade_11_total'][0]['count'] if stats_result and stats_result[0]['grade_11_total'] else 0
-    grade_12_total = stats_result[0]['grade_12_total'][0]['count'] if stats_result and stats_result[0]['grade_12_total'] else 0
-
-    return {
-        "data": data, 
-        "total_items": total_items,
-        "grade_10_total": grade_10_total,
-        "grade_11_total": grade_11_total,
-        "grade_12_total": grade_12_total,
-    }
+    return {"data": data, "total_items": total_items}
 
 async def get_class_by_id(db: AsyncIOMotorDatabase, class_id: str) -> dict | None:
     """Mengambil satu kelas berdasarkan ID."""
@@ -151,6 +148,7 @@ async def delete_class(db: AsyncIOMotorDatabase, class_id: str) -> bool:
     
     result = await db["classes"].delete_one({"_id": ObjectId(class_id)})
     if result.deleted_count > 0:
+        await invalidate_cache(CLASSES_IDS_CACHE_PATTERN)
         await invalidate_cache("analytics:dashboard_stats")
     return result.deleted_count > 0
 

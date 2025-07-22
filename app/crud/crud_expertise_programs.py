@@ -5,7 +5,7 @@
 # ==============================================================================
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from fastapi import HTTPException
-from typing import List
+from typing import Optional, Dict, Any
 from bson import ObjectId
 
 from app.schemas.expertise_program import ExpertiseProgramCreate, ExpertiseProgramUpdate
@@ -22,10 +22,27 @@ async def create_expertise_program(db: AsyncIOMotorDatabase, program: ExpertiseP
     created_program = await db["expertise_programs"].find_one({"_id": result.inserted_id})
     return created_program
 
-async def get_all_expertise_programs(db: AsyncIOMotorDatabase) -> List[dict]:
-    """Mengambil semua program keahlian."""
-    programs = await db["expertise_programs"].find().to_list(1000)
-    return programs
+async def get_all_expertise_programs(
+    db: AsyncIOMotorDatabase, 
+    skip: int, 
+    limit: int, 
+    search: Optional[str] = None
+) -> Dict[str, Any]:
+    """Mengambil semua program keahlian dengan paginasi dan pencarian."""
+    query = {}
+    if search:
+        query = {
+            "$or": [
+                {"name": {"$regex": search, "$options": "i"}},
+                {"abbreviation": {"$regex": search, "$options": "i"}},
+            ]
+        }
+
+    total_items = await db["expertise_programs"].count_documents(query)
+    cursor = db["expertise_programs"].find(query).skip(skip).limit(limit)
+    data = await cursor.to_list(length=limit)
+    
+    return {"data": data, "total_items": total_items}
 
 async def get_expertise_program_by_id(db: AsyncIOMotorDatabase, program_id: str) -> dict | None:
     """Mengambil satu program keahlian berdasarkan ID."""

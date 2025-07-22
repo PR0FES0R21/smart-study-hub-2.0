@@ -3,7 +3,7 @@
 # Deskripsi: Skema Pydantic untuk User.
 # --- DIUBAH ---
 # ==============================================================================
-from pydantic import BaseModel, EmailStr, Field, validator
+from pydantic import BaseModel, EmailStr, Field, model_validator, validator
 from typing import List, Optional, TYPE_CHECKING, Any
 from .base import PyObjectId
 from .expertise_program import ExpertiseProgramPublic
@@ -12,7 +12,7 @@ from datetime import datetime
 from .pagination import PaginatedResponse
 
 if TYPE_CHECKING:
-    from .classes import ClassPublic
+    from .classes import ClassWithDetails
 
 class TeachingSummaryItem(BaseModel):
     subject_name: str
@@ -42,6 +42,24 @@ class UserCreate(BaseModel):
     is_active: bool = True
     profile: ProfileCreate
 
+    @model_validator(mode='before')
+    @classmethod
+    def clean_role_specific_fields(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            roles = data.get('roles', [])
+            profile = data.get('profile', {})
+            
+            if 'student' in roles:
+                # Siswa tidak boleh punya department_id
+                if 'department_id' in profile:
+                    profile['department_id'] = None
+            
+            if 'teacher' in roles or 'admin' in roles:
+                # Guru/Admin tidak boleh punya class_id di profil
+                if 'class_id' in profile:
+                    profile['class_id'] = None
+        return data
+
 class UserUpdate(BaseModel):
     login_id: Optional[str] = None
     email: Optional[EmailStr] = None
@@ -60,7 +78,7 @@ class UserPublic(UserBase):
 class UserWithDetails(UserPublic):
     # Detail untuk siswa
     profile_details: Optional[ProfilePublic]
-    class_details: Optional['ClassPublic'] = None
+    class_details: Optional['ClassWithDetails'] = None
     department_details: Optional[ExpertiseProgramPublic] = None
     teaching_summary: Optional[List[TeachingSummaryItem]] = None
 

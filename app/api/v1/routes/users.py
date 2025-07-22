@@ -2,9 +2,10 @@
 # File: app/api/v1/routes/users.py
 # --- DIUBAH --- (Menambahkan parameter 'role')
 # ==============================================================================
-from fastapi import APIRouter, Depends, HTTPException, status, Request, BackgroundTasks
+from fastapi import APIRouter, Depends, HTTPException, status, Request, BackgroundTasks, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List, Optional
+from bson import ObjectId
 
 from app.api.v1 import deps
 from app.crud import crud_users
@@ -13,6 +14,7 @@ from app.schemas.user import (
     DataTablesUserResponse, PasswordChange, 
     SelfDataUpdate, UserWithDetails
 )
+from app.schemas.user import PaginatedUserResponse
 from app.core.logging import create_activity_log
 from app.core import security
 
@@ -27,52 +29,53 @@ async def create_new_user(
 ):
     """
     Membuat user baru beserta profilnya. Hanya bisa diakses oleh admin.
+    Validasi data spesifik peran (class_id vs department_id) ditangani di level skema.
     """
+    # Validasi bisnis yang masih relevan di sini
     if "student" in user_in.roles and not user_in.profile.class_id:
         raise HTTPException(status_code=400, detail="Siswa harus memiliki ID kelas.")
-    if ("teacher" in user_in.roles) and not user_in.profile.department_id:
-        raise HTTPException(status_code=400, detail="Guru harus memiliki ID departemen.")
+    if ("teacher" in user_in.roles or "admin" in user_in.roles) and not user_in.profile.department_id:
+        raise HTTPException(status_code=400, detail="Guru atau admin harus memiliki ID departemen.")
     
     created_user = await crud_users.create_user_and_profile(db=db, user_in=user_in)
     return created_user
 
-# ==============================================================================
-# File: app/api/v1/routes/users.py
-# --- DIUBAH --- (Menggunakan struktur respons standar)
-# ==============================================================================
-from fastapi import APIRouter, Depends, Request
-from motor.motor_asyncio import AsyncIOMotorDatabase
-from typing import Optional
-
-from app.api.v1 import deps
-from app.crud import crud_users
-from app.schemas.user import PaginatedUserResponse
-
-router = APIRouter()
-
 @router.get("/", response_model=PaginatedUserResponse)
 async def read_all_users(
-    request: Request,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin),
     role: Optional[str] = None,
     grade_level: Optional[int] = None,
     expertise_id: Optional[str] = None,
     class_id: Optional[str] = None,
-    db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_admin)
+    search: Optional[str] = Query(None),
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100)
 ):
-    # Mengambil parameter paginasi dari query
-    page = int(request.query_params.get('page', 1))
-    limit = int(request.query_params.get('limit', 10))
-    search = request.query_params.get('search', None)
+    """
+    Mengambil daftar user dengan filter, paginasi, dan pencarian
+    menggunakan strategi caching "Katalog ID".
+    """
     skip = (page - 1) * limit
     
-    result = await crud_users.get_users_with_profiles(
-        db=db, skip=skip, limit=limit, role=role, 
-        grade_level=grade_level, expertise_id=expertise_id, class_id=class_id,
-        search=search
-    )
-    
-    total_items = result["total_items"]
+    if search:
+        # Jika ada pencarian, bypass cache dan query langsung ke DB
+        result = await crud_users.search_users_with_details(db, search=search, skip=skip, limit=limit)
+        data = result["data"]
+        total_items = result["total_items"]
+    else:
+        # Jika tidak ada pencarian, gunakan strategi cache
+        filters = {"role": role, "grade_level": grade_level, "expertise_id": expertise_id, "class_id": class_id}
+        active_filters = {k: v for k, v in filters.items() if v is not None}
+        
+        all_filtered_ids_str = await crud_users.get_filtered_user_ids(db, active_filters)
+        total_items = len(all_filtered_ids_str)
+        
+        ids_for_page_str = all_filtered_ids_str[skip : skip + limit]
+        ids_for_page_obj = [ObjectId(id_str) for id_str in ids_for_page_str]
+        
+        data = await crud_users.get_users_details_by_ids(db, user_ids=ids_for_page_obj)
+
     total_pages = (total_items + limit - 1) // limit
 
     return {
@@ -80,7 +83,7 @@ async def read_all_users(
         "total_pages": total_pages,
         "current_page": page,
         "limit": limit,
-        "data": result["data"]
+        "data": data
     }
 
 @router.get("/me", response_model=UserWithDetails)
@@ -166,45 +169,10 @@ async def delete_existing_user(
     """
     Menghapus user. Hanya bisa diakses oleh admin.
     """
-    user = await crud_users.get_user_by_id(db, user_id=user_id)
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
-        
     deleted = await crud_users.delete_user_and_profile(db=db, user_id=user_id)
     if not deleted:
-        raise HTTPException(status_code=404, detail="User not found during deletion")
+        raise HTTPException(status_code=404, detail="User not found or could not be deleted")
     return
-
-# @router.post("/me/change-password", status_code=status.HTTP_204_NO_CONTENT)
-# async def change_current_user_password(
-#     password_in: PasswordChange,
-#     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-#     current_user: dict = Depends(deps.get_current_active_user),
-#     request: Request = None,
-#     background_tasks: BackgroundTasks = None
-# ):
-#     """
-#     Endpoint untuk pengguna yang sedang login mengubah password mereka sendiri.
-#     """
-#     # 1. Verifikasi password saat ini
-#     if not security.verify_password(password_in.current_password, current_user["hashed_password"]):
-#         raise HTTPException(status_code=400, detail="Incorrect current password")
-    
-#     # 2. Verifikasi password baru sudah dilakukan oleh Pydantic validator
-    
-#     # 3. Update password di database
-#     await crud_users.update_user_password(db, user_id=current_user["_id"], new_password=password_in.new_password)
-    
-#     # 4. Buat log aktivitas
-#     background_tasks.add_task(
-#         create_activity_log,
-#         db=db,
-#         request=request,
-#         user_data=current_user,
-#         activity="PASSWORD_CHANGE",
-#         description=f"User '{current_user['login_id']}' successfully changed their password."
-#     )
-
 
 @router.post("/me/change-password", status_code=status.HTTP_204_NO_CONTENT)
 async def change_current_user_password(

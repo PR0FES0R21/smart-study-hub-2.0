@@ -6,6 +6,8 @@
 from pydantic import BaseModel, Field
 from typing import Optional
 from .base import PyObjectId
+from .pagination import PaginatedResponse
+
 
 class ExpertiseProgramBase(BaseModel):
     name: str
@@ -25,3 +27,6 @@ class ExpertiseProgramUpdate(BaseModel):
 class ExpertiseProgramPublic(ExpertiseProgramBase):
     id: PyObjectId = Field(alias="_id")
     class Config: from_attributes = True; arbitrary_types_allowed = True
+
+class PaginatedExpertiseProgramResponse(PaginatedResponse[ExpertiseProgramPublic]):
+    pass

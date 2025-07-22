@@ -3,15 +3,17 @@
 # Deskripsi: Endpoint API untuk manajemen Penugasan Mengajar.
 # --- DITAMBAHKAN ---
 # ==============================================================================
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from typing import List
+from typing import List, Optional
+from bson import ObjectId
 
 from app.api.v1 import deps
 from app.crud import crud_teaching_assignments
 from app.schemas.teaching_assignment import (
     TeachingAssignmentCreate, TeachingAssignmentPublic, 
-    TeachingAssignmentWithDetails, BulkUpdateRequest
+    TeachingAssignmentWithDetails, BulkUpdateRequest,
+    PaginatedTeachingAssignmentResponse
 )
 from app.schemas.task import TaskStatus
 from app.core.celery_app import celery_app
@@ -21,25 +23,46 @@ router = APIRouter()
 
 @router.post("/", response_model=TeachingAssignmentPublic, status_code=status.HTTP_201_CREATED)
 async def create_new_assignment(
-    *,
-    db: AsyncIOMotorDatabase = Depends(deps.get_database),
     assignment_in: TeachingAssignmentCreate,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_admin)
 ):
-    """
-    Membuat penugasan mengajar baru. Hanya bisa diakses oleh admin.
-    """
     return await crud_teaching_assignments.create_teaching_assignment(db=db, assignment=assignment_in)
 
-@router.get("/", response_model=List[TeachingAssignmentWithDetails])
+@router.get("/", response_model=PaginatedTeachingAssignmentResponse)
 async def read_assignments(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_user)
+    current_user: dict = Depends(deps.get_current_user),
+    class_id: Optional[str] = Query(None),
+    teacher_id: Optional[str] = Query(None),
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100)
 ):
     """
-    Mengambil daftar semua penugasan mengajar dengan detailnya.
+    Mengambil daftar penugasan mengajar dengan filter dan paginasi.
     """
-    return await crud_teaching_assignments.get_all_assignments_with_details(db=db)
+    skip = (page - 1) * limit
+    
+    filters = {"class_id": class_id, "teacher_id": teacher_id}
+    active_filters = {k: v for k, v in filters.items() if v is not None}
+
+    all_filtered_ids_str = await crud_teaching_assignments.get_filtered_assignment_ids(db, active_filters)
+    total_items = len(all_filtered_ids_str)
+    
+    ids_for_page_str = all_filtered_ids_str[skip : skip + limit]
+    ids_for_page_obj = [ObjectId(id_str) for id_str in ids_for_page_str]
+    
+    data = await crud_teaching_assignments.get_assignments_details_by_ids(db, assignment_ids=ids_for_page_obj)
+
+    total_pages = (total_items + limit - 1) // limit
+
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": data
+    }
 
 @router.delete("/{assignment_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_existing_assignment(
@@ -47,9 +70,6 @@ async def delete_existing_assignment(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_admin)
 ):
-    """
-    Menghapus penugasan mengajar. Hanya bisa diakses oleh admin.
-    """
     deleted = await crud_teaching_assignments.delete_teaching_assignment(db=db, assignment_id=assignment_id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Teaching assignment not found")

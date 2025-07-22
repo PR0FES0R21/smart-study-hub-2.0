@@ -6,10 +6,12 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List, Optional
+from bson import ObjectId
 
 from app.api.v1 import deps
 from app.crud import crud_subjects
 from app.schemas.subject import SubjectCreate, SubjectUpdate, SubjectPublic, PaginatedSubjectResponse
+
 
 router = APIRouter()
 
@@ -29,18 +31,33 @@ async def create_new_subject(
 async def read_subjects(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_user),
-    search: Optional[str] = Query(None, description="Cari mata pelajaran berdasarkan nama atau kode"),
-    page: int = Query(1, ge=1, description="Nomor halaman"),
-    limit: int = Query(10, ge=1, le=100, description="Jumlah item per halaman")
+    search: Optional[str] = Query(None),
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100)
 ):
     """
-    Mengambil daftar mata pelajaran dengan paginasi dan pencarian.
+    Mengambil daftar mata pelajaran dengan paginasi dan pencarian
+    menggunakan strategi caching "Katalog ID".
     """
     skip = (page - 1) * limit
-    result = await crud_subjects.get_all_subjects(db=db, search=search, skip=skip, limit=limit)
-    print(result)
     
-    total_items = result["total_items"]
+    if search:
+        # Jika ada pencarian, bypass cache dan query langsung ke DB
+        result = await crud_subjects.search_subjects(db, search=search, skip=skip, limit=limit)
+        data = result["data"]
+        total_items = result["total_items"]
+    else:
+        # Jika tidak ada pencarian, gunakan strategi cache
+        all_ids_str = await crud_subjects.get_all_subject_ids(db)
+        total_items = len(all_ids_str)
+        
+        # Lakukan slicing pada daftar ID
+        ids_for_page_str = all_ids_str[skip : skip + limit]
+        ids_for_page_obj = [ObjectId(id_str) for id_str in ids_for_page_str]
+        
+        # Ambil data lengkap untuk ID di halaman ini
+        data = await crud_subjects.get_subjects_by_ids(db, ids=ids_for_page_obj)
+
     total_pages = (total_items + limit - 1) // limit
 
     return {
@@ -48,7 +65,7 @@ async def read_subjects(
         "total_pages": total_pages,
         "current_page": page,
         "limit": limit,
-        "data": result["data"]
+        "data": data
     }
 
 @router.get("/{subject_id}", response_model=SubjectPublic)

@@ -44,6 +44,7 @@ class ClassPublic(ClassBase):
 class ClassWithDetails(ClassPublic):
     homeroom_teacher_details: Optional[TeacherInfo] = None
     expertise_details: Optional[ExpertiseProgramPublic] = None
+    
 
 class TeacherInfo(BaseModel):
     id: PyObjectId = Field(alias="_id")
@@ -51,4 +52,6 @@ class TeacherInfo(BaseModel):
 
 class PaginatedClassResponse(PaginatedResponse[ClassWithDetails]):
     # Statistik tambahan bisa ditaruh di sini jika perlu
-    pass
+    grade_10_total: Optional[int] = None
+    grade_11_total: Optional[int] = None
+    grade_12_total: Optional[int] = None

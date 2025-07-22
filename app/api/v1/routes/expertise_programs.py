@@ -3,13 +3,16 @@
 # Deskripsi: Endpoint API untuk manajemen Jurusan.
 # --- DITAMBAHKAN ---
 # ==============================================================================
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from typing import List
+from typing import List, Optional
 
 from app.api.v1 import deps
 from app.crud import crud_expertise_programs
-from app.schemas.expertise_program import ExpertiseProgramCreate, ExpertiseProgramUpdate, ExpertiseProgramPublic
+from app.schemas.expertise_program import (
+    ExpertiseProgramCreate, ExpertiseProgramUpdate, ExpertiseProgramPublic,
+    PaginatedExpertiseProgramResponse
+)
 
 router = APIRouter()
 
@@ -25,15 +28,32 @@ async def create_new_expertise_program(
     """
     return await crud_expertise_programs.create_expertise_program(db=db, program=program_in)
 
-@router.get("/", response_model=List[ExpertiseProgramPublic])
+@router.get("/", response_model=PaginatedExpertiseProgramResponse)
 async def read_expertise_programs(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_user)
+    current_user: dict = Depends(deps.get_current_user),
+    search: Optional[str] = Query(None),
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100)
 ):
     """
-    Mengambil daftar semua jurusan.
+    Mengambil daftar semua jurusan dengan paginasi dan pencarian.
     """
-    return await crud_expertise_programs.get_all_expertise_programs(db=db)
+    skip = (page - 1) * limit
+    result = await crud_expertise_programs.get_all_expertise_programs(
+        db=db, skip=skip, limit=limit, search=search
+    )
+    
+    total_items = result["total_items"]
+    total_pages = (total_items + limit - 1) // limit
+
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": result["data"]
+    }
 
 @router.get("/{program_id}", response_model=ExpertiseProgramPublic)
 async def read_expertise_program_by_id(
