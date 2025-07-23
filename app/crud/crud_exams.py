@@ -99,6 +99,9 @@ async def get_all_exams_with_details(
         {"$unwind": {"path": "$teaching_assignment_details.subject_details", "preserveNullAndEmptyArrays": True}},
         {"$lookup": {"from": "classes", "localField": "teaching_assignment_details.class_id", "foreignField": "_id", "as": "teaching_assignment_details.class_details"}},
         {"$unwind": {"path": "$teaching_assignment_details.class_details", "preserveNullAndEmptyArrays": True}},
+        # Tambahkan lookup untuk expertise_programs
+        {"$lookup": {"from": "expertise_programs", "localField": "teaching_assignment_details.class_details.expertise_id", "foreignField": "_id", "as": "teaching_assignment_details.class_details.expertise_details"}},
+        {"$unwind": {"path": "$teaching_assignment_details.class_details.expertise_details", "preserveNullAndEmptyArrays": True}},
         {"$lookup": {"from": "users", "localField": "teaching_assignment_details.teacher_id", "foreignField": "_id", "as": "teaching_assignment_details.teacher_details"}},
         {"$unwind": {"path": "$teaching_assignment_details.teacher_details", "preserveNullAndEmptyArrays": True}},
         {"$project": {"teaching_assignment_details.teacher_details.hashed_password": 0}},

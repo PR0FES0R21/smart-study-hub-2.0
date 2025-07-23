@@ -6,7 +6,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional, List, Literal, Dict, Any
 from .base import PyObjectId
-from .classes import ClassPublic
+from .classes import ClassWithDetails
 from .subject import SubjectPublic
 from .user import UserPublic
 from .pagination import PaginatedResponse
@@ -31,7 +31,7 @@ class TeachingAssignmentPublic(TeachingAssignmentBase):
     class Config: from_attributes = True; arbitrary_types_allowed = True
 
 class TeachingAssignmentWithDetails(TeachingAssignmentPublic):
-    class_details: Optional[ClassPublic] = None
+    class_details: Optional[ClassWithDetails] = None
     subject_details: Optional[SubjectPublic] = None
     teacher_details: Optional[UserPublic] = None
 
