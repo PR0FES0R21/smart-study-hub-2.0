@@ -271,32 +271,115 @@ async def get_users_details_by_ids(db: AsyncIOMotorDatabase, user_ids: List[Obje
     ]
     return await db["users"].aggregate(pipeline).to_list(None)
 
-async def search_users_with_details(db: AsyncIOMotorDatabase, search: str, skip: int, limit: int) -> Dict[str, Any]:
-    """Melakukan pencarian langsung ke DB (bypass cache) dan mengembalikan data lengkap."""
+async def search_users_with_details(
+    db: AsyncIOMotorDatabase, 
+    search: str, 
+    skip: int, 
+    limit: int,
+    filters: Optional[Dict[str, Any]] = None
+) -> Dict[str, Any]:
+    """
+    Melakukan pencarian langsung ke DB (bypass cache) dan mengembalikan data lengkap
+    dengan dukungan filter tambahan dan teaching summary.
+    """
     base_pipeline = [
         {"$lookup": {"from": "profiles", "localField": "profile_id", "foreignField": "_id", "as": "profile_details"}},
-        {"$unwind": "$profile_details"},
-        # (Tambahkan lookup lain di sini jika perlu untuk data lengkap)
+        {"$unwind": {"path": "$profile_details", "preserveNullAndEmptyArrays": True}},
+        
+        # --- PERBAIKAN: Lookup berantai untuk data kelas dan jurusan siswa ---
+        {"$lookup": {
+            "from": "classes",
+            "let": { "class_id": "$profile_details.class_id" },
+            "pipeline": [
+                { "$match": { "$expr": { "$eq": [ "$_id", "$$class_id" ] } } },
+                # Lakukan lookup ke jurusan DI DALAM sub-pipeline ini
+                { "$lookup": { "from": "expertise_programs", "localField": "expertise_id", "foreignField": "_id", "as": "expertise_details"}},
+                { "$unwind": { "path": "$expertise_details", "preserveNullAndEmptyArrays": True }}
+            ],
+            "as": "class_details_array"
+        }},
+        {"$unwind": {"path": "$class_details_array", "preserveNullAndEmptyArrays": True}},
+        {"$addFields": {"class_details": "$class_details_array"}},
+
+        # Lookup untuk departemen guru (tetap sama)
+        {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
+        {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
+        
+        # Lookup untuk ringkasan mengajar guru (tetap sama)
+        {"$lookup": {"from": "teaching_assignments", "let": {"teacher_id": "$_id"},
+            "pipeline": [
+                {"$match": {"$expr": {"$eq": ["$teacher_id", "$$teacher_id"]}}},
+                {"$lookup": {"from": "subjects", "localField": "subject_id", "foreignField": "_id", "as": "subject"}},
+                {"$unwind": "$subject"},
+                {"$lookup": {"from": "classes", "localField": "class_id", "foreignField": "_id", "as": "class_info"}},
+                {"$unwind": "$class_info"},
+                {"$lookup": {"from": "expertise_programs", "localField": "class_info.expertise_id", "foreignField": "_id", "as": "expertise"}},
+                {"$unwind": "$expertise"},
+                {"$project": {"_id": 0, "subject_name": "$subject.name", "class_name": {"$concat": [{"$toString": "$class_info.grade_level"}, " ", "$expertise.abbreviation", " ", "$class_info.name"]}}}
+            ], "as": "teaching_summary"}},
+            
+        # Hapus field-field sementara yang tidak perlu
+        {"$project": {"class_details_array": 0}}
     ]
     
-    match_stage = {"$match": {
-        "$or": [
-            {"profile_details.full_name": {"$regex": search, "$options": "i"}},
-            {"login_id": {"$regex": search, "$options": "i"}},
-            {"email": {"$regex": search, "$options": "i"}},
+    # Build match conditions untuk search
+    match_conditions = {
+        "$and": [
+            {
+                "$or": [
+                    {"profile_details.full_name": {"$regex": search, "$options": "i"}},
+                    {"login_id": {"$regex": search, "$options": "i"}},
+                    {"email": {"$regex": search, "$options": "i"}},
+                ]
+            }
         ]
-    }}
+    }
     
+    # Apply additional filters if provided
+    if filters:
+        for key, value in filters.items():
+            if value is not None:
+                if key == "role":
+                    # roles adalah array, jadi gunakan $in
+                    match_conditions["$and"].append({"roles": {"$in": [value]}})
+                elif key == "department_id" or key == "expertise_id":
+                    # Handle department/expertise filter untuk teacher dan student
+                    # Teacher: department_id ada di profile_details (akan masuk ke department_details)
+                    # Student: expertise_id ada di class_details (akan masuk ke expertise_details dari class_details)
+                    match_conditions["$and"].append({
+                        "$or": [
+                            {"department_details._id": ObjectId(value)},           # Untuk teacher
+                            {"class_details.expertise_details._id": ObjectId(value)} # Untuk student (perubahan dari expertise_details_from_class ke class_details.expertise_details)
+                        ]
+                    })
+                elif key == "class_id":
+                    # class_id ada di profile_details (khusus student)
+                    match_conditions["$and"].append({"profile_details.class_id": ObjectId(value)})
+                elif key == "grade_level":
+                    # grade_level ada di class_details (khusus student)
+                    match_conditions["$and"].append({"class_details.grade_level": value})
+                elif key == "is_active":
+                    # Filter berdasarkan status aktif
+                    match_conditions["$and"].append({"is_active": value})
+                elif key == "gender":
+                    # Filter berdasarkan gender di profile
+                    match_conditions["$and"].append({"profile_details.gender": value})
+    
+    match_stage = {"$match": match_conditions}
     full_pipeline = base_pipeline + [match_stage]
     
+    # Count pipeline
     count_pipeline = full_pipeline + [{"$count": "count"}]
     total_items_result = await db["users"].aggregate(count_pipeline).to_list(1)
     total_items = total_items_result[0]['count'] if total_items_result else 0
     
+    # Data pipeline
     data_pipeline = full_pipeline + [{"$skip": skip}, {"$limit": limit}]
     data = await db["users"].aggregate(data_pipeline).to_list(limit)
     
     return {"data": data, "total_items": total_items}
+
+
 
 async def update_user_and_profile(db: AsyncIOMotorDatabase, user_id: str, user_in: UserUpdate) -> dict | None:
     print("crud :", user_in)

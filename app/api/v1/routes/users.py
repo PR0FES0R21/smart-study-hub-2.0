@@ -58,16 +58,28 @@ async def read_all_users(
     """
     skip = (page - 1) * limit
     
+    # Build filters dict
+    filters = {
+        "role": role, 
+        "grade_level": grade_level, 
+        "expertise_id": expertise_id, 
+        "class_id": class_id
+    }
+    active_filters = {k: v for k, v in filters.items() if v is not None}
+    
     if search:
-        # Jika ada pencarian, bypass cache dan query langsung ke DB
-        result = await crud_users.search_users_with_details(db, search=search, skip=skip, limit=limit)
+        # Jika ada pencarian, bypass cache dan query langsung ke DB dengan filter
+        result = await crud_users.search_users_with_details(
+            db, 
+            search=search, 
+            skip=skip, 
+            limit=limit,
+            filters=active_filters
+        )
         data = result["data"]
         total_items = result["total_items"]
     else:
         # Jika tidak ada pencarian, gunakan strategi cache
-        filters = {"role": role, "grade_level": grade_level, "expertise_id": expertise_id, "class_id": class_id}
-        active_filters = {k: v for k, v in filters.items() if v is not None}
-        
         all_filtered_ids_str = await crud_users.get_filtered_user_ids(db, active_filters)
         total_items = len(all_filtered_ids_str)
         
@@ -75,9 +87,8 @@ async def read_all_users(
         ids_for_page_obj = [ObjectId(id_str) for id_str in ids_for_page_str]
         
         data = await crud_users.get_users_details_by_ids(db, user_ids=ids_for_page_obj)
-
+    
     total_pages = (total_items + limit - 1) // limit
-
     return {
         "total_items": total_items,
         "total_pages": total_pages,
