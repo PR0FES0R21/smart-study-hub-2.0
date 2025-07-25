@@ -382,7 +382,6 @@ async def search_users_with_details(
 
 
 async def update_user_and_profile(db: AsyncIOMotorDatabase, user_id: str, user_in: UserUpdate) -> dict | None:
-    print("crud :", user_in)
     """Memperbarui dokumen user dan/atau profile terkait dengan benar."""
     now = datetime.utcnow()
     user_to_update = await get_user_by_id(db, user_id)

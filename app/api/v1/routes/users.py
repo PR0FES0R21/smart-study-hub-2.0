@@ -50,7 +50,7 @@ async def read_all_users(
     class_id: Optional[str] = None,
     search: Optional[str] = Query(None),
     page: int = Query(1, ge=1),
-    limit: int = Query(10, ge=1, le=100)
+    limit: int = Query(10, ge=1, le=1000)
 ):
     """
     Mengambil daftar user dengan filter, paginasi, dan pencarian
@@ -195,6 +195,8 @@ async def change_current_user_password(
 ):
     if not security.verify_password(password_in.current_password, current_user["hashed_password"]):
         raise HTTPException(status_code=400, detail="Incorrect current password")
+    
+    print(password_in)
     
     await crud_users.update_user_password(db, user_id=current_user["_id"], new_password=password_in.new_password)
     

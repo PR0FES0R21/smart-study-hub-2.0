@@ -23,26 +23,74 @@ async def create_expertise_program(db: AsyncIOMotorDatabase, program: ExpertiseP
     return created_program
 
 async def get_all_expertise_programs(
-    db: AsyncIOMotorDatabase, 
-    skip: int, 
-    limit: int, 
+    db: AsyncIOMotorDatabase,
+    skip: int,
+    limit: int,
     search: Optional[str] = None
 ) -> Dict[str, Any]:
-    """Mengambil semua program keahlian dengan paginasi dan pencarian."""
-    query = {}
-    if search:
-        query = {
-            "$or": [
-                {"name": {"$regex": search, "$options": "i"}},
-                {"abbreviation": {"$regex": search, "$options": "i"}},
-            ]
-        }
+    """Mengambil semua program keahlian beserta detail kepala jurusan dan profilnya."""
 
-    total_items = await db["expertise_programs"].count_documents(query)
-    cursor = db["expertise_programs"].find(query).skip(skip).limit(limit)
-    data = await cursor.to_list(length=limit)
-    
+    # Match stage untuk pencarian
+    match_stage = {
+        "$or": [
+            {"name": {"$regex": search, "$options": "i"}},
+            {"abbreviation": {"$regex": search, "$options": "i"}},
+        ]
+    } if search else {}
+
+    pipeline = [
+        # Filter pencarian (jika ada)
+        {"$match": match_stage} if match_stage else {},
+
+        # Lookup ke users (head_of_department)
+        {
+            "$lookup": {
+                "from": "users",
+                "localField": "head_of_department_id",
+                "foreignField": "_id",
+                "as": "head_of_department_details"
+            }
+        },
+        {
+            "$unwind": {
+                "path": "$head_of_department_details",
+                "preserveNullAndEmptyArrays": True
+            }
+        },
+
+        # Lookup ke profiles (profile_id dari user)
+        {
+            "$lookup": {
+                "from": "profiles",
+                "localField": "head_of_department_details.profile_id",
+                "foreignField": "_id",
+                "as": "head_of_department_details.profile_details"
+            }
+        },
+        {
+            "$unwind": {
+                "path": "$head_of_department_details.profile_details",
+                "preserveNullAndEmptyArrays": True
+            }
+        },
+
+        # Pagination
+        {"$skip": skip},
+        {"$limit": limit}
+    ]
+
+    # Hapus stage kosong kalau tidak ada match
+    pipeline = [stage for stage in pipeline if stage]
+
+    data = await db["expertise_programs"].aggregate(pipeline).to_list(length=limit)
+    print(data)
+
+    total_items = await db["expertise_programs"].count_documents(match_stage)
+
     return {"data": data, "total_items": total_items}
+
+
+
 
 async def get_expertise_program_by_id(db: AsyncIOMotorDatabase, program_id: str) -> dict | None:
     """Mengambil satu program keahlian berdasarkan ID."""

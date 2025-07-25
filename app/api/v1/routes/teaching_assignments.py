@@ -36,7 +36,7 @@ async def read_assignments(
     class_id: Optional[str] = Query(None),
     teacher_id: Optional[str] = Query(None),
     page: int = Query(1, ge=1),
-    limit: int = Query(10, ge=1, le=100)
+    limit: int = Query(10, ge=1, le=1000)
 ):
     """
     Mengambil daftar penugasan mengajar dengan filter dan paginasi.

@@ -77,6 +77,7 @@ async def get_all_exams_with_details(
 ) -> Dict[str, Any]:
     """
     Mengambil semua ujian dengan detail lengkap, mendukung filter, paginasi, dan pencarian.
+    Versi ini sudah diperbaiki untuk menangani kasus di mana data kelas (class) tidak ditemukan.
     """
     pipeline = []
     
@@ -89,21 +90,42 @@ async def get_all_exams_with_details(
     if initial_match:
         pipeline.append({"$match": initial_match})
 
-    # Pipeline lookup yang sudah ada
+    # Pipeline lookup yang sudah diperbaiki
     lookup_pipeline = [
         {"$lookup": {"from": "academic_periods", "localField": "academic_period_id", "foreignField": "_id", "as": "academic_period_details"}},
         {"$unwind": {"path": "$academic_period_details", "preserveNullAndEmptyArrays": True}},
+        
         {"$lookup": {"from": "teaching_assignments", "localField": "teaching_assignment_id", "foreignField": "_id", "as": "teaching_assignment_details"}},
         {"$unwind": {"path": "$teaching_assignment_details", "preserveNullAndEmptyArrays": True}},
+        
         {"$lookup": {"from": "subjects", "localField": "teaching_assignment_details.subject_id", "foreignField": "_id", "as": "teaching_assignment_details.subject_details"}},
         {"$unwind": {"path": "$teaching_assignment_details.subject_details", "preserveNullAndEmptyArrays": True}},
+        
         {"$lookup": {"from": "classes", "localField": "teaching_assignment_details.class_id", "foreignField": "_id", "as": "teaching_assignment_details.class_details"}},
         {"$unwind": {"path": "$teaching_assignment_details.class_details", "preserveNullAndEmptyArrays": True}},
-        # Tambahkan lookup untuk expertise_programs
+
         {"$lookup": {"from": "expertise_programs", "localField": "teaching_assignment_details.class_details.expertise_id", "foreignField": "_id", "as": "teaching_assignment_details.class_details.expertise_details"}},
         {"$unwind": {"path": "$teaching_assignment_details.class_details.expertise_details", "preserveNullAndEmptyArrays": True}},
+
+        # ⭐ PERBAIKAN UTAMA: Membersihkan class_details jika data aslinya tidak ada
+        {
+            "$addFields": {
+                "teaching_assignment_details.class_details": {
+                    "$cond": {
+                        # Cek keberadaan _id sebagai indikator validitas data kelas
+                        "if": "$teaching_assignment_details.class_details._id",
+                        # Jika ada, pertahankan objek class_details yang sudah digabung
+                        "then": "$teaching_assignment_details.class_details",
+                        # Jika tidak ada, ganti seluruh objek menjadi null
+                        "else": None 
+                    }
+                }
+            }
+        },
+        
         {"$lookup": {"from": "users", "localField": "teaching_assignment_details.teacher_id", "foreignField": "_id", "as": "teaching_assignment_details.teacher_details"}},
         {"$unwind": {"path": "$teaching_assignment_details.teacher_details", "preserveNullAndEmptyArrays": True}},
+        
         {"$project": {"teaching_assignment_details.teacher_details.hashed_password": 0}},
     ]
     pipeline.extend(lookup_pipeline)

@@ -7,7 +7,8 @@
 # Import semua model yang diperlukan
 from .user import (
     UserBase, UserCreate, UserUpdate, UserInDB, 
-    UserPublic, UserWithDetails, DataTablesUserResponse
+    UserPublic, UserWithDetails, DataTablesUserResponse,
+    UserWithProfile
 )
 from .classes import (
     ClassBase, ClassCreate, ClassUpdate, 
@@ -20,6 +21,7 @@ from .exam_session import ExamSessionPublic
 from .analytics import StudentCountByMajor, StudentGrowthDataPoint
 from .coordination_assignment import CoordinationAssignmentPublic
 from .question_set import QuestionSetPublic
+from .expertise_program import ExpertiseProgramPublic
 
 # Rebuild model untuk menyelesaikan forward references
 # Ini harus dilakukan setelah semua model diimpor
@@ -30,12 +32,14 @@ QuestionBankPublic.model_rebuild()
 ExamPublic.model_rebuild()
 ExamSessionPublic.model_rebuild()
 ExamWithDetails.model_rebuild()
+ExpertiseProgramPublic.model_rebuild()
 
 # Export semua model agar bisa digunakan dengan mudah
 __all__ = [
     # User models
     "UserBase", "UserCreate", "UserUpdate", "UserInDB",
     "UserPublic", "UserWithDetails", "DataTablesUserResponse",
+    "UserWithProfile",
     
     # Class models
     "ClassBase", "ClassCreate", "ClassUpdate",

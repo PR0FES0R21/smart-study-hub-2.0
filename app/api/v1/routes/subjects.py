@@ -33,7 +33,7 @@ async def read_subjects(
     current_user: dict = Depends(deps.get_current_user),
     search: Optional[str] = Query(None),
     page: int = Query(1, ge=1),
-    limit: int = Query(10, ge=1, le=100)
+    limit: int = Query(10, ge=1, le=1000)
 ):
     """
     Mengambil daftar mata pelajaran dengan paginasi dan pencarian

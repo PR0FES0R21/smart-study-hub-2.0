@@ -35,7 +35,7 @@ async def read_classes(
     expertise_id: Optional[str] = Query(None),
     academic_year: Optional[str] = Query(None),
     page: int = Query(1, ge=1),
-    limit: int = Query(10, ge=1, le=100)
+    limit: int = Query(10, ge=1, le=1000)
 ):
     """
     Mengambil daftar kelas dengan filter, paginasi, dan pencarian

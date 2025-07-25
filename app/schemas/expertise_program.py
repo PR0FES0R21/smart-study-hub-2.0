@@ -7,7 +7,10 @@ from pydantic import BaseModel, Field
 from typing import Optional
 from .base import PyObjectId
 from .pagination import PaginatedResponse
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from .user import UserWithProfile
 
 class ExpertiseProgramBase(BaseModel):
     name: str
@@ -25,7 +28,9 @@ class ExpertiseProgramUpdate(BaseModel):
     head_of_department_id: Optional[PyObjectId] = None
 
 class ExpertiseProgramPublic(ExpertiseProgramBase):
+    head_of_department_details: Optional["UserWithProfile"] = None
     id: PyObjectId = Field(alias="_id")
+
     class Config: from_attributes = True; arbitrary_types_allowed = True
 
 class PaginatedExpertiseProgramResponse(PaginatedResponse[ExpertiseProgramPublic]):

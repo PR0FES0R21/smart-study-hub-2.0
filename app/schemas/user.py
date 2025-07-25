@@ -82,6 +82,9 @@ class UserWithDetails(UserPublic):
     department_details: Optional[ExpertiseProgramPublic] = None
     teaching_summary: Optional[List[TeachingSummaryItem]] = None
 
+class UserWithProfile(UserPublic):
+    profile_details: Optional[ProfilePublic]
+
 class PaginatedUserResponse(PaginatedResponse[UserWithDetails]):
     pass
 
