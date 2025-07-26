@@ -50,11 +50,9 @@ def run_end_of_year_cycle_task(current_year: str, next_year: str):
                 await crud_system_state.update_task_state(db, TASK_NAME, state_update)
                 await manager.broadcast_to_roles({"type": "academic_cycle_progress", "data": state_update}, ["admin"])
 
-                # Jalankan fungsi CRUD
                 result_count = await step["function"](db, *step["args"])
                 print(f"Langkah '{step['name']}' selesai, memengaruhi {result_count} dokumen.")
 
-            # Jika semua berhasil
             final_state = {"status": "completed", "progress": 100, "current_step": "Selesai", "last_success_at": datetime.utcnow()}
             await crud_system_state.update_task_state(db, TASK_NAME, final_state)
             await manager.broadcast_to_roles({"type": "academic_cycle_complete", "data": final_state}, ["admin"])

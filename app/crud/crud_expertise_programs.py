@@ -83,14 +83,10 @@ async def get_all_expertise_programs(
     pipeline = [stage for stage in pipeline if stage]
 
     data = await db["expertise_programs"].aggregate(pipeline).to_list(length=limit)
-    print(data)
 
     total_items = await db["expertise_programs"].count_documents(match_stage)
 
     return {"data": data, "total_items": total_items}
-
-
-
 
 async def get_expertise_program_by_id(db: AsyncIOMotorDatabase, program_id: str) -> dict | None:
     """Mengambil satu program keahlian berdasarkan ID."""

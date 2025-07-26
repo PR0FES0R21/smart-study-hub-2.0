@@ -49,7 +49,7 @@ async def download_import_template(
     
     # Tambahkan contoh data untuk guru
     example_teacher = [
-        "GURU005", "guru.baru@example.com", "password123", "Siti Nurbaya", "teacher",
+        "GURU005", "guru.baru@example.com", "Siti Nurbaya", "teacher",
         "Perempuan", "1990-01-15", "Bandung", "Jl. Pendidikan 2", "08987654321",
         "", "ID_JURUSAN_DISINI", "", ""
     ]

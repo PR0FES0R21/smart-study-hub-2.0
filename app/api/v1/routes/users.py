@@ -160,7 +160,6 @@ async def update_existing_user(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_admin)
 ):
-    print("routes", user_in)
     """
     Memperbarui data user. Hanya bisa diakses oleh admin.
     """
@@ -195,9 +194,7 @@ async def change_current_user_password(
 ):
     if not security.verify_password(password_in.current_password, current_user["hashed_password"]):
         raise HTTPException(status_code=400, detail="Incorrect current password")
-    
-    print(password_in)
-    
+        
     await crud_users.update_user_password(db, user_id=current_user["_id"], new_password=password_in.new_password)
     
     background_tasks.add_task(

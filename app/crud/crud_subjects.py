@@ -9,7 +9,7 @@ from bson import ObjectId
 from app.schemas.subject import SubjectCreate, SubjectUpdate
 from datetime import datetime
 from app.core.cache import get_cache, set_cache, invalidate_cache
-
+from app.crud.crud_teaching_assignments import delete_assignment_by_subject_id
 #  Mendefinisikan kunci cache
 SUBJECTS_IDS_CACHE_KEY = "subjects:all:ids"
 DASHBOARD_STATS_CACHE_KEY = "analytics:dashboard_stats"
@@ -85,6 +85,7 @@ async def delete_subject(db: AsyncIOMotorDatabase, subject_id: str) -> bool:
     result = await db["subjects"].delete_one({"_id": ObjectId(subject_id)})
     
     if result.deleted_count > 0:
+        await delete_assignment_by_subject_id(db, subject_id=subject_id)
         await invalidate_cache(SUBJECTS_IDS_CACHE_KEY)
         await invalidate_cache(DASHBOARD_STATS_CACHE_KEY)
         

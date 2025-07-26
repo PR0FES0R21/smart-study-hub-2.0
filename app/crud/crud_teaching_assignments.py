@@ -80,12 +80,34 @@ async def create_teaching_assignment(db: AsyncIOMotorDatabase, assignment: Teach
     return created
 
 async def delete_teaching_assignment(db: AsyncIOMotorDatabase, assignment_id: str) -> bool:
-    if not ObjectId.is_valid(assignment_id): return False
+    if not ObjectId.is_valid(assignment_id): 
+        logger.warning(f"Invalid ObjectId: {assignment_id}")
+        return False
+    
+    # Log sebelum menghapus assignment
+    logger.info(f"Mencoba menghapus teaching assignment dengan ID: {assignment_id}")
+    
+    # Cek apakah ada ujian yang terkait sebelum menghapus assignment
+    exam_count = await db["exams"].count_documents({"teaching_assignment_id": ObjectId(assignment_id)})
+    logger.info(f"Ditemukan {exam_count} ujian yang terkait dengan assignment {assignment_id}")
+    
     result = await db["teaching_assignments"].delete_one({"_id": ObjectId(assignment_id)})
+    
     if result.deleted_count > 0:
-        logger.info("Berhasil menghapus penugasan, selanjutnya menghapus ujian terkait")
-        await delete_exam_by_assignment_ids(db=db, assignment_id=[assignment_id])
+        logger.info(f"Berhasil menghapus teaching assignment {assignment_id}, selanjutnya menghapus ujian terkait")
+        
+        # Panggil fungsi delete exam dengan logging tambahan
+        delete_result = await delete_exam_by_assignment_ids(db=db, assignment_ids=[assignment_id])
+        logger.info(f"Hasil penghapusan ujian: {delete_result}")
+        
+        # Verifikasi apakah ujian benar-benar terhapus
+        remaining_exams = await db["exams"].count_documents({"teaching_assignment_id": ObjectId(assignment_id)})
+        logger.info(f"Ujian yang tersisa setelah penghapusan: {remaining_exams}")
+        
         await invalidate_cache(ASSIGNMENTS_IDS_CACHE_PATTERN)
+    else:
+        logger.warning(f"Gagal menghapus teaching assignment {assignment_id}")
+    
     return result.deleted_count > 0
 
 async def delete_assignment_by_class_id(db: AsyncIOMotorDatabase, class_id: ObjectId) -> bool:
@@ -109,6 +131,27 @@ async def delete_assignment_by_class_id(db: AsyncIOMotorDatabase, class_id: Obje
         # Ekstrak _id dari dokumen untuk delete_exam_by_assignment_ids
         assignment_ids = [doc["_id"] for doc in assignment_docs]
         await delete_exam_by_assignment_ids(db=db, assignment_ids=assignment_ids)
+        await invalidate_cache(ASSIGNMENTS_IDS_CACHE_PATTERN)
+
+    return result.deleted_count > 0
+
+async def delete_assignment_by_subject_id(db: AsyncIOMotorDatabase, subject_id=ObjectId) -> bool:
+    if not ObjectId.is_valid(subject_id):
+        return False
+    
+    subject_id_obj = ObjectId(subject_id) if isinstance(subject_id, str) else subject_id
+
+    cursor = db["teaching_assignments"].find({"subject_id": subject_id_obj}, {"_id": 1})
+    assignment_docs = await cursor.to_list(length=None)
+
+    if not assignment_docs:
+        return False
+    
+    result = await db["teaching_assignments"].delete_many({"subject_id": subject_id_obj})
+
+    if result.deleted_count > 0:
+        assignment_ids = [docs["_id"] for docs in assignment_docs]
+        await delete_exam_by_assignment_ids(db, assignment_ids=assignment_ids)
         await invalidate_cache(ASSIGNMENTS_IDS_CACHE_PATTERN)
 
     return result.deleted_count > 0
@@ -157,4 +200,3 @@ async def update_teaching_assignment(db: AsyncIOMotorDatabase, assignment_id: Ob
         {"$set": update_data}
     )
     return await db["teaching_assignments"].find_one({"_id": assignment_id})
-
