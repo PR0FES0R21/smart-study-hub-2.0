@@ -11,6 +11,7 @@ from bson import ObjectId
 from app.schemas.classes import ClassCreate, ClassUpdate
 from app.core.cache import invalidate_cache
 from app.core.cache import get_cache, set_cache
+from app.crud.crud_teaching_assignments import delete_assignment_by_class_id
 
 CLASSES_IDS_CACHE_PATTERN = "classes:ids:*"
 
@@ -148,6 +149,7 @@ async def delete_class(db: AsyncIOMotorDatabase, class_id: str) -> bool:
     
     result = await db["classes"].delete_one({"_id": ObjectId(class_id)})
     if result.deleted_count > 0:
+        await delete_assignment_by_class_id(db=db, class_id=class_id)
         await invalidate_cache(CLASSES_IDS_CACHE_PATTERN)
         await invalidate_cache("analytics:dashboard_stats")
     return result.deleted_count > 0

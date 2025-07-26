@@ -1,0 +1,383 @@
+2025-07-26 17:54:10,036 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-07-26 17:54:10,037 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-07-26 17:54:10,085 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-07-26 17:55:42,109 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-07-26 17:55:42,111 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-07-26 17:56:24,820 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-07-26 17:56:24,821 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-07-26 17:56:24,871 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-07-26 18:02:50,695 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-07-26 18:02:50,696 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-07-26 18:03:05,922 [INFO] app.main: Memulai aplikasi: School Management System
+2025-07-26 18:03:05,994 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-07-26 18:03:06,010 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-07-26 18:03:06,011 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-07-26 18:03:06,012 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-07-26 18:03:06,013 [INFO] app.main: Startup aplikasi berhasil
+2025-07-26 18:03:06,014 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-07-26 18:03:40,825 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:03:40,826 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:07:44,490 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:07:44,491 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:07:55,215 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:07:55,216 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:07:56,858 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:07:57,388 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:07:57,390 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:07:57,390 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:08:01,056 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:08:01,057 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:08:50,375 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:08:50,375 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:08:50,378 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:08:55,751 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:08:55,752 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:08:56,556 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:08:57,186 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:08:57,188 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:08:57,189 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:08:58,598 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:08:58,600 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:09:56,360 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:09:56,361 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:09:56,363 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:10:01,820 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:10:01,821 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:10:02,405 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:10:02,942 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:10:02,944 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:10:02,944 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:10:04,511 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:10:04,513 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:11:03,373 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:11:03,374 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:11:03,376 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:11:08,261 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:11:08,263 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:11:08,876 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:11:09,432 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:11:09,433 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:11:09,434 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:11:11,566 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:11:11,567 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:12:10,268 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:12:10,269 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:12:10,270 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:12:15,637 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:12:15,639 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:12:16,265 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:12:16,829 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:12:16,831 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:12:16,832 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:12:18,676 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:12:18,677 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:12:39,097 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:12:39,098 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:12:39,099 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:12:39,204 [INFO] app.main: Mematikan aplikasi...
+2025-07-26 18:12:39,220 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-07-26 18:12:39,222 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-07-26 18:12:39,222 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-07-26 18:12:39,229 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-07-26 18:12:45,212 [INFO] app.main: Memulai aplikasi: School Management System
+2025-07-26 18:12:45,287 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-07-26 18:12:45,311 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-07-26 18:12:45,311 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-07-26 18:12:45,312 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-07-26 18:12:45,313 [INFO] app.main: Startup aplikasi berhasil
+2025-07-26 18:12:45,314 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-07-26 18:12:45,352 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:12:45,354 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:12:46,094 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:12:46,735 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:12:46,737 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:12:46,738 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:12:48,750 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:12:48,751 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:13:45,407 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:13:45,408 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:13:45,410 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:13:55,943 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:13:55,944 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:13:58,820 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:14:01,691 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:14:01,692 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:14:01,693 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:14:04,072 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:14:04,073 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:14:51,366 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:14:51,367 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:14:51,369 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:14:57,013 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:14:57,014 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:14:57,900 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:14:58,509 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:14:58,512 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:14:58,513 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:15:00,567 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:15:00,569 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:15:43,690 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:15:43,690 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:15:43,692 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:15:43,800 [INFO] app.main: Mematikan aplikasi...
+2025-07-26 18:15:43,845 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-07-26 18:15:43,846 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-07-26 18:15:43,846 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-07-26 18:15:43,850 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-07-26 18:15:50,276 [INFO] app.main: Memulai aplikasi: School Management System
+2025-07-26 18:15:50,356 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-07-26 18:15:50,387 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-07-26 18:15:50,387 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-07-26 18:15:50,388 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-07-26 18:15:50,389 [INFO] app.main: Startup aplikasi berhasil
+2025-07-26 18:15:50,390 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-07-26 18:15:50,422 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:15:50,423 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:15:50,941 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:15:51,449 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:15:51,450 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:15:51,450 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:15:53,594 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:15:53,595 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:15:58,382 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:15:58,383 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:15:58,385 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:16:06,983 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:16:06,989 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:16:09,812 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:16:11,327 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:16:11,329 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:16:11,329 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:16:12,854 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:16:12,855 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:17:04,563 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:17:04,564 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:17:04,567 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:17:10,605 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:17:10,608 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:17:11,134 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:17:11,686 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:17:11,687 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:17:11,688 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:17:13,560 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:17:13,561 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:18:11,431 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:18:11,432 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:18:11,434 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:18:16,385 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:18:16,386 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:18:18,575 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:18:19,145 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:18:19,147 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:18:19,148 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:18:21,363 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:18:21,364 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:19:45,981 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:19:45,982 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:19:45,984 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:19:58,291 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:19:58,295 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:19:59,149 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:19:59,860 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:19:59,862 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:19:59,862 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:20:01,713 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:20:01,715 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:20:52,532 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:20:52,533 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:20:52,534 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:20:59,516 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:20:59,517 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:21:00,184 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:21:00,777 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:21:00,778 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:21:00,779 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:21:02,467 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:21:02,470 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:21:59,437 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:21:59,438 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:21:59,440 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:22:06,123 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:22:06,124 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:22:06,698 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:22:07,257 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:22:07,259 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:22:07,260 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:22:09,533 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:22:09,535 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:23:05,786 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:23:05,788 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:23:05,790 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:23:11,957 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:23:11,958 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:23:12,752 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:23:13,366 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:23:13,367 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:23:13,367 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:23:15,658 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:23:15,659 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:24:12,361 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:24:12,361 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:24:12,363 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:24:17,923 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:24:17,924 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:24:18,602 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:24:19,191 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:24:19,192 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:24:19,193 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:24:21,552 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:24:21,554 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:25:46,629 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:25:46,630 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:25:46,632 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:25:53,605 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:25:53,606 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:25:54,154 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:25:54,722 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:25:54,723 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:25:54,723 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:25:56,641 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:25:56,643 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:26:53,477 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:26:53,478 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:26:53,481 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:26:59,958 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:26:59,959 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:27:00,479 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:27:01,064 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:27:01,066 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:27:01,066 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:27:02,550 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:27:02,551 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:28:00,436 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:28:00,437 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:28:00,439 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:28:06,312 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:28:06,314 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:28:06,833 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:28:07,393 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:28:07,401 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:28:07,402 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:28:08,637 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:28:08,638 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:29:43,518 [INFO] app.crud.crud_exams: Berhasil menghapus 2 exam(s).
+2025-07-26 18:35:06,465 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:35:06,465 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:35:06,467 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:35:20,133 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:35:20,134 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:35:20,740 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:35:21,444 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:35:21,445 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:35:21,446 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:35:23,465 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:35:23,467 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:36:48,447 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:36:48,448 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:36:48,450 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:36:53,606 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:36:53,607 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:36:54,565 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:36:55,127 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:36:55,129 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:36:55,130 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:36:56,480 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:36:56,482 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:37:55,357 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:37:55,357 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:37:55,359 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:38:00,566 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:38:00,568 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:38:01,057 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:38:01,462 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:38:01,464 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:38:01,465 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:38:03,663 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:38:03,771 [INFO] app.main: Mematikan aplikasi...
+2025-07-26 18:38:03,827 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-07-26 18:38:03,830 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-07-26 18:38:03,831 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-07-26 18:38:03,841 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-07-26 18:38:10,698 [INFO] app.main: Memulai aplikasi: School Management System
+2025-07-26 18:38:10,729 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-07-26 18:38:10,738 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-07-26 18:38:10,739 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-07-26 18:38:10,739 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-07-26 18:38:10,740 [INFO] app.main: Startup aplikasi berhasil
+2025-07-26 18:38:10,741 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-07-26 18:38:10,781 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:38:10,783 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:38:12,110 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:38:12,619 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:38:12,621 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:38:12,622 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:38:14,639 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:38:14,641 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:41:38,882 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:41:38,882 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:41:38,883 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:41:38,992 [INFO] app.main: Mematikan aplikasi...
+2025-07-26 18:41:39,008 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-07-26 18:41:39,009 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-07-26 18:41:39,009 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-07-26 18:41:39,013 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-07-26 18:41:51,382 [INFO] app.main: Memulai aplikasi: School Management System
+2025-07-26 18:41:51,434 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-07-26 18:41:51,442 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-07-26 18:41:51,443 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-07-26 18:41:51,444 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-07-26 18:41:51,444 [INFO] app.main: Startup aplikasi berhasil
+2025-07-26 18:41:51,445 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-07-26 18:41:52,139 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:41:52,141 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:41:52,676 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:41:53,224 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:41:53,226 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:41:53,227 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:41:55,223 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:41:55,224 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:47:15,642 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:47:15,643 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:47:18,182 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:51:52,992 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:51:52,993 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:51:53,490 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:51:53,902 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:51:53,903 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:51:53,904 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:51:55,466 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:51:55,468 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:52:50,414 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:52:50,415 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:52:50,417 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:52:56,202 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:52:56,204 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:52:57,322 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:52:58,399 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:52:58,400 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:52:58,401 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:52:59,995 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:52:59,996 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:53:18,392 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:53:18,393 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:53:18,394 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:53:18,499 [INFO] app.main: Mematikan aplikasi...
+2025-07-26 18:53:18,517 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-07-26 18:53:18,518 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-07-26 18:53:18,519 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-07-26 18:53:18,524 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-07-26 18:53:24,219 [INFO] app.main: Memulai aplikasi: School Management System
+2025-07-26 18:53:24,270 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-07-26 18:53:24,297 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-07-26 18:53:24,298 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-07-26 18:53:24,299 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-07-26 18:53:24,299 [INFO] app.main: Startup aplikasi berhasil
+2025-07-26 18:53:24,301 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-07-26 18:53:24,339 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:53:24,341 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:53:25,265 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:53:26,316 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-07-26 18:53:26,318 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-07-26 18:53:26,318 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-07-26 18:53:28,034 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin']
+2025-07-26 18:53:28,035 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1

@@ -17,9 +17,20 @@ from .core.startup_tasks import initialize_active_period_cache, create_default_a
 # Import WebSocket components
 from .core.websocket import manager
 from .core.redis_websocket import redis_bridge
+import sys
 
 # Setup logging
-logging.basicConfig(level=logging.INFO)
+LOG_FORMAT = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+
+logging.basicConfig(
+    level=logging.INFO,
+    format=LOG_FORMAT,
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler("logs/app.log")
+    ]
+)
+
 logger = logging.getLogger(__name__)
 
 @asynccontextmanager
@@ -27,7 +38,7 @@ async def lifespan(app: FastAPI):
     """Application lifespan manager with WebSocket Redis bridge support."""
     
     # STARTUP
-    logger.info(f"🚀 Memulai aplikasi: {settings.PROJECT_NAME}")
+    logger.info(f"Memulai aplikasi: {settings.PROJECT_NAME}")
     
     try:
         # Existing startup tasks
@@ -35,27 +46,27 @@ async def lifespan(app: FastAPI):
         await create_default_admin()
         
         # Initialize WebSocket Redis bridge
-        logger.info("🔌 Menginisialisasi WebSocket Redis bridge...")
+        logger.info("Menginisialisasi WebSocket Redis bridge...")
         await manager.initialize()
-        logger.info("✅ WebSocket Redis bridge berhasil diinisialisasi")
+        logger.info("WebSocket Redis bridge berhasil diinisialisasi")
         
     except Exception as e:
         logger.error(f"❌ Error saat startup: {e}")
         raise
     
-    logger.info("🎉 Startup aplikasi berhasil")
+    logger.info("Startup aplikasi berhasil")
     
     # YIELD (application runs here)
     yield
     
     # SHUTDOWN
-    logger.info("🛑 Mematikan aplikasi...")
+    logger.info("Mematikan aplikasi...")
     
     try:
         # Close WebSocket Redis bridge
         logger.info("🔌 Menutup WebSocket Redis bridge...")
         await redis_bridge.close()
-        logger.info("✅ WebSocket Redis bridge ditutup")
+        logger.info("WebSocket Redis bridge ditutup")
         
         # Existing shutdown tasks
         await close_db_connection()
@@ -64,7 +75,7 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.error(f"❌ Error saat shutdown: {e}")
     
-    logger.info("👋 Aplikasi berhasil dimatikan")
+    logger.info("Aplikasi berhasil dimatikan")
 
 app = FastAPI(title=settings.PROJECT_NAME, lifespan=lifespan)
 

@@ -9,9 +9,12 @@ from bson import ObjectId
 from app.schemas.exam import ExamCreate
 import random
 from datetime import datetime
+import logging
 
 from app.schemas.exam import ExamCreate, ExamQuestionUpdate, ExamUpdate
 from app.schemas.exam_session import ExamSessionBase, QuestionMapItem
+
+logger = logging.getLogger(__name__)
 
 async def get_exam_by_id(db: AsyncIOMotorDatabase, exam_id: str) -> dict | None:
     """Mengambil satu dokumen ujian berdasarkan ID."""
@@ -224,3 +227,39 @@ async def get_exam_details_by_id(db: AsyncIOMotorDatabase, exam_id: str) -> dict
     
     result = await db["exams"].aggregate(pipeline).to_list(1)
     return result[0] if result else None
+
+async def delete_exam_by_assignment_id(db: AsyncIOMotorDatabase, assignment_id: ObjectId) -> bool:
+    if not ObjectId.is_valid(assignment_id): return False
+    result = await db["exams"].delete_many({"teaching_assignment_id": ObjectId(assignment_id)})
+    return result.deleted_count > 0
+
+async def delete_exam_by_assignment_ids(
+    db: AsyncIOMotorDatabase,
+    assignment_ids: List[str]
+) -> bool:
+    """
+    Menghapus semua exam berdasarkan list teaching_assignment_id.
+    Hanya ObjectId valid yang akan diproses.
+    """
+    if not assignment_ids:
+        logger.warning("Tidak ada assignment_id yang diberikan untuk dihapus.")
+        return False
+
+    try:
+        # Filter hanya ObjectId yang valid
+        valid_ids = [ObjectId(i) for i in assignment_ids if ObjectId.is_valid(i)]
+
+        if not valid_ids:
+            logger.warning("Tidak ada ObjectId yang valid dari assignment_ids.")
+            return False
+
+        result = await db["exams"].delete_many({
+            "teaching_assignment_id": {"$in": valid_ids}
+        })
+
+        logger.info(f"Berhasil menghapus {result.deleted_count} exam(s).")
+        return True
+
+    except Exception as e:
+        logger.exception("Gagal menghapus exams berdasarkan assignment_ids.")
+        return False

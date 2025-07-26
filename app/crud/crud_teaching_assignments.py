@@ -7,9 +7,13 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from fastapi import HTTPException
 from typing import List, Dict, Any, Optional
 from bson import ObjectId
+import logging
 
 from app.schemas.teaching_assignment import TeachingAssignmentCreate, TeachingAssignmentUpdate
 from app.core.cache import get_cache, set_cache, invalidate_cache
+from app.crud.crud_exams import delete_exam_by_assignment_id, delete_exam_by_assignment_ids
+
+logger = logging.getLogger(__name__)
 
 ASSIGNMENTS_IDS_CACHE_PATTERN = "assignments:ids:*"
 
@@ -79,7 +83,34 @@ async def delete_teaching_assignment(db: AsyncIOMotorDatabase, assignment_id: st
     if not ObjectId.is_valid(assignment_id): return False
     result = await db["teaching_assignments"].delete_one({"_id": ObjectId(assignment_id)})
     if result.deleted_count > 0:
+        logger.info("Berhasil menghapus penugasan, selanjutnya menghapus ujian terkait")
+        await delete_exam_by_assignment_ids(db=db, assignment_id=[assignment_id])
         await invalidate_cache(ASSIGNMENTS_IDS_CACHE_PATTERN)
+    return result.deleted_count > 0
+
+async def delete_assignment_by_class_id(db: AsyncIOMotorDatabase, class_id: ObjectId) -> bool:
+    if not ObjectId.is_valid(class_id):
+        return False
+
+    # Konversi class_id ke ObjectId jika diperlukan (pastikan type hint sesuai)
+    class_id_obj = ObjectId(class_id) if isinstance(class_id, str) else class_id
+
+    # Ambil daftar assignment IDs
+    cursor = db["teaching_assignments"].find({"class_id": class_id_obj}, {"_id": 1})
+    assignment_docs = await cursor.to_list(length=None)
+
+    if not assignment_docs:
+        return False  # Kembalikan False jika tidak ada data
+
+    # Hapus semua assignment dengan class_id
+    result = await db["teaching_assignments"].delete_many({"class_id": class_id_obj})
+
+    if result.deleted_count > 0:
+        # Ekstrak _id dari dokumen untuk delete_exam_by_assignment_ids
+        assignment_ids = [doc["_id"] for doc in assignment_docs]
+        await delete_exam_by_assignment_ids(db=db, assignment_ids=assignment_ids)
+        await invalidate_cache(ASSIGNMENTS_IDS_CACHE_PATTERN)
+
     return result.deleted_count > 0
 
 async def find_assignments_by_criteria(
