@@ -200,3 +200,127 @@ async def update_teaching_assignment(db: AsyncIOMotorDatabase, assignment_id: Ob
         {"$set": update_data}
     )
     return await db["teaching_assignments"].find_one({"_id": assignment_id})
+
+async def get_teaching_assignments_by_teacher_id(db: AsyncIOMotorDatabase, teacher_id: str) -> List[dict]:
+    """Mendapatkan semua teaching assignments berdasarkan teacher_id"""
+    try:
+        teacher_obj_id = ObjectId(teacher_id)
+        cursor = db["teaching_assignments"].find({"teacher_id": teacher_obj_id})
+        assignments = await cursor.to_list(None)
+        return assignments
+    except Exception as e:
+        logger.error(f"Error getting teaching assignments for teacher {teacher_id}: {e}")
+        return []
+
+def extract_class_ids_from_assignments(assignments: List[dict]) -> List[ObjectId]:
+    """Helper function untuk ekstrak class_ids dari teaching assignments"""
+    class_ids = []
+    for assignment in assignments:
+        if "class_id" in assignment:
+            class_ids.append(assignment["class_id"])
+    return list(set(class_ids))  # Remove duplicates
+
+def extract_assignment_ids_from_assignments(assignments: List[dict]) -> List[ObjectId]:
+    """Helper function untuk ekstrak assignment_ids dari teaching assignments"""
+    assignment_ids = []
+    for assignment in assignments:
+        if "_id" in assignment:
+            assignment_ids.append(assignment["_id"])
+    return assignment_ids
+
+async def get_teacher_teaching_summary(db: AsyncIOMotorDatabase, teacher_id: str) -> List[dict]:
+    """
+    Mendapatkan teaching summary guru yang dikelompokkan berdasarkan kelas.
+    Mengembalikan detail kelas, expertise, dan mata pelajaran yang diajar.
+    """
+    try:
+        teacher_obj_id = ObjectId(teacher_id)
+        
+        # Pipeline agregasi untuk mendapatkan teaching summary
+        pipeline = [
+            # 1. Filter teaching assignments berdasarkan teacher_id
+            {"$match": {"teacher_id": teacher_obj_id}},
+            
+            # 2. Lookup ke collection subjects
+            {"$lookup": {
+                "from": "subjects",
+                "localField": "subject_id",
+                "foreignField": "_id",
+                "as": "subject_details"
+            }},
+            {"$unwind": "$subject_details"},
+            
+            # 3. Lookup ke collection classes
+            {"$lookup": {
+                "from": "classes",
+                "localField": "class_id",
+                "foreignField": "_id",
+                "as": "class_details"
+            }},
+            {"$unwind": "$class_details"},
+            
+            # 4. Lookup ke collection expertise_programs
+            {"$lookup": {
+                "from": "expertise_programs",
+                "localField": "class_details.expertise_id",
+                "foreignField": "_id",
+                "as": "expertise_details"
+            }},
+            {"$unwind": "$expertise_details"},
+            
+            # 5. Group berdasarkan class_id untuk mengelompokkan mata pelajaran per kelas
+            {"$group": {
+                "_id": "$class_id",
+                "class_details": {"$first": "$class_details"},
+                "expertise_details": {"$first": "$expertise_details"},
+                "assignments": {"$push": {
+                    "_id": "$subject_id",
+                    "name": "$subject_details.name",
+                    "code": "$subject_details.code",
+                    "description": "$subject_details.description"
+                }}
+            }},
+            
+            # 6. Project untuk format output yang diinginkan
+            {"$project": {
+                "_id": 0,
+                "class_id": "$_id",
+                "class_details": 1,
+                "expertise_details": 1,
+                "assignments": 1
+            }},
+            
+            # 7. Sort berdasarkan grade_level dan nama kelas
+            {"$sort": {
+                "class_details.grade_level": 1,
+                "class_details.name": 1
+            }}
+        ]
+        
+        # Execute pipeline
+        aggregation_result = await db["teaching_assignments"].aggregate(pipeline).to_list(None)
+        
+        # Hitung total siswa untuk setiap kelas
+        classes_with_student_count = []
+        for class_data in aggregation_result:
+            class_id = class_data["class_id"]
+            
+            # Count siswa berdasarkan class_id
+            student_count = await db["profiles"].count_documents({"class_id": class_id})
+            
+            # Format data sesuai schema yang diinginkan
+            class_summary = {
+                "total_students": student_count,
+                "assignments": class_data["assignments"],
+                "class_details": class_data["class_details"],
+                "expertise_details": class_data["expertise_details"]
+            }
+            
+            classes_with_student_count.append(class_summary)
+        
+        return classes_with_student_count
+        
+    except Exception as e:
+        logger.error(f"Error getting teacher teaching summary for teacher {teacher_id}: {e}")
+        return []
+

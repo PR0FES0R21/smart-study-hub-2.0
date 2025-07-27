@@ -11,6 +11,9 @@ from bson import ObjectId
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 from app.core.cache import invalidate_cache, flush_all_cache, get_cache, set_cache
+import logging
+
+logger = logging.getLogger(__name__)
 
 USERS_IDS_CACHE_PATTERN = "users:ids:*"
 

@@ -13,7 +13,7 @@ from app.crud import crud_teaching_assignments
 from app.schemas.teaching_assignment import (
     TeachingAssignmentCreate, TeachingAssignmentPublic, 
     TeachingAssignmentWithDetails, BulkUpdateRequest,
-    PaginatedTeachingAssignmentResponse
+    PaginatedTeachingAssignmentResponse, TeacherTeachingSummary
 )
 from app.schemas.task import TaskStatus
 from app.core.celery_app import celery_app
@@ -93,3 +93,18 @@ async def bulk_update_assignments(
         args=[actions_dict, admin_user_id]
     )
     return {"task_id": task.id, "status": "Processing"}
+
+
+@router.get("/teacher/teaching-summary", response_model=TeacherTeachingSummary)
+async def get_teacher_teaching_summary(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_teacher)
+):
+    """
+    Mengambil ringkasan kelas dan mata pelajaran yang diajar oleh guru.
+    Data dikelompokkan berdasarkan kelas, termasuk detail expertise program dan jumlah siswa.
+    """
+    teacher_id = str(current_user["_id"])
+    classes_data = await crud_teaching_assignments.get_teacher_teaching_summary(db=db, teacher_id=teacher_id)
+    
+    return {"classes": classes_data}

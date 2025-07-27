@@ -13,7 +13,8 @@ from app.schemas.analytics import (
     StudentCountByMajor, StudentGrowthDataPoint,
     BrowserUsageStat, DashboardStats, TopStudentResult,
     StudentPerformanceRosterItem, MajorDistributionByGradeResponse,
-    MajorGrowthDataPoint, GenderDistributionStat, CompetencyProfileResponse
+    MajorGrowthDataPoint, GenderDistributionStat, CompetencyProfileResponse,
+    TeacherDashboardStats
 )
 from app.core.cache import get_cache
 from app.tasks.analytics_tasks import recompute_competency_profile_task
@@ -148,3 +149,15 @@ async def get_competency_profile(
         # Panggil task dengan filter yang aktif
         recompute_competency_profile_task.delay(active_filters)
         return {"status": "processing", "data": None}
+    
+@router.get("/teacher/dashboard-stats", response_model=TeacherDashboardStats)
+async def get_teacher_dashboard_statistics(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_teacher)
+):
+    """
+    Mengambil statistik dashboard untuk guru yang sedang login.
+    Menampilkan total kelas mengajar, total siswa, total ujian, dan total soal yang dibuat.
+    """
+    teacher_id = str(current_user["_id"])
+    return await crud_analytics.get_teacher_dashboard_stats(db=db, teacher_id=teacher_id)

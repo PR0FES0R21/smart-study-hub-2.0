@@ -9,6 +9,7 @@ from bson import ObjectId
 
 from app.api.v1 import deps
 from app.crud import crud_users
+from app.crud.crud_teaching_assignments import get_teaching_assignments_by_teacher_id
 from app.schemas.user import (
     UserCreate, UserPublic, UserUpdate, 
     DataTablesUserResponse, PasswordChange, 
@@ -96,6 +97,60 @@ async def read_all_users(
         "limit": limit,
         "data": data
     }
+
+@router.get("/teacher_view", response_model=PaginatedUserResponse)
+async def read_all_users(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_teacher),
+    class_id: Optional[str] = None,
+    search: Optional[str] = Query(None),
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=1000)
+):
+    """
+    ambil daftar teaching assignment guru, jika classs_id yang diberikan oleh guru
+    ternyata tidak ada didaalma daftar mengajrnya, maka kembalikan error.
+    """
+    assignments = await get_teaching_assignments_by_teacher_id(db, str(current_user["_id"]))
+    if not assignments:
+        raise HTTPException(status_code=404, detail="Anda belum memiliki penugasan mengajar.")
+
+    allowed_class_ids = [str(a["class_id"]) for a in assignments]
+
+    if class_id:
+        if class_id not in allowed_class_ids:
+            raise HTTPException(status_code=403, detail="You are not assigned to this class.")
+        class_filter = {"class_id": class_id}
+    else:
+        raise HTTPException(status_code=400, detail="Parameter 'class_id' diperlukan.")
+
+    # Merge ke filters
+    filters = {"role": "student"}
+    filters.update(class_filter)
+
+    # Pagination
+    skip = (page - 1) * limit
+
+    if search:
+        result = await crud_users.search_users_with_details(
+            db, search=search, skip=skip, limit=limit, filters=filters
+        )
+        data = result["data"]
+        total_items = result["total_items"]
+    else:
+        all_filtered_ids_str = await crud_users.get_filtered_user_ids(db, filters)
+        total_items = len(all_filtered_ids_str)
+        ids_for_page_obj = [ObjectId(i) for i in all_filtered_ids_str[skip: skip + limit]]
+        data = await crud_users.get_users_details_by_ids(db, user_ids=ids_for_page_obj)
+
+    return {
+        "total_items": total_items,
+        "total_pages": (total_items + limit - 1) // limit,
+        "current_page": page,
+        "limit": limit,
+        "data": data
+    }
+
 
 @router.get("/me", response_model=UserWithDetails)
 async def debug_read_own_data(

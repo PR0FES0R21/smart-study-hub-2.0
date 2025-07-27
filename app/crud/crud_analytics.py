@@ -18,6 +18,8 @@ STUDENT_GROWTH_CACHE_KEY = "analytics:student_growth"
 STUDENT_PERFORMANCE_ROSTER_CACHE_KEY = "analytics:student_performance_roster"
 GENDER_DISTRIBUTION_CACHE_KEY = "analytics:gender_distribution"
 COMPETENCY_PROFILE_CACHE_KEY = "analytics:competency_profile"
+TEACHER_DASHBOARD_CACHE_KEY = "analytics:teacher_dashboard"
+
 
 async def get_student_count_by_major_and_grade(db: AsyncIOMotorDatabase) -> List[dict]:
     """Agregasi untuk menghitung jumlah siswa per jurusan dan per tingkat kelas."""
@@ -436,3 +438,107 @@ def build_competency_pipeline(filters: Dict) -> List[Dict]:
     ])
     
     return pipeline
+
+TEACHER_DASHBOARD_CACHE_KEY = "analytics:teacher_dashboard"
+
+async def count_students_by_class_ids(db: AsyncIOMotorDatabase, class_ids: List[ObjectId]) -> int:
+    """Menghitung total siswa berdasarkan daftar class_id"""
+    if not class_ids:
+        return 0
+    
+    try:
+        count = await db["profiles"].count_documents({
+            "class_id": {"$in": class_ids}
+        })
+        return count
+    except Exception as e:
+        print(f"Error counting students by class_ids: {e}")
+        return 0
+
+async def count_exams_by_teaching_assignment_ids(db: AsyncIOMotorDatabase, assignment_ids: List[ObjectId]) -> int:
+    """Menghitung total ujian berdasarkan teaching_assignment_ids"""
+    if not assignment_ids:
+        return 0
+    
+    try:
+        count = await db["exams"].count_documents({
+            "teaching_assignment_id": {"$in": assignment_ids}
+        })
+        return count
+    except Exception as e:
+        print(f"Error counting exams by assignment_ids: {e}")
+        return 0
+
+async def count_questions_by_teacher_id(db: AsyncIOMotorDatabase, teacher_id: str) -> int:
+    """Menghitung total soal yang dibuat guru"""
+    try:
+        teacher_obj_id = ObjectId(teacher_id)
+        count = await db["question_banks"].count_documents({
+            "created_by_teacher_id": teacher_obj_id
+        })
+        return count
+    except Exception as e:
+        print(f"Error counting questions by teacher_id: {e}")
+        return 0
+
+async def get_teacher_dashboard_stats(db: AsyncIOMotorDatabase, teacher_id: str) -> dict:
+    """Main function untuk mendapatkan semua stats guru sekaligus"""
+    # Check cache first
+    cache_key = f"{TEACHER_DASHBOARD_CACHE_KEY}:{teacher_id}"
+    cached_data = await get_cache(cache_key)
+    if cached_data:
+        print(f"HIT: Mengambil teacher dashboard stats dari cache untuk teacher {teacher_id}")
+        return cached_data
+    
+    print(f"MISS: Menghitung teacher dashboard stats dari database untuk teacher {teacher_id}")
+    
+    # Import here to avoid circular import
+    from app.crud.crud_teaching_assignments import (
+        get_teaching_assignments_by_teacher_id,
+        extract_class_ids_from_assignments,
+        extract_assignment_ids_from_assignments
+    )
+    
+    try:
+        # Step 1: Get all teaching assignments for this teacher
+        assignments = await get_teaching_assignments_by_teacher_id(db, teacher_id)
+        total_classes = len(assignments)
+        
+        if not assignments:
+            # If no assignments, return zeros
+            stats = {
+                "total_classes": 0,
+                "total_students": 0,
+                "total_exams": 0,
+                "total_questions": 0
+            }
+        else:
+            # Step 2: Extract class_ids and assignment_ids
+            class_ids = extract_class_ids_from_assignments(assignments)
+            assignment_ids = extract_assignment_ids_from_assignments(assignments)
+            
+            # Step 3: Count students, exams, and questions concurrently
+            total_students = await count_students_by_class_ids(db, class_ids)
+            total_exams = await count_exams_by_teaching_assignment_ids(db, assignment_ids)
+            total_questions = await count_questions_by_teacher_id(db, teacher_id)
+            
+            stats = {
+                "total_classes": total_classes,
+                "total_students": total_students,
+                "total_exams": total_exams,
+                "total_questions": total_questions
+            }
+        
+        # Cache the result for 1 hour (3600 seconds)
+        await set_cache(cache_key, stats, ttl=3600)
+        return stats
+        
+    except Exception as e:
+        print(f"Error getting teacher dashboard stats for teacher {teacher_id}: {e}")
+        # Return zeros in case of error
+        return {
+            "total_classes": 0,
+            "total_students": 0,
+            "total_exams": 0,
+            "total_questions": 0
+        }

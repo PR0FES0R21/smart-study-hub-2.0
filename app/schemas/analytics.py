@@ -90,3 +90,9 @@ class CompetencyProfile(BaseModel):
     grade_10: List[CompetencyItem]
     grade_11: List[CompetencyItem]
     grade_12: List[CompetencyItem]
+
+class TeacherDashboardStats(BaseModel):
+    total_classes: int
+    total_students: int  
+    total_exams: int
+    total_questions: int

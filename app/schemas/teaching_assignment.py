@@ -10,6 +10,10 @@ from .classes import ClassWithDetails
 from .subject import SubjectPublic
 from .user import UserPublic
 from .pagination import PaginatedResponse
+from .subject import SubjectBase
+from .expertise_program import ExpertiseProgramBase
+from .classes import ClassPublic
+
 
 
 class TeachingAssignmentBase(BaseModel):
@@ -45,3 +49,12 @@ class BulkUpdateRequest(BaseModel):
 
 class PaginatedTeachingAssignmentResponse(PaginatedResponse[TeachingAssignmentWithDetails]):
     pass
+    
+class TeachingClassSummary(BaseModel):
+    total_students: int
+    assignments: List[SubjectBase]
+    class_details: ClassPublic
+    expertise_details: ExpertiseProgramBase
+
+class TeacherTeachingSummary(BaseModel):
+    classes: List[TeachingClassSummary]

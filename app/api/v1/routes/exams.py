@@ -107,7 +107,7 @@ async def read_all_exams(
     # 1. Tentukan periode akademik
     # Jika tidak ada filter, gunakan periode aktif sebagai default
     target_period_id = academic_period_id or str(active_period["_id"])
-    if target_period_id != 'all': # Tambahkan opsi 'all' untuk melihat semua periode
+    if target_period_id != 'all':
         filters["academic_period_id"] = ObjectId(target_period_id)
 
     # 2. Terapkan filter berdasarkan peran pengguna
@@ -119,7 +119,10 @@ async def read_all_exams(
             filters["exam_type"] = {"$in": ["official_uts", "official_uas"]}
         
     elif "teacher" in current_user["roles"]:
-        filters["teacher_id"] = current_user["_id"]
+        filters["$or"] = [
+            {"teaching_assignment_details.teacher_id": current_user["_id"]},
+            {"proctor_ids": current_user["_id"]}
+        ]
         if exam_type and exam_type != 'all':
             filters["exam_type"] = {"$in": ["official_uts", "official_uas"]} if exam_type == 'official' else exam_type
     
