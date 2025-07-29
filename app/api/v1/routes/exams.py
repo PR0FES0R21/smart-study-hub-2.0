@@ -75,6 +75,7 @@ async def create_quiz_or_daily_test(
     current_user: dict = Depends(deps.get_current_active_teacher),
     active_period: dict = Depends(deps.get_current_academic_period)
 ):
+    
     """
     Membuat ujian lokal (kuis/ulangan harian). Hanya bisa diakses oleh guru.
     """
@@ -91,7 +92,6 @@ async def read_all_exams(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_user),
     active_period: dict = Depends(deps.get_current_academic_period),
-    # --- DITAMBAHKAN: Parameter filter, paginasi, dan pencarian ---
     academic_period_id: Optional[str] = Query(None),
     exam_type: Optional[str] = Query(None),
     search: Optional[str] = Query(None),
@@ -213,6 +213,10 @@ async def update_existing_exam(
     if not is_admin and not is_assigned_teacher:
         raise HTTPException(status_code=403, detail="Not authorized to modify this exam")
 
+    # Validasi tambahan: Cek apakah guru mencoba mengubah tipe ujian official_uts atau official_uas menjadi tipe lain
+    if not is_admin and exam["type"] in ["official_uts", "official_uas"] and exam_in.type != exam["type"]:
+        raise HTTPException(status_code=403, detail="Tidak dapat mengubah tipe ujian official_uts atau official_uas menjadi tipe lain")
+
     updated_exam = await crud_exams.update_exam(db, exam_id=exam_id, exam_update=exam_in)
     return updated_exam
 
@@ -282,3 +286,67 @@ async def read_exam_details(
     if not exam_details:
         raise HTTPException(status_code=404, detail="Exam not found")
     return exam_details
+
+
+# --- TAMBAHKAN DI ROUTES EXAMS ---
+@router.get("/teacher", response_model=PaginatedExamResponse)
+async def get_teacher_exams(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_teacher),
+    academic_period_id: Optional[str] = Query(None),
+    class_id: Optional[str] = Query(None),
+    skip: int = Query(0),
+    limit: int = Query(20, le=100)
+):
+    """Endpoint khusus guru untuk melihat ujian yang terkait dengan dia."""
+    result = await crud_exams.get_exams_by_teacher(
+        db=db,
+        teacher_id=str(current_user["_id"]),
+        academic_period_id=academic_period_id,
+        class_id=class_id,
+        skip=skip,
+        limit=limit
+    )
+    
+    total_items = result["total_items"]
+    total_pages = (total_items + limit - 1) // limit
+    
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": (skip // limit) + 1,
+        "limit": limit,
+        "data": result["data"]
+    }
+
+@router.get("/student", response_model=PaginatedExamResponse)
+async def get_student_exams(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_user),
+    academic_period_id: Optional[str] = Query(None),
+    skip: int = Query(0),
+    limit: int = Query(20, le=100)
+):
+    """Endpoint khusus siswa untuk melihat ujian yang terkait dengan kelasnya."""
+    student_profile = await db["profiles"].find_one({"user_id": current_user["_id"]})
+    if not student_profile:
+        raise HTTPException(status_code=404, detail="Student profile not found")
+    
+    result = await crud_exams.get_exams_by_student(
+        db=db,
+        student_profile=student_profile,
+        academic_period_id=academic_period_id,
+        skip=skip,
+        limit=limit
+    )
+    
+    total_items = result["total_items"]
+    total_pages = (total_items + limit - 1) // limit
+    
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": (skip // limit) + 1,
+        "limit": limit,
+        "data": result["data"]
+    }

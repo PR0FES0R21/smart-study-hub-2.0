@@ -274,10 +274,13 @@ async def get_teacher_teaching_summary(db: AsyncIOMotorDatabase, teacher_id: str
                 "class_details": {"$first": "$class_details"},
                 "expertise_details": {"$first": "$expertise_details"},
                 "assignments": {"$push": {
-                    "_id": "$subject_id",
+                    "teaching_assignment_id": "$_id",  # Ini adalah _id dari teaching_assignments
+                    "subject_id": "$subject_id",       # ID mata pelajaran
                     "name": "$subject_details.name",
                     "code": "$subject_details.code",
-                    "description": "$subject_details.description"
+                    "description": "$subject_details.description",
+                    "created_at": "$subject_details.created_at",
+                    "updated_at": "$subject_details.updated_at"
                 }}
             }},
             
@@ -299,6 +302,7 @@ async def get_teacher_teaching_summary(db: AsyncIOMotorDatabase, teacher_id: str
         
         # Execute pipeline
         aggregation_result = await db["teaching_assignments"].aggregate(pipeline).to_list(None)
+        print(aggregation_result)
         
         # Hitung total siswa untuk setiap kelas
         classes_with_student_count = []
@@ -323,4 +327,3 @@ async def get_teacher_teaching_summary(db: AsyncIOMotorDatabase, teacher_id: str
     except Exception as e:
         logger.error(f"Error getting teacher teaching summary for teacher {teacher_id}: {e}")
         return []
-

@@ -4,6 +4,7 @@
 # --- DITAMBAHKAN ---
 # ==============================================================================
 from motor.motor_asyncio import AsyncIOMotorDatabase
+from fastapi import HTTPException
 from typing import List, Dict, Any, Optional
 from bson import ObjectId
 from app.schemas.exam import ExamCreate
@@ -263,3 +264,117 @@ async def delete_exam_by_assignment_ids(
     except Exception as e:
         logger.exception("Gagal menghapus exams berdasarkan assignment_ids.")
         return False
+
+
+
+# --- TAMBAHKAN DI CRUD EXAMS ---
+async def get_exams_by_teacher(
+    db: AsyncIOMotorDatabase,
+    teacher_id: str,
+    academic_period_id: Optional[str] = None,
+    class_id: Optional[str] = None,
+    skip: int = 0,
+    limit: int = 20
+) -> Dict[str, Any]:
+    
+    from app.crud.crud_teaching_assignments import get_filtered_assignment_ids
+    """Mengambil ujian untuk guru dengan validasi akses."""
+    # Validasi ObjectId
+    if not ObjectId.is_valid(teacher_id):
+        raise HTTPException(status_code=400, detail="Invalid teacher ID")
+    
+    teacher_obj_id = ObjectId(teacher_id)
+    
+    # Ambil assignment IDs dengan filter class_id jika ada
+    filters = {"teacher_id": teacher_obj_id}
+    if class_id:
+        if not ObjectId.is_valid(class_id):
+            raise HTTPException(status_code=400, detail="Invalid class ID")
+        filters["class_id"] = ObjectId(class_id)
+    
+    assignment_ids = await get_filtered_assignment_ids(db, filters)
+    
+    if not assignment_ids:
+        return {"data": [], "total_items": 0}
+    
+    # Filter ujian berdasarkan assignment IDs
+    pipeline = [
+        {"$match": {"teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]}}},
+        {"$lookup": {"from": "teaching_assignments", "localField": "teaching_assignment_id", "foreignField": "_id", "as": "teaching_assignment"}},
+        {"$unwind": "$teaching_assignment"},
+        {"$lookup": {"from": "subjects", "localField": "teaching_assignment.subject_id", "foreignField": "_id", "as": "subject_details"}},
+        {"$unwind": "$subject_details"},
+        {"$lookup": {"from": "classes", "localField": "teaching_assignment.class_id", "foreignField": "_id", "as": "class_details"}},
+        {"$unwind": "$class_details"},
+    ]
+    
+    # Filter berdasarkan academic_period_id
+    if academic_period_id:
+        if not ObjectId.is_valid(academic_period_id):
+            raise HTTPException(status_code=400, detail="Invalid academic period ID")
+        pipeline.append({"$match": {"academic_period_id": ObjectId(academic_period_id)}})
+    
+    # Paginasi
+    total_pipeline = pipeline.copy()
+    total_pipeline.append({"$count": "total_items"})
+    total_result = await db["exams"].aggregate(total_pipeline).to_list(None)
+    total_items = total_result[0]["total_items"] if total_result else 0
+    
+    pipeline.extend([
+        {"$sort": {"availability_start_time": -1}},
+        {"$skip": skip},
+        {"$limit": limit}
+    ])
+    
+    exams = await db["exams"].aggregate(pipeline).to_list(None)
+    return {"data": exams, "total_items": total_items}
+
+async def get_exams_by_student(
+    db: AsyncIOMotorDatabase,
+    student_profile: dict,
+    academic_period_id: Optional[str] = None,
+    skip: int = 0,
+    limit: int = 20
+) -> Dict[str, Any]:
+    
+    from app.crud.crud_teaching_assignments import get_filtered_assignment_ids
+    """Mengambil ujian untuk siswa berdasarkan class_id dari profil."""
+    class_id = student_profile.get("class_id")
+    if not class_id:
+        raise HTTPException(status_code=400, detail="Student has no assigned class")
+    
+    # Ambil semua assignment IDs untuk class_id ini
+    assignment_ids = await get_filtered_assignment_ids(db, {"class_id": class_id})
+    
+    if not assignment_ids:
+        return {"data": [], "total_items": 0}
+    
+    # Query ujian dengan validasi academic_period
+    pipeline = [
+        {"$match": {"teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]}}},
+        {"$lookup": {"from": "teaching_assignments", "localField": "teaching_assignment_id", "foreignField": "_id", "as": "teaching_assignment"}},
+        {"$unwind": "$teaching_assignment"},
+        {"$lookup": {"from": "subjects", "localField": "teaching_assignment.subject_id", "foreignField": "_id", "as": "subject_details"}},
+        {"$unwind": "$subject_details"},
+    ]
+    
+    if academic_period_id:
+        if not ObjectId.is_valid(academic_period_id):
+            raise HTTPException(status_code=400, detail="Invalid academic period ID")
+        pipeline.append({"$match": {"academic_period_id": ObjectId(academic_period_id)}})
+    
+    # Hitung total
+    total_pipeline = pipeline.copy()
+    total_pipeline.append({"$count": "total_items"})
+    total_result = await db["exams"].aggregate(total_pipeline).to_list(None)
+    total_items = total_result[0]["total_items"] if total_result else 0
+    
+    # Paginasi
+    pipeline.extend([
+        {"$sort": {"availability_start_time": -1}},
+        {"$skip": skip},
+        {"$limit": limit}
+    ])
+    
+    exams = await db["exams"].aggregate(pipeline).to_list(None)
+    return {"data": exams, "total_items": total_items}

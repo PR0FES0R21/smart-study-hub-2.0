@@ -760,3 +760,39 @@ async def get_user_with_details_by_id(db: AsyncIOMotorDatabase, user_id: str) ->
     ]
     result = await db["users"].aggregate(pipeline).to_list(1)
     return result[0] if result else None
+
+# Tambahkan fungsi ini ke file app/crud/crud_users.py
+
+async def get_all_teachers_basic(db: AsyncIOMotorDatabase) -> List[dict]:
+    """
+    Mengambil daftar semua guru aktif dengan hanya ID dan nama lengkap.
+    Fungsi ini efisien karena hanya mengambil data minimal yang diperlukan.
+    """
+    pipeline = [
+        # Filter hanya pengguna dengan role 'teacher' dan status aktif
+        {"$match": {
+            "roles": "teacher",
+            "is_active": True
+        }},
+        
+        # Join dengan collection profiles untuk mendapatkan nama lengkap
+        {"$lookup": {
+            "from": "profiles",
+            "localField": "profile_id",
+            "foreignField": "_id",
+            "as": "profile_details"
+        }},
+        {"$unwind": "$profile_details"},
+        
+        # Hanya ambil field yang diperlukan
+        {"$project": {
+            "_id": 1,
+            "full_name": "$profile_details.full_name"
+        }},
+        
+        # Urutkan berdasarkan nama
+        {"$sort": {"full_name": 1}}
+    ]
+    
+    teachers = await db["users"].aggregate(pipeline).to_list(None)
+    return teachers

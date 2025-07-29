@@ -108,3 +108,12 @@ class PasswordChange(BaseModel):
 class SelfDataUpdate(BaseModel):
     email: Optional[EmailStr] = None
     profile: Optional[SelfProfileUpdate] = None
+
+class TeacherBasic(BaseModel):
+    """Schema untuk daftar guru sederhana (hanya ID dan nama)"""
+    id: PyObjectId = Field(alias="_id")
+    full_name: str
+    
+    class Config:
+        from_attributes = True
+        arbitrary_types_allowed = True

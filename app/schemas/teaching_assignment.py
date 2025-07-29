@@ -7,11 +7,10 @@ from pydantic import BaseModel, Field
 from typing import Optional, List, Literal, Dict, Any
 from .base import PyObjectId
 from .classes import ClassWithDetails
-from .subject import SubjectPublic
+from .subject import SubjectBase, SubjectPublic
 from .user import UserPublic
 from .pagination import PaginatedResponse
-from .subject import SubjectBase
-from .expertise_program import ExpertiseProgramBase
+from .expertise_program import ExpertiseProgramPublic
 from .classes import ClassPublic
 
 
@@ -49,12 +48,17 @@ class BulkUpdateRequest(BaseModel):
 
 class PaginatedTeachingAssignmentResponse(PaginatedResponse[TeachingAssignmentWithDetails]):
     pass
+
+class assignments(SubjectBase):
+    teaching_assignment_id: PyObjectId
+    subject_id: PyObjectId
+    class Config: from_attributes = True; arbitrary_types_allowed = True
     
 class TeachingClassSummary(BaseModel):
     total_students: int
-    assignments: List[SubjectBase]
+    assignments: List[assignments]
     class_details: ClassPublic
-    expertise_details: ExpertiseProgramBase
+    expertise_details: ExpertiseProgramPublic
 
 class TeacherTeachingSummary(BaseModel):
     classes: List[TeachingClassSummary]

@@ -13,7 +13,7 @@ from app.crud.crud_teaching_assignments import get_teaching_assignments_by_teach
 from app.schemas.user import (
     UserCreate, UserPublic, UserUpdate, 
     DataTablesUserResponse, PasswordChange, 
-    SelfDataUpdate, UserWithDetails
+    SelfDataUpdate, UserWithDetails, TeacherBasic
 )
 from app.schemas.user import PaginatedUserResponse
 from app.core.logging import create_activity_log
@@ -313,3 +313,17 @@ async def reactivate_user_account(
     )
     
     return reactivated_user
+
+# Endpoint baru - tambahkan setelah endpoint yang sudah ada
+@router.get("/teachers/basic", response_model=List[TeacherBasic])
+async def get_teachers_list(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_user)
+):
+    """
+    Mengambil daftar semua guru aktif dengan informasi dasar (ID dan nama).
+    Endpoint ini bisa diakses oleh semua pengguna yang terautentikasi.
+    Berguna untuk dropdown, autocomplete, atau referensi guru di form lain.
+    """
+    teachers = await crud_users.get_all_teachers_basic(db=db)
+    return teachers
