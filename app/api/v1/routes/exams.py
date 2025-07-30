@@ -243,7 +243,7 @@ async def start_exam_manually(
     updated_exam = await crud_exams.set_exam_status(db, exam_id=exam_id, status="ongoing")
     
     # Kirim trigger WebSocket ke siswa di ruangan ini
-    await manager.broadcast_to_students(exam_id, {"type": "EXAM_STARTED", "exam_id": exam_id})
+    # await manager.broadcast_to_students(exam_id, {"type": "EXAM_STARTED", "exam_id": exam_id})
     
     return updated_exam
 
