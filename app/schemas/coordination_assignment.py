@@ -72,3 +72,16 @@ class BulkProgressMessage(BaseModel):
 class BulkCompleteMessage(BaseModel):
     type: Literal["bulk_complete"]
     results: BulkCoordinationResponse
+
+class AvailableCoordinatorResponse(BaseModel):
+    coordination_assignment_id: str
+    coordinator_id: str
+    coordinator_name: str
+    subject_id: str
+    subject_name: str
+    subject_code: str
+    grade_level: int
+    classes: List[str]  # List nama kelas yang diajar guru untuk subject+grade ini
+    
+    class Config:
+        from_attributes = True

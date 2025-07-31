@@ -13,8 +13,6 @@ from .pagination import PaginatedResponse
 from .expertise_program import ExpertiseProgramPublic
 from .classes import ClassPublic
 
-
-
 class TeachingAssignmentBase(BaseModel):
     # academic_period_id: PyObjectId # Akan kita tambahkan nanti
     class_id: PyObjectId
