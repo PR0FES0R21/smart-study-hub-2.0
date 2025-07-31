@@ -13,16 +13,229 @@ from bson import ObjectId
 from app.api.v1 import deps
 from app.crud import crud_coordination_assignments
 from app.schemas.coordination_assignment import (
-    CoordinationAssignmentCreate, 
-    CoordinationAssignmentUpdate,
-    CoordinationAssignmentPublic,
-    CoordinationAssignmentFilter,
-    BulkCoordinationRequest,
-    BulkCoordinationResponse
+    CoordinationAssignmentCreate, CoordinationAssignmentUpdate,
+    CoordinationAssignmentPublic, CoordinationAssignmentFilter,
+    BulkCoordinationRequest, BulkCoordinationResponse,
+    AvailableCoordinatorResponse
 )
 from app.core.websocket import manager
 
 router = APIRouter()
+
+@router.get("/available-coordinators", response_model=List[AvailableCoordinatorResponse])
+async def get_available_coordinators_for_teacher(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_teacher),
+    active_period: dict = Depends(deps.get_current_academic_period)
+):
+    """
+    Mendapatkan list koordinator yang available untuk guru berdasarkan teaching assignments.
+    Response lebih informatif dengan context dan stats.
+    """
+    teacher_id = current_user["_id"]
+    
+    pipeline = [
+        # 1. Match teaching assignments untuk guru ini di academic period aktif
+        {
+            "$match": {
+                "teacher_id": ObjectId(teacher_id),
+                "academic_period_id": ObjectId(active_period["_id"])
+            }
+        },
+        
+        # 2. Join dengan classes untuk dapetin grade_level
+        {
+            "$lookup": {
+                "from": "classes",
+                "localField": "class_id",
+                "foreignField": "_id",
+                "as": "class_info"
+            }
+        },
+        {"$unwind": "$class_info"},
+        
+        # 3. Join dengan subjects untuk dapetin subject name
+        {
+            "$lookup": {
+                "from": "subjects", 
+                "localField": "subject_id",
+                "foreignField": "_id",
+                "as": "subject_info"
+            }
+        },
+        {"$unwind": "$subject_info"},
+        
+        # 4. Group untuk mendapatkan unique combination subject_id + grade_level yang diajar guru ini
+        {
+            "$group": {
+                "_id": {
+                    "subject_id": "$subject_id",
+                    "grade_level": "$class_info.grade_level"
+                },
+                "subject_id": {"$first": "$subject_id"},
+                "subject_name": {"$first": "$subject_info.name"},
+                "subject_code": {"$first": "$subject_info.code"},
+                "grade_level": {"$first": "$class_info.grade_level"},
+                "user_classes": {"$addToSet": "$class_info.name"}
+            }
+        },
+        
+        # 5. Lookup coordination_assignments untuk setiap kombinasi subject+grade
+        {
+            "$lookup": {
+                "from": "coordination_assignments",
+                "let": {
+                    "subject_id": "$subject_id",
+                    "grade_level": "$grade_level"
+                },
+                "pipeline": [
+                    {
+                        "$match": {
+                            "$expr": {
+                                "$and": [
+                                    {"$eq": ["$subject_id", "$$subject_id"]},
+                                    {"$eq": ["$grade_level", "$$grade_level"]},
+                                    {"$eq": ["$academic_period_id", ObjectId(active_period["_id"])]},
+                                    {"$ne": ["$coordinator_id", ObjectId(teacher_id)]}
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "as": "coordination"
+            }
+        },
+        
+        # 6. Filter hanya yang ada koordinatornya
+        {
+            "$match": {
+                "coordination": {"$ne": []}
+            }
+        },
+        {"$unwind": "$coordination"},
+        
+        # 7. Join dengan users untuk dapetin coordinator info
+        {
+            "$lookup": {
+                "from": "users",
+                "localField": "coordination.coordinator_id", 
+                "foreignField": "_id",
+                "as": "coordinator_user"
+            }
+        },
+        {"$unwind": "$coordinator_user"},
+        
+        # 8. Join dengan profiles untuk dapetin coordinator info lengkap
+        {
+            "$lookup": {
+                "from": "profiles",
+                "localField": "coordinator_user.profile_id",
+                "foreignField": "_id", 
+                "as": "coordinator_profile"
+            }
+        },
+        {"$unwind": "$coordinator_profile"},
+        
+        # 9. Lookup untuk hitung total teachers under coordination ini
+        {
+            "$lookup": {
+                "from": "teaching_assignments",
+                "let": {
+                    "coord_subject_id": "$coordination.subject_id",
+                    "coord_grade_level": "$coordination.grade_level"
+                },
+                "pipeline": [
+                    {
+                        "$match": {
+                            "$expr": {
+                                "$and": [
+                                    {"$eq": ["$subject_id", "$$coord_subject_id"]},
+                                    {"$eq": ["$academic_period_id", ObjectId(active_period["_id"])]}
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "$lookup": {
+                            "from": "classes",
+                            "localField": "class_id",
+                            "foreignField": "_id",
+                            "as": "class_info"
+                        }
+                    },
+                    {"$unwind": "$class_info"},
+                    {
+                        "$match": {
+                            "$expr": {"$eq": ["$class_info.grade_level", "$$coord_grade_level"]}
+                        }
+                    },
+                    {
+                        "$group": {
+                            "_id": "$teacher_id"
+                        }
+                    }
+                ],
+                "as": "teachers_under_coordination"
+            }
+        },
+        
+        # 10. Project hasil final dengan informasi lengkap
+        {
+            "$project": {
+                "coordination_assignment_id": "$coordination._id",
+                "coordinator_id": "$coordination.coordinator_id",
+                "coordinator_name": "$coordinator_profile.full_name",
+                "coordinator_email": "$coordinator_user.email",
+                "coordinator_phone": {"$ifNull": ["$coordinator_profile.phone_number", None]},
+                "subject_id": "$subject_id",
+                "subject_name": "$subject_name", 
+                "subject_code": "$subject_code",
+                "grade_level": "$grade_level",
+                "matching_reason": "same_subject_grade",
+                "user_classes_in_subject": "$user_classes",
+                "coordinator_responsible_for": {
+                    "$concat": [
+                        "Koordinator ", 
+                        "$subject_name", 
+                        " Kelas ", 
+                        {"$toString": "$grade_level"}
+                    ]
+                },
+                "total_teachers_under_coordination": {"$size": "$teachers_under_coordination"}
+            }
+        },
+        
+        # 11. Sort berdasarkan subject name dan grade level
+        {
+            "$sort": {
+                "subject_name": 1,
+                "grade_level": 1
+            }
+        }
+    ]
+    
+    result = await db["teaching_assignments"].aggregate(pipeline).to_list(None)
+    
+    # Convert to response format
+    available_coordinators = []
+    for item in result:
+        available_coordinators.append({
+            "coordinator_id": str(item["coordinator_id"]),
+            "coordinator_name": item["coordinator_name"],
+            "coordinator_email": item["coordinator_email"],
+            "coordinator_phone": item.get("coordinator_phone"),
+            "coordination_assignment_id": str(item["coordination_assignment_id"]),
+            "subject_id": str(item["subject_id"]),
+            "subject_name": item["subject_name"],
+            "subject_code": item["subject_code"],
+            "grade_level": item["grade_level"],
+            "matching_reason": item["matching_reason"],
+            "user_classes_in_subject": item["user_classes_in_subject"],
+            "coordinator_responsible_for": item["coordinator_responsible_for"],
+            "total_teachers_under_coordination": item["total_teachers_under_coordination"]
+        })
+    
+    return available_coordinators
 
 # ===== SINGLE OPERATIONS =====
 

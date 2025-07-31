@@ -153,11 +153,12 @@ async def get_competency_profile(
 @router.get("/teacher/dashboard-stats", response_model=TeacherDashboardStats)
 async def get_teacher_dashboard_statistics(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_teacher)
+    current_user: dict = Depends(deps.get_current_active_teacher),
+    current_period: dict = Depends(deps.get_current_academic_period)
 ):
     """
     Mengambil statistik dashboard untuk guru yang sedang login.
     Menampilkan total kelas mengajar, total siswa, total ujian, dan total soal yang dibuat.
     """
     teacher_id = str(current_user["_id"])
-    return await crud_analytics.get_teacher_dashboard_stats(db=db, teacher_id=teacher_id)
+    return await crud_analytics.get_teacher_dashboard_stats(db=db, academic_period=current_period["_id"], teacher_id=teacher_id)

@@ -102,6 +102,7 @@ async def read_all_users(
 async def read_all_users(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher),
+    active_periods: dict = Depends(deps.get_current_academic_period),
     class_id: Optional[str] = None,
     search: Optional[str] = Query(None),
     page: int = Query(1, ge=1),
@@ -111,7 +112,11 @@ async def read_all_users(
     ambil daftar teaching assignment guru, jika classs_id yang diberikan oleh guru
     ternyata tidak ada didaalma daftar mengajrnya, maka kembalikan error.
     """
-    assignments = await get_teaching_assignments_by_teacher_id(db, str(current_user["_id"]))
+    assignments = await get_teaching_assignments_by_teacher_id(
+        db, 
+        str(current_user["_id"]),
+        active_periods["_id"]
+    )
     if not assignments:
         raise HTTPException(status_code=404, detail="Anda belum memiliki penugasan mengajar.")
 

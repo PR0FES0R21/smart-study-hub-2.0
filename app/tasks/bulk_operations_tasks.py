@@ -1,6 +1,6 @@
 # ==============================================================================
-# File: app/tasks/bulk_operations_tasks.py (Updated)
-# Deskripsi: Updated bulk operations task using Redis bridge
+# File: app/tasks/bulk_operations_tasks.py (Updated with academic_period_id)
+# Deskripsi: Updated bulk operations task using Redis bridge with academic period support
 # ==============================================================================
 import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -40,10 +40,15 @@ async def send_websocket_message(message: Dict[str, Any], target_roles: List[str
         logger.error(f"Failed to send WebSocket message via Redis: {e}")
 
 @celery_app.task(bind=True)
-def bulk_update_assignments_task(self, actions: List[Dict[str, Any]], admin_user_id: str):
+def bulk_update_assignments_task(
+    self, 
+    actions: List[Dict[str, Any]], 
+    admin_user_id: str, 
+    academic_period_id: str
+):
     """
-    Memproses daftar aksi (create, update, delete) untuk penugasan mengajar.
-    Updated version using Redis bridge for WebSocket communication.
+    Memproses daftar aksi (create, update, delete) untuk penugasan mengajar dalam periode akademik tertentu.
+    Updated version using Redis bridge for WebSocket communication with academic period support.
     """
     
     async def process_bulk_operations():
@@ -53,28 +58,85 @@ def bulk_update_assignments_task(self, actions: List[Dict[str, Any]], admin_user
             "errors": []
         }
 
-        logger.info(f"Starting bulk update task {self.request.id} with {total_actions} actions")
+        logger.info(f"Starting bulk update task {self.request.id} with {total_actions} actions for academic period {academic_period_id}")
 
         async with get_db_connection() as db:
+            # Validasi academic period exists
+            academic_period = await db["academic_periods"].find_one({"_id": ObjectId(academic_period_id)})
+            if not academic_period:
+                error_msg = f"Academic period {academic_period_id} not found"
+                logger.error(error_msg)
+                
+                # Send error message
+                error_message = {
+                    "type": "bulk_update_error",
+                    "task_id": self.request.id,
+                    "error": error_msg
+                }
+                await send_websocket_message(error_message, target_roles=["admin"])
+                raise Exception(error_msg)
+
             for i, action in enumerate(actions):
                 try:
                     action_type = action.get("type")
                     
                     if action_type == "create":
                         create_data = TeachingAssignmentCreate(**action.get("data", {}))
-                        await crud_teaching_assignments.create_teaching_assignment(db, create_data)
+                        await crud_teaching_assignments.create_teaching_assignment(
+                            db, create_data, academic_period_id
+                        )
                         results["created"] += 1
+                        logger.debug(f"Created teaching assignment: {create_data.model_dump()}")
                     
                     elif action_type == "update":
                         assignment_id = ObjectId(action.get("assignment_id"))
                         update_data = TeachingAssignmentUpdate(**action.get("data", {}))
-                        await crud_teaching_assignments.update_teaching_assignment(db, assignment_id, update_data)
-                        results["updated"] += 1
+                        
+                        updated_assignment = await crud_teaching_assignments.update_teaching_assignment(
+                            db, assignment_id, update_data, academic_period_id
+                        )
+                        
+                        if updated_assignment:
+                            results["updated"] += 1
+                            logger.debug(f"Updated teaching assignment: {assignment_id}")
+                        else:
+                            # Assignment not found or not in the correct academic period
+                            error_msg = f"Assignment {assignment_id} not found in academic period {academic_period_id}"
+                            logger.warning(error_msg)
+                            results["failed"] += 1
+                            results["errors"].append(f"Action {i+1} (update): {error_msg}")
 
                     elif action_type == "delete":
                         assignment_id = str(action.get("assignment_id"))
-                        await crud_teaching_assignments.delete_teaching_assignment(db, assignment_id)
-                        results["deleted"] += 1
+                        
+                        # Verify assignment belongs to the correct academic period before deletion
+                        assignment = await db["teaching_assignments"].find_one({"_id": ObjectId(assignment_id)})
+                        if not assignment:
+                            error_msg = f"Assignment {assignment_id} not found"
+                            logger.warning(error_msg)
+                            results["failed"] += 1
+                            results["errors"].append(f"Action {i+1} (delete): {error_msg}")
+                        elif str(assignment["academic_period_id"]) != academic_period_id:
+                            error_msg = f"Assignment {assignment_id} does not belong to academic period {academic_period_id}"
+                            logger.warning(error_msg)
+                            results["failed"] += 1
+                            results["errors"].append(f"Action {i+1} (delete): {error_msg}")
+                        else:
+                            deleted = await crud_teaching_assignments.delete_teaching_assignment(db, assignment_id)
+                            if deleted:
+                                results["deleted"] += 1
+                                logger.debug(f"Deleted teaching assignment: {assignment_id}")
+                            else:
+                                error_msg = f"Failed to delete assignment {assignment_id}"
+                                logger.warning(error_msg)
+                                results["failed"] += 1
+                                results["errors"].append(f"Action {i+1} (delete): {error_msg}")
+                    
+                    else:
+                        error_msg = f"Unknown action type: {action_type}"
+                        logger.error(error_msg)
+                        results["failed"] += 1
+                        results["errors"].append(f"Action {i+1}: {error_msg}")
                     
                     logger.debug(f"Processed action {i+1}/{total_actions}: {action_type}")
                     
@@ -87,6 +149,7 @@ def bulk_update_assignments_task(self, actions: List[Dict[str, Any]], admin_user
                 progress_message = {
                     "type": "bulk_update_progress",
                     "task_id": self.request.id,
+                    "academic_period_id": academic_period_id,
                     "processed": i + 1,
                     "total": total_actions,
                     "success": results["created"] + results["updated"] + results["deleted"],
@@ -103,12 +166,13 @@ def bulk_update_assignments_task(self, actions: List[Dict[str, Any]], admin_user
         final_message = {
             "type": "bulk_update_complete",
             "task_id": self.request.id,
+            "academic_period_id": academic_period_id,
             "status": final_status,
             "details": results
         }
         
         await send_websocket_message(final_message, target_roles=["admin"])
-        logger.info(f"Completed bulk update task {self.request.id}: {final_status}")
+        logger.info(f"Completed bulk update task {self.request.id} for academic period {academic_period_id}: {final_status}")
 
         return results
 
@@ -123,6 +187,7 @@ def bulk_update_assignments_task(self, actions: List[Dict[str, Any]], admin_user
             error_message = {
                 "type": "bulk_update_error",
                 "task_id": self.request.id,
+                "academic_period_id": academic_period_id,
                 "error": str(e)
             }
             asyncio.run(send_websocket_message(error_message, target_roles=["admin"]))

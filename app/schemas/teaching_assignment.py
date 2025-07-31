@@ -1,7 +1,7 @@
 # ==============================================================================
 # File: app/schemas/teaching_assignment.py
-# Deskripsi: Skema Pydantic untuk Penugasan Mengajar.
-# --- DITAMBAHKAN ---
+# Deskripsi: Skema Pydantic untuk Penugasan Mengajar (Updated with academic_period_id).
+# --- DIPERBARUI ---
 # ==============================================================================
 from pydantic import BaseModel, Field
 from typing import Optional, List, Literal, Dict, Any
@@ -14,18 +14,22 @@ from .expertise_program import ExpertiseProgramPublic
 from .classes import ClassPublic
 
 class TeachingAssignmentBase(BaseModel):
-    # academic_period_id: PyObjectId # Akan kita tambahkan nanti
+    academic_period_id: PyObjectId
     class_id: PyObjectId
     subject_id: PyObjectId
     teacher_id: PyObjectId
 
-class TeachingAssignmentCreate(TeachingAssignmentBase):
-    pass
+class TeachingAssignmentCreate(BaseModel):
+    # academic_period_id akan diisi otomatis dari current academic period
+    class_id: PyObjectId
+    subject_id: PyObjectId
+    teacher_id: PyObjectId
 
 class TeachingAssignmentUpdate(BaseModel):
     class_id: Optional[PyObjectId] = None
     subject_id: Optional[PyObjectId] = None
     teacher_id: Optional[PyObjectId] = None
+    # academic_period_id tidak bisa diubah setelah dibuat
 
 class TeachingAssignmentPublic(TeachingAssignmentBase):
     id: PyObjectId = Field(alias="_id")

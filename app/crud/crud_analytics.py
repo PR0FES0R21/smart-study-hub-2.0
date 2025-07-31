@@ -481,7 +481,7 @@ async def count_questions_by_teacher_id(db: AsyncIOMotorDatabase, teacher_id: st
         print(f"Error counting questions by teacher_id: {e}")
         return 0
 
-async def get_teacher_dashboard_stats(db: AsyncIOMotorDatabase, teacher_id: str) -> dict:
+async def get_teacher_dashboard_stats(db: AsyncIOMotorDatabase, academic_period: str, teacher_id: str) -> dict:
     """Main function untuk mendapatkan semua stats guru sekaligus"""
     # Check cache first
     cache_key = f"{TEACHER_DASHBOARD_CACHE_KEY}:{teacher_id}"
@@ -501,7 +501,7 @@ async def get_teacher_dashboard_stats(db: AsyncIOMotorDatabase, teacher_id: str)
     
     try:
         # Step 1: Get all teaching assignments for this teacher
-        assignments = await get_teaching_assignments_by_teacher_id(db, teacher_id)
+        assignments = await get_teaching_assignments_by_teacher_id(db, academic_period_id=ObjectId(academic_period), teacher_id=teacher_id)
         total_classes = len(assignments)
         
         if not assignments:

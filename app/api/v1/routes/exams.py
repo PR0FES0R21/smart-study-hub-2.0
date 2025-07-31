@@ -36,10 +36,12 @@ async def create_bulk_exams(
     criteria = bulk_exam_in.target_criteria
     target_assignments = await crud_teaching_assignments.find_assignments_by_criteria(
         db,
+        academic_period_id=active_period["_id"],
         subject_id=criteria.subject_id,
         grade_level=criteria.grade_level,
         expertise_id=criteria.expertise_id,
         class_id=criteria.class_id
+        
     )
 
     if not target_assignments:
@@ -84,7 +86,7 @@ async def create_quiz_or_daily_test(
     if not assignment or assignment["teacher_id"] != current_user["_id"]:
         raise HTTPException(status_code=403, detail="You can only create exams for your own assignments.")
 
-    exam_data_with_period = exam_in.model_copy(update={"academic_period_id": active_period["_id"]})
+    exam_data_with_period = exam_in.model_copy(update={"academic_period_id": ObjectId(active_period["_id"])})
     return await crud_exams.create_exam(db=db, exam=exam_data_with_period)
 
 @router.get("/", response_model=PaginatedExamResponse)
@@ -293,16 +295,19 @@ async def read_exam_details(
 async def get_teacher_exams(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher),
+    current_period: dict = Depends(deps.get_current_academic_period),
     academic_period_id: Optional[str] = Query(None),
     class_id: Optional[str] = Query(None),
     skip: int = Query(0),
     limit: int = Query(20, le=100)
 ):
     """Endpoint khusus guru untuk melihat ujian yang terkait dengan dia."""
+    current_period_id = academic_period_id if academic_period_id else current_period["_id"]
+
     result = await crud_exams.get_exams_by_teacher(
         db=db,
         teacher_id=str(current_user["_id"]),
-        academic_period_id=academic_period_id,
+        academic_period_id=current_period_id,
         class_id=class_id,
         skip=skip,
         limit=limit

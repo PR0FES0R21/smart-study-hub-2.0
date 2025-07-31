@@ -74,14 +74,26 @@ class BulkCompleteMessage(BaseModel):
     results: BulkCoordinationResponse
 
 class AvailableCoordinatorResponse(BaseModel):
-    coordination_assignment_id: str
+    # Coordinator info
     coordinator_id: str
     coordinator_name: str
+    coordinator_email: str
+    coordinator_phone: Optional[str] = None
+    
+    # Coordination assignment info
+    coordination_assignment_id: str
     subject_id: str
     subject_name: str
     subject_code: str
     grade_level: int
-    classes: List[str]  # List nama kelas yang diajar guru untuk subject+grade ini
+    
+    # Context info - kenapa user bisa submit ke koordinator ini
+    matching_reason: str  # "same_subject_grade" 
+    user_classes_in_subject: List[str]  # Kelas yang diajar user untuk subject+grade ini
+    coordinator_responsible_for: str  # "Koordinator Bahasa Indonesia Kelas 10"
+    
+    # Stats info (optional, bisa berguna)
+    total_teachers_under_coordination: Optional[int] = None
     
     class Config:
         from_attributes = True

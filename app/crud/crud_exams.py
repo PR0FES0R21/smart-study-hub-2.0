@@ -265,8 +265,6 @@ async def delete_exam_by_assignment_ids(
         logger.exception("Gagal menghapus exams berdasarkan assignment_ids.")
         return False
 
-
-
 # --- TAMBAHKAN DI CRUD EXAMS ---
 async def get_exams_by_teacher(
     db: AsyncIOMotorDatabase,
@@ -292,7 +290,7 @@ async def get_exams_by_teacher(
             raise HTTPException(status_code=400, detail="Invalid class ID")
         filters["class_id"] = ObjectId(class_id)
     
-    assignment_ids = await get_filtered_assignment_ids(db, filters)
+    assignment_ids = await get_filtered_assignment_ids(db, academic_period_id=academic_period_id, filters=filters)
     
     if not assignment_ids:
         return {"data": [], "total_items": 0}
@@ -344,7 +342,7 @@ async def get_exams_by_student(
         raise HTTPException(status_code=400, detail="Student has no assigned class")
     
     # Ambil semua assignment IDs untuk class_id ini
-    assignment_ids = await get_filtered_assignment_ids(db, {"class_id": class_id})
+    assignment_ids = await get_filtered_assignment_ids(db, academic_period_id=academic_period_id, filters={"class_id": class_id})
     
     if not assignment_ids:
         return {"data": [], "total_items": 0}
