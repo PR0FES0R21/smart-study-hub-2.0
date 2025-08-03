@@ -113,6 +113,7 @@ class TeacherBasic(BaseModel):
     """Schema untuk daftar guru sederhana (hanya ID dan nama)"""
     id: PyObjectId = Field(alias="_id")
     full_name: str
+    profile_picture_key: Optional[str] = None
     
     class Config:
         from_attributes = True

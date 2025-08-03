@@ -16,7 +16,7 @@ from app.schemas.coordination_assignment import (
     CoordinationAssignmentCreate, CoordinationAssignmentUpdate,
     CoordinationAssignmentPublic, CoordinationAssignmentFilter,
     BulkCoordinationRequest, BulkCoordinationResponse,
-    AvailableCoordinatorResponse
+    AvailableCoordinatorResponse, MyCoordinationResponse
 )
 from app.core.websocket import manager
 
@@ -237,6 +237,146 @@ async def get_available_coordinators_for_teacher(
     
     return available_coordinators
 
+@router.post("/bulk", response_model=BulkCoordinationResponse)
+async def bulk_coordination_operations(
+    request: BulkCoordinationRequest,
+    background_tasks: BackgroundTasks,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_admin),
+    default_academic_period: dict = Depends(deps.get_current_academic_period)
+):
+    """
+    Proses operasi koordinator secara massal dengan update real-time via WebSocket.
+    Mendukung operasi create, update, dan delete dalam satu request.
+    """
+    
+    if not request.operations:
+        raise HTTPException(status_code=400, detail="No operations provided")
+    
+    # Determine academic period
+    target_academic_period_id = request.academic_period_id or default_academic_period["_id"]
+    
+    # Validate operations first
+    for i, op in enumerate(request.operations):
+        if op.type in ["update", "delete"] and not op.id:
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Operation {i}: {op.type} requires id"
+            )
+        if op.type in ["create", "update"] and not op.data:
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Operation {i}: {op.type} requires data"
+            )
+    
+    # Process in background with WebSocket updates
+    background_tasks.add_task(
+        process_bulk_operations_with_progress,
+        db,
+        request.operations,
+        target_academic_period_id,
+        str(current_user["_id"])
+    )
+    
+    # Return immediate response
+    return BulkCoordinationResponse(
+        total=len(request.operations),
+        success=0,
+        failed=0,
+        errors=[],
+        processed_operations=[]
+    )
+
+@router.get("/my-coordinations", response_model=List[MyCoordinationResponse])
+async def get_my_coordinations(
+    academic_period_id: Optional[str] = Query(None, description="Filter by academic period ID"),
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_teacher),
+    default_academic_period: dict = Depends(deps.get_current_academic_period)
+):
+    """
+    Mendapatkan daftar mata pelajaran dan kelas yang dikoordinasi oleh teacher saat ini.
+    """
+    teacher_id = current_user["_id"]
+    
+    # Determine academic period to use
+    target_academic_period_id = None
+    if academic_period_id:
+        try:
+            target_academic_period_id = ObjectId(academic_period_id)
+        except:
+            raise HTTPException(status_code=400, detail="Invalid academic_period_id format")
+    else:
+        target_academic_period_id = ObjectId(default_academic_period["_id"])
+    
+    pipeline = [
+        # 1. Match coordination assignments untuk teacher ini di academic period yang ditentukan
+        {
+            "$match": {
+                "coordinator_id": ObjectId(teacher_id),
+                "academic_period_id": target_academic_period_id
+            }
+        },
+        
+        # 2. Join dengan subjects untuk mendapatkan detail mata pelajaran
+        {
+            "$lookup": {
+                "from": "subjects",
+                "localField": "subject_id",
+                "foreignField": "_id",
+                "as": "subject_info"
+            }
+        },
+        {"$unwind": "$subject_info"},
+        
+        # 3. Project hasil dengan format yang diinginkan
+        {
+            "$project": {
+                "coordination_assignment_id": "$_id",
+                "subject_id": "$subject_id",
+                "subject_name": "$subject_info.name",
+                "subject_code": "$subject_info.code", 
+                "subject_description": "$subject_info.description",
+                "grade_level": "$grade_level",
+                "academic_period_id": "$academic_period_id",
+                "coordination_title": {
+                    "$concat": [
+                        "Koordinator ",
+                        "$subject_info.name",
+                        " Kelas ",
+                        {"$toString": "$grade_level"}
+                    ]
+                }
+            }
+        },
+        
+        # 4. Sort berdasarkan nama mata pelajaran dan grade level
+        {
+            "$sort": {
+                "subject_name": 1,
+                "grade_level": 1
+            }
+        }
+    ]
+    
+    result = await db["coordination_assignments"].aggregate(pipeline).to_list(None)
+    
+    # Convert ObjectId to string untuk response
+    coordinations = []
+    for item in result:
+        coordinations.append({
+            "coordination_assignment_id": str(item["coordination_assignment_id"]),
+            "subject_id": str(item["subject_id"]),
+            "subject_name": item["subject_name"],
+            "subject_code": item["subject_code"],
+            "subject_description": item["subject_description"],
+            "grade_level": item["grade_level"],
+            "academic_period_id": str(item["academic_period_id"]),
+            "coordination_title": item["coordination_title"]
+        })
+    
+    return coordinations
+
 # ===== SINGLE OPERATIONS =====
 
 @router.post("/", response_model=CoordinationAssignmentPublic, status_code=status.HTTP_201_CREATED)
@@ -448,53 +588,3 @@ async def process_bulk_operations_with_progress(
     await manager.broadcast_to_roles(completion_message, target_roles=["admin"])
     
     return final_results
-
-@router.post("/bulk", response_model=BulkCoordinationResponse)
-async def bulk_coordination_operations(
-    request: BulkCoordinationRequest,
-    background_tasks: BackgroundTasks,
-    db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_admin),
-    default_academic_period: dict = Depends(deps.get_current_academic_period)
-):
-    """
-    Proses operasi koordinator secara massal dengan update real-time via WebSocket.
-    Mendukung operasi create, update, dan delete dalam satu request.
-    """
-    
-    if not request.operations:
-        raise HTTPException(status_code=400, detail="No operations provided")
-    
-    # Determine academic period
-    target_academic_period_id = request.academic_period_id or default_academic_period["_id"]
-    
-    # Validate operations first
-    for i, op in enumerate(request.operations):
-        if op.type in ["update", "delete"] and not op.id:
-            raise HTTPException(
-                status_code=400, 
-                detail=f"Operation {i}: {op.type} requires id"
-            )
-        if op.type in ["create", "update"] and not op.data:
-            raise HTTPException(
-                status_code=400, 
-                detail=f"Operation {i}: {op.type} requires data"
-            )
-    
-    # Process in background with WebSocket updates
-    background_tasks.add_task(
-        process_bulk_operations_with_progress,
-        db,
-        request.operations,
-        target_academic_period_id,
-        str(current_user["_id"])
-    )
-    
-    # Return immediate response
-    return BulkCoordinationResponse(
-        total=len(request.operations),
-        success=0,
-        failed=0,
-        errors=[],
-        processed_operations=[]
-    )

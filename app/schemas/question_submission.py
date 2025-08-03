@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
 from .base import PyObjectId
+from .question_bank import QuestionBankPublic
 
 class QuestionSubmissionBase(BaseModel):
     question_id: PyObjectId
@@ -30,4 +31,5 @@ class SubmissionStatusUpdate(BaseModel):
 
 class QuestionSubmissionPublic(QuestionSubmissionBase):
     id: PyObjectId = Field(alias="_id")
+    question_details: QuestionBankPublic
     class Config: from_attributes = True; arbitrary_types_allowed = True

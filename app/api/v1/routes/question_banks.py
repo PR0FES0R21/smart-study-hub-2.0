@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, status, Query
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List, Optional
 from datetime import datetime
+from bson import ObjectId
 
 from app.api.v1 import deps
 from app.crud import crud_question_banks, crud_coordination_assignments, crud_question_submissions
@@ -72,54 +73,139 @@ async def get_my_questions(
 
 @router.get("/accessible", response_model=List[QuestionBankPublic])
 async def get_accessible_questions(
-    purpose: Optional[str] = Query(None, description="Filter by purpose (e.g., 'UTS Ganjil 2025')"),
-    include_submitted: bool = Query(True, description="Include questions submitted for review"),
-    include_approved: bool = Query(True, description="Include approved questions from submissions"),
+    purpose: Optional[str] = Query(None, description="Filter by purpose (e.g., 'UTS 2025')"),
+    subject_id: Optional[str] = Query(None, description="Filter by subject"),
+    grade_level: Optional[int] = Query(None, description="Filter by grade level"),
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher),
     active_period: dict = Depends(deps.get_current_academic_period)
 ):
     """
     Mengambil semua soal yang bisa diakses oleh user:
-    - Soal milik sendiri
-    - Jika koordinator: soal yang di-submit untuk review
-    - Jika koordinator: soal dari paket yang sudah approved
+    1. Soal milik sendiri (semua)
+    2. Jika koordinator: soal yang di-submit ke koordinasi dia
     """
     teacher_id = current_user["_id"]
-    accessible_questions = {}  # Gunakan dict untuk menghindari duplikasi
+    period_id = active_period["_id"]
+    accessible_questions = {}  # Dict untuk avoid duplikasi
     
-    # 1. Selalu ambil soal milik sendiri
-    my_questions = await crud_question_banks.get_questions_by_teacher(db, teacher_id)
+    # 1. SELALU ambil soal milik sendiri
+    my_questions_filter = {"created_by_teacher_id": teacher_id}
+    
+    # Apply subject filter jika ada
+    if subject_id and ObjectId.is_valid(subject_id):
+        my_questions_filter["subject_id"] = ObjectId(subject_id)
+    
+    my_questions = await db["question_banks"].find(my_questions_filter).to_list(None)
+    
     for q in my_questions:
-        accessible_questions[str(q["_id"])] = {**q, "source": "own"}
-
-    # 2. Cek apakah user adalah koordinator
-    coordinations = await crud_coordination_assignments.get_coordinations_by_user(
-        db, teacher_id, active_period["_id"]
-    )
+        accessible_questions[str(q["_id"])] = {
+            **q,
+            "source": "own",
+            "access_reason": "owner"
+        }
+    
+    # 2. CEK apakah user adalah koordinator (pake function yang sama kayak /for-review)
+    coordinations = await crud_coordination_assignments.get_coordinations_by_user(db, teacher_id, period_id)
+    
+    # Apply filters untuk koordinasi jika ada
+    if coordinations and (subject_id or grade_level):
+        filtered_coordinations = []
+        for coord in coordinations:
+            include_coord = True
+            
+            if subject_id and ObjectId.is_valid(subject_id):
+                if coord["subject_id"] != ObjectId(subject_id):
+                    include_coord = False
+            
+            if grade_level and coord.get("grade_level") != grade_level:
+                include_coord = False
+                
+            if include_coord:
+                filtered_coordinations.append(coord)
+        
+        coordinations = filtered_coordinations
     
     if coordinations:
-        coordination_ids = [c["_id"] for c in coordinations]
+        # User adalah koordinator, ambil soal yang di-submit ke dia
+        coordination_ids = [coord["_id"] for coord in coordinations]
         
-        # 3. Ambil soal yang di-submit untuk review (jika koordinator)
-        if include_submitted and purpose:
-            submitted_questions = await crud_question_submissions.get_submitted_questions_with_details(
+        # Apply purpose filter - kalau purpose None, ambil semua
+        if not purpose:
+            # Kalau nggak ada purpose, ambil semua submissions dengan status submitted
+            all_submissions = []
+            for coord_id in coordination_ids:
+                submissions = await crud_question_submissions.get_submissions_for_coordinator(
+                    db, [coord_id], "", "submitted"  # Purpose kosong untuk ambil semua
+                )
+                all_submissions.extend(submissions)
+            submitted_questions = all_submissions
+        else:
+            # Pake function yang sama kayak /for-review
+            submitted_questions = await crud_question_submissions.get_submissions_for_coordinator(
                 db, coordination_ids, purpose, "submitted"
             )
-            for sq in submitted_questions:
-                question_data = {**sq["question_details"], "source": "submitted", "submission_id": sq["_id"]}
-                accessible_questions[str(sq["question_details"]["_id"])] = question_data
         
-        # 4. Ambil soal yang sudah approved (untuk paket soal)
-        if include_approved and purpose:
-            approved_questions = await crud_question_submissions.get_submitted_questions_with_details(
-                db, coordination_ids, purpose, "approved"
-            )
-            for aq in approved_questions:
-                question_data = {**aq["question_details"], "source": "approved", "submission_id": aq["_id"]}
-                accessible_questions[str(aq["question_details"]["_id"])] = question_data
+        for sq in submitted_questions:
+            question = sq["question_details"]
+            submission = sq
+            
+            question_key = str(question["_id"])
+            
+            # Jangan overwrite soal milik sendiri
+            if question_key not in accessible_questions:
+                accessible_questions[question_key] = {
+                    **question,
+                    "source": "submitted_to_coordination",
+                    "access_reason": "coordinator",
+                    "submission_id": submission["_id"],
+                    "submission_status": submission["status"],
+                    "submitted_by_teacher_id": submission["submitted_by_teacher_id"],
+                    "purpose": submission["purpose"],
+                    "submitted_at": submission["created_at"]
+                }
     
-    return list(accessible_questions.values())
+    # 3. Apply grade_level filter jika diperlukan
+    result_questions = list(accessible_questions.values())
+    
+    # Filter grade_level butuh logic khusus karena question_banks tidak punya grade_level langsung
+    if grade_level:
+        filtered_questions = []
+        
+        for q in result_questions:
+            include_question = False
+            
+            if q.get("source") == "own":
+                # Untuk soal milik sendiri, cek apakah user mengajar di grade_level tersebut
+                # dengan subject_id yang sama
+                teaching_check = await db["teaching_assignments"].find_one({
+                    "teacher_id": teacher_id,
+                    "academic_period_id": period_id,
+                    "subject_id": q["subject_id"]
+                })
+                
+                if teaching_check:
+                    # Ambil class details untuk cek grade_level
+                    class_details = await db["classes"].find_one({
+                        "_id": teaching_check["class_id"]
+                    })
+                    
+                    if class_details and class_details.get("grade_level") == grade_level:
+                        include_question = True
+            
+            elif q.get("source") == "submitted_to_coordination":
+                # Untuk soal yang di-submit, cek coordination assignment
+                for coord in coordinations:
+                    if coord.get("grade_level") == grade_level and coord["subject_id"] == q["subject_id"]:
+                        include_question = True
+                        break
+            
+            if include_question:
+                filtered_questions.append(q)
+        
+        result_questions = filtered_questions
+    
+    return result_questions
 
 @router.post("/by-ids", response_model=List[QuestionBankPublic])
 async def read_questions_by_ids(
@@ -166,7 +252,7 @@ async def submit_questions_for_review(
             "question_id": q_id,
             "submitted_by_teacher_id": current_user["_id"],
             "coordination_assignment_id": submission_in.coordination_assignment_id,
-            "academic_period_id": active_period["_id"],
+            "academic_period_id": ObjectId(active_period["_id"]),
             "purpose": submission_in.purpose,
             "status": "submitted",
             "created_at": datetime.utcnow(),

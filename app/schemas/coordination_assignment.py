@@ -97,3 +97,16 @@ class AvailableCoordinatorResponse(BaseModel):
     
     class Config:
         from_attributes = True
+
+class MyCoordinationResponse(BaseModel):
+    coordination_assignment_id: str
+    subject_id: str
+    subject_name: str
+    subject_code: str
+    subject_description: Optional[str] = None
+    grade_level: int
+    academic_period_id: str
+    coordination_title: str
+    
+    class Config:
+        from_attributes = True
