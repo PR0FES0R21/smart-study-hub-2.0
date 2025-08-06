@@ -3,7 +3,7 @@
 # Deskripsi: Skema Pydantic untuk Ujian.
 # --- DITAMBAHKAN ---
 # ==============================================================================
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from typing import Optional, List, TYPE_CHECKING
 from datetime import datetime
 from .base import PyObjectId
@@ -28,6 +28,7 @@ class ExamBase(BaseModel):
     status: str = "pending_questions" # Default status
     settings: ExamSettings = Field(default_factory=ExamSettings)
     academic_period_id: PyObjectId
+
 
 class ExamCreate(ExamBase):
     teaching_assignment_id: PyObjectId
@@ -66,6 +67,7 @@ class BulkExamCreate(BaseModel):
     settings: ExamSettings = Field(default_factory=ExamSettings)
     target_criteria: TargetCriteria
     proctor_ids: List[PyObjectId] = []
+
 
 class ExamQuestionUpdate(BaseModel):
     question_ids: List[PyObjectId]

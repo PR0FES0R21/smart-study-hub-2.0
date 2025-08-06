@@ -29,28 +29,141 @@ async def create_exam(db: AsyncIOMotorDatabase, exam: ExamCreate) -> dict:
     return created_exam
 
 async def start_exam_session(db: AsyncIOMotorDatabase, exam: dict, student_id: ObjectId) -> dict:
-    """Membuat sesi ujian baru untuk siswa, lengkap dengan peta acak."""
+    """
+    Membuat sesi ujian baru untuk siswa, lengkap dengan peta acak.
+    PERBAIKAN: Tambah validasi komprehensif + proper shuffle implementation
+    """
     
-    # Cek jika siswa sudah punya sesi aktif untuk ujian ini
+    # === VALIDASI 1: Waktu Pelaksanaan Ujian ===
+    now = datetime.utcnow()
+    if now < exam["availability_start_time"]:
+        raise HTTPException(
+            status_code=400, 
+            detail="Ujian belum dimulai. Silakan tunggu waktu yang telah ditentukan."
+        )
+    if now > exam["availability_end_time"]:
+        raise HTTPException(
+            status_code=400, 
+            detail="Waktu ujian telah berakhir. Anda tidak dapat lagi mengerjakan ujian ini."
+        )
+    
+    # === VALIDASI 2: Status Ujian ===
+    if exam["status"] != "ongoing":
+        if exam["status"] == "pending_questions":
+            raise HTTPException(status_code=400, detail="Ujian belum siap. Soal belum ditambahkan.")
+        elif exam["status"] == "ready":
+            raise HTTPException(status_code=400, detail="Ujian belum dimulai oleh pengawas.")
+        elif exam["status"] == "completed":
+            raise HTTPException(status_code=400, detail="Ujian telah selesai.")
+        else:
+            raise HTTPException(status_code=400, detail="Status ujian tidak valid untuk dikerjakan.")
+    
+    # === VALIDASI 3: Profil Siswa ===
+    student_profile = await db["profiles"].find_one({"user_id": student_id})
+    if not student_profile:
+        raise HTTPException(
+            status_code=404, 
+            detail="Profil siswa tidak ditemukan. Silakan hubungi administrator."
+        )
+    
+    if not student_profile.get("class_id"):
+        raise HTTPException(
+            status_code=400, 
+            detail="Siswa belum terdaftar di kelas manapun. Silakan hubungi administrator."
+        )
+    
+    # === VALIDASI 4: Kesesuaian Kelas ===
+    assignment = await db["teaching_assignments"].find_one({"_id": exam["teaching_assignment_id"]})
+    if not assignment:
+        raise HTTPException(status_code=404, detail="Penugasan mengajar tidak ditemukan.")
+    
+    if assignment["class_id"] != student_profile["class_id"]:
+        raise HTTPException(
+            status_code=403, 
+            detail="Anda tidak memiliki akses ke ujian ini. Ujian ini diperuntukkan untuk kelas lain."
+        )
+    
+    # === VALIDASI 5: Periode Akademik ===
+    if exam.get("academic_period_id") != assignment.get("academic_period_id"):
+        raise HTTPException(
+            status_code=400, 
+            detail="Ujian tidak sesuai dengan periode akademik aktif."
+        )
+    
+    # === VALIDASI 6: Cek Existing Session ===
     existing_session = await db["exam_sessions"].find_one({
         "exam_id": exam["_id"],
         "student_id": student_id,
-        "status": "ongoing"
+        "status": {"$in": ["ongoing", "submitted", "graded"]}
     })
+    
     if existing_session:
-        return existing_session # Kembalikan sesi yang sudah ada jika belum disubmit
-
-    # --- Membuat Peta Acak ---
+        if existing_session["status"] in ["submitted", "graded"]:
+            raise HTTPException(
+                status_code=400, 
+                detail="Anda sudah mengerjakan ujian ini sebelumnya."
+            )
+        # Jika status ongoing, kembalikan session yang sudah ada
+        return existing_session
+    
+    # === VALIDASI 7: Cek Soal Tersedia ===
     question_ids = exam.get("question_ids", [])
-    if exam.get("settings", {}).get("shuffle_questions", False):
-        random.shuffle(question_ids)
-
+    if not question_ids:
+        raise HTTPException(
+            status_code=400, 
+            detail="Ujian belum memiliki soal. Silakan hubungi guru pengampu."
+        )
+    
+    # Validasi apakah semua soal masih ada di databasee
+    question_count = await db["question_banks"].count_documents({"_id": {"$in": question_ids}})
+    if question_count != len(question_ids):
+        logger.warning(f"Some questions missing for exam {exam['_id']}, expected {len(question_ids)}, found {question_count}")
+        raise HTTPException(
+            status_code=500, 
+            detail="Beberapa soal ujian tidak tersedia. Silakan hubungi administrator."
+        )
+    
+    # === MEMBUAT SESSION DENGAN PROPER SHUFFLE ===
+    exam_settings = exam.get("settings", {})
+    shuffle_questions = exam_settings.get("shuffle_questions", False)
+    shuffle_options = exam_settings.get("shuffle_options", False)
+    
+    # 1. Shuffle questions jika diaktifkan
+    working_question_ids = question_ids.copy()  # Copy to avoid modifying original
+    if shuffle_questions:
+        random.shuffle(working_question_ids)
+    
+    # 2. Fetch questions dan siapkan shuffle options
+    questions_cursor = db["question_banks"].find({"_id": {"$in": working_question_ids}})
+    questions_data = {q["_id"]: q for q in await questions_cursor.to_list(len(working_question_ids))}
+    
+    # 3. Build question map dengan shuffled options
     question_map = []
-    for i, q_id in enumerate(question_ids):
-        question_map.append(QuestionMapItem(position=i + 1, question_id=q_id))
-
-    # (Opsional: Di sini kita bisa menambahkan logika untuk mengacak opsi jawaban)
-
+    for i, q_id in enumerate(working_question_ids):
+        if q_id not in questions_data:
+            logger.error(f"Question {q_id} not found in database")
+            continue
+            
+        question = questions_data[q_id]
+        shuffled_option_ids = None
+        
+        # Shuffle options jika diaktifkan dan ada options
+        if shuffle_options and question.get("options"):
+            original_options = question["options"]
+            # Buat list ID options dalam urutan asli
+            original_option_ids = [opt["id"] for opt in original_options]
+            # Shuffle urutan ID-nya
+            shuffled_option_ids = original_option_ids.copy()
+            random.shuffle(shuffled_option_ids)
+        
+        question_map_item = QuestionMapItem(
+            position=i + 1,
+            question_id=q_id,
+            shuffled_option_ids=shuffled_option_ids
+        )
+        question_map.append(question_map_item)
+    
+    # 4. Create session
     session_data = ExamSessionBase(
         exam_id=exam["_id"],
         student_id=student_id,
@@ -60,6 +173,8 @@ async def start_exam_session(db: AsyncIOMotorDatabase, exam: dict, student_id: O
     session_dict = session_data.model_dump(mode='python')
     result = await db["exam_sessions"].insert_one(session_dict)
     created_session = await db["exam_sessions"].find_one({"_id": result.inserted_id})
+    
+    logger.info(f"New exam session created: {result.inserted_id} for student {student_id} with shuffle_questions={shuffle_questions}, shuffle_options={shuffle_options}")
     return created_session
 
 
@@ -331,6 +446,7 @@ async def get_exams_by_student(
     db: AsyncIOMotorDatabase,
     student_profile: dict,
     academic_period_id: Optional[str] = None,
+    status: Optional[str] = None,
     skip: int = 0,
     limit: int = 20
 ) -> Dict[str, Any]:
@@ -343,6 +459,7 @@ async def get_exams_by_student(
     
     # Ambil semua assignment IDs untuk class_id ini
     assignment_ids = await get_filtered_assignment_ids(db, academic_period_id=academic_period_id, filters={"class_id": class_id})
+    print(assignment_ids)
     
     if not assignment_ids:
         return {"data": [], "total_items": 0}
@@ -360,6 +477,10 @@ async def get_exams_by_student(
         if not ObjectId.is_valid(academic_period_id):
             raise HTTPException(status_code=400, detail="Invalid academic period ID")
         pipeline.append({"$match": {"academic_period_id": ObjectId(academic_period_id)}})
+    
+    # Filter berdasarkan status jika diberikan
+    if status and status != 'all':
+        pipeline.append({"$match": {"status": status}})
     
     # Hitung total
     total_pipeline = pipeline.copy()

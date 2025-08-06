@@ -23,6 +23,21 @@ class InteractionLogItem(BaseModel):
     action: str # e.g., "answer_selected", "answer_changed"
     student_answer: Any
 
+class ViolationLogItem(BaseModel):
+    violation_id: str
+    type: str  # "tab_switch", "paste_detected", "time_anomaly", "right_click", "dev_tools", etc
+    timestamp: datetime
+    context: Optional[Dict[str, Any]] = {}  # Additional context data
+    auto_detected: bool = True
+    severity: str = "medium"  # "low", "medium", "high", "critical"
+    details: Optional[str] = None
+
+class SubmitAllPayload(BaseModel):
+    answers: Dict[str, Any]  # {"question_id": "answer_id" atau null}
+    interaction_logs: List[InteractionLogItem]
+    violations: List[ViolationLogItem] = []  # Dedicated violations field
+    client_metadata: Optional[Dict[str, Any]] = {}
+
 class ExamSessionBase(BaseModel):
     exam_id: PyObjectId
     student_id: PyObjectId

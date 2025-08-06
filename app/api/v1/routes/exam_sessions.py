@@ -9,7 +9,10 @@ from typing import List
 
 from app.api.v1 import deps
 from app.crud import crud_exam_sessions, crud_exams
-from app.schemas.exam_session import AnswerUpdate, QuestionForStudent, ExamSessionPublic
+from app.schemas.exam_session import (
+    AnswerUpdate, QuestionForStudent, ExamSessionPublic, 
+    SubmitAllPayload
+)
 
 router = APIRouter()
 
@@ -97,3 +100,49 @@ async def get_session_result(
         raise HTTPException(status_code=403, detail="Results are not available for this exam")
 
     return session
+
+def calculate_fraud_score(violations: List[dict]) -> float:
+    """
+    Calculate fraud score based on violations (0.0 - 1.0).
+    Higher score = more suspicious.
+    """
+    if not violations:
+        return 0.0
+    
+    severity_weights = {
+        "low": 0.1,
+        "medium": 0.3, 
+        "high": 0.6,
+        "critical": 1.0
+    }
+    
+    total_weight = sum(severity_weights.get(v.get("severity", "medium"), 0.3) for v in violations)
+    violation_count_penalty = min(len(violations) * 0.05, 0.3)  # Cap at 0.3
+    
+    return min(total_weight + violation_count_penalty, 1.0)
+
+@router.post("/{session_id}/submit-all", response_model=ExamSessionPublic)
+async def submit_exam_with_full_data(
+    session_id: str,
+    payload: SubmitAllPayload,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_user)
+):
+    """
+    Submit ujian dengan data lengkap: answers + interaction logs + violations + metadata.
+    Endpoint baru untuk approach 'submit all' dengan fraud detection.
+    """
+    session = await crud_exam_sessions.get_session_by_id(db, session_id)
+    if not session or session["student_id"] != current_user["_id"]:
+        raise HTTPException(status_code=404, detail="Exam session not found or not owned by user")
+    
+    if session["status"] != "ongoing":
+        raise HTTPException(status_code=400, detail="Exam has already been submitted")
+
+    exam = await crud_exams.get_exam_by_id(db, str(session["exam_id"]))
+    if not exam:
+        raise HTTPException(status_code=404, detail="Associated exam not found")
+
+    # Process submission dengan data lengkap + fraud detection
+    return await crud_exam_sessions.submit_and_grade_session_v2(db, session, exam, payload)
+

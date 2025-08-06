@@ -46,8 +46,12 @@ async def get_filtered_assignment_ids(
     if filters.get("teacher_id"):
         query["teacher_id"] = ObjectId(filters["teacher_id"])
     
+    print(query)
+    
     cursor = db["teaching_assignments"].find(query, {"_id": 1})
     all_ids = [str(doc["_id"]) for doc in await cursor.to_list(None)]
+
+    print(all_ids)
     
     if all_ids:
         await set_cache(cache_key, all_ids)

@@ -8,8 +8,25 @@ from .config import settings
 
 # --- Koneksi MongoDB ---
 # Membuat satu instance client yang akan digunakan kembali
-db_client = AsyncIOMotorClient(settings.DATABASE_URL)
-# Mendapatkan objek database dari client
+from motor.motor_asyncio import AsyncIOMotorClient
+
+db_client = AsyncIOMotorClient(
+    settings.DATABASE_URL,
+    # Connection Pool Settings
+    maxPoolSize=50,           # Max 50 koneksi aktif (sesuaikan dengan load)
+    minPoolSize=10,           # Min 10 koneksi standby
+    maxIdleTimeMS=30000,      # Tutup koneksi idle setelah 30 detik
+    waitQueueTimeoutMS=5000,  # Timeout antrian 5 detik
+    # Server Selection
+    serverSelectionTimeoutMS=3000,  # Timeout server selection 3 detik
+    connectTimeoutMS=3000,          # Timeout koneksi 3 detik
+    socketTimeoutMS=10000,          # Timeout socket 10 detik
+    # Read/Write Concerns
+    retryWrites=True,
+    retryReads=True,
+    # Compression (opsional, bisa hemat bandwidth)
+    compressors="snappy,zlib"
+)
 db = db_client[settings.DATABASE_NAME]
 
 # --- Koneksi Redis ---

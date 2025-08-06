@@ -28,6 +28,7 @@ async def create_bulk_exams(
     current_user: dict = Depends(deps.get_current_active_admin),
     active_period: dict = Depends(deps.get_current_academic_period)
 ):
+    print(bulk_exam_in)
     
     """
     Membuat ujian resmi secara massal untuk target tertentu.
@@ -216,7 +217,7 @@ async def update_existing_exam(
         raise HTTPException(status_code=403, detail="Not authorized to modify this exam")
 
     # Validasi tambahan: Cek apakah guru mencoba mengubah tipe ujian official_uts atau official_uas menjadi tipe lain
-    if not is_admin and exam["type"] in ["official_uts", "official_uas"] and exam_in.type != exam["type"]:
+    if not is_admin and exam["exam_type"] in ["official_uts", "official_uas"] and exam_in.exam_type != exam["exam_type"]:
         raise HTTPException(status_code=403, detail="Tidak dapat mengubah tipe ujian official_uts atau official_uas menjadi tipe lain")
 
     updated_exam = await crud_exams.update_exam(db, exam_id=exam_id, exam_update=exam_in)
@@ -329,10 +330,14 @@ async def get_student_exams(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_user),
     academic_period_id: Optional[str] = Query(None),
+    status: Optional[str] = Query(None, description="Filter by exam status (pending_questions, ready, ongoing, completed, etc.)"),
     skip: int = Query(0),
     limit: int = Query(20, le=100)
 ):
-    """Endpoint khusus siswa untuk melihat ujian yang terkait dengan kelasnya."""
+    """
+    Endpoint khusus siswa untuk melihat ujian yang terkait dengan kelasnya.
+    Parameter status: all, pending_questions, ready, ongoing, completed
+    """
     student_profile = await db["profiles"].find_one({"user_id": current_user["_id"]})
     if not student_profile:
         raise HTTPException(status_code=404, detail="Student profile not found")
@@ -341,6 +346,7 @@ async def get_student_exams(
         db=db,
         student_profile=student_profile,
         academic_period_id=academic_period_id,
+        status=status,
         skip=skip,
         limit=limit
     )
