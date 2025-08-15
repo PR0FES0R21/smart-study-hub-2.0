@@ -250,7 +250,7 @@ class QuestionRepository:
             }
         ]
         
-        result = await self.db["questions"].aggregate(
+        result = await self.db["question_banks"].aggregate(
             pipeline, session=session
         ).to_list(1)
         
@@ -362,7 +362,7 @@ class QuestionSetService:
             "status": QuestionSetStatus.DRAFT,
             "is_public": qset.is_public,
             "access_permissions": {
-                "can_view": [],
+                "can_view": [coordinator_id],
                 "can_edit": [coordinator_id],
                 "can_manage_questions": [coordinator_id],
                 "can_publish": [coordinator_id]
@@ -738,7 +738,7 @@ class QuestionSetService:
         }
     
     def _build_detail_pipeline(self, question_set_id: ObjectId, user_id: ObjectId) -> List[Dict[str, Any]]:
-        """Build detailed aggregation pipeline with all lookups - FIXED VERSION"""
+        """Build detailed aggregation pipeline with all lookups - FIXED VERSION with permission_holders"""
         return [
             {"$match": {"_id": question_set_id}},
             
@@ -764,6 +764,46 @@ class QuestionSetService:
             },
             {"$unwind": {"path": "$creator_profile", "preserveNullAndEmptyArrays": True}},
             
+            # NEW: Lookup permission holders for can_view
+            {
+                "$lookup": {
+                    "from": "profiles",
+                    "localField": "access_permissions.can_view",
+                    "foreignField": "user_id",
+                    "as": "can_view_profiles"
+                }
+            },
+            
+            # NEW: Lookup permission holders for can_edit
+            {
+                "$lookup": {
+                    "from": "profiles",
+                    "localField": "access_permissions.can_edit",
+                    "foreignField": "user_id",
+                    "as": "can_edit_profiles"
+                }
+            },
+            
+            # NEW: Lookup permission holders for can_manage_questions
+            {
+                "$lookup": {
+                    "from": "profiles",
+                    "localField": "access_permissions.can_manage_questions",
+                    "foreignField": "user_id",
+                    "as": "can_manage_questions_profiles"
+                }
+            },
+            
+            # NEW: Lookup permission holders for can_publish
+            {
+                "$lookup": {
+                    "from": "profiles",
+                    "localField": "access_permissions.can_publish",
+                    "foreignField": "user_id",
+                    "as": "can_publish_profiles"
+                }
+            },
+            
             # FIXED: Add variables to hold these values for reuse in projection
             {
                 "$addFields": {
@@ -772,7 +812,7 @@ class QuestionSetService:
                 }
             },
             
-            # Project with FIXED permissions calculation
+            # Project with FIXED permissions calculation AND permission_holders
             {
                 "$project": {
                     "_id": 1,
@@ -801,6 +841,54 @@ class QuestionSetService:
                         "_id": "$created_by_coordinator_id",
                         "full_name": "$creator_profile.full_name",
                         "profile_picture_url": "$creator_profile.profile_picture_url"
+                    },
+                    
+                    # NEW: Permission holders with user details
+                    "permission_holders": {
+                        "can_view": {
+                            "$map": {
+                                "input": "$can_view_profiles",
+                                "as": "profile",
+                                "in": {
+                                    "_id": "$$profile.user_id",
+                                    "full_name": "$$profile.full_name",
+                                    "profile_picture_url": "$$profile.profile_picture_url"
+                                }
+                            }
+                        },
+                        "can_edit": {
+                            "$map": {
+                                "input": "$can_edit_profiles",
+                                "as": "profile",
+                                "in": {
+                                    "_id": "$$profile.user_id",
+                                    "full_name": "$$profile.full_name",
+                                    "profile_picture_url": "$$profile.profile_picture_url"
+                                }
+                            }
+                        },
+                        "can_manage_questions": {
+                            "$map": {
+                                "input": "$can_manage_questions_profiles",
+                                "as": "profile",
+                                "in": {
+                                    "_id": "$$profile.user_id",
+                                    "full_name": "$$profile.full_name",
+                                    "profile_picture_url": "$$profile.profile_picture_url"
+                                }
+                            }
+                        },
+                        "can_publish": {
+                            "$map": {
+                                "input": "$can_publish_profiles",
+                                "as": "profile",
+                                "in": {
+                                    "_id": "$$profile.user_id",
+                                    "full_name": "$$profile.full_name",
+                                    "profile_picture_url": "$$profile.profile_picture_url"
+                                }
+                            }
+                        }
                     },
                     
                     "current_user_permissions": {
@@ -1067,7 +1155,7 @@ async def manage_permissions(
     
     service = get_question_set_service(db)
     question_set = await service.qset_repo.find_by_id_or_raise(question_set_id)
-    
+
     # Only creator can manage permissions
     checker = PermissionChecker(question_set, requester_user_id)
     if not checker.is_creator():
@@ -1088,9 +1176,9 @@ async def manage_permissions(
         if permission in access_permissions:
             current_list = access_permissions[permission]
             
-            if action == "add" and target_user_id not in current_list:
+            if action == "grant" and target_user_id not in current_list:
                 current_list.append(target_user_id)
-            elif action == "remove" and target_user_id in current_list:
+            elif action == "revoke" and target_user_id in current_list:
                 current_list.remove(target_user_id)
     
     # Update database

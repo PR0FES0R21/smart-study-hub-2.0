@@ -315,6 +315,7 @@ async def manage_question_set_permissions_enhanced(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher)
 ):
+    print(permission_data)
     """
     Manage permissions with enhanced response showing all permission holders.
     """
