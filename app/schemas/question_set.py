@@ -91,12 +91,23 @@ class PermissionHolders(BaseModel):
     can_publish: List[TeacherBasic] = []
 
 class CurrentUserPermissions(BaseModel):
-    """Current user's permissions on question set"""
+    """Enhanced current user permissions dengan grup info"""
     can_view: bool = False
     can_edit: bool = False
     can_manage_questions: bool = False
     can_publish: bool = False
+    can_delete: bool = False  # NEW
     is_creator: bool = False
+    
+    # Usage validation
+    is_used_in_exams: bool = False  # NEW
+    total_exams_using: int = 0      # NEW
+    
+    # Group information
+    coordinator_id: Optional[str] = None     # NEW
+    coordinator_name: Optional[str] = None   # NEW
+    is_same_coordinator: bool = False        # NEW
+    group_access_reason: Optional[str] = None # NEW: "creator", "same_coordinator", "explicit_permission", "public"
 
 class QuestionSetDetailedPublic(BaseModel):
     """Detailed question set with all permission info"""
@@ -141,14 +152,56 @@ class QuestionSetSummaryEnhanced(BaseModel):
     subject: Optional[SubjectBase]
     created_by: Optional[TeacherBasic]
     
-    # User permissions
+    # Enhanced permissions
     can_edit: bool = False
     can_manage_questions: bool = False
+    can_delete: bool = False  # NEW
+    can_duplicate: bool = False  # NEW
     is_creator: bool = False
+    
+    # Usage info
+    is_used_in_exams: bool = False  # NEW
+    total_exams_using: int = 0      # NEW
+    
+    # Group info
+    group_info: Optional[Dict[str, Any]] = None  # NEW
+    access_reason: str = "unknown"               # NEW
     
     class Config:
         from_attributes = True
         validate_by_name = True
+
+# New schemas for enhanced functionality
+class BulkGroupPermissionManagement(BaseModel):
+    """Bulk permission management untuk seluruh grup koordinator"""
+    question_set_ids: List[PyObjectId]
+    coordinator_id: PyObjectId  # Target coordinator group
+    permissions: List[str]      # ["edit", "manage_questions", "publish"]
+    action: str                 # "grant" or "revoke"
+    apply_to_all_teachers: bool = True  # Apply to all teachers under coordinator
+
+class QuestionSetDeleteRequest(BaseModel):
+    """Request schema untuk delete question set"""
+    force: bool = False  # Force delete even if used in exams
+    reason: Optional[str] = None  # Reason for deletion
+
+class GroupInfo(BaseModel):
+    """Group information untuk question set access"""
+    coordinator_id: str
+    coordinator_name: str
+    subject_id: str
+    subject_name: str
+    grade_level: int
+    total_teachers: int = 0
+    is_user_in_group: bool = False
+
+class UsageInfo(BaseModel):
+    """Usage information untuk question set"""
+    total_exams: int = 0
+    active_exams: int = 0
+    completed_exams: int = 0
+    scheduled_exams: int = 0
+    can_delete: bool = True
 
 class QuestionSetSummary(BaseModel):
     id: PyObjectId = Field(alias="_id")

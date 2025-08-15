@@ -494,6 +494,71 @@ class QuestionSetService:
                 
                 return updated_qset
     
+    async def soft_delete_question_set(
+        self,
+        question_set_id: ObjectId,
+        user_id: ObjectId,
+        reason: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """Soft delete question set with validation"""
+        
+        question_set = await self.qset_repo.find_by_id_or_raise(question_set_id)
+        
+        # Check permissions - only creator can delete
+        checker = PermissionChecker(question_set, user_id)
+        if not checker.is_creator():
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Only creator can delete question set"
+            )
+        
+        # Soft delete by updating status to archived
+        update_data = {
+            "status": QuestionSetStatus.ARCHIVED,
+            "archived_at": datetime.utcnow(),
+            "archived_by": user_id,
+            "archive_reason": reason or "Deleted by creator"
+        }
+        
+        updated_qset = await self.qset_repo.update_atomic(question_set_id, update_data)
+        
+        # Invalidate caches
+        await self._invalidate_question_set_caches(user_id, question_set_id)
+        
+        return updated_qset
+    
+    async def get_usage_info(
+        self,
+        question_set_id: ObjectId
+    ) -> Dict[str, Any]:
+        """Get usage information for question set"""
+        
+        # Get exam usage statistics
+        pipeline = [
+            {"$match": {"question_set_id": question_set_id}},
+            {
+                "$group": {
+                    "_id": "$status",
+                    "count": {"$sum": 1}
+                }
+            }
+        ]
+        
+        usage_stats = await self.db["exams"].aggregate(pipeline).to_list(None)
+        usage_by_status = {stat["_id"]: stat["count"] for stat in usage_stats}
+        
+        total_exams = sum(usage_by_status.values())
+        active_exams = usage_by_status.get("active", 0) + usage_by_status.get("scheduled", 0)
+        
+        return {
+            "total_exams": total_exams,
+            "active_exams": active_exams,
+            "completed_exams": usage_by_status.get("completed", 0),
+            "scheduled_exams": usage_by_status.get("scheduled", 0),
+            "can_delete": active_exams == 0,
+            "usage_by_status": usage_by_status
+        }
+    
     # Helper methods
     
     def _prepare_filters(self, subject_id, grade_level, status, search, is_public) -> Dict[str, Any]:
@@ -522,16 +587,21 @@ class QuestionSetService:
         else:
             raise ValueError(f"Invalid operation: {operation}")
     
-    async def _get_user_teaching_cached(self, user_id: ObjectId) -> List[Dict[str, Any]]:
-        """Get user teaching assignments with caching"""
+    async def _get_user_group_access_with_coordinator(self, user_id: ObjectId) -> List[Dict[str, Any]]:
+        """
+        Get user group access berdasarkan koordinator yang sama.
+        Ini adalah CORE FIX untuk konsep "satu grup".
+        """
         cache_key = CacheKeys.user_teaching(user_id)
         cached_result = await get_cache(cache_key)
         if cached_result:
             return cached_result
         
-        # Query teaching assignments with grade levels
         pipeline = [
+            # 1. Match teaching assignments user
             {"$match": {"teacher_id": user_id}},
+            
+            # 2. Get class info untuk grade_level
             {
                 "$lookup": {
                     "from": "classes",
@@ -541,30 +611,70 @@ class QuestionSetService:
                 }
             },
             {"$unwind": "$class_info"},
+            
+            # 3. CRITICAL: Get coordination info untuk validasi grup
+            {
+                "$lookup": {
+                    "from": "coordination_assignments",
+                    "let": {
+                        "subject_id": "$subject_id",
+                        "grade_level": "$class_info.grade_level",
+                        "academic_period": "$academic_period_id"
+                    },
+                    "pipeline": [
+                        {
+                            "$match": {
+                                "$expr": {
+                                    "$and": [
+                                        {"$eq": ["$subject_id", "$$subject_id"]},
+                                        {"$eq": ["$grade_level", "$$grade_level"]},
+                                        {"$eq": ["$academic_period_id", "$$academic_period"]}
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "as": "coordinator_info"
+                }
+            },
+            {"$unwind": {"path": "$coordinator_info", "preserveNullAndEmptyArrays": True}},
+            
+            # 4. Project dengan coordinator_id sebagai grup identifier
             {
                 "$project": {
                     "subject_id": 1,
-                    "grade_level": "$class_info.grade_level"
+                    "grade_level": "$class_info.grade_level",
+                    "coordinator_id": "$coordinator_info.coordinator_id",  # KEY ADDITION
+                    "academic_period_id": 1,
+                    "has_coordinator": {"$cond": [{"$ifNull": ["$coordinator_info.coordinator_id", False]}, True, False]}
                 }
-            }
+            },
+            
+            # 5. Only include assignments that have coordinators
+            {"$match": {"has_coordinator": True}}
         ]
         
         assignments = await self.db["teaching_assignments"].aggregate(pipeline).to_list(None)
         
-        # Cache for 30 minutes
+        # Cache dengan coordinator info
         await set_cache(cache_key, assignments, ttl=CacheConfig.TEACHING_ASSIGNMENTS_TTL)
         
         return assignments
+
+    # Keep backward compatibility
+    async def _get_user_teaching_cached(self, user_id: ObjectId) -> List[Dict[str, Any]]:
+        """Backward compatibility wrapper"""
+        return await self._get_user_group_access_with_coordinator(user_id)
     
     def _build_question_sets_pipeline(
-        self, 
-        user_id: ObjectId, 
-        user_subjects_grades: List[Dict[str, Any]], 
-        filters: Dict[str, Any], 
-        page: int, 
+        self,
+        user_id: ObjectId,
+        user_groups: List[Dict[str, Any]],  # RENAMED from user_subjects_grades
+        filters: Dict[str, Any],
+        page: int,
         limit: int
     ) -> Dict[str, List[Dict[str, Any]]]:
-        """Build optimized aggregation pipeline"""
+        """Build pipeline dengan GROUP-BASED access control"""
         
         # Build match conditions
         match_conditions = {}
@@ -580,26 +690,30 @@ class QuestionSetService:
         if filters.get("search"):
             match_conditions["name"] = {"$regex": filters["search"], "$options": "i"}
         
-        # Access control conditions
+        # ENHANCED: Group-based access conditions
         access_conditions = [
             {"is_public": True},
             {"created_by_coordinator_id": user_id}
         ]
         
-        # Teaching assignment access
-        if user_subjects_grades:
-            teaching_conditions = [
-                {
-                    "is_public": False,
-                    "subject_id": sg["subject_id"],
-                    "grade_level": sg["grade_level"]
-                }
-                for sg in user_subjects_grades
-            ]
-            if teaching_conditions:
-                access_conditions.append({"$or": teaching_conditions})
+        # GROUP ACCESS: Hanya yang satu koordinator
+        if user_groups:
+            group_conditions = []
+            for group in user_groups:
+                if group.get("coordinator_id"):  # Only if has coordinator
+                    group_conditions.append({
+                        "$and": [
+                            {"is_public": False},
+                            {"subject_id": group["subject_id"]},
+                            {"grade_level": group["grade_level"]},
+                            {"created_by_coordinator_id": group["coordinator_id"]}  # KEY VALIDATION
+                        ]
+                    })
+            
+            if group_conditions:
+                access_conditions.append({"$or": group_conditions})
         
-        # Explicit permissions
+        # Explicit permissions (tetap ada untuk backward compatibility)
         access_conditions.extend([
             {"access_permissions.can_view": user_id},
             {"access_permissions.can_edit": user_id},

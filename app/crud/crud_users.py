@@ -194,7 +194,6 @@ async def create_user_and_profile(db: AsyncIOMotorDatabase, user_in: UserCreate)
     await db["profiles"].update_one({"_id": created_profile_id}, {"$set": {"user_id": created_user_id}})
 
     await invalidate_cache(USERS_IDS_CACHE_PATTERN)
-    await invalidate_cache("analytics:dashboard_stats")
     await invalidate_cache("analytics:*")
     return await db["users"].find_one({"_id": created_user_id})
 
@@ -424,6 +423,7 @@ async def update_user_and_profile(db: AsyncIOMotorDatabase, user_id: str, user_i
             {"_id": ObjectId(user_id)},
             {"$set": user_update_data}
         )
+        await invalidate_cache(USERS_IDS_CACHE_PATTERN)
         
     return await get_user_by_id(db, user_id)
 
