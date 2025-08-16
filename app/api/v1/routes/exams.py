@@ -81,11 +81,23 @@ async def create_quiz_or_daily_test(
     
     """
     Membuat ujian lokal (kuis/ulangan harian). Hanya bisa diakses oleh guru.
+    Guru hanya bisa membuat ujian non-official melalui endpoint ini.
     """
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    # VALIDASI: Guru hanya bisa membuat quiz atau daily_test melalui endpoint ini
+    if exam_in.exam_type in ["official_uts", "official_uas"]:
+        logger.error(f"SECURITY_VIOLATION: Teacher {current_user['_id']} attempted to create official exam type '{exam_in.exam_type}' via teacher endpoint")
+        raise HTTPException(status_code=403, detail="Guru hanya dapat membuat ujian dengan tipe 'quiz' atau 'daily_test' melalui endpoint ini. Ujian official dibuat oleh admin.")
+    
     # Validasi: Guru hanya bisa membuat ujian untuk penugasan miliknya
     assignment = await db["teaching_assignments"].find_one({"_id": exam_in.teaching_assignment_id})
     if not assignment or assignment["teacher_id"] != current_user["_id"]:
         raise HTTPException(status_code=403, detail="You can only create exams for your own assignments.")
+
+    # LOGGING: Track exam creation
+    logger.info(f"EXAM_CREATE: Teacher {current_user['_id']} creating exam type '{exam_in.exam_type}' for assignment {exam_in.teaching_assignment_id}")
 
     exam_data_with_period = exam_in.model_copy(update={"academic_period_id": ObjectId(active_period["_id"])})
     return await crud_exams.create_exam(db=db, exam=exam_data_with_period)
@@ -202,7 +214,11 @@ async def update_existing_exam(
     """
     Memperbarui detail ujian.
     Hanya bisa dilakukan oleh admin atau guru yang ditugaskan.
+    Guru tidak bisa mengubah exam_type, hanya data lainnya.
     """
+    import logging
+    logger = logging.getLogger(__name__)
+    
     exam = await crud_exams.get_exam_by_id(db, exam_id)
     if not exam:
         raise HTTPException(status_code=404, detail="Exam not found")
@@ -216,9 +232,15 @@ async def update_existing_exam(
     if not is_admin and not is_assigned_teacher:
         raise HTTPException(status_code=403, detail="Not authorized to modify this exam")
 
-    # Validasi tambahan: Cek apakah guru mencoba mengubah tipe ujian official_uts atau official_uas menjadi tipe lain
-    if not is_admin and exam["exam_type"] in ["official_uts", "official_uas"] and exam_in.exam_type != exam["exam_type"]:
-        raise HTTPException(status_code=403, detail="Tidak dapat mengubah tipe ujian official_uts atau official_uas menjadi tipe lain")
+    # VALIDASI UTAMA: Guru tidak boleh mengubah exam_type sama sekali
+    if not is_admin and exam_in.exam_type and exam_in.exam_type != exam["exam_type"]:
+        logger.error(f"SECURITY_VIOLATION: Teacher {current_user['_id']} attempted to change exam_type from '{exam['exam_type']}' to '{exam_in.exam_type}' for exam {exam_id}")
+        raise HTTPException(status_code=403, detail="Guru tidak dapat mengubah tipe ujian resmi. Hanya admin yang dapat mengubahnya.")
+    
+    # Jika bukan admin, hapus exam_type dari update untuk memastikan tidak berubah
+    if not is_admin and exam_in.exam_type:
+        exam_in.exam_type = None
+        logger.info(f"EXAM_TYPE_BLOCKED: Removed exam_type from update request by teacher {current_user['_id']} for exam {exam_id}")
 
     updated_exam = await crud_exams.update_exam(db, exam_id=exam_id, exam_update=exam_in)
     return updated_exam
