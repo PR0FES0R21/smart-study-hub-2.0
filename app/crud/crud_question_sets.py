@@ -1192,6 +1192,37 @@ async def manage_permissions(
     
     return updated_qset
 
+async def get_question_set_questions(
+    db: AsyncIOMotorDatabase,
+    question_set_id: ObjectId,
+    user_id: ObjectId
+) -> Optional[Dict[str, Any]]:
+    """Get question IDs from a question set for exam purposes"""
+    
+    # First, get the question set and validate access
+    service = get_question_set_service(db)
+    question_set = await service.get_question_set_detail(question_set_id, user_id)
+    
+    if not question_set:
+        return None
+    
+    # Check if user has view permission
+    if not question_set["current_user_permissions"]["can_view"]:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Access denied to this question set"
+        )
+    
+    # Get question IDs from the question set (already in the correct order)
+    question_ids = question_set.get("question_ids", [])
+    
+    return {
+        "question_set_id": question_set_id,
+        "question_set_name": question_set["name"],
+        "total_questions": len(question_ids),
+        "question_ids": question_ids
+    }
+
 # ==============================================================================
 # CACHE MANAGEMENT FUNCTIONS
 # ==============================================================================

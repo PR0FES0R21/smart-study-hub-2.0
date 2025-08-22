@@ -211,10 +211,11 @@ async def update_existing_exam(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_user)
 ):
+    print(exam_in)
     """
     Memperbarui detail ujian.
     Hanya bisa dilakukan oleh admin atau guru yang ditugaskan.
-    Guru tidak bisa mengubah exam_type, hanya data lainnya.
+    Guru bisa mengubah quiz↔daily_test tapi tidak bisa mengubah ke/dari official.
     """
     import logging
     logger = logging.getLogger(__name__)
@@ -232,15 +233,29 @@ async def update_existing_exam(
     if not is_admin and not is_assigned_teacher:
         raise HTTPException(status_code=403, detail="Not authorized to modify this exam")
 
-    # VALIDASI UTAMA: Guru tidak boleh mengubah exam_type sama sekali
+    # VALIDASI UNTUK GURU: Cek perubahan exam_type
     if not is_admin and exam_in.exam_type and exam_in.exam_type != exam["exam_type"]:
-        logger.error(f"SECURITY_VIOLATION: Teacher {current_user['_id']} attempted to change exam_type from '{exam['exam_type']}' to '{exam_in.exam_type}' for exam {exam_id}")
-        raise HTTPException(status_code=403, detail="Guru tidak dapat mengubah tipe ujian resmi. Hanya admin yang dapat mengubahnya.")
-    
-    # Jika bukan admin, hapus exam_type dari update untuk memastikan tidak berubah
-    if not is_admin and exam_in.exam_type:
-        exam_in.exam_type = None
-        logger.info(f"EXAM_TYPE_BLOCKED: Removed exam_type from update request by teacher {current_user['_id']} for exam {exam_id}")
+        current_exam_type = exam["exam_type"]
+        new_exam_type = exam_in.exam_type
+        
+        # Definisikan tipe official dan non-official
+        official_types = ["official_uts", "official_uas"]
+        non_official_types = ["quiz", "daily_test"]
+        
+        # Cek apakah guru mencoba mengubah dari/ke official
+        current_is_official = current_exam_type in official_types
+        new_is_official = new_exam_type in official_types
+        
+        if current_is_official or new_is_official:
+            # Guru tidak boleh mengubah ujian official ke tipe lain atau sebaliknya
+            logger.error(f"SECURITY_VIOLATION: Teacher {current_user['_id']} attempted to change exam_type from '{current_exam_type}' to '{new_exam_type}' for exam {exam_id}")
+            raise HTTPException(
+                status_code=403,
+                detail="Guru tidak dapat mengubah tipe ujian official atau mengubah ujian menjadi official. Hanya admin yang dapat melakukan perubahan tersebut."
+            )
+        
+        # Jika sampai sini, berarti guru mengubah antar non-official (quiz ↔ daily_test)
+        logger.info(f"EXAM_TYPE_CHANGE: Teacher {current_user['_id']} changing exam {exam_id} from '{current_exam_type}' to '{new_exam_type}' (both non-official)")
 
     updated_exam = await crud_exams.update_exam(db, exam_id=exam_id, exam_update=exam_in)
     return updated_exam

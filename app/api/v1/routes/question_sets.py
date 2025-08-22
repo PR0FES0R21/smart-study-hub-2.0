@@ -13,7 +13,8 @@ from app.schemas.question_set import (
     QuestionSetCreate, QuestionSetUpdate, QuestionSetDetailedPublic,
     QuestionSetSummaryEnhanced, QuestionSetStatus, PermissionManagement,
     PermissionHolders, QuestionSetRemoveQuestions, QuestionSetPublic,
-    QuestionSetAddQuestions, BulkGroupPermissionManagement, QuestionSetDeleteRequest
+    QuestionSetAddQuestions, BulkGroupPermissionManagement, QuestionSetDeleteRequest,
+    QuestionSetQuestions
 )
 from app.schemas.user import TeacherBasic
 
@@ -688,3 +689,55 @@ async def get_question_set_usage_analytics(
         "permissions": question_set["current_user_permissions"],
         "metadata": question_set["metadata"]
     }
+
+@router.get("/{question_set_id}/questions", response_model=QuestionSetQuestions)
+async def get_question_set_questions(
+    question_set_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_teacher)
+):
+    """
+    Get question IDs from a question set.
+    
+    This endpoint is designed for exam purposes where you need to retrieve
+    the list of question IDs from a specific question set for exam submission.
+    
+    Features:
+    - Validates user access to the question set
+    - Returns question IDs in the same order as stored in question_set.question_ids
+    - Lightweight response containing only IDs, not full question details
+    - Perfect for exam workflows where you just need the question list
+    
+    Access Control:
+    - User must have view permission on the question set
+    - Follows the same access rules as question set detail endpoint
+    
+    Returns:
+    - question_set_id: ID of the question set
+    - question_set_name: Name of the question set
+    - total_questions: Total number of questions
+    - question_ids: Array of question IDs in order
+    """
+    user_id = ObjectId(current_user["_id"])
+    
+    try:
+        question_set_id_obj = ObjectId(question_set_id)
+    except:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid question set ID format"
+        )
+    
+    result = await crud_question_sets.get_question_set_questions(
+        db=db,
+        question_set_id=question_set_id_obj,
+        user_id=user_id
+    )
+    
+    if not result:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Question set not found"
+        )
+    
+    return result

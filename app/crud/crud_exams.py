@@ -200,14 +200,13 @@ async def get_all_exams_with_details(
     """
     pipeline = []
     
-    initial_match = {}
+    initial_match = {"exam_type": {"$ne": None}}  # PERBAIKAN: Selalu filter out exam_type null
     if "academic_period_id" in filters:
         initial_match["academic_period_id"] = filters["academic_period_id"]
     if "exam_type" in filters:
         initial_match["exam_type"] = filters["exam_type"]
     
-    if initial_match:
-        pipeline.append({"$match": initial_match})
+    pipeline.append({"$match": initial_match})
 
     # Pipeline lookup yang sudah diperbaiki
     lookup_pipeline = [
@@ -293,11 +292,18 @@ async def update_exam(db: AsyncIOMotorDatabase, exam_id: str, exam_update: ExamU
     if not update_data:
         return await get_exam_by_id(db, exam_id)
 
-    update_data["updated_at"] = datetime.utcnow()
+    # PERBAIKAN: Filter out None values untuk mencegah overwrite dengan None
+    # Ini penting untuk field yang required seperti exam_type
+    filtered_update_data = {k: v for k, v in update_data.items() if v is not None}
+    
+    if not filtered_update_data:
+        return await get_exam_by_id(db, exam_id)
+    
+    filtered_update_data["updated_at"] = datetime.utcnow()
     
     await db["exams"].update_one(
         {"_id": ObjectId(exam_id)},
-        {"$set": update_data}
+        {"$set": filtered_update_data}
     )
     return await get_exam_by_id(db, exam_id)
 
@@ -412,7 +418,10 @@ async def get_exams_by_teacher(
     
     # Filter ujian berdasarkan assignment IDs
     pipeline = [
-        {"$match": {"teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]}}},
+        {"$match": {
+            "teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]},
+            "exam_type": {"$ne": None}  # PERBAIKAN: Filter out data dengan exam_type null
+        }},
         {"$lookup": {"from": "teaching_assignments", "localField": "teaching_assignment_id", "foreignField": "_id", "as": "teaching_assignment"}},
         {"$unwind": "$teaching_assignment"},
         {"$lookup": {"from": "subjects", "localField": "teaching_assignment.subject_id", "foreignField": "_id", "as": "subject_details"}},
@@ -466,7 +475,10 @@ async def get_exams_by_student(
     
     # Query ujian dengan validasi academic_period
     pipeline = [
-        {"$match": {"teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]}}},
+        {"$match": {
+            "teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]},
+            "exam_type": {"$ne": None}  # PERBAIKAN: Filter out data dengan exam_type null
+        }},
         {"$lookup": {"from": "teaching_assignments", "localField": "teaching_assignment_id", "foreignField": "_id", "as": "teaching_assignment"}},
         {"$unwind": "$teaching_assignment"},
         {"$lookup": {"from": "subjects", "localField": "teaching_assignment.subject_id", "foreignField": "_id", "as": "subject_details"}},

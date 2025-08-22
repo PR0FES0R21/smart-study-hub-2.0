@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Exam Room Simulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .simulator-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .card-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .role-proctor {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .role-student {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px 0;
+        }
+
+        .btn-connect {
+            background: #4caf50;
+            color: white;
+        }
+
+        .btn-connect:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-disconnect {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-disconnect:hover {
+            background: #da190b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+        }
+
+        .btn-action {
+            background: #2196f3;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .btn-action:hover {
+            background: #1976d2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .status {
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .status-connected {
+            background: #e8f5e8;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+
+        .status-disconnected {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+
+        .log-container {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 15px;
+            border: 1px solid #333;
+        }
+
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .log-info {
+            color: #4fc3f7;
+        }
+
+        .log-success {
+            color: #81c784;
+            background: rgba(129, 199, 132, 0.1);
+        }
+
+        .log-warning {
+            color: #ffb74d;
+            background: rgba(255, 183, 77, 0.1);
+        }
+
+        .log-error {
+            color: #e57373;
+            background: rgba(229, 115, 115, 0.1);
+        }
+
+        .log-presence {
+            color: #ba68c8;
+            background: rgba(186, 104, 200, 0.1);
+            font-weight: bold;
+        }
+
+        .log-activity {
+            color: #4db6ac;
+            background: rgba(77, 182, 172, 0.1);
+        }
+
+        .actions-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .actions-section h4 {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .debug-section {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .debug-section h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>WebSocket Exam Room Simulator</h1>
+        <p>Simulasi sistem monitoring ujian real-time dengan isolasi ruangan</p>
+    </div>
+
+    <div class="container">
+        <!-- Pengawas A Card -->
+        <div class="simulator-card">
+            <div class="card-header">
+                <div class="card-title">Pengawas A - Pak Eko</div>
+                <div class="card-subtitle">
+                    <span class="role-badge role-proctor">PROCTOR</span>
+                    <span class="role-badge role-proctor">TEACHER</span>
+                </div>
+                <div class="card-subtitle">Mengawasi: XI TKJ 1</div>
+            </div>
+
+            <div class="input-group">
+                <label for="token-proctor-a">Token Authentication (Pak Eko)</label>
+                <input type="password" id="token-proctor-a" placeholder="Masukkan JWT token Pak Eko">
+            </div>
+
+            <div class="input-group">
+                <label for="exam-id-a">ID Ujian A (XI TKJ 1)</label>
+                <input type="text" id="exam-id-a" placeholder="Masukkan ID ujian untuk XI TKJ 1"
+                    value="exam-xi-tkj-1-2025">
+            </div>
+
+            <button class="btn btn-connect" onclick="connectProctor('A')">🔗 Bergabung ke Ruang Ujian</button>
+            <button class="btn btn-disconnect" onclick="disconnectProctor('A')" style="display: none;">❌ Keluar dari
+                Ruangan</button>
+
+            <div id="status-proctor-a" class="status status-disconnected">
+                Status: Belum Terhubung
+            </div>
+
+            <div class="log-container" id="log-proctor-a"></div>
+        </div>
+
+        <!-- Siswa A Card -->
+        <div class="simulator-card">
+            <div class="card-header">
+                <div class="card-title">Siswa A - Budi Santoso</div>
+                <div class="card-subtitle">
+                    <span class="role-badge role-student">STUDENT</span>
+                </div>
+                <div class="card-subtitle">Kelas: XI TKJ 1</div>
+            </div>
+
+            <div class="input-group">
+                <label for="token-student-a">Token Authentication (Budi)</label>
+                <input type="password" id="token-student-a" placeholder="Masukkan JWT token Budi">
+            </div>
+
+            <div class="input-group">
+                <label for="exam-id-student-a">ID Ujian (Harus sama dengan Pak Eko)</label>
+                <input type="text" id="exam-id-student-a" placeholder="ID ujian yang sama" value="exam-xi-tkj-1-2025">
+            </div>
+
+            <button class="btn btn-connect" onclick="connectStudent('A')">📝 Masuk Ujian</button>
+            <button class="btn btn-disconnect" onclick="disconnectStudent('A')" style="display: none;">🚪 Keluar dari
+                Ujian</button>
+
+            <div id="status-student-a" class="status status-disconnected">
+                Status: Belum Masuk Ujian
+            </div>
+
+            <div class="actions-section">
+                <h4>Simulasi Aktivitas Siswa:</h4>
+                <button class="btn btn-action" onclick="simulateAnswer('A')">✏️ Ubah Jawaban</button>
+                <button class="btn btn-action" onclick="simulateNavigation('A')">🔄 Navigasi Soal</button>
+                <button class="btn btn-action" onclick="simulateSubmit('A')">✅ Submit Jawaban</button>
+            </div>
+
+            <div class="debug-section">
+                <h4>🐛 Debug Messages:</h4>
+                <button class="btn btn-action" onclick="sendRawMessage('A', 'PING')">📡 Send PING</button>
+                <button class="btn btn-action" onclick="sendRawMessage('A', 'TEST_MESSAGE')">🧪 Send Test
+                    Message</button>
+                <button class="btn btn-action" onclick="sendRawMessage('A', 'HEARTBEAT')">💓 Send Heartbeat</button>
+            </div>
+
+            <div class="log-container" id="log-student-a"></div>
+        </div>
+
+        <!-- Pengawas B Card -->
+        <div class="simulator-card">
+            <div class="card-header">
+                <div class="card-title">Pengawas B - Ibu Wati</div>
+                <div class="card-subtitle">
+                    <span class="role-badge role-proctor">PROCTOR</span>
+                    <span class="role-badge role-proctor">TEACHER</span>
+                </div>
+                <div class="card-subtitle">Mengawasi: XI TKJ 2</div>
+            </div>
+
+            <div class="input-group">
+                <label for="token-proctor-b">Token Authentication (Ibu Wati)</label>
+                <input type="password" id="token-proctor-b" placeholder="Masukkan JWT token Ibu Wati">
+            </div>
+
+            <div class="input-group">
+                <label for="exam-id-b">ID Ujian B (XI TKJ 2)</label>
+                <input type="text" id="exam-id-b" placeholder="Masukkan ID ujian untuk XI TKJ 2"
+                    value="exam-xi-tkj-2-2025">
+            </div>
+
+            <button class="btn btn-connect" onclick="connectProctor('B')">🔗 Bergabung ke Ruang Ujian</button>
+            <button class="btn btn-disconnect" onclick="disconnectProctor('B')" style="display: none;">❌ Keluar dari
+                Ruangan</button>
+
+            <div id="status-proctor-b" class="status status-disconnected">
+                Status: Belum Terhubung
+            </div>
+
+            <div class="log-container" id="log-proctor-b"></div>
+        </div>
+    </div>
+
+    <script>
+        // WebSocket connections storage
+        const connections = {
+            proctorA: null,
+            studentA: null,
+            proctorB: null
+        };
+
+        // Server URL production
+        const WS_BASE_URL = 'ws://localhost:8000/api/v1/ws/exam-room';
+
+        // Utility functions
+        function addLog(elementId, message, type = 'info') {
+            const logContainer = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry log-${type}`;
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        function updateStatus(elementId, message, connected = false) {
+            const statusElement = document.getElementById(elementId);
+            statusElement.textContent = `Status: ${message}`;
+            statusElement.className = `status ${connected ? 'status-connected' : 'status-disconnected'}`;
+        }
+
+        // Proctor Connection Functions
+        function connectProctor(proctorId) {
+            const examIdInput = proctorId === 'A' ? 'exam-id-a' : 'exam-id-b';
+            const tokenInput = proctorId === 'A' ? 'token-proctor-a' : 'token-proctor-b';
+
+            const examId = document.getElementById(examIdInput).value.trim();
+            const token = document.getElementById(tokenInput).value.trim();
+
+            if (!examId) {
+                alert('Mohon masukkan ID ujian terlebih dahulu!');
+                return;
+            }
+
+            if (!token) {
+                alert('Mohon masukkan token authentication terlebih dahulu!');
+                return;
+            }
+
+            const connectionKey = `proctor${proctorId}`;
+            const logId = `log-proctor-${proctorId.toLowerCase()}`;
+            const statusId = `status-proctor-${proctorId.toLowerCase()}`;
+
+            try {
+                // Include token in WebSocket URL as query parameter
+                const wsUrl = `${WS_BASE_URL}/${examId}?token=${encodeURIComponent(token)}`;
+                addLog(logId, `Mencoba terhubung ke: ${wsUrl.replace(token, '[TOKEN_HIDDEN]')}`, 'info');
+
+                connections[connectionKey] = new WebSocket(wsUrl);
+
+                connections[connectionKey].onopen = () => {
+                    addLog(logId, `✅ PENGAWAS ${proctorId}: Berhasil terhubung ke ruang ujian ${examId}`, 'success');
+                    updateStatus(statusId, `Terhubung ke ${examId}`, true);
+
+                    // Toggle buttons
+                    document.querySelector(`button[onclick="connectProctor('${proctorId}')"]`).style.display = 'none';
+                    document.querySelector(`button[onclick="disconnectProctor('${proctorId}')"]`).style.display = 'block';
+                };
+
+                connections[connectionKey].onmessage = (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+
+                        if (data.type === 'presence_update') {
+                            addLog(logId, `👥 [PRESENCE] Pengawas: ${data.proctor_count}, Siswa: ${data.student_count}`, 'presence');
+                        } else if (data.type === 'connection_established') {
+                            addLog(logId, `🎉 Koneksi berhasil dibuat`, 'success');
+                        } else if (data.student_name) {
+                            addLog(logId, `👨‍🎓 [ACTIVITY] ${data.student_name} melakukan: ${data.type}`, 'activity');
+
+                            // Add detail if available
+                            if (data.details) {
+                                const details = JSON.stringify(data.details, null, 2);
+                                addLog(logId, `📝 Detail: ${details}`, 'info');
+                            }
+                        } else {
+                            addLog(logId, `📨 Pesan: ${JSON.stringify(data)}`, 'info');
+                        }
+                    } catch (e) {
+                        addLog(logId, `⚠️ Error parsing message: ${event.data}`, 'warning');
+                    }
+                };
+
+                connections[connectionKey].onclose = (event) => {
+                    if (event.code === 1006) {
+                        addLog(logId, `❌ PENGAWAS ${proctorId}: Koneksi ditolak - Periksa token authentication`, 'error');
+                    } else if (event.code === 1008) {
+                        addLog(logId, `❌ PENGAWAS ${proctorId}: Token authentication tidak valid`, 'error');
+                    } else {
+                        addLog(logId, `❌ PENGAWAS ${proctorId}: Koneksi terputus (code: ${event.code})`, 'error');
+                    }
+                    updateStatus(statusId, 'Terputus', false);
+
+                    // Reset buttons
+                    document.querySelector(`button[onclick="connectProctor('${proctorId}')"]`).style.display = 'block';
+                    document.querySelector(`button[onclick="disconnectProctor('${proctorId}')"]`).style.display = 'none';
+                };
+
+                connections[connectionKey].onerror = (error) => {
+                    addLog(logId, `🚨 PENGAWAS ${proctorId}: Error koneksi - Kemungkinan masalah authentication`, 'error');
+                };
+
+            } catch (error) {
+                addLog(logId, `🚨 Error membuat koneksi: ${error.message}`, 'error');
+            }
+        }
+
+        function disconnectProctor(proctorId) {
+            const connectionKey = `proctor${proctorId}`;
+            if (connections[connectionKey]) {
+                connections[connectionKey].close();
+                connections[connectionKey] = null;
+            }
+        }
+
+        // Student Connection Functions
+        function connectStudent(studentId) {
+            const examId = document.getElementById(`exam-id-student-${studentId.toLowerCase()}`).value.trim();
+            const token = document.getElementById(`token-student-${studentId.toLowerCase()}`).value.trim();
+
+            if (!examId) {
+                alert('Mohon masukkan ID ujian terlebih dahulu!');
+                return;
+            }
+
+            if (!token) {
+                alert('Mohon masukkan token authentication terlebih dahulu!');
+                return;
+            }
+
+            const connectionKey = `student${studentId}`;
+            const logId = `log-student-${studentId.toLowerCase()}`;
+            const statusId = `status-student-${studentId.toLowerCase()}`;
+
+            try {
+                // Include token in WebSocket URL as query parameter
+                const wsUrl = `${WS_BASE_URL}/${examId}?token=${encodeURIComponent(token)}`;
+                addLog(logId, `Mencoba masuk ujian: ${wsUrl.replace(token, '[TOKEN_HIDDEN]')}`, 'info');
+
+                connections[connectionKey] = new WebSocket(wsUrl);
+
+                connections[connectionKey].onopen = () => {
+                    addLog(logId, `✅ SISWA ${studentId}: Berhasil masuk ujian ${examId}`, 'success');
+                    updateStatus(statusId, `Sedang mengerjakan ujian ${examId}`, true);
+
+                    // Toggle buttons
+                    document.querySelector(`button[onclick="connectStudent('${studentId}')"]`).style.display = 'none';
+                    document.querySelector(`button[onclick="disconnectStudent('${studentId}')"]`).style.display = 'block';
+                };
+
+                connections[connectionKey].onmessage = (event) => {
+                    try {
+                        const data = JSON.parse(event.data);
+                        if (data.type === 'connection_established') {
+                            addLog(logId, `🎉 Koneksi ujian berhasil dibuat`, 'success');
+                        } else {
+                            addLog(logId, `📨 Pesan dari server: ${JSON.stringify(data)}`, 'info');
+                        }
+                    } catch (e) {
+                        addLog(logId, `⚠️ Error parsing: ${event.data}`, 'warning');
+                    }
+                };
+
+                connections[connectionKey].onclose = (event) => {
+                    if (event.code === 1006) {
+                        addLog(logId, `❌ SISWA ${studentId}: Koneksi ditolak - Periksa token authentication`, 'error');
+                    } else if (event.code === 1008) {
+                        addLog(logId, `❌ SISWA ${studentId}: Token authentication tidak valid`, 'error');
+                    } else {
+                        addLog(logId, `❌ SISWA ${studentId}: Keluar dari ujian (code: ${event.code})`, 'error');
+                    }
+                    updateStatus(statusId, 'Keluar dari ujian', false);
+
+                    // Reset buttons
+                    document.querySelector(`button[onclick="connectStudent('${studentId}')"]`).style.display = 'block';
+                    document.querySelector(`button[onclick="disconnectStudent('${studentId}')"]`).style.display = 'none';
+                };
+
+                connections[connectionKey].onerror = (error) => {
+                    addLog(logId, `🚨 SISWA ${studentId}: Error - Kemungkinan masalah authentication`, 'error');
+                };
+
+            } catch (error) {
+                addLog(logId, `🚨 Error membuat koneksi: ${error.message}`, 'error');
+            }
+        }
+
+        function disconnectStudent(studentId) {
+            const connectionKey = `student${studentId}`;
+            if (connections[connectionKey]) {
+                connections[connectionKey].close();
+                connections[connectionKey] = null;
+            }
+        }
+
+        // Student Activity Simulation Functions
+        function simulateAnswer(studentId) {
+            const connectionKey = `student${studentId}`;
+            const logId = `log-student-${studentId.toLowerCase()}`;
+
+            if (!connections[connectionKey] || connections[connectionKey].readyState !== WebSocket.OPEN) {
+                addLog(logId, '⚠️ Tidak terhubung ke ujian!', 'warning');
+                return;
+            }
+
+            const questionId = `question_${Math.floor(Math.random() * 20) + 1}`;
+            const answer = ['A', 'B', 'C', 'D'][Math.floor(Math.random() * 4)];
+            const position = Math.floor(Math.random() * 20) + 1;
+
+            const message = {
+                type: "ANSWER_CHANGED",
+                details: {
+                    question_id: questionId,
+                    displayed_position: position,
+                    answer: answer
+                },
+                timestamp: new Date().toISOString()
+            };
+
+            connections[connectionKey].send(JSON.stringify(message));
+            addLog(logId, `📝 ✅ SENT: Perubahan jawaban - Soal ${position} → ${answer}`, 'activity');
+            addLog(logId, `📤 Raw message: ${JSON.stringify(message)}`, 'info');
+        }
+
+        function simulateNavigation(studentId) {
+            const connectionKey = `student${studentId}`;
+            const logId = `log-student-${studentId.toLowerCase()}`;
+
+            if (!connections[connectionKey] || connections[connectionKey].readyState !== WebSocket.OPEN) {
+                addLog(logId, '⚠️ Tidak terhubung ke ujian!', 'warning');
+                return;
+            }
+
+            const questionId = `question_${Math.floor(Math.random() * 20) + 1}`;
+            const position = Math.floor(Math.random() * 20) + 1;
+
+            const message = {
+                type: "QUESTION_NAVIGATION",
+                details: {
+                    question_id: questionId,
+                    displayed_position: position,
+                    from_position: Math.max(1, position - 1)
+                },
+                timestamp: new Date().toISOString()
+            };
+
+            connections[connectionKey].send(JSON.stringify(message));
+            addLog(logId, `🔄 ✅ SENT: Navigasi ke soal nomor ${position}`, 'activity');
+            addLog(logId, `📤 Raw message: ${JSON.stringify(message)}`, 'info');
+        }
+
+        function simulateSubmit(studentId) {
+            const connectionKey = `student${studentId}`;
+            const logId = `log-student-${studentId.toLowerCase()}`;
+
+            if (!connections[connectionKey] || connections[connectionKey].readyState !== WebSocket.OPEN) {
+                addLog(logId, '⚠️ Tidak terhubung ke ujian!', 'warning');
+                return;
+            }
+
+            const message = {
+                type: "EXAM_SUBMITTED",
+                details: {
+                    submission_time: new Date().toISOString(),
+                    total_answered: Math.floor(Math.random() * 20) + 1
+                },
+                timestamp: new Date().toISOString()
+            };
+
+            connections[connectionKey].send(JSON.stringify(message));
+            addLog(logId, `✅ ✅ SENT: Submit ujian`, 'success');
+            addLog(logId, `📤 Raw message: ${JSON.stringify(message)}`, 'info');
+        }
+
+        // Debug function to send raw messages
+        function sendRawMessage(studentId, messageType) {
+            const connectionKey = `student${studentId}`;
+            const logId = `log-student-${studentId.toLowerCase()}`;
+
+            if (!connections[connectionKey] || connections[connectionKey].readyState !== WebSocket.OPEN) {
+                addLog(logId, '⚠️ Tidak terhubung ke ujian!', 'warning');
+                return;
+            }
+
+            let message;
+
+            switch (messageType) {
+                case 'PING':
+                    message = {
+                        type: "PING",
+                        timestamp: new Date().toISOString()
+                    };
+                    break;
+                case 'TEST_MESSAGE':
+                    message = {
+                        type: "TEST_MESSAGE",
+                        data: "Hello from student simulator",
+                        timestamp: new Date().toISOString()
+                    };
+                    break;
+                case 'HEARTBEAT':
+                    message = {
+                        type: "HEARTBEAT",
+                        timestamp: new Date().toISOString()
+                    };
+                    break;
+                default:
+                    message = {
+                        type: messageType,
+                        timestamp: new Date().toISOString()
+                    };
+            }
+
+            connections[connectionKey].send(JSON.stringify(message));
+            addLog(logId, `🐛 ✅ DEBUG SENT: ${messageType}`, 'warning');
+            addLog(logId, `📤 Raw: ${JSON.stringify(message)}`, 'info');
+        }
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            Object.values(connections).forEach(conn => {
+                if (conn && conn.readyState === WebSocket.OPEN) {
+                    conn.close();
+                }
+            });
+        });
+
+        // Auto-sync exam IDs
+        document.getElementById('exam-id-a').addEventListener('input', function () {
+            document.getElementById('exam-id-student-a').value = this.value;
+        });
+    </script>
+</body>
+
+</html>

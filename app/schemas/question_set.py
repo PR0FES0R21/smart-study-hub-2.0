@@ -9,6 +9,7 @@ from enum import Enum
 from .base import PyObjectId
 from .user import TeacherBasic
 from .subject import SubjectBase
+from .question_bank import QuestionBankPublic
 
 class QuestionSetStatus(str, Enum):
     DRAFT = "draft"
@@ -224,3 +225,14 @@ class QuestionSetSummary(BaseModel):
     
     class Config:
         from_attributes = True
+
+class QuestionSetQuestions(BaseModel):
+    """Schema for returning question IDs within a question set"""
+    question_set_id: PyObjectId
+    question_set_name: str
+    total_questions: int
+    question_ids: List[PyObjectId]
+    
+    class Config:
+        from_attributes = True
+        arbitrary_types_allowed = True
