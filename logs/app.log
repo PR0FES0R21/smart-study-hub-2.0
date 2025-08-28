@@ -52736,3 +52736,139 @@ pymongo.errors.NetworkTimeout: 127.0.0.1:27017: timed out (configured timeouts: 
 2025-08-29 00:50:28,281 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
 2025-08-29 00:50:28,345 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
 2025-08-29 00:50:28,591 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688f215afae1519a240af435 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-29 00:51:28,562 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688f215afae1519a240af435 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-29 00:51:57,414 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=11d928cd-df35-4c0a-a872-d3c5c436789e | user_id=686a3396d20694199c01c06b | connection_time=80.47ms
+2025-08-29 00:52:13,165 [INFO] app.api.v1.routes.ws_exam_room: Student 688f215afae1519a240af435 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 00:52:13,197 [INFO] app.main: Mematikan aplikasi...
+2025-08-29 00:52:13,198 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-29 00:52:13,200 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-29 00:52:13,201 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-29 00:52:13,202 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-29 00:52:13,209 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-29 00:52:22,900 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-29 00:52:22,978 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-29 00:52:22,993 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-29 00:52:22,994 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-29 00:52:22,995 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-29 00:52:22,996 [INFO] app.main: Startup aplikasi berhasil
+2025-08-29 00:52:22,997 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-29 00:52:31,181 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b1a86c49-3c3f-45d5-9baa-f4156322f076 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-29 00:52:31,252 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b1a86c49-3c3f-45d5-9baa-f4156322f076 | user_id=686a3396d20694199c01c06b | connection_time=71.12ms
+2025-08-29 00:52:39,295 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=6b4aa213-58ac-46ba-918f-90d7fb83dbf7 | user_id=68822f07979cbba23e6db950 | connection_time=82.64ms
+2025-08-29 00:57:35,437 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7d202e88-44af-4733-b3eb-a4661582fe9c | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 00:57:35,520 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7d202e88-44af-4733-b3eb-a4661582fe9c | user_id=68822f07979cbba23e6db950 | connection_time=83.0ms
+2025-08-29 00:57:46,073 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b9ab3d19-0ba8-4dc7-a8c1-961771a73c5b | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 00:57:46,136 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b9ab3d19-0ba8-4dc7-a8c1-961771a73c5b | user_id=68822f07979cbba23e6db950 | connection_time=63.74ms
+2025-08-29 01:02:17,816 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=d61f8e01-dd70-42f8-885a-5aea8a0241d9 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-29 01:02:17,885 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=d61f8e01-dd70-42f8-885a-5aea8a0241d9 | user_id=686a3396d20694199c01c06b | connection_time=68.86ms
+2025-08-29 01:02:49,528 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=49cf7a1c-1ebb-4241-b385-ed3b7d7e78ab | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 01:02:49,632 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=49cf7a1c-1ebb-4241-b385-ed3b7d7e78ab | user_id=68822f07979cbba23e6db950 | connection_time=104.27ms
+2025-08-29 01:14:19,232 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=009f2528-a154-45bb-b5af-07bb32c991bc | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-29 01:14:19,467 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=009f2528-a154-45bb-b5af-07bb32c991bc | user_id=686a3396d20694199c01c06b | connection_time=235.18ms
+2025-08-29 01:14:49,873 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a8f5ade6-7e78-463f-befe-b8e3f72b0d6a | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 01:14:49,993 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a8f5ade6-7e78-463f-befe-b8e3f72b0d6a | user_id=68822f07979cbba23e6db950 | connection_time=120.45ms
+2025-08-29 01:16:47,917 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:16:48,961 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:16:55,170 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:20:12,888 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:20:12,924 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:20:12,955 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:20:25,584 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=77cc8a31-c194-4782-aca5-db8bd32caabc | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-29 01:20:25,656 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=77cc8a31-c194-4782-aca5-db8bd32caabc | user_id=686a3396d20694199c01c06b | connection_time=71.84ms
+2025-08-29 01:20:29,427 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=fcea1ed2-f5a5-427d-8673-645ab84bca0c | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 01:20:29,508 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=fcea1ed2-f5a5-427d-8673-645ab84bca0c | user_id=68822f07979cbba23e6db950 | connection_time=80.11ms
+2025-08-29 01:20:48,860 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e2679600-122b-4d04-8264-b6d2d2080f7b | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 01:20:48,954 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e2679600-122b-4d04-8264-b6d2d2080f7b | user_id=68822f07979cbba23e6db950 | connection_time=93.91ms
+2025-08-29 01:20:52,768 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=914b00d4-f401-4923-90cb-225dd3a5dd88 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 01:20:52,830 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=914b00d4-f401-4923-90cb-225dd3a5dd88 | user_id=68822f07979cbba23e6db950 | connection_time=61.66ms
+2025-08-29 01:21:00,258 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=5add45c0-50e6-4e2c-970e-6a732110787e | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 01:21:00,335 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=5add45c0-50e6-4e2c-970e-6a732110787e | user_id=68822f07979cbba23e6db950 | connection_time=76.56ms
+2025-08-29 01:21:02,632 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e6a48322-e0db-4931-9bc0-1babfa7a8a50 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-29 01:21:02,706 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e6a48322-e0db-4931-9bc0-1babfa7a8a50 | user_id=686a3396d20694199c01c06b | connection_time=73.6ms
+2025-08-29 01:21:03,836 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=9b70934f-157b-4e98-8fb7-e6cc81f380dd | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 01:21:03,898 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=9b70934f-157b-4e98-8fb7-e6cc81f380dd | user_id=68822f07979cbba23e6db950 | connection_time=61.46ms
+2025-08-29 01:22:03,787 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=bbc0f0de-09ea-4408-bad9-bfee493ef789 | user_id=686a3396d20694199c01c06b | connection_time=71.84ms
+2025-08-29 01:22:23,314 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=fc72fd6d-0f51-41b4-8ba6-554e626e58a4 | user_id=68822f07979cbba23e6db950 | connection_time=129.75ms
+2025-08-29 01:22:30,538 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=bda69de0-efad-432d-9dbd-1f1bba1c63bb | user_id=68822f07979cbba23e6db950 | connection_time=85.92ms
+2025-08-29 01:23:44,451 [INFO] app.api.v1.routes.ws_exam_room: Student 688f215afae1519a240af435 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:25:46,127 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:25:46,253 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:25:46,254 [INFO] app.api.v1.routes.ws_exam_room: Student 688f215afae1519a240af435 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:25:46,289 [INFO] app.main: Mematikan aplikasi...
+2025-08-29 01:25:46,290 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-29 01:25:46,293 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-29 01:25:46,296 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-29 01:25:46,296 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-29 01:25:46,304 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-29 01:25:53,874 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-29 01:25:53,950 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-29 01:25:53,962 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-29 01:25:53,963 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-29 01:25:53,963 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-29 01:25:53,964 [INFO] app.main: Startup aplikasi berhasil
+2025-08-29 01:25:53,965 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-29 01:26:16,274 [INFO] app.main: Mematikan aplikasi...
+2025-08-29 01:26:16,275 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-29 01:26:16,276 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-29 01:26:16,277 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-29 01:26:16,277 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-29 01:26:16,283 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-29 01:26:22,792 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-29 01:26:22,870 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-29 01:26:22,892 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-29 01:26:22,893 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-29 01:26:22,894 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-29 01:26:22,894 [INFO] app.main: Startup aplikasi berhasil
+2025-08-29 01:26:22,895 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-29 01:38:44,457 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=e46bcd82-b616-466e-8d1a-11201016c033 | user_id=686a3396d20694199c01c06b | connection_time=95.61ms
+2025-08-29 01:38:57,210 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=7055afd8-6019-4ddf-b64f-e944f813ee04 | user_id=686a3396d20694199c01c06b | connection_time=111.34ms
+2025-08-29 01:39:19,969 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=5db88eef-171a-4589-bccd-98379b0dc44b | user_id=686a3396d20694199c01c06b | connection_time=68.44ms
+2025-08-29 01:39:23,542 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=f1c1d396-37dd-4412-b5f9-3d420ffcbb70 | user_id=68822f07979cbba23e6db950 | connection_time=97.93ms
+2025-08-29 01:40:21,223 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:41:27,073 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=425f6c16-18bb-4dee-b166-4b51730d679a | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-08-29 01:41:27,162 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=425f6c16-18bb-4dee-b166-4b51730d679a | user_id=688477a78a56906f19d02551 | connection_time=88.86ms
+2025-08-29 01:41:35,712 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:41:44,710 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:41:49,216 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:41:52,137 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:42:05,647 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:42:38,656 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:42:42,862 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:43:06,989 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e77d09d2-58f0-4c6f-9ad2-03794e42dc16 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-29 01:43:07,159 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e77d09d2-58f0-4c6f-9ad2-03794e42dc16 | user_id=686a3396d20694199c01c06b | connection_time=169.27ms
+2025-08-29 01:44:39,892 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=137dbc5c-b459-4fb7-b3dc-7f7a69c3ec1e | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-29 01:44:40,076 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=137dbc5c-b459-4fb7-b3dc-7f7a69c3ec1e | user_id=68822f07979cbba23e6db950 | connection_time=184.46ms
+2025-08-29 01:44:40,096 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:45:21,147 [INFO] app.api.v1.routes.ws_exam_room: Student 688f215afae1519a240af435 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:48:19,763 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:48:19,885 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:48:19,886 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:48:19,887 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:48:19,916 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-29 01:48:19,997 [INFO] app.main: Mematikan aplikasi...
+2025-08-29 01:48:19,998 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-29 01:48:19,999 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-29 01:48:20,002 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-29 01:48:20,003 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-29 01:48:20,009 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-29 01:48:27,699 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-29 01:48:27,763 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-29 01:48:27,772 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-29 01:48:27,773 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-29 01:48:27,773 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-29 01:48:27,774 [INFO] app.main: Startup aplikasi berhasil
+2025-08-29 01:48:27,775 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-29 01:48:44,843 [INFO] app.main: Mematikan aplikasi...
+2025-08-29 01:48:44,844 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-29 01:48:44,845 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-29 01:48:44,846 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-29 01:48:44,847 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-29 01:48:44,853 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-29 01:48:51,057 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-29 01:48:51,131 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-29 01:48:51,142 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-29 01:48:51,143 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-29 01:48:51,143 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-29 01:48:51,144 [INFO] app.main: Startup aplikasi berhasil
+2025-08-29 01:48:51,145 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-29 01:53:06,005 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=4fc29fea-b8f9-4770-bcaf-0b55c429a609 | user_id=686a3396d20694199c01c06b | connection_time=116.98ms

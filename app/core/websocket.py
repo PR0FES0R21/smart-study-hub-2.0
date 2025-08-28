@@ -233,23 +233,25 @@ class ConnectionManager:
         start_time = time.time()
         failed_users = []
         
-        # Create snapshot with version checking
+        # Create snapshot with version checking - Fix role checking
         async with self._lock:
             proctor_connections = {}
             for user_id, conn_data in self.active_connections.items():
-                is_proctor = bool({"teacher", "admin"} & set(conn_data.get("roles", [])))
+                # Fix: Gunakan "teacher" dan "admin" yang benar
+                user_roles = conn_data.get("roles", [])
+                is_proctor = "teacher" in user_roles or "admin" in user_roles
                 if conn_data.get("room_id") == room_id and is_proctor:
                     snapshot_data = conn_data.copy()
                     snapshot_data["snapshot_version"] = conn_data.get("version", 0)
                     proctor_connections[user_id] = snapshot_data
         
-        logger.debug(
+        logger.info(
             f"👨‍🏫 PROCTOR_BROADCAST | broadcast_id={broadcast_id} | "
             f"room_id={room_id} | message_type={message.get('type', 'unknown')} | "
             f"proctors={len(proctor_connections)}"
         )
         
-        # Send messages with version validation
+        # Send messages with version validation - HANYA ke proctors
         successful_sends = 0
         for user_id, connection_data in proctor_connections.items():
             try:
@@ -259,6 +261,7 @@ class ConnectionManager:
                     
                     await connection_data["websocket"].send_text(json.dumps(message))
                     successful_sends += 1
+                    logger.debug(f"✅ Message sent to proctor {connection_data.get('username', user_id)}")
                 else:
                     logger.debug(f"Skipping stale proctor connection for user {user_id}")
                     
@@ -271,48 +274,70 @@ class ConnectionManager:
             await self._cleanup_failed_connections(failed_users, proctor_connections)
         
         broadcast_time = round((time.time() - start_time) * 1000, 2)
-        logger.debug(
+        logger.info(
             f"👨‍🏫 PROCTOR_BROADCAST_COMPLETE | broadcast_id={broadcast_id} | "
             f"successful={successful_sends}/{len(proctor_connections)} | time={broadcast_time}ms"
         )
 
-    async def broadcast_presence(self, room_id: str):
-        """Mengirim update jumlah peserta di ruangan ke pengawas dengan enhanced data."""
-        if not room_id:
-            return
-        
-        async with self._lock:
-            proctor_count = 0
-            student_count = 0
-            proctors = []
-            students = []
-            
-            for user_id, conn_data in self.active_connections.items():
-                if conn_data.get("room_id") == room_id:
-                    roles = set(conn_data.get("roles", []))
-                    user_info = {
+    async def broadcast_room_user_event(self, room_id: str, user_id: str, username: str, roles: List[str], action: str):
+        """Broadcast single user event HANYA ke proctors di room (students tidak menerima)."""
+        try:
+            async with self._lock:
+                # Hanya ambil proctor connections di room ini
+                proctor_connections = {}
+                proctor_count = 0
+                student_count = 0
+                
+                for uid, conn_data in self.active_connections.items():
+                    if conn_data.get("room_id") == room_id:
+                        user_roles = conn_data.get("roles", [])
+                        # Fix: Gunakan "teacher" bukan "proctor" untuk role checking
+                        if "teacher" in user_roles or "admin" in user_roles:
+                            proctor_count += 1
+                            proctor_connections[uid] = conn_data
+                        elif "student" in user_roles:
+                            student_count += 1
+                
+                if not proctor_connections:
+                    logger.debug(f"📭 No proctors in room {room_id} for user event")
+                    return
+                
+                # Fix: Determine user type berdasarkan roles yang benar
+                user_type = "proctor" if ("teacher" in roles or "admin" in roles) else "student"
+                
+                # Single user event message (efficient) - HANYA untuk proctors
+                user_event_message = {
+                    "type": "room_user_event",
+                    "action": action,  # "connected" or "disconnected"
+                    "room_id": room_id,
+                    "user": {
                         "user_id": user_id,
-                        "username": conn_data.get("username", f"user_{user_id[:8]}"),
-                        "connected_at": conn_data.get("connected_at", time.time())
-                    }
-                    
-                    if {"teacher", "admin"} & roles:
-                        proctor_count += 1
-                        proctors.append(user_info)
-                    elif "student" in roles:
-                        student_count += 1
-                        students.append(user_info)
-
-        message = {
-            "type": "presence_update",
-            "room_id": room_id,
-            "proctor_count": proctor_count,
-            "student_count": student_count,
-            "proctors": proctors,
-            "students": students,
-            "timestamp": datetime.utcnow().isoformat()
-        }
-        await self.broadcast_to_proctors(room_id, message)
+                        "username": username,
+                        "roles": roles,
+                        "user_type": user_type,
+                        "timestamp": time.time()
+                    },
+                    "room_stats": {
+                        "proctor_count": proctor_count,
+                        "student_count": student_count,
+                        "total_count": proctor_count + student_count
+                    },
+                    "timestamp": datetime.utcnow().isoformat()
+                }
+                
+                logger.info(f"📡 Broadcasting {action} event for {username} ({user_type}) to {len(proctor_connections)} proctors in room {room_id}")
+                
+                # Send HANYA ke proctor connections (students tidak menerima)
+                for uid, conn_data in proctor_connections.items():
+                    websocket = conn_data["websocket"]
+                    try:
+                        await websocket.send_text(json.dumps(user_event_message))
+                        logger.debug(f"✅ Sent room event to proctor {uid}")
+                    except Exception as e:
+                        logger.error(f"❌ Failed to send user event to proctor {uid}: {e}")
+                        
+        except Exception as e:
+            logger.error(f"❌ Error broadcasting user event for room {room_id}: {e}")
 
     async def _get_connection_stats_data(self):
         """Get connection statistics data untuk digabungkan dengan message lain."""
@@ -433,9 +458,9 @@ class ConnectionManager:
             else:
                 logger.info(f"🔔 Skipping admin broadcast for exam room connection: {username} in {room_id}")
             
-            # Update room presence jika di exam room (untuk proctors)
+            # Update room presence jika di exam room (untuk proctors) - efficient single user event
             if room_id and room_id != "lobby":
-                await self.broadcast_presence(room_id)
+                await self.broadcast_room_user_event(room_id, user_id, username, roles, "connected")
                 
         except Exception as e:
             logger.error(f"❌ Error broadcasting user connected event: {e}")
@@ -470,9 +495,9 @@ class ConnectionManager:
             else:
                 logger.info(f"🔔 Skipping admin broadcast for exam room disconnection: {username} from {room_id}")
             
-            # Update room presence jika dari exam room (untuk proctors)
+            # Update room presence jika dari exam room (untuk proctors) - efficient single user event
             if room_id and room_id != "lobby":
-                await self.broadcast_presence(room_id)
+                await self.broadcast_room_user_event(room_id, user_id, username, roles, "disconnected")
                 
         except Exception as e:
             logger.error(f"❌ Error broadcasting user disconnected event: {e}")
