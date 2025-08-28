@@ -17,9 +17,9 @@ class QuestionMapItem(BaseModel):
 
 # Log interaksi siswa
 class InteractionLogItem(BaseModel):
-    timestamp: datetime
-    question_id: PyObjectId
-    displayed_position: int
+    timestamp: Optional[datetime] = None
+    question_id: Optional[PyObjectId] = None
+    displayed_position: Optional[int] = None
     action: str # e.g., "answer_selected", "answer_changed"
     student_answer: Any
 

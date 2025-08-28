@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSocket Exam Room Simulator</title>
+    <title>WebSocket Testing Suite</title>
     <style>
         * {
             margin: 0;
@@ -20,714 +20,1304 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-        }
-
-        .simulator-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            padding: 25px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
         }
 
-        .card-header {
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
             text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
         }
 
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: #333;
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
 
-        .card-subtitle {
-            color: #666;
-            font-size: 0.9rem;
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1em;
         }
 
-        .role-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin: 2px;
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 3px solid #e9ecef;
+            overflow-x: auto;
         }
 
-        .role-proctor {
-            background: #e3f2fd;
-            color: #1976d2;
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6c757d;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
         }
 
-        .role-student {
-            background: #f3e5f5;
-            color: #7b1fa2;
+        .tab:hover {
+            background: #e9ecef;
+            color: #495057;
         }
 
-        .input-group {
-            margin-bottom: 15px;
+        .tab.active {
+            background: white;
+            color: #667eea;
+            border-bottom-color: #667eea;
         }
 
-        .input-group label {
+        .tab-content {
+            display: none;
+            padding: 30px;
+            min-height: 600px;
+        }
+
+        .tab-content.active {
             display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #555;
         }
 
-        .input-group input,
-        .input-group select {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+        .connection-panel {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: bold;
             font-size: 14px;
-            transition: border-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .input-group input:focus,
-        .input-group select:focus {
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .status.connecting {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeaa7;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .btn {
-            width: 100%;
-            padding: 12px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 8px;
-            font-size: 14px;
+            border-radius: 10px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-connect {
-            background: #4caf50;
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
 
-        .btn-connect:hover {
-            background: #45a049;
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
 
-        .btn-disconnect {
-            background: #f44336;
+        .btn-success {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
             color: white;
         }
 
-        .btn-disconnect:hover {
-            background: #da190b;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
-        }
-
-        .btn-action {
-            background: #2196f3;
+        .btn-danger {
+            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
             color: white;
-            margin-top: 10px;
         }
 
-        .btn-action:hover {
-            background: #1976d2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        .btn-warning {
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            color: #333;
         }
 
-        .status {
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .messages {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            border: 2px solid #333;
+        }
+
+        .message {
+            margin-bottom: 10px;
             padding: 10px;
             border-radius: 8px;
-            margin: 10px 0;
-            font-weight: 600;
+            word-wrap: break-word;
+        }
+
+        .message.received {
+            background: rgba(0, 255, 0, 0.1);
+            border-left: 4px solid #00ff00;
+        }
+
+        .message.sent {
+            background: rgba(0, 123, 255, 0.1);
+            border-left: 4px solid #007bff;
+            color: #00aaff;
+        }
+
+        .message.error {
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 4px solid #ff0000;
+            color: #ff6666;
+        }
+
+        .message .timestamp {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
         }
 
-        .status-connected {
-            background: #e8f5e8;
-            color: #2e7d32;
-            border: 1px solid #c8e6c9;
-        }
-
-        .status-disconnected {
-            background: #ffebee;
-            color: #c62828;
-            border: 1px solid #ffcdd2;
-        }
-
-        .log-container {
-            background: #1a1a1a;
-            border-radius: 8px;
-            padding: 15px;
-            height: 300px;
-            overflow-y: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            margin-top: 15px;
-            border: 1px solid #333;
-        }
-
-        .log-entry {
-            margin: 5px 0;
-            padding: 5px;
-            border-radius: 3px;
-        }
-
-        .log-info {
-            color: #4fc3f7;
-        }
-
-        .log-success {
-            color: #81c784;
-            background: rgba(129, 199, 132, 0.1);
-        }
-
-        .log-warning {
-            color: #ffb74d;
-            background: rgba(255, 183, 77, 0.1);
-        }
-
-        .log-error {
-            color: #e57373;
-            background: rgba(229, 115, 115, 0.1);
-        }
-
-        .log-presence {
-            color: #ba68c8;
-            background: rgba(186, 104, 200, 0.1);
+        .stat-value {
+            font-size: 2em;
             font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        .log-activity {
-            color: #4db6ac;
-            background: rgba(77, 182, 172, 0.1);
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .actions-section {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #e0e0e0;
+        .violation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .actions-section h4 {
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .debug-section {
-            margin-top: 15px;
+        .violation-btn {
             padding: 15px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            border-left: 4px solid #2196f3;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
         }
 
-        .debug-section h4 {
-            color: #1976d2;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
+        .violation-btn:hover {
+            border-color: #ff416c;
+            background: #fff5f5;
+        }
+
+        .violation-btn h4 {
+            color: #495057;
+            margin-bottom: 5px;
+        }
+
+        .violation-btn p {
+            color: #6c757d;
+            font-size: 14px;
         }
 
         @media (max-width: 768px) {
-            .container {
+            .grid {
                 grid-template-columns: 1fr;
             }
 
-            body {
-                padding: 10px;
+            .tabs {
+                flex-direction: column;
             }
-        }
 
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            .tab {
+                border-bottom: 1px solid #e9ecef;
+                border-right: none;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="header">
-        <h1>WebSocket Exam Room Simulator</h1>
-        <p>Simulasi sistem monitoring ujian real-time dengan isolasi ruangan</p>
-    </div>
-
     <div class="container">
-        <!-- Pengawas A Card -->
-        <div class="simulator-card">
-            <div class="card-header">
-                <div class="card-title">Pengawas A - Pak Eko</div>
-                <div class="card-subtitle">
-                    <span class="role-badge role-proctor">PROCTOR</span>
-                    <span class="role-badge role-proctor">TEACHER</span>
-                </div>
-                <div class="card-subtitle">Mengawasi: XI TKJ 1</div>
-            </div>
-
-            <div class="input-group">
-                <label for="token-proctor-a">Token Authentication (Pak Eko)</label>
-                <input type="password" id="token-proctor-a" placeholder="Masukkan JWT token Pak Eko">
-            </div>
-
-            <div class="input-group">
-                <label for="exam-id-a">ID Ujian A (XI TKJ 1)</label>
-                <input type="text" id="exam-id-a" placeholder="Masukkan ID ujian untuk XI TKJ 1"
-                    value="exam-xi-tkj-1-2025">
-            </div>
-
-            <button class="btn btn-connect" onclick="connectProctor('A')">🔗 Bergabung ke Ruang Ujian</button>
-            <button class="btn btn-disconnect" onclick="disconnectProctor('A')" style="display: none;">❌ Keluar dari
-                Ruangan</button>
-
-            <div id="status-proctor-a" class="status status-disconnected">
-                Status: Belum Terhubung
-            </div>
-
-            <div class="log-container" id="log-proctor-a"></div>
+        <div class="header">
+            <h1>WebSocket Testing Suite</h1>
+            <p>Comprehensive testing interface for exam room WebSocket functionality</p>
         </div>
 
-        <!-- Siswa A Card -->
-        <div class="simulator-card">
-            <div class="card-header">
-                <div class="card-title">Siswa A - Budi Santoso</div>
-                <div class="card-subtitle">
-                    <span class="role-badge role-student">STUDENT</span>
-                </div>
-                <div class="card-subtitle">Kelas: XI TKJ 1</div>
-            </div>
-
-            <div class="input-group">
-                <label for="token-student-a">Token Authentication (Budi)</label>
-                <input type="password" id="token-student-a" placeholder="Masukkan JWT token Budi">
-            </div>
-
-            <div class="input-group">
-                <label for="exam-id-student-a">ID Ujian (Harus sama dengan Pak Eko)</label>
-                <input type="text" id="exam-id-student-a" placeholder="ID ujian yang sama" value="exam-xi-tkj-1-2025">
-            </div>
-
-            <button class="btn btn-connect" onclick="connectStudent('A')">📝 Masuk Ujian</button>
-            <button class="btn btn-disconnect" onclick="disconnectStudent('A')" style="display: none;">🚪 Keluar dari
-                Ujian</button>
-
-            <div id="status-student-a" class="status status-disconnected">
-                Status: Belum Masuk Ujian
-            </div>
-
-            <div class="actions-section">
-                <h4>Simulasi Aktivitas Siswa:</h4>
-                <button class="btn btn-action" onclick="simulateAnswer('A')">✏️ Ubah Jawaban</button>
-                <button class="btn btn-action" onclick="simulateNavigation('A')">🔄 Navigasi Soal</button>
-                <button class="btn btn-action" onclick="simulateSubmit('A')">✅ Submit Jawaban</button>
-            </div>
-
-            <div class="debug-section">
-                <h4>🐛 Debug Messages:</h4>
-                <button class="btn btn-action" onclick="sendRawMessage('A', 'PING')">📡 Send PING</button>
-                <button class="btn btn-action" onclick="sendRawMessage('A', 'TEST_MESSAGE')">🧪 Send Test
-                    Message</button>
-                <button class="btn btn-action" onclick="sendRawMessage('A', 'HEARTBEAT')">💓 Send Heartbeat</button>
-            </div>
-
-            <div class="log-container" id="log-student-a"></div>
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('main-ws')">Main WebSocket</button>
+            <button class="tab" onclick="showTab('lobby-ws')">Lobby WebSocket</button>
+            <button class="tab" onclick="showTab('exam-room')">Exam Room</button>
+            <button class="tab" onclick="showTab('admin-panel')">Admin Panel</button>
+            <button class="tab" onclick="showTab('student-sim')">Student Simulator</button>
+            <button class="tab" onclick="showTab('proctor-sim')">Proctor Simulator</button>
         </div>
 
-        <!-- Pengawas B Card -->
-        <div class="simulator-card">
-            <div class="card-header">
-                <div class="card-title">Pengawas B - Ibu Wati</div>
-                <div class="card-subtitle">
-                    <span class="role-badge role-proctor">PROCTOR</span>
-                    <span class="role-badge role-proctor">TEACHER</span>
+        <!-- Main WebSocket Tab -->
+        <div class="tab-content active" id="main-ws">
+            <div class="connection-panel">
+                <h2>Main WebSocket Connection (/ws)</h2>
+                <div id="main-status" class="status disconnected">Disconnected</div>
+
+                <div class="form-group">
+                    <label>WebSocket URL:</label>
+                    <input type="text" id="main-url" value="ws://localhost:8000/api/v1/ws" placeholder="WebSocket URL">
                 </div>
-                <div class="card-subtitle">Mengawasi: XI TKJ 2</div>
+
+                <div class="form-group">
+                    <label>User Role:</label>
+                    <select id="main-role">
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" id="main-connect" onclick="connectMainWS()">Connect</button>
+                <button class="btn btn-danger" id="main-disconnect" onclick="disconnectMainWS()"
+                    disabled>Disconnect</button>
             </div>
 
-            <div class="input-group">
-                <label for="token-proctor-b">Token Authentication (Ibu Wati)</label>
-                <input type="password" id="token-proctor-b" placeholder="Masukkan JWT token Ibu Wati">
+            <div class="grid">
+                <div class="card">
+                    <h3>Send Message</h3>
+                    <div class="form-group">
+                        <label>Message Type:</label>
+                        <select id="main-message-type">
+                            <option value="ping">Ping</option>
+                            <option value="heartbeat">Heartbeat</option>
+                            <option value="admin_broadcast">Admin Broadcast</option>
+                            <option value="request_stats">Request Stats</option>
+                            <option value="request_health_check">Health Check</option>
+                            <option value="system_announcement">System Announcement</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message Content (JSON):</label>
+                        <textarea id="main-message" rows="6" placeholder='{"message": "Hello World"}'></textarea>
+                    </div>
+                    <button class="btn btn-success" onclick="sendMainMessage()">Send Message</button>
+                </div>
+
+                <div class="card">
+                    <h3>Quick Actions</h3>
+                    <button class="btn btn-primary" onclick="sendPing('main')">Send Ping</button>
+                    <button class="btn btn-warning" onclick="sendHeartbeat('main')">Send Heartbeat</button>
+                    <button class="btn btn-success" onclick="requestStats()">Request Stats</button>
+                    <button class="btn btn-primary" onclick="healthCheck()">Health Check</button>
+                </div>
             </div>
 
-            <div class="input-group">
-                <label for="exam-id-b">ID Ujian B (XI TKJ 2)</label>
-                <input type="text" id="exam-id-b" placeholder="Masukkan ID ujian untuk XI TKJ 2"
-                    value="exam-xi-tkj-2-2025">
+            <div class="messages" id="main-messages"></div>
+        </div>
+
+        <!-- Lobby WebSocket Tab -->
+        <div class="tab-content" id="lobby-ws">
+            <div class="connection-panel">
+                <h2>Lobby WebSocket Connection (/lobby)</h2>
+                <div id="lobby-status" class="status disconnected">Disconnected</div>
+
+                <div class="form-group">
+                    <label>WebSocket URL:</label>
+                    <input type="text" id="lobby-url" value="ws://localhost:8000/api/v1/lobby"
+                        placeholder="Lobby WebSocket URL">
+                </div>
+
+                <button class="btn btn-primary" onclick="connectLobbyWS()">Connect to Lobby</button>
+                <button class="btn btn-danger" onclick="disconnectLobbyWS()" disabled>Disconnect</button>
             </div>
 
-            <button class="btn btn-connect" onclick="connectProctor('B')">🔗 Bergabung ke Ruang Ujian</button>
-            <button class="btn btn-disconnect" onclick="disconnectProctor('B')" style="display: none;">❌ Keluar dari
-                Ruangan</button>
+            <div class="grid">
+                <div class="card">
+                    <h3>Lobby Actions</h3>
+                    <button class="btn btn-primary" onclick="sendPing('lobby')">Send Ping</button>
+                    <button class="btn btn-warning" onclick="sendHeartbeat('lobby')">Send Heartbeat</button>
+                    <button class="btn btn-success" onclick="requestLobbyStats()">Request Lobby Stats</button>
+                </div>
 
-            <div id="status-proctor-b" class="status status-disconnected">
-                Status: Belum Terhubung
+                <div class="card">
+                    <h3>Lobby Chat</h3>
+                    <div class="form-group">
+                        <input type="text" id="lobby-chat-message" placeholder="Type your message...">
+                    </div>
+                    <button class="btn btn-success" onclick="sendLobbyChat()">Send Chat</button>
+                </div>
             </div>
 
-            <div class="log-container" id="log-proctor-b"></div>
+            <div class="messages" id="lobby-messages"></div>
+        </div>
+
+        <!-- Exam Room Tab -->
+        <div class="tab-content" id="exam-room">
+            <div class="connection-panel">
+                <h2>Exam Room WebSocket (/exam-room/{exam_id})</h2>
+                <div id="exam-status" class="status disconnected">Disconnected</div>
+
+                <div class="form-group">
+                    <label>Exam ID:</label>
+                    <input type="text" id="exam-id" value="test-exam-123" placeholder="Exam ID">
+                </div>
+
+                <div class="form-group">
+                    <label>Participant Role:</label>
+                    <select id="exam-participant-role">
+                        <option value="student">Student</option>
+                        <option value="proctor">Proctor</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" onclick="connectExamRoom()">Connect to Exam Room</button>
+                <button class="btn btn-danger" onclick="disconnectExamRoom()" disabled>Disconnect</button>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Room Actions</h3>
+                    <button class="btn btn-primary" onclick="sendPing('exam')">Send Ping</button>
+                    <button class="btn btn-success" onclick="requestRoomStatus()">Request Room Status</button>
+                    <button class="btn btn-warning" onclick="requestRoomParticipants()">Get Participants</button>
+                </div>
+
+                <div class="card">
+                    <h3>Custom Message</h3>
+                    <div class="form-group">
+                        <textarea id="exam-custom-message" rows="4"
+                            placeholder='{"type": "custom_message", "data": "test"}'></textarea>
+                    </div>
+                    <button class="btn btn-success" onclick="sendExamCustomMessage()">Send Message</button>
+                </div>
+            </div>
+
+            <div class="messages" id="exam-messages"></div>
+        </div>
+
+        <!-- Admin Panel Tab -->
+        <div class="tab-content" id="admin-panel">
+            <div class="connection-panel">
+                <h2>Admin Panel</h2>
+                <p>Connect as admin to access broadcasting and monitoring features</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Admin Broadcast</h3>
+                    <div class="form-group">
+                        <label>Target Roles:</label>
+                        <select id="broadcast-target-roles" multiple>
+                            <option value="student">Students</option>
+                            <option value="teacher">Teachers</option>
+                            <option value="admin">Admins</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Broadcast Message:</label>
+                        <textarea id="broadcast-message" rows="4"
+                            placeholder="Enter your broadcast message here..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority:</label>
+                        <select id="broadcast-priority">
+                            <option value="normal">Normal</option>
+                            <option value="high">High</option>
+                            <option value="urgent">Urgent</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-warning" onclick="sendAdminBroadcast()">Send Broadcast</button>
+                </div>
+
+                <div class="card">
+                    <h3>System Announcement</h3>
+                    <div class="form-group">
+                        <label>Announcement Title:</label>
+                        <input type="text" id="announcement-title" placeholder="Announcement Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Announcement Message:</label>
+                        <textarea id="announcement-message" rows="4"
+                            placeholder="System announcement message..."></textarea>
+                    </div>
+                    <button class="btn btn-danger" onclick="sendSystemAnnouncement()">Send Announcement</button>
+                </div>
+            </div>
+
+            <div class="stats-grid" id="admin-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-connections">0</div>
+                    <div class="stat-label">Total Connections</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="student-connections">0</div>
+                    <div class="stat-label">Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="teacher-connections">0</div>
+                    <div class="stat-label">Teachers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="admin-connections">0</div>
+                    <div class="stat-label">Admins</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Simulator Tab -->
+        <div class="tab-content" id="student-sim">
+            <div class="connection-panel">
+                <h2>Student Activity Simulator</h2>
+                <p>Simulate various student activities and violations</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Exam Activities</h3>
+                    <button class="btn btn-success" onclick="simulateActivity('answer_selected')">Answer
+                        Selected</button>
+                    <button class="btn btn-primary" onclick="simulateActivity('answer_changed')">Answer Changed</button>
+                    <button class="btn btn-warning" onclick="simulateActivity('question_viewed')">Question
+                        Viewed</button>
+                    <button class="btn btn-primary" onclick="simulateActivity('auto_save')">Auto Save</button>
+                    <button class="btn btn-success" onclick="simulateActivity('exam_started')">Exam Started</button>
+                    <button class="btn btn-danger" onclick="simulateActivity('exam_submitted')">Exam Submitted</button>
+                </div>
+
+                <div class="card">
+                    <h3>Question Context</h3>
+                    <div class="form-group">
+                        <label>Question ID:</label>
+                        <input type="text" id="question-id" value="q_001" placeholder="Question ID">
+                    </div>
+                    <div class="form-group">
+                        <label>Position:</label>
+                        <input type="number" id="question-position" value="1" min="1" placeholder="Question Position">
+                    </div>
+                    <div class="form-group">
+                        <label>Answer:</label>
+                        <input type="text" id="student-answer" value="A" placeholder="Student Answer">
+                    </div>
+                </div>
+            </div>
+
+            <div class="violation-types">
+                <div class="violation-btn" onclick="simulateViolation('tab_switch')">
+                    <h4>Tab Switch</h4>
+                    <p>Student switched to another tab/window</p>
+                </div>
+                <div class="violation-btn" onclick="simulateViolation('copy_paste')">
+                    <h4>Copy/Paste</h4>
+                    <p>Detected copy/paste activity</p>
+                </div>
+                <div class="violation-btn" onclick="simulateViolation('multiple_faces')">
+                    <h4>Multiple Faces</h4>
+                    <p>Multiple faces detected in camera</p>
+                </div>
+                <div class="violation-btn" onclick="simulateViolation('no_face')">
+                    <h4>No Face</h4>
+                    <p>No face detected in camera</p>
+                </div>
+                <div class="violation-btn" onclick="simulateViolation('suspicious_movement')">
+                    <h4>Suspicious Movement</h4>
+                    <p>Unusual head/eye movement detected</p>
+                </div>
+                <div class="violation-btn" onclick="simulateViolation('audio_detected')">
+                    <h4>Audio Detected</h4>
+                    <p>Unauthorized audio detected</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proctor Simulator Tab -->
+        <div class="tab-content" id="proctor-sim">
+            <div class="connection-panel">
+                <h2>Proctor Activity Simulator</h2>
+                <p>Simulate proctor commands and monitoring activities</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Proctor Commands</h3>
+                    <div class="form-group">
+                        <label>Target Student ID:</label>
+                        <input type="text" id="target-student-id" value="student-123" placeholder="Student ID">
+                    </div>
+                    <div class="form-group">
+                        <label>Warning Message:</label>
+                        <textarea id="warning-message" rows="3"
+                            placeholder="Please follow exam rules and focus on your screen."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Warning Severity:</label>
+                        <select id="warning-severity">
+                            <option value="info">Info</option>
+                            <option value="warning">Warning</option>
+                            <option value="severe">Severe</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-warning" onclick="sendWarningToStudent()">Send Warning</button>
+                    <button class="btn btn-primary" onclick="requestStudentScreen()">Request Screen Share</button>
+                </div>
+
+                <div class="card">
+                    <h3>Room Management</h3>
+                    <button class="btn btn-success" onclick="requestRoomParticipants()">Get Room Participants</button>
+                    <button class="btn btn-primary" onclick="sendProctorBroadcast()">Broadcast to Proctors</button>
+
+                    <div class="form-group">
+                        <label>Proctor Message:</label>
+                        <textarea id="proctor-broadcast-message" rows="3"
+                            placeholder="Message to other proctors..."></textarea>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // WebSocket connections storage
-        const connections = {
-            proctorA: null,
-            studentA: null,
-            proctorB: null
-        };
+        // WebSocket connections
+        let mainWS = null;
+        let lobbyWS = null;
+        let examWS = null;
 
-        // Server URL production
-        const WS_BASE_URL = 'ws://localhost:8000/api/v1/ws/exam-room';
+        // Tab management
+        function showTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
 
         // Utility functions
-        function addLog(elementId, message, type = 'info') {
-            const logContainer = document.getElementById(elementId);
+        function updateStatus(elementId, status) {
+            const element = document.getElementById(elementId);
+            element.className = `status ${status}`;
+            element.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+        }
+
+        function addMessage(containerId, message, type = 'received') {
+            const container = document.getElementById(containerId);
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+
             const timestamp = new Date().toLocaleTimeString();
-            const logEntry = document.createElement('div');
-            logEntry.className = `log-entry log-${type}`;
-            logEntry.textContent = `[${timestamp}] ${message}`;
-            logContainer.appendChild(logEntry);
-            logContainer.scrollTop = logContainer.scrollHeight;
+            messageDiv.innerHTML = `
+                <div class="timestamp">[${timestamp}]</div>
+                <div>${typeof message === 'object' ? JSON.stringify(message, null, 2) : message}</div>
+            `;
+
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
         }
 
-        function updateStatus(elementId, message, connected = false) {
-            const statusElement = document.getElementById(elementId);
-            statusElement.textContent = `Status: ${message}`;
-            statusElement.className = `status ${connected ? 'status-connected' : 'status-disconnected'}`;
+        function getCurrentTimestamp() {
+            return Date.now();
         }
 
-        // Proctor Connection Functions
-        function connectProctor(proctorId) {
-            const examIdInput = proctorId === 'A' ? 'exam-id-a' : 'exam-id-b';
-            const tokenInput = proctorId === 'A' ? 'token-proctor-a' : 'token-proctor-b';
+        // Main WebSocket functions
+        function connectMainWS() {
+            const url = document.getElementById('main-url').value;
+            const role = document.getElementById('main-role').value;
 
-            const examId = document.getElementById(examIdInput).value.trim();
-            const token = document.getElementById(tokenInput).value.trim();
-
-            if (!examId) {
-                alert('Mohon masukkan ID ujian terlebih dahulu!');
-                return;
-            }
-
-            if (!token) {
-                alert('Mohon masukkan token authentication terlebih dahulu!');
-                return;
-            }
-
-            const connectionKey = `proctor${proctorId}`;
-            const logId = `log-proctor-${proctorId.toLowerCase()}`;
-            const statusId = `status-proctor-${proctorId.toLowerCase()}`;
+            updateStatus('main-status', 'connecting');
 
             try {
-                // Include token in WebSocket URL as query parameter
-                const wsUrl = `${WS_BASE_URL}/${examId}?token=${encodeURIComponent(token)}`;
-                addLog(logId, `Mencoba terhubung ke: ${wsUrl.replace(token, '[TOKEN_HIDDEN]')}`, 'info');
+                mainWS = new WebSocket(url);
 
-                connections[connectionKey] = new WebSocket(wsUrl);
-
-                connections[connectionKey].onopen = () => {
-                    addLog(logId, `✅ PENGAWAS ${proctorId}: Berhasil terhubung ke ruang ujian ${examId}`, 'success');
-                    updateStatus(statusId, `Terhubung ke ${examId}`, true);
-
-                    // Toggle buttons
-                    document.querySelector(`button[onclick="connectProctor('${proctorId}')"]`).style.display = 'none';
-                    document.querySelector(`button[onclick="disconnectProctor('${proctorId}')"]`).style.display = 'block';
+                mainWS.onopen = () => {
+                    updateStatus('main-status', 'connected');
+                    document.getElementById('main-connect').disabled = true;
+                    document.getElementById('main-disconnect').disabled = false;
+                    addMessage('main-messages', 'Connected to main WebSocket', 'sent');
                 };
 
-                connections[connectionKey].onmessage = (event) => {
-                    try {
-                        const data = JSON.parse(event.data);
+                mainWS.onmessage = (event) => {
+                    const data = JSON.parse(event.data);
+                    addMessage('main-messages', data, 'received');
 
-                        if (data.type === 'presence_update') {
-                            addLog(logId, `👥 [PRESENCE] Pengawas: ${data.proctor_count}, Siswa: ${data.student_count}`, 'presence');
-                        } else if (data.type === 'connection_established') {
-                            addLog(logId, `🎉 Koneksi berhasil dibuat`, 'success');
-                        } else if (data.student_name) {
-                            addLog(logId, `👨‍🎓 [ACTIVITY] ${data.student_name} melakukan: ${data.type}`, 'activity');
-
-                            // Add detail if available
-                            if (data.details) {
-                                const details = JSON.stringify(data.details, null, 2);
-                                addLog(logId, `📝 Detail: ${details}`, 'info');
-                            }
-                        } else {
-                            addLog(logId, `📨 Pesan: ${JSON.stringify(data)}`, 'info');
-                        }
-                    } catch (e) {
-                        addLog(logId, `⚠️ Error parsing message: ${event.data}`, 'warning');
+                    // Update admin stats if received
+                    if (data.type === 'connection_stats_response' || data.type === 'global_admin_stats') {
+                        updateAdminStats(data);
                     }
                 };
 
-                connections[connectionKey].onclose = (event) => {
-                    if (event.code === 1006) {
-                        addLog(logId, `❌ PENGAWAS ${proctorId}: Koneksi ditolak - Periksa token authentication`, 'error');
-                    } else if (event.code === 1008) {
-                        addLog(logId, `❌ PENGAWAS ${proctorId}: Token authentication tidak valid`, 'error');
-                    } else {
-                        addLog(logId, `❌ PENGAWAS ${proctorId}: Koneksi terputus (code: ${event.code})`, 'error');
-                    }
-                    updateStatus(statusId, 'Terputus', false);
-
-                    // Reset buttons
-                    document.querySelector(`button[onclick="connectProctor('${proctorId}')"]`).style.display = 'block';
-                    document.querySelector(`button[onclick="disconnectProctor('${proctorId}')"]`).style.display = 'none';
+                mainWS.onclose = () => {
+                    updateStatus('main-status', 'disconnected');
+                    document.getElementById('main-connect').disabled = false;
+                    document.getElementById('main-disconnect').disabled = true;
+                    addMessage('main-messages', 'Disconnected from main WebSocket', 'error');
                 };
 
-                connections[connectionKey].onerror = (error) => {
-                    addLog(logId, `🚨 PENGAWAS ${proctorId}: Error koneksi - Kemungkinan masalah authentication`, 'error');
+                mainWS.onerror = (error) => {
+                    addMessage('main-messages', `WebSocket error: ${error}`, 'error');
                 };
 
             } catch (error) {
-                addLog(logId, `🚨 Error membuat koneksi: ${error.message}`, 'error');
+                updateStatus('main-status', 'disconnected');
+                addMessage('main-messages', `Connection failed: ${error}`, 'error');
             }
         }
 
-        function disconnectProctor(proctorId) {
-            const connectionKey = `proctor${proctorId}`;
-            if (connections[connectionKey]) {
-                connections[connectionKey].close();
-                connections[connectionKey] = null;
+        function disconnectMainWS() {
+            if (mainWS) {
+                mainWS.close();
             }
         }
 
-        // Student Connection Functions
-        function connectStudent(studentId) {
-            const examId = document.getElementById(`exam-id-student-${studentId.toLowerCase()}`).value.trim();
-            const token = document.getElementById(`token-student-${studentId.toLowerCase()}`).value.trim();
-
-            if (!examId) {
-                alert('Mohon masukkan ID ujian terlebih dahulu!');
+        function sendMainMessage() {
+            if (!mainWS || mainWS.readyState !== WebSocket.OPEN) {
+                addMessage('main-messages', 'WebSocket not connected', 'error');
                 return;
             }
 
-            if (!token) {
-                alert('Mohon masukkan token authentication terlebih dahulu!');
-                return;
-            }
-
-            const connectionKey = `student${studentId}`;
-            const logId = `log-student-${studentId.toLowerCase()}`;
-            const statusId = `status-student-${studentId.toLowerCase()}`;
-
-            try {
-                // Include token in WebSocket URL as query parameter
-                const wsUrl = `${WS_BASE_URL}/${examId}?token=${encodeURIComponent(token)}`;
-                addLog(logId, `Mencoba masuk ujian: ${wsUrl.replace(token, '[TOKEN_HIDDEN]')}`, 'info');
-
-                connections[connectionKey] = new WebSocket(wsUrl);
-
-                connections[connectionKey].onopen = () => {
-                    addLog(logId, `✅ SISWA ${studentId}: Berhasil masuk ujian ${examId}`, 'success');
-                    updateStatus(statusId, `Sedang mengerjakan ujian ${examId}`, true);
-
-                    // Toggle buttons
-                    document.querySelector(`button[onclick="connectStudent('${studentId}')"]`).style.display = 'none';
-                    document.querySelector(`button[onclick="disconnectStudent('${studentId}')"]`).style.display = 'block';
-                };
-
-                connections[connectionKey].onmessage = (event) => {
-                    try {
-                        const data = JSON.parse(event.data);
-                        if (data.type === 'connection_established') {
-                            addLog(logId, `🎉 Koneksi ujian berhasil dibuat`, 'success');
-                        } else {
-                            addLog(logId, `📨 Pesan dari server: ${JSON.stringify(data)}`, 'info');
-                        }
-                    } catch (e) {
-                        addLog(logId, `⚠️ Error parsing: ${event.data}`, 'warning');
-                    }
-                };
-
-                connections[connectionKey].onclose = (event) => {
-                    if (event.code === 1006) {
-                        addLog(logId, `❌ SISWA ${studentId}: Koneksi ditolak - Periksa token authentication`, 'error');
-                    } else if (event.code === 1008) {
-                        addLog(logId, `❌ SISWA ${studentId}: Token authentication tidak valid`, 'error');
-                    } else {
-                        addLog(logId, `❌ SISWA ${studentId}: Keluar dari ujian (code: ${event.code})`, 'error');
-                    }
-                    updateStatus(statusId, 'Keluar dari ujian', false);
-
-                    // Reset buttons
-                    document.querySelector(`button[onclick="connectStudent('${studentId}')"]`).style.display = 'block';
-                    document.querySelector(`button[onclick="disconnectStudent('${studentId}')"]`).style.display = 'none';
-                };
-
-                connections[connectionKey].onerror = (error) => {
-                    addLog(logId, `🚨 SISWA ${studentId}: Error - Kemungkinan masalah authentication`, 'error');
-                };
-
-            } catch (error) {
-                addLog(logId, `🚨 Error membuat koneksi: ${error.message}`, 'error');
-            }
-        }
-
-        function disconnectStudent(studentId) {
-            const connectionKey = `student${studentId}`;
-            if (connections[connectionKey]) {
-                connections[connectionKey].close();
-                connections[connectionKey] = null;
-            }
-        }
-
-        // Student Activity Simulation Functions
-        function simulateAnswer(studentId) {
-            const connectionKey = `student${studentId}`;
-            const logId = `log-student-${studentId.toLowerCase()}`;
-
-            if (!connections[connectionKey] || connections[connectionKey].readyState !== WebSocket.OPEN) {
-                addLog(logId, '⚠️ Tidak terhubung ke ujian!', 'warning');
-                return;
-            }
-
-            const questionId = `question_${Math.floor(Math.random() * 20) + 1}`;
-            const answer = ['A', 'B', 'C', 'D'][Math.floor(Math.random() * 4)];
-            const position = Math.floor(Math.random() * 20) + 1;
-
-            const message = {
-                type: "ANSWER_CHANGED",
-                details: {
-                    question_id: questionId,
-                    displayed_position: position,
-                    answer: answer
-                },
-                timestamp: new Date().toISOString()
-            };
-
-            connections[connectionKey].send(JSON.stringify(message));
-            addLog(logId, `📝 ✅ SENT: Perubahan jawaban - Soal ${position} → ${answer}`, 'activity');
-            addLog(logId, `📤 Raw message: ${JSON.stringify(message)}`, 'info');
-        }
-
-        function simulateNavigation(studentId) {
-            const connectionKey = `student${studentId}`;
-            const logId = `log-student-${studentId.toLowerCase()}`;
-
-            if (!connections[connectionKey] || connections[connectionKey].readyState !== WebSocket.OPEN) {
-                addLog(logId, '⚠️ Tidak terhubung ke ujian!', 'warning');
-                return;
-            }
-
-            const questionId = `question_${Math.floor(Math.random() * 20) + 1}`;
-            const position = Math.floor(Math.random() * 20) + 1;
-
-            const message = {
-                type: "QUESTION_NAVIGATION",
-                details: {
-                    question_id: questionId,
-                    displayed_position: position,
-                    from_position: Math.max(1, position - 1)
-                },
-                timestamp: new Date().toISOString()
-            };
-
-            connections[connectionKey].send(JSON.stringify(message));
-            addLog(logId, `🔄 ✅ SENT: Navigasi ke soal nomor ${position}`, 'activity');
-            addLog(logId, `📤 Raw message: ${JSON.stringify(message)}`, 'info');
-        }
-
-        function simulateSubmit(studentId) {
-            const connectionKey = `student${studentId}`;
-            const logId = `log-student-${studentId.toLowerCase()}`;
-
-            if (!connections[connectionKey] || connections[connectionKey].readyState !== WebSocket.OPEN) {
-                addLog(logId, '⚠️ Tidak terhubung ke ujian!', 'warning');
-                return;
-            }
-
-            const message = {
-                type: "EXAM_SUBMITTED",
-                details: {
-                    submission_time: new Date().toISOString(),
-                    total_answered: Math.floor(Math.random() * 20) + 1
-                },
-                timestamp: new Date().toISOString()
-            };
-
-            connections[connectionKey].send(JSON.stringify(message));
-            addLog(logId, `✅ ✅ SENT: Submit ujian`, 'success');
-            addLog(logId, `📤 Raw message: ${JSON.stringify(message)}`, 'info');
-        }
-
-        // Debug function to send raw messages
-        function sendRawMessage(studentId, messageType) {
-            const connectionKey = `student${studentId}`;
-            const logId = `log-student-${studentId.toLowerCase()}`;
-
-            if (!connections[connectionKey] || connections[connectionKey].readyState !== WebSocket.OPEN) {
-                addLog(logId, '⚠️ Tidak terhubung ke ujian!', 'warning');
-                return;
-            }
+            const messageType = document.getElementById('main-message-type').value;
+            const messageContent = document.getElementById('main-message').value;
 
             let message;
-
-            switch (messageType) {
-                case 'PING':
-                    message = {
-                        type: "PING",
-                        timestamp: new Date().toISOString()
-                    };
-                    break;
-                case 'TEST_MESSAGE':
-                    message = {
-                        type: "TEST_MESSAGE",
-                        data: "Hello from student simulator",
-                        timestamp: new Date().toISOString()
-                    };
-                    break;
-                case 'HEARTBEAT':
-                    message = {
-                        type: "HEARTBEAT",
-                        timestamp: new Date().toISOString()
-                    };
-                    break;
-                default:
-                    message = {
-                        type: messageType,
-                        timestamp: new Date().toISOString()
-                    };
+            try {
+                if (messageContent) {
+                    message = JSON.parse(messageContent);
+                } else {
+                    message = {};
+                }
+                message.type = messageType;
+                message.timestamp = getCurrentTimestamp();
+            } catch (error) {
+                addMessage('main-messages', `Invalid JSON: ${error}`, 'error');
+                return;
             }
 
-            connections[connectionKey].send(JSON.stringify(message));
-            addLog(logId, `🐛 ✅ DEBUG SENT: ${messageType}`, 'warning');
-            addLog(logId, `📤 Raw: ${JSON.stringify(message)}`, 'info');
+            mainWS.send(JSON.stringify(message));
+            addMessage('main-messages', message, 'sent');
         }
 
-        // Cleanup on page unload
-        window.addEventListener('beforeunload', () => {
-            Object.values(connections).forEach(conn => {
-                if (conn && conn.readyState === WebSocket.OPEN) {
-                    conn.close();
+        // Lobby WebSocket functions
+        function connectLobbyWS() {
+            const url = document.getElementById('lobby-url').value;
+
+            updateStatus('lobby-status', 'connecting');
+
+            try {
+                lobbyWS = new WebSocket(url);
+
+                lobbyWS.onopen = () => {
+                    updateStatus('lobby-status', 'connected');
+                    addMessage('lobby-messages', 'Connected to lobby WebSocket', 'sent');
+                };
+
+                lobbyWS.onmessage = (event) => {
+                    const data = JSON.parse(event.data);
+                    addMessage('lobby-messages', data, 'received');
+                };
+
+                lobbyWS.onclose = () => {
+                    updateStatus('lobby-status', 'disconnected');
+                    addMessage('lobby-messages', 'Disconnected from lobby WebSocket', 'error');
+                };
+
+                lobbyWS.onerror = (error) => {
+                    addMessage('lobby-messages', `WebSocket error: ${error}`, 'error');
+                };
+
+            } catch (error) {
+                updateStatus('lobby-status', 'disconnected');
+                addMessage('lobby-messages', `Connection failed: ${error}`, 'error');
+            }
+        }
+
+        function disconnectLobbyWS() {
+            if (lobbyWS) {
+                lobbyWS.close();
+            }
+        }
+
+        function sendLobbyChat() {
+            if (!lobbyWS || lobbyWS.readyState !== WebSocket.OPEN) {
+                addMessage('lobby-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const message = document.getElementById('lobby-chat-message').value;
+            if (!message.trim()) return;
+
+            const chatMessage = {
+                type: 'lobby_chat',
+                message: message,
+                timestamp: getCurrentTimestamp()
+            };
+
+            lobbyWS.send(JSON.stringify(chatMessage));
+            addMessage('lobby-messages', chatMessage, 'sent');
+            document.getElementById('lobby-chat-message').value = '';
+        }
+
+        // Exam Room WebSocket functions
+        function connectExamRoom() {
+            const examId = document.getElementById('exam-id').value;
+            const participantRole = document.getElementById('exam-participant-role').value;
+            const url = `ws://localhost:8000/api/v1/exam-room/${examId}`;
+
+            updateStatus('exam-status', 'connecting');
+
+            try {
+                examWS = new WebSocket(url);
+
+                examWS.onopen = () => {
+                    updateStatus('exam-status', 'connected');
+                    addMessage('exam-messages', `Connected to exam room ${examId} as ${participantRole}`, 'sent');
+                };
+
+                examWS.onmessage = (event) => {
+                    const data = JSON.parse(event.data);
+                    addMessage('exam-messages', data, 'received');
+                };
+
+                examWS.onclose = () => {
+                    updateStatus('exam-status', 'disconnected');
+                    addMessage('exam-messages', 'Disconnected from exam room WebSocket', 'error');
+                };
+
+                examWS.onerror = (error) => {
+                    addMessage('exam-messages', `WebSocket error: ${error}`, 'error');
+                };
+
+            } catch (error) {
+                updateStatus('exam-status', 'disconnected');
+                addMessage('exam-messages', `Connection failed: ${error}`, 'error');
+            }
+        }
+
+        function disconnectExamRoom() {
+            if (examWS) {
+                examWS.close();
+            }
+        }
+
+        function sendExamCustomMessage() {
+            if (!examWS || examWS.readyState !== WebSocket.OPEN) {
+                addMessage('exam-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const messageContent = document.getElementById('exam-custom-message').value;
+
+            let message;
+            try {
+                message = JSON.parse(messageContent);
+                message.timestamp = getCurrentTimestamp();
+            } catch (error) {
+                addMessage('exam-messages', `Invalid JSON: ${error}`, 'error');
+                return;
+            }
+
+            examWS.send(JSON.stringify(message));
+            addMessage('exam-messages', message, 'sent');
+        }
+
+        // Common ping/heartbeat functions
+        function sendPing(wsType) {
+            let ws;
+            let messagesId;
+
+            switch (wsType) {
+                case 'main':
+                    ws = mainWS;
+                    messagesId = 'main-messages';
+                    break;
+                case 'lobby':
+                    ws = lobbyWS;
+                    messagesId = 'lobby-messages';
+                    break;
+                case 'exam':
+                    ws = examWS;
+                    messagesId = 'exam-messages';
+                    break;
+                default:
+                    return;
+            }
+
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                addMessage(messagesId, 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const pingMessage = {
+                type: 'ping',
+                timestamp: getCurrentTimestamp()
+            };
+
+            ws.send(JSON.stringify(pingMessage));
+            addMessage(messagesId, pingMessage, 'sent');
+        }
+
+        function sendHeartbeat(wsType) {
+            let ws;
+            let messagesId;
+
+            switch (wsType) {
+                case 'main':
+                    ws = mainWS;
+                    messagesId = 'main-messages';
+                    break;
+                case 'lobby':
+                    ws = lobbyWS;
+                    messagesId = 'lobby-messages';
+                    break;
+                case 'exam':
+                    ws = examWS;
+                    messagesId = 'exam-messages';
+                    break;
+                default:
+                    return;
+            }
+
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                addMessage(messagesId, 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const heartbeatMessage = {
+                type: 'heartbeat',
+                timestamp: getCurrentTimestamp()
+            };
+
+            ws.send(JSON.stringify(heartbeatMessage));
+            addMessage(messagesId, heartbeatMessage, 'sent');
+        }
+
+        // Admin functions
+        function requestStats() {
+            if (!mainWS || mainWS.readyState !== WebSocket.OPEN) {
+                addMessage('main-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const message = {
+                type: 'request_stats',
+                timestamp: getCurrentTimestamp()
+            };
+
+            mainWS.send(JSON.stringify(message));
+            addMessage('main-messages', message, 'sent');
+        }
+
+        function healthCheck() {
+            if (!mainWS || mainWS.readyState !== WebSocket.OPEN) {
+                addMessage('main-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const message = {
+                type: 'request_health_check',
+                timestamp: getCurrentTimestamp()
+            };
+
+            mainWS.send(JSON.stringify(message));
+            addMessage('main-messages', message, 'sent');
+        }
+
+        function sendAdminBroadcast() {
+            if (!mainWS || mainWS.readyState !== WebSocket.OPEN) {
+                addMessage('main-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const targetRoles = Array.from(document.getElementById('broadcast-target-roles').selectedOptions)
+                .map(option => option.value);
+            const message = document.getElementById('broadcast-message').value;
+            const priority = document.getElementById('broadcast-priority').value;
+
+            if (!message.trim() || targetRoles.length === 0) {
+                addMessage('main-messages', 'Please enter message and select target roles', 'error');
+                return;
+            }
+
+            const broadcastMessage = {
+                type: 'admin_broadcast',
+                message: message,
+                target_roles: targetRoles,
+                priority: priority,
+                timestamp: getCurrentTimestamp()
+            };
+
+            mainWS.send(JSON.stringify(broadcastMessage));
+            addMessage('main-messages', broadcastMessage, 'sent');
+        }
+
+        function sendSystemAnnouncement() {
+            if (!mainWS || mainWS.readyState !== WebSocket.OPEN) {
+                addMessage('main-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const title = document.getElementById('announcement-title').value;
+            const message = document.getElementById('announcement-message').value;
+
+            if (!title.trim() || !message.trim()) {
+                addMessage('main-messages', 'Please enter both title and message', 'error');
+                return;
+            }
+
+            const announcementMessage = {
+                type: 'system_announcement',
+                title: title,
+                message: message,
+                priority: 'high',
+                timestamp: getCurrentTimestamp()
+            };
+
+            mainWS.send(JSON.stringify(announcementMessage));
+            addMessage('main-messages', announcementMessage, 'sent');
+        }
+
+        function updateAdminStats(data) {
+            if (data.connection_stats) {
+                const stats = data.connection_stats;
+                document.getElementById('total-connections').textContent = stats.total_connections || 0;
+                document.getElementById('student-connections').textContent = stats.by_role?.student || 0;
+                document.getElementById('teacher-connections').textContent = stats.by_role?.teacher || 0;
+                document.getElementById('admin-connections').textContent = stats.by_role?.admin || 0;
+            } else if (data.stats_by_role) {
+                document.getElementById('total-connections').textContent = data.total_connections || 0;
+                document.getElementById('student-connections').textContent = data.stats_by_role?.student || 0;
+                document.getElementById('teacher-connections').textContent = data.stats_by_role?.teacher || 0;
+                document.getElementById('admin-connections').textContent = data.stats_by_role?.admin || 0;
+            }
+        }
+
+        // Lobby functions
+        function requestLobbyStats() {
+            if (!lobbyWS || lobbyWS.readyState !== WebSocket.OPEN) {
+                addMessage('lobby-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const message = {
+                type: 'request_lobby_stats',
+                timestamp: getCurrentTimestamp()
+            };
+
+            lobbyWS.send(JSON.stringify(message));
+            addMessage('lobby-messages', message, 'sent');
+        }
+
+        // Exam room functions
+        function requestRoomStatus() {
+            if (!examWS || examWS.readyState !== WebSocket.OPEN) {
+                addMessage('exam-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const message = {
+                type: 'request_room_status',
+                timestamp: getCurrentTimestamp()
+            };
+
+            examWS.send(JSON.stringify(message));
+            addMessage('exam-messages', message, 'sent');
+        }
+
+        function requestRoomParticipants() {
+            if (!examWS || examWS.readyState !== WebSocket.OPEN) {
+                addMessage('exam-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const message = {
+                type: 'request_room_participants',
+                timestamp: getCurrentTimestamp()
+            };
+
+            examWS.send(JSON.stringify(message));
+            addMessage('exam-messages', message, 'sent');
+        }
+
+        // Student simulation functions
+        function simulateActivity(activityType) {
+            if (!examWS || examWS.readyState !== WebSocket.OPEN) {
+                addMessage('exam-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const questionId = document.getElementById('question-id').value;
+            const position = document.getElementById('question-position').value;
+            const answer = document.getElementById('student-answer').value;
+
+            const message = {
+                type: activityType,
+                sessionId: 'session_' + getCurrentTimestamp(),
+                timestamp: getCurrentTimestamp(),
+                details: {
+                    question_id: questionId,
+                    displayed_position: parseInt(position),
+                    answer: answer,
+                    student_answer: answer
+                }
+            };
+
+            examWS.send(JSON.stringify(message));
+            addMessage('exam-messages', message, 'sent');
+        }
+
+        function simulateViolation(violationType) {
+            if (!examWS || examWS.readyState !== WebSocket.OPEN) {
+                addMessage('exam-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const violationDetails = {
+                tab_switch: {
+                    severity: 'warning',
+                    description: 'Student switched to another browser tab',
+                    details: { previous_tab: 'exam', current_tab: 'external' }
+                },
+                copy_paste: {
+                    severity: 'severe',
+                    description: 'Copy/paste activity detected',
+                    details: { action: 'paste', content_length: 150 }
+                },
+                multiple_faces: {
+                    severity: 'severe',
+                    description: 'Multiple faces detected in camera',
+                    details: { face_count: 2 }
+                },
+                no_face: {
+                    severity: 'warning',
+                    description: 'No face detected in camera',
+                    details: { duration: 5000 }
+                },
+                suspicious_movement: {
+                    severity: 'info',
+                    description: 'Unusual head/eye movement detected',
+                    details: { movement_type: 'looking_away', duration: 3000 }
+                },
+                audio_detected: {
+                    severity: 'severe',
+                    description: 'Unauthorized audio detected',
+                    details: { volume_level: 0.7, duration: 2000 }
+                }
+            };
+
+            const violation = violationDetails[violationType] || violationDetails.tab_switch;
+
+            const message = {
+                type: 'violation_event',
+                violation_type: violationType,
+                activityType: 'suspicious_activity',
+                severity: violation.severity,
+                sessionId: 'session_' + getCurrentTimestamp(),
+                timestamp: getCurrentTimestamp(),
+                details: {
+                    description: violation.description,
+                    violation_data: violation.details,
+                    confidence: 0.85
+                }
+            };
+
+            examWS.send(JSON.stringify(message));
+            addMessage('exam-messages', message, 'sent');
+        }
+
+        // Proctor simulation functions
+        function sendWarningToStudent() {
+            if (!examWS || examWS.readyState !== WebSocket.OPEN) {
+                addMessage('exam-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const targetStudentId = document.getElementById('target-student-id').value;
+            const warningMessage = document.getElementById('warning-message').value;
+            const severity = document.getElementById('warning-severity').value;
+
+            if (!targetStudentId.trim() || !warningMessage.trim()) {
+                addMessage('exam-messages', 'Please enter student ID and warning message', 'error');
+                return;
+            }
+
+            const message = {
+                type: 'proctor_command',
+                command: 'send_warning',
+                target_student_id: targetStudentId,
+                warning_message: warningMessage,
+                severity: severity,
+                timestamp: getCurrentTimestamp()
+            };
+
+            examWS.send(JSON.stringify(message));
+            addMessage('exam-messages', message, 'sent');
+        }
+
+        function requestStudentScreen() {
+            if (!examWS || examWS.readyState !== WebSocket.OPEN) {
+                addMessage('exam-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const targetStudentId = document.getElementById('target-student-id').value;
+
+            if (!targetStudentId.trim()) {
+                addMessage('exam-messages', 'Please enter student ID', 'error');
+                return;
+            }
+
+            const message = {
+                type: 'proctor_command',
+                command: 'request_student_screen',
+                target_student_id: targetStudentId,
+                timestamp: getCurrentTimestamp()
+            };
+
+            examWS.send(JSON.stringify(message));
+            addMessage('exam-messages', message, 'sent');
+        }
+
+        function sendProctorBroadcast() {
+            if (!examWS || examWS.readyState !== WebSocket.OPEN) {
+                addMessage('exam-messages', 'WebSocket not connected', 'error');
+                return;
+            }
+
+            const broadcastMessage = document.getElementById('proctor-broadcast-message').value;
+
+            if (!broadcastMessage.trim()) {
+                addMessage('exam-messages', 'Please enter broadcast message', 'error');
+                return;
+            }
+
+            const message = {
+                type: 'proctor_broadcast',
+                message: broadcastMessage,
+                timestamp: getCurrentTimestamp()
+            };
+
+            examWS.send(JSON.stringify(message));
+            addMessage('exam-messages', message, 'sent');
+        }
+
+        // Auto-refresh admin stats every 10 seconds
+        setInterval(() => {
+            if (mainWS && mainWS.readyState === WebSocket.OPEN) {
+                const message = {
+                    type: 'request_stats',
+                    timestamp: getCurrentTimestamp(),
+                    auto_refresh: true
+                };
+                mainWS.send(JSON.stringify(message));
+            }
+        }, 10000);
+
+        // Enter key handlers
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('lobby-chat-message').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    sendLobbyChat();
                 }
             });
-        });
-
-        // Auto-sync exam IDs
-        document.getElementById('exam-id-a').addEventListener('input', function () {
-            document.getElementById('exam-id-student-a').value = this.value;
         });
     </script>
 </body>
