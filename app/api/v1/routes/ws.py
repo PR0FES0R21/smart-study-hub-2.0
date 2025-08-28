@@ -235,11 +235,11 @@ async def handle_incoming_message(websocket: WebSocket, user_id: str, roles: lis
         )
         
     elif message_type == "request_stats" and "admin" in roles:
-        # Send connection statistics to admin
-        stats = await manager.get_connection_stats()
+        # Send connection statistics to admin (menggunakan method baru yang efisien)
+        stats_data = await manager._get_connection_stats_data()
         stats_message = {
-            "type": "connection_stats",
-            "data": stats,
+            "type": "connection_stats_response",
+            "stats": stats_data,
             "message_id": message_id,
             "timestamp": datetime.utcnow().isoformat()
         }

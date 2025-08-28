@@ -314,36 +314,31 @@ class ConnectionManager:
         }
         await self.broadcast_to_proctors(room_id, message)
 
-    async def broadcast_connection_stats_to_admins(self):
-        """Mengirim statistik koneksi yang efisien ke admin (hanya count, tanpa detail user)."""
+    async def _get_connection_stats_data(self):
+        """Get connection statistics data untuk digabungkan dengan message lain."""
         async with self._lock:
             active_users_count = len(self.active_connections)
             users_by_role = {}
             users_by_room = {}
-            admin_count = 0
             
             for user_id, conn_data in self.active_connections.items():
                 # Count by roles
                 for role in conn_data.get("roles", []):
                     users_by_role[role] = users_by_role.get(role, 0) + 1
-                    if role == "admin":
-                        admin_count += 1
                 
-                # Count by room
-                room_id = conn_data.get("room_id", "lobby")
-                users_by_room[room_id] = users_by_room.get(room_id, 0) + 1
+                # Count by room (hanya lobby dan global, bukan exam rooms)
+                room_id = conn_data.get("room_id")
+                if not room_id or room_id == "lobby":
+                    room_key = "lobby"
+                else:
+                    room_key = "exam_rooms"  # Group all exam rooms
+                users_by_room[room_key] = users_by_room.get(room_key, 0) + 1
         
-        logger.info(f"📊 Sending connection stats to {admin_count} admins | total_users={active_users_count}")
-        
-        # Efficient message with only counts, no user details
-        message = {
-            "type": "connection_stats_update",
+        return {
             "total_count": active_users_count,
             "users_by_role": users_by_role,
-            "users_by_room": users_by_room,
-            "timestamp": datetime.utcnow().isoformat()
+            "users_by_room": users_by_room
         }
-        await self.broadcast_to_roles(message, target_roles=["admin"])
 
     async def get_connection_stats(self):
         """Get connection statistics for monitoring."""
@@ -411,34 +406,35 @@ class ConnectionManager:
     async def _broadcast_user_connected_event(self, user_id: str, username: str, roles: List[str], room_id: str | None, connection_id: str):
         """Broadcast efficient user connected event - hanya data user yang connect."""
         try:
-            # Get current connection count
-            async with self._lock:
-                total_connections = len(self.active_connections)
+            # Hanya broadcast ke admin jika bukan exam room connection
+            # Admin hanya perlu tahu global connections, bukan exam room connections
+            if not room_id or room_id == "lobby":
+                # Get connection stats untuk digabungkan dalam 1 message
+                stats_data = await self._get_connection_stats_data()
+                
+                logger.info(f"🔔 Broadcasting user connected event for {username} to admins (global)")
+                
+                # Single efficient message dengan user data + stats
+                admin_message = {
+                    "type": "user_connected",
+                    "action": "connect",
+                    "user": {
+                        "user_id": user_id,
+                        "username": username,
+                        "roles": roles,
+                        "room_id": room_id or "lobby",
+                        "connection_id": connection_id,
+                        "connected_at": time.time()
+                    },
+                    "stats": stats_data,
+                    "timestamp": datetime.utcnow().isoformat()
+                }
+                await self.broadcast_to_roles(admin_message, target_roles=["admin"])
+            else:
+                logger.info(f"🔔 Skipping admin broadcast for exam room connection: {username} in {room_id}")
             
-            logger.info(f"🔔 Broadcasting user connected event for {username} to admins")
-            
-            # Efficient event for admins - hanya data user yang connect + total count
-            admin_message = {
-                "type": "user_connected",
-                "action": "connect",
-                "user": {
-                    "user_id": user_id,
-                    "username": username,
-                    "roles": roles,
-                    "room_id": room_id or "lobby",
-                    "connection_id": connection_id,
-                    "connected_at": time.time()
-                },
-                "total_connections": total_connections,
-                "timestamp": datetime.utcnow().isoformat()
-            }
-            await self.broadcast_to_roles(admin_message, target_roles=["admin"])
-            
-            # Send lightweight connection stats update
-            await self.broadcast_connection_stats_to_admins()
-            
-            # Update room presence if in a room (hanya untuk room tertentu)
-            if room_id:
+            # Update room presence jika di exam room (untuk proctors)
+            if room_id and room_id != "lobby":
                 await self.broadcast_presence(room_id)
                 
         except Exception as e:
@@ -447,34 +443,35 @@ class ConnectionManager:
     async def _broadcast_user_disconnected_event(self, user_id: str, username: str, roles: List[str], room_id: str | None, connection_id: str):
         """Broadcast efficient user disconnected event - hanya data user yang disconnect."""
         try:
-            # Get current connection count
-            async with self._lock:
-                total_connections = len(self.active_connections)
+            # Hanya broadcast ke admin jika bukan exam room disconnection
+            # Admin hanya perlu tahu global disconnections, bukan exam room disconnections
+            if not room_id or room_id == "lobby":
+                # Get connection stats untuk digabungkan dalam 1 message
+                stats_data = await self._get_connection_stats_data()
+                
+                logger.info(f"🔔 Broadcasting user disconnected event for {username} to admins (global)")
+                
+                # Single efficient message dengan user data + stats
+                admin_message = {
+                    "type": "user_disconnected",
+                    "action": "disconnect",
+                    "user": {
+                        "user_id": user_id,
+                        "username": username,
+                        "roles": roles,
+                        "room_id": room_id or "lobby",
+                        "connection_id": connection_id,
+                        "disconnected_at": time.time()
+                    },
+                    "stats": stats_data,
+                    "timestamp": datetime.utcnow().isoformat()
+                }
+                await self.broadcast_to_roles(admin_message, target_roles=["admin"])
+            else:
+                logger.info(f"🔔 Skipping admin broadcast for exam room disconnection: {username} from {room_id}")
             
-            logger.info(f"🔔 Broadcasting user disconnected event for {username} to admins")
-            
-            # Efficient event for admins - hanya data user yang disconnect + total count
-            admin_message = {
-                "type": "user_disconnected",
-                "action": "disconnect",
-                "user": {
-                    "user_id": user_id,
-                    "username": username,
-                    "roles": roles,
-                    "room_id": room_id or "lobby",
-                    "connection_id": connection_id,
-                    "disconnected_at": time.time()
-                },
-                "total_connections": total_connections,
-                "timestamp": datetime.utcnow().isoformat()
-            }
-            await self.broadcast_to_roles(admin_message, target_roles=["admin"])
-            
-            # Send lightweight connection stats update
-            await self.broadcast_connection_stats_to_admins()
-            
-            # Update room presence if was in a room (hanya untuk room tertentu)
-            if room_id:
+            # Update room presence jika dari exam room (untuk proctors)
+            if room_id and room_id != "lobby":
                 await self.broadcast_presence(room_id)
                 
         except Exception as e:
