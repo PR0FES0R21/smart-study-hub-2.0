@@ -4,13 +4,13 @@
 # --- DITAMBAHKAN ---
 # ==============================================================================
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Depends
+from motor.motor_asyncio import AsyncIOMotorDatabase
 import json
 
 from app.core.websocket import manager
 from app.api.v1 import deps
 from app.crud import crud_exam_sessions
 from app.schemas.exam_session import InteractionLogItem
-from app.core.db import db
 from datetime import datetime
 from bson import ObjectId
 import logging
@@ -23,6 +23,7 @@ router = APIRouter()
 async def websocket_exam_room(
     websocket: WebSocket,
     exam_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
     user: dict = Depends(deps.get_exam_room_participant)
 ):
     if not user: return

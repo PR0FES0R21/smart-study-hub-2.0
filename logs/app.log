@@ -52247,3 +52247,242 @@ pymongo.errors.NetworkTimeout: 127.0.0.1:27017: timed out (configured timeouts: 
 2025-08-28 21:50:27,128 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
 2025-08-28 21:50:27,129 [INFO] app.main: WebSocket Redis bridge ditutup
 2025-08-28 21:50:27,135 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 21:50:32,987 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 21:50:33,038 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 21:50:33,047 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 21:50:33,048 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 21:50:33,049 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 21:50:33,049 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 21:50:33,050 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 21:50:40,046 [INFO] app.api.v1.routes.ws: WebSocket lobby connection: user_id=686a3396d20694199c01c06b, roles=['admin', 'teacher']
+2025-08-28 21:50:40,050 [INFO] app.core.websocket: User 686a3396d20694199c01c06b connected (Room: Lobby). Total active: 1
+2025-08-28 21:52:12,204 [INFO] app.core.websocket: User 68822f07979cbba23e6db950 connected (Room: 68920557e58cfa66adfcdd7f). Total active: 2
+2025-08-28 21:52:23,742 [INFO] app.core.websocket: User 688477a78a56906f19d02551 connected (Room: 68920557e58cfa66adfcdd7f). Total active: 3
+2025-08-28 21:52:30,991 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:52:45,128 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:52:47,073 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:52:51,167 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:52:54,208 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:52:57,749 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:52:57,831 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:52:57,957 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:52:57,984 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:52:58,075 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:52:58,115 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:00,537 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:01,070 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:01,149 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:01,263 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:01,298 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:12,249 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:12,421 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:12,524 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:12,568 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:12,656 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:12,724 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:14,609 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:15,208 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:17,114 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:20,028 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:21,298 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:22,408 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:23,434 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:25,951 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:33,481 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:37,352 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:38,986 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:40,083 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:42,731 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:53:43,253 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:45,535 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:46,562 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:47,591 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:48,596 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:53:57,151 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:54:09,317 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:54:12,375 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:54:12,734 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:54:19,323 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:54:22,028 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:54:26,032 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 21:54:43,720 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:55:13,716 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:55:43,715 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:56:13,716 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:57:01,739 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:58:01,729 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 21:59:01,718 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:00:01,715 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:01:01,727 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:02:01,730 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:03:01,719 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:04:01,731 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:05:01,726 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:06:01,731 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:07:01,733 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:08:01,721 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:09:01,722 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:10:01,721 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:11:01,719 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:12:01,720 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:13:01,716 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:14:01,727 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:15:01,716 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:16:01,721 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:17:01,726 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:18:01,727 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:19:01,714 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:20:01,719 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-28 22:20:06,220 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 22:20:06,249 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 22:20:07,090 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 22:20:09,989 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-28 22:20:09,996 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 22:20:09,998 [INFO] app.core.websocket: User 688477a78a56906f19d02551 disconnected. Total active: 2
+2025-08-28 22:20:12,993 [INFO] app.core.websocket: User 688477a78a56906f19d02551 connected (Room: 68920557e58cfa66adfcdd7f). Total active: 3
+2025-08-28 22:31:08,466 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 22:31:08,466 [INFO] app.core.websocket: User 688477a78a56906f19d02551 disconnected. Total active: 2
+2025-08-28 22:31:08,476 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 22:31:08,482 [INFO] app.core.websocket: User 68822f07979cbba23e6db950 disconnected. Total active: 1
+2025-08-28 22:31:08,497 [INFO] app.api.v1.routes.ws: WebSocket lobby disconnected: user_id=686a3396d20694199c01c06b
+2025-08-28 22:31:08,505 [INFO] app.core.websocket: User 686a3396d20694199c01c06b disconnected. Total active: 0
+2025-08-28 22:31:08,580 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 22:31:08,583 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 22:31:08,617 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 22:31:08,628 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 22:31:08,631 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 22:31:08,763 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 22:45:04,884 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:45:04,978 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:45:04,991 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:45:04,992 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:45:04,993 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:45:04,994 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:45:04,995 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:52:31,507 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:52:31,595 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:52:31,609 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:52:31,610 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:52:31,611 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:52:31,611 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:52:31,613 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:52:50,468 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:52:50,535 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:52:50,545 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:52:50,546 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:52:50,547 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:52:50,547 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:52:50,548 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:53:11,906 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a0d7dda7-1581-416c-8816-ee51289c7556 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-28 22:54:17,018 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:54:17,094 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:54:17,107 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:54:17,108 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:54:17,109 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:54:17,109 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:54:17,110 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:55:30,667 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:55:30,756 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:55:30,786 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:55:30,787 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:55:30,788 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:55:30,788 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:55:30,789 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:55:37,807 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7aab5947-b8f0-4f9f-b64e-f39654d1e301 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-28 22:55:37,873 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7aab5947-b8f0-4f9f-b64e-f39654d1e301 | user_id=686a3396d20694199c01c06b | connection_time=65.96ms
+2025-08-28 22:57:16,258 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:57:16,363 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:57:16,379 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:57:16,379 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:57:16,380 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:57:16,381 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:57:16,382 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:57:17,796 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 22:57:17,796 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 22:57:17,798 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 22:57:17,806 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 22:57:17,806 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 22:57:17,813 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 22:57:58,445 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:57:58,518 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:57:58,531 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:57:58,532 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:57:58,533 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:57:58,534 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:57:58,535 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:58:06,835 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=ff8808ae-1085-4eca-ac9b-18a17cc3c403 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-28 22:58:06,881 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=dcb2578f-2f99-40ac-af92-785fdde4876e | successful=1/1 | failed=0 | time=0.51ms
+2025-08-28 22:58:06,882 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e1676221-4a91-4ab5-b501-8b328f1feb89 | successful=1/1 | failed=0 | time=0.44ms
+2025-08-28 22:58:06,883 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=ff8808ae-1085-4eca-ac9b-18a17cc3c403 | user_id=686a3396d20694199c01c06b | connection_time=47.78ms
+2025-08-28 22:59:08,647 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:59:08,777 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:59:08,790 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:59:08,790 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:59:08,791 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:59:08,792 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:59:08,793 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:59:10,632 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 22:59:10,633 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 22:59:10,635 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 22:59:10,636 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 22:59:10,637 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 22:59:10,644 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 22:59:22,286 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 22:59:22,354 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 22:59:22,368 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 22:59:22,369 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 22:59:22,369 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 22:59:22,369 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 22:59:22,370 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 22:59:26,530 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=cacc3dfc-cc79-4ff8-9e3a-7c80bacd5de7 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-28 22:59:26,551 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test | roles=['admin', 'teacher'] | room_id=lobby | connection_id=cf297983-c630-460c-ae30-5fc72b618133 | total_active=1 | connection_time=20.32ms
+2025-08-28 22:59:26,558 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1b0e1a2a-4cb7-4f0d-9947-f95266ff5eaf | successful=1/1 | failed=0 | time=0.87ms
+2025-08-28 22:59:26,559 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=11b70003-7043-46d0-a0b9-2b99aa3bdf24 | successful=1/1 | failed=0 | time=0.4ms
+2025-08-28 22:59:26,563 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=cacc3dfc-cc79-4ff8-9e3a-7c80bacd5de7 | user_id=686a3396d20694199c01c06b | connection_time=33.16ms
+2025-08-28 23:18:29,736 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test | room_id=lobby | connection_id=cf297983-c630-460c-ae30-5fc72b618133 | total_active=0 | duration=1143.18s
+2025-08-28 23:18:39,228 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=21129af0-6916-43f3-943e-15b851800f73 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-28 23:24:54,476 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b03483d6-01d3-47f4-9728-615026786274 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-28 23:24:58,139 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=248282ef-8b90-43a9-ade3-21c4263cf56d | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-28 23:31:06,373 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 23:31:06,459 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 23:31:06,473 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 23:31:06,474 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 23:31:06,475 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 23:31:06,475 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 23:31:06,476 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 23:31:07,283 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=03f5cca8-9110-42f2-ae87-61be130e9cf6 | user_id=686a3396d20694199c01c06b | connection_time=417.05ms
+2025-08-28 23:31:07,436 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=80463e33-5907-4ab2-80b9-4d92b0de92a7 | user_id=686a3396d20694199c01c06b | connection_time=903.88ms
+2025-08-28 23:31:07,563 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=5818ba45-39ef-478b-b36b-d76f35792bc1 | user_id=68822f07979cbba23e6db950 | connection_time=717.25ms
+2025-08-28 23:31:07,981 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=870ca4a5-dfd4-4030-be5c-ecb5ded16bd9 | user_id=68822f07979cbba23e6db950 | connection_time=158.32ms
+2025-08-28 23:31:08,143 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=e4d57971-2f5a-43a4-ba43-0d377d38cb5a | user_id=686a3396d20694199c01c06b | connection_time=155.21ms
+2025-08-28 23:31:08,452 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=8a1f7209-464f-4924-bc43-313bf2078bf7 | user_id=68822f07979cbba23e6db950 | connection_time=150.6ms
+2025-08-28 23:31:17,418 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 23:31:17,419 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 23:31:17,422 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 23:31:17,424 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 23:31:17,424 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 23:31:17,437 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 23:31:45,951 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 23:31:46,046 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 23:31:46,065 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 23:31:46,065 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 23:31:46,066 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 23:31:46,066 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 23:31:46,067 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 23:32:11,457 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=5408bdc3-2260-4842-b7cc-0cd69616c8c7 | user_id=686a3396d20694199c01c06b | connection_time=117.97ms
+2025-08-28 23:32:12,704 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=a0858d24-db5f-4491-8208-363153d6fe3b | user_id=68822f07979cbba23e6db950 | connection_time=137.96ms
+2025-08-28 23:32:54,898 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=6428a4b6-dd33-4541-b115-92e0c3e4b42e | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-08-28 23:32:55,098 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=6428a4b6-dd33-4541-b115-92e0c3e4b42e | user_id=688477a78a56906f19d02551 | connection_time=200.02ms
+2025-08-28 23:33:00,971 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=3b1cc165-fc22-43ed-bd72-1f79568d79a1 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-08-28 23:33:01,126 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=3b1cc165-fc22-43ed-bd72-1f79568d79a1 | user_id=688477a78a56906f19d02551 | connection_time=154.7ms
+2025-08-28 23:35:40,159 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=4a4ff7eb-2168-4d63-922e-957f34562eab | user_id=686a3396d20694199c01c06b | connection_time=155.75ms
+2025-08-28 23:35:41,541 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=b0406ed5-9b60-4dd7-b253-146c36ccebba | user_id=68822f07979cbba23e6db950 | connection_time=192.25ms
+2025-08-28 23:35:42,222 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=6cd963c9-1f77-4ef3-b5bb-aa615048c225 | user_id=68822f07979cbba23e6db950 | connection_time=156.89ms
+2025-08-28 23:35:42,740 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=98729494-d1e4-4156-9d91-ee3ecf7bf9ad | user_id=68822f07979cbba23e6db950 | connection_time=141.11ms
+2025-08-28 23:35:44,219 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=3352852c-46b3-4b47-a6a2-e471316f3b61 | user_id=68822f07979cbba23e6db950 | connection_time=144.66ms
+2025-08-28 23:37:29,382 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: heartbeat
+2025-08-28 23:37:38,132 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: ping
+2025-08-28 23:37:42,594 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: heartbeat
+2025-08-28 23:39:23,074 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:39:25,722 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:41:38,315 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
