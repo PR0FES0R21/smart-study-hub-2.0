@@ -314,13 +314,12 @@ class ConnectionManager:
         }
         await self.broadcast_to_proctors(room_id, message)
 
-    async def broadcast_active_users_to_admins(self):
-        """Menghitung dan mengirim jumlah pengguna aktif dengan detail ke admin."""
+    async def broadcast_connection_stats_to_admins(self):
+        """Mengirim statistik koneksi yang efisien ke admin (hanya count, tanpa detail user)."""
         async with self._lock:
             active_users_count = len(self.active_connections)
             users_by_role = {}
             users_by_room = {}
-            active_users = []
             admin_count = 0
             
             for user_id, conn_data in self.active_connections.items():
@@ -333,25 +332,15 @@ class ConnectionManager:
                 # Count by room
                 room_id = conn_data.get("room_id", "lobby")
                 users_by_room[room_id] = users_by_room.get(room_id, 0) + 1
-                
-                # Add user info
-                active_users.append({
-                    "user_id": user_id,
-                    "username": conn_data.get("username", f"user_{user_id[:8]}"),
-                    "roles": conn_data.get("roles", []),
-                    "room_id": room_id,
-                    "connected_at": conn_data.get("connected_at", time.time()),
-                    "connection_id": conn_data.get("connection_id", "unknown")
-                })
         
-        logger.info(f"📊 Sending active users update to {admin_count} admins | total_users={active_users_count}")
+        logger.info(f"📊 Sending connection stats to {admin_count} admins | total_users={active_users_count}")
         
+        # Efficient message with only counts, no user details
         message = {
-            "type": "active_users_update",
+            "type": "connection_stats_update",
             "total_count": active_users_count,
             "users_by_role": users_by_role,
             "users_by_room": users_by_room,
-            "active_users": active_users,
             "timestamp": datetime.utcnow().isoformat()
         }
         await self.broadcast_to_roles(message, target_roles=["admin"])
@@ -376,6 +365,29 @@ class ConnectionManager:
             
             return stats
 
+    async def get_all_active_users_details(self):
+        """Get detailed list of all active users - hanya dipanggil ketika diminta."""
+        async with self._lock:
+            active_users = []
+            
+            for user_id, conn_data in self.active_connections.items():
+                active_users.append({
+                    "user_id": user_id,
+                    "username": conn_data.get("username", f"user_{user_id[:8]}"),
+                    "roles": conn_data.get("roles", []),
+                    "room_id": conn_data.get("room_id", "lobby"),
+                    "connected_at": conn_data.get("connected_at", time.time()),
+                    "connection_id": conn_data.get("connection_id", "unknown"),
+                    "connection_duration": round(time.time() - conn_data.get("connected_at", time.time()), 2)
+                })
+            
+            return {
+                "type": "all_active_users",
+                "total_count": len(active_users),
+                "users": active_users,
+                "timestamp": datetime.utcnow().isoformat()
+            }
+
     async def _cleanup_failed_connections(self, failed_users: List[str], connections_snapshot: Dict[str, Dict[str, Any]]):
         """Clean up failed connections with version checking to prevent race conditions."""
         cleanup_count = 0
@@ -397,7 +409,7 @@ class ConnectionManager:
             logger.info(f"🧹 CLEANUP_COMPLETE | removed={cleanup_count}/{len(failed_users)} failed connections")
 
     async def _broadcast_user_connected_event(self, user_id: str, username: str, roles: List[str], room_id: str | None, connection_id: str):
-        """Broadcast enhanced user connected event to relevant audiences."""
+        """Broadcast efficient user connected event - hanya data user yang connect."""
         try:
             # Get current connection count
             async with self._lock:
@@ -405,23 +417,27 @@ class ConnectionManager:
             
             logger.info(f"🔔 Broadcasting user connected event for {username} to admins")
             
-            # Event for admins (detailed)
+            # Efficient event for admins - hanya data user yang connect + total count
             admin_message = {
                 "type": "user_connected",
-                "user_id": user_id,
-                "username": username,
-                "roles": roles,
-                "room_id": room_id or "lobby",
-                "connection_id": connection_id,
+                "action": "connect",
+                "user": {
+                    "user_id": user_id,
+                    "username": username,
+                    "roles": roles,
+                    "room_id": room_id or "lobby",
+                    "connection_id": connection_id,
+                    "connected_at": time.time()
+                },
                 "total_connections": total_connections,
                 "timestamp": datetime.utcnow().isoformat()
             }
             await self.broadcast_to_roles(admin_message, target_roles=["admin"])
             
-            # Update active users count for admins
-            await self.broadcast_active_users_to_admins()
+            # Send lightweight connection stats update
+            await self.broadcast_connection_stats_to_admins()
             
-            # Update room presence if in a room
+            # Update room presence if in a room (hanya untuk room tertentu)
             if room_id:
                 await self.broadcast_presence(room_id)
                 
@@ -429,7 +445,7 @@ class ConnectionManager:
             logger.error(f"❌ Error broadcasting user connected event: {e}")
 
     async def _broadcast_user_disconnected_event(self, user_id: str, username: str, roles: List[str], room_id: str | None, connection_id: str):
-        """Broadcast enhanced user disconnected event to relevant audiences."""
+        """Broadcast efficient user disconnected event - hanya data user yang disconnect."""
         try:
             # Get current connection count
             async with self._lock:
@@ -437,23 +453,27 @@ class ConnectionManager:
             
             logger.info(f"🔔 Broadcasting user disconnected event for {username} to admins")
             
-            # Event for admins (detailed)
+            # Efficient event for admins - hanya data user yang disconnect + total count
             admin_message = {
                 "type": "user_disconnected",
-                "user_id": user_id,
-                "username": username,
-                "roles": roles,
-                "room_id": room_id or "lobby",
-                "connection_id": connection_id,
+                "action": "disconnect",
+                "user": {
+                    "user_id": user_id,
+                    "username": username,
+                    "roles": roles,
+                    "room_id": room_id or "lobby",
+                    "connection_id": connection_id,
+                    "disconnected_at": time.time()
+                },
                 "total_connections": total_connections,
                 "timestamp": datetime.utcnow().isoformat()
             }
             await self.broadcast_to_roles(admin_message, target_roles=["admin"])
             
-            # Update active users count for admins
-            await self.broadcast_active_users_to_admins()
+            # Send lightweight connection stats update
+            await self.broadcast_connection_stats_to_admins()
             
-            # Update room presence if was in a room
+            # Update room presence if was in a room (hanya untuk room tertentu)
             if room_id:
                 await self.broadcast_presence(room_id)
                 

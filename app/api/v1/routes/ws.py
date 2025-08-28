@@ -246,6 +246,16 @@ async def handle_incoming_message(websocket: WebSocket, user_id: str, roles: lis
         await websocket.send_text(json.dumps(stats_message))
         logger.info(f"📊 WS_STATS_SENT | session_id={session_id} | user_id={user_id}")
         
+    elif message_type == "request_all_users" and "admin" in roles:
+        # Send detailed list of all active users (on-demand only)
+        all_users_data = await manager.get_all_active_users_details()
+        all_users_message = {
+            **all_users_data,
+            "message_id": message_id
+        }
+        await websocket.send_text(json.dumps(all_users_message))
+        logger.info(f"👥 WS_ALL_USERS_SENT | session_id={session_id} | user_id={user_id} | total_users={all_users_data['total_count']}")
+        
     elif message_type == "heartbeat":
         # Simple heartbeat response
         heartbeat_response = {

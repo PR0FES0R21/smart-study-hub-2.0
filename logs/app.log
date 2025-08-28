@@ -52486,3 +52486,94 @@ pymongo.errors.NetworkTimeout: 127.0.0.1:27017: timed out (configured timeouts: 
 2025-08-28 23:39:23,074 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
 2025-08-28 23:39:25,722 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
 2025-08-28 23:41:38,315 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:43:07,454 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 23:43:07,454 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 23:43:07,456 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 23:43:07,457 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 23:43:07,457 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 23:43:07,463 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 23:43:14,021 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 23:43:14,072 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 23:43:14,081 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 23:43:14,081 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 23:43:14,082 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 23:43:14,082 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 23:43:14,083 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 23:43:24,976 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 23:43:24,976 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 23:43:24,978 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 23:43:24,980 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 23:43:24,980 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 23:43:24,988 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 23:43:31,100 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 23:43:31,163 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 23:43:31,171 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 23:43:31,172 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 23:43:31,173 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 23:43:31,173 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 23:43:31,174 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 23:44:14,452 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 23:44:14,453 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 23:44:14,456 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 23:44:14,458 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 23:44:14,459 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 23:44:14,468 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 23:44:20,755 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 23:44:20,826 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 23:44:20,854 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 23:44:20,855 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 23:44:20,856 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 23:44:20,856 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 23:44:20,857 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 23:46:06,966 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=ce428099-9bbc-4742-80ef-3f5c1a8ac383 | user_id=686a3396d20694199c01c06b | connection_time=132.34ms
+2025-08-28 23:46:08,241 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=890cd5fe-257a-453b-b291-bbcf00eaa32d | user_id=68822f07979cbba23e6db950 | connection_time=160.53ms
+2025-08-28 23:47:07,848 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=16fe8291-db11-4a54-8f35-552214fbfd8f | user_id=68822f07979cbba23e6db950 | connection_time=145.78ms
+2025-08-28 23:48:47,129 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=9a34c9ae-4cfc-4d03-b5dc-d56188dea50f | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-28 23:48:47,234 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=9a34c9ae-4cfc-4d03-b5dc-d56188dea50f | user_id=686a3396d20694199c01c06b | connection_time=104.98ms
+2025-08-28 23:48:48,357 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=0821fe73-c345-4c54-b36e-9a630a9fb7e9 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-28 23:48:48,460 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=0821fe73-c345-4c54-b36e-9a630a9fb7e9 | user_id=68822f07979cbba23e6db950 | connection_time=103.67ms
+2025-08-28 23:49:48,066 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=0b019c24-692e-4379-9551-c9802f116cb2 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-28 23:49:48,164 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=0b019c24-692e-4379-9551-c9802f116cb2 | user_id=686a3396d20694199c01c06b | connection_time=97.69ms
+2025-08-28 23:49:56,694 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=600a18ab-a7f8-4fea-90af-5eda49f19e57 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-28 23:49:56,807 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=600a18ab-a7f8-4fea-90af-5eda49f19e57 | user_id=68822f07979cbba23e6db950 | connection_time=112.99ms
+2025-08-28 23:53:01,822 [INFO] app.api.v1.routes.ws_exam_room: Student 686a3396d20694199c01c06b disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:53:02,084 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:53:13,581 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:53:18,622 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:53:46,041 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:53:46,042 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:53:46,146 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 23:53:46,146 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 23:53:46,148 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 23:53:46,149 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 23:53:46,150 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 23:53:46,156 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-28 23:53:56,776 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-28 23:53:56,848 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-28 23:53:56,859 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-28 23:53:56,860 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-28 23:53:56,860 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-28 23:53:56,861 [INFO] app.main: Startup aplikasi berhasil
+2025-08-28 23:53:56,862 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-28 23:54:03,109 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=48ceaf89-7dae-497c-b0c6-9ab92b517647 | user_id=686a3396d20694199c01c06b | connection_time=131.75ms
+2025-08-28 23:54:06,863 [INFO] app.api.v1.routes.ws: WS_CONNECTION_SUCCESS | session_id=e1424044-7d0d-42e3-bd91-5711e2aa97da | user_id=68822f07979cbba23e6db950 | connection_time=134.69ms
+2025-08-28 23:55:06,861 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:55:08,963 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:55:12,915 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:55:24,160 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:55:43,644 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:55:54,354 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:55:55,554 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:56:14,173 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:57:23,788 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:57:23,931 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=43805ae8-f5ea-41b8-87af-fa3425b97d77 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-08-28 23:57:24,026 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=43805ae8-f5ea-41b8-87af-fa3425b97d77 | user_id=688477a78a56906f19d02551 | connection_time=94.88ms
+2025-08-28 23:58:15,523 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:58:15,649 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:58:15,781 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-28 23:58:15,783 [INFO] app.main: Mematikan aplikasi...
+2025-08-28 23:58:15,784 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-28 23:58:15,786 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-28 23:58:15,787 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-28 23:58:15,787 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-28 23:58:15,792 [INFO] app.main: Aplikasi berhasil dimatikan

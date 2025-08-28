@@ -227,6 +227,7 @@
                     <button onclick="sendPing(1)">Send Ping</button>
                     <button onclick="sendHeartbeat(1)">Send Heartbeat</button>
                     <button onclick="requestStats(1)">Request Stats</button>
+                    <button onclick="requestAllUsers(1)">Request All Users</button>
                     <button onclick="clearMessages(1)">Clear Messages</button>
                 </div>
 
@@ -473,6 +474,14 @@
             sendMessage(userId, message);
         }
 
+        function requestAllUsers(userId) {
+            const message = {
+                type: 'request_all_users',
+                message_id: generateMessageId()
+            };
+            sendMessage(userId, message);
+        }
+
         function sendBroadcast(userId) {
             const messageText = document.getElementById(`broadcastMsg${userId}`).value.trim();
             const targetRoles = document.getElementById(`targetRoles${userId}`).value.split(',');
@@ -564,8 +573,8 @@
             // You can pre-fill tokens here for easier testing
             document.getElementById('token1').value = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODZhMzM5NmQyMDY5NDE5OWMwMWMwNmIiLCJleHAiOjc3NTYzOTY0Nzd9.G-SQ4McMPtId4-liY1rpwAGOMgciFoV2k9XE8KM7i5k';
             document.getElementById('token2').value = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODgyMmYwNzk3OWNiYmEyM2U2ZGI5NTAiLCJleHAiOjc3NTYzOTE0NzN9.ExE-z4JZfDQ4Y1ulFSzryh1gC8L4ZZjZlafPzju1bFw';
-            // document.getElementById('examId1').value = 'sample-exam-id';
-            // document.getElementById('examId2').value = 'sample-exam-id';
+            document.getElementById('examId1').value = '68920557e58cfa66adfcdd7f';
+            document.getElementById('examId2').value = '68920557e58cfa66adfcdd7f';
         });
     </script>
 </body>
