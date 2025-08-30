@@ -8,7 +8,7 @@ const TOTAL_USERS = 941; // Jumlah user yang berhasil dibuat dari setup sebelumn
 // Generate user list berdasarkan user yang udah dibuat
 const users = [];
 for (let i = 1; i <= TOTAL_USERS; i++) {
-  const userId = String(i).padStart(7, '0'); // 0000001, 0000002, dst
+  const userId = String(i).padStart(8, '0'); // 0000001, 0000002, dst
   users.push({
     login_id: userId,
     password: userId, // Password sama dengan login_id

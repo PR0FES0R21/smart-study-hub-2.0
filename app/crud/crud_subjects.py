@@ -10,6 +10,7 @@ from app.schemas.subject import SubjectCreate, SubjectUpdate
 from datetime import datetime
 from app.core.cache import get_cache, set_cache, invalidate_cache
 from app.crud.crud_teaching_assignments import delete_assignment_by_subject_id
+
 #  Mendefinisikan kunci cache
 SUBJECTS_IDS_CACHE_KEY = "subjects:all:ids"
 DASHBOARD_STATS_CACHE_KEY = "analytics:dashboard_stats"

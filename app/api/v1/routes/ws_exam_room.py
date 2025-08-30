@@ -80,8 +80,8 @@ async def websocket_exam_room(
                 logger.info(f"Broadcasting message from student {user_id} to proctors in room {exam_id}: {broadcast_message.get('type')}")
                 await manager.broadcast_to_proctors(exam_id, broadcast_message)
                 
-                # FIX: Juga kirim ke semua admin untuk monitoring global
-                await manager.broadcast_to_roles(broadcast_message, target_roles=["admin"])
+                # # FIX: Juga kirim ke semua admin untuk monitoring global
+                # await manager.broadcast_to_roles(broadcast_message, target_roles=["admin"])
 
     except WebSocketDisconnect:
         logger.info(f"Student {user_id} disconnected from exam room {exam_id}")

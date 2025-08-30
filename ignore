@@ -109,3 +109,13 @@ src/components/dashboards/student/pages/StudentExamsPage.tsx
 src/components/dashboards/student/pages/StudentProfilePage.tsx
 src/components/dashboards/student/pages/StudentResultsPage.tsx
 src/components/profile/index.ts
+src/components/dashboards/student/pages/StudentExamTakingPage.tsx
+
+
+src/services/questionSubmission.ts
+src/services/questionBank.ts
+src/services/questionSet.ts
+src/services/expertise.ts
+src/services/dashboard.ts
+src/types/questionSet.ts
+src/services/assignment.ts

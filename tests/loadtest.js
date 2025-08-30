@@ -3,7 +3,7 @@ import { check, sleep } from 'k6';
 import { SharedArray } from 'k6/data';
 
 // Configuration
-const BASE_URL = 'http://localhost:8080/api/v1';
+const BASE_URL = 'http://localhost:8000/api/v1';
 const ADMIN_LOGIN_ID = '79111953'; // Admin login_id lo
 const ADMIN_PASSWORD = 'sayoga2019'; // Admin password lo
 const TOTAL_USERS = 1000;
@@ -11,7 +11,7 @@ const TOTAL_USERS = 1000;
 // Shared array untuk menyimpan user credentials yang akan dibuat
 const generatedUsers = new SharedArray('users', function () {
   const users = [];
-  for (let i = 1; i <= TOTAL_USERS; i++) {
+  for (let i = 10000; i <= TOTAL_USERS; i++) {
     const userId = String(i).padStart(7, '0'); // 0000001, 0000002, dst
     users.push({
       login_id: userId, // Unique login_id
@@ -119,18 +119,18 @@ export function setupPhase() {
     let createUserPayload = {
       login_id: user.login_id, // 0000001, 0000002, dst (unique)
       email: user.email, // 0000001@loadtest.com, dst (unique)
-      roles: ["admin"], // Set role sebagai admin dalam array
+      roles: ["student"], // Set role sebagai admin dalam array
       is_active: true,
       profile: {
-        full_name: "string",
-        gender: "string", 
+        full_name: `siswa ${user.login_id}`,
+        gender: "Laki Laki", 
         birth_date: "2025-08-03T11:58:51.159Z",
         birth_place: "string",
         address: "string",
         phone_number: "string",
-        department_id: "68824cd9ed968052635f41b9", // Pakai department_id yang sama
-        start_year: 0,
-        end_year: 0
+        department_id: "68b2cf56d1f50504c5aea6a8", // Pakai department_id yang sama
+        start_year: 2026,
+        end_year: 2029
       }
     };
 
