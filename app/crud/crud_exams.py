@@ -128,10 +128,15 @@ async def start_exam_session(db: AsyncIOMotorDatabase, exam: dict, student_id: O
     shuffle_questions = exam_settings.get("shuffle_questions", False)
     shuffle_options = exam_settings.get("shuffle_options", False)
     
+    logger.info(f"Creating exam session with settings - shuffle_questions: {shuffle_questions}, shuffle_options: {shuffle_options}")
+    
     # 1. Shuffle questions jika diaktifkan
     working_question_ids = question_ids.copy()  # Copy to avoid modifying original
     if shuffle_questions:
         random.shuffle(working_question_ids)
+        logger.info(f"Questions shuffled for exam {exam['_id']}")
+    else:
+        logger.info(f"Questions not shuffled for exam {exam['_id']}")
     
     # 2. Fetch questions dan siapkan shuffle options
     questions_cursor = db["question_banks"].find({"_id": {"$in": working_question_ids}})
@@ -155,6 +160,12 @@ async def start_exam_session(db: AsyncIOMotorDatabase, exam: dict, student_id: O
             # Shuffle urutan ID-nya
             shuffled_option_ids = original_option_ids.copy()
             random.shuffle(shuffled_option_ids)
+            logger.info(f"Options shuffled for question {q_id}")
+        elif question.get("options"):
+            # Jika tidak di-shuffle, tetap simpan urutan asli untuk konsistensi
+            original_options = question["options"]
+            shuffled_option_ids = [opt["id"] for opt in original_options]
+            logger.info(f"Options not shuffled for question {q_id}")
         
         question_map_item = QuestionMapItem(
             position=i + 1,

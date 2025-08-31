@@ -8,6 +8,7 @@ from typing import Dict, Any, List
 from bson import ObjectId
 import logging
 from datetime import datetime
+from fastapi import HTTPException
 from app.schemas.exam_session import AnswerUpdate, InteractionLogItem, SubmitAllPayload
 from app.crud.crud_analytics import (
     STUDENT_PERFORMANCE_ROSTER_CACHE_KEY, COMPETENCY_PROFILE_CACHE_KEY
@@ -73,9 +74,11 @@ async def get_shuffled_questions_for_session(db: AsyncIOMotorDatabase, session: 
                 if opt_id in options_by_id:
                     ordered_options.append(options_by_id[opt_id])
             options = ordered_options
+            logger.debug(f"Using shuffled options for question {q_id}")
         else:
             # Tidak ada shuffle atau tidak ada options
             options = original_options
+            logger.debug(f"Using original options for question {q_id}")
 
         # Hapus kunci jawaban sebelum mengirim ke siswa
         options_for_student = [{"id": opt["id"], "text": opt["text"]} for opt in options]
@@ -91,6 +94,8 @@ async def get_shuffled_questions_for_session(db: AsyncIOMotorDatabase, session: 
     
     # Sort berdasarkan position untuk memastikan urutan yang benar
     shuffled_questions.sort(key=lambda x: x["position"])
+    
+    logger.info(f"Retrieved {len(shuffled_questions)} questions for session {session['_id']} with proper shuffle mapping")
     return shuffled_questions
 
 
@@ -152,21 +157,71 @@ async def submit_and_grade_session_v2(
 
     """
     Enhanced submit dengan validation, logging lengkap, dan fraud detection.
+    PERBAIKAN: Tambah validasi ketat untuk memastikan semua soal terjawab.
     """
-    # 1. Validate answers
+    
+    # === VALIDASI 1: Cek apakah semua soal terjawab ===
     student_answers = payload.answers
+    question_map = session.get("question_map", [])
+    total_questions = len(question_map)
+    
+    # Hitung soal yang terjawab (tidak None dan tidak string kosong)
+    answered_questions = 0
+    unanswered_questions = []
+    
+    for map_item in question_map:
+        question_id_str = str(map_item["question_id"])
+        student_answer = student_answers.get(question_id_str)
+        
+        # Cek apakah soal terjawab (tidak None, tidak string kosong, tidak list kosong)
+        if student_answer is not None and student_answer != "" and student_answer != []:
+            answered_questions += 1
+        else:
+            unanswered_questions.append(map_item["position"])
+    
+    # Validasi: Semua soal harus terjawab
+    if answered_questions < total_questions:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Tidak dapat submit ujian. Anda belum menjawab {total_questions - answered_questions} soal. "
+                   f"Soal yang belum terjawab: {', '.join(map(str, unanswered_questions))}"
+        )
+    
+    # === VALIDASI 2: Cek apakah ada soal yang tidak valid ===
     question_ids = [ObjectId(qid) for qid in student_answers.keys() if student_answers[qid] is not None]
     
     questions_cursor = db["question_banks"].find({"_id": {"$in": question_ids}})
     correct_answers_map = {q["_id"]: q for q in await questions_cursor.to_list(len(question_ids))}
+    
+    # Validasi: Semua question_id harus valid
+    if len(correct_answers_map) != len(question_ids):
+        raise HTTPException(
+            status_code=400,
+            detail="Data jawaban tidak valid. Beberapa soal tidak ditemukan dalam database."
+        )
+
+    # === VALIDASI 3: Cek apakah session masih ongoing ===
+    if session.get("status") != "ongoing":
+        raise HTTPException(
+            status_code=400,
+            detail="Tidak dapat submit ujian. Sesi ujian sudah tidak aktif."
+        )
+
+    # === VALIDASI 4: Cek waktu ujian ===
+    now = datetime.utcnow()
+    if now > exam["availability_end_time"]:
+        raise HTTPException(
+            status_code=400,
+            detail="Tidak dapat submit ujian. Waktu ujian telah berakhir."
+        )
 
     # 2. Grading logic (sama seperti versi lama)
     total_score = 0
     total_max_points = 0
 
     for q_id_str, student_answer in student_answers.items():
-        if student_answer is None:
-            continue  # Skip unanswered questions
+        if student_answer is None or student_answer == "" or student_answer == []:
+            continue  # Skip unanswered questions (seharusnya sudah divalidasi di atas)
             
         q_id = ObjectId(q_id_str)
         if q_id in correct_answers_map:
@@ -199,7 +254,12 @@ async def submit_and_grade_session_v2(
         "violations": violations_data,  # Save violations untuk audit
         "fraud_score": fraud_score,  # Auto-calculated fraud score
         "is_flagged_for_review": is_flagged,  # Auto-flag suspicious sessions
-        "client_metadata": payload.client_metadata
+        "client_metadata": payload.client_metadata,
+        "completion_stats": {
+            "total_questions": total_questions,
+            "answered_questions": answered_questions,
+            "completion_percentage": (answered_questions / total_questions) * 100 if total_questions > 0 else 0
+        }
     }
     
     await db["exam_sessions"].update_one({"_id": session["_id"]}, {"$set": update_data})

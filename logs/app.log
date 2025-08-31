@@ -56384,3 +56384,184 @@ pymongo.errors.NetworkTimeout: 127.0.0.1:27017: timed out (configured timeouts: 
 2025-08-31 22:31:14,277 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
 2025-08-31 22:31:14,277 [INFO] app.main: WebSocket Redis bridge ditutup
 2025-08-31 22:31:14,284 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-31 22:31:42,148 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-08-31 22:31:42,149 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b3153f27-9268-4b4c-8480-00d76ce05129 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 22:31:42,149 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b3153f27-9268-4b4c-8480-00d76ce05129 | successful=0/0 | failed=0 | time=0.22ms
+2025-08-31 22:31:59,970 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=bad4fe61-cd6f-4b4b-8a5a-e656eeca4a74 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-08-31 22:31:59,985 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-08-31 22:31:59,986 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2ede5e16-4e54-4d41-8895-8efc05266e64 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 22:31:59,986 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2ede5e16-4e54-4d41-8895-8efc05266e64 | successful=0/0 | failed=0 | time=0.36ms
+2025-08-31 22:31:59,986 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=bad4fe61-cd6f-4b4b-8a5a-e656eeca4a74 | user_id=688477a78a56906f19d02551 | connection_time=16.18ms
+2025-08-31 22:41:11,218 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=84cdb69e-3538-4273-887a-8c2cf0655bc8 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-08-31 22:41:11,218 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=84cdb69e-3538-4273-887a-8c2cf0655bc8 | successful=0/0 | failed=0 | time=0.29ms
+2025-08-31 23:03:05,966 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-08-31 23:03:05,967 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=dd1752ce-ddf5-4a0f-b8fd-8ddb94ba208e | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:03:05,968 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=dd1752ce-ddf5-4a0f-b8fd-8ddb94ba208e | successful=0/0 | failed=0 | time=0.37ms
+2025-08-31 23:03:18,199 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=75e543e1-cc16-49d8-85e2-111357bb251c | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-08-31 23:03:18,212 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-08-31 23:03:18,212 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5d354d8b-c30d-434c-9e85-ea8ab3419626 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 23:03:18,212 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5d354d8b-c30d-434c-9e85-ea8ab3419626 | successful=0/0 | failed=0 | time=0.13ms
+2025-08-31 23:03:18,212 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=75e543e1-cc16-49d8-85e2-111357bb251c | user_id=688477a78a56906f19d02551 | connection_time=13.68ms
+2025-08-31 23:06:10,356 [INFO] app.crud.crud_exams: New exam session created: 68b472f2c6472eababba6317 for student 688477a78a56906f19d02551 with shuffle_questions=True, shuffle_options=True
+2025-08-31 23:06:10,422 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-08-31 23:06:10,423 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=62e40969-40d7-4212-be57-83067b562ec2 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:06:10,423 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=62e40969-40d7-4212-be57-83067b562ec2 | successful=0/0 | failed=0 | time=0.34ms
+2025-08-31 23:06:15,130 [INFO] app.main: Mematikan aplikasi...
+2025-08-31 23:06:15,130 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-08-31 23:06:15,140 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-08-31 23:06:15,144 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-08-31 23:06:15,144 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-08-31 23:06:15,155 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-08-31 23:07:01,845 [INFO] app.main: Memulai aplikasi: School Management System
+2025-08-31 23:07:01,944 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-08-31 23:07:01,974 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-08-31 23:07:01,975 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-08-31 23:07:01,976 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-08-31 23:07:01,977 [INFO] app.main: Startup aplikasi berhasil
+2025-08-31 23:07:01,978 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-08-31 23:07:10,516 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68b472f2c6472eababba6317 with proper shuffle mapping
+2025-08-31 23:07:10,865 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: alexander grahambel in 68920557e58cfa66adfcdd7f
+2025-08-31 23:07:10,879 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68b472f2c6472eababba6317 with proper shuffle mapping
+2025-08-31 23:07:14,452 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-31 23:07:14,453 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=d5bc026a-0752-4971-9ffb-aa4b41239dbe | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-08-31 23:07:14,453 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=d5bc026a-0752-4971-9ffb-aa4b41239dbe | successful=0/0 | time=0.44ms
+2025-08-31 23:07:17,980 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:17,981 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=58607bc8-38e4-475a-8b84-cbcaee47573e | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:17,982 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=58607bc8-38e4-475a-8b84-cbcaee47573e | successful=0/0 | time=0.59ms
+2025-08-31 23:07:18,643 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:18,644 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=7f7c09f0-c543-48ca-bbf4-24eece11098e | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:18,645 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=7f7c09f0-c543-48ca-bbf4-24eece11098e | successful=0/0 | time=0.65ms
+2025-08-31 23:07:19,166 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:19,167 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=4fba45a0-ac48-4410-9c4d-c743a4a36efc | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:19,168 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=4fba45a0-ac48-4410-9c4d-c743a4a36efc | successful=0/0 | time=0.73ms
+2025-08-31 23:07:21,840 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:21,840 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=bb74e202-4bae-4bdf-942f-f6985c88e9b3 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:21,841 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=bb74e202-4bae-4bdf-942f-f6985c88e9b3 | successful=0/0 | time=0.49ms
+2025-08-31 23:07:22,459 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:22,460 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=d2501233-0c6d-4b01-aa3e-9d5d9ae51b6f | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:22,460 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=d2501233-0c6d-4b01-aa3e-9d5d9ae51b6f | successful=0/0 | time=0.63ms
+2025-08-31 23:07:23,809 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:23,810 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=a389659d-aea7-494f-ac3d-889cad1f89e1 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:23,811 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=a389659d-aea7-494f-ac3d-889cad1f89e1 | successful=0/0 | time=0.59ms
+2025-08-31 23:07:27,738 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:27,739 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=e09cd09b-de3e-4abf-89be-5afb161fcc35 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:27,739 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=e09cd09b-de3e-4abf-89be-5afb161fcc35 | successful=0/0 | time=0.51ms
+2025-08-31 23:07:28,539 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:28,540 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=155ad161-9a49-453d-85a5-c2984aeb23e0 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:28,540 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=155ad161-9a49-453d-85a5-c2984aeb23e0 | successful=0/0 | time=0.59ms
+2025-08-31 23:07:28,547 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:28,548 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=1ae1d465-a655-4d66-9b86-8bffbf65cc0d | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:28,549 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=1ae1d465-a655-4d66-9b86-8bffbf65cc0d | successful=0/0 | time=0.89ms
+2025-08-31 23:07:29,636 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:29,637 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=e57a60f9-029f-4e43-bad5-5ab9a91a8436 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:29,638 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=e57a60f9-029f-4e43-bad5-5ab9a91a8436 | successful=0/0 | time=0.77ms
+2025-08-31 23:07:32,175 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:32,176 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=ed37c0b7-32ef-4521-a4b5-d2c55ca3c175 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:32,177 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=ed37c0b7-32ef-4521-a4b5-d2c55ca3c175 | successful=0/0 | time=0.68ms
+2025-08-31 23:07:32,183 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-31 23:07:32,184 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=4fb13748-b8e1-4369-9666-fdd5e937b0d9 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-08-31 23:07:32,184 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=4fb13748-b8e1-4369-9666-fdd5e937b0d9 | successful=0/0 | time=0.67ms
+2025-08-31 23:07:37,740 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-31 23:07:37,741 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=d6fe2dd0-7fc7-4383-8af7-f60a96720225 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-08-31 23:07:37,741 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=d6fe2dd0-7fc7-4383-8af7-f60a96720225 | successful=0/0 | time=0.57ms
+2025-08-31 23:07:40,082 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-31 23:07:40,083 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=32076204-0a2e-45ff-b155-240024bfd649 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-08-31 23:07:40,084 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=32076204-0a2e-45ff-b155-240024bfd649 | successful=0/0 | time=0.52ms
+2025-08-31 23:07:41,641 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-31 23:07:41,642 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=550c8ea4-8bbd-4a42-9621-99730db2cbfd | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-08-31 23:07:41,643 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=550c8ea4-8bbd-4a42-9621-99730db2cbfd | successful=0/0 | time=0.77ms
+2025-08-31 23:07:42,043 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-08-31 23:07:42,043 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=64b4012a-ff5a-49f9-93bd-8f2295c11a19 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-08-31 23:07:42,044 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=64b4012a-ff5a-49f9-93bd-8f2295c11a19 | successful=0/0 | time=0.45ms
+2025-08-31 23:07:44,331 [WARNING] app.crud.crud_exam_sessions: Session 68b472f2c6472eababba6317 flagged for review - Fraud score: 1.00
+2025-08-31 23:07:44,980 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-08-31 23:07:44,980 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=f06dc832-30eb-48e1-8da7-90612a943390 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-08-31 23:07:44,981 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=f06dc832-30eb-48e1-8da7-90612a943390 | successful=0/0 | time=0.71ms
+2025-08-31 23:07:44,982 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-08-31 23:07:45,058 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: alexander grahambel from 68920557e58cfa66adfcdd7f
+2025-08-31 23:07:48,686 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=c8e54283-fb10-43df-8df1-53767e5279fd | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-08-31 23:07:48,762 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-08-31 23:07:48,764 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7a032ef8-75be-4f64-a004-37ae1cd332a4 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 23:07:48,765 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7a032ef8-75be-4f64-a004-37ae1cd332a4 | successful=0/0 | failed=0 | time=1.26ms
+2025-08-31 23:07:48,765 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=c8e54283-fb10-43df-8df1-53767e5279fd | user_id=688477a78a56906f19d02551 | connection_time=79.03ms
+2025-08-31 23:11:01,510 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=54d03573-8d8c-4c64-9b94-a8e4119c3bb8 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-08-31 23:11:01,530 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-08-31 23:11:01,531 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=cd83ee1e-264a-43f9-8e08-dcf67ef58c46 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 23:11:01,532 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=cd83ee1e-264a-43f9-8e08-dcf67ef58c46 | successful=0/0 | failed=0 | time=0.63ms
+2025-08-31 23:11:01,532 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=54d03573-8d8c-4c64-9b94-a8e4119c3bb8 | user_id=688477a78a56906f19d02551 | connection_time=22.15ms
+2025-08-31 23:11:01,565 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-08-31 23:11:01,566 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1813f44e-5de3-480c-87a1-ef3503d453d3 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:11:01,566 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1813f44e-5de3-480c-87a1-ef3503d453d3 | successful=0/0 | failed=0 | time=0.48ms
+2025-08-31 23:12:18,168 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=39f36fdf-fe26-4ece-95c8-0e2c476e6de9 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-08-31 23:12:18,169 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=39f36fdf-fe26-4ece-95c8-0e2c476e6de9 | successful=0/0 | failed=0 | time=0.71ms
+2025-08-31 23:12:18,192 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=280410c4-fa0a-49ca-aad1-f25723068787 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-31 23:12:18,222 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-08-31 23:12:18,224 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=076bedb0-b2c5-4ba2-b7d9-9dfb31c7f405 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-08-31 23:12:18,226 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=076bedb0-b2c5-4ba2-b7d9-9dfb31c7f405 | successful=1/1 | failed=0 | time=1.9ms
+2025-08-31 23:12:18,226 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=280410c4-fa0a-49ca-aad1-f25723068787 | user_id=686a3396d20694199c01c06b | connection_time=34.59ms
+2025-08-31 23:15:03,835 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=eaeb1acc-b2f5-4118-9491-fab052e40188 | message_type=new_activity_log | target_roles=['admin'] | recipients=1
+2025-08-31 23:15:03,836 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=eaeb1acc-b2f5-4118-9491-fab052e40188 | successful=1/1 | failed=0 | time=0.98ms
+2025-08-31 23:24:06,711 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-08-31 23:24:06,713 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7739b056-aebc-4734-9a0b-aedcc8b99fd2 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:24:06,714 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7739b056-aebc-4734-9a0b-aedcc8b99fd2 | successful=0/0 | failed=0 | time=1.0ms
+2025-08-31 23:24:19,659 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4566d8d9-ab77-4c8e-94f8-3f1c84097656 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-08-31 23:24:19,659 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4566d8d9-ab77-4c8e-94f8-3f1c84097656 | successful=0/0 | failed=0 | time=0.69ms
+2025-08-31 23:24:19,687 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a6ba4fe0-c027-4062-948f-bec0f59fdaf3 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-31 23:24:19,714 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-08-31 23:24:19,715 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b458e7fc-0ba6-4a57-ac10-a1fe3b09c433 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 23:24:19,716 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b458e7fc-0ba6-4a57-ac10-a1fe3b09c433 | successful=0/0 | failed=0 | time=1.07ms
+2025-08-31 23:24:19,717 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a6ba4fe0-c027-4062-948f-bec0f59fdaf3 | user_id=68822f07979cbba23e6db950 | connection_time=30.07ms
+2025-08-31 23:26:15,892 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6bfd7088-e7c9-4d39-b968-2d6bd7b2702a | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-08-31 23:26:15,893 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6bfd7088-e7c9-4d39-b968-2d6bd7b2702a | successful=0/0 | failed=0 | time=0.69ms
+2025-08-31 23:26:15,909 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d05e96e3-7414-4edc-8bbc-3296de7602b2 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-08-31 23:26:15,910 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d05e96e3-7414-4edc-8bbc-3296de7602b2 | successful=0/0 | failed=0 | time=0.63ms
+2025-08-31 23:47:19,570 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-08-31 23:47:19,571 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b72bc7ee-ce8c-43a9-8f86-3cab9683b8f0 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:47:19,572 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b72bc7ee-ce8c-43a9-8f86-3cab9683b8f0 | successful=0/0 | failed=0 | time=0.77ms
+2025-08-31 23:47:23,758 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=28c4dfda-f8b2-47c3-b764-8b94b960fefd | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-31 23:47:23,788 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-08-31 23:47:23,788 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=adbca5d1-bafc-4256-a7db-759c53344d7f | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 23:47:23,789 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=adbca5d1-bafc-4256-a7db-759c53344d7f | successful=0/0 | failed=0 | time=0.54ms
+2025-08-31 23:47:23,789 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=28c4dfda-f8b2-47c3-b764-8b94b960fefd | user_id=68822f07979cbba23e6db950 | connection_time=31.58ms
+2025-08-31 23:50:46,944 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-08-31 23:50:46,945 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6e0942fa-649d-441c-bf58-7cc4aa90d93b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:50:46,946 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6e0942fa-649d-441c-bf58-7cc4aa90d93b | successful=0/0 | failed=0 | time=0.74ms
+2025-08-31 23:50:49,697 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=837884d3-6a88-4a17-aaed-81b6e36a7605 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-31 23:50:49,725 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-08-31 23:50:49,726 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=58d9d9a3-e10f-4fb5-a2c5-7a6a6fe2dbb1 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 23:50:49,726 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=58d9d9a3-e10f-4fb5-a2c5-7a6a6fe2dbb1 | successful=0/0 | failed=0 | time=0.4ms
+2025-08-31 23:50:49,727 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=837884d3-6a88-4a17-aaed-81b6e36a7605 | user_id=68822f07979cbba23e6db950 | connection_time=29.48ms
+2025-08-31 23:51:06,610 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-08-31 23:51:06,610 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a9e66b8c-f886-42fd-b4ae-1921887b2741 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:51:06,611 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a9e66b8c-f886-42fd-b4ae-1921887b2741 | successful=0/0 | failed=0 | time=0.68ms
+2025-08-31 23:51:06,660 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: Agus Santoso in 689f76fd1520379a7501cf7f
+2025-08-31 23:51:06,661 [INFO] app.core.websocket: Broadcasting connected event for Agus Santoso (proctor) to 1 proctors in room 689f76fd1520379a7501cf7f
+2025-08-31 23:51:10,809 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 689f76fd1520379a7501cf7f
+2025-08-31 23:51:10,829 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: Agus Santoso from 689f76fd1520379a7501cf7f
+2025-08-31 23:51:10,855 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=6af3d23f-a842-4eda-a934-ea496301b58a | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-31 23:51:10,884 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-08-31 23:51:10,885 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e8abfee8-04ee-4441-ad6e-f76f0344c10b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 23:51:10,885 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e8abfee8-04ee-4441-ad6e-f76f0344c10b | successful=0/0 | failed=0 | time=0.62ms
+2025-08-31 23:51:10,886 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=6af3d23f-a842-4eda-a934-ea496301b58a | user_id=68822f07979cbba23e6db950 | connection_time=30.74ms
+2025-08-31 23:51:34,630 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-08-31 23:51:34,630 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9568bc4d-787d-489d-b011-fe4a730f41f4 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:51:34,631 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9568bc4d-787d-489d-b011-fe4a730f41f4 | successful=0/0 | failed=0 | time=0.52ms
+2025-08-31 23:51:34,658 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: Agus Santoso in 689f77431520379a7501cf80
+2025-08-31 23:51:34,659 [INFO] app.core.websocket: Broadcasting connected event for Agus Santoso (proctor) to 1 proctors in room 689f77431520379a7501cf80
+2025-08-31 23:51:43,574 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 689f77431520379a7501cf80
+2025-08-31 23:51:43,621 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: Agus Santoso from 689f77431520379a7501cf80
+2025-08-31 23:51:43,646 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=50e252fd-ac75-4de6-9078-0e5b889eda92 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-08-31 23:51:43,675 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-08-31 23:51:43,676 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1d82ad72-0d71-4add-a4b7-3c57132a568a | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-08-31 23:51:43,676 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1d82ad72-0d71-4add-a4b7-3c57132a568a | successful=0/0 | failed=0 | time=0.54ms
+2025-08-31 23:51:43,677 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=50e252fd-ac75-4de6-9078-0e5b889eda92 | user_id=68822f07979cbba23e6db950 | connection_time=30.8ms
+2025-08-31 23:54:04,238 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-08-31 23:54:04,239 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a2e7dd8a-a34a-46f5-a170-4fba470f6ecd | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-08-31 23:54:04,240 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a2e7dd8a-a34a-46f5-a170-4fba470f6ecd | successful=0/0 | failed=0 | time=0.8ms
+2025-08-31 23:54:08,401 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=495ca75a-570a-4583-9919-c498f7587084 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-08-31 23:54:08,402 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=495ca75a-570a-4583-9919-c498f7587084 | successful=0/0 | failed=0 | time=0.64ms
+2025-08-31 23:54:08,442 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=9f3ff099-7600-40f4-a4db-29ea73d936bf | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-08-31 23:54:08,477 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-08-31 23:54:08,478 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=fb65c755-66b1-41bd-9b75-2b8d146398c9 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-08-31 23:54:08,479 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=fb65c755-66b1-41bd-9b75-2b8d146398c9 | successful=1/1 | failed=0 | time=1.5ms
+2025-08-31 23:54:08,480 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=9f3ff099-7600-40f4-a4db-29ea73d936bf | user_id=686a3396d20694199c01c06b | connection_time=38.35ms
