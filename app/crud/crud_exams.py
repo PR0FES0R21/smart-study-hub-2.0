@@ -475,7 +475,6 @@ async def get_exams_by_student(
     
     # Ambil semua assignment IDs untuk class_id ini
     assignment_ids = await get_filtered_assignment_ids(db, academic_period_id=academic_period_id, filters={"class_id": class_id})
-    print(assignment_ids)
     
     if not assignment_ids:
         return {"data": [], "total_items": 0}
@@ -510,9 +509,9 @@ async def get_exams_by_student(
             "as": "exam_session"
         }},
         
-        # Tambahkan computed_status berdasarkan exam session
+        # Override status berdasarkan exam session
         {"$addFields": {
-            "computed_status": {
+            "status": {
                 "$cond": {
                     "if": {"$gt": [{"$size": "$exam_session"}, 0]},
                     # Jika ada exam session, gunakan status dari session
@@ -523,7 +522,7 @@ async def get_exams_by_student(
                             "else": {"$arrayElemAt": ["$exam_session.status", 0]}  # ongoing, submitted
                         }
                     },
-                    # Jika tidak ada exam session, gunakan status exam
+                    # Jika tidak ada exam session, gunakan status exam asli
                     "else": "$status"
                 }
             },
@@ -549,9 +548,9 @@ async def get_exams_by_student(
             raise HTTPException(status_code=400, detail="Invalid academic period ID")
         pipeline.append({"$match": {"academic_period_id": ObjectId(academic_period_id)}})
     
-    # Filter berdasarkan computed_status jika diberikan
+    # Filter berdasarkan status yang sudah di-override
     if status and status != 'all':
-        pipeline.append({"$match": {"computed_status": status}})
+        pipeline.append({"$match": {"status": status}})
     
     # Hitung total
     total_pipeline = pipeline.copy()

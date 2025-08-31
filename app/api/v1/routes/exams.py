@@ -28,7 +28,6 @@ async def create_bulk_exams(
     current_user: dict = Depends(deps.get_current_active_admin),
     active_period: dict = Depends(deps.get_current_academic_period)
 ):
-    print(bulk_exam_in)
     
     """
     Membuat ujian resmi secara massal untuk target tertentu.
@@ -211,7 +210,6 @@ async def update_existing_exam(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_user)
 ):
-    print(exam_in)
     """
     Memperbarui detail ujian.
     Hanya bisa dilakukan oleh admin atau guru yang ditugaskan.
@@ -376,12 +374,12 @@ async def get_student_exams(
     
     PERBAIKAN: Status sekarang mempertimbangkan exam session siswa:
     - Jika siswa sudah memiliki exam session, status akan berdasarkan session tersebut
-    - Jika exam session status = "graded", maka computed_status = "completed"
+    - Jika exam session status = "graded", maka status = "completed"
     - Jika exam session status = "ongoing" atau "submitted", gunakan status tersebut
     - Jika tidak ada exam session, gunakan status exam asli
     
     Parameter status: all, pending_questions, ready, ongoing, submitted, completed
-    Response akan include field computed_status dan exam_session_data untuk frontend
+    Response akan include field has_session dan session_score untuk frontend
     """
     student_profile = await db["profiles"].find_one({"user_id": current_user["_id"]})
     if not student_profile:
