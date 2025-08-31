@@ -168,6 +168,7 @@ async def debug_read_own_data(
     """
     print(f"DEBUG: Memulai get_user_with_details_by_id untuk user_id: {current_user['_id']}")
     user_details = await crud_users.get_user_with_details_by_id(db, user_id=current_user["_id"])
+    print(user_details)
     
     if not user_details:
         print("DEBUG: get_user_with_details_by_id mengembalikan None.")
@@ -323,12 +324,14 @@ async def reactivate_user_account(
 @router.get("/teachers/basic", response_model=List[TeacherBasic])
 async def get_teachers_list(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_user)
+    current_user: dict = Depends(deps.get_current_active_user),
+    search: Optional[str] = Query(None, description="Search teachers by name")
 ):
     """
     Mengambil daftar semua guru aktif dengan informasi dasar (ID dan nama).
     Endpoint ini bisa diakses oleh semua pengguna yang terautentikasi.
     Berguna untuk dropdown, autocomplete, atau referensi guru di form lain.
+    Mendukung pencarian berdasarkan nama guru.
     """
-    teachers = await crud_users.get_all_teachers_basic(db=db)
+    teachers = await crud_users.get_all_teachers_basic(db=db, search=search)
     return teachers

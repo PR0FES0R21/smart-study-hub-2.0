@@ -76,10 +76,10 @@ class UserPublic(UserBase):
     class Config: from_attributes = True; arbitrary_types_allowed = True
 
 class UserWithDetails(UserPublic):
-    # Detail untuk siswa
+    # Detail untuk siswa dan guru
     profile_details: Optional[ProfilePublic]
-    class_details: Optional['ClassWithDetails'] = None
-    department_details: Optional[ExpertiseProgramPublic] = None
+    class_details: Optional['ClassWithDetails'] = None  # Untuk siswa: berisi expertise_details
+    department_details: Optional[ExpertiseProgramPublic] = None  # Untuk guru: berisi data departemen
     teaching_summary: Optional[List[TeachingSummaryItem]] = None
 
 class UserWithProfile(UserPublic):

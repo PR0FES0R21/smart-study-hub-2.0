@@ -27,34 +27,80 @@ def generate_assignment_ids_cache_key(academic_period_id: str, filters: Dict[str
     return f"assignments:ids:{academic_period_id}:{filter_str}"
 
 async def get_filtered_assignment_ids(
-    db: AsyncIOMotorDatabase, 
-    academic_period_id: str, 
+    db: AsyncIOMotorDatabase,
+    academic_period_id: str,
     filters: Dict[str, Any]
 ) -> List[str]:
     """Mengambil daftar ID penugasan yang sudah difilter berdasarkan academic period, menggunakan cache."""
-    cache_key = generate_assignment_ids_cache_key(academic_period_id, filters)
-    cached_ids = await get_cache(cache_key)
-    if cached_ids is not None:
-        return cached_ids
+    # Jika ada search, skip cache karena search query bisa sangat bervariasi
+    search_term = filters.get("search")
+    if not search_term:
+        cache_key = generate_assignment_ids_cache_key(academic_period_id, filters)
+        cached_ids = await get_cache(cache_key)
+        if cached_ids is not None:
+            return cached_ids
 
-    # Query dasar selalu include academic_period_id
-    query = {"academic_period_id": ObjectId(academic_period_id)}
-    
-    # Tambahkan filter lain
-    if filters.get("class_id"):
-        query["class_id"] = ObjectId(filters["class_id"])
-    if filters.get("teacher_id"):
-        query["teacher_id"] = ObjectId(filters["teacher_id"])
-    
-    print(query)
-    
-    cursor = db["teaching_assignments"].find(query, {"_id": 1})
-    all_ids = [str(doc["_id"]) for doc in await cursor.to_list(None)]
-
-    print(all_ids)
-    
-    if all_ids:
-        await set_cache(cache_key, all_ids)
+    # Jika ada search term, gunakan aggregation pipeline untuk pencarian
+    if search_term:
+        pipeline = [
+            # Match academic period
+            {"$match": {"academic_period_id": ObjectId(academic_period_id)}},
+            
+            # Lookup untuk mendapatkan detail teacher, subject, class, dan expertise
+            {"$lookup": {"from": "users", "localField": "teacher_id", "foreignField": "_id", "as": "teacher_details"}},
+            {"$lookup": {"from": "profiles", "localField": "teacher_details.profile_id", "foreignField": "_id", "as": "teacher_profile"}},
+            {"$lookup": {"from": "subjects", "localField": "subject_id", "foreignField": "_id", "as": "subject_details"}},
+            {"$lookup": {"from": "classes", "localField": "class_id", "foreignField": "_id", "as": "class_details"}},
+            {"$lookup": {"from": "expertise_programs", "localField": "class_details.expertise_id", "foreignField": "_id", "as": "expertise_details"}},
+            
+            # Unwind arrays
+            {"$unwind": {"path": "$teacher_details", "preserveNullAndEmptyArrays": True}},
+            {"$unwind": {"path": "$teacher_profile", "preserveNullAndEmptyArrays": True}},
+            {"$unwind": {"path": "$subject_details", "preserveNullAndEmptyArrays": True}},
+            {"$unwind": {"path": "$class_details", "preserveNullAndEmptyArrays": True}},
+            {"$unwind": {"path": "$expertise_details", "preserveNullAndEmptyArrays": True}},
+            
+            # Search filter - case insensitive search across multiple fields
+            {"$match": {
+                "$or": [
+                    {"teacher_profile.full_name": {"$regex": search_term, "$options": "i"}},
+                    {"subject_details.name": {"$regex": search_term, "$options": "i"}},
+                    {"subject_details.code": {"$regex": search_term, "$options": "i"}},
+                    {"class_details.name": {"$regex": search_term, "$options": "i"}},
+                    {"expertise_details.name": {"$regex": search_term, "$options": "i"}},
+                ]
+            }},
+            
+            # Project only the _id
+            {"$project": {"_id": 1}}
+        ]
+        
+        # Add additional filters if provided
+        if filters.get("class_id"):
+            pipeline.insert(1, {"$match": {"class_id": ObjectId(filters["class_id"])}})
+        if filters.get("teacher_id"):
+            pipeline.insert(1, {"$match": {"teacher_id": ObjectId(filters["teacher_id"])}})
+        
+        cursor = db["teaching_assignments"].aggregate(pipeline)
+        all_ids = [str(doc["_id"]) for doc in await cursor.to_list(None)]
+        
+    else:
+        # Query dasar tanpa search - menggunakan simple find
+        query = {"academic_period_id": ObjectId(academic_period_id)}
+        
+        # Tambahkan filter lain
+        if filters.get("class_id"):
+            query["class_id"] = ObjectId(filters["class_id"])
+        if filters.get("teacher_id"):
+            query["teacher_id"] = ObjectId(filters["teacher_id"])
+        
+        cursor = db["teaching_assignments"].find(query, {"_id": 1})
+        all_ids = [str(doc["_id"]) for doc in await cursor.to_list(None)]
+        
+        # Cache hasil jika tidak ada search
+        if all_ids:
+            cache_key = generate_assignment_ids_cache_key(academic_period_id, filters)
+            await set_cache(cache_key, all_ids)
         
     return all_ids
 

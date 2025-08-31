@@ -76,6 +76,10 @@ class ExamWithDetails(ExamPublic):
     teaching_assignment_details: Optional[TeachingAssignmentWithDetails] = None
     academic_period_details: Optional[AcademicPeriodPublic] = None
     question_ids: List[PyObjectId]
+    # Field tambahan untuk student endpoint
+    computed_status: Optional[str] = None  # Status yang sudah mempertimbangkan exam session
+    has_session: Optional[bool] = None  # Apakah siswa sudah pernah mengerjakan
+    session_score: Optional[float] = None  # Skor dari exam session jika ada
 
 class PaginatedExamResponse(BaseModel):
     total_items: int

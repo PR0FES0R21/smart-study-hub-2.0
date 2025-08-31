@@ -149,6 +149,9 @@ async def submit_and_grade_session_v2(
     exam: dict, 
     payload: SubmitAllPayload
 ) -> dict:
+    print("+======================== payload diterima di crud service ======================+")
+    print(payload)
+    print("+==========================================================================+")
     """
     Enhanced submit dengan validation, logging lengkap, dan fraud detection.
     """

@@ -128,6 +128,7 @@ async def submit_exam_with_full_data(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_user)
 ):
+    print(payload)
     """
     Submit ujian dengan data lengkap: answers + interaction logs + violations + metadata.
     Endpoint baru untuk approach 'submit all' dengan fraud detection.

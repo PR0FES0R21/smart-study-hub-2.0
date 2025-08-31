@@ -263,20 +263,48 @@ async def get_users_details_by_ids(db: AsyncIOMotorDatabase, user_ids: List[Obje
         {"$match": {"_id": {"$in": user_ids}}},
         {"$lookup": {"from": "profiles", "localField": "profile_id", "foreignField": "_id", "as": "profile_details"}},
         {"$unwind": {"path": "$profile_details", "preserveNullAndEmptyArrays": True}},
-        {"$lookup": {"from": "classes", "localField": "profile_details.class_id", "foreignField": "_id", "as": "class_details"}},
-        {"$unwind": {"path": "$class_details", "preserveNullAndEmptyArrays": True}},
-        {"$lookup": {"from": "expertise_programs", "localField": "class_details.expertise_id", "foreignField": "_id", "as": "expertise_details_from_class"}},
-        {"$unwind": {"path": "$expertise_details_from_class", "preserveNullAndEmptyArrays": True}},
+        
+        # --- PERBAIKAN: Lookup berantai untuk data kelas dan jurusan siswa ---
+        {"$lookup": {
+            "from": "classes",
+            "let": { "class_id": "$profile_details.class_id" },
+            "pipeline": [
+                { "$match": { "$expr": { "$eq": [ "$_id", "$$class_id" ] } } },
+                # Lakukan lookup ke jurusan DI DALAM sub-pipeline ini
+                { "$lookup": { "from": "expertise_programs", "localField": "expertise_id", "foreignField": "_id", "as": "expertise_details"}},
+                { "$unwind": { "path": "$expertise_details", "preserveNullAndEmptyArrays": True }}
+            ],
+            "as": "class_details_array"
+        }},
+        {"$unwind": {"path": "$class_details_array", "preserveNullAndEmptyArrays": True}},
+        {"$addFields": {"class_details": "$class_details_array"}},
+
+        # Lookup untuk departemen guru (tetap sama)
         {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
         {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
-        {"$addFields": {"expertise_details": {"$ifNull": ["$expertise_details_from_class", "$department_details"]}}},
+        
+        # Lookup untuk ringkasan mengajar guru (tetap sama)
+        {"$lookup": {"from": "teaching_assignments", "let": {"teacher_id": "$_id"},
+            "pipeline": [
+                {"$match": {"$expr": {"$eq": ["$teacher_id", "$$teacher_id"]}}},
+                {"$lookup": {"from": "subjects", "localField": "subject_id", "foreignField": "_id", "as": "subject"}},
+                {"$unwind": "$subject"},
+                {"$lookup": {"from": "classes", "localField": "class_id", "foreignField": "_id", "as": "class_info"}},
+                {"$unwind": "$class_info"},
+                {"$lookup": {"from": "expertise_programs", "localField": "class_info.expertise_id", "foreignField": "_id", "as": "expertise"}},
+                {"$unwind": "$expertise"},
+                {"$project": {"_id": 0, "subject_name": "$subject.name", "class_name": {"$concat": [{"$toString": "$class_info.grade_level"}, " ", "$expertise.abbreviation", " ", "$class_info.name"]}}}
+            ], "as": "teaching_summary"}},
+            
+        # Hapus field-field sementara yang tidak perlu
+        {"$project": {"class_details_array": 0}}
     ]
     return await db["users"].aggregate(pipeline).to_list(None)
 
 async def search_users_with_details(
-    db: AsyncIOMotorDatabase, 
-    search: str, 
-    skip: int, 
+    db: AsyncIOMotorDatabase,
+    search: str,
+    skip: int,
     limit: int,
     filters: Optional[Dict[str, Any]] = None
 ) -> Dict[str, Any]:
@@ -306,6 +334,10 @@ async def search_users_with_details(
         # Lookup untuk departemen guru (tetap sama)
         {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
         {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
+        
+        # --- DIHAPUS: Field expertise_details yang unified tidak diperlukan ---
+        # Siswa: expertise_details ada di class_details.expertise_details
+        # Guru: expertise_details tidak diperlukan, gunakan department_details
         
         # Lookup untuk ringkasan mengajar guru (tetap sama)
         {"$lookup": {"from": "teaching_assignments", "let": {"teacher_id": "$_id"},
@@ -351,7 +383,7 @@ async def search_users_with_details(
                     match_conditions["$and"].append({
                         "$or": [
                             {"department_details._id": ObjectId(value)},           # Untuk teacher
-                            {"class_details.expertise_details._id": ObjectId(value)} # Untuk student (perubahan dari expertise_details_from_class ke class_details.expertise_details)
+                            {"class_details.expertise_details._id": ObjectId(value)} # Untuk student
                         ]
                     })
                 elif key == "class_id":
@@ -559,6 +591,10 @@ async def get_users_details_by_ids(db: AsyncIOMotorDatabase, user_ids: List[Obje
         {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
         {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
         
+        # --- DIHAPUS: Field expertise_details yang unified tidak diperlukan ---
+        # Siswa: expertise_details ada di class_details.expertise_details
+        # Guru: expertise_details tidak diperlukan, gunakan department_details
+        
         # Lookup untuk ringkasan mengajar guru (tetap sama)
         {"$lookup": {"from": "teaching_assignments", "let": {"teacher_id": "$_id"},
             "pipeline": [
@@ -600,13 +636,30 @@ async def get_users_with_profiles_for_datatables(
     pipeline.extend([
         {"$lookup": {"from": "profiles", "localField": "profile_id", "foreignField": "_id", "as": "profile_details"}},
         {"$unwind": {"path": "$profile_details", "preserveNullAndEmptyArrays": True}},
-        {"$lookup": {"from": "classes", "localField": "profile_details.class_id", "foreignField": "_id", "as": "class_details"}},
-        {"$unwind": {"path": "$class_details", "preserveNullAndEmptyArrays": True}},
-        {"$lookup": {"from": "expertise_programs", "localField": "class_details.expertise_id", "foreignField": "_id", "as": "expertise_details_from_class"}},
-        {"$unwind": {"path": "$expertise_details_from_class", "preserveNullAndEmptyArrays": True}},
+        
+        # --- PERBAIKAN: Lookup berantai untuk data kelas dan jurusan siswa ---
+        {"$lookup": {
+            "from": "classes",
+            "let": { "class_id": "$profile_details.class_id" },
+            "pipeline": [
+                { "$match": { "$expr": { "$eq": [ "$_id", "$$class_id" ] } } },
+                # Lakukan lookup ke jurusan DI DALAM sub-pipeline ini
+                { "$lookup": { "from": "expertise_programs", "localField": "expertise_id", "foreignField": "_id", "as": "expertise_details"}},
+                { "$unwind": { "path": "$expertise_details", "preserveNullAndEmptyArrays": True }}
+            ],
+            "as": "class_details_array"
+        }},
+        {"$unwind": {"path": "$class_details_array", "preserveNullAndEmptyArrays": True}},
+        {"$addFields": {"class_details": "$class_details_array"}},
+
+        # Lookup untuk departemen guru (tetap sama)
         {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
         {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
-        {"$addFields": {"expertise_details": {"$ifNull": ["$expertise_details_from_class", "$department_details"]}}},
+        
+        # --- DIHAPUS: Field expertise_details yang unified tidak diperlukan ---
+        # Siswa: expertise_details ada di class_details.expertise_details
+        # Guru: expertise_details tidak diperlukan, gunakan department_details
+        
         {"$lookup": {"from": "teaching_assignments", "let": {"teacher_id": "$_id"},
             "pipeline": [
                 {"$match": {"$expr": {"$eq": ["$teacher_id", "$$teacher_id"]}}},
@@ -617,7 +670,10 @@ async def get_users_with_profiles_for_datatables(
                 {"$lookup": {"from": "expertise_programs", "localField": "class_info.expertise_id", "foreignField": "_id", "as": "expertise"}},
                 {"$unwind": "$expertise"},
                 {"$project": {"_id": 0, "subject_name": "$subject.name", "class_name": {"$concat": [{"$toString": "$class_info.grade_level"}, " ", "$expertise.abbreviation", " ", "$class_info.name"]}}}
-            ], "as": "teaching_summary"}}
+            ], "as": "teaching_summary"}},
+            
+        # Hapus field-field sementara yang tidak perlu
+        {"$project": {"class_details_array": 0}}
     ])
     
     # --- PERBAIKAN: Terapkan filter SETELAH semua data digabungkan ---
@@ -628,7 +684,11 @@ async def get_users_with_profiles_for_datatables(
         filter_stage["class_details.grade_level"] = grade_level
     if expertise_id:
         # Filter ini sekarang akan bekerja untuk siswa dan guru
-        filter_stage["expertise_details._id"] = ObjectId(expertise_id)
+        # Filter ini sekarang akan bekerja untuk siswa dan guru dengan logika OR
+        filter_stage["$or"] = [
+            {"department_details._id": ObjectId(expertise_id)},           # Untuk teacher
+            {"class_details.expertise_details._id": ObjectId(expertise_id)} # Untuk student
+        ]
             
     if filter_stage:
         pipeline.append({"$match": filter_stage})
@@ -750,23 +810,58 @@ async def get_user_with_details_by_id(db: AsyncIOMotorDatabase, user_id: str) ->
     
     pipeline = [
         {"$match": {"_id": user_id_obj}},
-        # Gabungkan dengan semua data relevan, mirip dengan datatables
         {"$lookup": {"from": "profiles", "localField": "profile_id", "foreignField": "_id", "as": "profile_details"}},
         {"$unwind": {"path": "$profile_details", "preserveNullAndEmptyArrays": True}},
-        {"$lookup": {"from": "classes", "localField": "profile_details.class_id", "foreignField": "_id", "as": "class_details"}},
-        {"$unwind": {"path": "$class_details", "preserveNullAndEmptyArrays": True}},
+        
+        # --- PERBAIKAN: Lookup berantai untuk data kelas dan jurusan siswa ---
+        {"$lookup": {
+            "from": "classes",
+            "let": { "class_id": "$profile_details.class_id" },
+            "pipeline": [
+                { "$match": { "$expr": { "$eq": [ "$_id", "$$class_id" ] } } },
+                # Lakukan lookup ke jurusan DI DALAM sub-pipeline ini
+                { "$lookup": { "from": "expertise_programs", "localField": "expertise_id", "foreignField": "_id", "as": "expertise_details"}},
+                { "$unwind": { "path": "$expertise_details", "preserveNullAndEmptyArrays": True }}
+            ],
+            "as": "class_details_array"
+        }},
+        {"$unwind": {"path": "$class_details_array", "preserveNullAndEmptyArrays": True}},
+        {"$addFields": {"class_details": "$class_details_array"}},
+
+        # Lookup untuk departemen guru (tetap sama)
         {"$lookup": {"from": "expertise_programs", "localField": "profile_details.department_id", "foreignField": "_id", "as": "department_details"}},
         {"$unwind": {"path": "$department_details", "preserveNullAndEmptyArrays": True}},
+        
+        # --- DIHAPUS: Field expertise_details yang unified tidak diperlukan ---
+        # Siswa: expertise_details ada di class_details.expertise_details
+        # Guru: expertise_details tidak diperlukan, gunakan department_details
+        
+        # Lookup untuk ringkasan mengajar guru (tetap sama)
+        {"$lookup": {"from": "teaching_assignments", "let": {"teacher_id": "$_id"},
+            "pipeline": [
+                {"$match": {"$expr": {"$eq": ["$teacher_id", "$$teacher_id"]}}},
+                {"$lookup": {"from": "subjects", "localField": "subject_id", "foreignField": "_id", "as": "subject"}},
+                {"$unwind": "$subject"},
+                {"$lookup": {"from": "classes", "localField": "class_id", "foreignField": "_id", "as": "class_info"}},
+                {"$unwind": "$class_info"},
+                {"$lookup": {"from": "expertise_programs", "localField": "class_info.expertise_id", "foreignField": "_id", "as": "expertise"}},
+                {"$unwind": "$expertise"},
+                {"$project": {"_id": 0, "subject_name": "$subject.name", "class_name": {"$concat": [{"$toString": "$class_info.grade_level"}, " ", "$expertise.abbreviation", " ", "$class_info.name"]}}}
+            ], "as": "teaching_summary"}},
+            
+        # Hapus field-field sementara yang tidak perlu
+        {"$project": {"class_details_array": 0}}
     ]
     result = await db["users"].aggregate(pipeline).to_list(1)
     return result[0] if result else None
 
 # Tambahkan fungsi ini ke file app/crud/crud_users.py
 
-async def get_all_teachers_basic(db: AsyncIOMotorDatabase) -> List[dict]:
+async def get_all_teachers_basic(db: AsyncIOMotorDatabase, search: Optional[str] = None) -> List[dict]:
     """
     Mengambil daftar semua guru aktif dengan hanya ID dan nama lengkap.
     Fungsi ini efisien karena hanya mengambil data minimal yang diperlukan.
+    Mendukung pencarian berdasarkan nama guru.
     """
     pipeline = [
         # Filter hanya pengguna dengan role 'teacher' dan status aktif
@@ -783,16 +878,28 @@ async def get_all_teachers_basic(db: AsyncIOMotorDatabase) -> List[dict]:
             "as": "profile_details"
         }},
         {"$unwind": "$profile_details"},
-        
+    ]
+    
+    # Tambahkan filter pencarian jika ada search term
+    if search:
+        pipeline.append({
+            "$match": {
+                "profile_details.full_name": {"$regex": search, "$options": "i"}
+            }
+        })
+    
+    # Tambahkan projection dan sorting
+    pipeline.extend([
         # Hanya ambil field yang diperlukan
         {"$project": {
             "_id": 1,
-            "full_name": "$profile_details.full_name"
+            "full_name": "$profile_details.full_name",
+            "profile_picture_key": "$profile_details.profile_picture_key"
         }},
         
         # Urutkan berdasarkan nama
         {"$sort": {"full_name": 1}}
-    ]
+    ])
     
     teachers = await db["users"].aggregate(pipeline).to_list(None)
     return teachers

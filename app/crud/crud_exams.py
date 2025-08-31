@@ -461,10 +461,17 @@ async def get_exams_by_student(
 ) -> Dict[str, Any]:
     
     from app.crud.crud_teaching_assignments import get_filtered_assignment_ids
-    """Mengambil ujian untuk siswa berdasarkan class_id dari profil."""
+    """
+    Mengambil ujian untuk siswa berdasarkan class_id dari profil.
+    PERBAIKAN: Menggabungkan data exam session untuk menentukan status yang tepat.
+    """
     class_id = student_profile.get("class_id")
     if not class_id:
         raise HTTPException(status_code=400, detail="Student has no assigned class")
+    
+    student_id = student_profile.get("user_id")
+    if not student_id:
+        raise HTTPException(status_code=400, detail="Student profile missing user_id")
     
     # Ambil semua assignment IDs untuk class_id ini
     assignment_ids = await get_filtered_assignment_ids(db, academic_period_id=academic_period_id, filters={"class_id": class_id})
@@ -473,7 +480,7 @@ async def get_exams_by_student(
     if not assignment_ids:
         return {"data": [], "total_items": 0}
     
-    # Query ujian dengan validasi academic_period
+    # Query ujian dengan validasi academic_period dan join dengan exam_sessions
     pipeline = [
         {"$match": {
             "teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]},
@@ -483,6 +490,58 @@ async def get_exams_by_student(
         {"$unwind": "$teaching_assignment"},
         {"$lookup": {"from": "subjects", "localField": "teaching_assignment.subject_id", "foreignField": "_id", "as": "subject_details"}},
         {"$unwind": "$subject_details"},
+        
+        # JOIN dengan exam_sessions untuk mendapatkan status session siswa
+        {"$lookup": {
+            "from": "exam_sessions",
+            "let": {"exam_id": "$_id", "student_id": ObjectId(student_id)},
+            "pipeline": [
+                {"$match": {
+                    "$expr": {
+                        "$and": [
+                            {"$eq": ["$exam_id", "$$exam_id"]},
+                            {"$eq": ["$student_id", "$$student_id"]}
+                        ]
+                    }
+                }},
+                {"$sort": {"started_at": -1}},  # Ambil session terbaru jika ada multiple
+                {"$limit": 1}
+            ],
+            "as": "exam_session"
+        }},
+        
+        # Tambahkan computed_status berdasarkan exam session
+        {"$addFields": {
+            "computed_status": {
+                "$cond": {
+                    "if": {"$gt": [{"$size": "$exam_session"}, 0]},
+                    # Jika ada exam session, gunakan status dari session
+                    "then": {
+                        "$cond": {
+                            "if": {"$eq": [{"$arrayElemAt": ["$exam_session.status", 0]}, "graded"]},
+                            "then": "completed",  # Jika session graded, status jadi completed
+                            "else": {"$arrayElemAt": ["$exam_session.status", 0]}  # ongoing, submitted
+                        }
+                    },
+                    # Jika tidak ada exam session, gunakan status exam
+                    "else": "$status"
+                }
+            },
+            # Tambahkan informasi apakah siswa sudah pernah mengerjakan
+            "has_session": {"$gt": [{"$size": "$exam_session"}, 0]},
+            "session_score": {
+                "$cond": {
+                    "if": {"$gt": [{"$size": "$exam_session"}, 0]},
+                    "then": {"$arrayElemAt": ["$exam_session.score", 0]},
+                    "else": None
+                }
+            }
+        }},
+        
+        # Hapus field exam_session yang tidak perlu untuk response
+        {"$project": {
+            "exam_session": 0
+        }}
     ]
     
     if academic_period_id:
@@ -490,9 +549,9 @@ async def get_exams_by_student(
             raise HTTPException(status_code=400, detail="Invalid academic period ID")
         pipeline.append({"$match": {"academic_period_id": ObjectId(academic_period_id)}})
     
-    # Filter berdasarkan status jika diberikan
+    # Filter berdasarkan computed_status jika diberikan
     if status and status != 'all':
-        pipeline.append({"$match": {"status": status}})
+        pipeline.append({"$match": {"computed_status": status}})
     
     # Hitung total
     total_pipeline = pipeline.copy()
@@ -508,4 +567,17 @@ async def get_exams_by_student(
     ])
     
     exams = await db["exams"].aggregate(pipeline).to_list(None)
-    return {"data": exams, "total_items": total_items}
+    
+    # Post-process untuk konversi ObjectId ke string (lebih aman daripada di aggregation)
+    def convert_objectids(obj):
+        if isinstance(obj, ObjectId):
+            return str(obj)
+        elif isinstance(obj, dict):
+            return {k: convert_objectids(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_objectids(item) for item in obj]
+        else:
+            return obj
+    
+    processed_exams = [convert_objectids(exam) for exam in exams]
+    return {"data": processed_exams, "total_items": total_items}

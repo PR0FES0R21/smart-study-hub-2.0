@@ -182,7 +182,7 @@ class ConnectionManager:
                     connections_snapshot[user_id] = snapshot_data
         
         logger.info(
-            f"📡 BROADCAST_START | broadcast_id={broadcast_id} | "
+            f"BROADCAST_START | broadcast_id={broadcast_id} | "
             f"message_type={message.get('type', 'unknown')} | "
             f"target_roles={target_roles} | recipients={len(connections_snapshot)}"
         )
@@ -219,7 +219,7 @@ class ConnectionManager:
         
         broadcast_time = round((time.time() - start_time) * 1000, 2)
         logger.info(
-            f"📡 BROADCAST_COMPLETE | broadcast_id={broadcast_id} | "
+            f"BROADCAST_COMPLETE | broadcast_id={broadcast_id} | "
             f"successful={successful_sends}/{len(connections_snapshot)} | "
             f"failed={len(failed_users)} | time={broadcast_time}ms"
         )
@@ -246,7 +246,7 @@ class ConnectionManager:
                     proctor_connections[user_id] = snapshot_data
         
         logger.info(
-            f"👨‍🏫 PROCTOR_BROADCAST | broadcast_id={broadcast_id} | "
+            f"PROCTOR_BROADCAST | broadcast_id={broadcast_id} | "
             f"room_id={room_id} | message_type={message.get('type', 'unknown')} | "
             f"proctors={len(proctor_connections)}"
         )
@@ -275,7 +275,7 @@ class ConnectionManager:
         
         broadcast_time = round((time.time() - start_time) * 1000, 2)
         logger.info(
-            f"👨‍🏫 PROCTOR_BROADCAST_COMPLETE | broadcast_id={broadcast_id} | "
+            f"PROCTOR_BROADCAST_COMPLETE | broadcast_id={broadcast_id} | "
             f"successful={successful_sends}/{len(proctor_connections)} | time={broadcast_time}ms"
         )
 
@@ -325,7 +325,7 @@ class ConnectionManager:
                     "timestamp": datetime.utcnow().isoformat()
                 }
                 
-                logger.info(f"📡 Broadcasting {action} event for {username} ({user_type}) to {len(proctor_connections)} proctors in room {room_id}")
+                logger.info(f"Broadcasting {action} event for {username} ({user_type}) to {len(proctor_connections)} proctors in room {room_id}")
                 
                 # Send HANYA ke proctor connections (students tidak menerima)
                 for uid, conn_data in proctor_connections.items():
@@ -437,7 +437,7 @@ class ConnectionManager:
                 # Get connection stats untuk digabungkan dalam 1 message
                 stats_data = await self._get_connection_stats_data()
                 
-                logger.info(f"🔔 Broadcasting user connected event for {username} to admins (global)")
+                logger.info(f"Broadcasting user connected event for {username} to admins (global)")
                 
                 # Single efficient message dengan user data + stats
                 admin_message = {
@@ -456,7 +456,7 @@ class ConnectionManager:
                 }
                 await self.broadcast_to_roles(admin_message, target_roles=["admin"])
             else:
-                logger.info(f"🔔 Skipping admin broadcast for exam room connection: {username} in {room_id}")
+                logger.info(f"Skipping admin broadcast for exam room connection: {username} in {room_id}")
             
             # Update room presence jika di exam room (untuk proctors) - efficient single user event
             if room_id and room_id != "lobby":
@@ -474,7 +474,7 @@ class ConnectionManager:
                 # Get connection stats untuk digabungkan dalam 1 message
                 stats_data = await self._get_connection_stats_data()
                 
-                logger.info(f"🔔 Broadcasting user disconnected event for {username} to admins (global)")
+                logger.info(f"Broadcasting user disconnected event for {username} to admins (global)")
                 
                 # Single efficient message dengan user data + stats
                 admin_message = {
@@ -493,7 +493,7 @@ class ConnectionManager:
                 }
                 await self.broadcast_to_roles(admin_message, target_roles=["admin"])
             else:
-                logger.info(f"🔔 Skipping admin broadcast for exam room disconnection: {username} from {room_id}")
+                logger.info(f"Skipping admin broadcast for exam room disconnection: {username} from {room_id}")
             
             # Update room presence jika dari exam room (untuk proctors) - efficient single user event
             if room_id and room_id != "lobby":

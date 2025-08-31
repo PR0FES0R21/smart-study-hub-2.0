@@ -46,6 +46,7 @@ async def read_assignments(
     academic_period_id: Optional[str] = Query(None, description="Override academic period (admin only)"),
     class_id: Optional[str] = Query(None),
     teacher_id: Optional[str] = Query(None),
+    search: Optional[str] = Query(None, description="Search in teacher name, subject name/code, class name, or expertise program"),
     page: int = Query(1, ge=1),
     limit: int = Query(10, ge=1, le=1000)
 ):
@@ -79,7 +80,7 @@ async def read_assignments(
     
     skip = (page - 1) * limit
     
-    filters = {"class_id": class_id, "teacher_id": teacher_id}
+    filters = {"class_id": class_id, "teacher_id": teacher_id, "search": search}
     active_filters = {k: v for k, v in filters.items() if v is not None}
 
     all_filtered_ids_str = await crud_teaching_assignments.get_filtered_assignment_ids(
@@ -122,6 +123,7 @@ async def bulk_update_assignments(
     current_user: dict = Depends(deps.get_current_active_admin),
     current_academic_period: dict = Depends(deps.get_current_academic_period)
 ):
+    print(request_in)
     """
     Memulai proses operasi massal (create, update, delete) untuk penugasan mengajar
     di latar belakang. Semua operasi dilakukan dalam periode akademik aktif.
