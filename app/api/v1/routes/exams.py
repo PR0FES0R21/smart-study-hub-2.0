@@ -334,11 +334,12 @@ async def get_teacher_exams(
     current_period: dict = Depends(deps.get_current_academic_period),
     academic_period_id: Optional[str] = Query(None),
     class_id: Optional[str] = Query(None),
-    skip: int = Query(0),
-    limit: int = Query(20, le=100)
+    page: int = Query(1, ge=1),
+    limit: int = Query(20, ge=1, le=100)
 ):
     """Endpoint khusus guru untuk melihat ujian yang terkait dengan dia."""
     current_period_id = academic_period_id if academic_period_id else current_period["_id"]
+    skip = (page - 1) * limit
 
     result = await crud_exams.get_exams_by_teacher(
         db=db,
@@ -355,7 +356,7 @@ async def get_teacher_exams(
     return {
         "total_items": total_items,
         "total_pages": total_pages,
-        "current_page": (skip // limit) + 1,
+        "current_page": page,
         "limit": limit,
         "data": result["data"]
     }
@@ -366,8 +367,8 @@ async def get_student_exams(
     current_user: dict = Depends(deps.get_current_active_user),
     academic_period_id: Optional[str] = Query(None),
     status: Optional[str] = Query(None, description="Filter by computed status (pending_questions, ready, ongoing, submitted, completed, etc.)"),
-    skip: int = Query(0),
-    limit: int = Query(20, le=100)
+    page: int = Query(1, ge=1),
+    limit: int = Query(20, ge=1, le=100)
 ):
     """
     Endpoint khusus siswa untuk melihat ujian yang terkait dengan kelasnya.
@@ -385,6 +386,8 @@ async def get_student_exams(
     if not student_profile:
         raise HTTPException(status_code=404, detail="Student profile not found")
     
+    skip = (page - 1) * limit
+    
     result = await crud_exams.get_exams_by_student(
         db=db,
         student_profile=student_profile,
@@ -400,7 +403,7 @@ async def get_student_exams(
     return {
         "total_items": total_items,
         "total_pages": total_pages,
-        "current_page": (skip // limit) + 1,
+        "current_page": page,
         "limit": limit,
         "data": result["data"]
     }
