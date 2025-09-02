@@ -57755,3 +57755,181 @@ pymongo.errors.NetworkTimeout: 127.0.0.1:27017: timed out (configured timeouts: 
 2025-09-02 22:10:39,473 [INFO] app.core.redis_websocket: Starting Redis message listener
 2025-09-02 22:11:47,887 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=fece947b-4018-42c7-b6ba-8fda5f98e469 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
 2025-09-02 22:11:47,887 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=fece947b-4018-42c7-b6ba-8fda5f98e469 | successful=0/0 | failed=0 | time=0.6ms
+2025-09-02 22:30:10,935 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:30:10,946 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:30:10,974 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:30:10,986 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:30:10,987 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:30:11,079 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:30:20,567 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:30:22,040 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:30:22,063 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:30:22,064 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:30:22,065 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:30:22,067 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:30:22,068 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:30:22,506 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:30:22,506 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:30:22,508 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:30:22,509 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:30:22,510 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:30:22,577 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:30:29,942 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:30:31,340 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:30:31,349 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:30:31,350 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:30:31,350 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:30:31,351 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:30:31,352 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:30:38,678 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:30:40,050 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:30:40,068 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:30:40,069 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:30:40,070 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:30:40,071 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:30:40,072 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:31:45,675 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:31:45,676 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:31:45,678 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:31:45,679 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:31:45,679 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:31:45,765 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:31:53,311 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:31:54,809 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:31:54,823 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:31:54,824 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:31:54,825 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:31:54,826 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:31:54,827 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:34:59,204 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:34:59,205 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:34:59,207 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:34:59,208 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:34:59,209 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:34:59,302 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:35:07,144 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:35:08,784 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:35:08,798 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:35:08,799 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:35:08,800 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:35:08,800 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:35:08,801 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:35:16,183 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:35:17,686 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:35:17,699 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:35:17,700 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:35:17,701 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:35:17,701 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:35:17,703 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:35:25,266 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:35:26,638 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:35:26,667 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:35:26,668 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:35:26,668 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:35:26,669 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:35:26,670 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:35:32,548 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:35:32,549 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:35:32,550 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:35:32,551 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:35:32,552 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:35:32,620 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:35:39,850 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:35:41,381 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:35:41,401 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:35:41,402 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:35:41,403 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:35:41,403 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:35:41,405 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:36:08,794 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8943a733-9e59-448e-9fe7-5a9fbe488ca2 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-02 22:36:08,795 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8943a733-9e59-448e-9fe7-5a9fbe488ca2 | successful=0/0 | failed=0 | time=0.82ms
+2025-09-02 22:36:18,152 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:36:18,153 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:36:18,156 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:36:18,158 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:36:18,161 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:36:18,239 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:36:25,431 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:36:26,693 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:36:26,702 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:36:26,704 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:36:26,705 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:36:26,706 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:36:26,707 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:37:47,450 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 444, in _create_connection
+    raise err
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 437, in _create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-00.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-02 22:43:01,349 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-02 22:56:27,920 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=dde022fa-cc46-491d-a8c8-a85c6c790ab8 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 22:56:28,302 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 22:56:28,306 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e44a3e69-33ea-4ce4-8820-9cabbc64bdca | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 22:56:28,307 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e44a3e69-33ea-4ce4-8820-9cabbc64bdca | successful=0/0 | failed=0 | time=1.33ms
+2025-09-02 22:56:28,308 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=dde022fa-cc46-491d-a8c8-a85c6c790ab8 | user_id=68822f07979cbba23e6db950 | connection_time=390.37ms
+2025-09-02 23:04:21,160 [INFO] app.crud.crud_question_banks: MISS: Mengambil ID question dari database untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 23:04:22,641 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}

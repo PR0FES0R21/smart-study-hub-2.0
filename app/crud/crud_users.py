@@ -894,7 +894,7 @@ async def get_all_teachers_basic(db: AsyncIOMotorDatabase, search: Optional[str]
         {"$project": {
             "_id": 1,
             "full_name": "$profile_details.full_name",
-            "profile_picture_key": "$profile_details.profile_picture_key"
+            "profile_picture_url": "$profile_details.profile_picture_url"
         }},
         
         # Urutkan berdasarkan nama
