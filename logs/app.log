@@ -56924,3 +56924,159 @@ pymongo.errors.NetworkTimeout: 127.0.0.1:27017: timed out (configured timeouts: 
 2025-09-01 22:51:30,482 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
 2025-09-01 22:51:30,483 [INFO] app.main: Startup aplikasi berhasil
 2025-09-01 22:51:30,484 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-01 23:32:52,332 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=daa5df15-ffe0-438e-8f2d-4c8421da251b | user_id=688b56aaf64f8842d7361fe6 | username=79111954 | roles=['teacher']
+2025-09-01 23:32:52,889 [INFO] app.core.websocket: Broadcasting user connected event for samskuydin to admins (global)
+2025-09-01 23:32:52,890 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7a4edd93-6204-4c12-91e9-1c0c19871c6a | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-01 23:32:52,890 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7a4edd93-6204-4c12-91e9-1c0c19871c6a | successful=0/0 | failed=0 | time=0.69ms
+2025-09-01 23:32:52,892 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=daa5df15-ffe0-438e-8f2d-4c8421da251b | user_id=688b56aaf64f8842d7361fe6 | connection_time=562.02ms
+2025-09-01 23:33:47,861 [INFO] app.core.websocket: Broadcasting user disconnected event for samskuydin to admins (global)
+2025-09-01 23:33:47,861 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f6fe6fbf-e666-4c65-a12f-38e308368237 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-01 23:33:47,862 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f6fe6fbf-e666-4c65-a12f-38e308368237 | successful=0/0 | failed=0 | time=0.85ms
+2025-09-01 23:34:06,779 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=99dbb31f-efe0-4dc0-96ee-a84c4eafdbf0 | user_id=688b56aaf64f8842d7361fe6 | username=79111954 | roles=['teacher']
+2025-09-01 23:34:06,803 [INFO] app.core.websocket: Broadcasting user connected event for samskuydin to admins (global)
+2025-09-01 23:34:06,804 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1098534e-70d5-4da3-8973-a3b3f2df41b4 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-01 23:34:06,805 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1098534e-70d5-4da3-8973-a3b3f2df41b4 | successful=0/0 | failed=0 | time=0.57ms
+2025-09-01 23:34:06,805 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=99dbb31f-efe0-4dc0-96ee-a84c4eafdbf0 | user_id=688b56aaf64f8842d7361fe6 | connection_time=26.58ms
+2025-09-01 23:34:17,093 [INFO] app.core.websocket: Broadcasting user disconnected event for samskuydin to admins (global)
+2025-09-01 23:34:17,094 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=896ede81-5c78-4650-81fc-de35523544d9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-01 23:34:17,095 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=896ede81-5c78-4650-81fc-de35523544d9 | successful=0/0 | failed=0 | time=0.43ms
+2025-09-01 23:34:31,557 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=ba2c42bf-08d8-43ae-9c81-ac6c55e329d7 | user_id=688b56aaf64f8842d7361fe6 | username=79111954 | roles=['teacher']
+2025-09-01 23:34:31,576 [INFO] app.core.websocket: Broadcasting user connected event for samskuydin to admins (global)
+2025-09-01 23:34:31,577 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=df5ca551-fa1a-4146-ba1f-ca3ab0814b0a | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-01 23:34:31,578 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=df5ca551-fa1a-4146-ba1f-ca3ab0814b0a | successful=0/0 | failed=0 | time=0.6ms
+2025-09-01 23:34:31,578 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=ba2c42bf-08d8-43ae-9c81-ac6c55e329d7 | user_id=688b56aaf64f8842d7361fe6 | connection_time=21.54ms
+2025-09-01 23:47:15,039 [INFO] app.core.websocket: Broadcasting user disconnected event for samskuydin to admins (global)
+2025-09-01 23:47:15,040 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=56e19e00-3e32-46bf-aca4-21952c5d087c | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-01 23:47:15,041 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=56e19e00-3e32-46bf-aca4-21952c5d087c | successful=0/0 | failed=0 | time=0.7ms
+2025-09-01 23:47:15,137 [INFO] app.main: Mematikan aplikasi...
+2025-09-01 23:47:15,138 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-01 23:47:15,153 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-01 23:47:15,160 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-01 23:47:15,161 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-01 23:47:15,180 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-01 23:47:30,229 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-01 23:47:30,311 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-01 23:47:30,329 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-01 23:47:30,330 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-01 23:47:30,332 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-01 23:47:30,333 [INFO] app.main: Startup aplikasi berhasil
+2025-09-01 23:47:30,334 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-01 23:47:32,741 [INFO] app.main: Mematikan aplikasi...
+2025-09-01 23:47:32,742 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-01 23:47:32,745 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-01 23:47:32,746 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-01 23:47:32,747 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-01 23:47:32,757 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-01 23:47:39,168 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-01 23:47:39,236 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-01 23:47:39,269 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-01 23:47:39,270 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-01 23:47:39,271 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-01 23:47:39,272 [INFO] app.main: Startup aplikasi berhasil
+2025-09-01 23:47:39,273 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-01 23:48:42,888 [INFO] app.main: Mematikan aplikasi...
+2025-09-01 23:48:42,888 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-01 23:48:42,890 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-01 23:48:42,892 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-01 23:48:42,892 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-01 23:48:42,900 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-01 23:48:49,064 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-01 23:48:49,126 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-01 23:48:49,153 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-01 23:48:49,154 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-01 23:48:49,155 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-01 23:48:49,156 [INFO] app.main: Startup aplikasi berhasil
+2025-09-01 23:48:49,157 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 01:01:22,760 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=133a12d1-39af-4ac4-9946-423fb009cddb | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-02 01:01:22,762 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=133a12d1-39af-4ac4-9946-423fb009cddb | successful=0/0 | failed=0 | time=2.33ms
+2025-09-02 01:01:22,816 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=6096136b-000f-40c6-8765-69d14c1a0c48 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 01:01:23,480 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 01:01:23,481 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=39f9665a-97a8-4297-9ff3-2a6fa8698a27 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 01:01:23,481 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=39f9665a-97a8-4297-9ff3-2a6fa8698a27 | successful=0/0 | failed=0 | time=0.71ms
+2025-09-02 01:01:23,482 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=6096136b-000f-40c6-8765-69d14c1a0c48 | user_id=68822f07979cbba23e6db950 | connection_time=667.3ms
+2025-09-02 01:02:31,687 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 01:02:31,688 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=390d8af8-33ca-448b-a919-7221a3b88c9b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 01:02:31,689 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=390d8af8-33ca-448b-a919-7221a3b88c9b | successful=0/0 | failed=0 | time=0.99ms
+2025-09-02 01:02:31,720 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 01:02:31,721 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 01:02:31,737 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 01:02:31,746 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 01:02:31,747 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 01:02:31,772 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 01:02:48,649 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 01:02:48,716 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 01:02:48,730 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 01:02:48,731 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 01:02:48,731 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 01:02:48,732 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 01:02:48,733 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 01:20:40,366 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 01:20:40,367 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 01:20:40,373 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 01:20:40,375 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 01:20:40,376 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 01:20:40,384 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 01:20:48,753 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 01:20:48,829 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 01:20:48,842 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 01:20:48,843 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 01:20:48,844 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 01:20:48,845 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 01:20:48,846 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 01:29:29,377 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=25b77c9b-8a16-444c-8247-19fd8f38f540 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 01:29:29,438 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 01:29:29,438 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a55e86f9-1005-4425-b4aa-115605bd88b6 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 01:29:29,439 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a55e86f9-1005-4425-b4aa-115605bd88b6 | successful=0/0 | failed=0 | time=0.39ms
+2025-09-02 01:29:29,439 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=25b77c9b-8a16-444c-8247-19fd8f38f540 | user_id=68822f07979cbba23e6db950 | connection_time=62.5ms
+2025-09-02 01:29:52,698 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=2df087dd-1c7f-4539-b11b-5d487e487f32 | user_id=688b56aaf64f8842d7361fe6 | username=79111954 | roles=['teacher']
+2025-09-02 01:29:52,730 [INFO] app.core.websocket: Broadcasting user connected event for samskuydin to admins (global)
+2025-09-02 01:29:52,731 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=074eca30-55a3-4000-b216-a0d8775bcb7e | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 01:29:52,732 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=074eca30-55a3-4000-b216-a0d8775bcb7e | successful=0/0 | failed=0 | time=0.61ms
+2025-09-02 01:29:52,732 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=2df087dd-1c7f-4539-b11b-5d487e487f32 | user_id=688b56aaf64f8842d7361fe6 | connection_time=34.05ms
+2025-09-02 01:41:57,161 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 01:41:57,163 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ecf294a5-4068-4f88-9b2b-ef50bafcc5dc | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 01:41:57,163 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ecf294a5-4068-4f88-9b2b-ef50bafcc5dc | successful=0/0 | failed=0 | time=0.47ms
+2025-09-02 01:41:58,265 [INFO] app.core.websocket: Broadcasting user disconnected event for samskuydin to admins (global)
+2025-09-02 01:41:58,266 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2dfccf74-135b-4966-bf36-8b3852d04848 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 01:41:58,266 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2dfccf74-135b-4966-bf36-8b3852d04848 | successful=0/0 | failed=0 | time=0.5ms
+2025-09-02 01:42:10,695 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=51a33300-395b-4526-9175-a88299cf6ae9 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 01:42:10,725 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 01:42:10,726 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5af2262a-4442-4ec2-b687-6138be93c00f | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 01:42:10,727 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5af2262a-4442-4ec2-b687-6138be93c00f | successful=0/0 | failed=0 | time=0.45ms
+2025-09-02 01:42:10,727 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=51a33300-395b-4526-9175-a88299cf6ae9 | user_id=68822f07979cbba23e6db950 | connection_time=32.56ms
+2025-09-02 01:42:15,368 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=49889b79-58e5-4bd4-8a57-648fb7a3ec23 | user_id=688b56aaf64f8842d7361fe6 | username=79111954 | roles=['teacher']
+2025-09-02 01:42:15,389 [INFO] app.core.websocket: Broadcasting user connected event for samskuydin to admins (global)
+2025-09-02 01:42:15,390 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=066769b3-91bb-427c-962f-9313fde91723 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 01:42:15,391 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=066769b3-91bb-427c-962f-9313fde91723 | successful=0/0 | failed=0 | time=0.58ms
+2025-09-02 01:42:15,392 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=49889b79-58e5-4bd4-8a57-648fb7a3ec23 | user_id=688b56aaf64f8842d7361fe6 | connection_time=23.66ms
+2025-09-02 01:43:57,135 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 01:43:57,136 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=cfa9fa0a-db4d-4dce-9240-dd6f88e4ef7b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 01:43:57,137 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=cfa9fa0a-db4d-4dce-9240-dd6f88e4ef7b | successful=0/0 | failed=0 | time=0.87ms
+2025-09-02 01:44:01,997 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=60aef549-7a25-48a9-aab4-3d7a864e3a27 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 01:44:02,021 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 01:44:02,022 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c40945bd-8012-4f8e-b510-309eda96c0a4 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 01:44:02,023 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c40945bd-8012-4f8e-b510-309eda96c0a4 | successful=0/0 | failed=0 | time=0.51ms
+2025-09-02 01:44:02,023 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=60aef549-7a25-48a9-aab4-3d7a864e3a27 | user_id=68822f07979cbba23e6db950 | connection_time=25.64ms
+2025-09-02 02:15:06,310 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=33bae1c3-5e29-447e-8703-5ebf65dacf54 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-02 02:15:06,447 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-02 02:15:06,448 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7e71622d-31bd-4489-8644-a88d11032e4a | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-02 02:15:06,451 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7e71622d-31bd-4489-8644-a88d11032e4a | successful=1/1 | failed=0 | time=2.75ms
+2025-09-02 02:15:06,451 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=33bae1c3-5e29-447e-8703-5ebf65dacf54 | user_id=686a3396d20694199c01c06b | connection_time=141.48ms
+2025-09-02 02:18:11,946 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-02 02:18:11,947 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b4641f14-e004-4d7d-ac9c-7e9a7bdc7da3 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 02:18:11,948 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b4641f14-e004-4d7d-ac9c-7e9a7bdc7da3 | successful=0/0 | failed=0 | time=0.71ms
+2025-09-02 02:18:14,034 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 02:18:14,036 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c0fa317a-37fc-45f5-9463-71bcd784dc5a | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 02:18:14,037 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c0fa317a-37fc-45f5-9463-71bcd784dc5a | successful=0/0 | failed=0 | time=1.06ms
+2025-09-02 15:03:15,093 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 15:03:15,179 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 15:03:15,188 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 15:03:15,188 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 15:03:15,189 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 15:03:15,189 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 15:03:15,190 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 15:03:48,450 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=5f96ee08-f394-49f6-b5ef-cddc53291309 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 15:03:48,645 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 15:03:48,651 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=54a5605a-6e9f-4d9c-944b-821bcb8a4388 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 15:03:48,653 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=54a5605a-6e9f-4d9c-944b-821bcb8a4388 | successful=0/0 | failed=0 | time=2.12ms
+2025-09-02 15:03:48,655 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=5f96ee08-f394-49f6-b5ef-cddc53291309 | user_id=68822f07979cbba23e6db950 | connection_time=205.64ms

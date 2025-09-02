@@ -1064,6 +1064,70 @@ class QuestionSetService:
         """Invalidate question set specific caches"""
         await self._invalidate_user_caches(user_id)
         await invalidate_cache(f"question_set:detail:{question_set_id}:*")
+    
+    async def _invalidate_permission_change_caches(
+        self, 
+        question_set_id: ObjectId, 
+        target_user_id: ObjectId,
+        requester_user_id: ObjectId
+    ) -> None:
+        """
+        Invalidate ALL related caches when permissions change.
+        
+        This is critical for ensuring permission changes take effect immediately
+        without requiring manual cache clearing.
+        
+        Args:
+            question_set_id: The question set whose permissions changed
+            target_user_id: The user whose permissions were granted/revoked
+            requester_user_id: The user who made the permission change
+        """
+        
+        # Get the question set to find all affected users
+        question_set = await self.qset_repo.find_by_id(question_set_id)
+        if not question_set:
+            print(f"⚠️  CACHE INVALIDATION: Question set {question_set_id} not found")
+            return
+            
+        # Collect all user IDs that need cache invalidation
+        users_to_invalidate = set()
+        users_to_invalidate.add(requester_user_id)
+        users_to_invalidate.add(target_user_id)
+        
+        # Add all users with explicit permissions to ensure consistency
+        access_permissions = question_set.get("access_permissions", {})
+        for permission_type, permission_list in access_permissions.items():
+            if isinstance(permission_list, list):
+                users_to_invalidate.update(permission_list)
+        
+        # Add the creator as they might have cached data too
+        creator_id = question_set.get("created_by_coordinator_id")
+        if creator_id:
+            users_to_invalidate.add(creator_id)
+        
+        print(f"🔄 CACHE INVALIDATION START: question_set:{question_set_id}")
+        print(f"   Target user: {target_user_id}")
+        print(f"   Affected users: {len(users_to_invalidate)}")
+        
+        # Invalidate user-specific caches for all affected users
+        for user_id in users_to_invalidate:
+            await self._invalidate_user_caches(user_id)
+            print(f"   ✅ Invalidated caches for user: {user_id}")
+        
+        # Invalidate question set detail caches for ALL users
+        await invalidate_cache(f"question_set:detail:{question_set_id}:*")
+        print(f"   ✅ Invalidated detail caches for question_set: {question_set_id}")
+        
+        # Invalidate ALL list caches to ensure immediate visibility changes
+        # This is aggressive but necessary for permission changes
+        await invalidate_cache("question_sets:user:*")
+        print(f"   ✅ Invalidated ALL question sets list caches")
+        
+        # Invalidate teaching assignments cache for target user
+        await invalidate_cache(f"user:teaching:{target_user_id}")
+        print(f"   ✅ Invalidated teaching cache for target user")
+        
+        print(f"🔄 CACHE INVALIDATION COMPLETE: {len(users_to_invalidate)} users affected")
 
 # ==============================================================================
 # PUBLIC API FUNCTIONS (for backward compatibility)
@@ -1187,8 +1251,12 @@ async def manage_permissions(
         {"access_permissions": access_permissions}
     )
     
-    # Invalidate caches
-    await service._invalidate_question_set_caches(requester_user_id, question_set_id)
+    # 🔄 FIXED: Use comprehensive cache invalidation for permission changes
+    await service._invalidate_permission_change_caches(
+        question_set_id, 
+        target_user_id, 
+        requester_user_id
+    )
     
     return updated_qset
 
