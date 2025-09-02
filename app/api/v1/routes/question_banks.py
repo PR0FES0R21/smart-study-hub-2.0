@@ -11,7 +11,7 @@ from app.api.v1 import deps
 from app.crud import crud_question_banks, crud_coordination_assignments, crud_question_submissions
 from app.schemas.question_bank import (
     QuestionBankCreate, QuestionBankUpdate, QuestionBankPublic, 
-    QuestionIdsList
+    QuestionIdsList, PaginatedQuestionBankResponse
 )
 from app.schemas.question_submission import QuestionSubmissionCreate
 
@@ -62,20 +62,73 @@ async def delete_existing_question(
 
 # ===== COLLABORATION & ACCESS ENDPOINTS =====
 
-@router.get("/my-questions", response_model=List[QuestionBankPublic])
+@router.get("/my-questions", response_model=PaginatedQuestionBankResponse)
 async def get_my_questions(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_teacher)
+    current_user: dict = Depends(deps.get_current_active_teacher),
+    subject_id: Optional[str] = Query(None, description="Filter by subject"),
+    question_type: Optional[str] = Query(None, description="Filter by question type (multiple_choice/essay)"),
+    difficulty: Optional[str] = Query(None, description="Filter by difficulty (easy/medium/hard)"),
+    status: Optional[str] = Query(None, description="Filter by status"),
+    search: Optional[str] = Query(None, description="Search in question text, subject name, or tags"),
+    page: int = Query(1, ge=1, description="Page number"),
+    limit: int = Query(10, ge=1, le=100, description="Items per page")
 ):
-    """Mengambil daftar semua soal yang dibuat oleh guru yang sedang login."""
-    teacher_id = current_user["_id"]
-    return await crud_question_banks.get_questions_by_teacher(db=db, teacher_id=teacher_id)
+    """
+    Mengambil daftar soal yang dibuat oleh guru yang sedang login dengan sistem pagination,
+    filtering, dan pencarian. Menggunakan strategi caching untuk performa yang lebih baik.
+    """
+    teacher_id = str(current_user["_id"])
+    skip = (page - 1) * limit
+    
+    # Build filters dict
+    filters = {
+        "teacher_id": teacher_id,
+        "subject_id": subject_id,
+        "question_type": question_type,
+        "difficulty": difficulty,
+        "status": status
+    }
+    active_filters = {k: v for k, v in filters.items() if v is not None}
+    
+    if search:
+        # Jika ada pencarian, bypass cache dan query langsung ke DB dengan filter
+        result = await crud_question_banks.search_questions_with_details(
+            db, 
+            search=search, 
+            skip=skip, 
+            limit=limit,
+            filters=active_filters
+        )
+        data = result["data"]
+        total_items = result["total_items"]
+    else:
+        # Jika tidak ada pencarian, gunakan strategi cache
+        all_filtered_ids_str = await crud_question_banks.get_filtered_question_ids(db, active_filters)
+        total_items = len(all_filtered_ids_str)
+        
+        ids_for_page_str = all_filtered_ids_str[skip : skip + limit]
+        ids_for_page_obj = [ObjectId(id_str) for id_str in ids_for_page_str]
+        
+        data = await crud_question_banks.get_questions_details_by_ids(db, question_ids=ids_for_page_obj)
+    
+    total_pages = (total_items + limit - 1) // limit
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": data
+    }
 
-@router.get("/accessible", response_model=List[QuestionBankPublic])
+@router.get("/accessible", response_model=PaginatedQuestionBankResponse)
 async def get_accessible_questions(
     purpose: Optional[str] = Query(None, description="Filter by purpose (e.g., 'UTS 2025')"),
     subject_id: Optional[str] = Query(None, description="Filter by subject"),
     grade_level: Optional[int] = Query(None, description="Filter by grade level"),
+    search: Optional[str] = Query(None, description="Search in question text, subject name, or tags"),
+    page: int = Query(1, ge=1, description="Page number"),
+    limit: int = Query(10, ge=1, le=100, description="Items per page"),
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher),
     active_period: dict = Depends(deps.get_current_academic_period)
@@ -205,7 +258,29 @@ async def get_accessible_questions(
         
         result_questions = filtered_questions
     
-    return result_questions
+    # Apply search filter jika ada
+    if search:
+        search_filtered = []
+        for q in result_questions:
+            if (search.lower() in q.get("question_text", "").lower() or
+                search.lower() in q.get("subject_details", {}).get("name", "").lower() or
+                any(search.lower() in tag.lower() for tag in q.get("tags", []))):
+                search_filtered.append(q)
+        result_questions = search_filtered
+    
+    # Apply pagination
+    total_items = len(result_questions)
+    skip = (page - 1) * limit
+    paginated_questions = result_questions[skip:skip + limit]
+    
+    total_pages = (total_items + limit - 1) // limit
+    return {
+        "total_items": total_items,
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": paginated_questions
+    }
 
 @router.post("/by-ids", response_model=List[QuestionBankPublic])
 async def read_questions_by_ids(

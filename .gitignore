@@ -4,3 +4,6 @@ venv/
 temp_uploads/
 __pycache__/
 tests/
+test-summary.json
+summary.json
+generate_password_hash.py

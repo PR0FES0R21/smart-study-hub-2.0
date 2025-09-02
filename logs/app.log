@@ -57080,3 +57080,415 @@ pymongo.errors.NetworkTimeout: 127.0.0.1:27017: timed out (configured timeouts: 
 2025-09-02 15:03:48,651 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=54a5605a-6e9f-4d9c-944b-821bcb8a4388 | message_type=user_connected | target_roles=['admin'] | recipients=0
 2025-09-02 15:03:48,653 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=54a5605a-6e9f-4d9c-944b-821bcb8a4388 | successful=0/0 | failed=0 | time=2.12ms
 2025-09-02 15:03:48,655 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=5f96ee08-f394-49f6-b5ef-cddc53291309 | user_id=68822f07979cbba23e6db950 | connection_time=205.64ms
+2025-09-02 16:36:26,384 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 16:36:26,388 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=fa12acf8-fbb4-4f21-a88f-9437dea3d03e | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 16:36:26,389 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=fa12acf8-fbb4-4f21-a88f-9437dea3d03e | successful=0/0 | failed=0 | time=1.4ms
+2025-09-02 16:36:26,410 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:36:26,411 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:36:26,423 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:36:26,428 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:36:26,428 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:36:26,449 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:36:39,661 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:36:39,750 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:36:39,769 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:36:39,770 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:36:39,771 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:36:39,772 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:36:39,773 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:36:52,203 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:36:52,204 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:36:52,205 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:36:52,206 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:36:52,207 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:36:52,213 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:36:58,547 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:36:58,623 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:36:58,637 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:36:58,637 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:36:58,638 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:36:58,638 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:36:58,640 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:37:17,619 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:37:17,620 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:37:17,621 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:37:17,622 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:37:17,622 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:37:17,628 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:37:23,863 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:37:23,946 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:37:23,960 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:37:23,961 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:37:23,962 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:37:23,963 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:37:23,964 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:37:30,772 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:37:30,822 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:37:30,845 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:37:30,845 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:37:30,846 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:37:30,847 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:37:30,848 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:37:37,674 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:37:37,757 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:37:37,769 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:37:37,770 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:37:37,771 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:37:37,771 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:37:37,772 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:37:44,268 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:37:44,348 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:37:44,361 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:37:44,361 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:37:44,362 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:37:44,362 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:37:44,363 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:38:11,826 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:38:11,827 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:38:11,830 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:38:11,831 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:38:11,832 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:38:11,841 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:38:17,318 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:38:17,353 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:38:17,374 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:38:17,375 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:38:17,375 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:38:17,375 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:38:17,376 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:40:16,793 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:40:16,794 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:40:16,795 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:40:16,796 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:40:16,797 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:40:16,802 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:40:22,891 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:40:22,951 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:40:22,960 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:40:22,961 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:40:22,961 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:40:22,962 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:40:22,963 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:40:25,137 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:40:25,137 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:40:25,139 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:40:25,140 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:40:25,140 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:40:25,145 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:40:31,413 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:40:31,460 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:40:31,477 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:40:31,478 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:40:31,479 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:40:31,480 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:40:31,481 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:41:43,352 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:41:43,353 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:41:43,356 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:41:43,358 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:41:43,359 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:41:43,367 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:41:49,723 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:41:49,800 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:41:49,817 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:41:49,818 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:41:49,819 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:41:49,820 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:41:49,821 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:41:56,466 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:41:56,501 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:41:56,521 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:41:56,522 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:41:56,522 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:41:56,523 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:41:56,524 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:41:59,462 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:41:59,463 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:41:59,465 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:41:59,467 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:41:59,467 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:41:59,477 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:42:05,959 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:42:06,040 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:42:06,057 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:42:06,058 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:42:06,059 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:42:06,059 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:42:06,060 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:42:16,308 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:42:16,308 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:42:16,310 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:42:16,311 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:42:16,311 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:42:16,317 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:42:23,620 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:42:23,686 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:42:23,696 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:42:23,696 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:42:23,697 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:42:23,697 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:42:23,698 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:42:28,494 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:42:28,494 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:42:28,495 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:42:28,496 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:42:28,497 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:42:28,503 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:42:35,801 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:42:35,878 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:42:35,895 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:42:35,896 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:42:35,896 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:42:35,897 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:42:35,898 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:42:43,325 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:42:43,365 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:42:43,373 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:42:43,374 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:42:43,374 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:42:43,375 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:42:43,376 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:42:49,876 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:42:49,925 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:42:49,934 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:42:49,935 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:42:49,935 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:42:49,936 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:42:49,937 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:42:57,691 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:42:57,764 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:42:57,774 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:42:57,775 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:42:57,776 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:42:57,776 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:42:57,777 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:43:00,848 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:43:00,848 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:43:00,849 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:43:00,850 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:43:00,851 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:43:00,856 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:43:07,512 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:43:07,584 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:43:07,593 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:43:07,594 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:43:07,594 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:43:07,594 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:43:07,595 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:43:16,759 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:43:16,760 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:43:16,762 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:43:16,763 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:43:16,764 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:43:16,774 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:43:23,834 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:43:23,873 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:43:23,885 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:43:23,887 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:43:23,887 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:43:23,889 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:43:23,890 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:43:27,943 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:43:27,944 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:43:27,946 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:43:27,947 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:43:27,948 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:43:27,956 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:43:34,702 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:43:34,770 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:43:34,782 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:43:34,783 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:43:34,784 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:43:34,784 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:43:34,786 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:43:36,539 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:43:36,540 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:43:36,541 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:43:36,542 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:43:36,542 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:43:36,547 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:43:43,070 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:43:43,148 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:43:43,177 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:43:43,178 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:43:43,179 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:43:43,179 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:43:43,180 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:44:14,839 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 16:44:14,839 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 16:44:14,841 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 16:44:14,842 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 16:44:14,842 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 16:44:14,847 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 16:44:20,419 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 16:44:20,504 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 16:44:20,513 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 16:44:20,513 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 16:44:20,514 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 16:44:20,514 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 16:44:20,515 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 16:46:00,457 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=86948eb1-e04c-43ab-b7e6-9cc41a71fff9 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-02 16:46:00,458 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=86948eb1-e04c-43ab-b7e6-9cc41a71fff9 | successful=0/0 | failed=0 | time=1.24ms
+2025-09-02 16:46:03,434 [INFO] app.crud.crud_question_banks: MISS: Mengambil ID question dari database untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:04:50,996 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:04:51,077 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:05:09,974 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:05:10,023 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:06:27,600 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e26e45f5-b7fb-4c46-9b14-4a098489e1bb | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 17:06:27,927 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 17:06:27,927 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3638b0cc-198f-4241-b30f-d08ad9d7a098 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 17:06:27,928 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3638b0cc-198f-4241-b30f-d08ad9d7a098 | successful=0/0 | failed=0 | time=0.41ms
+2025-09-02 17:06:27,928 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e26e45f5-b7fb-4c46-9b14-4a098489e1bb | user_id=68822f07979cbba23e6db950 | connection_time=328.3ms
+2025-09-02 17:06:38,625 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:06:38,634 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:06:38,764 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:06:38,800 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:06:55,009 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:07,645 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:16,217 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:26,683 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:26,717 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:26,808 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:26,826 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:32,650 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:45,313 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:48,214 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:07:50,973 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:01,014 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:05,916 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:14,358 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:16,948 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:18,833 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:22,176 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:23,786 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:28,102 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:32,517 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:51,053 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:08:53,786 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:51:25,687 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:51:25,787 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:52:06,025 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:52:06,064 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:52:06,131 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:52:06,234 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:55:12,166 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:55:19,176 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:55:19,212 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:55:19,321 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:55:19,354 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:55:36,830 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:55:36,837 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:55:36,988 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:57:24,506 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 17:57:24,515 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:03:03,597 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 18:03:03,600 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f4064bc6-f986-4072-8a11-eba764cf02a4 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 18:03:03,601 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f4064bc6-f986-4072-8a11-eba764cf02a4 | successful=0/0 | failed=0 | time=1.09ms
+2025-09-02 18:03:12,916 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=cb172f1b-8941-46a8-9ded-9f8bfd3d8264 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 18:03:13,109 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 18:03:13,111 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=27852427-1392-490b-9941-4c22792e8234 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 18:03:13,113 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=27852427-1392-490b-9941-4c22792e8234 | successful=0/0 | failed=0 | time=1.45ms
+2025-09-02 18:03:13,115 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=cb172f1b-8941-46a8-9ded-9f8bfd3d8264 | user_id=68822f07979cbba23e6db950 | connection_time=199.61ms
+2025-09-02 18:06:11,996 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:11,999 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:12,183 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:12,203 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:16,012 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:18,643 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:20,938 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:25,793 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:25,827 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:25,917 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:30,043 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:33,870 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:35,788 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:37,406 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:42,271 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:45,082 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:47,665 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:06:49,800 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:33:27,657 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:33:27,725 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:33:27,844 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:33:27,863 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:35:27,881 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8a09e160-7836-4542-aad2-c9af69394147 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-02 18:35:27,882 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8a09e160-7836-4542-aad2-c9af69394147 | successful=0/0 | failed=0 | time=0.95ms
+2025-09-02 18:35:27,916 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b41a6a46-8833-48ac-b11b-aa606f7ce110 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 18:35:27,980 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 18:35:27,981 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9e827c20-b1a7-4350-ad95-9b88daece5ec | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 18:35:27,981 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9e827c20-b1a7-4350-ad95-9b88daece5ec | successful=0/0 | failed=0 | time=0.53ms
+2025-09-02 18:35:27,981 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b41a6a46-8833-48ac-b11b-aa606f7ce110 | user_id=68822f07979cbba23e6db950 | connection_time=65.93ms
+2025-09-02 18:35:28,039 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 18:35:28,040 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=20dc44dd-62b9-483f-8215-eae32f2629b9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 18:35:28,041 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=20dc44dd-62b9-483f-8215-eae32f2629b9 | successful=0/0 | failed=0 | time=1.65ms
+2025-09-02 18:35:53,631 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:35:53,747 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:35:57,561 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:35:57,665 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:02,450 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:06,258 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:16,509 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:29,475 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:40,220 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:41,798 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:44,178 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:47,085 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:49,345 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:51,664 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:53,394 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:56,518 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:36:59,353 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:37:00,846 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:37:25,639 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:37:25,675 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:45:48,291 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:45:48,398 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:45:57,941 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:45:57,964 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:46:57,038 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=acee0f1e-3282-4aff-a520-019955985886 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 18:46:57,094 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 18:46:57,095 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=df12a850-8904-45c4-a8d8-e7976edfae63 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 18:46:57,096 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=df12a850-8904-45c4-a8d8-e7976edfae63 | successful=0/0 | failed=0 | time=0.74ms
+2025-09-02 18:46:57,097 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=acee0f1e-3282-4aff-a520-019955985886 | user_id=68822f07979cbba23e6db950 | connection_time=58.76ms
+2025-09-02 18:47:08,246 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:47:08,248 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:52:43,199 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 18:52:43,200 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=28c8909a-0ef9-4cf8-bd0b-00325cdacaed | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 18:52:43,201 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=28c8909a-0ef9-4cf8-bd0b-00325cdacaed | successful=0/0 | failed=0 | time=0.53ms
+2025-09-02 18:52:51,436 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e5bb2e2c-38ab-4728-b93e-99fb085ebf55 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 18:52:51,498 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 18:52:51,499 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b1e80f07-2042-40ee-9034-f10f2c44ac04 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 18:52:51,500 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b1e80f07-2042-40ee-9034-f10f2c44ac04 | successful=0/0 | failed=0 | time=1.45ms
+2025-09-02 18:52:51,501 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e5bb2e2c-38ab-4728-b93e-99fb085ebf55 | user_id=68822f07979cbba23e6db950 | connection_time=65.43ms
+2025-09-02 18:52:55,773 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:52:55,788 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:53:18,615 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 18:53:18,619 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 19:19:25,003 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 19:19:25,010 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=bd2cb77d-fb38-44b0-99af-0d8b6fb4e54b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 19:19:25,012 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=bd2cb77d-fb38-44b0-99af-0d8b6fb4e54b | successful=0/0 | failed=0 | time=1.87ms
+2025-09-02 19:19:34,229 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=de1cce43-84ab-4ab9-84eb-712ada54996c | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 19:19:34,329 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 19:19:34,329 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7e4bdfaf-f636-43ef-8634-2c7800098f04 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 19:19:34,330 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7e4bdfaf-f636-43ef-8634-2c7800098f04 | successful=0/0 | failed=0 | time=0.45ms
+2025-09-02 19:19:34,330 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=de1cce43-84ab-4ab9-84eb-712ada54996c | user_id=68822f07979cbba23e6db950 | connection_time=101.66ms
+2025-09-02 20:47:19,372 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 20:47:19,377 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4b359f42-a653-416b-93b4-c52499063180 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 20:47:19,378 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4b359f42-a653-416b-93b4-c52499063180 | successful=0/0 | failed=0 | time=0.76ms
+2025-09-02 20:48:19,022 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=330b9027-5209-4ac4-8ac8-a42aa8389be8 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-02 20:48:19,082 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-02 20:48:19,082 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b46d72e8-f49e-411a-b286-a5ffd3e48b9f | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-02 20:48:19,083 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b46d72e8-f49e-411a-b286-a5ffd3e48b9f | successful=0/0 | failed=0 | time=0.45ms
+2025-09-02 20:48:19,084 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=330b9027-5209-4ac4-8ac8-a42aa8389be8 | user_id=68822f07979cbba23e6db950 | connection_time=61.27ms
+2025-09-02 20:49:04,505 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 20:49:04,522 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:00:10,327 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:00:10,408 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:00:21,443 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:00:21,530 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:01:14,400 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:01:14,538 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:01:58,841 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:01:58,873 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-02 21:15:32,856 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c00c370f-7fa5-4323-81f9-0d7a69f51f8a | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-02 21:15:32,857 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c00c370f-7fa5-4323-81f9-0d7a69f51f8a | successful=0/0 | failed=0 | time=2.02ms

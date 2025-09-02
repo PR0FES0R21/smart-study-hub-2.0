@@ -6,6 +6,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional, List
 from .base import PyObjectId
+from .pagination import PaginatedResponse
 
 class QuestionOption(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId)
@@ -41,3 +42,6 @@ class QuestionBankPublic(QuestionBankBase):
 
 class QuestionIdsList(BaseModel):
     ids: List[PyObjectId]
+
+class PaginatedQuestionBankResponse(PaginatedResponse[QuestionBankPublic]):
+    pass
