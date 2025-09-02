@@ -152,6 +152,46 @@ async def _get_user_question_sets_paginated(
         },
         {"$unwind": {"path": "$creator_profile", "preserveNullAndEmptyArrays": True}},
         
+        # NEW: Lookup permission holders for can_view
+        {
+            "$lookup": {
+                "from": "profiles",
+                "localField": "access_permissions.can_view",
+                "foreignField": "user_id",
+                "as": "can_view_profiles"
+            }
+        },
+        
+        # NEW: Lookup permission holders for can_edit
+        {
+            "$lookup": {
+                "from": "profiles",
+                "localField": "access_permissions.can_edit",
+                "foreignField": "user_id",
+                "as": "can_edit_profiles"
+            }
+        },
+        
+        # NEW: Lookup permission holders for can_manage_questions
+        {
+            "$lookup": {
+                "from": "profiles",
+                "localField": "access_permissions.can_manage_questions",
+                "foreignField": "user_id",
+                "as": "can_manage_questions_profiles"
+            }
+        },
+        
+        # NEW: Lookup permission holders for can_publish
+        {
+            "$lookup": {
+                "from": "profiles",
+                "localField": "access_permissions.can_publish",
+                "foreignField": "user_id",
+                "as": "can_publish_profiles"
+            }
+        },
+        
         # Count total and paginate
         {
             "$facet": {
@@ -183,14 +223,62 @@ async def _get_user_question_sets_paginated(
                                 "profile_picture_url": "$creator_profile.profile_picture_url"
                             },
                             
+                            # NEW: Permission holders with user details
+                            "permission_holders": {
+                                "can_view": {
+                                    "$map": {
+                                        "input": "$can_view_profiles",
+                                        "as": "profile",
+                                        "in": {
+                                            "_id": "$$profile.user_id",
+                                            "full_name": "$$profile.full_name",
+                                            "profile_picture_url": "$$profile.profile_picture_url"
+                                        }
+                                    }
+                                },
+                                "can_edit": {
+                                    "$map": {
+                                        "input": "$can_edit_profiles",
+                                        "as": "profile",
+                                        "in": {
+                                            "_id": "$$profile.user_id",
+                                            "full_name": "$$profile.full_name",
+                                            "profile_picture_url": "$$profile.profile_picture_url"
+                                        }
+                                    }
+                                },
+                                "can_manage_questions": {
+                                    "$map": {
+                                        "input": "$can_manage_questions_profiles",
+                                        "as": "profile",
+                                        "in": {
+                                            "_id": "$$profile.user_id",
+                                            "full_name": "$$profile.full_name",
+                                            "profile_picture_url": "$$profile.profile_picture_url"
+                                        }
+                                    }
+                                },
+                                "can_publish": {
+                                    "$map": {
+                                        "input": "$can_publish_profiles",
+                                        "as": "profile",
+                                        "in": {
+                                            "_id": "$$profile.user_id",
+                                            "full_name": "$$profile.full_name",
+                                            "profile_picture_url": "$$profile.profile_picture_url"
+                                        }
+                                    }
+                                }
+                            },
+                            
                             # Enhanced permissions
                             "can_edit": {"$eq": ["$created_by_coordinator_id", user_id]},
                             "can_manage_questions": {"$eq": ["$created_by_coordinator_id", user_id]},
                             "can_delete": {"$eq": ["$created_by_coordinator_id", user_id]},
                             "can_duplicate": True,
                             "is_creator": {"$eq": ["$created_by_coordinator_id", user_id]},
-                            "is_used_in_exams": False,  # TODO: Calculate from exams collection
-                            "total_exams_using": 0,     # TODO: Calculate from exams collection
+                            "is_used_in_exams": {"$literal": False},  # TODO: Calculate from exams collection
+                            "total_exams_using": {"$literal": 0},     # TODO: Calculate from exams collection
                             "access_reason": {"$cond": [{"$eq": ["$created_by_coordinator_id", user_id]}, "creator", "accessible"]}
                         }
                     },

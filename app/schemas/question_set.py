@@ -168,6 +168,9 @@ class QuestionSetSummaryEnhanced(BaseModel):
     group_info: Optional[Dict[str, Any]] = None  # NEW
     access_reason: str = "unknown"               # NEW
     
+    # Permission holders - NEW: Siapa saja yang punya akses
+    permission_holders: PermissionHolders = PermissionHolders()
+    
     class Config:
         from_attributes = True
         validate_by_name = True

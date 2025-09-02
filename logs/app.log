@@ -57492,3 +57492,266 @@ pymongo.errors.NetworkTimeout: 127.0.0.1:27017: timed out (configured timeouts: 
 2025-09-02 21:01:58,873 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
 2025-09-02 21:15:32,856 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c00c370f-7fa5-4323-81f9-0d7a69f51f8a | message_type=new_activity_log | target_roles=['admin'] | recipients=0
 2025-09-02 21:15:32,857 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c00c370f-7fa5-4323-81f9-0d7a69f51f8a | successful=0/0 | failed=0 | time=2.02ms
+2025-09-02 21:52:21,093 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-02 21:52:21,099 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=552c8a06-5845-40df-b28d-fb1dc5c626c2 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-02 21:52:21,100 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=552c8a06-5845-40df-b28d-fb1dc5c626c2 | successful=0/0 | failed=0 | time=0.81ms
+2025-09-02 21:52:21,150 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 21:52:21,151 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 21:52:21,179 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 21:52:21,192 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 21:52:21,193 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 21:52:21,238 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 21:52:34,684 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 21:52:36,829 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 21:52:36,852 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 21:52:36,854 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 21:52:36,855 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 21:52:36,857 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 21:52:36,858 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 21:52:38,712 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 21:52:38,713 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 21:52:38,714 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 21:52:38,716 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 21:52:38,718 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 21:52:38,791 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 21:52:45,642 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 21:52:46,929 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 21:52:46,950 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 21:52:46,951 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 21:52:46,952 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 21:52:46,953 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 21:52:46,954 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 21:52:52,611 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 21:52:52,612 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 21:52:52,614 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 21:52:52,615 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 21:52:52,616 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 21:52:52,673 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 21:52:58,967 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 21:53:00,248 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 21:53:00,265 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 21:53:00,265 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 21:53:00,266 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 21:53:00,266 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 21:53:00,267 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 21:53:05,707 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 21:53:05,708 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 21:53:05,709 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 21:53:05,710 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 21:53:05,711 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 21:53:05,772 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 21:53:12,434 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 21:53:13,777 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 21:53:13,794 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 21:53:13,795 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 21:53:13,797 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 21:53:13,798 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 21:53:13,799 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 21:53:19,680 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 21:53:19,681 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 21:53:19,682 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 21:53:19,683 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 21:53:19,684 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 21:53:19,734 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 21:53:26,156 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 21:53:27,383 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 21:53:27,396 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 21:53:27,397 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 21:53:27,398 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 21:53:27,399 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 21:53:27,400 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 21:54:07,594 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 21:54:07,594 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 21:54:07,596 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 21:54:07,597 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 21:54:07,598 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 21:54:07,673 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 21:54:13,858 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 21:54:15,137 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 21:54:15,169 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 21:54:15,181 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 21:54:15,190 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 21:54:15,204 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 21:54:15,218 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:01:28,048 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:01:28,049 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:01:28,054 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:01:28,057 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:01:28,058 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:01:28,159 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:01:35,984 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:01:37,514 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:01:37,536 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:01:37,536 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:01:37,537 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:01:37,537 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:01:37,538 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:06:26,772 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:06:26,772 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:06:26,774 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:06:26,775 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:06:26,775 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:06:26,854 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:06:33,847 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:06:35,355 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:06:35,374 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:06:35,375 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:06:35,375 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:06:35,375 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:06:35,376 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:06:36,255 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:06:36,256 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:06:36,257 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:06:36,258 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:06:36,258 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:06:36,353 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:06:43,823 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:06:45,398 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:06:45,413 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:06:45,414 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:06:45,415 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:06:45,415 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:06:45,416 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:06:53,486 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:06:54,881 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:06:54,892 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:06:54,893 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:06:54,893 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:06:54,894 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:06:54,895 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:06:56,087 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:06:56,088 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:06:56,089 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:06:56,090 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:06:56,090 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:06:56,159 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:07:03,526 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:07:04,857 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:07:04,876 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:07:04,876 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:07:04,877 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:07:04,878 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:07:04,879 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:07:12,129 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:07:13,643 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:07:13,672 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:07:13,673 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:07:13,674 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:07:13,675 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:07:13,676 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:07:21,202 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:07:22,785 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:07:22,798 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:07:22,799 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:07:22,800 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:07:22,801 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:07:22,802 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:07:30,545 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:07:32,039 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:07:32,053 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:07:32,054 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:07:32,055 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:07:32,056 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:07:32,057 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:07:40,141 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:07:41,688 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:07:41,710 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:07:41,711 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:07:41,712 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:07:41,713 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:07:41,715 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:08:30,632 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:08:30,633 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:08:30,634 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:08:30,635 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:08:30,636 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:08:30,704 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:08:38,523 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:08:40,105 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:08:40,137 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:08:40,138 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:08:40,138 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:08:40,139 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:08:40,140 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:08:46,890 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:08:46,891 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:08:46,892 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:08:46,893 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:08:46,894 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:08:46,961 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:08:53,875 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:08:55,234 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:08:55,248 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:08:55,251 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:08:55,252 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:08:55,253 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:08:55,254 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:09:03,181 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:09:04,560 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:09:04,572 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:09:04,573 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:09:04,574 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:09:04,575 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:09:04,577 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:09:11,768 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:09:13,243 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:09:13,255 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:09:13,257 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:09:13,258 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:09:13,259 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:09:13,260 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:09:21,667 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:09:23,034 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:09:23,048 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:09:23,048 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:09:23,049 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:09:23,050 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:09:23,051 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:09:39,487 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:09:39,488 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:09:39,489 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:09:39,490 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:09:39,491 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:09:39,545 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:09:47,058 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:09:48,583 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:09:48,598 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:09:48,602 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:09:48,606 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:09:48,608 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:09:48,609 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:10:00,652 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:10:00,652 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:10:00,653 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:10:00,655 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:10:00,655 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:10:00,754 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:10:10,159 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:10:11,579 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:10:11,591 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:10:11,592 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:10:11,592 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:10:11,593 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:10:11,594 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:10:20,817 [INFO] app.main: Mematikan aplikasi...
+2025-09-02 22:10:20,818 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-02 22:10:20,820 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-02 22:10:20,821 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-02 22:10:20,821 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-02 22:10:20,888 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-02 22:10:28,789 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:10:30,250 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:10:30,280 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:10:30,283 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:10:30,284 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:10:30,285 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:10:30,286 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:10:38,034 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-02 22:10:39,456 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-02 22:10:39,469 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-02 22:10:39,470 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-02 22:10:39,471 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-02 22:10:39,472 [INFO] app.main: Startup aplikasi berhasil
+2025-09-02 22:10:39,473 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-02 22:11:47,887 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=fece947b-4018-42c7-b6ba-8fda5f98e469 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-02 22:11:47,887 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=fece947b-4018-42c7-b6ba-8fda5f98e469 | successful=0/0 | failed=0 | time=0.6ms
