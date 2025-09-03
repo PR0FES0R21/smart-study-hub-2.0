@@ -9,69 +9,7 @@ from pydantic import BaseModel
 
 from .base import PyObjectId
 
-
-class ScoreDistribution(BaseModel):
-    range: str
-    count: int
-    percentage: float
-
-
-class ExamStatistics(BaseModel):
-    exam_id: PyObjectId
-    exam_title: str
-    exam_type: str
-    subject_name: str
-    total_participants: int
-    average_score: float
-    highest_score: float
-    lowest_score: float
-    score_distribution: List[ScoreDistribution]
-    exam_date: Optional[datetime] = None
-
-
-class AdminGlobalStats(BaseModel):
-    total_exams_conducted: int
-    total_students_participated: int
-    school_wide_average: float
-
-
-class AdminDashboard(BaseModel):
-    global_stats: AdminGlobalStats
-    recent_exams: List[ExamStatistics]
-
-
-class TeacherClassStats(BaseModel):
-    class_id: PyObjectId
-    class_name: str
-    subject_name: str
-    total_students: int
-    average_score: float
-    highest_score: float
-    lowest_score: float
-    completion_rate: float
-
-
-class TeacherDashboard(BaseModel):
-    teacher_id: PyObjectId
-    class_statistics: List[TeacherClassStats]
-
-
-class StudentSubjectPerformance(BaseModel):
-    subject_id: PyObjectId
-    subject_name: str
-    exams_taken: int
-    average_score: float
-    highest_score: float
-    lowest_score: float
-    last_exam_score: Optional[float] = None
-
-
-class StudentPersonalDashboard(BaseModel):
-    student_id: PyObjectId
-    class_name: Optional[str] = None
-    overall_average: float
-    total_exams_taken: int
-    subject_performances: List[StudentSubjectPerformance]
+# Duplikasi dihapus - menggunakan versi yang lebih lengkap di bawah
 
 # ==============================================================================
 # File: app/schemas/score_analytics.py
@@ -194,7 +132,7 @@ class TeacherClassStats(BaseModel):
     average_score: float
     highest_score: float
     lowest_score: float
-    completion_rate: float  # Persentase siswa yang sudah ujian
+    completion_rate: Optional[float] = 0.0  # Persentase siswa yang sudah ujian
     needs_attention_count: int  # Jumlah siswa yang perlu perhatian
 
 class TeacherStudentPerformance(BaseModel):
@@ -312,6 +250,35 @@ class StudentPersonalDashboard(BaseModel):
     strength_weakness: StudentStrengthWeakness
     goal_tracking: Optional[StudentGoalTracking]
     improvement_suggestions: List[str]
+    generated_at: datetime = Field(default_factory=datetime.utcnow)
+
+class StudentExamAnalytics(BaseModel):
+    """Analitik ujian per exam untuk siswa (dengan data kelas)"""
+    exam_id: PyObjectId
+    exam_title: str
+    subject_name: str
+    exam_type: str
+    exam_date: datetime
+    class_average: float
+    class_highest: float
+    class_lowest: float
+    student_score: Optional[float]
+    student_percentile: Optional[float]  # Posisi siswa dalam persentil kelas
+    total_participants: int
+    score_distribution: List[ScoreDistribution]
+
+class StudentClassTrendData(BaseModel):
+    """Data trend performa siswa vs kelas"""
+    exam_title: str
+    class_average: float
+    student_score: float
+    exam_date: datetime
+
+class StudentClassExamAnalytics(BaseModel):
+    """Analitik ujian global kelas untuk siswa (untuk grafik)"""
+    exam_analytics: List[StudentExamAnalytics]
+    trend_data: List[StudentClassTrendData]
+    overall_stats: Dict[str, Any]
     generated_at: datetime = Field(default_factory=datetime.utcnow)
 
 

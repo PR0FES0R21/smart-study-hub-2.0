@@ -58467,3 +58467,961 @@ pymongo.errors._OperationCancelled: operation cancelled
 2025-09-03 18:14:24,978 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
 2025-09-03 18:14:24,978 [INFO] app.main: Startup aplikasi berhasil
 2025-09-03 18:14:24,979 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:21:43,007 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:21:43,008 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:21:43,012 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:21:43,013 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:21:43,014 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:21:43,085 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:21:50,318 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:21:51,861 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:21:51,892 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:21:51,893 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:21:51,894 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:21:51,896 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:21:51,897 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:21:54,738 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:21:54,739 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:21:54,740 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:21:54,741 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:21:54,741 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:21:54,825 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:22:01,058 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:22:02,337 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:22:02,346 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:22:02,346 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:22:02,347 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:22:02,348 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:22:02,349 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:23:46,437 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:23:46,438 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:23:46,439 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:23:46,440 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:23:46,441 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:23:46,502 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:23:53,121 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:23:54,348 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:23:54,357 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:23:54,358 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:23:54,358 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:23:54,359 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:23:54,360 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:27:07,903 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:27:07,904 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:27:07,905 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:27:07,906 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:27:07,907 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:27:07,977 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:27:14,864 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:27:16,031 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:27:16,042 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:27:16,043 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:27:16,043 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:27:16,044 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:27:16,045 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:28:39,622 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:28:39,622 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:28:39,624 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:28:39,625 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:28:39,625 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:28:39,687 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:28:46,601 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:28:47,894 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:28:47,903 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:28:47,903 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:28:47,904 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:28:47,905 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:28:47,905 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:28:57,802 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:28:57,803 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:28:57,804 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:28:57,805 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:28:57,806 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:28:57,893 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:29:03,679 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:29:04,943 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:29:04,971 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:29:04,971 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:29:04,972 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:29:04,972 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:29:04,973 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:34:17,846 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1073, in connect
+    conn.authenticate()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 526, in authenticate
+    auth.authenticate(creds, self, reauthenticate=reauthenticate)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 450, in authenticate
+    auth_func(credentials, conn)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 355, in _authenticate_default
+    return _authenticate_scram(credentials, conn, "SCRAM-SHA-1")
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 135, in _authenticate_scram
+    res = conn.command(source, cmd)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-03 18:49:58,829 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-03 18:54:46,714 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:54:46,715 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:54:46,717 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:54:46,718 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:54:46,719 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:54:46,785 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:54:53,247 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:54:54,430 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:54:54,438 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:54:54,438 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:54:54,439 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:54:54,440 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:54:54,441 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:55:01,751 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:55:01,751 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:55:01,753 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:55:01,753 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:55:01,754 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:55:01,822 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:55:08,190 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:55:09,400 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:55:09,410 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:55:09,411 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:55:09,411 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:55:09,412 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:55:09,413 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:58:45,899 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:58:45,900 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:58:45,901 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:58:45,902 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:58:45,903 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:58:45,978 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:58:52,772 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:58:54,210 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:58:54,226 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:58:54,227 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:58:54,228 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:58:54,229 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:58:54,230 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 18:59:19,561 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 18:59:19,562 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 18:59:19,563 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 18:59:19,564 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 18:59:19,566 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 18:59:19,681 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 18:59:27,053 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 18:59:28,833 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 18:59:28,845 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 18:59:28,846 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 18:59:28,847 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 18:59:28,848 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 18:59:28,849 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:00:10,717 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:00:10,717 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:00:10,719 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:00:10,720 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:00:10,720 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:00:10,800 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:00:17,647 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:00:18,779 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:00:18,804 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:00:18,805 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:00:18,806 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:00:18,806 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:00:18,807 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:01:03,376 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:01:03,377 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:01:03,379 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:01:03,380 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:01:03,380 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:01:03,518 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:01:10,972 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:01:12,100 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:01:12,109 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:01:12,110 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:01:12,111 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:01:12,112 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:01:12,113 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:01:17,571 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:01:17,572 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:01:17,573 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:01:17,575 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:01:17,575 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:01:17,643 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:01:24,851 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:01:26,068 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:01:26,084 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:01:26,086 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:01:26,087 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:01:26,088 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:01:26,090 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:01:33,325 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:01:34,391 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:01:34,400 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:01:34,400 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:01:34,401 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:01:34,401 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:01:34,403 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:01:41,516 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:01:42,747 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:01:42,770 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:01:42,771 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:01:42,771 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:01:42,772 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:01:42,773 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:01:49,628 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:01:51,098 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:01:51,109 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:01:51,110 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:01:51,111 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:01:51,111 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:01:51,112 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:03:41,408 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e4cadaf7-5b77-42db-8f61-9248c8e10220 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-03 19:03:41,409 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e4cadaf7-5b77-42db-8f61-9248c8e10220 | successful=0/0 | failed=0 | time=0.81ms
+2025-09-03 19:15:52,038 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:15:52,039 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:15:52,040 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:15:52,041 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:15:52,042 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:15:52,155 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:16:00,843 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:16:02,419 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:16:02,429 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:16:02,430 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:16:02,430 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:16:02,431 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:16:02,431 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:16:10,441 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:16:11,857 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:16:11,864 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:16:11,864 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:16:11,865 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:16:11,865 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:16:11,866 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:16:40,607 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:16:40,608 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:16:40,609 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:16:40,610 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:16:40,611 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:16:40,717 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:16:48,308 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:16:49,853 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:16:49,864 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:16:49,865 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:16:49,865 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:16:49,866 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:16:49,866 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:17:03,077 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:17:03,077 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:17:03,078 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:17:03,079 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:17:03,080 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:17:03,136 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:17:10,245 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:17:11,584 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:17:11,593 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:17:11,594 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:17:11,595 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:17:11,595 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:17:11,596 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:17:18,373 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:17:19,730 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:17:19,739 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:17:19,740 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:17:19,741 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:17:19,741 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:17:19,742 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:17:26,830 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:17:26,831 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:17:26,832 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:17:26,833 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:17:26,834 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:17:26,915 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:17:34,121 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:17:35,762 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:17:35,773 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:17:35,774 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:17:35,775 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:17:35,775 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:17:35,776 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:17:43,165 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:17:44,545 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:17:44,555 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:17:44,556 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:17:44,557 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:17:44,558 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:17:44,558 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:18:07,394 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:18:07,395 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:18:07,397 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:18:07,398 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:18:07,398 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:18:07,496 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:18:14,736 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:18:16,177 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:18:16,188 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:18:16,189 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:18:16,189 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:18:16,190 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:18:16,191 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:18:23,994 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:18:25,598 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:18:25,620 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:18:25,627 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:18:25,628 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:18:25,631 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:18:25,633 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:18:30,024 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:18:30,027 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:18:30,036 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:18:30,040 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:18:30,042 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:18:30,179 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:18:37,347 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:18:38,694 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:18:38,720 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:18:38,722 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:18:38,724 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:18:38,729 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:18:38,731 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:22:32,636 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:22:32,636 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:22:32,638 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:22:32,640 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:22:32,640 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:22:32,729 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:22:39,395 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:22:40,590 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:22:40,597 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:22:40,598 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:22:40,598 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:22:40,599 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:22:40,599 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:24:47,053 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:24:47,053 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:24:47,055 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:24:47,056 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:24:47,056 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:24:47,160 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:24:54,113 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:24:55,215 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:24:55,223 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:24:55,224 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:24:55,224 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:24:55,225 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:24:55,226 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:25:44,945 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6e91fccb-d773-43ba-a5ef-d1b283ed2ba1 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-03 19:25:44,946 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6e91fccb-d773-43ba-a5ef-d1b283ed2ba1 | successful=0/0 | failed=0 | time=1.19ms
+2025-09-03 19:40:03,852 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:40:03,852 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:40:03,853 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:40:03,855 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:40:03,855 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:40:03,929 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:40:10,377 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:40:11,640 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:40:11,649 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:40:11,650 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:40:11,650 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:40:11,651 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:40:11,652 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:40:15,694 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:40:15,695 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:40:15,696 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:40:15,697 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:40:15,698 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:40:15,771 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:40:22,723 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:40:24,056 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:40:24,065 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:40:24,066 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:40:24,066 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:40:24,067 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:40:24,067 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:40:33,263 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:40:34,677 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:40:34,706 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:40:34,707 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:40:34,708 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:40:34,708 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:40:34,709 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:40:41,930 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:40:43,180 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:40:43,194 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:40:43,195 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:40:43,196 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:40:43,197 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:40:43,199 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:40:50,465 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:40:51,924 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:40:51,936 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:40:51,937 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:40:51,937 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:40:51,937 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:40:51,938 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:41:00,268 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:41:01,717 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:41:01,733 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:41:01,734 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:41:01,735 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:41:01,735 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:41:01,736 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:41:02,924 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:41:02,925 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:41:02,927 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:41:02,928 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:41:02,929 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:41:03,057 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:41:10,734 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:41:12,049 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:41:12,059 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:41:12,060 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:41:12,061 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:41:12,061 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:41:12,062 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:41:19,637 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:41:21,169 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:41:21,180 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:41:21,181 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:41:21,182 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:41:21,183 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:41:21,188 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:41:28,512 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:41:30,316 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:41:30,328 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:41:30,329 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:41:30,330 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:41:30,331 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:41:30,332 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:41:47,686 [INFO] app.main: Mematikan aplikasi...
+2025-09-03 19:41:47,687 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-03 19:41:47,689 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-03 19:41:47,692 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-03 19:41:47,693 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-03 19:41:47,871 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-03 19:41:54,632 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-03 19:41:56,774 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-03 19:41:56,782 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-03 19:41:56,783 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-03 19:41:56,783 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-03 19:41:56,784 [INFO] app.main: Startup aplikasi berhasil
+2025-09-03 19:41:56,784 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-03 19:43:05,160 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4a452ef5-4417-423b-bfb5-65ce4db07c47 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-03 19:43:05,161 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4a452ef5-4417-423b-bfb5-65ce4db07c47 | successful=0/0 | failed=0 | time=0.61ms
+2025-09-03 20:04:34,313 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=84350097-eac1-4911-9d20-ddf4dd5682fe | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-03 20:04:34,314 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=84350097-eac1-4911-9d20-ddf4dd5682fe | successful=0/0 | failed=0 | time=0.85ms
+2025-09-03 20:04:34,438 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=79939b49-c62d-482e-b15c-38c96471a9a1 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-03 20:04:34,723 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-03 20:04:34,723 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6bb89d8f-a039-40fe-8a65-b619d19f2f69 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:04:34,724 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6bb89d8f-a039-40fe-8a65-b619d19f2f69 | successful=0/0 | failed=0 | time=0.5ms
+2025-09-03 20:04:34,725 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=79939b49-c62d-482e-b15c-38c96471a9a1 | user_id=68822f07979cbba23e6db950 | connection_time=286.71ms
+2025-09-03 20:04:52,685 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=61485d9b-90e1-4682-a800-5330f009fdc1 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 20:04:52,818 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 20:04:52,819 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=68b50692-2247-41f1-83bc-2778ce84c5bf | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:04:52,820 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=68b50692-2247-41f1-83bc-2778ce84c5bf | successful=0/0 | failed=0 | time=0.59ms
+2025-09-03 20:04:52,820 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=61485d9b-90e1-4682-a800-5330f009fdc1 | user_id=688477a78a56906f19d02551 | connection_time=135.04ms
+2025-09-03 20:05:57,809 [INFO] app.crud.crud_question_banks: MISS: Mengambil ID question dari database untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:05:58,134 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:05:58,366 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:05:58,590 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:05:58,755 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:07:27,439 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:07:27,452 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:07:27,467 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:07:27,472 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:07:27,905 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:16:00,617 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:16:01,025 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:18:40,719 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-03 20:21:47,818 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:21:47,880 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:21:48,945 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:21:58,762 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:21:58,819 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:22:00,245 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:22:56,811 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:22:56,813 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:22:57,753 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:02,948 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:02,984 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:03,757 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:11,815 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:11,817 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:12,754 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:13,878 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:13,879 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:14,790 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:22,733 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:22,766 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:23,831 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:24,819 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:24,864 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:25,732 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:39,792 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:39,793 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:40,782 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:44,857 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:44,863 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:23:45,774 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:24:04,325 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-03 20:24:29,659 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:24:29,724 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:26:09,287 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:26:09,289 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:26:09,322 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:26:09,324 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:26:09,807 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:28:45,886 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:28:46,130 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:28:46,301 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:28:46,506 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:28:46,732 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:29:09,718 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:29:09,935 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:29:10,158 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:29:10,370 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:29:10,538 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:29:47,753 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:29:47,988 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:29:48,780 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:30:01,833 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:30:02,094 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:30:02,763 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:30:12,747 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:30:12,972 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:30:13,739 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:31:56,879 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:31:57,138 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:31:57,730 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:14,423 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:14,635 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:14,860 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:15,013 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:15,257 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:30,512 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:30,764 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:30,918 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:31,073 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:31,215 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:56,925 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:32:59,647 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-03 20:33:40,556 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-03 20:33:40,557 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=588d61c5-8be7-45d4-a745-5413e053d9b8 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 20:33:40,558 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=588d61c5-8be7-45d4-a745-5413e053d9b8 | successful=0/0 | failed=0 | time=0.59ms
+2025-09-03 20:33:40,882 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: Agus Santoso in 68b5406b3c28dc76c69d0f45
+2025-09-03 20:33:40,885 [INFO] app.core.websocket: Broadcasting connected event for Agus Santoso (proctor) to 1 proctors in room 68b5406b3c28dc76c69d0f45
+2025-09-03 20:33:49,270 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 20:33:49,271 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ce28232f-6d07-4d07-952a-07aabf5328b0 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 20:33:49,272 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ce28232f-6d07-4d07-952a-07aabf5328b0 | successful=0/0 | failed=0 | time=0.95ms
+2025-09-03 20:34:12,625 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a55ba51f-a61f-4e0a-9d69-1545a504a9c9 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 20:34:12,787 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 20:34:12,787 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6560b2f1-84b2-489b-b857-d101583df962 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:34:12,788 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6560b2f1-84b2-489b-b857-d101583df962 | successful=0/0 | failed=0 | time=0.68ms
+2025-09-03 20:34:12,789 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a55ba51f-a61f-4e0a-9d69-1545a504a9c9 | user_id=688477a78a56906f19d02551 | connection_time=163.45ms
+2025-09-03 20:35:04,688 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 20:35:04,689 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=95392c36-c86e-4562-9be2-4e09b611afe6 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 20:35:04,690 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=95392c36-c86e-4562-9be2-4e09b611afe6 | successful=0/0 | failed=0 | time=0.8ms
+2025-09-03 20:35:28,781 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=579d7330-2d62-4f7a-9d3e-f50867aa52fc | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 20:35:29,004 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 20:35:29,005 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d6517cee-c0ad-469e-abc3-973cada2c5fe | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:35:29,006 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d6517cee-c0ad-469e-abc3-973cada2c5fe | successful=0/0 | failed=0 | time=0.44ms
+2025-09-03 20:35:29,006 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=579d7330-2d62-4f7a-9d3e-f50867aa52fc | user_id=688477a78a56906f19d02551 | connection_time=224.54ms
+2025-09-03 20:35:39,691 [INFO] app.crud.crud_exams: Creating exam session with settings - shuffle_questions: True, shuffle_options: True
+2025-09-03 20:35:39,694 [INFO] app.crud.crud_exams: Questions shuffled for exam 68b5406b3c28dc76c69d0f45
+2025-09-03 20:35:39,765 [INFO] app.crud.crud_exams: Options shuffled for question 688b74909486c732d234bcf6
+2025-09-03 20:35:39,768 [INFO] app.crud.crud_exams: Options shuffled for question 6888b18eda5b866b5af5a28b
+2025-09-03 20:35:39,770 [INFO] app.crud.crud_exams: Options shuffled for question 688b724f9486c732d234bcf1
+2025-09-03 20:35:39,932 [INFO] app.crud.crud_exams: New exam session created: 68b8442bfc8b27eb602176ff for student 688477a78a56906f19d02551 with shuffle_questions=True, shuffle_options=True
+2025-09-03 20:35:40,439 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 20:35:40,440 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5f851645-abaf-4e50-9391-add1cecffd14 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 20:35:40,440 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5f851645-abaf-4e50-9391-add1cecffd14 | successful=0/0 | failed=0 | time=0.47ms
+2025-09-03 20:36:06,107 [INFO] app.crud.crud_exam_sessions: Retrieved 3 questions for session 68b8442bfc8b27eb602176ff with proper shuffle mapping
+2025-09-03 20:36:06,279 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: alexander grahambel in 68b5406b3c28dc76c69d0f45
+2025-09-03 20:36:06,280 [INFO] app.core.websocket: Broadcasting connected event for alexander grahambel (student) to 1 proctors in room 68b5406b3c28dc76c69d0f45
+2025-09-03 20:36:06,738 [INFO] app.crud.crud_exam_sessions: Retrieved 3 questions for session 68b8442bfc8b27eb602176ff with proper shuffle mapping
+2025-09-03 20:36:11,567 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-03 20:36:11,568 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=faeeb3b1-f8f8-4612-b01d-62527faacd58 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=1
+2025-09-03 20:36:11,569 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=faeeb3b1-f8f8-4612-b01d-62527faacd58 | successful=1/1 | time=1.27ms
+2025-09-03 20:36:17,096 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-03 20:36:17,096 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=bb087276-c8a2-42b5-9533-9839b3620ae9 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=1
+2025-09-03 20:36:17,097 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=bb087276-c8a2-42b5-9533-9839b3620ae9 | successful=1/1 | time=0.97ms
+2025-09-03 20:36:19,561 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-03 20:36:19,562 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=d94acb00-c9f9-4cad-8b08-ebdb5c341d85 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=1
+2025-09-03 20:36:19,563 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=d94acb00-c9f9-4cad-8b08-ebdb5c341d85 | successful=1/1 | time=1.03ms
+2025-09-03 20:36:21,633 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-03 20:36:21,633 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=43b981a5-cf20-4b7c-b56e-f16ba11ee0c4 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=1
+2025-09-03 20:36:21,635 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=43b981a5-cf20-4b7c-b56e-f16ba11ee0c4 | successful=1/1 | time=1.15ms
+2025-09-03 20:36:21,781 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: violation_event
+2025-09-03 20:36:21,782 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=5e67df03-986e-476b-a4a3-9de40a69df0d | room_id=68b5406b3c28dc76c69d0f45 | message_type=violation_event | proctors=1
+2025-09-03 20:36:21,783 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=5e67df03-986e-476b-a4a3-9de40a69df0d | successful=1/1 | time=1.19ms
+2025-09-03 20:36:30,756 [WARNING] app.crud.crud_exam_sessions: Session 68b8442bfc8b27eb602176ff flagged for review - Fraud score: 0.90
+2025-09-03 20:36:34,192 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: violation_event
+2025-09-03 20:36:34,193 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=e306bc72-e8fe-40ab-bc17-ac00abb24474 | room_id=68b5406b3c28dc76c69d0f45 | message_type=violation_event | proctors=1
+2025-09-03 20:36:34,194 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=e306bc72-e8fe-40ab-bc17-ac00abb24474 | successful=1/1 | time=1.03ms
+2025-09-03 20:36:34,195 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68b5406b3c28dc76c69d0f45
+2025-09-03 20:36:34,211 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: alexander grahambel from 68b5406b3c28dc76c69d0f45
+2025-09-03 20:36:34,212 [INFO] app.core.websocket: Broadcasting disconnected event for alexander grahambel (student) to 1 proctors in room 68b5406b3c28dc76c69d0f45
+2025-09-03 20:36:41,689 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=07b22965-9947-4bd7-85cd-b5ee193652ae | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 20:36:41,965 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 20:36:41,966 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c01c9c8e-9fa2-449a-89cc-0e5aff23a4b5 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:36:41,966 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c01c9c8e-9fa2-449a-89cc-0e5aff23a4b5 | successful=0/0 | failed=0 | time=0.6ms
+2025-09-03 20:36:41,967 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=07b22965-9947-4bd7-85cd-b5ee193652ae | user_id=688477a78a56906f19d02551 | connection_time=277.87ms
+2025-09-03 20:37:39,760 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 20:37:39,761 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=98fcb3ec-6805-47b9-afaf-3a44b5de7c21 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 20:37:39,761 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=98fcb3ec-6805-47b9-afaf-3a44b5de7c21 | successful=0/0 | failed=0 | time=0.58ms
+2025-09-03 20:38:01,922 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=3c184c89-0b3a-4507-846e-d0e1c0a7f00c | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 20:38:02,086 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 20:38:02,087 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=dc2fde18-f9ed-4dee-9b72-b067bee2819b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:38:02,088 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=dc2fde18-f9ed-4dee-9b72-b067bee2819b | successful=0/0 | failed=0 | time=0.64ms
+2025-09-03 20:38:02,088 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=3c184c89-0b3a-4507-846e-d0e1c0a7f00c | user_id=688477a78a56906f19d02551 | connection_time=166.48ms
+2025-09-03 20:44:01,711 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 20:44:01,712 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a89c3d7d-88e1-4a5c-b9cf-d22de9655b72 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 20:44:01,713 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a89c3d7d-88e1-4a5c-b9cf-d22de9655b72 | successful=0/0 | failed=0 | time=0.85ms
+2025-09-03 20:44:27,479 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=01aa3d70-7768-448b-973b-77765dcd1a4c | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 20:44:27,647 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 20:44:27,647 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f330d42e-3e65-4aee-bab7-8edac9060cdd | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:44:27,648 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f330d42e-3e65-4aee-bab7-8edac9060cdd | successful=0/0 | failed=0 | time=0.32ms
+2025-09-03 20:44:27,648 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=01aa3d70-7768-448b-973b-77765dcd1a4c | user_id=688477a78a56906f19d02551 | connection_time=168.47ms
+2025-09-03 20:51:50,329 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=0c3257c6-51c2-41cb-893b-ed7e9b3667a8 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-03 20:51:50,503 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-03 20:51:50,505 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1a7c259c-f0b2-41d6-8886-067ac40ddf62 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-03 20:51:50,507 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1a7c259c-f0b2-41d6-8886-067ac40ddf62 | successful=1/1 | failed=0 | time=1.78ms
+2025-09-03 20:51:50,507 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=0c3257c6-51c2-41cb-893b-ed7e9b3667a8 | user_id=686a3396d20694199c01c06b | connection_time=177.99ms
+2025-09-03 20:51:56,248 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-03 20:51:56,248 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=43d37c7c-2ee2-4d42-9f94-c395abb2bdc9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 20:51:56,249 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=43d37c7c-2ee2-4d42-9f94-c395abb2bdc9 | successful=0/0 | failed=0 | time=0.66ms
+2025-09-03 20:52:01,045 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=09cbf898-5235-4136-9abc-2c51d2754eed | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-03 20:52:01,046 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=09cbf898-5235-4136-9abc-2c51d2754eed | successful=0/0 | failed=0 | time=0.71ms
+2025-09-03 20:52:01,181 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=536241d7-52db-4278-8aca-827f7c8984c9 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 20:52:01,397 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 20:52:01,398 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=421b5285-4187-4dc0-90f7-178b242622bf | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:52:01,398 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=421b5285-4187-4dc0-90f7-178b242622bf | successful=0/0 | failed=0 | time=0.88ms
+2025-09-03 20:52:01,399 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=536241d7-52db-4278-8aca-827f7c8984c9 | user_id=688477a78a56906f19d02551 | connection_time=218.85ms
+2025-09-03 20:52:01,470 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 20:52:01,470 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=abf30902-fba9-4b92-ada1-b7f220b23725 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 20:52:01,471 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=abf30902-fba9-4b92-ada1-b7f220b23725 | successful=0/0 | failed=0 | time=0.44ms
+2025-09-03 20:52:24,473 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b14c7754-d6c4-4951-aa3a-273410c27d4b | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 20:52:24,668 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 20:52:24,670 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=879bd008-8efa-4c14-a402-53be73844adb | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 20:52:24,673 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=879bd008-8efa-4c14-a402-53be73844adb | successful=0/0 | failed=0 | time=3.54ms
+2025-09-03 20:52:24,674 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b14c7754-d6c4-4951-aa3a-273410c27d4b | user_id=688477a78a56906f19d02551 | connection_time=201.19ms
+2025-09-03 21:10:00,167 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3ae64b20-b4d9-46a9-b3ac-712f0c7cc026 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-03 21:10:00,168 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3ae64b20-b4d9-46a9-b3ac-712f0c7cc026 | successful=0/0 | failed=0 | time=1.15ms
+2025-09-03 21:10:00,405 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=272f25d5-8dea-416e-86c6-424009560d8b | user_id=688f215dfae1519a240af43e | username=0000005 | roles=['student']
+2025-09-03 21:10:00,591 [INFO] app.core.websocket: Broadcasting user connected event for User 0000005 to admins (global)
+2025-09-03 21:10:00,592 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b35fae83-31df-4f7b-99db-0d450efc85be | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:10:00,593 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b35fae83-31df-4f7b-99db-0d450efc85be | successful=0/0 | failed=0 | time=0.7ms
+2025-09-03 21:10:00,594 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=272f25d5-8dea-416e-86c6-424009560d8b | user_id=688f215dfae1519a240af43e | connection_time=188.94ms
+2025-09-03 21:12:39,513 [INFO] app.api.v1.routes.ws_exam_room: Student 68822f07979cbba23e6db950 disconnected from exam room 68b5406b3c28dc76c69d0f45
+2025-09-03 21:12:39,538 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: Agus Santoso from 68b5406b3c28dc76c69d0f45
+2025-09-03 21:12:39,626 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=6f86b27b-3598-493f-8ea8-bb6847058874 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-03 21:12:39,835 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-03 21:12:39,836 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=628b8fb6-1a25-4c63-b51f-b14477c5d340 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:12:39,836 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=628b8fb6-1a25-4c63-b51f-b14477c5d340 | successful=0/0 | failed=0 | time=0.83ms
+2025-09-03 21:12:39,837 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=6f86b27b-3598-493f-8ea8-bb6847058874 | user_id=68822f07979cbba23e6db950 | connection_time=211.2ms
+2025-09-03 21:13:14,911 [INFO] app.core.websocket: Broadcasting user disconnected event for User 0000005 to admins (global)
+2025-09-03 21:13:14,912 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=036df469-2e97-4abd-938c-1ddbdeadfc99 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:13:14,912 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=036df469-2e97-4abd-938c-1ddbdeadfc99 | successful=0/0 | failed=0 | time=0.61ms
+2025-09-03 21:13:41,465 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=4f3ff0a5-6c79-46e7-8b02-eaaff52342cc | user_id=688f215dfae1519a240af43e | username=0000005 | roles=['student']
+2025-09-03 21:13:41,633 [INFO] app.core.websocket: Broadcasting user connected event for User 0000005 to admins (global)
+2025-09-03 21:13:41,634 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=81f1e7e9-0bd5-498c-9ca4-b8b1e1a28255 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:13:41,634 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=81f1e7e9-0bd5-498c-9ca4-b8b1e1a28255 | successful=0/0 | failed=0 | time=0.63ms
+2025-09-03 21:13:41,635 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=4f3ff0a5-6c79-46e7-8b02-eaaff52342cc | user_id=688f215dfae1519a240af43e | connection_time=170.14ms
+2025-09-03 21:13:55,758 [INFO] app.core.websocket: Broadcasting user disconnected event for User 0000005 to admins (global)
+2025-09-03 21:13:55,759 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3ac4ae7e-f765-4950-93d2-90dd9f3834ac | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:13:55,760 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3ac4ae7e-f765-4950-93d2-90dd9f3834ac | successful=0/0 | failed=0 | time=0.58ms
+2025-09-03 21:14:05,152 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f3c7198c-e18d-4778-a039-6132774a4027 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-03 21:14:05,153 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f3c7198c-e18d-4778-a039-6132774a4027 | successful=0/0 | failed=0 | time=0.98ms
+2025-09-03 21:14:05,450 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b436e58c-4c16-473a-a8a7-b4da1787db48 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-03 21:14:05,618 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:14:05,618 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c4eaaa98-5b2f-40aa-a9a9-19babe320652 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:14:05,619 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c4eaaa98-5b2f-40aa-a9a9-19babe320652 | successful=0/0 | failed=0 | time=0.42ms
+2025-09-03 21:14:05,619 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b436e58c-4c16-473a-a8a7-b4da1787db48 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=169.33ms
+2025-09-03 21:14:53,397 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-03 21:14:53,398 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=49a8c152-2b88-4aac-bb2a-08bdf19648b5 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:14:53,398 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=49a8c152-2b88-4aac-bb2a-08bdf19648b5 | successful=0/0 | failed=0 | time=0.45ms
+2025-09-03 21:14:53,719 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: Agus Santoso in 68920557e58cfa66adfcdd7f
+2025-09-03 21:14:53,720 [INFO] app.core.websocket: Broadcasting connected event for Agus Santoso (proctor) to 1 proctors in room 68920557e58cfa66adfcdd7f
+2025-09-03 21:14:58,759 [INFO] app.crud.crud_exams: Creating exam session with settings - shuffle_questions: False, shuffle_options: True
+2025-09-03 21:14:58,760 [INFO] app.crud.crud_exams: Questions not shuffled for exam 68920557e58cfa66adfcdd7f
+2025-09-03 21:14:58,837 [INFO] app.crud.crud_exams: Options shuffled for question 6888b18eda5b866b5af5a28b
+2025-09-03 21:14:58,838 [INFO] app.crud.crud_exams: Options shuffled for question 6888b1d8da5b866b5af5a291
+2025-09-03 21:14:58,987 [INFO] app.crud.crud_exams: New exam session created: 68b84d62fc8b27eb60217703 for student 68b2dcbdcccc321f815ea3f5 with shuffle_questions=False, shuffle_options=True
+2025-09-03 21:14:59,321 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:14:59,322 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c029b289-18ae-4dd0-ac38-0f211d8e63d2 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:14:59,323 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c029b289-18ae-4dd0-ac38-0f211d8e63d2 | successful=0/0 | failed=0 | time=0.74ms
+2025-09-03 21:15:19,664 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68b84d62fc8b27eb60217703 with proper shuffle mapping
+2025-09-03 21:15:19,921 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: Drs. Titi Prasasta, S.Sos in 68920557e58cfa66adfcdd7f
+2025-09-03 21:15:19,921 [INFO] app.core.websocket: Broadcasting connected event for Drs. Titi Prasasta, S.Sos (student) to 1 proctors in room 68920557e58cfa66adfcdd7f
+2025-09-03 21:15:20,057 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68b84d62fc8b27eb60217703 with proper shuffle mapping
+2025-09-03 21:15:23,402 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:15:23,403 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=e0129f0b-c32b-4ad5-a96f-67197f7dfcef | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:15:23,404 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=e0129f0b-c32b-4ad5-a96f-67197f7dfcef | successful=1/1 | time=0.81ms
+2025-09-03 21:15:25,313 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:15:25,313 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=f969399b-b494-49b9-81f1-46542ca4bfbf | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:15:25,314 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=f969399b-b494-49b9-81f1-46542ca4bfbf | successful=1/1 | time=0.91ms
+2025-09-03 21:15:27,633 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:15:27,633 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=defab3b9-f976-452a-b5c3-63fa434dad82 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:15:27,635 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=defab3b9-f976-452a-b5c3-63fa434dad82 | successful=1/1 | time=1.25ms
+2025-09-03 21:15:33,814 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-09-03 21:15:33,815 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=3cc31aea-943f-4334-beb8-04ff385e022a | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=1
+2025-09-03 21:15:33,816 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=3cc31aea-943f-4334-beb8-04ff385e022a | successful=1/1 | time=1.17ms
+2025-09-03 21:15:34,102 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:15:34,103 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=fb229a2c-0057-4d28-96a0-9a2c77e91306 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:15:34,105 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=fb229a2c-0057-4d28-96a0-9a2c77e91306 | successful=1/1 | time=1.12ms
+2025-09-03 21:15:37,414 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-09-03 21:15:37,415 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=e6d2b800-9680-4bce-8160-4a3423fb6d20 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=1
+2025-09-03 21:15:37,416 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=e6d2b800-9680-4bce-8160-4a3423fb6d20 | successful=1/1 | time=1.46ms
+2025-09-03 21:15:37,564 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:15:37,565 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=aa8f06d6-cc4a-42aa-a11b-a24c9f0a954d | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:15:37,566 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=aa8f06d6-cc4a-42aa-a11b-a24c9f0a954d | successful=1/1 | time=1.26ms
+2025-09-03 21:15:41,380 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:15:41,381 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=e67d110f-7af9-45ba-960c-cdfeca8ca532 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:15:41,382 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=e67d110f-7af9-45ba-960c-cdfeca8ca532 | successful=1/1 | time=0.87ms
+2025-09-03 21:15:45,358 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-09-03 21:15:45,359 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=53c33795-06e5-4685-8190-dc199e3f4ac4 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=1
+2025-09-03 21:15:45,360 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=53c33795-06e5-4685-8190-dc199e3f4ac4 | successful=1/1 | time=1.26ms
+2025-09-03 21:15:45,361 [INFO] app.api.v1.routes.ws_exam_room: Student 68b2dcbdcccc321f815ea3f5 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-09-03 21:15:45,386 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: Drs. Titi Prasasta, S.Sos from 68920557e58cfa66adfcdd7f
+2025-09-03 21:15:45,387 [INFO] app.core.websocket: Broadcasting disconnected event for Drs. Titi Prasasta, S.Sos (student) to 1 proctors in room 68920557e58cfa66adfcdd7f
+2025-09-03 21:15:52,158 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=019f1b5b-700f-44c2-ba45-6554e048e561 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-03 21:15:52,386 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:15:52,387 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8c4cdce7-0bb1-45ac-bc33-f1b408701eaa | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:15:52,388 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8c4cdce7-0bb1-45ac-bc33-f1b408701eaa | successful=0/0 | failed=0 | time=0.52ms
+2025-09-03 21:15:52,388 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=019f1b5b-700f-44c2-ba45-6554e048e561 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=229.77ms
+2025-09-03 21:16:36,144 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:16:36,145 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1409a92a-c115-4d83-b502-234e09b82c9f | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:16:36,145 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1409a92a-c115-4d83-b502-234e09b82c9f | successful=0/0 | failed=0 | time=0.56ms
+2025-09-03 21:16:57,806 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7a40fb33-c755-4dfa-8190-ae0456e1ff02 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-03 21:16:57,977 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:16:57,981 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f3cb170c-0410-46ff-b1ab-46f4f20ea49b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:16:57,983 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f3cb170c-0410-46ff-b1ab-46f4f20ea49b | successful=0/0 | failed=0 | time=1.58ms
+2025-09-03 21:16:57,984 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7a40fb33-c755-4dfa-8190-ae0456e1ff02 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=177.82ms
+2025-09-03 21:17:05,483 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:17:05,483 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ac39e4f9-ba05-474e-95e2-7abaeb1ebb4b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:17:05,484 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ac39e4f9-ba05-474e-95e2-7abaeb1ebb4b | successful=0/0 | failed=0 | time=0.43ms
+2025-09-03 21:17:08,873 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=8bfacacc-fd6b-4a2a-87f0-cfc92bf8485a | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-03 21:17:09,102 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:17:09,103 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=70ec7019-a23c-49ef-a772-158bbb963d07 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:17:09,103 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=70ec7019-a23c-49ef-a772-158bbb963d07 | successful=0/0 | failed=0 | time=0.69ms
+2025-09-03 21:17:09,104 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=8bfacacc-fd6b-4a2a-87f0-cfc92bf8485a | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=231.58ms
+2025-09-03 21:21:44,156 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 21:21:44,158 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1a1bfd1e-6816-4fa1-b204-9f3760b9a220 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:21:44,160 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1a1bfd1e-6816-4fa1-b204-9f3760b9a220 | successful=0/0 | failed=0 | time=1.83ms
+2025-09-03 21:21:46,763 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a355f800-9077-483e-9e14-dc1397c84a29 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 21:21:46,930 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 21:21:46,931 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b2e6c9d0-eed5-4dbd-a305-318a829fd2d2 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:21:46,931 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b2e6c9d0-eed5-4dbd-a305-318a829fd2d2 | successful=0/0 | failed=0 | time=0.53ms
+2025-09-03 21:21:46,932 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a355f800-9077-483e-9e14-dc1397c84a29 | user_id=688477a78a56906f19d02551 | connection_time=169.15ms
+2025-09-03 21:29:21,849 [INFO] app.crud.crud_exams: Creating exam session with settings - shuffle_questions: False, shuffle_options: True
+2025-09-03 21:29:21,850 [INFO] app.crud.crud_exams: Questions not shuffled for exam 68920557e58cfa66adfcdd7f
+2025-09-03 21:29:21,923 [INFO] app.crud.crud_exams: Options shuffled for question 6888b18eda5b866b5af5a28b
+2025-09-03 21:29:21,924 [INFO] app.crud.crud_exams: Options shuffled for question 6888b1d8da5b866b5af5a291
+2025-09-03 21:29:22,074 [INFO] app.crud.crud_exams: New exam session created: 68b850c1fc8b27eb60217704 for student 68b2dcbdcccc321f815ea3f5 with shuffle_questions=False, shuffle_options=True
+2025-09-03 21:29:22,425 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:29:22,425 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=089a0dac-ddfc-4ff9-ab76-1b355f02d51e | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:29:22,426 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=089a0dac-ddfc-4ff9-ab76-1b355f02d51e | successful=0/0 | failed=0 | time=0.52ms
+2025-09-03 21:29:52,012 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68b850c1fc8b27eb60217704 with proper shuffle mapping
+2025-09-03 21:29:52,175 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: Drs. Titi Prasasta, S.Sos in 68920557e58cfa66adfcdd7f
+2025-09-03 21:29:52,176 [INFO] app.core.websocket: Broadcasting connected event for Drs. Titi Prasasta, S.Sos (student) to 1 proctors in room 68920557e58cfa66adfcdd7f
+2025-09-03 21:29:52,320 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68b850c1fc8b27eb60217704 with proper shuffle mapping
+2025-09-03 21:30:00,871 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:30:00,872 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=c8566388-307a-425f-af6e-8094b100d061 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:30:00,873 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=c8566388-307a-425f-af6e-8094b100d061 | successful=1/1 | time=0.91ms
+2025-09-03 21:30:03,342 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:30:03,343 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=e5656e71-6f81-40d3-a619-e92fba70c7ae | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:30:03,345 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=e5656e71-6f81-40d3-a619-e92fba70c7ae | successful=1/1 | time=1.33ms
+2025-09-03 21:30:07,251 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:30:07,252 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=02804232-473e-4691-afeb-8e6024e55d5c | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:30:07,253 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=02804232-473e-4691-afeb-8e6024e55d5c | successful=1/1 | time=1.13ms
+2025-09-03 21:30:13,279 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-09-03 21:30:13,280 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=49d91e58-7e3a-445f-9b6c-be5b575dc09d | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=1
+2025-09-03 21:30:13,282 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=49d91e58-7e3a-445f-9b6c-be5b575dc09d | successful=1/1 | time=1.36ms
+2025-09-03 21:30:13,490 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:30:13,491 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=89f44370-8680-472d-99ac-2e44067b301d | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:30:13,492 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=89f44370-8680-472d-99ac-2e44067b301d | successful=1/1 | time=0.94ms
+2025-09-03 21:30:18,942 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:30:18,942 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=9adf4d80-ef10-48ef-a6b6-576a150f6e5f | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:30:18,943 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=9adf4d80-ef10-48ef-a6b6-576a150f6e5f | successful=1/1 | time=1.06ms
+2025-09-03 21:30:24,219 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-03 21:30:24,220 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=daf1c876-168b-4a9b-92b8-70b5f950e520 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=1
+2025-09-03 21:30:24,221 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=daf1c876-168b-4a9b-92b8-70b5f950e520 | successful=1/1 | time=1.3ms
+2025-09-03 21:30:27,275 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-09-03 21:30:27,276 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=fbb2ac26-b666-48b9-a7dc-2dd5dacabc45 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=1
+2025-09-03 21:30:27,278 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=fbb2ac26-b666-48b9-a7dc-2dd5dacabc45 | successful=1/1 | time=1.54ms
+2025-09-03 21:30:27,279 [INFO] app.api.v1.routes.ws_exam_room: Student 68b2dcbdcccc321f815ea3f5 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-09-03 21:30:27,303 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: Drs. Titi Prasasta, S.Sos from 68920557e58cfa66adfcdd7f
+2025-09-03 21:30:27,304 [INFO] app.core.websocket: Broadcasting disconnected event for Drs. Titi Prasasta, S.Sos (student) to 1 proctors in room 68920557e58cfa66adfcdd7f
+2025-09-03 21:30:49,952 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 21:30:49,952 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a9ee9864-3fe3-4988-8149-ebd9b0c43829 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:30:49,953 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a9ee9864-3fe3-4988-8149-ebd9b0c43829 | successful=0/0 | failed=0 | time=0.58ms
+2025-09-03 21:30:51,749 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=5452e993-feb2-4ed8-b4a0-5d7d877f71ca | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-03 21:30:51,973 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:30:51,974 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=47bfa555-585f-4f27-8144-e2c733a323f3 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:30:51,974 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=47bfa555-585f-4f27-8144-e2c733a323f3 | successful=0/0 | failed=0 | time=0.39ms
+2025-09-03 21:30:51,975 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=5452e993-feb2-4ed8-b4a0-5d7d877f71ca | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=225.13ms
+2025-09-03 21:30:53,135 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a1cbd3da-a220-4266-84c9-4f09dc25be9a | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 21:30:53,309 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 21:30:53,310 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d501b925-97ca-41a6-91db-06689e98d5dd | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:30:53,311 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d501b925-97ca-41a6-91db-06689e98d5dd | successful=0/0 | failed=0 | time=0.95ms
+2025-09-03 21:30:53,312 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a1cbd3da-a220-4266-84c9-4f09dc25be9a | user_id=688477a78a56906f19d02551 | connection_time=176.75ms
+2025-09-03 21:31:15,693 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-03 21:31:15,694 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6cde3263-5a03-4067-bb99-cda7c042be22 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:31:15,695 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6cde3263-5a03-4067-bb99-cda7c042be22 | successful=0/0 | failed=0 | time=0.74ms
+2025-09-03 21:31:17,534 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=100a5777-aba8-4ae5-a7da-873792ac1cd8 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-03 21:31:17,809 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-03 21:31:17,809 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=197bf232-2399-4188-a793-db7643b8fead | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:31:17,810 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=197bf232-2399-4188-a793-db7643b8fead | successful=0/0 | failed=0 | time=0.67ms
+2025-09-03 21:31:17,811 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=100a5777-aba8-4ae5-a7da-873792ac1cd8 | user_id=688477a78a56906f19d02551 | connection_time=276.75ms
+2025-09-03 21:31:37,451 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:31:37,453 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=88a576aa-b8db-4d2d-b415-123ea9092a8b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-03 21:31:37,453 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=88a576aa-b8db-4d2d-b415-123ea9092a8b | successful=0/0 | failed=0 | time=0.93ms
+2025-09-03 21:32:02,022 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=2ba5a89e-cac3-4d03-b62f-6f20800a51c7 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-03 21:32:02,241 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-03 21:32:02,242 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8946d73d-8bdb-466f-88dc-9404bc25caa5 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-03 21:32:02,243 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8946d73d-8bdb-466f-88dc-9404bc25caa5 | successful=0/0 | failed=0 | time=0.68ms
+2025-09-03 21:32:02,243 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=2ba5a89e-cac3-4d03-b62f-6f20800a51c7 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=221.09ms

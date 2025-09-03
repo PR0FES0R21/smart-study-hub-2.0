@@ -38,203 +38,8 @@ def _build_score_distribution(scores: List[float]) -> List[Dict[str, Any]]:
     return results
 
 
-async def get_admin_dashboard(db: AsyncIOMotorDatabase, academic_period_id: str) -> Dict[str, Any]:
-    """Admin dashboard ringkas: global stats + 5 ujian terbaru."""
-    cache_key = ADMIN_DASHBOARD_CACHE.format(period=academic_period_id)
-    cached = await get_cache(cache_key)
-    if cached: return cached
-
-    period_obj = ObjectId(academic_period_id)
-
-    # Cari 5 ujian terbaru di periode ini
-    exams_cursor = db["exams"].find({"academic_period_id": period_obj}).sort("updated_at", -1).limit(5)
-    recent_exams = await exams_cursor.to_list(5)
-
-    exam_stats: List[Dict[str, Any]] = []
-    total_students_participated = 0
-    sum_all_scores = 0.0
-    sum_all_counts = 0
-
-    for exam in recent_exams:
-        sessions = await db["exam_sessions"].find({"exam_id": exam["_id"], "status": "graded"}).to_list(10000)
-        scores = [s.get("score", 0) for s in sessions]
-        participants = len(scores)
-        total_students_participated += participants
-        if participants > 0:
-            avg = sum(scores) / participants
-            hi = max(scores)
-            lo = min(scores)
-        else:
-            avg, hi, lo = 0.0, 0.0, 0.0
-        sum_all_scores += sum(scores)
-        sum_all_counts += participants
-
-        # Dapatkan subject_name via teaching_assignment -> subjects
-        subject_name = ""
-        assignment = await db["teaching_assignments"].find_one({"_id": exam["teaching_assignment_id"]})
-        if assignment:
-            subject = await db["subjects"].find_one({"_id": assignment["subject_id"]})
-            subject_name = subject.get("name") if subject else ""
-
-        exam_stats.append({
-            "exam_id": exam["_id"],
-            "exam_title": exam.get("title", "-"),
-            "exam_type": exam.get("exam_type", "-"),
-            "subject_name": subject_name,
-            "total_participants": participants,
-            "average_score": round(avg, 2),
-            "highest_score": round(hi, 2),
-            "lowest_score": round(lo, 2),
-            "score_distribution": _build_score_distribution(scores),
-            "exam_date": exam.get("availability_start_time"),
-        })
-
-    school_wide_average = round((sum_all_scores / sum_all_counts), 2) if sum_all_counts > 0 else 0.0
-
-    result = {
-        "global_stats": {
-            "total_exams_conducted": await db["exams"].count_documents({"academic_period_id": period_obj}),
-            "total_students_participated": total_students_participated,
-            "school_wide_average": school_wide_average,
-        },
-        "recent_exams": exam_stats,
-    }
-
-    await set_cache(cache_key, result, ttl=1800)
-    return result
-
-
-async def get_teacher_dashboard(db: AsyncIOMotorDatabase, teacher_id: ObjectId, academic_period_id: str) -> Dict[str, Any]:
-    cache_key = TEACHER_DASHBOARD_CACHE.format(teacher=teacher_id, period=academic_period_id)
-    cached = await get_cache(cache_key)
-    if cached: return cached
-
-    period_obj = ObjectId(academic_period_id)
-
-    # Ambil teaching assignments milik guru ini pada periode terkait
-    assignments = await db["teaching_assignments"].find({
-        "teacher_id": teacher_id,
-        "academic_period_id": period_obj
-    }).to_list(1000)
-
-    class_stats: List[Dict[str, Any]] = []
-
-    for a in assignments:
-        class_doc = await db["classes"].find_one({"_id": a["class_id"]})
-        subject_doc = await db["subjects"].find_one({"_id": a["subject_id"]})
-        class_name = f"{class_doc.get('grade_level')} {class_doc.get('name')}" if class_doc else "-"
-        subject_name = subject_doc.get("name") if subject_doc else "-"
-
-        # Cari exams untuk assignment ini
-        exam_ids = [e["_id"] for e in await db["exams"].find({"teaching_assignment_id": a["_id"]}).to_list(1000)]
-        sessions = []
-        if exam_ids:
-            sessions = await db["exam_sessions"].find({"exam_id": {"$in": exam_ids}, "status": "graded"}).to_list(100000)
-
-        scores = [s.get("score", 0) for s in sessions]
-        participants = len(scores)
-        avg = (sum(scores) / participants) if participants > 0 else 0.0
-        hi = max(scores) if participants > 0 else 0.0
-        lo = min(scores) if participants > 0 else 0.0
-
-        # Hitung total siswa kelas dari profiles
-        total_students = await db["profiles"].count_documents({"class_id": a["class_id"]})
-        completion_rate = round((participants / total_students) * 100, 2) if total_students > 0 else 0.0
-
-        class_stats.append({
-            "class_id": a["class_id"],
-            "class_name": class_name,
-            "subject_name": subject_name,
-            "total_students": total_students,
-            "average_score": round(avg, 2),
-            "highest_score": round(hi, 2),
-            "lowest_score": round(lo, 2),
-            "completion_rate": completion_rate,
-        })
-
-    result = {
-        "teacher_id": ObjectId(teacher_id),
-        "class_statistics": class_stats
-    }
-
-    await set_cache(cache_key, result, ttl=1800)
-    return result
-
-
-async def get_student_dashboard(db: AsyncIOMotorDatabase, student_id: str, academic_period_id: str) -> Dict[str, Any]:
-    cache_key = STUDENT_DASHBOARD_CACHE.format(student=student_id, period=academic_period_id)
-    cached = await get_cache(cache_key)
-    if cached: return cached
-
-    student_obj = ObjectId(student_id)
-
-    # Semua sesi ujian yang sudah dinilai untuk siswa ini pada periode ini
-    exams_cursor = db["exams"].find({"academic_period_id": ObjectId(academic_period_id)})
-    exam_ids = [e["_id"] for e in await exams_cursor.to_list(10000)]
-    sessions = await db["exam_sessions"].find({
-        "student_id": student_obj,
-        "exam_id": {"$in": exam_ids},
-        "status": "graded"
-    }).to_list(100000)
-
-    # Kelompokkan per mata pelajaran
-    subject_scores: Dict[str, List[float]] = {}
-    last_scores: Dict[str, float] = {}
-    for s in sessions:
-        exam = await db["exams"].find_one({"_id": s["exam_id"]})
-        if not exam: 
-            continue
-        assignment = await db["teaching_assignments"].find_one({"_id": exam["teaching_assignment_id"]})
-        if not assignment:
-            continue
-        subject = await db["subjects"].find_one({"_id": assignment["subject_id"]})
-        if not subject:
-            continue
-        key = str(subject["_id"])
-        subject_scores.setdefault(key, []).append(s.get("score", 0))
-        last_scores[key] = s.get("score", 0)
-
-    subject_performances: List[Dict[str, Any]] = []
-    total_scores_flat: List[float] = []
-    for subject_id_str, scores in subject_scores.items():
-        subject_doc = await db["subjects"].find_one({"_id": ObjectId(subject_id_str)})
-        if not subject_doc:
-            continue
-        exams_taken = len(scores)
-        avg = sum(scores) / exams_taken if exams_taken > 0 else 0.0
-        hi = max(scores) if exams_taken > 0 else 0.0
-        lo = min(scores) if exams_taken > 0 else 0.0
-        total_scores_flat.extend(scores)
-        subject_performances.append({
-            "subject_id": subject_doc["_id"],
-            "subject_name": subject_doc.get("name", "-"),
-            "exams_taken": exams_taken,
-            "average_score": round(avg, 2),
-            "highest_score": round(hi, 2),
-            "lowest_score": round(lo, 2),
-            "last_exam_score": round(last_scores.get(subject_id_str, 0.0), 2),
-        })
-
-    overall_average = round((sum(total_scores_flat) / len(total_scores_flat)), 2) if total_scores_flat else 0.0
-
-    # Nama kelas siswa (opsional)
-    profile = await db["profiles"].find_one({"user_id": student_obj})
-    class_name = None
-    if profile:
-        class_doc = await db["classes"].find_one({"_id": profile.get("class_id")})
-        if class_doc:
-            class_name = f"{class_doc.get('grade_level')} {class_doc.get('name')}"
-
-    result = {
-        "student_id": student_obj,
-        "class_name": class_name,
-        "overall_average": overall_average,
-        "total_exams_taken": len(total_scores_flat),
-        "subject_performances": subject_performances,
-    }
-
-    await set_cache(cache_key, result, ttl=1800)
-    return result
+# Fungsi-fungsi ini sudah ada di bagian bawah file dengan implementasi yang lebih lengkap
+# Bagian ini dihapus untuk menghindari duplikasi
 
 # ==============================================================================
 # File: app/crud/crud_score_analytics.py
@@ -364,7 +169,7 @@ async def get_admin_global_statistics(db: AsyncIOMotorDatabase, academic_period_
             "total_exams": {"$addToSet": "$exam_id"},
             "total_students": {"$addToSet": "$student_id"},
             "total_scores": {"$push": "$score"},
-            "total_questions": {"$sum": {"$size": "$answers"}}
+            "total_questions": {"$sum": {"$size": {"$objectToArray": "$answers"}}}
         }},
         
         # Project hasil akhir
@@ -855,7 +660,7 @@ async def get_teacher_class_statistics(db: AsyncIOMotorDatabase, teacher_id: str
             "average_score": {"$round": [{"$avg": "$scores"}, 2]},
             "highest_score": {"$max": "$scores"},
             "lowest_score": {"$min": "$scores"},
-            "completion_rate": 100,  # TODO: Calculate based on actual class size
+            "completion_rate": {"$literal": 100},
             "needs_attention_count": {
                 "$size": {
                     "$filter": {
@@ -1065,8 +870,8 @@ async def get_teacher_dashboard(db: AsyncIOMotorDatabase, teacher_id: str, acade
             "subject_id": "$_id",
             "subject_name": 1,
             "total_classes": {"$size": "$classes"},
-            "total_students": 0,  # TODO: Calculate from profiles
-            "overall_average": 0,  # TODO: Calculate from exam_sessions
+            "total_students": {"$literal": 0},
+            "overall_average": {"$literal": 0},
             "best_class": {"$arrayElemAt": ["$classes", 0]},
             "challenging_class": {"$arrayElemAt": ["$classes", -1]}
         }}
@@ -1390,6 +1195,158 @@ async def get_student_dashboard(db: AsyncIOMotorDatabase, student_id: str, acade
 # ============================================================================
 # ADDITIONAL UTILITY FUNCTIONS
 # ============================================================================
+async def get_student_class_exam_analytics(db: AsyncIOMotorDatabase, student_id: str, academic_period_id: str) -> Dict[str, Any]:
+    """Mendapatkan analitik ujian global untuk kelas siswa (untuk grafik)"""
+    cache_key = generate_cache_key("student_class_exam_analytics", student=student_id, period=academic_period_id)
+    cached_data = await get_cache(cache_key)
+    if cached_data:
+        return cached_data
+    
+    student_obj_id = ObjectId(student_id)
+    period_obj_id = ObjectId(academic_period_id)
+    
+    # Ambil class_id siswa
+    student_user = await db["users"].find_one({"_id": student_obj_id})
+    if not student_user:
+        return {}
+    
+    student_profile = await db["profiles"].find_one({"_id": student_user["profile_id"]})
+    if not student_profile:
+        return {}
+    
+    class_id = student_profile["class_id"]
+    
+    # Pipeline untuk mendapatkan semua ujian kelas dengan distribusi nilai
+    pipeline = [
+        {"$match": {"status": "graded", "score": {"$ne": None}}},
+        
+        # Lookup ke users untuk mendapatkan profile
+        {"$lookup": {"from": "users", "localField": "student_id", "foreignField": "_id", "as": "user"}},
+        {"$unwind": "$user"},
+        
+        {"$lookup": {"from": "profiles", "localField": "user.profile_id", "foreignField": "_id", "as": "profile"}},
+        {"$unwind": "$profile"},
+        
+        # Filter hanya siswa dari kelas yang sama
+        {"$match": {"profile.class_id": class_id}},
+        
+        # Lookup ke exams
+        {"$lookup": {"from": "exams", "localField": "exam_id", "foreignField": "_id", "as": "exam"}},
+        {"$unwind": "$exam"},
+        {"$match": {"exam.academic_period_id": period_obj_id}},
+        
+        # Lookup ke teaching assignments dan subjects
+        {"$lookup": {"from": "teaching_assignments", "localField": "exam.teaching_assignment_id", "foreignField": "_id", "as": "assignment"}},
+        {"$unwind": "$assignment"},
+        
+        {"$lookup": {"from": "subjects", "localField": "assignment.subject_id", "foreignField": "_id", "as": "subject"}},
+        {"$unwind": "$subject"},
+        
+        # Group by exam untuk mendapatkan distribusi nilai per ujian
+        {"$group": {
+            "_id": {
+                "exam_id": "$exam_id",
+                "exam_title": "$exam.title",
+                "subject_name": "$subject.name",
+                "exam_type": "$exam.exam_type",
+                "exam_date": "$submitted_at"
+            },
+            "all_scores": {"$push": "$score"},
+            "student_scores": {"$push": {
+                "$cond": [
+                    {"$eq": ["$student_id", student_obj_id]},
+                    "$score",
+                    "$$REMOVE"
+                ]
+            }},
+            "total_participants": {"$sum": 1}
+        }},
+        
+        # Project final data dengan distribusi
+        {"$project": {
+            "_id": 0,
+            "exam_id": "$_id.exam_id",
+            "exam_title": "$_id.exam_title",
+            "subject_name": "$_id.subject_name",
+            "exam_type": "$_id.exam_type",
+            "exam_date": "$_id.exam_date",
+            "class_average": {"$round": [{"$avg": "$all_scores"}, 2]},
+            "class_highest": {"$max": "$all_scores"},
+            "class_lowest": {"$min": "$all_scores"},
+            "student_score": {"$arrayElemAt": ["$student_scores", 0]},
+            "total_participants": 1,
+            "all_scores": 1  # Untuk distribusi
+        }},
+        
+        {"$sort": {"exam_date": -1}},
+        {"$limit": 20}  # Limit ke 20 ujian terbaru
+    ]
+    
+    exam_analytics = await db["exam_sessions"].aggregate(pipeline).to_list(20)
+    
+    # Proses distribusi nilai untuk setiap ujian
+    for exam in exam_analytics:
+        scores = exam.get("all_scores", [])
+        exam["score_distribution"] = _build_score_distribution(scores)
+        
+        # Hitung posisi siswa dalam distribusi
+        student_score = exam.get("student_score")
+        if student_score is not None:
+            better_scores = sum(1 for s in scores if s > student_score)
+            exam["student_percentile"] = round(((len(scores) - better_scores) / len(scores)) * 100, 1)
+        else:
+            exam["student_percentile"] = None
+        
+        # Hapus all_scores dari response (tidak perlu dikirim ke frontend)
+        exam.pop("all_scores", None)
+    
+    # Hitung trend performa kelas vs siswa (6 ujian terakhir)
+    recent_exams = exam_analytics[:6]
+    class_trend = []
+    student_trend = []
+    
+    for exam in reversed(recent_exams):  # Urutkan dari lama ke baru untuk trend
+        if exam.get("student_score") is not None:
+            class_trend.append({
+                "exam_title": exam["exam_title"][:20] + "..." if len(exam["exam_title"]) > 20 else exam["exam_title"],
+                "class_average": exam["class_average"],
+                "student_score": exam["student_score"],
+                "exam_date": exam["exam_date"]
+            })
+    
+    # Statistik keseluruhan kelas
+    if exam_analytics:
+        all_class_averages = [e["class_average"] for e in exam_analytics if e.get("class_average")]
+        all_student_scores = [e["student_score"] for e in exam_analytics if e.get("student_score") is not None]
+        
+        overall_class_stats = {
+            "total_exams": len(exam_analytics),
+            "class_overall_average": round(sum(all_class_averages) / len(all_class_averages), 2) if all_class_averages else 0,
+            "student_overall_average": round(sum(all_student_scores) / len(all_student_scores), 2) if all_student_scores else 0,
+            "exams_above_class_average": sum(1 for i, exam in enumerate(exam_analytics) 
+                                           if exam.get("student_score") and exam.get("class_average") 
+                                           and exam["student_score"] > exam["class_average"]),
+            "participation_rate": round((len(all_student_scores) / len(exam_analytics)) * 100, 1) if exam_analytics else 0
+        }
+    else:
+        overall_class_stats = {
+            "total_exams": 0,
+            "class_overall_average": 0,
+            "student_overall_average": 0,
+            "exams_above_class_average": 0,
+            "participation_rate": 0
+        }
+    
+    result = {
+        "exam_analytics": exam_analytics,
+        "trend_data": class_trend,
+        "overall_stats": overall_class_stats,
+        "generated_at": datetime.utcnow()
+    }
+    
+    await set_cache(cache_key, result, ttl=1800)  # Cache 30 menit
+    return result
+
 async def get_class_ranking(db: AsyncIOMotorDatabase, student_id: str, class_id: str, academic_period_id: str) -> Tuple[int, int]:
     """Mendapatkan ranking siswa dalam kelas"""
     # TODO: Implement detailed ranking calculation

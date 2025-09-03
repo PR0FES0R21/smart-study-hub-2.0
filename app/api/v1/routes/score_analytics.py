@@ -58,6 +58,7 @@ from app.schemas.score_analytics import (
     # Student schemas
     StudentPersonalDashboard, StudentSubjectPerformance, 
     StudentExamHistory, StudentClassComparison, StudentStrengthWeakness,
+    StudentClassExamAnalytics,
     
     # Common schemas
     ExamStatistics, ScoreDistribution, AnalyticsFilters,
@@ -175,7 +176,7 @@ async def export_admin_report(
 # ============================================================================
 # TEACHER ENDPOINTS
 # ============================================================================
-@router.get("/teacher/dashboard")
+@router.get("/teacher/dashboard", response_model=TeacherDashboard)
 async def get_teacher_dashboard(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher),
@@ -188,7 +189,9 @@ async def get_teacher_dashboard(
     
     teacher_id = str(current_user["_id"])
     academic_period_id = str(current_period["_id"])
-    return await crud_score_analytics.get_teacher_dashboard(db, teacher_id, academic_period_id)
+    data = await crud_score_analytics.get_teacher_dashboard(db, teacher_id, academic_period_id)
+    print(data, flush=True)
+    return TeacherDashboard.model_validate(data)
 
 @router.get("/teacher/class-statistics", response_model=List[TeacherClassStats])
 async def get_teacher_class_statistics(
@@ -446,6 +449,24 @@ async def get_student_strength_weakness(
         "needs_focus_subjects": [s["subject_name"] for s in subject_performances if s["average_score"] < 60],
         "consistency_rating": "Consistent"  # TODO: Calculate actual consistency
     }
+
+@router.get("/student/class-exam-analytics", response_model=StudentClassExamAnalytics)
+async def get_student_class_exam_analytics(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_user),
+    current_period: dict = Depends(deps.get_current_academic_period)
+):
+    """
+    Mendapatkan analitik ujian global kelas untuk siswa (untuk grafik).
+    Menampilkan distribusi nilai, trend performa, dan posisi siswa dalam kelas.
+    """
+    if "student" not in current_user.get("roles", []):
+        raise HTTPException(status_code=403, detail="Akses hanya untuk siswa")
+    
+    student_id = str(current_user["_id"])
+    academic_period_id = str(current_period["_id"])
+    
+    return await crud_score_analytics.get_student_class_exam_analytics(db, student_id, academic_period_id)
 
 
 # ============================================================================
