@@ -262,8 +262,8 @@ class StudentExamAnalytics(BaseModel):
     class_average: float
     class_highest: float
     class_lowest: float
-    student_score: Optional[float]
-    student_percentile: Optional[float]  # Posisi siswa dalam persentil kelas
+    student_score: Optional[float] = None  # Bisa null jika siswa tidak ikut ujian
+    student_percentile: Optional[float] = None  # Posisi siswa dalam persentil kelas
     total_participants: int
     score_distribution: List[ScoreDistribution]
 
@@ -350,4 +350,30 @@ class BenchmarkData(BaseModel):
     benchmark_value: float
     performance_level: str  # "above", "at", "below"
     percentile_rank: float
+
+
+# ============================================================================
+# NEW STUDENT INDIVIDUAL STATISTICS MODELS
+# ============================================================================
+class StudentIndividualStatistics(BaseModel):
+    """Statistik individu siswa"""
+    overall_average_student: float
+    best_score_student: float
+    latest_score_student: float
+    participant_rate: float
+    trend_scores_student: List[Dict[str, Any]]  # [{"exam_date": datetime, "score": float}]
+    score_distribution_student: List[ScoreDistribution]
+
+class StudentClassStatistics(BaseModel):
+    """Statistik komparatif kelas"""
+    overall_average_class: float
+    class_highest: float
+    class_lowest: float
+    trend_scores_class: List[Dict[str, Any]]  # [{"exam_date": datetime, "average_score": float}]
+    score_distribution_class: List[ScoreDistribution]
+
+class CombinedStudentStatistics(BaseModel):
+    """Gabungan statistik individu dan kelas untuk endpoint baru"""
+    student_statistics: StudentIndividualStatistics
+    class_statistics: StudentClassStatistics
 

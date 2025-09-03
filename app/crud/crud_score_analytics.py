@@ -1252,12 +1252,9 @@ async def get_student_class_exam_analytics(db: AsyncIOMotorDatabase, student_id:
                 "exam_date": "$submitted_at"
             },
             "all_scores": {"$push": "$score"},
-            "student_scores": {"$push": {
-                "$cond": [
-                    {"$eq": ["$student_id", student_obj_id]},
-                    "$score",
-                    "$$REMOVE"
-                ]
+            "all_students": {"$push": {
+                "student_id": "$student_id",
+                "score": "$score"
             }},
             "total_participants": {"$sum": 1}
         }},
@@ -1273,9 +1270,10 @@ async def get_student_class_exam_analytics(db: AsyncIOMotorDatabase, student_id:
             "class_average": {"$round": [{"$avg": "$all_scores"}, 2]},
             "class_highest": {"$max": "$all_scores"},
             "class_lowest": {"$min": "$all_scores"},
-            "student_score": {"$arrayElemAt": ["$student_scores", 0]},
+
             "total_participants": 1,
-            "all_scores": 1  # Untuk distribusi
+            "all_scores": 1,  # Untuk distribusi
+            "all_students": 1  # Untuk mencari student score
         }},
         
         {"$sort": {"exam_date": -1}},
@@ -1284,21 +1282,33 @@ async def get_student_class_exam_analytics(db: AsyncIOMotorDatabase, student_id:
     
     exam_analytics = await db["exam_sessions"].aggregate(pipeline).to_list(20)
     
-    # Proses distribusi nilai untuk setiap ujian
+    # Proses distribusi nilai dan cari student score untuk setiap ujian
     for exam in exam_analytics:
         scores = exam.get("all_scores", [])
         exam["score_distribution"] = _build_score_distribution(scores)
+        
+        # Pastikan field student_score ada (set default None dulu)
+        exam["student_score"] = None
+        exam["student_percentile"] = None
+
+        
+        # Cari student score dari data all_students
+        all_students = exam.get("all_students", [])
+        if all_students:
+            for student_data in all_students:
+                if student_data.get("student_id") == student_obj_id:
+                    exam["student_score"] = student_data.get("score")
+                    break
         
         # Hitung posisi siswa dalam distribusi
         student_score = exam.get("student_score")
         if student_score is not None:
             better_scores = sum(1 for s in scores if s > student_score)
             exam["student_percentile"] = round(((len(scores) - better_scores) / len(scores)) * 100, 1)
-        else:
-            exam["student_percentile"] = None
         
-        # Hapus all_scores dari response (tidak perlu dikirim ke frontend)
+        # Hapus data yang tidak perlu dari response
         exam.pop("all_scores", None)
+        exam.pop("all_students", None)
     
     # Hitung trend performa kelas vs siswa (6 ujian terakhir)
     recent_exams = exam_analytics[:6]
@@ -1353,13 +1363,281 @@ async def get_class_ranking(db: AsyncIOMotorDatabase, student_id: str, class_id:
     return (0, 0)
 
 async def generate_improvement_suggestions(db: AsyncIOMotorDatabase, student_id: str) -> List[str]:
-    """Generate saran perbaikan untuk siswa"""
-    # TODO: Implement AI-based suggestions
+    """Generate saran perbaikan untuk siswa berdasarkan performa"""
+    # TODO: Implement improvement suggestions logic
     return [
-        "Tingkatkan konsistensi belajar harian",
-        "Fokus pada pemahaman konsep dasar",
-        "Latihan soal lebih banyak pada mata pelajaran yang lemah"
+        "Fokus pada mata pelajaran dengan nilai terendah",
+        "Tingkatkan konsistensi belajar", 
+        "Konsultasi dengan guru mata pelajaran"
     ]
+
+# ============================================================================
+# NEW STUDENT INDIVIDUAL STATISTICS FUNCTIONS
+# ============================================================================
+
+async def get_student_individual_statistics(db: AsyncIOMotorDatabase, student_id: str, academic_period_id: str) -> Dict[str, Any]:
+    """Mendapatkan statistik individu siswa"""
+    cache_key = generate_cache_key("student_individual_stats", student=student_id, period=academic_period_id)
+    cached_data = await get_cache(cache_key)
+    if cached_data:
+        return cached_data
+    
+    student_obj_id = ObjectId(student_id)
+    period_obj_id = ObjectId(academic_period_id)
+    
+    # Pipeline untuk mendapatkan statistik individu siswa
+    pipeline = [
+        {"$match": {
+            "student_id": student_obj_id, 
+            "status": "graded", 
+            "score": {"$ne": None}
+        }},
+        
+        # Lookup exam dan teaching assignment untuk filter periode
+        {"$lookup": {
+            "from": "exams", 
+            "localField": "exam_id", 
+            "foreignField": "_id", 
+            "as": "exam"
+        }},
+        {"$unwind": "$exam"},
+        
+        {"$lookup": {
+            "from": "teaching_assignments", 
+            "localField": "exam.teaching_assignment_id", 
+            "foreignField": "_id", 
+            "as": "assignment"
+        }},
+        {"$unwind": "$assignment"},
+        {"$match": {"assignment.academic_period_id": period_obj_id}},
+        
+        # Project data yang diperlukan
+        {"$project": {
+            "score": 1,
+            "submitted_at": 1,
+            "exam_id": 1,
+            "exam_title": "$exam.title"
+        }},
+        
+        # Sort berdasarkan tanggal
+        {"$sort": {"submitted_at": -1}}
+    ]
+    
+    exam_sessions = await db["exam_sessions"].aggregate(pipeline).to_list(1000)
+    
+    if not exam_sessions:
+        return {
+            "overall_average_student": 0.0,
+            "best_score_student": 0.0,
+            "latest_score_student": 0.0,
+            "participant_rate": 0.0,
+            "trend_scores_student": [],
+            "score_distribution_student": calculate_score_distribution([])
+        }
+    
+    # Hitung statistik dasar
+    scores = [session["score"] for session in exam_sessions]
+    overall_average = sum(scores) / len(scores)
+    best_score = max(scores)
+    latest_score = scores[0] if scores else 0  # Sudah diurutkan desc
+    
+    # Hitung participant rate
+    # Ambil class_id siswa untuk menghitung total ujian kelas
+    student_user = await db["users"].find_one({"_id": student_obj_id})
+    if not student_user:
+        participant_rate = 0.0
+    else:
+        student_profile = await db["profiles"].find_one({"_id": student_user["profile_id"]})
+        if not student_profile:
+            participant_rate = 0.0
+        else:
+            class_id = student_profile.get("class_id")
+            if class_id:
+                # Hitung total ujian untuk kelas ini di periode ini
+                total_class_exams = await db["exams"].count_documents({
+                    "teaching_assignment_id": {"$in": await db["teaching_assignments"].distinct(
+                        "_id", 
+                        {"class_id": class_id, "academic_period_id": period_obj_id}
+                    )}
+                })
+                
+                student_exam_count = len(exam_sessions)
+                participant_rate = (student_exam_count / total_class_exams) * 100 if total_class_exams > 0 else 0
+            else:
+                participant_rate = 0.0
+    
+    # Ambil 10 nilai terakhir untuk trend
+    trend_data = []
+    for session in exam_sessions[:10]:
+        trend_data.append({
+            "exam_date": session["submitted_at"],
+            "score": session["score"]
+        })
+    
+    # Hitung distribusi nilai siswa
+    score_distribution = calculate_score_distribution(scores)
+    
+    result = {
+        "overall_average_student": round(overall_average, 2),
+        "best_score_student": best_score,
+        "latest_score_student": latest_score,
+        "participant_rate": round(participant_rate, 2),
+        "trend_scores_student": trend_data,
+        "score_distribution_student": score_distribution
+    }
+    
+    await set_cache(cache_key, result, ttl=3600)  # Cache 1 jam
+    return result
+
+async def get_student_class_statistics(db: AsyncIOMotorDatabase, student_id: str, academic_period_id: str) -> Dict[str, Any]:
+    """Mendapatkan statistik komparatif kelas untuk siswa"""
+    cache_key = generate_cache_key("student_class_stats", student=student_id, period=academic_period_id)
+    cached_data = await get_cache(cache_key)
+    if cached_data:
+        return cached_data
+    
+    student_obj_id = ObjectId(student_id)
+    period_obj_id = ObjectId(academic_period_id)
+    
+    # Ambil class_id siswa
+    student_user = await db["users"].find_one({"_id": student_obj_id})
+    if not student_user:
+        return _empty_class_statistics()
+    
+    student_profile = await db["profiles"].find_one({"_id": student_user["profile_id"]})
+    if not student_profile or not student_profile.get("class_id"):
+        return _empty_class_statistics()
+    
+    class_id = student_profile["class_id"]
+    
+    # Ambil semua siswa di kelas yang sama
+    classmates_pipeline = [
+        {"$match": {"class_id": class_id}},
+        {"$lookup": {
+            "from": "users", 
+            "localField": "user_id", 
+            "foreignField": "_id", 
+            "as": "user"
+        }},
+        {"$unwind": "$user"},
+        {"$match": {"user.roles": "student"}},
+        {"$project": {"user_id": "$user._id"}}
+    ]
+    
+    classmates = await db["profiles"].aggregate(classmates_pipeline).to_list(1000)
+    classmate_ids = [c["user_id"] for c in classmates]
+    
+    # Pipeline untuk mendapatkan semua nilai kelas
+    class_scores_pipeline = [
+        {"$match": {
+            "student_id": {"$in": classmate_ids},
+            "status": "graded",
+            "score": {"$ne": None}
+        }},
+        
+        {"$lookup": {
+            "from": "exams", 
+            "localField": "exam_id", 
+            "foreignField": "_id", 
+            "as": "exam"
+        }},
+        {"$unwind": "$exam"},
+        
+        {"$lookup": {
+            "from": "teaching_assignments", 
+            "localField": "exam.teaching_assignment_id", 
+            "foreignField": "_id", 
+            "as": "assignment"
+        }},
+        {"$unwind": "$assignment"},
+        {"$match": {"assignment.academic_period_id": period_obj_id}},
+        
+        # Group untuk mendapatkan data per ujian
+        {"$group": {
+            "_id": "$exam_id",
+            "exam_title": {"$first": "$exam.title"},
+            "exam_date": {"$first": "$exam.availability_start_time"},
+            "scores": {"$push": "$score"},
+            "all_scores": {"$push": "$score"}
+        }},
+        
+        # Project untuk mendapatkan rata-rata per ujian
+        {"$project": {
+            "_id": 0,
+            "exam_id": "$_id",
+            "exam_title": 1,
+            "exam_date": 1,
+            "average_score": {"$avg": "$scores"},
+            "all_scores": 1
+        }},
+        
+        {"$sort": {"exam_date": -1}}
+    ]
+    
+    class_exam_data = await db["exam_sessions"].aggregate(class_scores_pipeline).to_list(1000)
+    
+    if not class_exam_data:
+        return _empty_class_statistics()
+    
+    # Hitung overall average class
+    all_class_scores = []
+    for exam_data in class_exam_data:
+        all_class_scores.extend(exam_data["all_scores"])
+    
+    overall_average_class = sum(all_class_scores) / len(all_class_scores) if all_class_scores else 0
+    class_highest = max(all_class_scores) if all_class_scores else 0
+    class_lowest = min(all_class_scores) if all_class_scores else 0
+    
+    # Ambil 10 data ujian terakhir untuk trend
+    trend_data = []
+    for exam_data in class_exam_data[:10]:
+        trend_data.append({
+            "exam_date": exam_data["exam_date"],
+            "average_score": round(exam_data["average_score"], 2)
+        })
+    
+    # Distribusi nilai kelas
+    score_distribution_class = calculate_score_distribution(all_class_scores)
+    
+    result = {
+        "overall_average_class": round(overall_average_class, 2),
+        "class_highest": class_highest,
+        "class_lowest": class_lowest,
+        "trend_scores_class": trend_data,
+        "score_distribution_class": score_distribution_class
+    }
+    
+    await set_cache(cache_key, result, ttl=3600)  # Cache 1 jam
+    return result
+
+def _empty_class_statistics() -> Dict[str, Any]:
+    """Return empty class statistics when no data available"""
+    return {
+        "overall_average_class": 0.0,
+        "class_highest": 0.0,
+        "class_lowest": 0.0,
+        "trend_scores_class": [],
+        "score_distribution_class": calculate_score_distribution([])
+    }
+
+async def get_combined_student_statistics(db: AsyncIOMotorDatabase, student_id: str, academic_period_id: str) -> Dict[str, Any]:
+    """Mendapatkan gabungan statistik individu dan kelas untuk siswa"""
+    cache_key = generate_cache_key("student_combined_stats", student=student_id, period=academic_period_id)
+    cached_data = await get_cache(cache_key)
+    if cached_data:
+        return cached_data
+    
+    # Jalankan kedua fungsi secara paralel (conceptually)
+    individual_stats = await get_student_individual_statistics(db, student_id, academic_period_id)
+    class_stats = await get_student_class_statistics(db, student_id, academic_period_id)
+    
+    result = {
+        "student_statistics": individual_stats,
+        "class_statistics": class_stats
+    }
+    
+    await set_cache(cache_key, result, ttl=3600)  # Cache 1 jam
+    return result
 
 async def invalidate_score_analytics_cache(academic_period_id: str, student_id: Optional[str] = None, teacher_id: Optional[str] = None):
     """Invalidate cache when new scores are added"""

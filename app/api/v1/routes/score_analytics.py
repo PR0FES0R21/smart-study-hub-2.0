@@ -43,6 +43,7 @@ from fastapi import APIRouter, Depends, Query, HTTPException, BackgroundTasks
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from typing import List, Dict, Optional, Any
 from datetime import datetime
+from bson import ObjectId
 
 from app.api.v1 import deps
 from app.crud import crud_score_analytics
@@ -58,7 +59,8 @@ from app.schemas.score_analytics import (
     # Student schemas
     StudentPersonalDashboard, StudentSubjectPerformance, 
     StudentExamHistory, StudentClassComparison, StudentStrengthWeakness,
-    StudentClassExamAnalytics,
+    StudentClassExamAnalytics, StudentIndividualStatistics,
+    StudentClassStatistics, CombinedStudentStatistics,
     
     # Common schemas
     ExamStatistics, ScoreDistribution, AnalyticsFilters,
@@ -467,6 +469,58 @@ async def get_student_class_exam_analytics(
     academic_period_id = str(current_period["_id"])
     
     return await crud_score_analytics.get_student_class_exam_analytics(db, student_id, academic_period_id)
+
+@router.get("/student/my-statistics", response_model=CombinedStudentStatistics)
+async def get_my_student_statistics(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_user),
+    current_period: dict = Depends(deps.get_current_academic_period)
+):
+    """
+    Mendapatkan statistik lengkap siswa yang sedang login (individu + komparatif kelas).
+    Hanya bisa diakses oleh siswa itu sendiri.
+    
+    Statistik siswa (individual):
+    - overall_average_student: rata-rata nilai dari semua ujian yang sudah dikerjakan siswa
+    - best_score_student: nilai tertinggi siswa
+    - latest_score_student: nilai ujian terakhir siswa
+    - participant_rate: (jumlah ujian yang sudah dikerjakan siswa / total ujian kelas) * 100
+    - trend_scores_student: 10 nilai ujian terakhir siswa, format array [{exam_date, score}]
+    - score_distribution_student: distribusi nilai siswa (range 0–20, 21–40, dst.)
+    
+    Statistik kelas (comparative):
+    - overall_average_class: rata-rata nilai semua siswa dalam kelas
+    - class_highest: nilai tertinggi dalam kelas
+    - class_lowest: nilai terendah dalam kelas
+    - trend_scores_class: 10 data nilai ujian terakhir kelas (rata-rata per ujian), format array [{exam_date, average_score}]
+    - score_distribution_class: distribusi nilai seluruh siswa dalam kelas (range 0–20, 21–40, dst.)
+    """
+    
+    # Verify user is a student
+    if "student" not in current_user.get("roles", []):
+        raise HTTPException(
+            status_code=403, 
+            detail="Endpoint ini hanya dapat diakses oleh siswa"
+        )
+    
+    student_id = str(current_user["_id"])
+    academic_period_id = str(current_period["_id"])
+    
+    try:
+        # Get combined statistics for the current user
+        combined_stats = await crud_score_analytics.get_combined_student_statistics(
+            db, student_id, academic_period_id
+        )
+        
+        logger.info(f"Student statistics retrieved successfully for user {student_id}")
+        return combined_stats
+        
+    except Exception as e:
+        logger.error(f"Error getting student statistics for user {student_id}: {str(e)}")
+        raise HTTPException(
+            status_code=500, 
+            detail="Terjadi kesalahan saat mengambil statistik siswa"
+        )
 
 
 # ============================================================================
