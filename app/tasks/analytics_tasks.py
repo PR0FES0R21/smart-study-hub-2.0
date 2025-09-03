@@ -10,7 +10,7 @@ import json
 from app.core.celery_app import celery_app
 from app.core.config import settings
 from app.core.websocket import manager
-from app.core.cache import set_cache
+from app.core.cache import set_cache, invalidate_cache
 from app.crud.crud_analytics import build_competency_pipeline, generate_cache_key
 from typing import Optional, Dict, Any
 

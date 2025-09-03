@@ -16,6 +16,12 @@ from app.crud.crud_analytics import (
 from app.core.cache import invalidate_cache
 from app.crud.crud_analytics import generate_cache_key
 from app.tasks.analytics_tasks import recompute_competency_profile_task
+from app.crud.crud_score_analytics import (
+    ADMIN_DASHBOARD_CACHE, TEACHER_DASHBOARD_CACHE, STUDENT_DASHBOARD_CACHE
+)
+from app.tasks.score_analytics_tasks import (
+    precompute_admin_analytics, precompute_teacher_analytics, precompute_student_analytics
+)
 
 logger = logging.getLogger(__name__)
 
@@ -145,6 +151,26 @@ async def submit_and_grade_session(db: AsyncIOMotorDatabase, session: dict, exam
 
     await invalidate_cache(generate_cache_key({"grade_level": student_class["grade_level"]}))
     recompute_competency_profile_task.delay({"grade_level": student_class["grade_level"]})
+    
+    # --- Invalidasi cache Score Analytics yang relevan ---
+    try:
+        academic_period_id = str(exam.get("academic_period_id")) if exam.get("academic_period_id") else None
+        if academic_period_id:
+            await invalidate_cache(ADMIN_DASHBOARD_CACHE.format(period=academic_period_id))
+        assignment = await db["teaching_assignments"].find_one({"_id": exam.get("teaching_assignment_id")}) if exam.get("teaching_assignment_id") else None
+        if assignment and assignment.get("teacher_id") and academic_period_id:
+            await invalidate_cache(TEACHER_DASHBOARD_CACHE.format(teacher=str(assignment["teacher_id"]), period=academic_period_id))
+        if academic_period_id:
+            await invalidate_cache(STUDENT_DASHBOARD_CACHE.format(student=str(session["student_id"]), period=academic_period_id))
+        
+        # Optional precompute to warm caches
+        if academic_period_id:
+            precompute_admin_analytics.delay(academic_period_id)
+            if assignment and assignment.get("teacher_id"):
+                precompute_teacher_analytics.delay(str(assignment["teacher_id"]), academic_period_id)
+            precompute_student_analytics.delay(str(session["student_id"]), academic_period_id)
+    except Exception as e:
+        logger.warning(f"Score analytics cache invalidation/precompute failed: {e}")
     
     return await get_session_by_id(db, str(session["_id"]))
 
@@ -280,6 +306,26 @@ async def submit_and_grade_session_v2(
 
     await invalidate_cache(generate_cache_key({"grade_level": student_class["grade_level"]}))
     recompute_competency_profile_task.delay({"grade_level": student_class["grade_level"]})
+    
+    # --- Invalidasi cache Score Analytics yang relevan ---
+    try:
+        academic_period_id = str(exam.get("academic_period_id")) if exam.get("academic_period_id") else None
+        if academic_period_id:
+            await invalidate_cache(ADMIN_DASHBOARD_CACHE.format(period=academic_period_id))
+        assignment = await db["teaching_assignments"].find_one({"_id": exam.get("teaching_assignment_id")}) if exam.get("teaching_assignment_id") else None
+        if assignment and assignment.get("teacher_id") and academic_period_id:
+            await invalidate_cache(TEACHER_DASHBOARD_CACHE.format(teacher=str(assignment["teacher_id"]), period=academic_period_id))
+        if academic_period_id:
+            await invalidate_cache(STUDENT_DASHBOARD_CACHE.format(student=str(session["student_id"]), period=academic_period_id))
+
+        # Optional precompute to warm caches
+        if academic_period_id:
+            precompute_admin_analytics.delay(academic_period_id)
+            if assignment and assignment.get("teacher_id"):
+                precompute_teacher_analytics.delay(str(assignment["teacher_id"]), academic_period_id)
+            precompute_student_analytics.delay(str(session["student_id"]), academic_period_id)
+    except Exception as e:
+        logger.warning(f"Score analytics cache invalidation/precompute failed: {e}")
     
     return await get_session_by_id(db, str(session["_id"]))
 
