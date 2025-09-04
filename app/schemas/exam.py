@@ -72,6 +72,11 @@ class BulkExamCreate(BaseModel):
 class ExamQuestionUpdate(BaseModel):
     question_ids: List[PyObjectId]
 
+class ExamCompleteRequest(BaseModel):
+    """Request untuk menyelesaikan ujian secara manual"""
+    confirmation: bool = Field(..., description="Konfirmasi untuk menyelesaikan ujian")
+    reason: Optional[str] = Field(None, description="Alasan menyelesaikan ujian secara manual")
+
 class ExamWithDetails(ExamPublic):
     teaching_assignment_details: Optional[TeachingAssignmentWithDetails] = None
     academic_period_details: Optional[AcademicPeriodPublic] = None
@@ -79,6 +84,7 @@ class ExamWithDetails(ExamPublic):
     # Field tambahan untuk student endpoint
     has_session: Optional[bool] = None  # Apakah siswa sudah pernah mengerjakan
     session_score: Optional[float] = None  # Skor dari exam session jika ada
+    exam_session_id: Optional[PyObjectId] = None  # ID dari exam session jika ada (hanya untuk student)
 
 class PaginatedExamResponse(BaseModel):
     total_items: int

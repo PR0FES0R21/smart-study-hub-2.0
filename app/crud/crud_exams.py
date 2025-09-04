@@ -327,6 +327,47 @@ async def set_exam_status(db: AsyncIOMotorDatabase, exam_id: str, status: str) -
     )
     return await get_exam_by_id(db, exam_id)
 
+async def complete_exam_manually(
+    db: AsyncIOMotorDatabase, 
+    exam_id: str, 
+    completed_by: ObjectId,
+    reason: Optional[str] = None
+) -> dict | None:
+    """
+    Menyelesaikan ujian secara manual dengan mengubah status menjadi 'completed'.
+    Juga mencatat informasi siapa yang menyelesaikan dan kapan.
+    """
+    if not ObjectId.is_valid(exam_id):
+        return None
+    
+    exam_obj_id = ObjectId(exam_id)
+    
+    # Check if exam exists
+    exam = await db["exams"].find_one({"_id": exam_obj_id})
+    if not exam:
+        return None
+    
+    # Prepare update data
+    update_data = {
+        "status": "completed",
+        "completed_at": datetime.utcnow(),
+        "completed_by": completed_by,
+        "updated_at": datetime.utcnow()
+    }
+    
+    if reason:
+        update_data["completion_reason"] = reason
+    
+    # Update exam status
+    await db["exams"].update_one(
+        {"_id": exam_obj_id},
+        {"$set": update_data}
+    )
+    
+    logger.info(f"Exam {exam_id} completed manually by {completed_by}. Reason: {reason or 'No reason provided'}")
+    
+    return await get_exam_by_id(db, exam_id)
+
 async def delete_exam_and_sessions(db: AsyncIOMotorDatabase, exam_id: str) -> bool:
     """Menghapus dokumen ujian dan semua sesi ujian terkait."""
     if not ObjectId.is_valid(exam_id): return False
@@ -543,6 +584,19 @@ async def get_exams_by_student(
                 "$cond": {
                     "if": {"$gt": [{"$size": "$exam_session"}, 0]},
                     "then": {"$arrayElemAt": ["$exam_session.score", 0]},
+                    "else": None
+                }
+            },
+            # Tambahkan exam_session_id ketika status adalah completed (graded)
+            "exam_session_id": {
+                "$cond": {
+                    "if": {
+                        "$and": [
+                            {"$gt": [{"$size": "$exam_session"}, 0]},
+                            {"$eq": [{"$arrayElemAt": ["$exam_session.status", 0]}, "graded"]}
+                        ]
+                    },
+                    "then": {"$arrayElemAt": ["$exam_session._id", 0]},
                     "else": None
                 }
             }

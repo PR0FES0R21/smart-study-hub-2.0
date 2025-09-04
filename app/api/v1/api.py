@@ -10,7 +10,8 @@ from .routes import (
         exams, exam_sessions, analytics, academic_actions,
         data_jobs, ws, ws_exam_room, activity_logs,
         academic_periods, profiles, coordination_assignments, 
-        question_sets, question_submissions, score_analytics, exam_analytics
+        question_sets, question_submissions, score_analytics, exam_analytics,
+        teacher_analytics
     )
 
 api_router = APIRouter()
@@ -26,6 +27,7 @@ api_router.include_router(exam_sessions.router, prefix="/exam-sessions", tags=["
 api_router.include_router(analytics.router, prefix="/analytics", tags=["analytics"])
 api_router.include_router(score_analytics.router, prefix="/score-analytics", tags=["score-analytics"])
 api_router.include_router(exam_analytics.router, prefix="/exam-analytics", tags=["exam-analytics"])
+api_router.include_router(teacher_analytics.router, prefix="/teacher-analytics", tags=["teacher-analytics"])
 api_router.include_router(academic_actions.router, prefix="/academic-actions", tags=["academic-actions"])
 api_router.include_router(data_jobs.router, prefix="/jobs", tags=["data-jobs"])
 api_router.include_router(ws.router)

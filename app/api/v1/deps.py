@@ -94,7 +94,7 @@ async def get_exam_room_participant(
     return user
 
 async def get_current_active_teacher(current_user: dict = Depends(get_current_active_user)) -> dict:
-    if "teacher" not in current_user.get("roles", []): raise HTTPException(status_code=403, detail=current_user)
+    if "teacher" not in current_user.get("roles", []): raise HTTPException(status_code=403, detail="The user doesn't have enough privileges")
     return current_user
 
 async def get_current_active_admin(current_user: dict = Depends(get_current_active_user)) -> dict:

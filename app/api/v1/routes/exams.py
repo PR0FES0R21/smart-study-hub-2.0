@@ -13,7 +13,7 @@ from app.crud import crud_exams, crud_teaching_assignments, crud_academic_period
 from app.schemas.exam import (
     ExamCreate, ExamPublic, BulkExamCreate, 
     ExamQuestionUpdate, ExamWithDetails,
-    PaginatedExamResponse, ExamUpdate
+    PaginatedExamResponse, ExamUpdate, ExamCompleteRequest
 )
 from app.schemas.exam_session import ExamSessionPublic
 from app.core.websocket import manager
@@ -284,6 +284,100 @@ async def start_exam_manually(
     # await manager.broadcast_to_students(exam_id, {"type": "EXAM_STARTED", "exam_id": exam_id})
     
     return updated_exam
+
+@router.post("/{exam_id}/complete", response_model=ExamPublic)
+async def complete_exam_manually(
+    exam_id: str,
+    request: ExamCompleteRequest,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Menyelesaikan ujian secara manual dengan mengubah status menjadi 'completed'.
+    
+    Hanya bisa dilakukan oleh:
+    - Admin (bisa menyelesaikan ujian apapun)
+    - Guru yang ditugaskan untuk ujian tersebut
+    - Pengawas yang ditugaskan untuk ujian tersebut
+    
+    Parameter:
+    - confirmation: Boolean yang harus true sebagai konfirmasi
+    - reason: Alasan opsional mengapa ujian diselesaikan manual
+    """
+    # Validasi konfirmasi
+    if not request.confirmation:
+        raise HTTPException(
+            status_code=400, 
+            detail="Confirmation is required to complete the exam manually"
+        )
+    
+    # Cek apakah ujian ada
+    exam = await crud_exams.get_exam_by_id(db, exam_id)
+    if not exam:
+        raise HTTPException(status_code=404, detail="Exam not found")
+    
+    # Cek apakah ujian sudah completed
+    if exam.get("status") == "completed":
+        raise HTTPException(
+            status_code=400, 
+            detail="Exam is already completed"
+        )
+    
+    # Otorisasi: Cek apakah user memiliki akses
+    is_admin = "admin" in current_user.get("roles", [])
+    
+    # Cek apakah user adalah guru yang ditugaskan
+    assignment = await db["teaching_assignments"].find_one({"_id": exam["teaching_assignment_id"]})
+    is_assigned_teacher = assignment and assignment["teacher_id"] == current_user["_id"]
+    
+    # Cek apakah user adalah pengawas
+    proctor_ids_as_str = [str(p_id) for p_id in exam.get("proctor_ids", [])]
+    is_proctor = str(current_user["_id"]) in proctor_ids_as_str
+    
+    # Jika bukan admin, guru, atau pengawas, maka tidak diizinkan
+    if not (is_admin or is_assigned_teacher or is_proctor):
+        raise HTTPException(
+            status_code=403, 
+            detail="You are not authorized to complete this exam. Only admin, assigned teacher, or proctors can complete exams manually."
+        )
+    
+    # Validasi status ujian
+    current_status = exam.get("status")
+    if current_status in ["pending_questions", "ready"]:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Cannot complete exam with status '{current_status}'. Exam must be started (ongoing) first."
+        )
+    
+    # Log aktivitas untuk audit
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    user_role = "admin" if is_admin else ("teacher" if is_assigned_teacher else "proctor")
+    logger.info(
+        f"EXAM_COMPLETE_MANUAL: {user_role.upper()} {current_user['_id']} manually completing exam {exam_id}. "
+        f"Previous status: {current_status}. Reason: {request.reason or 'No reason provided'}"
+    )
+    
+    # Menyelesaikan ujian
+    completed_exam = await crud_exams.complete_exam_manually(
+        db=db,
+        exam_id=exam_id,
+        completed_by=current_user["_id"],
+        reason=request.reason
+    )
+    
+    if not completed_exam:
+        raise HTTPException(status_code=500, detail="Failed to complete exam")
+    
+    # Optional: Kirim notifikasi WebSocket ke siswa yang terkait
+    # await manager.broadcast_to_students(exam_id, {
+    #     "type": "EXAM_COMPLETED", 
+    #     "exam_id": exam_id,
+    #     "message": "Ujian telah diselesaikan oleh pengawas"
+    # })
+    
+    return completed_exam
 
 @router.delete("/{exam_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_existing_exam(

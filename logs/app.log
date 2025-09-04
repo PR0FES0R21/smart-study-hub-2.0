@@ -60389,3 +60389,1824 @@ KeyError: 'first_name'
 2025-09-04 02:03:45,088 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
 2025-09-04 02:03:45,089 [INFO] app.main: WebSocket Redis bridge ditutup
 2025-09-04 02:03:45,207 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 02:25:06,946 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 02:25:08,630 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 02:25:08,648 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 02:25:08,649 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 02:25:08,649 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 02:25:08,650 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 02:25:08,651 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 02:33:15,426 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 02:33:15,505 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 02:33:15,581 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 02:33:15,940 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 02:33:17,961 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 02:33:17,961 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 02:33:18,048 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 02:33:18,050 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 02:33:18,050 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 02:34:39,036 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 02:34:39,037 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 02:34:39,038 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 02:34:39,039 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 02:34:39,040 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 02:34:39,121 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 13:42:37,065 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 13:42:38,624 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 13:42:38,633 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 13:42:38,633 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 13:42:38,634 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 13:42:38,635 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 13:42:38,636 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 13:46:48,368 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d45505a6-7be0-44f9-86cb-95fb33d27cca | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 13:46:48,368 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d45505a6-7be0-44f9-86cb-95fb33d27cca | successful=0/0 | failed=0 | time=0.98ms
+2025-09-04 13:46:48,595 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=34fc04dd-f100-4dc3-88d9-b9b66ee901c6 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-04 13:46:49,135 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-04 13:46:49,135 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=49a1e8a8-5dc3-4f1d-9356-d8a4ada925b3 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 13:46:49,136 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=49a1e8a8-5dc3-4f1d-9356-d8a4ada925b3 | successful=0/0 | failed=0 | time=0.98ms
+2025-09-04 13:46:49,136 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=34fc04dd-f100-4dc3-88d9-b9b66ee901c6 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=541.08ms
+2025-09-04 13:46:57,866 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 68b2dcbdcccc321f815ea3f5
+2025-09-04 13:46:57,942 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 68b2dcbdcccc321f815ea3f5
+2025-09-04 13:47:05,991 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 68b2dcbdcccc321f815ea3f5
+2025-09-04 13:47:06,215 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 68b2dcbdcccc321f815ea3f5
+2025-09-04 13:47:22,863 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=4e219384-e49e-4a19-9b2b-98429d7a511a | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-04 13:47:23,041 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-04 13:47:23,042 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8ed8cd76-eaee-482e-9617-44d8d070ad19 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 13:47:23,042 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8ed8cd76-eaee-482e-9617-44d8d070ad19 | successful=0/0 | failed=0 | time=0.98ms
+2025-09-04 13:47:23,042 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=4e219384-e49e-4a19-9b2b-98429d7a511a | user_id=68822f07979cbba23e6db950 | connection_time=178.72ms
+2025-09-04 13:48:34,305 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=8f8ba3ad-db1d-43da-89a7-fb63a0ff2a8b | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 13:48:34,463 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 13:48:34,464 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5fa0ef2f-d197-4fca-a7eb-e704eb65a9ae | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 13:48:34,465 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5fa0ef2f-d197-4fca-a7eb-e704eb65a9ae | successful=0/0 | failed=0 | time=1.01ms
+2025-09-04 13:48:34,466 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=8f8ba3ad-db1d-43da-89a7-fb63a0ff2a8b | user_id=688477a78a56906f19d02551 | connection_time=161.03ms
+2025-09-04 13:49:05,417 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:49:05,829 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:49:49,741 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:49:49,880 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:49:56,280 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 13:49:56,280 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=56ad9900-2ed6-4cc3-ae21-b1a2c9ed0bbd | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 13:49:56,281 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=56ad9900-2ed6-4cc3-ae21-b1a2c9ed0bbd | successful=0/0 | failed=0 | time=1.0ms
+2025-09-04 13:49:57,995 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=ce2948f6-31fe-4da3-b5b1-bee72961d927 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 13:49:58,005 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:49:58,105 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:49:58,166 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 13:49:58,166 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=fafc84fd-bfd6-4b6d-92e6-41a8ed93d806 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 13:49:58,167 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=fafc84fd-bfd6-4b6d-92e6-41a8ed93d806 | successful=0/0 | failed=0 | time=1.0ms
+2025-09-04 13:49:58,167 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=ce2948f6-31fe-4da3-b5b1-bee72961d927 | user_id=688477a78a56906f19d02551 | connection_time=171.59ms
+2025-09-04 13:50:06,031 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:50:06,120 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:50:41,278 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:50:41,354 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 13:52:11,850 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3acbbd41-f7d4-44b2-aa1b-28a1395823a4 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 13:52:11,851 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3acbbd41-f7d4-44b2-aa1b-28a1395823a4 | successful=0/0 | failed=0 | time=0.94ms
+2025-09-04 13:57:22,285 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 13:57:22,361 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 13:57:22,499 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 13:57:22,827 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 13:57:24,666 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 13:57:24,667 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 13:57:24,748 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 13:57:24,748 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 13:57:24,749 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 13:57:47,230 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 13:57:47,230 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3f249459-e443-4daa-9e34-3afbded3fe30 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 13:57:47,231 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3f249459-e443-4daa-9e34-3afbded3fe30 | successful=0/0 | failed=0 | time=1.01ms
+2025-09-04 13:57:47,255 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-04 13:57:47,255 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5380f3a4-c51e-4774-9109-15947f0000cc | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 13:57:47,256 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5380f3a4-c51e-4774-9109-15947f0000cc | successful=0/0 | failed=0 | time=1.0ms
+2025-09-04 13:57:47,279 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-04 13:57:47,280 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=49c1cc8a-4b6c-4d39-a8ca-c6241095236d | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 13:57:47,280 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=49c1cc8a-4b6c-4d39-a8ca-c6241095236d | successful=0/0 | failed=0 | time=0.0ms
+2025-09-04 13:57:47,305 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 13:57:47,305 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 13:57:47,307 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 13:57:47,309 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 13:57:47,309 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 13:57:47,442 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:14:17,825 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:14:19,032 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:14:19,046 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:14:19,047 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:14:19,048 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:14:19,049 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:14:19,051 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:14:48,014 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 14:14:48,015 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:15:40,408 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 14:15:40,469 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 14:15:40,537 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 14:15:40,804 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 14:15:40,872 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 14:15:40,937 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found for correctness check
+2025-09-04 14:15:40,985 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found for correctness check
+2025-09-04 14:15:41,043 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found for correctness check
+2025-09-04 14:15:41,100 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found for correctness check
+2025-09-04 14:15:41,101 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 5 total answers
+2025-09-04 14:15:41,489 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database
+2025-09-04 14:15:41,547 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found in database
+2025-09-04 14:15:41,612 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found in database
+2025-09-04 14:15:41,696 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found in database
+2025-09-04 14:15:41,751 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found in database
+2025-09-04 14:15:43,089 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 14:15:43,090 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 14:15:43,178 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 14:15:43,179 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 14:15:43,180 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:17:09,073 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:17:09,074 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:17:09,075 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:17:09,076 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:17:09,076 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:17:09,145 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:18:21,854 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:18:22,907 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:18:22,920 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:18:22,921 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:18:22,922 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:18:22,922 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:18:22,924 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:19:50,984 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 14:19:51,031 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 14:19:51,081 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 14:19:51,501 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 14:19:51,560 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 14:19:51,620 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found for correctness check
+2025-09-04 14:19:51,684 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found for correctness check
+2025-09-04 14:19:51,747 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found for correctness check
+2025-09-04 14:19:51,806 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found for correctness check
+2025-09-04 14:19:51,807 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 5 total answers
+2025-09-04 14:19:52,101 [INFO] app.crud.exam_analytics: Using score-based estimation: 2 correct answers from score 40.0/100.0
+2025-09-04 14:19:52,454 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 14:19:52,462 [ERROR] app.crud.exam_analytics: Error processing question 6888b18eda5b866b5af5a28b: local variable 'student_answer' referenced before assignment
+2025-09-04 14:19:52,510 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found in database - using fallback
+2025-09-04 14:19:52,511 [ERROR] app.crud.exam_analytics: Error processing question 6888b1d8da5b866b5af5a291: local variable 'student_answer' referenced before assignment
+2025-09-04 14:19:52,559 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found in database - using fallback
+2025-09-04 14:19:52,560 [ERROR] app.crud.exam_analytics: Error processing question 6888bbb0da5b866b5af5a294: local variable 'student_answer' referenced before assignment
+2025-09-04 14:19:52,609 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found in database - using fallback
+2025-09-04 14:19:52,610 [ERROR] app.crud.exam_analytics: Error processing question 688ba311c97c3d98965af418: local variable 'student_answer' referenced before assignment
+2025-09-04 14:19:52,667 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found in database - using fallback
+2025-09-04 14:19:52,668 [ERROR] app.crud.exam_analytics: Error processing question 688c844bfcc1873a29ed958a: local variable 'student_answer' referenced before assignment
+2025-09-04 14:19:53,949 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 14:19:53,950 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 14:19:54,037 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 14:19:54,043 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 14:19:54,044 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:20:13,518 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:20:13,518 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:20:13,521 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:20:13,522 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:20:13,522 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:20:13,589 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:20:38,333 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:20:39,485 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:20:39,496 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:20:39,497 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:20:39,498 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:20:39,499 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:20:39,500 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:21:15,075 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:21:15,076 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:21:15,078 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:21:15,079 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:21:15,080 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:21:15,156 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:31:14,552 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:31:16,147 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:31:16,158 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:31:16,159 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:31:16,160 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:31:16,161 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:31:16,162 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:32:08,287 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 14:32:08,348 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 14:32:08,412 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 14:32:08,620 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 14:32:08,690 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 14:32:08,740 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found for correctness check
+2025-09-04 14:32:08,797 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found for correctness check
+2025-09-04 14:32:08,867 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found for correctness check
+2025-09-04 14:32:08,919 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found for correctness check
+2025-09-04 14:32:08,920 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 5 total answers
+2025-09-04 14:32:09,217 [INFO] app.crud.exam_analytics: Using score-based estimation: 2 correct answers from score 40.0/100.0
+2025-09-04 14:32:09,541 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 14:32:09,607 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found in database - using fallback
+2025-09-04 14:32:09,665 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found in database - using fallback
+2025-09-04 14:32:09,740 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found in database - using fallback
+2025-09-04 14:32:09,788 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found in database - using fallback
+2025-09-04 14:32:10,783 [ERROR] app.crud.exam_analytics: Error generating answer pattern analysis: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:32:10,783 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 14:32:10,784 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 14:32:10,891 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 14:32:10,892 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 14:32:10,892 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:33:31,991 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 14:33:32,058 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 14:33:32,115 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 14:33:32,440 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 14:33:32,498 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 14:33:32,554 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found for correctness check
+2025-09-04 14:33:32,603 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found for correctness check
+2025-09-04 14:33:32,658 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found for correctness check
+2025-09-04 14:33:32,737 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found for correctness check
+2025-09-04 14:33:32,738 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 5 total answers
+2025-09-04 14:33:33,033 [INFO] app.crud.exam_analytics: Using score-based estimation: 2 correct answers from score 40.0/100.0
+2025-09-04 14:33:33,433 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 14:33:33,486 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found in database - using fallback
+2025-09-04 14:33:33,541 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found in database - using fallback
+2025-09-04 14:33:33,630 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found in database - using fallback
+2025-09-04 14:33:33,683 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found in database - using fallback
+2025-09-04 14:33:34,760 [ERROR] app.crud.exam_analytics: Error generating answer pattern analysis: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:33:34,761 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 14:33:34,761 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 14:33:34,852 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 14:33:34,852 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 14:33:34,853 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:46:14,279 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:46:14,280 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:46:14,281 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:46:14,282 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:46:14,283 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:46:14,365 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:46:20,842 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:46:22,236 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:46:22,246 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:46:22,247 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:46:22,247 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:46:22,248 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:46:22,249 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:46:28,641 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:46:29,753 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:46:29,762 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:46:29,762 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:46:29,763 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:46:29,763 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:46:29,764 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:46:42,401 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:46:42,401 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:46:42,403 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:46:42,405 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:46:42,406 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:46:42,486 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:46:48,956 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:46:50,179 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:46:50,211 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:46:50,211 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:46:50,212 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:46:50,213 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:46:50,214 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:46:51,513 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:46:51,513 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:46:51,515 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:46:51,516 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:46:51,516 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:46:51,590 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:46:57,917 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:46:59,171 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:46:59,196 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:46:59,196 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:46:59,197 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:46:59,197 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:46:59,198 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:47:01,047 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:47:01,047 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:47:01,049 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:47:01,049 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:47:01,050 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:47:01,104 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:47:07,499 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:47:08,642 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:47:08,672 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:47:08,673 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:47:08,673 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:47:08,674 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:47:08,675 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:47:23,048 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:47:23,048 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:47:23,049 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:47:23,050 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:47:23,051 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:47:23,302 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:47:29,445 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:47:30,567 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:47:30,595 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:47:30,596 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:47:30,596 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:47:30,597 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:47:30,598 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:47:43,324 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:47:43,324 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:47:43,326 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:47:43,328 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:47:43,329 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:47:43,669 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:47:50,059 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:47:51,418 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:47:51,428 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:47:51,429 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:47:51,429 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:47:51,430 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:47:51,431 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:47:58,400 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:47:58,400 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:47:58,402 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:47:58,403 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:47:58,403 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:47:58,546 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:48:04,991 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:48:06,122 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:48:06,148 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:48:06,149 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:48:06,150 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:48:06,151 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:48:06,152 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:48:21,628 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:48:21,629 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:48:21,630 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:48:21,633 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:48:21,633 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:48:22,034 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:48:28,488 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:48:29,662 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:48:29,691 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:48:29,692 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:48:29,693 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:48:29,694 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:48:29,695 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:48:36,444 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:48:36,445 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:48:36,446 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:48:36,447 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:48:36,447 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:48:36,632 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:48:43,072 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:48:44,370 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:48:44,379 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:48:44,380 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:48:44,381 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:48:44,381 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:48:44,382 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:48:51,116 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:48:52,325 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:48:52,335 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:48:52,336 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:48:52,337 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:48:52,337 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:48:52,338 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:48:57,809 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:48:59,013 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:48:59,024 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:48:59,026 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:48:59,027 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:48:59,028 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:48:59,029 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:49:29,109 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 14:49:29,165 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 14:49:29,239 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 14:49:29,574 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 14:49:29,628 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 14:49:29,687 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found for correctness check
+2025-09-04 14:49:29,748 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found for correctness check
+2025-09-04 14:49:29,820 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found for correctness check
+2025-09-04 14:49:29,883 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found for correctness check
+2025-09-04 14:49:29,884 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 5 total answers
+2025-09-04 14:49:30,217 [INFO] app.crud.exam_analytics: Using score-based estimation: 2 correct answers from score 40.0/100.0
+2025-09-04 14:49:30,578 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 14:49:30,626 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found in database - using fallback
+2025-09-04 14:49:30,685 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found in database - using fallback
+2025-09-04 14:49:30,728 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found in database - using fallback
+2025-09-04 14:49:30,787 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found in database - using fallback
+2025-09-04 14:49:31,686 [ERROR] app.crud.exam_analytics: Error generating answer pattern analysis: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:49:31,687 [ERROR] app.crud.exam_analytics: Full traceback for answer pattern analysis:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 174, in generate_exam_analytics
+    answer_pattern_analysis = await self._analyze_answer_patterns(exam_session, questions_analytics)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 1033, in _analyze_answer_patterns
+    if question.get("is_correct", False):
+       ^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pydantic\main.py", line 991, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:49:31,696 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 14:49:31,697 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 14:49:31,788 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 14:49:31,788 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 14:49:31,789 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:49:52,758 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:49:52,758 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:49:52,760 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:49:52,761 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:49:52,761 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:49:52,822 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:53:08,175 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 14:53:08,234 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 14:53:08,309 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 14:53:08,558 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 14:53:08,606 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 14:53:08,660 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found for correctness check
+2025-09-04 14:53:08,719 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found for correctness check
+2025-09-04 14:53:08,777 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found for correctness check
+2025-09-04 14:53:08,839 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found for correctness check
+2025-09-04 14:53:08,840 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 5 total answers
+2025-09-04 14:53:09,166 [INFO] app.crud.exam_analytics: Using score-based estimation: 2 correct answers from score 40.0/100.0
+2025-09-04 14:53:09,528 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 14:53:09,633 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found in database - using fallback
+2025-09-04 14:53:09,705 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found in database - using fallback
+2025-09-04 14:53:09,757 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found in database - using fallback
+2025-09-04 14:53:09,829 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found in database - using fallback
+2025-09-04 14:53:10,844 [ERROR] app.crud.exam_analytics: Error generating answer pattern analysis: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:53:10,845 [ERROR] app.crud.exam_analytics: Full traceback for answer pattern analysis:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 174, in generate_exam_analytics
+    answer_pattern_analysis = await self._analyze_answer_patterns(exam_session, questions_analytics)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 1033, in _analyze_answer_patterns
+    if question.get("is_correct", False):
+       ^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pydantic\main.py", line 991, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:53:10,851 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 14:53:10,851 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 14:53:10,934 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 14:53:10,935 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 14:53:10,936 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:54:06,172 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:54:07,256 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:54:07,268 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:54:07,269 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:54:07,270 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:54:07,271 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:54:07,272 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:54:16,407 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 14:54:16,464 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 14:54:16,522 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 14:54:16,837 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 14:54:16,930 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 14:54:17,016 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found for correctness check
+2025-09-04 14:54:17,072 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found for correctness check
+2025-09-04 14:54:17,144 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found for correctness check
+2025-09-04 14:54:17,204 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found for correctness check
+2025-09-04 14:54:17,204 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 5 total answers
+2025-09-04 14:54:17,506 [INFO] app.crud.exam_analytics: Using score-based estimation: 2 correct answers from score 40.0/100.0
+2025-09-04 14:54:17,927 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 14:54:17,992 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found in database - using fallback
+2025-09-04 14:54:18,044 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found in database - using fallback
+2025-09-04 14:54:18,120 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found in database - using fallback
+2025-09-04 14:54:18,163 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found in database - using fallback
+2025-09-04 14:54:19,193 [ERROR] app.crud.exam_analytics: Error generating answer pattern analysis: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:54:19,194 [ERROR] app.crud.exam_analytics: Full traceback for answer pattern analysis:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 174, in generate_exam_analytics
+    answer_pattern_analysis = await self._analyze_answer_patterns(exam_session, questions_analytics)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 1033, in _analyze_answer_patterns
+    if question.get("is_correct", False):
+       ^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pydantic\main.py", line 991, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:54:19,198 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 14:54:19,199 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 14:54:19,336 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 14:54:19,337 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 14:54:19,338 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:54:34,363 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:54:34,364 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:54:34,366 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:54:34,367 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:54:34,367 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:54:34,430 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:56:11,612 [INFO] app.crud.exam_analytics: Found exam session 68b8906236d5ea99a6b34960, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-04 14:56:11,722 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68b8906236d5ea99a6b34960
+2025-09-04 14:56:11,776 [INFO] app.crud.exam_analytics: Found student:   for session 68b8906236d5ea99a6b34960
+2025-09-04 14:56:12,146 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b8906236d5ea99a6b34960
+2025-09-04 14:56:12,218 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 14:56:12,267 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found for correctness check
+2025-09-04 14:56:12,331 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found for correctness check
+2025-09-04 14:56:12,396 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found for correctness check
+2025-09-04 14:56:12,435 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found for correctness check
+2025-09-04 14:56:12,435 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 5 total answers
+2025-09-04 14:56:12,711 [INFO] app.crud.exam_analytics: Using score-based estimation: 2 correct answers from score 40.0/100.0
+2025-09-04 14:56:13,104 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 14:56:13,156 [WARNING] app.crud.exam_analytics: Question 6888b1d8da5b866b5af5a291 not found in database - using fallback
+2025-09-04 14:56:13,219 [WARNING] app.crud.exam_analytics: Question 6888bbb0da5b866b5af5a294 not found in database - using fallback
+2025-09-04 14:56:13,276 [WARNING] app.crud.exam_analytics: Question 688ba311c97c3d98965af418 not found in database - using fallback
+2025-09-04 14:56:13,331 [WARNING] app.crud.exam_analytics: Question 688c844bfcc1873a29ed958a not found in database - using fallback
+2025-09-04 14:56:14,326 [ERROR] app.crud.exam_analytics: Error generating answer pattern analysis: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:56:14,326 [ERROR] app.crud.exam_analytics: Full traceback for answer pattern analysis:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 174, in generate_exam_analytics
+    answer_pattern_analysis = await self._analyze_answer_patterns(exam_session, questions_analytics)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 1033, in _analyze_answer_patterns
+    if question.get("is_correct", False):
+       ^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pydantic\main.py", line 991, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'QuestionAnalytics' object has no attribute 'get'
+2025-09-04 14:56:14,330 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b8906236d5ea99a6b34960
+2025-09-04 14:56:14,331 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b8906236d5ea99a6b34960
+2025-09-04 14:56:14,425 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b8906236d5ea99a6b34960
+2025-09-04 14:56:14,426 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b8906236d5ea99a6b34960
+2025-09-04 14:56:14,427 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 14:58:55,095 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:58:55,096 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:58:55,097 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:58:55,098 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:58:55,099 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:58:55,330 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:59:01,517 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:59:02,664 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:59:02,675 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:59:02,675 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:59:02,676 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:59:02,676 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:59:02,677 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 14:59:36,648 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 14:59:36,649 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 14:59:36,651 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 14:59:36,652 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 14:59:36,652 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 14:59:36,828 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 14:59:43,082 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 14:59:44,168 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 14:59:44,200 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 14:59:44,202 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 14:59:44,203 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 14:59:44,204 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 14:59:44,205 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 15:00:55,830 [ERROR] app.api.v1.routes.exam_analytics: PermissionError in get_exam_session_analytics for session 68b870d1a929bb99b8c071be: You can only view your own exam analytics
+2025-09-04 15:01:26,535 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7429e057-15c2-4144-ba44-2e1271277658 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 15:01:26,536 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7429e057-15c2-4144-ba44-2e1271277658 | successful=0/0 | failed=0 | time=0.72ms
+2025-09-04 15:01:37,243 [INFO] app.crud.exam_analytics: Found exam session 68b870d1a929bb99b8c071be, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-04 15:01:37,296 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68b870d1a929bb99b8c071be
+2025-09-04 15:01:37,387 [INFO] app.crud.exam_analytics: Found student:   for session 68b870d1a929bb99b8c071be
+2025-09-04 15:01:37,674 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b870d1a929bb99b8c071be
+2025-09-04 15:01:37,734 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found for correctness check
+2025-09-04 15:01:37,785 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 15:01:37,835 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found for correctness check
+2025-09-04 15:01:37,836 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 3 total answers
+2025-09-04 15:01:37,988 [INFO] app.crud.exam_analytics: Using score-based estimation: 0 correct answers from score 33.33333333333333/100.0
+2025-09-04 15:01:38,198 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database - using fallback
+2025-09-04 15:01:38,274 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 15:01:38,325 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database - using fallback
+2025-09-04 15:01:38,487 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-04 15:01:38,538 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database
+2025-09-04 15:01:38,594 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database
+2025-09-04 15:01:38,653 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database
+2025-09-04 15:01:38,654 [INFO] app.crud.exam_analytics: Generated score timeline with 0 events
+2025-09-04 15:01:38,950 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b870d1a929bb99b8c071be
+2025-09-04 15:01:38,951 [ERROR] app.crud.exam_analytics: Error creating analytics object for session 68b870d1a929bb99b8c071be: name 'timedelta' is not defined
+2025-09-04 15:01:38,952 [ERROR] app.crud.exam_analytics: Full traceback for analytics object creation:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 266, in generate_exam_analytics
+    cache_expires_at=datetime.utcnow() + timedelta(hours=24)
+                                         ^^^^^^^^^
+NameError: name 'timedelta' is not defined
+2025-09-04 15:01:38,958 [ERROR] app.api.v1.routes.exam_analytics: Unexpected error retrieving analytics for session 68b870d1a929bb99b8c071be: name 'timedelta' is not defined
+2025-09-04 15:01:38,959 [ERROR] app.api.v1.routes.exam_analytics: Full traceback for session 68b870d1a929bb99b8c071be:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\api\v1\routes\exam_analytics.py", line 51, in get_exam_session_analytics
+    analytics = await exam_analytics_crud.generate_exam_analytics(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        exam_session_id, force_regenerate
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 266, in generate_exam_analytics
+    cache_expires_at=datetime.utcnow() + timedelta(hours=24)
+                                         ^^^^^^^^^
+NameError: name 'timedelta' is not defined
+2025-09-04 15:02:11,289 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=117946a4-6f48-4990-baa0-73332c78f2c0 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 15:02:11,290 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=117946a4-6f48-4990-baa0-73332c78f2c0 | successful=0/0 | failed=0 | time=0.73ms
+2025-09-04 15:02:11,488 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=428307eb-b90f-4af5-82ab-cf025894e0d9 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-04 15:02:11,942 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-04 15:02:11,943 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e2e6740b-5c5a-4fb5-9c19-6cdc4f7229f5 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 15:02:11,944 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e2e6740b-5c5a-4fb5-9c19-6cdc4f7229f5 | successful=0/0 | failed=0 | time=0.74ms
+2025-09-04 15:02:11,944 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=428307eb-b90f-4af5-82ab-cf025894e0d9 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=456.1ms
+2025-09-04 15:21:48,505 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-04 15:21:48,506 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f756ab05-0f7c-4e61-a2db-6850c8797323 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 15:21:48,506 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f756ab05-0f7c-4e61-a2db-6850c8797323 | successful=0/0 | failed=0 | time=0.68ms
+2025-09-04 15:21:48,509 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 15:21:48,510 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 15:21:48,513 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 15:21:48,514 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 15:21:48,515 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 15:21:48,646 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 15:21:58,600 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 15:21:59,797 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 15:21:59,807 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 15:21:59,808 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 15:21:59,808 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 15:21:59,809 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 15:21:59,809 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 15:22:12,114 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 15:22:12,115 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 15:22:12,116 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 15:22:12,117 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 15:22:12,117 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 15:22:12,281 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 15:22:18,569 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 15:22:19,660 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 15:22:19,672 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 15:22:19,673 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 15:22:19,673 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 15:22:19,674 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 15:22:19,675 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 15:22:23,912 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 15:22:23,913 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 15:22:23,914 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 15:22:23,915 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 15:22:23,915 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 15:22:24,051 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 15:22:30,283 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 15:22:31,285 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 15:22:31,297 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 15:22:31,298 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 15:22:31,299 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 15:22:31,300 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 15:22:31,301 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 15:24:15,012 [INFO] app.crud.exam_analytics: Found exam session 68b870d1a929bb99b8c071be, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-04 15:24:15,068 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68b870d1a929bb99b8c071be
+2025-09-04 15:24:15,123 [INFO] app.crud.exam_analytics: Found student:   for session 68b870d1a929bb99b8c071be
+2025-09-04 15:24:15,489 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b870d1a929bb99b8c071be
+2025-09-04 15:24:15,544 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found for correctness check
+2025-09-04 15:24:15,600 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 15:24:15,664 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found for correctness check
+2025-09-04 15:24:15,665 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 3 total answers
+2025-09-04 15:24:15,833 [INFO] app.crud.exam_analytics: Using score-based estimation: 0 correct answers from score 33.33333333333333/100.0
+2025-09-04 15:24:16,065 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database - using fallback
+2025-09-04 15:24:16,066 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 is multiple_choice but has no options in database!
+2025-09-04 15:24:16,119 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 15:24:16,120 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b is multiple_choice but has no options in database!
+2025-09-04 15:24:16,186 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database - using fallback
+2025-09-04 15:24:16,187 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 is multiple_choice but has no options in database!
+2025-09-04 15:24:16,384 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-04 15:24:16,445 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database
+2025-09-04 15:24:16,551 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database
+2025-09-04 15:24:16,610 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database
+2025-09-04 15:24:16,611 [INFO] app.crud.exam_analytics: Generated score timeline with 0 events
+2025-09-04 15:24:16,728 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-04 15:24:16,875 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b870d1a929bb99b8c071be
+2025-09-04 15:24:16,876 [ERROR] app.crud.exam_analytics: Error creating analytics object for session 68b870d1a929bb99b8c071be: name 'timedelta' is not defined
+2025-09-04 15:24:16,876 [ERROR] app.crud.exam_analytics: Full traceback for analytics object creation:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 266, in generate_exam_analytics
+    cache_expires_at=datetime.utcnow() + timedelta(hours=24)
+                                         ^^^^^^^^^
+NameError: name 'timedelta' is not defined
+2025-09-04 15:24:16,882 [ERROR] app.api.v1.routes.exam_analytics: Unexpected error retrieving analytics for session 68b870d1a929bb99b8c071be: name 'timedelta' is not defined
+2025-09-04 15:24:16,882 [ERROR] app.api.v1.routes.exam_analytics: Full traceback for session 68b870d1a929bb99b8c071be:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\api\v1\routes\exam_analytics.py", line 51, in get_exam_session_analytics
+    analytics = await exam_analytics_crud.generate_exam_analytics(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        exam_session_id, force_regenerate
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 266, in generate_exam_analytics
+    cache_expires_at=datetime.utcnow() + timedelta(hours=24)
+                                         ^^^^^^^^^
+NameError: name 'timedelta' is not defined
+2025-09-04 15:24:22,300 [INFO] app.crud.exam_analytics: Found exam session 68b870d1a929bb99b8c071be, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-04 15:24:22,357 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68b870d1a929bb99b8c071be
+2025-09-04 15:24:22,417 [INFO] app.crud.exam_analytics: Found student:   for session 68b870d1a929bb99b8c071be
+2025-09-04 15:24:22,705 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b870d1a929bb99b8c071be
+2025-09-04 15:24:22,757 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found for correctness check
+2025-09-04 15:24:22,806 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 15:24:22,856 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found for correctness check
+2025-09-04 15:24:22,857 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 3 total answers
+2025-09-04 15:24:23,062 [INFO] app.crud.exam_analytics: Using score-based estimation: 0 correct answers from score 33.33333333333333/100.0
+2025-09-04 15:24:23,306 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database - using fallback
+2025-09-04 15:24:23,307 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 is multiple_choice but has no options in database!
+2025-09-04 15:24:23,363 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 15:24:23,364 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b is multiple_choice but has no options in database!
+2025-09-04 15:24:23,416 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database - using fallback
+2025-09-04 15:24:23,416 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 is multiple_choice but has no options in database!
+2025-09-04 15:24:23,583 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-04 15:24:23,637 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database
+2025-09-04 15:24:23,695 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database
+2025-09-04 15:24:23,746 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database
+2025-09-04 15:24:23,747 [INFO] app.crud.exam_analytics: Generated score timeline with 0 events
+2025-09-04 15:24:23,876 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-04 15:24:24,087 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b870d1a929bb99b8c071be
+2025-09-04 15:24:24,088 [ERROR] app.crud.exam_analytics: Error creating analytics object for session 68b870d1a929bb99b8c071be: name 'timedelta' is not defined
+2025-09-04 15:24:24,088 [ERROR] app.crud.exam_analytics: Full traceback for analytics object creation:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 266, in generate_exam_analytics
+    cache_expires_at=datetime.utcnow() + timedelta(hours=24)
+                                         ^^^^^^^^^
+NameError: name 'timedelta' is not defined
+2025-09-04 15:24:24,093 [ERROR] app.api.v1.routes.exam_analytics: Unexpected error retrieving analytics for session 68b870d1a929bb99b8c071be: name 'timedelta' is not defined
+2025-09-04 15:24:24,094 [ERROR] app.api.v1.routes.exam_analytics: Full traceback for session 68b870d1a929bb99b8c071be:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\api\v1\routes\exam_analytics.py", line 51, in get_exam_session_analytics
+    analytics = await exam_analytics_crud.generate_exam_analytics(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        exam_session_id, force_regenerate
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 266, in generate_exam_analytics
+    cache_expires_at=datetime.utcnow() + timedelta(hours=24)
+                                         ^^^^^^^^^
+NameError: name 'timedelta' is not defined
+2025-09-04 16:15:56,437 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 444, in _create_connection
+    raise err
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 437, in _create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-04 16:18:40,604 [INFO] app.crud.exam_analytics: Found exam session 68b870d1a929bb99b8c071be, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-04 16:18:40,673 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68b870d1a929bb99b8c071be
+2025-09-04 16:18:40,746 [INFO] app.crud.exam_analytics: Found student:   for session 68b870d1a929bb99b8c071be
+2025-09-04 16:18:41,021 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b870d1a929bb99b8c071be
+2025-09-04 16:18:41,069 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found for correctness check
+2025-09-04 16:18:41,134 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 16:18:41,193 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found for correctness check
+2025-09-04 16:18:41,194 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 3 total answers
+2025-09-04 16:18:41,349 [INFO] app.crud.exam_analytics: Using score-based estimation: 0 correct answers from score 33.33333333333333/100.0
+2025-09-04 16:18:41,627 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database - using fallback
+2025-09-04 16:18:41,627 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 is multiple_choice but has no options in database!
+2025-09-04 16:18:41,687 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 16:18:41,687 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b is multiple_choice but has no options in database!
+2025-09-04 16:18:41,746 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database - using fallback
+2025-09-04 16:18:41,747 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 is multiple_choice but has no options in database!
+2025-09-04 16:18:41,888 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-04 16:18:41,936 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database
+2025-09-04 16:18:41,989 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database
+2025-09-04 16:18:42,040 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database
+2025-09-04 16:18:42,041 [INFO] app.crud.exam_analytics: Generated score timeline with 0 events
+2025-09-04 16:18:42,157 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-04 16:18:42,329 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b870d1a929bb99b8c071be
+2025-09-04 16:18:42,330 [ERROR] app.crud.exam_analytics: Error creating analytics object for session 68b870d1a929bb99b8c071be: name 'timedelta' is not defined
+2025-09-04 16:18:42,330 [ERROR] app.crud.exam_analytics: Full traceback for analytics object creation:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 266, in generate_exam_analytics
+    cache_expires_at=datetime.utcnow() + timedelta(hours=24)
+                                         ^^^^^^^^^
+NameError: name 'timedelta' is not defined
+2025-09-04 16:18:42,334 [ERROR] app.api.v1.routes.exam_analytics: Unexpected error retrieving analytics for session 68b870d1a929bb99b8c071be: name 'timedelta' is not defined
+2025-09-04 16:18:42,335 [ERROR] app.api.v1.routes.exam_analytics: Full traceback for session 68b870d1a929bb99b8c071be:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\api\v1\routes\exam_analytics.py", line 51, in get_exam_session_analytics
+    analytics = await exam_analytics_crud.generate_exam_analytics(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        exam_session_id, force_regenerate
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\app\crud\exam_analytics.py", line 266, in generate_exam_analytics
+    cache_expires_at=datetime.utcnow() + timedelta(hours=24)
+                                         ^^^^^^^^^
+NameError: name 'timedelta' is not defined
+2025-09-04 16:19:31,802 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 16:19:31,802 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 16:19:31,803 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 16:19:31,804 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 16:19:31,805 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 16:19:31,877 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 16:19:38,728 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 16:19:39,871 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 16:19:39,885 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 16:19:39,888 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 16:19:39,889 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 16:19:39,890 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 16:19:39,892 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 16:19:40,138 [INFO] app.crud.exam_analytics: Found exam session 68b870d1a929bb99b8c071be, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-04 16:19:40,192 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68b870d1a929bb99b8c071be
+2025-09-04 16:19:40,248 [INFO] app.crud.exam_analytics: Found student:   for session 68b870d1a929bb99b8c071be
+2025-09-04 16:19:40,515 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68b870d1a929bb99b8c071be
+2025-09-04 16:19:40,568 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found for correctness check
+2025-09-04 16:19:40,608 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found for correctness check
+2025-09-04 16:19:40,686 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found for correctness check
+2025-09-04 16:19:40,686 [INFO] app.crud.exam_analytics: Calculated 0 correct answers out of 3 total answers
+2025-09-04 16:19:40,879 [INFO] app.crud.exam_analytics: Using score-based estimation: 0 correct answers from score 33.33333333333333/100.0
+2025-09-04 16:19:41,131 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database - using fallback
+2025-09-04 16:19:41,132 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 is multiple_choice but has no options in database!
+2025-09-04 16:19:41,187 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database - using fallback
+2025-09-04 16:19:41,190 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b is multiple_choice but has no options in database!
+2025-09-04 16:19:41,244 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database - using fallback
+2025-09-04 16:19:41,248 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 is multiple_choice but has no options in database!
+2025-09-04 16:19:41,423 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-04 16:19:41,496 [WARNING] app.crud.exam_analytics: Question 688b724f9486c732d234bcf1 not found in database
+2025-09-04 16:19:41,549 [WARNING] app.crud.exam_analytics: Question 6888b18eda5b866b5af5a28b not found in database
+2025-09-04 16:19:41,612 [WARNING] app.crud.exam_analytics: Question 688b74909486c732d234bcf6 not found in database
+2025-09-04 16:19:41,613 [INFO] app.crud.exam_analytics: Generated score timeline with 0 events
+2025-09-04 16:19:41,720 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-04 16:19:41,899 [INFO] app.crud.exam_analytics: Creating analytics object for session 68b870d1a929bb99b8c071be
+2025-09-04 16:19:41,900 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68b870d1a929bb99b8c071be
+2025-09-04 16:19:41,974 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68b870d1a929bb99b8c071be
+2025-09-04 16:19:41,981 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68b870d1a929bb99b8c071be
+2025-09-04 16:19:41,986 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b870d1a929bb99b8c071be by user 68b2dcbdcccc321f815ea3f5
+2025-09-04 16:22:02,108 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:22:02,177 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:22:10,223 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:22:10,236 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=1e149f75-60a1-4c0e-be57-6f6d7eee33c2 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 16:22:10,279 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:22:10,733 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 16:22:10,734 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=66c8b0ac-f0b5-4c7e-b8ff-9e5376f9db8d | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 16:22:10,735 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=66c8b0ac-f0b5-4c7e-b8ff-9e5376f9db8d | successful=0/0 | failed=0 | time=0.87ms
+2025-09-04 16:22:10,736 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=1e149f75-60a1-4c0e-be57-6f6d7eee33c2 | user_id=688477a78a56906f19d02551 | connection_time=500.05ms
+2025-09-04 16:33:18,666 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:33:21,561 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:35:02,636 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:35:04,550 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:40:33,516 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-04 16:42:14,638 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:42:14,710 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:43:01,715 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 16:43:01,716 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=bd9b28c9-40f1-4c2a-83a7-63428e2e5158 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 16:43:01,717 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=bd9b28c9-40f1-4c2a-83a7-63428e2e5158 | successful=0/0 | failed=0 | time=0.73ms
+2025-09-04 16:43:04,370 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7ef29bc2-2f54-436d-b06d-6b2cec5546fd | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 16:43:04,380 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:43:04,418 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 16:43:04,441 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:43:04,484 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 16:43:04,484 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=bd03355c-f33f-4718-98ee-fc415e8b7080 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 16:43:04,485 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=bd03355c-f33f-4718-98ee-fc415e8b7080 | successful=0/0 | failed=0 | time=0.7ms
+2025-09-04 16:43:04,486 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7ef29bc2-2f54-436d-b06d-6b2cec5546fd | user_id=688477a78a56906f19d02551 | connection_time=115.77ms
+2025-09-04 16:43:04,595 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 16:43:28,679 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 16:43:28,680 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=53d6e7f0-37a1-4cc4-b8dc-5f623a92af0f | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 16:43:28,682 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=53d6e7f0-37a1-4cc4-b8dc-5f623a92af0f | successful=0/0 | failed=0 | time=2.18ms
+2025-09-04 16:43:31,340 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=712e2f01-3ec8-4906-9590-5d7c951608db | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 16:43:31,349 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:43:31,402 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 16:43:31,417 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 16:43:31,466 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 16:43:31,467 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4dbe8d90-9e93-4248-bd95-c9300499ecaa | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 16:43:31,467 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4dbe8d90-9e93-4248-bd95-c9300499ecaa | successful=0/0 | failed=0 | time=0.47ms
+2025-09-04 16:43:31,468 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=712e2f01-3ec8-4906-9590-5d7c951608db | user_id=688477a78a56906f19d02551 | connection_time=128.17ms
+2025-09-04 16:43:31,559 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 16:45:47,007 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 777, in receive_message
+    data = receive_data(conn, length - 16, deadline)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-04 17:56:43,500 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 17:56:45,121 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 17:56:45,138 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 17:56:45,139 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 17:56:45,145 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 17:56:45,146 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 17:56:45,147 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 17:57:59,145 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b057432e-d5fc-417f-b3aa-ddd6cddb686f | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-04 17:57:59,490 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-04 17:57:59,492 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=322046a0-421e-4004-a59f-43dc3bfc9d45 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 17:57:59,494 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=322046a0-421e-4004-a59f-43dc3bfc9d45 | successful=0/0 | failed=0 | time=2.69ms
+2025-09-04 17:57:59,495 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b057432e-d5fc-417f-b3aa-ddd6cddb686f | user_id=68822f07979cbba23e6db950 | connection_time=350.74ms
+2025-09-04 17:58:17,929 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=8d41dc9d-8c57-462a-8e8b-3298cc815c79 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-04 17:58:18,105 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-04 17:58:18,110 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=77397bbd-cafc-4719-ba21-61b3cba0f3c4 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 17:58:18,112 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=77397bbd-cafc-4719-ba21-61b3cba0f3c4 | successful=0/0 | failed=0 | time=2.07ms
+2025-09-04 17:58:18,113 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=8d41dc9d-8c57-462a-8e8b-3298cc815c79 | user_id=68822f07979cbba23e6db950 | connection_time=183.78ms
+2025-09-04 17:58:18,185 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-04 17:58:18,186 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a3f20e1c-b4f3-4342-a49b-0d1c6a64c073 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 17:58:18,187 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a3f20e1c-b4f3-4342-a49b-0d1c6a64c073 | successful=0/0 | failed=0 | time=0.43ms
+2025-09-04 17:58:36,624 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=277e9f24-d9e5-463e-956c-d47b5ede4ecd | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 17:58:36,737 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 17:58:36,738 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c641f883-ac21-4afa-818d-0514d0c6856a | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 17:58:36,739 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c641f883-ac21-4afa-818d-0514d0c6856a | successful=0/0 | failed=0 | time=0.88ms
+2025-09-04 17:58:36,739 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=277e9f24-d9e5-463e-956c-d47b5ede4ecd | user_id=688477a78a56906f19d02551 | connection_time=114.81ms
+2025-09-04 17:58:37,219 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 17:58:37,296 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 17:59:01,314 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 17:59:01,317 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=edee76dc-3d4a-48c1-aed4-0c9c9b9ee6df | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 17:59:01,318 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=edee76dc-3d4a-48c1-aed4-0c9c9b9ee6df | successful=0/0 | failed=0 | time=1.47ms
+2025-09-04 17:59:04,199 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 17:59:04,228 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=886f2e28-350b-452f-a00b-5288ad375fbb | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 17:59:04,264 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 17:59:04,285 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 17:59:04,355 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 17:59:04,355 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1e8aea6f-e47d-4b56-ae17-d2f8e354fc3c | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 17:59:04,356 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1e8aea6f-e47d-4b56-ae17-d2f8e354fc3c | successful=0/0 | failed=0 | time=0.57ms
+2025-09-04 17:59:04,357 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=886f2e28-350b-452f-a00b-5288ad375fbb | user_id=688477a78a56906f19d02551 | connection_time=129.04ms
+2025-09-04 17:59:04,412 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 18:03:56,467 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 18:03:56,467 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=334ef623-bf8d-4205-acaa-7ae650b25e53 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 18:03:56,468 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=334ef623-bf8d-4205-acaa-7ae650b25e53 | successful=0/0 | failed=0 | time=0.69ms
+2025-09-04 18:03:56,533 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 18:03:56,535 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 18:03:56,537 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 18:03:56,538 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 18:03:56,540 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 18:03:56,724 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 18:04:03,589 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 18:04:04,711 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 18:04:04,736 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 18:04:04,737 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 18:04:04,737 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 18:04:04,738 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 18:04:04,739 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 18:04:11,134 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 18:04:12,192 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 18:04:12,204 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 18:04:12,205 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 18:04:12,205 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 18:04:12,205 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 18:04:12,206 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 18:04:13,194 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 18:04:13,195 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 18:04:13,196 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 18:04:13,197 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 18:04:13,197 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 18:04:13,637 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 18:04:19,905 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 18:04:21,784 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 18:04:21,815 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 18:04:21,816 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 18:04:21,816 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 18:04:21,817 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 18:04:21,818 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 18:13:03,018 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 18:13:03,018 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 18:13:03,020 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 18:13:03,021 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 18:13:03,022 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 18:13:03,087 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 18:16:17,287 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 18:16:18,412 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 18:16:18,442 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 18:16:18,443 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 18:16:18,444 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 18:16:18,445 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 18:16:18,446 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 18:16:43,366 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b0fdc019-1b3a-44f2-ae94-322db2cdcb3d | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 18:16:43,366 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b0fdc019-1b3a-44f2-ae94-322db2cdcb3d | successful=0/0 | failed=0 | time=0.78ms
+2025-09-04 18:17:05,715 [INFO] app.crud.crud_question_banks: MISS: Mengambil ID question dari database untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-04 18:17:05,838 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-04 18:18:19,948 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4547eeef-3a3b-4fd7-b949-134bbb3fb58a | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 18:18:19,949 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4547eeef-3a3b-4fd7-b949-134bbb3fb58a | successful=0/0 | failed=0 | time=0.7ms
+2025-09-04 18:20:11,557 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:20:11,653 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:22:14,642 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b4eb7416-2cf9-4047-aee0-e6bb40ba6c55 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 18:22:14,649 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:22:14,702 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 18:22:14,724 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:22:14,780 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 18:22:14,781 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f80839bc-d1dd-428c-bae1-ca5e24051879 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 18:22:14,781 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f80839bc-d1dd-428c-bae1-ca5e24051879 | successful=0/0 | failed=0 | time=0.52ms
+2025-09-04 18:22:14,782 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b4eb7416-2cf9-4047-aee0-e6bb40ba6c55 | user_id=688477a78a56906f19d02551 | connection_time=139.77ms
+2025-09-04 18:22:14,852 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 18:23:46,562 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 18:23:46,563 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6d156817-8f92-4a62-afda-512fee5e955d | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 18:23:46,563 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6d156817-8f92-4a62-afda-512fee5e955d | successful=0/0 | failed=0 | time=0.46ms
+2025-09-04 18:23:58,602 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 18:23:59,678 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 18:23:59,689 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 18:23:59,690 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 18:23:59,690 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 18:23:59,691 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 18:23:59,692 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 18:30:37,551 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0ac7218c-ff43-48da-b47d-e44a05621a16 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 18:30:37,552 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0ac7218c-ff43-48da-b47d-e44a05621a16 | successful=0/0 | failed=0 | time=0.76ms
+2025-09-04 18:34:26,069 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 18:34:26,070 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 18:34:26,072 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 18:34:26,074 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 18:34:26,074 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 18:34:26,152 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 18:34:33,098 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 18:34:34,318 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 18:34:34,329 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 18:34:34,330 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 18:34:34,330 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 18:34:34,331 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 18:34:34,332 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 18:34:46,163 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=87d8d98e-e550-45c2-b89b-8e9748dc6339 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 18:34:46,164 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=87d8d98e-e550-45c2-b89b-8e9748dc6339 | successful=0/0 | failed=0 | time=0.64ms
+2025-09-04 18:40:25,234 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=fc12aa41-b89c-41cd-ab34-2713a3ca5c1a | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 18:40:25,247 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:40:25,326 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 18:40:25,333 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:40:25,445 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 18:40:25,446 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=670af1c4-ee66-4d1b-833c-270d12b8e597 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 18:40:25,448 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=670af1c4-ee66-4d1b-833c-270d12b8e597 | successful=0/0 | failed=0 | time=1.02ms
+2025-09-04 18:40:25,449 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=fc12aa41-b89c-41cd-ab34-2713a3ca5c1a | user_id=688477a78a56906f19d02551 | connection_time=214.55ms
+2025-09-04 18:40:25,453 [ERROR] app.api.v1.routes.exam_analytics: ValueError in get_exam_session_analytics for session 68920557e58cfa66adfcdd7f: Exam session not found
+2025-09-04 18:40:40,849 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:40:40,931 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:42:20,684 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:42:29,549 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:42:33,624 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:42:37,604 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:42:39,568 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:42:48,569 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:42:50,606 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:43:31,657 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:43:32,858 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:43:47,558 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:43:49,565 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:43:55,577 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:43:57,564 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:44:43,372 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:44:43,479 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:44:54,804 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 18:44:54,805 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=21692c30-06d3-46f8-a25c-4595e38e7346 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 18:44:54,806 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=21692c30-06d3-46f8-a25c-4595e38e7346 | successful=0/0 | failed=0 | time=0.56ms
+2025-09-04 18:44:57,447 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a6ece69f-00bf-48a5-8a18-9fa5316e3cc3 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 18:44:57,452 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:44:57,524 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:44:57,597 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:44:57,598 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:44:57,620 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 18:44:57,621 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a4200eb5-aed6-44c5-ae78-9b5f3c184eda | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 18:44:57,621 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a4200eb5-aed6-44c5-ae78-9b5f3c184eda | successful=0/0 | failed=0 | time=0.5ms
+2025-09-04 18:44:57,622 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a6ece69f-00bf-48a5-8a18-9fa5316e3cc3 | user_id=688477a78a56906f19d02551 | connection_time=174.99ms
+2025-09-04 18:44:57,839 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:44:57,840 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:47:43,182 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:47:43,249 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:48:15,987 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 18:48:15,988 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=08582b3c-bb94-4eb8-9891-f2d8a862281b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 18:48:15,989 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=08582b3c-bb94-4eb8-9891-f2d8a862281b | successful=0/0 | failed=0 | time=1.05ms
+2025-09-04 18:48:17,835 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=f5b89a68-b7d0-4199-88dc-acb678ba8cb3 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-04 18:48:17,847 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:48:17,928 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:48:17,976 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-04 18:48:17,976 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=541718da-a154-4de9-afa1-5ab92b1fd09b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-04 18:48:17,977 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=541718da-a154-4de9-afa1-5ab92b1fd09b | successful=0/0 | failed=0 | time=0.84ms
+2025-09-04 18:48:17,978 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=f5b89a68-b7d0-4199-88dc-acb678ba8cb3 | user_id=688477a78a56906f19d02551 | connection_time=143.1ms
+2025-09-04 18:48:17,979 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:48:17,980 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:48:18,204 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:48:18,205 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:48:35,560 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:48:35,628 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:48:39,270 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:48:39,345 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:49:04,521 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:49:04,587 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:56:52,647 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:56:52,725 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:56:52,794 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:56:52,795 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:56:53,009 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:56:53,010 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:57:00,500 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:57:00,594 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:57:00,693 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:57:00,694 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:57:00,943 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:57:00,944 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:57:01,504 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:57:01,741 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:57:01,742 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:57:18,534 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:57:18,674 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:57:18,675 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 18:57:20,519 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 18:57:20,667 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 18:57:20,668 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 19:03:14,558 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 19:03:14,619 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 19:03:17,603 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 19:03:17,604 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 19:03:23,424 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 19:03:23,507 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 19:03:26,048 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 19:03:26,049 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 19:03:49,822 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 19:03:49,823 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 21:52:18,389 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:52:18,451 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:53:55,724 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:53:55,850 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:54:02,253 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 21:54:02,253 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 21:55:58,533 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:55:58,674 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 21:55:58,675 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 21:56:03,504 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:56:03,651 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 21:56:03,652 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 21:56:20,526 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:56:20,661 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 21:56:20,663 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 21:56:36,422 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:56:36,508 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:56:43,608 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 21:56:43,673 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 22:15:59,958 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 413, in _create_connection
+    for res in socket.getaddrinfo(host, port, family=family, type=socket.SOCK_STREAM):  # type: ignore[attr-defined, unused-ignore]
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 149, in _raise_connection_failure
+    raise AutoReconnect(msg) from error
+pymongo.errors.AutoReconnect: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017: [Errno 11001] getaddrinfo failed (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-04 22:16:05,215 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 444, in _create_connection
+    raise err
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 437, in _create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-00.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-04 22:53:28,219 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 22:53:28,288 [INFO] app.api.v1.routes.score_analytics: Student statistics retrieved successfully for user 688477a78a56906f19d02551
+2025-09-04 22:53:38,513 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68b8906236d5ea99a6b34960
+2025-09-04 22:53:38,514 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68b8906236d5ea99a6b34960 by user 688477a78a56906f19d02551
+2025-09-04 22:54:14,840 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-04 22:54:15,775 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-04 23:05:11,597 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-04 23:05:11,598 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d9025ee0-3fab-41c7-8090-0edc5e92a9c4 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-04 23:05:11,598 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d9025ee0-3fab-41c7-8090-0edc5e92a9c4 | successful=0/0 | failed=0 | time=0.47ms
+2025-09-04 23:05:11,668 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:05:11,669 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:05:11,682 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:05:11,686 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:05:11,686 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:05:12,178 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:05:23,986 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:05:25,322 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:05:25,341 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:05:25,342 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:05:25,342 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:05:25,343 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:05:25,344 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:06:54,359 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:06:54,359 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:06:54,360 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:06:54,361 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:06:54,362 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:06:54,427 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:07:01,334 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:07:02,583 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:07:02,601 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:07:02,602 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:07:02,603 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:07:02,603 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:07:02,605 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:07:38,780 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:07:38,781 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:07:38,782 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:07:38,783 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:07:38,783 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:07:39,221 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:07:46,597 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:07:47,929 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:07:47,959 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:07:47,960 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:07:47,961 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:07:47,961 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:07:47,962 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:07:54,432 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:07:55,608 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:07:55,627 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:07:55,628 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:07:55,629 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:07:55,629 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:07:55,631 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:08:44,646 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:08:44,647 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:08:44,648 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:08:44,649 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:08:44,649 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:08:45,130 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:08:51,718 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:08:52,849 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:08:52,862 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:08:52,862 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:08:52,863 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:08:52,864 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:08:52,865 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:09:14,841 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:09:14,841 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:09:14,842 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:09:14,843 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:09:14,844 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:09:15,134 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:10:00,680 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:10:01,829 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:10:01,846 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:10:01,847 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:10:01,847 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:10:01,848 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:10:01,848 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:10:08,266 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:10:10,098 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:10:10,115 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:10:10,116 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:10:10,117 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:10:10,117 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:10:10,118 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:14:03,981 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2b3a762c-64e1-4c9a-9323-0d8fda0cc2a7 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-04 23:14:03,982 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2b3a762c-64e1-4c9a-9323-0d8fda0cc2a7 | successful=0/0 | failed=0 | time=0.8ms
+2025-09-04 23:17:24,259 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:17:24,259 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:17:24,261 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:17:24,262 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:17:24,262 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:17:24,447 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:17:31,684 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:17:32,789 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:17:32,806 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:17:32,807 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:17:32,808 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:17:32,808 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:17:32,809 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:17:56,410 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:17:56,410 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:17:56,412 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:17:56,413 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:17:56,413 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:17:56,599 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:18:03,488 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:18:04,918 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:18:04,929 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:18:04,929 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:18:04,932 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:18:04,933 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:18:04,933 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:19:56,997 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:19:56,998 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:19:57,000 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:19:57,001 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:19:57,001 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:19:57,420 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:20:03,878 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:20:05,629 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:20:05,650 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:20:05,651 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:20:05,651 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:20:05,652 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:20:05,653 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:20:13,071 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:20:14,098 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:20:14,109 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:20:14,110 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:20:14,110 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:20:14,111 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:20:14,112 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:20:17,042 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:20:17,042 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:20:17,044 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:20:17,045 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:20:17,045 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:20:17,552 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:20:23,940 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:20:24,943 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:20:24,961 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:20:24,962 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:20:24,963 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:20:24,964 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:20:24,965 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:21:29,882 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:21:29,883 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:21:29,885 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:21:29,886 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:21:29,886 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:21:30,193 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:21:36,707 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:21:38,296 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:21:38,315 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:21:38,315 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:21:38,316 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:21:38,317 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:21:38,318 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:21:45,711 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:21:46,884 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:21:46,909 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:21:46,910 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:21:46,911 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:21:46,912 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:21:46,913 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:21:53,206 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:21:54,338 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:21:54,354 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:21:54,355 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:21:54,356 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:21:54,356 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:21:54,357 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:22:49,991 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:22:49,992 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:22:49,993 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:22:49,994 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:22:49,994 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:22:50,250 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:22:56,941 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:22:58,174 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:22:58,200 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:22:58,201 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:22:58,201 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:22:58,203 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:22:58,204 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:23:12,595 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:23:12,595 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:23:12,596 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:23:12,597 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:23:12,598 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:23:12,866 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:23:19,507 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:23:20,559 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:23:20,585 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:23:20,586 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:23:20,587 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:23:20,587 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:23:20,589 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:23:26,934 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:23:28,025 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:23:28,051 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:23:28,052 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:23:28,052 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:23:28,053 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:23:28,054 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:23:37,953 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:23:37,953 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:23:37,954 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:23:37,955 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:23:37,956 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:23:38,224 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:23:44,767 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:23:45,936 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:23:45,964 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:23:45,965 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:23:45,966 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:23:45,966 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:23:45,967 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:24:02,828 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:24:02,828 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:24:02,830 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:24:02,830 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:24:02,831 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:24:03,179 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:24:09,769 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:24:11,039 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:24:11,052 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:24:11,053 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:24:11,054 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:24:11,056 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:24:11,058 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:24:31,544 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:24:31,544 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:24:31,546 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:24:31,547 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:24:31,547 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:24:32,255 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:24:38,812 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:24:39,757 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:24:39,768 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:24:39,769 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:24:39,769 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:24:39,770 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:24:39,770 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:25:50,232 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:25:50,232 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:25:50,234 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:25:50,235 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:25:50,236 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:25:50,294 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:26:01,383 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:26:03,918 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:26:03,926 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:26:03,927 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:26:03,927 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:26:03,928 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:26:03,929 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:26:35,174 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:26:35,175 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:26:35,177 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:26:35,178 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:26:35,179 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:26:35,234 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:26:55,096 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:26:56,492 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:26:56,503 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:26:56,504 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:26:56,505 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:26:56,505 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:26:56,507 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:27:54,093 [ERROR] app.tasks.teacher_analytics_tasks: Error getting teacher tasks: object AsyncIOMotorDatabase can't be used in 'await' expression
+2025-09-04 23:28:59,501 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:28:59,502 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:28:59,504 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:28:59,505 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:28:59,506 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:28:59,601 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:29:43,655 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:29:44,906 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:29:44,918 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:29:44,919 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:29:44,920 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:29:44,921 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:29:44,924 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:31:08,476 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:31:08,476 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:31:08,478 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:31:08,478 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:31:08,479 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:31:08,530 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:33:53,117 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:33:54,378 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:33:54,399 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:33:54,400 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:33:54,401 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:33:54,402 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:33:54,404 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:34:22,991 [INFO] app.tasks.teacher_analytics_tasks: Started analytics generation task analytics_68920557e58cfa66adfcdd7f_68822f07979cbba23e6db950_1756978462 for exam 68920557e58cfa66adfcdd7f
+2025-09-04 23:34:23,070 [ERROR] app.tasks.teacher_analytics_tasks: Error in analytics generation task analytics_68920557e58cfa66adfcdd7f_68822f07979cbba23e6db950_1756978462: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
+2025-09-04 23:36:26,724 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:36:26,725 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:36:26,727 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:36:26,728 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:36:26,729 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:36:26,802 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:36:57,001 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:36:58,133 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:36:58,144 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:36:58,144 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:36:58,145 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:36:58,146 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:36:58,147 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:38:16,549 [INFO] app.tasks.teacher_analytics_tasks: Started analytics generation task analytics_68920557e58cfa66adfcdd7f_68822f07979cbba23e6db950_1756978696 for exam 68920557e58cfa66adfcdd7f
+2025-09-04 23:38:16,771 [INFO] app.tasks.teacher_analytics_tasks: Starting analytics generation for exam 68920557e58cfa66adfcdd7f
+2025-09-04 23:38:16,771 [INFO] app.crud.crud_teacher_analytics: Starting analytics generation for exam 68920557e58cfa66adfcdd7f
+2025-09-04 23:38:17,198 [INFO] app.crud.crud_teacher_analytics: Analytics generation completed for exam 68920557e58cfa66adfcdd7f in 0.33s
+2025-09-04 23:38:17,327 [INFO] app.tasks.teacher_analytics_tasks: Analytics generation completed for exam 68920557e58cfa66adfcdd7f
+2025-09-04 23:42:43,076 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:42:43,076 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:42:43,079 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:42:43,080 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:42:43,081 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:42:43,151 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-04 23:43:23,508 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-04 23:43:24,723 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-04 23:43:24,744 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-04 23:43:24,745 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-04 23:43:24,746 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-04 23:43:24,747 [INFO] app.main: Startup aplikasi berhasil
+2025-09-04 23:43:24,748 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-04 23:44:58,824 [INFO] app.main: Mematikan aplikasi...
+2025-09-04 23:44:58,826 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-04 23:44:58,828 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-04 23:44:58,829 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-04 23:44:58,830 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-04 23:44:58,898 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 00:01:04,265 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 00:01:05,497 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 00:01:05,506 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 00:01:05,507 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 00:01:05,508 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 00:01:05,508 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 00:01:05,509 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 00:10:41,599 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}
+2025-09-05 00:12:29,608 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7e6803a3-1ea0-4340-8a98-bf44d47429dc | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-05 00:12:29,873 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-05 00:12:29,878 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0603e0b4-5119-4494-a65a-412e90375a86 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-05 00:12:29,880 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0603e0b4-5119-4494-a65a-412e90375a86 | successful=0/0 | failed=0 | time=2.78ms
+2025-09-05 00:12:29,881 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7e6803a3-1ea0-4340-8a98-bf44d47429dc | user_id=68822f07979cbba23e6db950 | connection_time=273.44ms
+2025-09-05 00:30:26,747 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-05 00:30:26,748 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a97dc2f4-4b38-4083-8c67-4b150f8dcdb9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-05 00:30:26,750 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a97dc2f4-4b38-4083-8c67-4b150f8dcdb9 | successful=0/0 | failed=0 | time=2.22ms
+2025-09-05 00:30:26,822 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 00:30:26,823 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 00:30:26,824 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 00:30:26,827 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 00:30:26,827 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 00:30:26,963 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 00:30:35,036 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 00:30:36,549 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 00:30:36,580 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 00:30:36,581 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 00:30:36,582 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 00:30:36,583 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 00:30:36,584 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 00:30:40,625 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 00:30:40,625 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 00:30:40,628 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 00:30:40,629 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 00:30:40,630 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 00:30:40,813 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 00:30:47,547 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 00:30:49,288 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 00:30:49,312 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 00:30:49,313 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 00:30:49,314 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 00:30:49,314 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 00:30:49,315 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 00:30:53,020 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 00:30:53,021 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 00:30:53,023 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 00:30:53,024 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 00:30:53,025 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 00:30:53,489 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 00:31:00,177 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 00:31:02,090 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 00:31:02,107 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 00:31:02,108 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 00:31:02,109 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 00:31:02,110 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 00:31:02,111 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 00:31:21,621 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 00:31:21,621 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 00:31:21,623 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 00:31:21,626 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 00:31:21,627 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 00:31:22,005 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 00:31:28,522 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 00:31:30,545 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 00:31:30,569 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 00:31:30,570 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 00:31:30,571 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 00:31:30,572 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 00:31:30,573 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 00:31:37,058 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 00:31:38,362 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 00:31:38,383 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 00:31:38,384 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 00:31:38,385 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 00:31:38,386 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 00:31:38,387 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 00:36:42,753 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1073, in connect
+    conn.authenticate()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 526, in authenticate
+    auth.authenticate(creds, self, reauthenticate=reauthenticate)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 450, in authenticate
+    auth_func(credentials, conn)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 355, in _authenticate_default
+    return _authenticate_scram(credentials, conn, "SCRAM-SHA-1")
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 96, in _authenticate_scram
+    res = conn.command(source, cmd)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-05 00:38:37,900 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=058d89b3-e093-4f8a-8121-ef296ca58373 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-05 00:38:37,901 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=058d89b3-e093-4f8a-8121-ef296ca58373 | successful=0/0 | failed=0 | time=0.66ms
+2025-09-05 00:38:42,142 [INFO] app.api.v1.routes.exams: EXAM_COMPLETE_MANUAL: TEACHER 68822f07979cbba23e6db950 manually completing exam 68b5406b3c28dc76c69d0f45. Previous status: ongoing. Reason: string
+2025-09-05 00:38:42,295 [INFO] app.crud.crud_exams: Exam 68b5406b3c28dc76c69d0f45 completed manually by 68822f07979cbba23e6db950. Reason: string
+2025-09-05 00:52:33,417 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-05 01:03:00,424 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1073, in connect
+    conn.authenticate()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 526, in authenticate
+    auth.authenticate(creds, self, reauthenticate=reauthenticate)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 450, in authenticate
+    auth_func(credentials, conn)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 355, in _authenticate_default
+    return _authenticate_scram(credentials, conn, "SCRAM-SHA-1")
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 135, in _authenticate_scram
+    res = conn.command(source, cmd)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-05 01:12:37,493 [INFO] app.api.v1.routes.exams: EXAM_COMPLETE_MANUAL: TEACHER 68822f07979cbba23e6db950 manually completing exam 68a49072aa0c82d3b272fdfb. Previous status: ongoing. Reason: nggak kenapa kenapa si
+2025-09-05 01:12:37,640 [INFO] app.crud.crud_exams: Exam 68a49072aa0c82d3b272fdfb completed manually by 68822f07979cbba23e6db950. Reason: nggak kenapa kenapa si
+2025-09-05 01:20:15,431 [INFO] app.tasks.teacher_analytics_tasks: Started analytics generation task analytics_68b5406b3c28dc76c69d0f45_68822f07979cbba23e6db950_1756984815 for exam 68b5406b3c28dc76c69d0f45
+2025-09-05 01:20:15,626 [INFO] app.tasks.teacher_analytics_tasks: Starting analytics generation for exam 68b5406b3c28dc76c69d0f45
+2025-09-05 01:20:15,626 [INFO] app.crud.crud_teacher_analytics: Starting analytics generation for exam 68b5406b3c28dc76c69d0f45
+2025-09-05 01:20:16,058 [INFO] app.crud.crud_teacher_analytics: Analytics generation completed for exam 68b5406b3c28dc76c69d0f45 in 0.34s
+2025-09-05 01:20:16,196 [INFO] app.tasks.teacher_analytics_tasks: Analytics generation completed for exam 68b5406b3c28dc76c69d0f45
+2025-09-05 01:21:07,333 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 01:21:07,334 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 01:21:07,341 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 01:21:07,343 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 01:21:07,343 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 01:21:07,418 [INFO] app.main: Aplikasi berhasil dimatikan
