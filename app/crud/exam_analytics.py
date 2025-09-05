@@ -1551,5 +1551,52 @@ class ExamAnalyticsCRUD:
             logger.error(f"Failed to delete analytics: {e}")
             return False
 
+    async def invalidate_exam_analytics_cache(self, exam_id: str) -> int:
+        """Invalidate analytics cache for all sessions in a specific exam"""
+        db = await self._get_db()
+        
+        try:
+            # Get all sessions for this exam
+            exam_sessions = await db.exam_sessions.find(
+                {"exam_id": ObjectId(exam_id)}, 
+                {"_id": 1}  # Only need session IDs
+            ).to_list(length=None)
+            
+            deleted_count = 0
+            
+            # Delete analytics for each session in this exam
+            for session in exam_sessions:
+                result = await db.exam_analytics.delete_one({
+                    "exam_session_id": session["_id"]
+                })
+                deleted_count += result.deleted_count
+            
+            if deleted_count > 0:
+                logger.info(f"Invalidated {deleted_count} analytics cache entries for exam {exam_id}")
+            
+            return deleted_count
+            
+        except Exception as e:
+            logger.error(f"Error invalidating analytics cache for exam {exam_id}: {e}")
+            return 0
+    
+    async def invalidate_analytics_cache_by_session_id(self, exam_session_id: str) -> bool:
+        """Invalidate analytics cache for a specific session"""
+        return await self.delete_analytics(exam_session_id)
+    
+    async def get_exam_id_from_session(self, exam_session_id: str) -> str | None:
+        """Get exam_id from session_id for cache invalidation"""
+        db = await self._get_db()
+        
+        try:
+            session = await db.exam_sessions.find_one(
+                {"_id": ObjectId(exam_session_id)},
+                {"exam_id": 1}
+            )
+            return str(session["exam_id"]) if session else None
+        except Exception as e:
+            logger.error(f"Error getting exam_id for session {exam_session_id}: {e}")
+            return None
+
 # Global instance
 exam_analytics_crud = ExamAnalyticsCRUD()

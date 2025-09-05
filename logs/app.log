@@ -64591,3 +64591,373 @@ pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017:
 2025-09-05 22:26:53,260 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bafdc1fe354882167a0a76 by user 688477a78a56906f19d02551
 2025-09-05 22:26:56,025 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68bafdc1fe354882167a0a76
 2025-09-05 22:26:56,026 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bafdc1fe354882167a0a76 by user 688477a78a56906f19d02551
+2025-09-05 22:49:09,587 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-05 22:49:09,588 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0ee3d5cb-7ee7-4b5d-a6c9-d2063da75ff2 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-05 22:49:09,588 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0ee3d5cb-7ee7-4b5d-a6c9-d2063da75ff2 | successful=0/0 | failed=0 | time=0.61ms
+2025-09-05 22:49:09,620 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-09-05 22:49:09,621 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a8d1053d-a1e6-436e-b63e-b8ac7643d7b0 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-05 22:49:09,622 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a8d1053d-a1e6-436e-b63e-b8ac7643d7b0 | successful=0/0 | failed=0 | time=0.69ms
+2025-09-05 22:49:09,664 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 22:49:09,664 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 22:49:09,671 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 22:49:09,674 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 22:49:09,674 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 22:49:09,774 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 00:05:06,351 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 00:05:07,950 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 00:05:07,972 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 00:05:07,973 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-06 00:05:07,973 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 00:05:07,974 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 00:05:07,976 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 00:05:38,086 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=8bac40a5-77d4-4243-8f74-38ed4eb1cb46 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 00:05:38,257 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 00:05:38,258 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=352972d7-6896-46a7-aef8-14649b277b01 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 00:05:38,258 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=352972d7-6896-46a7-aef8-14649b277b01 | successful=0/0 | failed=0 | time=0.5ms
+2025-09-06 00:05:38,259 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=8bac40a5-77d4-4243-8f74-38ed4eb1cb46 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=173.44ms
+2025-09-06 00:06:16,104 [INFO] app.crud.crud_exams: Creating exam session with settings - shuffle_questions: False, shuffle_options: True
+2025-09-06 00:06:16,105 [INFO] app.crud.crud_exams: Questions not shuffled for exam 68920557e58cfa66adfcdd7f
+2025-09-06 00:06:16,151 [INFO] app.crud.crud_exams: Options shuffled for question 6888b18eda5b866b5af5a28b
+2025-09-06 00:06:16,152 [INFO] app.crud.crud_exams: Options shuffled for question 6888b1d8da5b866b5af5a291
+2025-09-06 00:06:16,284 [INFO] app.crud.crud_exams: New exam session created: 68bb1888760ff96e6952dd3c for student 68b2dcbdcccc321f815ea3f5 with shuffle_questions=False, shuffle_options=True
+2025-09-06 00:06:16,560 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 00:06:16,562 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5df905f0-8491-41c3-8517-e632d176456e | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 00:06:16,563 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5df905f0-8491-41c3-8517-e632d176456e | successful=0/0 | failed=0 | time=1.44ms
+2025-09-06 00:06:17,572 [INFO] app.crud.crud_exams: Creating exam session with settings - shuffle_questions: False, shuffle_options: True
+2025-09-06 00:06:17,573 [INFO] app.crud.crud_exams: Questions not shuffled for exam 68920557e58cfa66adfcdd7f
+2025-09-06 00:06:17,641 [INFO] app.crud.crud_exams: Options shuffled for question 6888b18eda5b866b5af5a28b
+2025-09-06 00:06:17,645 [INFO] app.crud.crud_exams: Options shuffled for question 6888b1d8da5b866b5af5a291
+2025-09-06 00:06:17,780 [INFO] app.crud.crud_exams: New exam session created: 68bb1889760ff96e6952dd3d for student 688477a78a56906f19d02551 with shuffle_questions=False, shuffle_options=True
+2025-09-06 00:06:25,399 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68bb1889760ff96e6952dd3d with proper shuffle mapping
+2025-09-06 00:06:25,623 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: alexander grahambel in 68920557e58cfa66adfcdd7f
+2025-09-06 00:06:25,626 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68bb1889760ff96e6952dd3d with proper shuffle mapping
+2025-09-06 00:06:26,400 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68bb1888760ff96e6952dd3c with proper shuffle mapping
+2025-09-06 00:06:26,574 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: Drs. Titi Prasasta, S.Sos in 68920557e58cfa66adfcdd7f
+2025-09-06 00:06:26,651 [INFO] app.crud.crud_exam_sessions: Retrieved 5 questions for session 68bb1888760ff96e6952dd3c with proper shuffle mapping
+2025-09-06 00:06:39,823 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:06:39,824 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=b535c2de-743b-40cc-9003-a309c2e3a1f5 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:06:39,824 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=b535c2de-743b-40cc-9003-a309c2e3a1f5 | successful=0/0 | time=0.54ms
+2025-09-06 00:06:40,190 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:06:40,190 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=141566c6-fb1b-4c72-9ef9-c609cae82f9f | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:06:40,191 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=141566c6-fb1b-4c72-9ef9-c609cae82f9f | successful=0/0 | time=0.61ms
+2025-09-06 00:06:42,900 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:06:42,901 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=02f6bae4-df42-4ce6-a869-4757092242f2 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:06:42,901 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=02f6bae4-df42-4ce6-a869-4757092242f2 | successful=0/0 | time=0.45ms
+2025-09-06 00:06:46,430 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:06:46,431 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=801f1a04-30de-475b-b148-3972791bea23 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:06:46,432 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=801f1a04-30de-475b-b148-3972791bea23 | successful=0/0 | time=0.91ms
+2025-09-06 00:06:50,132 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:06:50,133 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=4420d87c-fd93-49ba-8273-2f27234a3bf4 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:06:50,133 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=4420d87c-fd93-49ba-8273-2f27234a3bf4 | successful=0/0 | time=0.49ms
+2025-09-06 00:06:53,823 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-09-06 00:06:53,824 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=5eb7fc05-dd08-4554-894e-4243bf0f9a79 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-09-06 00:06:53,825 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=5eb7fc05-dd08-4554-894e-4243bf0f9a79 | successful=0/0 | time=0.92ms
+2025-09-06 00:06:54,411 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:06:54,412 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=66e669fa-5c6b-423e-9508-68f53f729fe9 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:06:54,413 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=66e669fa-5c6b-423e-9508-68f53f729fe9 | successful=0/0 | time=0.55ms
+2025-09-06 00:06:56,788 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:06:56,789 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=5a87d418-36db-42a1-89e9-5b1a1247add2 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:06:56,790 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=5a87d418-36db-42a1-89e9-5b1a1247add2 | successful=0/0 | time=0.89ms
+2025-09-06 00:06:57,030 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: violation_event
+2025-09-06 00:06:57,031 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=81425c40-1afb-4fee-b33c-e31f85babba2 | room_id=68920557e58cfa66adfcdd7f | message_type=violation_event | proctors=0
+2025-09-06 00:06:57,032 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=81425c40-1afb-4fee-b33c-e31f85babba2 | successful=0/0 | time=0.99ms
+2025-09-06 00:06:59,983 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:06:59,984 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=10889702-c03f-4ff8-98f7-00d6c21146c8 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:06:59,984 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=10889702-c03f-4ff8-98f7-00d6c21146c8 | successful=0/0 | time=0.62ms
+2025-09-06 00:07:00,807 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:07:00,808 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=a77faacf-2684-4af6-8af7-851f83e698f1 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:07:00,809 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=a77faacf-2684-4af6-8af7-851f83e698f1 | successful=0/0 | time=0.85ms
+2025-09-06 00:07:01,618 [INFO] app.crud.crud_exam_sessions: Invalidated 0 exam analytics cache entries for exam 68920557e58cfa66adfcdd7f
+2025-09-06 00:07:01,624 [INFO] app.crud.crud_exam_sessions: Scheduled background cache warming for exam 68920557e58cfa66adfcdd7f
+2025-09-06 00:07:01,885 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:07:01,886 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=6091624c-f383-4fdb-aff8-e52ef21de943 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:07:01,887 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=6091624c-f383-4fdb-aff8-e52ef21de943 | successful=0/0 | time=1.0ms
+2025-09-06 00:07:02,777 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-09-06 00:07:02,799 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: alexander grahambel from 68920557e58cfa66adfcdd7f
+2025-09-06 00:07:09,287 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=4a609855-c30d-4569-83ed-92912a93d800 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-06 00:07:09,442 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-06 00:07:09,444 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=18f9659b-0ff5-4a54-a02b-3142a8d93423 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 00:07:09,444 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=18f9659b-0ff5-4a54-a02b-3142a8d93423 | successful=0/0 | failed=0 | time=0.91ms
+2025-09-06 00:07:09,445 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=4a609855-c30d-4569-83ed-92912a93d800 | user_id=688477a78a56906f19d02551 | connection_time=157.41ms
+2025-09-06 00:07:10,214 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:07:10,215 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=97ea9c48-9e38-42d5-a347-04a77a17bf58 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:07:10,215 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=97ea9c48-9e38-42d5-a347-04a77a17bf58 | successful=0/0 | time=0.51ms
+2025-09-06 00:07:21,856 [INFO] app.crud.exam_analytics: Found exam session 68bb1889760ff96e6952dd3d, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-06 00:07:21,905 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:07:21,951 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:07:22,173 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1889760ff96e6952dd3d
+2025-09-06 00:07:22,392 [INFO] app.crud.exam_analytics: Calculated 2 correct answers out of 5 total answers
+2025-09-06 00:07:23,077 [INFO] app.crud.exam_analytics: Processing 6 interactions for score timeline
+2025-09-06 00:07:23,331 [INFO] app.crud.exam_analytics: Generated score timeline with 5 events
+2025-09-06 00:07:23,425 [INFO] app.crud.exam_analytics: Analyzing difficulty for 5 questions across 1 sessions
+2025-09-06 00:07:23,686 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:07:23,687 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:07:23,755 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:07:23,756 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:07:23,756 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1889760ff96e6952dd3d by user 688477a78a56906f19d02551
+2025-09-06 00:07:40,210 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:07:40,210 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=78288d6d-9951-4097-aaf2-693a1a318d24 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:07:40,211 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=78288d6d-9951-4097-aaf2-693a1a318d24 | successful=0/0 | time=0.49ms
+2025-09-06 00:07:44,022 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:07:44,023 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1889760ff96e6952dd3d by user 688477a78a56906f19d02551
+2025-09-06 00:08:04,174 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:08:04,175 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=3b18e3ba-fc36-483b-bd99-e3cac6d0c7b8 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:08:04,176 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=3b18e3ba-fc36-483b-bd99-e3cac6d0c7b8 | successful=0/0 | time=0.8ms
+2025-09-06 00:08:07,145 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:08:07,146 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=bdcb3b3a-05e2-4507-827d-b305e1467da2 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:08:07,147 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=bdcb3b3a-05e2-4507-827d-b305e1467da2 | successful=0/0 | time=0.54ms
+2025-09-06 00:08:12,754 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:08:12,755 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=ce231f0c-a2ed-4d62-ba92-b59323a6edcf | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:08:12,756 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=ce231f0c-a2ed-4d62-ba92-b59323a6edcf | successful=0/0 | time=1.27ms
+2025-09-06 00:08:15,979 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:08:15,980 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=86a58062-9710-413f-bf64-869c9247227e | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:08:15,980 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=86a58062-9710-413f-bf64-869c9247227e | successful=0/0 | time=0.55ms
+2025-09-06 00:08:18,515 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:08:18,516 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=c92b2d8c-dc21-47e1-9d0a-d77d1aa290fc | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:08:18,517 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=c92b2d8c-dc21-47e1-9d0a-d77d1aa290fc | successful=0/0 | time=0.67ms
+2025-09-06 00:08:19,059 [INFO] app.crud.exam_analytics: Invalidated 1 analytics cache entries for exam 68920557e58cfa66adfcdd7f
+2025-09-06 00:08:19,060 [INFO] app.crud.crud_exam_sessions: Invalidated 1 exam analytics cache entries for exam 68920557e58cfa66adfcdd7f
+2025-09-06 00:08:19,068 [INFO] app.crud.crud_exam_sessions: Scheduled background cache warming for exam 68920557e58cfa66adfcdd7f
+2025-09-06 00:08:19,222 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:08:19,223 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=32d2db22-0b3c-448b-8874-a402db3d6dd2 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:08:19,223 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=32d2db22-0b3c-448b-8874-a402db3d6dd2 | successful=0/0 | time=0.76ms
+2025-09-06 00:08:19,330 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68920557e58cfa66adfcdd7f: activity_event
+2025-09-06 00:08:19,331 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=ac7f8378-a661-48cd-bc29-738076f74089 | room_id=68920557e58cfa66adfcdd7f | message_type=activity_event | proctors=0
+2025-09-06 00:08:19,332 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=ac7f8378-a661-48cd-bc29-738076f74089 | successful=0/0 | time=0.91ms
+2025-09-06 00:08:20,223 [INFO] app.api.v1.routes.ws_exam_room: Student 68b2dcbdcccc321f815ea3f5 disconnected from exam room 68920557e58cfa66adfcdd7f
+2025-09-06 00:08:20,245 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: Drs. Titi Prasasta, S.Sos from 68920557e58cfa66adfcdd7f
+2025-09-06 00:08:33,074 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=ee399112-ccd0-4fee-9a52-466191176b1e | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 00:08:33,187 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 00:08:33,188 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=783bfcea-b26a-41ed-8f06-fa3cee3da2f9 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 00:08:33,188 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=783bfcea-b26a-41ed-8f06-fa3cee3da2f9 | successful=0/0 | failed=0 | time=0.44ms
+2025-09-06 00:08:33,189 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=ee399112-ccd0-4fee-9a52-466191176b1e | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=115.05ms
+2025-09-06 00:13:30,096 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-06 00:13:30,097 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f20a7e1c-aef0-4fb8-9c86-1a5f9db12ddf | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 00:13:30,098 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f20a7e1c-aef0-4fb8-9c86-1a5f9db12ddf | successful=0/0 | failed=0 | time=0.55ms
+2025-09-06 00:13:30,179 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 00:13:30,179 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=882c9f11-88ca-4a5a-a2f5-61e2551e6c07 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 00:13:30,180 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=882c9f11-88ca-4a5a-a2f5-61e2551e6c07 | successful=0/0 | failed=0 | time=0.58ms
+2025-09-06 00:13:30,184 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 00:13:30,186 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 00:13:30,188 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 00:13:30,190 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 00:13:30,192 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 00:13:30,461 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 00:15:41,842 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 00:15:43,016 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 00:15:43,025 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 00:15:43,026 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-06 00:15:43,026 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 00:15:43,027 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 00:15:43,028 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 00:15:51,976 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 00:15:51,976 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 00:15:51,978 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 00:15:51,979 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 00:15:51,979 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 00:15:52,192 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 00:15:58,170 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 00:15:59,205 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 00:15:59,229 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 00:15:59,230 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-06 00:15:59,231 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 00:15:59,232 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 00:15:59,233 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 00:16:11,542 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 00:16:11,543 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 00:16:11,544 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 00:16:11,545 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 00:16:11,545 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 00:16:11,727 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 00:16:18,347 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 00:16:19,550 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 00:16:19,563 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 00:16:19,564 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-06 00:16:19,564 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 00:16:19,565 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 00:16:19,566 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 00:19:15,474 [INFO] app.crud.crud_exams: Creating exam session with settings - shuffle_questions: True, shuffle_options: True
+2025-09-06 00:19:15,475 [INFO] app.crud.crud_exams: Questions shuffled for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:15,516 [INFO] app.crud.crud_exams: Creating exam session with settings - shuffle_questions: True, shuffle_options: True
+2025-09-06 00:19:15,517 [INFO] app.crud.crud_exams: Questions shuffled for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:15,523 [INFO] app.crud.crud_exams: Options shuffled for question 6888b18eda5b866b5af5a28b
+2025-09-06 00:19:15,523 [INFO] app.crud.crud_exams: Options shuffled for question 688b74909486c732d234bcf6
+2025-09-06 00:19:15,524 [INFO] app.crud.crud_exams: Options shuffled for question 688b724f9486c732d234bcf1
+2025-09-06 00:19:15,556 [INFO] app.crud.crud_exams: Options shuffled for question 688b724f9486c732d234bcf1
+2025-09-06 00:19:15,557 [INFO] app.crud.crud_exams: Options shuffled for question 6888b18eda5b866b5af5a28b
+2025-09-06 00:19:15,559 [INFO] app.crud.crud_exams: Options shuffled for question 688b74909486c732d234bcf6
+2025-09-06 00:19:15,638 [INFO] app.crud.crud_exams: New exam session created: 68bb1b93b39c2a464c1819c4 for student 688477a78a56906f19d02551 with shuffle_questions=True, shuffle_options=True
+2025-09-06 00:19:15,662 [INFO] app.crud.crud_exams: New exam session created: 68bb1b93b39c2a464c1819c5 for student 68b2dcbdcccc321f815ea3f5 with shuffle_questions=True, shuffle_options=True
+2025-09-06 00:19:21,986 [INFO] app.crud.crud_exam_sessions: Retrieved 3 questions for session 68bb1b93b39c2a464c1819c4 with proper shuffle mapping
+2025-09-06 00:19:22,482 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: alexander grahambel in 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:22,693 [INFO] app.crud.crud_exam_sessions: Retrieved 3 questions for session 68bb1b93b39c2a464c1819c4 with proper shuffle mapping
+2025-09-06 00:19:25,735 [INFO] app.crud.crud_exam_sessions: Retrieved 3 questions for session 68bb1b93b39c2a464c1819c5 with proper shuffle mapping
+2025-09-06 00:19:25,859 [INFO] app.core.websocket: Skipping admin broadcast for exam room connection: Drs. Titi Prasasta, S.Sos in 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:25,970 [INFO] app.crud.crud_exam_sessions: Retrieved 3 questions for session 68bb1b93b39c2a464c1819c5 with proper shuffle mapping
+2025-09-06 00:19:26,111 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:26,112 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=348953dc-26db-4c05-8ee0-5173100c7fca | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:26,113 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=348953dc-26db-4c05-8ee0-5173100c7fca | successful=0/0 | time=0.6ms
+2025-09-06 00:19:33,592 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:33,593 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=3967bf1e-a68a-404c-ae3b-3f149794fe76 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:33,593 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=3967bf1e-a68a-404c-ae3b-3f149794fe76 | successful=0/0 | time=0.59ms
+2025-09-06 00:19:36,377 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:36,378 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=49c4833b-d2cd-4565-9541-914f05e89f84 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:36,379 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=49c4833b-d2cd-4565-9541-914f05e89f84 | successful=0/0 | time=0.89ms
+2025-09-06 00:19:38,018 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:38,019 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=f8da7bc3-88a3-4e31-bcb5-1a01b2f6b82e | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:38,020 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=f8da7bc3-88a3-4e31-bcb5-1a01b2f6b82e | successful=0/0 | time=0.86ms
+2025-09-06 00:19:40,079 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:40,079 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=074b1770-c498-4abc-8029-21fc62088bf9 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:40,080 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=074b1770-c498-4abc-8029-21fc62088bf9 | successful=0/0 | time=0.5ms
+2025-09-06 00:19:41,186 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:41,187 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=090c66c3-3e0a-43d0-b25e-9efa9875aa68 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:41,188 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=090c66c3-3e0a-43d0-b25e-9efa9875aa68 | successful=0/0 | time=0.85ms
+2025-09-06 00:19:41,816 [INFO] app.crud.crud_exam_sessions: Invalidated 0 exam analytics cache entries for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:41,912 [INFO] app.crud.crud_exam_sessions: Invalidating analytics cache for 2 students in exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:42,113 [INFO] app.crud.crud_exam_sessions: Successfully invalidated 15 analytics cache entries (2 students, 1 classes)
+2025-09-06 00:19:42,114 [INFO] app.crud.crud_exam_sessions: Invalidated 15 student analytics cache entries for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:42,118 [INFO] app.crud.crud_exam_sessions: Scheduled background cache warming for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:42,325 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 688477a78a56906f19d02551 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:42,326 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=b3da6f23-8bb1-4f1e-a2d3-762d7ddb1b48 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:42,327 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=b3da6f23-8bb1-4f1e-a2d3-762d7ddb1b48 | successful=0/0 | time=0.87ms
+2025-09-06 00:19:43,253 [INFO] app.api.v1.routes.ws_exam_room: Student 688477a78a56906f19d02551 disconnected from exam room 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:43,274 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: alexander grahambel from 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:43,525 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:43,526 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=4d2e491c-cb7f-4e1b-b2b3-f11071b3fde7 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:43,527 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=4d2e491c-cb7f-4e1b-b2b3-f11071b3fde7 | successful=0/0 | time=0.81ms
+2025-09-06 00:19:44,679 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:44,680 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=0da66f83-4b9e-46fb-84c2-fb849f2be5ee | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:44,681 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=0da66f83-4b9e-46fb-84c2-fb849f2be5ee | successful=0/0 | time=0.81ms
+2025-09-06 00:19:46,143 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:19:46,144 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=8753939d-b8d9-4763-9722-916ac57c1228 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:19:46,144 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=8753939d-b8d9-4763-9722-916ac57c1228 | successful=0/0 | time=0.51ms
+2025-09-06 00:19:48,650 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=86060800-e432-4925-a194-994feb6d9637 | user_id=688477a78a56906f19d02551 | username=79111967 | roles=['student']
+2025-09-06 00:19:48,864 [INFO] app.core.websocket: Broadcasting user connected event for alexander grahambel to admins (global)
+2025-09-06 00:19:48,865 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0dc65af0-0007-40c7-81d7-b35a2ea4516b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 00:19:48,865 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0dc65af0-0007-40c7-81d7-b35a2ea4516b | successful=0/0 | failed=0 | time=0.59ms
+2025-09-06 00:19:48,866 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=86060800-e432-4925-a194-994feb6d9637 | user_id=688477a78a56906f19d02551 | connection_time=216.17ms
+2025-09-06 00:19:55,269 [INFO] app.crud.exam_analytics: Found exam session 68bb1b93b39c2a464c1819c4, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-06 00:19:55,308 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:19:55,346 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:19:55,595 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:19:55,762 [INFO] app.crud.exam_analytics: Calculated 1 correct answers out of 3 total answers
+2025-09-06 00:19:56,165 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-06 00:19:56,336 [INFO] app.crud.exam_analytics: Generated score timeline with 3 events
+2025-09-06 00:19:56,441 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 1 sessions
+2025-09-06 00:19:56,604 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:19:56,605 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:19:56,681 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:19:56,682 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:19:56,682 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1b93b39c2a464c1819c4 by user 688477a78a56906f19d02551
+2025-09-06 00:20:05,311 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:20:05,312 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=edca0507-7634-457d-8aea-61b816e77825 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:20:05,313 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=edca0507-7634-457d-8aea-61b816e77825 | successful=0/0 | time=0.69ms
+2025-09-06 00:20:05,792 [INFO] app.crud.exam_analytics: Invalidated 1 analytics cache entries for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:20:05,793 [INFO] app.crud.crud_exam_sessions: Invalidated 1 exam analytics cache entries for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:20:05,898 [INFO] app.crud.crud_exam_sessions: Invalidating analytics cache for 2 students in exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:20:06,129 [INFO] app.crud.crud_exam_sessions: Successfully invalidated 15 analytics cache entries (2 students, 1 classes)
+2025-09-06 00:20:06,130 [INFO] app.crud.crud_exam_sessions: Invalidated 15 student analytics cache entries for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:20:06,134 [INFO] app.crud.crud_exam_sessions: Scheduled background cache warming for exam 68b5406b3c28dc76c69d0f45
+2025-09-06 00:20:06,381 [INFO] app.api.v1.routes.ws_exam_room: Broadcasting message from student 68b2dcbdcccc321f815ea3f5 to proctors in room 68b5406b3c28dc76c69d0f45: activity_event
+2025-09-06 00:20:06,382 [INFO] app.core.websocket: PROCTOR_BROADCAST | broadcast_id=fcae957d-e726-4260-8086-690ce74bf0a2 | room_id=68b5406b3c28dc76c69d0f45 | message_type=activity_event | proctors=0
+2025-09-06 00:20:06,382 [INFO] app.core.websocket: PROCTOR_BROADCAST_COMPLETE | broadcast_id=fcae957d-e726-4260-8086-690ce74bf0a2 | successful=0/0 | time=0.64ms
+2025-09-06 00:20:07,274 [INFO] app.api.v1.routes.ws_exam_room: Student 68b2dcbdcccc321f815ea3f5 disconnected from exam room 68b5406b3c28dc76c69d0f45
+2025-09-06 00:20:07,291 [INFO] app.core.websocket: Skipping admin broadcast for exam room disconnection: Drs. Titi Prasasta, S.Sos from 68b5406b3c28dc76c69d0f45
+2025-09-06 00:20:49,784 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a5929cff-81b9-483a-b555-752fa8c4f3a4 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 00:20:49,918 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 00:20:49,919 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=bed79ae1-ecc9-4ffd-b9f5-4dbcf00069c4 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 00:20:49,920 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=bed79ae1-ecc9-4ffd-b9f5-4dbcf00069c4 | successful=0/0 | failed=0 | time=0.77ms
+2025-09-06 00:20:49,921 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a5929cff-81b9-483a-b555-752fa8c4f3a4 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=136.64ms
+2025-09-06 00:21:14,722 [INFO] app.crud.exam_analytics: Found exam session 68bb1b93b39c2a464c1819c4, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-06 00:21:14,760 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:21:14,803 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:21:15,097 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:21:15,253 [INFO] app.crud.exam_analytics: Calculated 1 correct answers out of 3 total answers
+2025-09-06 00:21:15,665 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-06 00:21:15,843 [INFO] app.crud.exam_analytics: Generated score timeline with 3 events
+2025-09-06 00:21:15,933 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-06 00:21:16,068 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:21:16,070 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:21:16,147 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:21:16,148 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:21:16,149 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1b93b39c2a464c1819c4 by user 688477a78a56906f19d02551
+2025-09-06 00:21:49,328 [INFO] app.crud.exam_analytics: Found exam session 68bb1b93b39c2a464c1819c5, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-06 00:21:49,363 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68bb1b93b39c2a464c1819c5
+2025-09-06 00:21:49,451 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1b93b39c2a464c1819c5
+2025-09-06 00:21:49,708 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1b93b39c2a464c1819c5
+2025-09-06 00:21:49,855 [INFO] app.crud.exam_analytics: Calculated 1 correct answers out of 3 total answers
+2025-09-06 00:21:50,256 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-06 00:21:50,422 [INFO] app.crud.exam_analytics: Generated score timeline with 3 events
+2025-09-06 00:21:50,531 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-06 00:21:50,680 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1b93b39c2a464c1819c5
+2025-09-06 00:21:50,681 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1b93b39c2a464c1819c5
+2025-09-06 00:21:50,752 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1b93b39c2a464c1819c5
+2025-09-06 00:21:50,753 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1b93b39c2a464c1819c5
+2025-09-06 00:21:50,754 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1b93b39c2a464c1819c5 by user 68b2dcbdcccc321f815ea3f5
+2025-09-06 00:22:31,999 [INFO] app.crud.exam_analytics: Returning cached analytics for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:22:32,001 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1b93b39c2a464c1819c4 by user 688477a78a56906f19d02551
+2025-09-06 00:23:26,428 [INFO] app.crud.exam_analytics: Found exam session 68bb1b93b39c2a464c1819c4, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-06 00:23:26,471 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:26,524 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:26,758 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:26,898 [INFO] app.crud.exam_analytics: Calculated 1 correct answers out of 3 total answers
+2025-09-06 00:23:27,304 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-06 00:23:27,475 [INFO] app.crud.exam_analytics: Generated score timeline with 3 events
+2025-09-06 00:23:27,557 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-06 00:23:27,682 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:27,683 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:27,779 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:27,779 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:27,780 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1b93b39c2a464c1819c4 by user 688477a78a56906f19d02551
+2025-09-06 00:23:34,819 [INFO] app.crud.exam_analytics: Found exam session 68bb1b93b39c2a464c1819c4, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-06 00:23:34,873 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:34,953 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:35,196 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:35,327 [INFO] app.crud.exam_analytics: Calculated 1 correct answers out of 3 total answers
+2025-09-06 00:23:35,771 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-06 00:23:35,941 [INFO] app.crud.exam_analytics: Generated score timeline with 3 events
+2025-09-06 00:23:36,034 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-06 00:23:36,186 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:36,187 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:36,254 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:36,255 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:23:36,256 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1b93b39c2a464c1819c4 by user 688477a78a56906f19d02551
+2025-09-06 00:24:43,003 [INFO] app.crud.exam_analytics: Found exam session 68bb1b93b39c2a464c1819c4, exam_id: 68b5406b3c28dc76c69d0f45
+2025-09-06 00:24:43,063 [INFO] app.crud.exam_analytics: Found exam: ruewrwur for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:24:43,147 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:24:43,463 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:24:43,605 [INFO] app.crud.exam_analytics: Calculated 1 correct answers out of 3 total answers
+2025-09-06 00:24:44,068 [INFO] app.crud.exam_analytics: Processing 3 interactions for score timeline
+2025-09-06 00:24:44,202 [INFO] app.crud.exam_analytics: Generated score timeline with 3 events
+2025-09-06 00:24:44,349 [INFO] app.crud.exam_analytics: Analyzing difficulty for 3 questions across 2 sessions
+2025-09-06 00:24:44,485 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:24:44,486 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:24:44,563 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:24:44,564 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1b93b39c2a464c1819c4
+2025-09-06 00:24:44,565 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1b93b39c2a464c1819c4 by user 688477a78a56906f19d02551
+2025-09-06 00:27:29,457 [INFO] app.crud.exam_analytics: Found exam session 68bb1888760ff96e6952dd3c, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-06 00:27:29,510 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68bb1888760ff96e6952dd3c
+2025-09-06 00:27:29,562 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1888760ff96e6952dd3c
+2025-09-06 00:27:29,802 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1888760ff96e6952dd3c
+2025-09-06 00:27:30,060 [INFO] app.crud.exam_analytics: Calculated 2 correct answers out of 5 total answers
+2025-09-06 00:27:30,734 [INFO] app.crud.exam_analytics: Processing 4 interactions for score timeline
+2025-09-06 00:27:30,905 [INFO] app.crud.exam_analytics: Generated score timeline with 4 events
+2025-09-06 00:27:31,011 [INFO] app.crud.exam_analytics: Analyzing difficulty for 5 questions across 2 sessions
+2025-09-06 00:27:31,247 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1888760ff96e6952dd3c
+2025-09-06 00:27:31,247 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1888760ff96e6952dd3c
+2025-09-06 00:27:31,327 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1888760ff96e6952dd3c
+2025-09-06 00:27:31,328 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1888760ff96e6952dd3c
+2025-09-06 00:27:31,329 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1888760ff96e6952dd3c by user 68b2dcbdcccc321f815ea3f5
+2025-09-06 00:27:50,438 [INFO] app.crud.exam_analytics: Found exam session 68bb1889760ff96e6952dd3d, exam_id: 68920557e58cfa66adfcdd7f
+2025-09-06 00:27:50,476 [INFO] app.crud.exam_analytics: Found exam: ujian tkro 5 for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:27:50,517 [INFO] app.crud.exam_analytics: Found student:   for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:27:50,759 [INFO] app.crud.exam_analytics: Generating analytics for exam session 68bb1889760ff96e6952dd3d
+2025-09-06 00:27:50,972 [INFO] app.crud.exam_analytics: Calculated 2 correct answers out of 5 total answers
+2025-09-06 00:27:51,695 [INFO] app.crud.exam_analytics: Processing 6 interactions for score timeline
+2025-09-06 00:27:51,921 [INFO] app.crud.exam_analytics: Generated score timeline with 5 events
+2025-09-06 00:27:52,025 [INFO] app.crud.exam_analytics: Analyzing difficulty for 5 questions across 2 sessions
+2025-09-06 00:27:52,246 [INFO] app.crud.exam_analytics: Creating analytics object for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:27:52,247 [INFO] app.crud.exam_analytics: Analytics object created successfully for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:27:52,301 [INFO] app.crud.exam_analytics: Analytics saved successfully to database for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:27:52,302 [INFO] app.crud.exam_analytics: Analytics generated and cached for session 68bb1889760ff96e6952dd3d
+2025-09-06 00:27:52,303 [INFO] app.api.v1.routes.exam_analytics: Analytics retrieved for session 68bb1889760ff96e6952dd3d by user 688477a78a56906f19d02551

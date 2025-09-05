@@ -25,5 +25,6 @@ celery_app.conf.update(
         'app.tasks.bulk_operations_tasks',
         'app.tasks.academic_cycle_tasks',
         'app.tasks.score_analytics_tasks',
-    ) 
+        'app.tasks.exam_analytics_tasks',
+    )
 )

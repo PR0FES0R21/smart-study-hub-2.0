@@ -22,8 +22,88 @@ from app.crud.crud_score_analytics import (
 from app.tasks.score_analytics_tasks import (
     precompute_admin_analytics, precompute_teacher_analytics, precompute_student_analytics
 )
+from app.crud.exam_analytics import exam_analytics_crud
+from app.tasks.exam_analytics_tasks import invalidate_and_warm_exam_analytics
 
 logger = logging.getLogger(__name__)
+
+async def invalidate_student_analytics_cache_for_exam(db: AsyncIOMotorDatabase, exam_id: str):
+    """Invalidate all student analytics cache entries affected by exam submission"""
+    try:
+        # Get academic period ID from exam
+        exam = await db["exams"].find_one({"_id": ObjectId(exam_id)}, {"academic_period_id": 1})
+        if not exam:
+            logger.warning(f"Exam {exam_id} not found for cache invalidation")
+            return 0
+        
+        period_id = str(exam["academic_period_id"])
+        
+        # Get all students who have sessions in this exam
+        exam_sessions = await db["exam_sessions"].find(
+            {"exam_id": ObjectId(exam_id)},
+            {"student_id": 1}
+        ).to_list(length=None)
+        
+        if not exam_sessions:
+            return 0
+        
+        student_ids = list(set([str(session["student_id"]) for session in exam_sessions]))
+        logger.info(f"Invalidating analytics cache for {len(student_ids)} students in exam {exam_id}")
+        
+        # Also get class_id to invalidate class-level caches
+        class_ids = set()
+        for student_id in student_ids:
+            try:
+                student = await db["users"].find_one({"_id": ObjectId(student_id)}, {"profile_id": 1})
+                if student:
+                    profile = await db["profiles"].find_one({"_id": student["profile_id"]}, {"class_id": 1})
+                    if profile:
+                        class_ids.add(str(profile["class_id"]))
+            except Exception as e:
+                logger.warning(f"Error getting class_id for student {student_id}: {e}")
+        
+        invalidated_count = 0
+        
+        # Invalidate cache for each student
+        for student_id in student_ids:
+            # Cache patterns to invalidate:
+            cache_patterns = [
+                f"student_class_exam_analytics:period:{period_id}:student:{student_id}",
+                f"student_individual_stats:period:{period_id}:student:{student_id}", 
+                f"student_full_dashboard:period:{period_id}:student:{student_id}",
+                f"student_subject_performances:period:{period_id}:student:{student_id}",
+                f"student_exam_history:period:{period_id}:student:{student_id}",
+                f"student_class_comparison:period:{period_id}:student:{student_id}"
+            ]
+            
+            for cache_key in cache_patterns:
+                try:
+                    await invalidate_cache(cache_key)
+                    invalidated_count += 1
+                except Exception as e:
+                    logger.warning(f"Failed to invalidate cache {cache_key}: {e}")
+        
+        # Also invalidate class-level caches
+        for class_id in class_ids:
+            class_cache_patterns = [
+                f"class_exam_analytics:period:{period_id}:class:{class_id}",
+                f"class_dashboard:period:{period_id}:class:{class_id}",
+                f"class_performance:period:{period_id}:class:{class_id}"
+            ]
+            
+            for cache_key in class_cache_patterns:
+                try:
+                    await invalidate_cache(cache_key)
+                    invalidated_count += 1
+                except Exception as e:
+                    logger.warning(f"Failed to invalidate class cache {cache_key}: {e}")
+        
+        logger.info(f"Successfully invalidated {invalidated_count} analytics cache entries ({len(student_ids)} students, {len(class_ids)} classes)")
+        return invalidated_count
+        
+    except Exception as e:
+        logger.error(f"Error invalidating student analytics cache for exam {exam_id}: {e}")
+        return 0
 
 async def get_session_by_id(db: AsyncIOMotorDatabase, session_id: str) -> dict | None:
     if not ObjectId.is_valid(session_id): return None
@@ -151,6 +231,22 @@ async def submit_and_grade_session(db: AsyncIOMotorDatabase, session: dict, exam
 
     await invalidate_cache(generate_cache_key({"grade_level": student_class["grade_level"]}))
     recompute_competency_profile_task.delay({"grade_level": student_class["grade_level"]})
+    
+    # --- Invalidate Exam Analytics Cache for all students in this exam ---
+    try:
+        exam_id = str(exam["_id"])
+        invalidated_count = await exam_analytics_crud.invalidate_exam_analytics_cache(exam_id)
+        logger.info(f"Invalidated {invalidated_count} exam analytics cache entries for exam {exam_id}")
+        
+        # Also invalidate student analytics cache (Redis cache)
+        student_cache_count = await invalidate_student_analytics_cache_for_exam(db, exam_id)
+        logger.info(f"Invalidated {student_cache_count} student analytics cache entries for exam {exam_id}")
+        
+        # Schedule background task to regenerate analytics cache
+        invalidate_and_warm_exam_analytics.delay(exam_id)
+        logger.info(f"Scheduled background cache warming for exam {exam_id}")
+    except Exception as e:
+        logger.warning(f"Exam analytics cache invalidation failed: {e}")
     
     # --- Invalidasi cache Score Analytics yang relevan ---
     try:
@@ -306,6 +402,22 @@ async def submit_and_grade_session_v2(
 
     await invalidate_cache(generate_cache_key({"grade_level": student_class["grade_level"]}))
     recompute_competency_profile_task.delay({"grade_level": student_class["grade_level"]})
+    
+    # --- Invalidate Exam Analytics Cache for all students in this exam ---
+    try:
+        exam_id = str(exam["_id"])
+        invalidated_count = await exam_analytics_crud.invalidate_exam_analytics_cache(exam_id)
+        logger.info(f"Invalidated {invalidated_count} exam analytics cache entries for exam {exam_id}")
+        
+        # Also invalidate student analytics cache (Redis cache)
+        student_cache_count = await invalidate_student_analytics_cache_for_exam(db, exam_id)
+        logger.info(f"Invalidated {student_cache_count} student analytics cache entries for exam {exam_id}")
+        
+        # Schedule background task to regenerate analytics cache
+        invalidate_and_warm_exam_analytics.delay(exam_id)
+        logger.info(f"Scheduled background cache warming for exam {exam_id}")
+    except Exception as e:
+        logger.warning(f"Exam analytics cache invalidation failed: {e}")
     
     # --- Invalidasi cache Score Analytics yang relevan ---
     try:
