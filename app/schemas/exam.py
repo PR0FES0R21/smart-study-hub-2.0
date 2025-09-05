@@ -85,6 +85,11 @@ class ExamWithDetails(ExamPublic):
     has_session: Optional[bool] = None  # Apakah siswa sudah pernah mengerjakan
     session_score: Optional[float] = None  # Skor dari exam session jika ada
     exam_session_id: Optional[PyObjectId] = None  # ID dari exam session jika ada (hanya untuk student)
+    # Field tambahan untuk teacher analytics
+    analytics_status: Optional[str] = None  # Status analytics: not_generated, pending, processing, completed, failed
+    analytics_generated_at: Optional[datetime] = None  # Kapan analytics di-generate (jika sudah completed)
+    analytics_task_id: Optional[str] = None  # Task ID jika sedang processing/pending
+    analytics_progress: Optional[float] = None  # Progress percentage jika sedang processing
 
 class PaginatedExamResponse(BaseModel):
     total_items: int

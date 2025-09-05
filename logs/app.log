@@ -62210,3 +62210,64 @@ pymongo.errors._OperationCancelled: operation cancelled
 2025-09-05 01:21:07,343 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
 2025-09-05 01:21:07,343 [INFO] app.main: WebSocket Redis bridge ditutup
 2025-09-05 01:21:07,418 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 01:28:13,232 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 01:28:13,233 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 01:28:13,236 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 01:28:13,238 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 01:28:13,239 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 01:28:13,310 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 01:28:21,611 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 01:28:23,204 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 01:28:23,230 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 01:28:23,231 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 01:28:23,232 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 01:28:23,233 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 01:28:23,235 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 01:28:28,247 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 01:28:28,248 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 01:28:28,249 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 01:28:28,250 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 01:28:28,250 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 01:28:28,398 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 01:28:34,970 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 01:28:36,301 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 01:28:36,312 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 01:28:36,313 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 01:28:36,314 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 01:28:36,314 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 01:28:36,315 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 01:28:41,744 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 01:28:43,177 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 01:28:43,188 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 01:28:43,189 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 01:28:43,190 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 01:28:43,191 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 01:28:43,193 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 01:29:23,917 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d44d1649-51e5-4af4-a7bd-68adb411ce00 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-05 01:29:23,918 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d44d1649-51e5-4af4-a7bd-68adb411ce00 | successful=0/0 | failed=0 | time=0.6ms
+2025-09-05 01:40:07,758 [INFO] app.api.v1.routes.exams: EXAM_COMPLETE_MANUAL: TEACHER 68822f07979cbba23e6db950 manually completing exam 68920557e58cfa66adfcdd7f. Previous status: ongoing. Reason: No reason provided
+2025-09-05 01:40:07,920 [INFO] app.crud.crud_exams: Exam 68920557e58cfa66adfcdd7f completed manually by 68822f07979cbba23e6db950. Reason: No reason provided
+2025-09-05 01:46:20,365 [INFO] app.tasks.teacher_analytics_tasks: Started analytics generation task analytics_68b5406b3c28dc76c69d0f45_68822f07979cbba23e6db950_1756986380 for exam 68b5406b3c28dc76c69d0f45
+2025-09-05 01:46:20,589 [INFO] app.tasks.teacher_analytics_tasks: Starting analytics generation for exam 68b5406b3c28dc76c69d0f45
+2025-09-05 01:46:20,590 [INFO] app.crud.crud_teacher_analytics: Starting analytics generation for exam 68b5406b3c28dc76c69d0f45
+2025-09-05 01:46:21,138 [INFO] app.crud.crud_teacher_analytics: Analytics generation completed for exam 68b5406b3c28dc76c69d0f45 in 0.44s
+2025-09-05 01:46:21,283 [INFO] app.tasks.teacher_analytics_tasks: Analytics generation completed for exam 68b5406b3c28dc76c69d0f45
+2025-09-05 02:23:40,978 [INFO] app.main: Mematikan aplikasi...
+2025-09-05 02:23:40,980 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-05 02:23:40,993 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-05 02:23:40,996 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-05 02:23:40,997 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-05 02:23:41,051 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-05 11:43:52,721 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-05 11:43:54,253 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-05 11:43:54,277 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-05 11:43:54,279 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-05 11:43:54,279 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-05 11:43:54,280 [INFO] app.main: Startup aplikasi berhasil
+2025-09-05 11:43:54,282 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-05 11:44:36,479 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=d7678bb9-7a76-4c48-a1f2-0bde0c7350c2 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-09-05 11:44:37,233 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-09-05 11:44:37,234 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e9b3468d-214b-4c32-9944-84379b6038f8 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-05 11:44:37,235 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e9b3468d-214b-4c32-9944-84379b6038f8 | successful=0/0 | failed=0 | time=0.57ms
+2025-09-05 11:44:37,235 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=d7678bb9-7a76-4c48-a1f2-0bde0c7350c2 | user_id=68822f07979cbba23e6db950 | connection_time=756.53ms
+2025-09-05 11:46:33,271 [INFO] app.crud.crud_question_banks: HIT: Mengambil ID question dari cache untuk filter: {'teacher_id': '68822f07979cbba23e6db950'}

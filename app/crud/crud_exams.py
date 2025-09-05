@@ -468,7 +468,7 @@ async def get_exams_by_teacher(
     if not assignment_ids:
         return {"data": [], "total_items": 0}
     
-    # Filter ujian berdasarkan assignment IDs
+    # Filter ujian berdasarkan assignment IDs dengan analytics status
     pipeline = [
         {"$match": {
             "teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]},
@@ -480,6 +480,90 @@ async def get_exams_by_teacher(
         {"$unwind": "$subject_details"},
         {"$lookup": {"from": "classes", "localField": "teaching_assignment.class_id", "foreignField": "_id", "as": "class_details"}},
         {"$unwind": "$class_details"},
+        
+        # JOIN dengan teacher_analytics untuk mendapatkan status analytics
+        {"$lookup": {
+            "from": "teacher_analytics",
+            "localField": "_id",
+            "foreignField": "exam_metadata.exam_id",
+            "as": "analytics_data"
+        }},
+        
+        # JOIN dengan analytics_tasks untuk mendapatkan status task yang sedang berjalan
+        {"$lookup": {
+            "from": "analytics_tasks",
+            "let": {"exam_id": "$_id", "teacher_id": teacher_obj_id},
+            "pipeline": [
+                {"$match": {
+                    "$expr": {
+                        "$and": [
+                            {"$eq": ["$exam_id", "$$exam_id"]},
+                            {"$eq": ["$teacher_id", "$$teacher_id"]}
+                        ]
+                    }
+                }},
+                {"$sort": {"started_at": -1}},  # Ambil task terbaru
+                {"$limit": 1}
+            ],
+            "as": "analytics_tasks"
+        }},
+        
+        # Tambahkan field analytics status
+        {"$addFields": {
+            "analytics_status": {
+                "$cond": {
+                    "if": {"$gt": [{"$size": "$analytics_data"}, 0]},
+                    # Jika ada analytics data, status = completed
+                    "then": "completed",
+                    "else": {
+                        "$cond": {
+                            "if": {"$gt": [{"$size": "$analytics_tasks"}, 0]},
+                            # Jika ada task yang sedang berjalan, gunakan status task tersebut
+                            "then": {"$arrayElemAt": ["$analytics_tasks.status", 0]},
+                            # Jika tidak ada analytics dan tidak ada task, status = not_generated
+                            "else": "not_generated"
+                        }
+                    }
+                }
+            },
+            "analytics_generated_at": {
+                "$cond": {
+                    "if": {"$gt": [{"$size": "$analytics_data"}, 0]},
+                    "then": {"$arrayElemAt": ["$analytics_data.generated_at", 0]},
+                    "else": None
+                }
+            },
+            "analytics_task_id": {
+                "$cond": {
+                    "if": {
+                        "$and": [
+                            {"$gt": [{"$size": "$analytics_tasks"}, 0]},
+                            {"$in": [{"$arrayElemAt": ["$analytics_tasks.status", 0]}, ["pending", "processing"]]}
+                        ]
+                    },
+                    "then": {"$arrayElemAt": ["$analytics_tasks.task_id", 0]},
+                    "else": None
+                }
+            },
+            "analytics_progress": {
+                "$cond": {
+                    "if": {
+                        "$and": [
+                            {"$gt": [{"$size": "$analytics_tasks"}, 0]},
+                            {"$eq": [{"$arrayElemAt": ["$analytics_tasks.status", 0]}, "processing"]}
+                        ]
+                    },
+                    "then": {"$arrayElemAt": ["$analytics_tasks.progress", 0]},
+                    "else": None
+                }
+            }
+        }},
+        
+        # Hapus field temporary yang tidak perlu
+        {"$project": {
+            "analytics_data": 0,
+            "analytics_tasks": 0
+        }}
     ]
     
     # Filter berdasarkan academic_period_id
