@@ -413,32 +413,36 @@ class ExamAnalyticsCRUD:
                 # Get student's final answer from answers dict first
                 student_answer = answers.get(question_id_str)
                 
-                # Get question details from database
-                question_doc = await db.questions.find_one({"_id": question_id})
+                # Get question details from database (fix: use question_banks collection)
+                question_doc = await db.question_banks.find_one({"_id": question_id})
                 if not question_doc:
                     logger.warning(f"Question {question_id} not found in database - using fallback")
                     
                     # Fallback: Create dummy question data
+                    inferred_type = "essay" if isinstance(student_answer, str) and student_answer and not ObjectId.is_valid(str(student_answer)) else "multiple_choice"
                     question_doc = {
                         "_id": question_id,
-                        "question_text": f"Soal {q_map.get('position', 'N/A')}",
-                        "type": "essay" if isinstance(student_answer, str) and student_answer and not ObjectId.is_valid(str(student_answer)) else "multiple_choice",
+                        "question_text": f"[Question {q_map.get('position', 'N/A')} - Data not found]",
+                        "question_type": inferred_type,
+                        "type": inferred_type,  # Backward compatibility
                         "difficulty": "medium",
                         "points": 10,
                         "options": []
                     }
                 
                 # Determine correct answer based on question type
-                if question_doc["type"] == "multiple_choice":
+                question_type = question_doc.get("question_type", question_doc.get("type", "unknown"))
+                
+                if question_type == "multiple_choice":
                     # Find the correct option (options use 'id' field, not '_id')
-                    correct_option = next((opt for opt in question_doc["options"] if opt.get("is_correct")), None)
+                    correct_option = next((opt for opt in question_doc.get("options", []) if opt.get("is_correct")), None)
                     correct_answer = str(correct_option["id"]) if correct_option else None
                     correct_answer_text = correct_option.get("text", "") if correct_option else ""
                     
                     # Get student answer text for multiple choice
                     if student_answer:
                         # Find selected option using 'id' field
-                        selected_option = next((opt for opt in question_doc["options"] 
+                        selected_option = next((opt for opt in question_doc.get("options", []) 
                                               if str(opt["id"]) == str(student_answer)), None)
                         
                         student_answer_text = selected_option.get("text", "Jawaban tidak ditemukan") if selected_option else "Jawaban tidak valid"
@@ -446,30 +450,40 @@ class ExamAnalyticsCRUD:
                         student_answer_text = "Tidak dijawab"
                         
                 else:
-                    # Essay question
-                    correct_answer = question_doc.get("correct_answer", "")
-                    correct_answer_text = correct_answer
+                    # Essay question - no automatic scoring for essays!
+                    correct_answer = ""
+                    correct_answer_text = "Perlu dinilai manual"
                     student_answer_text = str(student_answer) if student_answer else "Tidak dijawab"
                 
                 # Check if answer is correct
                 is_correct = False
                 if student_answer:
-                    if question_doc["type"] == "multiple_choice" and correct_answer:
+                    if question_type == "multiple_choice" and correct_answer:
                         is_correct = str(student_answer) == correct_answer
-                    elif question_doc["type"] == "essay":
-                        # For essay, consider answered if has content
-                        is_correct = bool(str(student_answer).strip())
-                    else:
-                        # Fallback: Use score-based estimation for this specific question
-                        # If overall score is good, assume some answers are correct
+                    elif question_type == "essay":
+                        # For essay questions, we cannot determine correctness automatically
+                        # Check if there's a manual grade/score for this question
+                        # For now, we'll use the overall score to estimate
+                        question_points = question_doc.get("points", 10)
                         total_score = exam_session.get("score", 0)
-                        max_score = exam_session.get("max_possible_score", 100)
-                        if max_score > 0 and total_score / max_score > 0.5:
-                            # If student scored > 50%, assume this question has 70% chance of being correct
-                            question_position = q_map.get("position", 1)
-                            is_correct = (question_position * 17) % 10 < 7  # Pseudo-random but consistent
+                        total_questions = len(exam_session.get("question_map", []))
+                        
+                        # If this is the only question contributing to score, estimate correctness
+                        if total_questions > 0:
+                            expected_score_per_question = total_score / total_questions
+                            # If expected score per question >= 50% of max points, consider correct
+                            is_correct = expected_score_per_question >= (question_points * 0.5)
                         else:
                             is_correct = False
+                    else:
+                        # Unknown question type - try to infer from answer format
+                        if ObjectId.is_valid(str(student_answer)):
+                            # Looks like MC option ID, check against options
+                            if question_doc.get("options") and correct_answer:
+                                is_correct = str(student_answer) == correct_answer
+                        else:
+                            # Text answer, assume essay-like
+                            is_correct = False  # Cannot determine without manual grading
                 
                 # Calculate time spent from interaction logs
                 question_interactions = interaction_lookup.get(question_id_str, [])
@@ -502,7 +516,7 @@ class ExamAnalyticsCRUD:
                     original_position=q_map.get("position", 0),
                     displayed_position=q_map.get("position", 0),
                     question_text=question_doc.get("question_text", ""),
-                    question_type=question_doc.get("type", "unknown"),
+                    question_type=question_type,
                     difficulty=question_doc.get("difficulty", "medium"),
                     points=question_points,
                     student_answer=str(student_answer) if student_answer else None,
@@ -614,7 +628,7 @@ class ExamAnalyticsCRUD:
                 return False  # This is not the final answer, so mark as incorrect for timeline
             
             db = await self._get_db()
-            question = await db.questions.find_one({"_id": question_id})
+            question = await db.question_banks.find_one({"_id": question_id})
             
             if not question:
                 # Fallback: essay questions with text are considered correct
@@ -622,8 +636,9 @@ class ExamAnalyticsCRUD:
                     return bool(str(student_answer).strip())
                 return False
             
-            if question["type"] == "multiple_choice":
-                correct_option = next((opt for opt in question["options"] if opt.get("is_correct")), None)
+            question_type = question.get("question_type", question.get("type", "unknown"))
+            if question_type == "multiple_choice":
+                correct_option = next((opt for opt in question.get("options", []) if opt.get("is_correct")), None)
                 return correct_option and str(correct_option["id"]) == str(student_answer)
             else:
                 # For essay, assume correct if answered
@@ -685,7 +700,7 @@ class ExamAnalyticsCRUD:
                         continue
                     
                     # Check if this final answer is correct
-                    question_doc = await db.questions.find_one({"_id": question_id})
+                    question_doc = await db.question_banks.find_one({"_id": question_id})
                     if not question_doc:
                         logger.warning(f"Question {question_id} not found in database")
                         continue
@@ -693,12 +708,14 @@ class ExamAnalyticsCRUD:
                     is_correct = False
                     points_for_question = question_doc.get("points", 10)
                     
-                    if question_doc["type"] == "multiple_choice":
+                    question_type = question_doc.get("question_type", question_doc.get("type", "unknown"))
+                    if question_type == "multiple_choice":
                         correct_option = next((opt for opt in question_doc.get("options", []) if opt.get("is_correct")), None)
                         is_correct = correct_option and str(correct_option.get("id", "")) == str(final_answer)
                     else:
-                        # Essay - assume correct if answered with text
-                        is_correct = bool(str(final_answer).strip())
+                        # Essay - cannot determine correctness automatically
+                        # Use score-based estimation instead
+                        is_correct = False  # Conservative approach for essays
                     
                     # Update cumulative stats
                     if is_correct:
@@ -902,7 +919,7 @@ class ExamAnalyticsCRUD:
                 question_id_str = str(question_id)
                 
                 try:
-                    question_doc = await db.questions.find_one({"_id": question_id})
+                    question_doc = await db.question_banks.find_one({"_id": question_id})
                     if not question_doc:
                         continue
                     
@@ -910,11 +927,13 @@ class ExamAnalyticsCRUD:
                     student_answer = current_answers.get(question_id_str)
                     is_correct = False
                     
-                    if student_answer and question_doc["type"] == "multiple_choice":
-                        correct_option = next((opt for opt in question_doc["options"] if opt.get("is_correct")), None)
+                    question_type = question_doc.get("question_type", question_doc.get("type", "unknown"))
+                    if student_answer and question_type == "multiple_choice":
+                        correct_option = next((opt for opt in question_doc.get("options", []) if opt.get("is_correct")), None)
                         is_correct = correct_option and str(correct_option["id"]) == str(student_answer)
-                    elif student_answer:
-                        is_correct = bool(str(student_answer).strip())
+                    elif student_answer and question_type == "essay":
+                        # Cannot determine essay correctness automatically
+                        is_correct = False
                     
                     # Simple difficulty assessment
                     intended_difficulty = question_doc.get("difficulty", "medium")
@@ -956,7 +975,7 @@ class ExamAnalyticsCRUD:
             
             try:
                 # Get question details
-                question_doc = await db.questions.find_one({"_id": question_id})
+                question_doc = await db.question_banks.find_one({"_id": question_id})
                 if not question_doc:
                     continue
                 
@@ -975,14 +994,15 @@ class ExamAnalyticsCRUD:
                             total_answers += 1
                             
                             # Check if correct (use proper 'id' field)
-                            if question_doc["type"] == "multiple_choice":
-                                correct_option = next((opt for opt in question_doc["options"] if opt.get("is_correct")), None)
+                            question_type = question_doc.get("question_type", question_doc.get("type", "unknown"))
+                            if question_type == "multiple_choice":
+                                correct_option = next((opt for opt in question_doc.get("options", []) if opt.get("is_correct")), None)
                                 if correct_option and str(correct_option["id"]) == str(student_answer):
                                     correct_answers += 1
                             else:
-                                # Essay - assume correct if answered
-                                if str(student_answer).strip():
-                                    correct_answers += 1
+                                # Essay - cannot determine correctness automatically
+                                # Don't count essay answers as correct for difficulty analysis
+                                pass
                             
                             # Calculate time (simplified - could be enhanced)
                             session_interaction_logs = session.get("interaction_logs", [])
@@ -1077,12 +1097,15 @@ class ExamAnalyticsCRUD:
                 is_correct = False
                 if student_answer:
                     try:
-                        question_doc = await db.questions.find_one({"_id": question_id})
-                        if question_doc and question_doc["type"] == "multiple_choice":
-                            correct_option = next((opt for opt in question_doc["options"] if opt.get("is_correct")), None)
-                            is_correct = correct_option and str(correct_option["id"]) == str(student_answer)
-                        else:
-                            is_correct = bool(str(student_answer).strip())
+                        question_doc = await db.question_banks.find_one({"_id": question_id})
+                        if question_doc:
+                            question_type = question_doc.get("question_type", question_doc.get("type", "unknown"))
+                            if question_type == "multiple_choice":
+                                correct_option = next((opt for opt in question_doc.get("options", []) if opt.get("is_correct")), None)
+                                is_correct = correct_option and str(correct_option["id"]) == str(student_answer)
+                            else:
+                                # Essay - cannot determine correctness automatically
+                                is_correct = False
                     except Exception:
                         pass
                 
@@ -1349,28 +1372,27 @@ class ExamAnalyticsCRUD:
                 
             try:
                 question_id = ObjectId(question_id_str)
-                question = await db.questions.find_one({"_id": question_id})
+                question = await db.question_banks.find_one({"_id": question_id})
                 
                 if not question:
                     logger.warning(f"Question {question_id_str} not found for correctness check")
                     continue
                 
                 # Check if answer is correct based on question type
-                if question["type"] == "multiple_choice":
+                question_type = question.get("question_type", question.get("type", "unknown"))
+                if question_type == "multiple_choice":
                     # Find correct option (use 'id' field)
-                    correct_option = next((opt for opt in question["options"] if opt.get("is_correct")), None)
+                    correct_option = next((opt for opt in question.get("options", []) if opt.get("is_correct")), None)
                     if correct_option and str(correct_option["id"]) == str(student_answer):
                         correct_count += 1
                         logger.debug(f"Question {question_id_str}: CORRECT (MC)")
                     else:
                         logger.debug(f"Question {question_id_str}: WRONG (MC) - answered {student_answer}, correct {correct_option['id'] if correct_option else 'none'}")
                 else:
-                    # For essay questions, we need to check if it was manually graded as correct
-                    # If score > 0 and this is an essay, likely correct
-                    if student_answer and str(student_answer).strip():
-                        # For now, assume essay with content is correct (manual grading handles actual scoring)
-                        correct_count += 1
-                        logger.debug(f"Question {question_id_str}: ASSUMED CORRECT (Essay)")
+                    # For essay questions, we cannot determine correctness automatically
+                    # Only count if manually graded (this is a simplified approach)
+                    # In the future, this should check for manual grading data
+                    logger.debug(f"Question {question_id_str}: ESSAY - Cannot determine correctness automatically")
                         
             except Exception as e:
                 logger.warning(f"Error checking answer for question {question_id_str}: {e}")
@@ -1419,7 +1441,7 @@ class ExamAnalyticsCRUD:
             try:
                 question_id = q_map.get("question_id")
                 if question_id:
-                    question = await db.questions.find_one({"_id": question_id})
+                    question = await db.question_banks.find_one({"_id": question_id})
                     if question:
                         points = question.get("points", 10)  # Default 10 points per question
                         total_points += points
