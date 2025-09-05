@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from typing import Dict, Optional
 from bson import ObjectId
 
-from app.api.v1.deps import get_database
+from app.api.v1.deps import get_database, get_current_academic_period
 from app.crud.crud_teacher_analytics import teacher_analytics_crud
 from app.schemas.teacher_analytics import AnalyticsTask
 
@@ -92,6 +92,10 @@ class TeacherAnalyticsTaskManager:
             # Update progress
             await TeacherAnalyticsTaskManager.update_task_progress(task_id, 25.0)
             
+            # Get active academic period
+            db = get_database()
+            active_academic_period = await get_current_academic_period(db)
+            
             # Generate analytics (this is the heavy operation)
             logger.info(f"Starting analytics generation for exam {exam_id}")
             
@@ -99,7 +103,8 @@ class TeacherAnalyticsTaskManager:
                 exam_id=exam_id,
                 teacher_id=teacher_id,
                 force_regenerate=force_regenerate,
-                include_comparison=include_comparison
+                include_comparison=include_comparison,
+                active_academic_period=active_academic_period
             )
             
             # Update progress - generation complete

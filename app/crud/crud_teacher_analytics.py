@@ -34,6 +34,7 @@ class TeacherAnalyticsCRUD:
         self, 
         exam_id: str, 
         teacher_id: ObjectId,
+        active_academic_period: dict = None,
         force_regenerate: bool = False,
         include_comparison: bool = True
     ) -> ExamAnalytics:
@@ -57,7 +58,7 @@ class TeacherAnalyticsCRUD:
                 raise ValueError("No exam sessions found for this exam")
             
             # 3. Generate berbagai komponen analytics
-            exam_metadata = await self._generate_exam_metadata(db, exam_data)
+            exam_metadata = await self._generate_exam_metadata(db, exam_data, active_academic_period)
             class_statistics = await self._generate_class_statistics(db, exam_sessions, exam_data)
             questions_analysis = await self._generate_questions_analysis(db, exam_sessions, exam_data)
             student_performances = await self._generate_student_performances(db, exam_sessions, exam_data)
@@ -172,11 +173,23 @@ class TeacherAnalyticsCRUD:
         
         return await db.exam_sessions.aggregate(pipeline).to_list(None)
     
-    async def _generate_exam_metadata(self, db: AsyncIOMotorDatabase, exam_data: Dict) -> ExamMetadata:
+    async def _generate_exam_metadata(self, db: AsyncIOMotorDatabase, exam_data: dict, active_academic_period: dict = None) -> dict:
         """Generate exam metadata"""
-        # Get academic period info
-        academic_period = await db.academic_periods.find_one({"_id": exam_data.get("academic_period_id")})
-        academic_period_name = academic_period.get("name", "Unknown") if academic_period else "Unknown"
+        # Use active academic period parameter if provided, otherwise derive from exam data
+        if active_academic_period:
+            # Generate academic period name from year and semester
+            year = active_academic_period.get("year", "Unknown")
+            semester = active_academic_period.get("semester", "Unknown")
+            academic_period_name = f"{year} - Semester {semester}" if year != "Unknown" and semester != "Unknown" else "Unknown"
+        else:
+            # Fallback to getting from exam data
+            academic_period = await db.academic_periods.find_one({"_id": exam_data.get("academic_period_id")})
+            if academic_period:
+                year = academic_period.get("year", "Unknown")
+                semester = academic_period.get("semester", "Unknown")
+                academic_period_name = f"{year} - Semester {semester}" if year != "Unknown" and semester != "Unknown" else "Unknown"
+            else:
+                academic_period_name = "Unknown"
         
         return ExamMetadata(
             exam_id=exam_data["_id"],
