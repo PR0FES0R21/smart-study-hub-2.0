@@ -25,10 +25,9 @@ def recompute_competency_profile_task(filters: Optional[Dict] = None):
     dan menyimpannya ke cache.
     """
     filters = filters or {}
-    loop = asyncio.get_event_loop()
-    db = get_db_connection()
     
     async def compute():
+        db = get_db_connection()
         pipeline = build_competency_pipeline(filters)
         
         if not filters:
@@ -60,5 +59,5 @@ def recompute_competency_profile_task(filters: Optional[Dict] = None):
         )
         print(f"Analitik untuk cache key '{cache_key}' berhasil dihitung ulang.")
 
-    loop.run_until_complete(compute())
+    asyncio.run(compute())
     return {"status": "Completed"}

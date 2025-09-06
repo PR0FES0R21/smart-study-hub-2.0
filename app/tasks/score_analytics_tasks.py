@@ -1,7 +1,6 @@
 # ==============================================================================
 # File: app/tasks/score_analytics_tasks.py
 # Deskripsi: Background tasks untuk precompute analitik nilai & invalidasi cache
-# --- DITAMBAHKAN ---
 # ==============================================================================
 import asyncio
 from typing import Optional
@@ -24,41 +23,35 @@ def _get_db():
 
 @celery_app.task
 def precompute_admin_analytics(academic_period_id: str):
-    loop = asyncio.get_event_loop()
-    db = _get_db()
-
     async def _run():
+        db = _get_db()
         data = await get_admin_dashboard(db, academic_period_id)
         await set_cache(ADMIN_DASHBOARD_CACHE.format(period=academic_period_id), data, ttl=1800)
-
-    loop.run_until_complete(_run())
-    return {"status": "ok"}
+        return {"status": "ok"}
+    
+    return asyncio.run(_run())
 
 
 @celery_app.task
 def precompute_teacher_analytics(teacher_id: str, academic_period_id: str):
-    loop = asyncio.get_event_loop()
-    db = _get_db()
-
     async def _run():
+        db = _get_db()
         data = await get_teacher_dashboard(db, teacher_id, academic_period_id)
         await set_cache(TEACHER_DASHBOARD_CACHE.format(teacher=teacher_id, period=academic_period_id), data, ttl=1800)
-
-    loop.run_until_complete(_run())
-    return {"status": "ok"}
+        return {"status": "ok"}
+    
+    return asyncio.run(_run())
 
 
 @celery_app.task
 def precompute_student_analytics(student_id: str, academic_period_id: str):
-    loop = asyncio.get_event_loop()
-    db = _get_db()
-
     async def _run():
+        db = _get_db()
         data = await get_student_dashboard(db, student_id, academic_period_id)
         await set_cache(STUDENT_DASHBOARD_CACHE.format(student=student_id, period=academic_period_id), data, ttl=1800)
-
-    loop.run_until_complete(_run())
-    return {"status": "ok"}
+        return {"status": "ok"}
+    
+    return asyncio.run(_run())
 
 # ==============================================================================
 # File: app/tasks/score_analytics_tasks.py
@@ -94,7 +87,7 @@ def get_db_connection():
 # ============================================================================
 # CACHE PRECOMPUTATION TASKS
 # ============================================================================
-@celery_app.task(bind=True, name="precompute_admin_analytics")
+@celery_app.task(bind=True, name="precompute_admin_analytics_extended")
 def precompute_admin_analytics_task(self, academic_period_id: str):
     """
     Background task untuk precompute analytics admin.
@@ -102,10 +95,6 @@ def precompute_admin_analytics_task(self, academic_period_id: str):
     """
     try:
         logger.info(f"Starting admin analytics precomputation for period {academic_period_id}")
-        
-        # Jalankan async function dalam event loop
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def precompute():
             db = get_db_connection()
@@ -134,25 +123,20 @@ def precompute_admin_analytics_task(self, academic_period_id: str):
                 }
             }
         
-        result = loop.run_until_complete(precompute())
-        loop.close()
-        
+        result = asyncio.run(precompute())
         return result
         
     except Exception as exc:
         logger.error(f"Admin analytics precomputation failed: {str(exc)}")
         raise self.retry(exc=exc, countdown=60, max_retries=3)
 
-@celery_app.task(bind=True, name="precompute_teacher_analytics")
+@celery_app.task(bind=True, name="precompute_teacher_analytics_extended")
 def precompute_teacher_analytics_task(self, teacher_id: str, academic_period_id: str):
     """
     Background task untuk precompute analytics teacher.
     """
     try:
         logger.info(f"Starting teacher analytics precomputation for teacher {teacher_id}, period {academic_period_id}")
-        
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def precompute():
             db = get_db_connection()
@@ -174,25 +158,20 @@ def precompute_teacher_analytics_task(self, teacher_id: str, academic_period_id:
                 }
             }
         
-        result = loop.run_until_complete(precompute())
-        loop.close()
-        
+        result = asyncio.run(precompute())
         return result
         
     except Exception as exc:
         logger.error(f"Teacher analytics precomputation failed: {str(exc)}")
         raise self.retry(exc=exc, countdown=60, max_retries=3)
 
-@celery_app.task(bind=True, name="precompute_student_analytics")
+@celery_app.task(bind=True, name="precompute_student_analytics_extended")
 def precompute_student_analytics_task(self, student_id: str, academic_period_id: str):
     """
     Background task untuk precompute analytics student.
     """
     try:
         logger.info(f"Starting student analytics precomputation for student {student_id}, period {academic_period_id}")
-        
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def precompute():
             db = get_db_connection()
@@ -215,9 +194,7 @@ def precompute_student_analytics_task(self, student_id: str, academic_period_id:
                 }
             }
         
-        result = loop.run_until_complete(precompute())
-        loop.close()
-        
+        result = asyncio.run(precompute())
         return result
         
     except Exception as exc:
@@ -250,9 +227,6 @@ def invalidate_score_analytics_cache_task(
     """
     try:
         logger.info(f"Starting cache invalidation for scope: {scope}")
-        
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def invalidate():
             # Cache keys yang akan dihapus
@@ -301,10 +275,7 @@ def invalidate_score_analytics_cache_task(
                 "timestamp": datetime.utcnow().isoformat()
             }
         
-        result = loop.run_until_complete(invalidate())
-        loop.close()
-        
-        return result
+        return asyncio.run(invalidate())
         
     except Exception as exc:
         logger.error(f"Cache invalidation failed: {str(exc)}")
@@ -318,9 +289,6 @@ def auto_invalidate_on_new_score_task(exam_session_id: str):
     """
     try:
         logger.info(f"Auto-invalidating cache for new score in session {exam_session_id}")
-        
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def process():
             db = get_db_connection()
@@ -378,10 +346,7 @@ def auto_invalidate_on_new_score_task(exam_session_id: str):
                 "timestamp": datetime.utcnow().isoformat()
             }
         
-        result = loop.run_until_complete(process())
-        loop.close()
-        
-        return result
+        return asyncio.run(process())
         
     except Exception as exc:
         logger.error(f"Auto-invalidation failed for session {exam_session_id}: {str(exc)}")
@@ -399,9 +364,6 @@ def daily_analytics_refresh_task():
     """
     try:
         logger.info("Starting daily analytics refresh")
-        
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def daily_refresh():
             db = get_db_connection()
@@ -440,10 +402,7 @@ def daily_analytics_refresh_task():
                 "timestamp": datetime.utcnow().isoformat()
             }
         
-        result = loop.run_until_complete(daily_refresh())
-        loop.close()
-        
-        return result
+        return asyncio.run(daily_refresh())
         
     except Exception as exc:
         logger.error(f"Daily analytics refresh failed: {str(exc)}")
@@ -456,9 +415,6 @@ def weekly_analytics_cleanup_task():
     """
     try:
         logger.info("Starting weekly analytics cleanup")
-        
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def cleanup():
             # TODO: Implement cleanup logic
@@ -476,10 +432,7 @@ def weekly_analytics_cleanup_task():
                 "timestamp": datetime.utcnow().isoformat()
             }
         
-        result = loop.run_until_complete(cleanup())
-        loop.close()
-        
-        return result
+        return asyncio.run(cleanup())
         
     except Exception as exc:
         logger.error(f"Weekly analytics cleanup failed: {str(exc)}")
@@ -506,9 +459,6 @@ def export_analytics_report_task(
         
         # Update task progress
         self.update_state(state='PROGRESS', meta={'current': 0, 'total': 100, 'status': 'Initializing...'})
-        
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def export():
             db = get_db_connection()
@@ -573,10 +523,7 @@ def export_analytics_report_task(
                 }
             }
         
-        result = loop.run_until_complete(export())
-        loop.close()
-        
-        return result
+        return asyncio.run(export())
         
     except Exception as exc:
         logger.error(f"Analytics report export failed: {str(exc)}")
@@ -594,9 +541,6 @@ def analytics_health_check_task():
     """
     try:
         logger.info("Running analytics health check")
-        
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
         
         async def health_check():
             db = get_db_connection()
@@ -636,10 +580,7 @@ def analytics_health_check_task():
                 "sample_data_count": sample_sessions if 'sample_sessions' in locals() else 0
             }
         
-        result = loop.run_until_complete(health_check())
-        loop.close()
-        
-        return result
+        return asyncio.run(health_check())
         
     except Exception as exc:
         logger.error(f"Analytics health check failed: {str(exc)}")

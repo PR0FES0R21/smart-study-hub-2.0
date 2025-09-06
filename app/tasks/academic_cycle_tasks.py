@@ -23,10 +23,8 @@ def run_end_of_year_cycle_task(current_year: str, next_year: str):
     """
     Menjalankan seluruh proses akhir tahun ajaran secara bertahap dan aman.
     """
-    loop = asyncio.get_event_loop()
-    db = get_db_connection()
-
     async def process():
+        db = get_db_connection()
         # Cek apakah tugas lain sedang berjalan
         current_state = await crud_system_state.get_task_state(db, TASK_NAME)
         if current_state and current_state.get("status") == "processing":
@@ -63,5 +61,5 @@ def run_end_of_year_cycle_task(current_year: str, next_year: str):
             await manager.broadcast_to_roles({"type": "academic_cycle_failed", "data": error_state}, ["admin"])
             print(f"ERROR saat menjalankan siklus akhir tahun: {e}")
 
-    loop.run_until_complete(process())
+    asyncio.run(process())
     return {"status": "Task runner finished."}
