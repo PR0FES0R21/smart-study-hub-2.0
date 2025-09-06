@@ -17,6 +17,10 @@ from app.schemas.exam_analytics import (
     ExamSessionAnalytics, ExamAnalyticsRequest, ExamAnalyticsSummary,
     BatchAnalyticsResponse, CheatDetectionReport, LearningInsights
 )
+from app.schemas.score_trend_analytics import (
+    ScoreTrendAnalytics, ScoreTrendRequest
+)
+from app.crud.score_trend_analytics import score_trend_crud
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -470,6 +474,98 @@ async def get_learning_insights(
     except Exception as e:
         logger.error(f"Error generating learning insights: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
+
+# ============================================================================
+# SCORE TREND ANALYTICS
+# ============================================================================
+
+@router.get("/score-trend", response_model=ScoreTrendAnalytics)
+async def get_score_trend_analytics(
+    start_date: Optional[datetime] = Query(None, description="Start date for trend analysis"),
+    end_date: Optional[datetime] = Query(None, description="End date for trend analysis"),
+    class_id: Optional[str] = Query(None, description="Filter by class ID"),
+    grade_level: Optional[int] = Query(None, description="Filter by grade level"),
+    subject_id: Optional[str] = Query(None, description="Filter by subject ID"),
+    expertise_id: Optional[str] = Query(None, description="Filter by expertise program ID"),
+    teacher_id: Optional[str] = Query(None, description="Filter by teacher ID (admin only)"),
+    student_id: Optional[str] = Query(None, description="Filter by student ID (admin only)"),
+    academic_period_id: Optional[str] = Query(None, description="Filter by academic period"),
+    group_by: str = Query("class", description="Group data by: class, subject, grade, teacher, student"),
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Get score trend analytics dengan role-based filtering
+    
+    Features per role:
+    - **Student**: Hanya dapat melihat trend nilai pribadi
+    - **Teacher**: Dapat melihat trend kelas dan mata pelajaran yang diajar
+    - **Admin**: Dapat melihat semua trend dengan filtering lengkap
+    
+    Parameters yang dapat digunakan berdasarkan role:
+    - Student: start_date, end_date
+    - Teacher: start_date, end_date, class_id, subject_id, group_by
+    - Admin: semua parameter
+    """
+    try:
+        # Build request object
+        request = ScoreTrendRequest(
+            start_date=start_date,
+            end_date=end_date,
+            class_id=ObjectId(class_id) if class_id else None,
+            grade_level=grade_level,
+            subject_id=ObjectId(subject_id) if subject_id else None,
+            expertise_id=ObjectId(expertise_id) if expertise_id else None,
+            teacher_id=ObjectId(teacher_id) if teacher_id else None,
+            student_id=ObjectId(student_id) if student_id else None,
+            academic_period_id=ObjectId(academic_period_id) if academic_period_id else None,
+            group_by=group_by
+        )
+        
+        # Get analytics
+        analytics = await score_trend_crud.get_score_trend_analytics(request, current_user)
+        
+        logger.info(f"Score trend analytics retrieved for user {current_user['_id']} with {len(analytics.series)} series")
+        return analytics
+        
+    except ValueError as e:
+        logger.error(f"ValueError in score trend analytics: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+    except PermissionError as e:
+        logger.error(f"PermissionError in score trend analytics: {e}")
+        raise HTTPException(status_code=403, detail=str(e))
+    except Exception as e:
+        logger.error(f"Unexpected error in score trend analytics: {str(e)}")
+        logger.exception(f"Full traceback for score trend analytics:")
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+@router.post("/score-trend", response_model=ScoreTrendAnalytics)
+async def get_score_trend_analytics_post(
+    request: ScoreTrendRequest,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Alternative POST endpoint untuk score trend analytics dengan request body
+    
+    Berguna untuk complex filtering atau ketika parameter terlalu banyak untuk GET request
+    """
+    try:
+        analytics = await score_trend_crud.get_score_trend_analytics(request, current_user)
+        
+        logger.info(f"Score trend analytics (POST) retrieved for user {current_user['_id']} with {len(analytics.series)} series")
+        return analytics
+        
+    except ValueError as e:
+        logger.error(f"ValueError in score trend analytics (POST): {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+    except PermissionError as e:
+        logger.error(f"PermissionError in score trend analytics (POST): {e}")
+        raise HTTPException(status_code=403, detail=str(e))
+    except Exception as e:
+        logger.error(f"Unexpected error in score trend analytics (POST): {str(e)}")
+        logger.exception(f"Full traceback for score trend analytics (POST):")
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 # ============================================================================
 # MANAGEMENT ENDPOINTS

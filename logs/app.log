@@ -68588,3 +68588,147 @@ pymongo.errors._OperationCancelled: operation cancelled
 2025-09-06 23:35:04,289 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
 2025-09-06 23:35:04,290 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=10aa86a2-3837-4453-8a8e-30cca80520d7 | message_type=user_disconnected | target_roles=['admin'] | recipients=1
 2025-09-06 23:35:04,291 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=10aa86a2-3837-4453-8a8e-30cca80520d7 | successful=1/1 | failed=0 | time=1.29ms
+2025-09-07 00:09:13,277 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=ce24336e-d8a2-4a98-91c0-48e9bcc6820b | user_id=686a3396d20694199c01c06b | duration=3411.34s | messages_processed=62
+2025-09-07 00:09:13,278 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | room_id=lobby | connection_id=4dddd501-85fb-48fa-a5a7-14187a428abe | total_active=0 | duration=3411.2s
+2025-09-07 00:09:13,279 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-07 00:09:13,280 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a2b29f0b-c67a-417b-90d5-32d24bd574e9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-07 00:09:13,281 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a2b29f0b-c67a-417b-90d5-32d24bd574e9 | successful=0/0 | failed=0 | time=1.02ms
+2025-09-07 00:09:13,386 [INFO] app.main: Mematikan aplikasi...
+2025-09-07 00:09:13,387 [INFO] app.main: Menutup WebSocket manager...
+2025-09-07 00:09:13,387 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-07 00:09:13,387 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-07 00:09:13,388 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-07 00:09:13,389 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-07 00:09:13,391 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-07 00:09:13,392 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-07 00:09:13,392 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-07 00:09:13,534 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-07 00:09:19,867 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-07 00:09:20,797 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-07 00:09:20,817 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-07 00:09:20,818 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-07 00:09:20,819 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-07 00:09:20,820 [INFO] app.main: Startup aplikasi berhasil
+2025-09-07 00:09:20,821 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-07 00:09:20,822 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-07 00:39:51,818 [INFO] app.main: Mematikan aplikasi...
+2025-09-07 00:39:51,819 [INFO] app.main: Menutup WebSocket manager...
+2025-09-07 00:39:51,819 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-07 00:39:51,820 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-07 00:39:51,820 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-07 00:39:51,821 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-07 00:39:51,822 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-07 00:39:51,824 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-07 00:39:51,825 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-07 00:39:52,032 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-07 00:39:59,228 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-07 00:40:00,592 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-07 00:40:00,625 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-07 00:40:00,629 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-07 00:40:00,630 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-07 00:40:00,631 [INFO] app.main: Startup aplikasi berhasil
+2025-09-07 00:40:00,632 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-07 00:40:00,632 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-07 00:40:06,742 [INFO] app.main: Mematikan aplikasi...
+2025-09-07 00:40:06,743 [INFO] app.main: Menutup WebSocket manager...
+2025-09-07 00:40:06,743 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-07 00:40:06,744 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-07 00:40:06,744 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-07 00:40:06,744 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-07 00:40:06,746 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-07 00:40:06,746 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-07 00:40:06,747 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-07 00:40:06,940 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-07 00:40:12,547 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-07 00:40:13,606 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-07 00:40:13,614 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-07 00:40:13,615 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-07 00:40:13,616 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-07 00:40:13,616 [INFO] app.main: Startup aplikasi berhasil
+2025-09-07 00:40:13,617 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-07 00:40:13,618 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-07 00:40:29,644 [INFO] app.main: Mematikan aplikasi...
+2025-09-07 00:40:29,645 [INFO] app.main: Menutup WebSocket manager...
+2025-09-07 00:40:29,645 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-07 00:40:29,645 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-07 00:40:29,646 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-07 00:40:29,646 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-07 00:40:29,647 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-07 00:40:29,648 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-07 00:40:29,648 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-07 00:40:29,912 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-07 00:40:35,557 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-07 00:40:36,869 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-07 00:40:36,880 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-07 00:40:36,881 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-07 00:40:36,882 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-07 00:40:36,882 [INFO] app.main: Startup aplikasi berhasil
+2025-09-07 00:40:36,883 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-07 00:40:36,884 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-07 00:44:53,112 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3b936487-45c9-43af-9ac8-06a1616270ba | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-07 00:44:53,113 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3b936487-45c9-43af-9ac8-06a1616270ba | successful=0/0 | failed=0 | time=1.04ms
+2025-09-07 00:45:01,671 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-07 00:54:21,613 [INFO] app.main: Mematikan aplikasi...
+2025-09-07 00:54:21,614 [INFO] app.main: Menutup WebSocket manager...
+2025-09-07 00:54:21,614 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-07 00:54:21,615 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-07 00:54:21,615 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-07 00:54:21,616 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-07 00:54:21,617 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-07 00:54:21,618 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-07 00:54:21,619 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-07 00:54:21,753 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-07 00:54:27,402 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-07 00:54:28,499 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-07 00:54:28,511 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-07 00:54:28,512 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-07 00:54:28,512 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-07 00:54:28,513 [INFO] app.main: Startup aplikasi berhasil
+2025-09-07 00:54:28,513 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-07 00:54:28,514 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-07 00:55:59,653 [INFO] app.main: Mematikan aplikasi...
+2025-09-07 00:55:59,653 [INFO] app.main: Menutup WebSocket manager...
+2025-09-07 00:55:59,654 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-07 00:55:59,654 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-07 00:55:59,655 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-07 00:55:59,655 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-07 00:55:59,656 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-07 00:55:59,657 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-07 00:55:59,658 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-07 00:55:59,838 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-07 00:56:05,453 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-07 00:56:06,765 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-07 00:56:06,793 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-07 00:56:06,793 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-07 00:56:06,794 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-07 00:56:06,795 [INFO] app.main: Startup aplikasi berhasil
+2025-09-07 00:56:06,796 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-07 00:56:06,796 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-07 00:57:49,648 [INFO] app.main: Mematikan aplikasi...
+2025-09-07 00:57:49,648 [INFO] app.main: Menutup WebSocket manager...
+2025-09-07 00:57:49,648 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-07 00:57:49,649 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-07 00:57:49,649 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-07 00:57:49,650 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-07 00:57:49,651 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-07 00:57:49,652 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-07 00:57:49,652 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-07 00:57:49,906 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-07 00:57:55,456 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-07 00:57:56,882 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-07 00:57:56,911 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-07 00:57:56,912 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-07 00:57:56,913 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-07 00:57:56,914 [INFO] app.main: Startup aplikasi berhasil
+2025-09-07 00:57:56,916 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-07 00:57:56,917 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-07 01:00:26,085 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-07 01:01:01,980 [ERROR] app.api.v1.routes.exam_analytics: ValueError in score trend analytics: 1 validation error for ScoreTrendRequest
+group_by
+  Value error, group_by must be one of ['class', 'subject', 'grade', 'teacher', 'student'] [type=value_error, input_value='subjects', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-07 01:01:15,874 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-07 01:01:34,575 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-07 01:01:42,373 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-07 01:01:49,753 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-07 01:06:55,578 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
