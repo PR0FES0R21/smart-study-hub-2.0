@@ -8,7 +8,7 @@ import logging
 import time
 import uuid
 from datetime import datetime
-from app.core.websocket import manager
+from app.core.websocket import manager, MongoJSONEncoder
 from app.api.v1 import deps
 
 router = APIRouter()
@@ -56,7 +56,7 @@ async def websocket_endpoint(
             "server_time": datetime.utcnow().isoformat(),
             "message": "WebSocket connection established successfully"
         }
-        await websocket.send_text(json.dumps(welcome_message))
+        await websocket.send_text(json.dumps(welcome_message, cls=MongoJSONEncoder))
         
         message_count = 0
         while True:
@@ -85,7 +85,7 @@ async def websocket_endpoint(
                     "message": "Invalid JSON format",
                     "timestamp": datetime.utcnow().isoformat()
                 }
-                await websocket.send_text(json.dumps(error_message))
+                await websocket.send_text(json.dumps(error_message, cls=MongoJSONEncoder))
                 
             except Exception as e:
                 logger.error(
@@ -98,7 +98,7 @@ async def websocket_endpoint(
                     "message": "Error processing message",
                     "timestamp": datetime.utcnow().isoformat()
                 }
-                await websocket.send_text(json.dumps(error_message))
+                await websocket.send_text(json.dumps(error_message, cls=MongoJSONEncoder))
                 
     except WebSocketDisconnect:
         session_duration = round(time.time() - start_time, 2)
@@ -156,7 +156,7 @@ async def websocket_lobby(
             "server_time": datetime.utcnow().isoformat(),
             "message": "Connected to lobby successfully"
         }
-        await websocket.send_text(json.dumps(welcome_message))
+        await websocket.send_text(json.dumps(welcome_message, cls=MongoJSONEncoder))
         
         message_count = 0
         while True:
@@ -218,7 +218,7 @@ async def handle_incoming_message(websocket: WebSocket, user_id: str, roles: lis
             "message_id": message_id,
             "server_time": datetime.utcnow().isoformat()
         }
-        await websocket.send_text(json.dumps(pong_message))
+        await websocket.send_text(json.dumps(pong_message, cls=MongoJSONEncoder))
         logger.debug(f"🏓 WS_PONG_SENT | session_id={session_id} | user_id={user_id}")
         
     elif message_type == "admin_broadcast" and "admin" in roles:
@@ -247,7 +247,7 @@ async def handle_incoming_message(websocket: WebSocket, user_id: str, roles: lis
             "message_id": message_id,
             "timestamp": datetime.utcnow().isoformat()
         }
-        await websocket.send_text(json.dumps(stats_message))
+        await websocket.send_text(json.dumps(stats_message, cls=MongoJSONEncoder))
         logger.info(f"📊 WS_STATS_SENT | session_id={session_id} | user_id={user_id}")
         
     elif message_type == "request_all_users" and "admin" in roles:
@@ -257,7 +257,7 @@ async def handle_incoming_message(websocket: WebSocket, user_id: str, roles: lis
             **all_users_data,
             "message_id": message_id
         }
-        await websocket.send_text(json.dumps(all_users_message))
+        await websocket.send_text(json.dumps(all_users_message, cls=MongoJSONEncoder))
         logger.info(f"👥 WS_ALL_USERS_SENT | session_id={session_id} | user_id={user_id} | total_users={all_users_data['total_count']}")
         
     elif message_type == "heartbeat" or message_type == "heartbeat_pong":
@@ -270,7 +270,7 @@ async def handle_incoming_message(websocket: WebSocket, user_id: str, roles: lis
                 "message_id": message_id,
                 "server_time": datetime.utcnow().isoformat()
             }
-            await websocket.send_text(json.dumps(heartbeat_response))
+            await websocket.send_text(json.dumps(heartbeat_response, cls=MongoJSONEncoder))
             logger.debug(f"💓 WS_HEARTBEAT_ACK | session_id={session_id} | user_id={user_id}")
         else:
             # Client responded to our ping
@@ -293,7 +293,7 @@ async def handle_incoming_message(websocket: WebSocket, user_id: str, roles: lis
             "message_id": message_id,
             "timestamp": datetime.utcnow().isoformat()
         }
-        await websocket.send_text(json.dumps(error_response))
+        await websocket.send_text(json.dumps(error_response, cls=MongoJSONEncoder))
 
 async def handle_lobby_message(websocket: WebSocket, user_id: str, roles: list, message: dict, session_id: str):
     """Handle pesan dari lobby WebSocket dengan enhanced logging."""
@@ -313,7 +313,7 @@ async def handle_lobby_message(websocket: WebSocket, user_id: str, roles: list, 
             "message_id": message_id,
             "server_time": datetime.utcnow().isoformat()
         }
-        await websocket.send_text(json.dumps(pong_message))
+        await websocket.send_text(json.dumps(pong_message, cls=MongoJSONEncoder))
         logger.debug(f"🏓 WS_LOBBY_PONG | session_id={session_id} | user_id={user_id}")
         
     elif message_type == "heartbeat" or message_type == "heartbeat_pong":
@@ -325,7 +325,7 @@ async def handle_lobby_message(websocket: WebSocket, user_id: str, roles: list, 
                 "message_id": message_id,
                 "server_time": datetime.utcnow().isoformat()
             }
-            await websocket.send_text(json.dumps(heartbeat_response))
+            await websocket.send_text(json.dumps(heartbeat_response, cls=MongoJSONEncoder))
             logger.debug(f"💓 WS_LOBBY_HEARTBEAT_ACK | session_id={session_id} | user_id={user_id}")
         else:
             # Client responded to our ping
@@ -345,4 +345,4 @@ async def handle_lobby_message(websocket: WebSocket, user_id: str, roles: list, 
             "message_id": message_id,
             "timestamp": datetime.utcnow().isoformat()
         }
-        await websocket.send_text(json.dumps(error_response))
+        await websocket.send_text(json.dumps(error_response, cls=MongoJSONEncoder))

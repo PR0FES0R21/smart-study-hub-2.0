@@ -10,11 +10,21 @@ import logging
 import time
 import uuid
 from datetime import datetime
+from bson import ObjectId
 from app.core.redis_websocket import redis_bridge
 from app.core.db import db
 from app.crud.crud_users import get_user_by_id
 
 logger = logging.getLogger(__name__)
+
+class MongoJSONEncoder(json.JSONEncoder):
+    """Custom JSON encoder to handle MongoDB ObjectId and other types"""
+    def default(self, obj):
+        if isinstance(obj, ObjectId):
+            return str(obj)
+        if isinstance(obj, datetime):
+            return obj.isoformat()
+        return super(MongoJSONEncoder, self).default(obj)
 
 class ConnectionManager:
     def __init__(self):
@@ -205,7 +215,9 @@ class ConnectionManager:
                 if (current_conn and
                     current_conn.get("version") == connection_data.get("snapshot_version")):
                     
-                    await connection_data["websocket"].send_text(json.dumps(message))
+                    # Use custom encoder to handle ObjectId and other MongoDB types
+                    message_json = json.dumps(message, cls=MongoJSONEncoder)
+                    await connection_data["websocket"].send_text(message_json)
                     successful_sends += 1
                     logger.debug(
                         f"📤 MESSAGE_SENT | user_id={user_id} | "
@@ -268,7 +280,9 @@ class ConnectionManager:
                 if (current_conn and
                     current_conn.get("version") == connection_data.get("snapshot_version")):
                     
-                    await connection_data["websocket"].send_text(json.dumps(message))
+                    # Use custom encoder to handle ObjectId and other MongoDB types
+                    message_json = json.dumps(message, cls=MongoJSONEncoder)
+                    await connection_data["websocket"].send_text(message_json)
                     successful_sends += 1
                     logger.debug(f"✅ Message sent to proctor {connection_data.get('username', user_id)}")
                 else:
@@ -340,7 +354,9 @@ class ConnectionManager:
                 for uid, conn_data in proctor_connections.items():
                     websocket = conn_data["websocket"]
                     try:
-                        await websocket.send_text(json.dumps(user_event_message))
+                        # Use custom encoder to handle ObjectId and other MongoDB types
+                        message_json = json.dumps(user_event_message, cls=MongoJSONEncoder)
+                        await websocket.send_text(message_json)
                         logger.debug(f"✅ Sent room event to proctor {uid}")
                     except Exception as e:
                         logger.error(f"❌ Failed to send user event to proctor {uid}: {e}")
@@ -633,7 +649,7 @@ class ConnectionManager:
                 "timestamp": time.time(),
                 "server_time": datetime.utcnow().isoformat()
             }
-            await conn_data["websocket"].send_text(json.dumps(heartbeat_message))
+            await conn_data["websocket"].send_text(json.dumps(heartbeat_message, cls=MongoJSONEncoder))
             
             # Increment heartbeat failure count
             async with self._lock:
