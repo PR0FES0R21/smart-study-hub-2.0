@@ -404,7 +404,6 @@ async def manage_question_set_permissions_enhanced(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher)
 ):
-    print(permission_data)
     """
     Manage permissions with enhanced response showing all permission holders.
     """
@@ -545,8 +544,6 @@ async def add_questions_to_set(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher)
 ):
-    print(questions_data)
-    print(question_set_id)
     """
     Menambahkan soal ke paket soal. 
     Hanya koordinator creator atau user dengan manage_questions permission.
@@ -567,7 +564,6 @@ async def remove_questions_from_set(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
     current_user: dict = Depends(deps.get_current_active_teacher)
 ):
-    print(questions_data)
     """
     Menghapus soal dari paket soal.
     Hanya koordinator creator atau user dengan manage_questions permission.

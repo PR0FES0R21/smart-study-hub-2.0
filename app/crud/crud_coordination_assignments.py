@@ -50,7 +50,6 @@ async def get_coordinations_by_academic_period(
 ) -> List[dict]:
     """Get coordinations filtered by academic period and optional filters"""
     filter_query = {"academic_period_id": academic_period_id}
-    print(filter_query)
     
     if subject_id:
         filter_query["subject_id"] = subject_id

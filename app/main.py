@@ -63,6 +63,10 @@ async def lifespan(app: FastAPI):
     logger.info("Mematikan aplikasi...")
     
     try:
+        # Close WebSocket manager
+        logger.info("Menutup WebSocket manager...")
+        await manager.shutdown()
+        
         # Close WebSocket Redis bridge
         logger.info("Menutup WebSocket Redis bridge...")
         await redis_bridge.close()

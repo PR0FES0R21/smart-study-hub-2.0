@@ -192,7 +192,6 @@ async def get_teacher_dashboard(
     teacher_id = str(current_user["_id"])
     academic_period_id = str(current_period["_id"])
     data = await crud_score_analytics.get_teacher_dashboard(db, teacher_id, academic_period_id)
-    print(data, flush=True)
     return TeacherDashboard.model_validate(data)
 
 @router.get("/teacher/class-statistics", response_model=List[TeacherClassStats])

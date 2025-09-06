@@ -22,6 +22,10 @@ class ConnectionManager:
         self._lock = asyncio.Lock()
         self._redis_listener_started = False
         self._connection_versions: Dict[str, int] = {}  # Track connection versions to prevent race conditions
+        self._heartbeat_task = None  # Background task for heartbeat monitoring
+        self._heartbeat_interval = 60  # 60 seconds heartbeat interval (school-friendly)
+        self._connection_timeout = 300  # 5 minutes timeout (more lenient for school network)
+        self._admin_timeout = 600  # 10 minutes timeout for admin users (critical role)
 
     async def initialize(self):
         """Initialize the connection manager and start Redis listener."""
@@ -30,8 +34,11 @@ class ConnectionManager:
                 await redis_bridge.initialize()
                 # Start Redis listener in background
                 asyncio.create_task(redis_bridge.listen_for_messages(self))
+                # Start heartbeat monitoring
+                if not self._heartbeat_task:
+                    self._heartbeat_task = asyncio.create_task(self._heartbeat_monitor())
                 self._redis_listener_started = True
-                logger.info("WebSocket manager initialized with Redis bridge")
+                logger.info("WebSocket manager initialized with Redis bridge and heartbeat monitoring")
             except Exception as e:
                 logger.error(f"Failed to initialize WebSocket manager: {e}")
 
@@ -65,15 +72,17 @@ class ConnectionManager:
                     "roles": roles,
                     "room_id": room_id,
                     "connected_at": time.time(),
+                    "last_activity": time.time(),
                     "connection_id": connection_id,
                     "version": current_version,
                     "username": username,
-                    "user_details": user_details
+                    "user_details": user_details,
+                    "heartbeat_failures": 0
                 }
             
             connection_time = round((time.time() - start_time) * 1000, 2)
             logger.info(
-                f"🟢 USER_CONNECTED | user_id={user_id} | username={username} | "
+                f"USER_CONNECTED | user_id={user_id} | username={username} | "
                 f"roles={roles} | room_id={room_id or 'lobby'} | "
                 f"connection_id={connection_id} | total_active={len(self.active_connections)} | "
                 f"connection_time={connection_time}ms"
@@ -105,7 +114,7 @@ class ConnectionManager:
                 del self.active_connections[user_id]
                 
                 logger.info(
-                    f"🔴 USER_DISCONNECTED | user_id={user_id} | username={username} | "
+                    f"USER_DISCONNECTED | user_id={user_id} | username={username} | "
                     f"room_id={room_id or 'lobby'} | connection_id={connection_id} | "
                     f"total_active={len(self.active_connections)} | duration={connected_duration}s"
                 )
@@ -207,7 +216,7 @@ class ConnectionManager:
                     logger.debug(f"Skipping stale connection for user {user_id}")
                     
             except WebSocketDisconnect:
-                logger.info(f"🔌 User {user_id} disconnected during broadcast")
+                logger.info(f"  User {user_id} disconnected during broadcast")
                 failed_users.append(user_id)
             except Exception as e:
                 logger.error(f"❌ Failed to send message to user {user_id}: {e}")
@@ -421,12 +430,12 @@ class ConnectionManager:
                     current_conn.get("version") == snapshot_conn.get("snapshot_version")):
                     del self.active_connections[user_id]
                     cleanup_count += 1
-                    logger.debug(f"🧹 Cleaned up failed connection for user {user_id}")
+                    logger.debug(f" Cleaned up failed connection for user {user_id}")
                 else:
                     logger.debug(f"Skipped cleanup for user {user_id} (version mismatch or already reconnected)")
         
         if cleanup_count > 0:
-            logger.info(f"🧹 CLEANUP_COMPLETE | removed={cleanup_count}/{len(failed_users)} failed connections")
+            logger.info(f" CLEANUP_COMPLETE | removed={cleanup_count}/{len(failed_users)} failed connections")
 
     async def _broadcast_user_connected_event(self, user_id: str, username: str, roles: List[str], room_id: str | None, connection_id: str):
         """Broadcast efficient user connected event - hanya data user yang connect."""
@@ -548,10 +557,117 @@ class ConnectionManager:
                     "roles": conn_data.get("roles", []),
                     "room_id": conn_data.get("room_id"),
                     "connected_at": conn_data.get("connected_at", time.time()),
+                    "last_activity": conn_data.get("last_activity", time.time()),
                     "connection_id": conn_data.get("connection_id", "unknown"),
-                    "version": conn_data.get("version", 0)
+                    "version": conn_data.get("version", 0),
+                    "heartbeat_failures": conn_data.get("heartbeat_failures", 0)
                 }
             return None
+
+    async def update_user_activity(self, user_id: str):
+        """Update last activity timestamp for a user."""
+        async with self._lock:
+            if user_id in self.active_connections:
+                self.active_connections[user_id]["last_activity"] = time.time()
+                self.active_connections[user_id]["heartbeat_failures"] = 0
+                logger.debug(f"Updated activity for user {user_id}")
+
+    async def _heartbeat_monitor(self):
+        """Background task to monitor connection health and send heartbeats."""
+        logger.info(f"Starting heartbeat monitor (interval: {self._heartbeat_interval}s, student_timeout: {self._connection_timeout}s, admin_timeout: {self._admin_timeout}s)")
+        
+        while True:
+            try:
+                await asyncio.sleep(self._heartbeat_interval)
+                current_time = time.time()
+                stale_connections = []
+                active_count = 0
+                
+                async with self._lock:
+                    for user_id, conn_data in self.active_connections.items():
+                        last_activity = conn_data.get("last_activity", current_time)
+                        time_since_activity = current_time - last_activity
+                        
+                        # Role-based timeout: admin gets longer timeout
+                        user_roles = conn_data.get("roles", [])
+                        timeout_threshold = self._admin_timeout if "admin" in user_roles else self._connection_timeout
+                        
+                        if time_since_activity > timeout_threshold:
+                            # Fix unicode encoding issues on Windows
+                            username = conn_data.get('username', 'unknown')
+                            # Replace problematic characters for Windows console
+                            safe_username = username.encode('ascii', errors='replace').decode('ascii')
+                            role_info = "admin" if "admin" in user_roles else "user"
+                            logger.warning(
+                                f"STALE_CONNECTION | user_id={user_id} | "
+                                f"username={safe_username} | role={role_info} | "
+                                f"inactive_for={round(time_since_activity, 2)}s | "
+                                f"timeout_threshold={timeout_threshold}s"
+                            )
+                            stale_connections.append(user_id)
+                        else:
+                            active_count += 1
+                
+                # Remove stale connections
+                for user_id in stale_connections:
+                    await self.disconnect(user_id)
+                    logger.info(f" Removed stale connection for user {user_id}")
+                
+                if active_count > 0 or stale_connections:
+                    logger.debug(f"💓 HEARTBEAT_MONITOR | active_connections={active_count} | removed_stale={len(stale_connections)}")
+                    
+            except Exception as e:
+                logger.error(f"❌ Error in heartbeat monitor: {e}")
+                await asyncio.sleep(5)  # Short sleep before retry
+
+    async def send_heartbeat_ping(self, user_id: str):
+        """Send heartbeat ping to a specific user."""
+        async with self._lock:
+            conn_data = self.active_connections.get(user_id)
+            if not conn_data:
+                return False
+        
+        try:
+            heartbeat_message = {
+                "type": "heartbeat_ping",
+                "timestamp": time.time(),
+                "server_time": datetime.utcnow().isoformat()
+            }
+            await conn_data["websocket"].send_text(json.dumps(heartbeat_message))
+            
+            # Increment heartbeat failure count
+            async with self._lock:
+                if user_id in self.active_connections:
+                    self.active_connections[user_id]["heartbeat_failures"] += 1
+            
+            logger.debug(f"💓 Sent heartbeat ping to user {user_id}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"❌ Failed to send heartbeat to user {user_id}: {e}")
+            return False
+
+    async def shutdown(self):
+        """Shutdown WebSocket manager and cleanup resources."""
+        logger.info("Shutting down WebSocket manager...")
+        
+        # Cancel heartbeat task
+        if self._heartbeat_task and not self._heartbeat_task.done():
+            self._heartbeat_task.cancel()
+            try:
+                await self._heartbeat_task
+            except asyncio.CancelledError:
+                pass
+            logger.info("Heartbeat monitor stopped")
+        
+        # Disconnect all users
+        async with self._lock:
+            users_to_disconnect = list(self.active_connections.keys())
+        
+        for user_id in users_to_disconnect:
+            await self.disconnect(user_id)
+        
+        logger.info(f"WebSocket manager shutdown complete. Disconnected {len(users_to_disconnect)} users.")
 
 # Global instance
 manager = ConnectionManager()

@@ -55,19 +55,40 @@ async def get_current_user_for_ws(
     token: str | None = Query(None), # <-- Baca token dari query parameter
     db: AsyncIOMotorDatabase = Depends(get_database)
 ) -> dict:
-    """Dependency khusus untuk otentikasi koneksi WebSocket."""
+    """Dependency khusus untuk otentikasi koneksi WebSocket dengan better error handling."""
+    import logging
+    logger = logging.getLogger(__name__)
+    
     if token is None:
+        logger.warning("WebSocket connection attempt without token")
         await websocket.close(code=status.WS_1008_POLICY_VIOLATION, reason="Missing token")
         return None
     
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[security.ALGORITHM])
         user_id: str = payload.get("sub")
-        if user_id is None: raise JWTError("No user_id in token")
+        if user_id is None: 
+            logger.warning(f"WebSocket token missing user_id")
+            raise JWTError("No user_id in token")
+            
         user = await crud_users.get_user_by_id(db, user_id=user_id)
-        if not user or not user.get("is_active"): raise JWTError("User not found or inactive")
+        if not user:
+            logger.warning(f"WebSocket user not found: {user_id}")
+            raise JWTError("User not found")
+            
+        if not user.get("is_active"):
+            logger.warning(f"WebSocket inactive user: {user_id}")
+            raise JWTError("User is inactive")
+            
+        logger.debug(f"WebSocket authentication successful for user: {user_id}")
         return user
-    except (JWTError, HTTPException):
+        
+    except jwt.ExpiredSignatureError:
+        logger.warning("WebSocket connection with expired token")
+        await websocket.close(code=status.WS_1008_POLICY_VIOLATION, reason="Token expired")
+        return None
+    except (JWTError, HTTPException) as e:
+        logger.warning(f"WebSocket authentication failed: {str(e)}")
         await websocket.close(code=status.WS_1008_POLICY_VIOLATION, reason="Invalid token")
         return None
 

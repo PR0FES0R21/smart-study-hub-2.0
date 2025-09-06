@@ -67432,3 +67432,768 @@ pymongo.errors.NetworkTimeout: SSL handshake failed: ac-fb6bqxt-shard-00-02.6kpp
 2025-09-06 21:09:48,100 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=af2f7fff-ca47-4560-80c0-fd3133c8c643 | message_type=user_connected | target_roles=['admin'] | recipients=1
 2025-09-06 21:09:48,101 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=af2f7fff-ca47-4560-80c0-fd3133c8c643 | successful=1/1 | failed=0 | time=1.3ms
 2025-09-06 21:09:48,103 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=3320d891-41ba-4a06-9e00-998b3a07242c | user_id=686a3396d20694199c01c06b | connection_time=136.13ms
+2025-09-06 21:12:06,896 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=fa1a3cab-9723-46b8-b301-4b2e59c0ce94 | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 21:12:06,897 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=fa1a3cab-9723-46b8-b301-4b2e59c0ce94 | successful=1/1 | failed=0 | time=1.03ms
+2025-09-06 21:12:07,193 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=56ddfeb5-557c-4484-8e0d-04e7bd0e16ee | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 21:12:07,194 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=56ddfeb5-557c-4484-8e0d-04e7bd0e16ee | successful=1/1 | failed=0 | time=1.42ms
+2025-09-06 21:12:07,664 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=30e089b0-ced1-4d02-b18f-b2beb4a52ee6 | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 21:12:07,665 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=30e089b0-ced1-4d02-b18f-b2beb4a52ee6 | successful=1/1 | failed=0 | time=1.63ms
+2025-09-06 21:12:08,039 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2c4ea9e4-c0d5-4178-a65f-e84c0201adbf | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 21:12:08,040 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2c4ea9e4-c0d5-4178-a65f-e84c0201adbf | successful=1/1 | failed=0 | time=0.89ms
+2025-09-06 21:12:08,504 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=168b88dd-bcbb-4037-8cf8-32c783e3bd24 | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 21:12:08,506 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=168b88dd-bcbb-4037-8cf8-32c783e3bd24 | successful=1/1 | failed=0 | time=1.32ms
+2025-09-06 21:12:08,885 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ee134c23-b8b8-42b3-aeb1-bdee42427e8e | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 21:12:08,886 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ee134c23-b8b8-42b3-aeb1-bdee42427e8e | successful=1/1 | failed=0 | time=1.62ms
+2025-09-06 21:12:09,424 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8e57eb42-58c3-40ca-b9d8-8fb2d5914645 | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 21:12:09,425 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8e57eb42-58c3-40ca-b9d8-8fb2d5914645 | successful=1/1 | failed=0 | time=1.01ms
+2025-09-06 21:12:09,529 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7fe322b4-d94d-490c-bc29-3a36838d365e | message_type=bulk_complete | target_roles=['admin'] | recipients=1
+2025-09-06 21:12:09,555 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7fe322b4-d94d-490c-bc29-3a36838d365e | successful=0/1 | failed=1 | time=25.57ms
+2025-09-06 21:13:19,327 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9cf19879-96f7-4641-a8e9-2f54272aa5e6 | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 21:13:19,328 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9cf19879-96f7-4641-a8e9-2f54272aa5e6 | successful=0/0 | failed=0 | time=0.86ms
+2025-09-06 21:13:19,692 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=add86f38-fd73-4dd5-af5b-3f0e54bb87f8 | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 21:13:19,692 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=add86f38-fd73-4dd5-af5b-3f0e54bb87f8 | successful=0/0 | failed=0 | time=0.61ms
+2025-09-06 21:13:20,067 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0cec1093-943c-42a2-ad0f-e649cde6624e | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 21:13:20,068 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0cec1093-943c-42a2-ad0f-e649cde6624e | successful=0/0 | failed=0 | time=0.97ms
+2025-09-06 21:13:20,541 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1ee84d38-fc6e-4b16-8b1f-d9a40098df25 | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 21:13:20,541 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1ee84d38-fc6e-4b16-8b1f-d9a40098df25 | successful=0/0 | failed=0 | time=0.77ms
+2025-09-06 21:13:20,909 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=21e4387a-fd61-4373-b0ca-744692216827 | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 21:13:20,910 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=21e4387a-fd61-4373-b0ca-744692216827 | successful=0/0 | failed=0 | time=0.61ms
+2025-09-06 21:13:21,348 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b77c24f2-8476-41ba-b0be-9edee3ae457f | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 21:13:21,349 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b77c24f2-8476-41ba-b0be-9edee3ae457f | successful=0/0 | failed=0 | time=0.69ms
+2025-09-06 21:13:21,523 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7c11bdc2-dc81-4069-8c3c-21c59c8af60b | message_type=bulk_update_complete | target_roles=['admin'] | recipients=0
+2025-09-06 21:13:21,523 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7c11bdc2-dc81-4069-8c3c-21c59c8af60b | successful=0/0 | failed=0 | time=0.67ms
+2025-09-06 21:20:12,577 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:20:12,578 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f4571226-b856-4423-ad7c-22b8b538c6cf | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:20:12,578 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f4571226-b856-4423-ad7c-22b8b538c6cf | successful=0/0 | failed=0 | time=0.51ms
+2025-09-06 21:20:12,581 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:20:12,582 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:20:12,584 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:20:12,588 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:20:12,589 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:20:12,758 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:20:19,660 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:20:20,976 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:20:20,984 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:20:20,984 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-06 21:20:20,985 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:20:20,985 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:20:20,986 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:20:26,762 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:20:26,762 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:20:26,763 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:20:26,764 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:20:26,765 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:20:26,828 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:20:33,359 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:20:34,787 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:20:34,797 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:20:34,797 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge
+2025-09-06 21:20:34,798 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:20:34,798 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:20:34,799 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:20:37,195 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:20:37,196 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:20:37,197 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:20:37,198 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:20:37,199 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:20:37,297 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:20:43,980 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:20:45,564 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:20:45,595 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:20:45,596 [ERROR] app.core.websocket: Failed to initialize WebSocket manager: 'ConnectionManager' object has no attribute '_heartbeat_monitor'
+2025-09-06 21:20:45,596 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:20:45,597 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:20:45,599 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:20:46,139 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:20:46,140 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:20:46,141 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:20:46,142 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:20:46,143 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:20:46,378 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:20:52,875 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:20:54,283 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:20:54,310 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:20:54,311 [ERROR] app.core.websocket: Failed to initialize WebSocket manager: 'ConnectionManager' object has no attribute '_heartbeat_monitor'
+2025-09-06 21:20:54,312 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:20:54,314 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:20:54,315 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:21:13,079 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:21:13,079 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:21:13,081 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:21:13,083 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:21:13,084 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:21:13,196 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:21:19,699 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:21:21,061 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:21:21,078 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:21:21,079 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:21:21,080 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:21:21,080 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:21:21,081 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:21:21,082 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:21:23,044 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:21:23,045 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:21:23,046 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:21:23,047 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:21:23,047 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:21:23,128 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:21:29,736 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:21:31,222 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:21:31,231 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:21:31,232 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:21:31,233 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:21:31,233 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:21:31,234 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:21:31,235 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:21:37,713 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:21:39,050 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:21:39,059 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:21:39,059 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:21:39,060 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:21:39,060 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:21:39,061 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:21:39,062 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:21:42,458 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:21:42,459 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:21:42,460 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:21:42,461 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:21:42,462 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:21:42,552 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:21:49,099 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:21:50,552 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:21:50,579 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:21:50,580 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:21:50,581 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:21:50,581 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:21:50,582 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:21:50,583 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:21:52,757 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:21:52,758 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:21:52,759 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:21:52,760 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:21:52,760 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:21:52,871 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:21:59,339 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:22:00,556 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:22:00,565 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:22:00,566 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:22:00,567 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:22:00,567 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:22:00,568 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:22:00,569 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:22:05,289 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:22:05,290 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:22:05,291 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:22:05,292 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:22:05,292 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:22:05,372 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:22:12,253 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:22:13,903 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:22:13,913 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:22:13,914 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:22:13,915 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:22:13,916 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:22:13,918 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:22:13,919 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:22:21,060 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:22:22,313 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:22:22,322 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:22:22,322 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:22:22,323 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:22:22,323 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:22:22,324 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:22:22,325 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:29:56,716 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=063476ea-6bf5-4173-9373-c150bc0a20c7 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:29:56,919 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:29:56,920 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ad4564c3-4c75-4eb6-a394-afa27694e475 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 21:29:56,920 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ad4564c3-4c75-4eb6-a394-afa27694e475 | successful=0/0 | failed=0 | time=0.5ms
+2025-09-06 21:29:56,921 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=063476ea-6bf5-4173-9373-c150bc0a20c7 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=205.14ms
+2025-09-06 21:30:00,195 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:30:00,195 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=024ad4cd-04b6-471e-9064-6e7e1be5b5ef | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:30:00,196 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=024ad4cd-04b6-471e-9064-6e7e1be5b5ef | successful=0/0 | failed=0 | time=0.6ms
+2025-09-06 21:30:03,059 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=bb3e7aa2-1479-4f66-a144-cbc14b943819 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:30:03,213 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:30:03,214 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=88587e61-f7d5-4b65-8f9a-3592ac47bbaf | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 21:30:03,215 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=88587e61-f7d5-4b65-8f9a-3592ac47bbaf | successful=0/0 | failed=0 | time=0.93ms
+2025-09-06 21:30:03,216 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=bb3e7aa2-1479-4f66-a144-cbc14b943819 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=157.36ms
+2025-09-06 21:30:15,614 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=68aace8b-7e91-4214-aecd-3c2c7048b353 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 21:30:15,741 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 21:30:15,742 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c56090e2-0de0-4559-8219-df3d399ddef0 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:30:15,742 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c56090e2-0de0-4559-8219-df3d399ddef0 | successful=1/1 | failed=0 | time=0.8ms
+2025-09-06 21:30:15,743 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=68aace8b-7e91-4214-aecd-3c2c7048b353 | user_id=686a3396d20694199c01c06b | connection_time=129.32ms
+2025-09-06 21:30:18,017 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:30:18,018 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f0c8d31d-e6ca-460f-9965-2d60130a09e4 | message_type=user_disconnected | target_roles=['admin'] | recipients=1
+2025-09-06 21:30:18,019 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f0c8d31d-e6ca-460f-9965-2d60130a09e4 | successful=1/1 | failed=0 | time=1.44ms
+2025-09-06 21:30:20,711 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=18c50005-0f1b-40fa-9782-e42a262e356f | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:30:20,841 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:30:20,843 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d2f41342-b936-4431-8084-212026c8d710 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:30:20,845 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d2f41342-b936-4431-8084-212026c8d710 | successful=1/1 | failed=0 | time=2.27ms
+2025-09-06 21:30:20,846 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=18c50005-0f1b-40fa-9782-e42a262e356f | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=135.46ms
+2025-09-06 21:31:52,511 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-06 21:31:52,512 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=bbe23691-3876-4870-a4fc-2fd1959fc25c | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:31:52,514 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=bbe23691-3876-4870-a4fc-2fd1959fc25c | successful=0/0 | failed=0 | time=0.8ms
+2025-09-06 21:31:52,531 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:31:52,532 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5e104bbe-cc98-4f3a-8bab-acf743e11141 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:31:52,533 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5e104bbe-cc98-4f3a-8bab-acf743e11141 | successful=0/0 | failed=0 | time=0.65ms
+2025-09-06 21:32:21,102 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=53ebc47c-9770-488c-9096-0d7ac8fbf241 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:32:21,257 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:32:21,258 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=de7a0944-a94e-4030-87d9-927e9c833f78 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 21:32:21,259 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=de7a0944-a94e-4030-87d9-927e9c833f78 | successful=0/0 | failed=0 | time=0.62ms
+2025-09-06 21:32:21,259 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=53ebc47c-9770-488c-9096-0d7ac8fbf241 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=157.72ms
+2025-09-06 21:32:22,320 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:32:22,321 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=031f6086-dcb3-434c-ac13-47f91909567b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:32:22,322 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=031f6086-dcb3-434c-ac13-47f91909567b | successful=0/0 | failed=0 | time=0.65ms
+2025-09-06 21:32:25,100 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7b1500b8-2920-4254-be9f-9e50eb134f63 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:32:25,231 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:32:25,232 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c84da11d-998f-484b-aa76-030086657d6a | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 21:32:25,232 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c84da11d-998f-484b-aa76-030086657d6a | successful=0/0 | failed=0 | time=0.4ms
+2025-09-06 21:32:25,233 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7b1500b8-2920-4254-be9f-9e50eb134f63 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=132.67ms
+2025-09-06 21:32:48,524 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=9d79e9c2-1165-42b2-9f9a-f5625b478211 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 21:32:48,657 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 21:32:48,658 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5a2c59bc-4be9-4f6d-87fc-54fc6e2921eb | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:32:48,659 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5a2c59bc-4be9-4f6d-87fc-54fc6e2921eb | successful=1/1 | failed=0 | time=0.92ms
+2025-09-06 21:32:48,659 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=9d79e9c2-1165-42b2-9f9a-f5625b478211 | user_id=686a3396d20694199c01c06b | connection_time=135.65ms
+2025-09-06 21:33:09,509 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:33:09,510 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=43335928-fd0d-4ee1-b56e-7dc5c14438a6 | message_type=user_disconnected | target_roles=['admin'] | recipients=1
+2025-09-06 21:33:09,636 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=43335928-fd0d-4ee1-b56e-7dc5c14438a6 | successful=0/1 | failed=1 | time=125.86ms
+2025-09-06 21:33:09,656 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:33:09,656 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:33:09,657 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:33:09,658 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:33:09,658 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:33:09,659 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:33:09,660 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:33:09,661 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:33:09,662 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:33:09,748 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:33:17,250 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:33:18,463 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:33:18,495 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:33:18,496 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:33:18,497 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:33:18,497 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:33:18,498 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:33:18,499 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:33:41,953 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:33:41,953 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:33:41,954 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:33:41,954 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:33:41,955 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:33:41,955 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:33:41,957 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:33:41,958 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:33:41,958 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:33:42,043 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:33:49,131 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:33:50,251 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:33:50,276 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:33:50,277 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:33:50,278 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:33:50,279 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:33:50,280 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:33:50,281 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:33:54,687 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=5733675b-e600-42bb-976f-936248f2c2c7 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:33:54,811 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=feb215d3-95e7-4ff7-b39c-b775e73bd2e6 | total_active=1 | connection_time=123.05ms
+2025-09-06 21:33:54,813 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:33:54,813 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e7b30b05-6124-41c3-8495-3f322522422e | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 21:33:54,814 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e7b30b05-6124-41c3-8495-3f322522422e | successful=0/0 | failed=0 | time=0.87ms
+2025-09-06 21:33:54,815 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=5733675b-e600-42bb-976f-936248f2c2c7 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=128.36ms
+2025-09-06 21:35:40,827 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=5733675b-e600-42bb-976f-936248f2c2c7 | user_id=68b2dcbdcccc321f815ea3f5 | duration=106.14s | messages_processed=0
+2025-09-06 21:35:40,855 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:35:40,856 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=78efdf33-1417-42c1-8fae-a6cc9ba5e266 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:35:40,856 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=78efdf33-1417-42c1-8fae-a6cc9ba5e266 | successful=0/0 | failed=0 | time=0.78ms
+2025-09-06 21:35:46,524 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e4a94569-f496-4934-b81b-7c60e340c06d | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:35:46,661 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=1509f210-1954-4c46-8baf-0fde895d1e22 | total_active=1 | connection_time=135.69ms
+2025-09-06 21:35:46,662 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:35:46,662 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a5729ef1-b0e3-4c41-bc23-ff505ee7e222 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 21:35:46,663 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a5729ef1-b0e3-4c41-bc23-ff505ee7e222 | successful=0/0 | failed=0 | time=0.61ms
+2025-09-06 21:35:46,664 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e4a94569-f496-4934-b81b-7c60e340c06d | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=139.3ms
+2025-09-06 21:36:19,833 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e188b32b-d0c2-434f-9aa2-136a1263fb05 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 21:36:19,972 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | roles=['admin', 'teacher'] | room_id=lobby | connection_id=8a25c412-a90b-40ea-8927-f1261d731f14 | total_active=2 | connection_time=138.01ms
+2025-09-06 21:36:19,973 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 21:36:19,974 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7ece6d84-4135-4c0e-a18a-a237d71b08ff | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:36:19,976 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7ece6d84-4135-4c0e-a18a-a237d71b08ff | successful=1/1 | failed=0 | time=1.06ms
+2025-09-06 21:36:19,976 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e188b32b-d0c2-434f-9aa2-136a1263fb05 | user_id=686a3396d20694199c01c06b | connection_time=143.14ms
+2025-09-06 21:36:40,270 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=e4a94569-f496-4934-b81b-7c60e340c06d | user_id=68b2dcbdcccc321f815ea3f5 | duration=53.75s | messages_processed=0
+2025-09-06 21:36:40,283 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:36:40,283 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=31a1c0f8-bbb8-45fa-a099-f738f32d2c9f | message_type=user_disconnected | target_roles=['admin'] | recipients=1
+2025-09-06 21:36:40,284 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=31a1c0f8-bbb8-45fa-a099-f738f32d2c9f | successful=1/1 | failed=0 | time=0.92ms
+2025-09-06 21:36:45,969 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=8bb34f6d-8d89-4252-8192-12024edf9a97 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:36:46,218 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=2bfa98f6-857b-4345-a07d-9879e99bcaca | total_active=2 | connection_time=247.1ms
+2025-09-06 21:36:46,219 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:36:46,220 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=07d2d6f4-3999-4521-be51-43c76723a75c | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:36:46,222 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=07d2d6f4-3999-4521-be51-43c76723a75c | successful=1/1 | failed=0 | time=1.87ms
+2025-09-06 21:36:46,223 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=8bb34f6d-8d89-4252-8192-12024edf9a97 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=253.01ms
+2025-09-06 21:37:14,393 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=8bb34f6d-8d89-4252-8192-12024edf9a97 | user_id=68b2dcbdcccc321f815ea3f5 | duration=28.42s | messages_processed=0
+2025-09-06 21:37:14,407 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:37:14,407 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a96f5ed3-ade1-460b-ba1c-aea4dfdbb212 | message_type=user_disconnected | target_roles=['admin'] | recipients=1
+2025-09-06 21:37:14,408 [INFO] app.core.websocket:   User 686a3396d20694199c01c06b disconnected during broadcast
+2025-09-06 21:37:14,419 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a96f5ed3-ade1-460b-ba1c-aea4dfdbb212 | successful=0/1 | failed=1 | time=11.57ms
+2025-09-06 21:37:14,420 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=e188b32b-d0c2-434f-9aa2-136a1263fb05 | user_id=686a3396d20694199c01c06b | duration=54.59s | messages_processed=0
+2025-09-06 21:37:14,535 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:37:14,535 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:37:14,536 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:37:14,536 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:37:14,537 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:37:14,537 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:37:14,539 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:37:14,539 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:37:14,540 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:37:14,605 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:37:22,068 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:37:23,266 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:37:23,281 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:37:23,282 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:37:23,282 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:37:23,282 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:37:23,283 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:37:23,284 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:37:50,758 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=38b519c1-3083-4802-8ecf-98d07065f325 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 21:37:50,947 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | roles=['admin', 'teacher'] | room_id=lobby | connection_id=600afef9-a934-4412-a9ba-9d9ea2422a39 | total_active=1 | connection_time=188.47ms
+2025-09-06 21:37:50,948 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 21:37:50,950 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d073424e-28f4-4fe1-9d83-49eed7f7eb3f | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:37:50,951 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d073424e-28f4-4fe1-9d83-49eed7f7eb3f | successful=1/1 | failed=0 | time=1.12ms
+2025-09-06 21:37:50,952 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=38b519c1-3083-4802-8ecf-98d07065f325 | user_id=686a3396d20694199c01c06b | connection_time=193.51ms
+2025-09-06 21:38:00,155 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=f2770b91-47b6-4572-9bb8-4ccd45cb2740 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:38:00,266 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=a6c85081-a1e9-4974-abe7-dcfd35a8d72b | total_active=2 | connection_time=110.07ms
+2025-09-06 21:38:00,267 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:38:00,268 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c79492db-cf76-4659-aae8-52388bd06fc6 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:38:00,269 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c79492db-cf76-4659-aae8-52388bd06fc6 | successful=1/1 | failed=0 | time=1.34ms
+2025-09-06 21:38:00,270 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=f2770b91-47b6-4572-9bb8-4ccd45cb2740 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=114.61ms
+2025-09-06 21:39:17,818 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=f2770b91-47b6-4572-9bb8-4ccd45cb2740 | user_id=68b2dcbdcccc321f815ea3f5 | duration=77.66s | messages_processed=0
+2025-09-06 21:39:17,819 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | room_id=lobby | connection_id=a6c85081-a1e9-4974-abe7-dcfd35a8d72b | total_active=1 | duration=77.55s
+2025-09-06 21:39:17,820 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:39:17,820 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=834d6dda-0316-4d30-b883-2bc9696854ed | message_type=user_disconnected | target_roles=['admin'] | recipients=1
+2025-09-06 21:39:17,821 [INFO] app.core.websocket:   User 686a3396d20694199c01c06b disconnected during broadcast
+2025-09-06 21:39:17,854 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=834d6dda-0316-4d30-b883-2bc9696854ed | successful=0/1 | failed=1 | time=33.31ms
+2025-09-06 21:39:17,856 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=38b519c1-3083-4802-8ecf-98d07065f325 | user_id=686a3396d20694199c01c06b | duration=87.1s | messages_processed=0
+2025-09-06 21:39:17,924 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:39:17,924 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:39:17,925 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:39:17,926 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:39:17,927 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:39:17,928 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:39:17,931 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:39:17,932 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:39:17,932 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:39:18,011 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:39:23,802 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:39:24,888 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:39:24,913 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:39:24,914 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:39:24,914 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:39:24,915 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:39:24,916 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:39:24,917 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:39:34,271 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:39:34,272 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:39:34,272 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:39:34,273 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:39:34,274 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:39:34,274 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:39:34,276 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:39:34,277 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:39:34,278 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:39:34,341 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:39:40,242 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:39:41,270 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:39:41,277 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:39:41,278 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:39:41,279 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:39:41,279 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:39:41,280 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:39:41,280 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:39:46,816 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:39:47,886 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:39:47,897 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:39:47,898 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:39:47,899 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:39:47,900 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:39:47,901 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:39:47,902 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:39:53,609 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:39:54,643 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:39:54,651 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:39:54,652 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:39:54,653 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:39:54,654 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:39:54,655 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:39:54,655 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:40:00,287 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:40:01,370 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:40:01,399 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:40:01,400 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:40:01,401 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:40:01,402 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:40:01,403 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:40:01,404 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:40:07,296 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:40:08,370 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:40:08,389 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:40:08,390 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:40:08,391 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:40:08,392 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:40:08,393 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:40:08,393 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:40:14,044 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:40:15,103 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:40:15,118 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:40:15,119 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:40:15,121 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:40:15,122 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:40:15,123 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:40:15,125 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:40:21,768 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:40:21,768 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:40:21,769 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:40:21,769 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:40:21,769 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:40:21,770 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:40:21,771 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:40:21,772 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:40:21,772 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:40:21,831 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:40:27,747 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:40:28,868 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:40:28,882 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:40:28,883 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:40:28,883 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:40:28,884 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:40:28,885 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:40:28,885 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:41:12,596 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=cdc74a54-1b41-467d-a5e1-2e05441ca38d | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 21:41:12,735 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | roles=['admin', 'teacher'] | room_id=lobby | connection_id=0c11dd61-6c68-4d47-ac23-06aefc3e47dc | total_active=1 | connection_time=137.87ms
+2025-09-06 21:41:12,736 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 21:41:12,737 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=44faa335-1393-42bf-92c3-2546fa9285f1 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:41:12,738 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=44faa335-1393-42bf-92c3-2546fa9285f1 | successful=1/1 | failed=0 | time=1.2ms
+2025-09-06 21:41:12,743 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=cdc74a54-1b41-467d-a5e1-2e05441ca38d | user_id=686a3396d20694199c01c06b | connection_time=147.19ms
+2025-09-06 21:42:02,492 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=f8f12335-0b1d-4715-a56b-05461965fe45 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:42:02,637 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=789c97bc-fc0a-40c9-92d0-421aae83eb25 | total_active=2 | connection_time=143.91ms
+2025-09-06 21:42:02,638 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:42:02,639 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2a98c299-5f3d-41bc-8bb5-92b48df69845 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:42:02,640 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2a98c299-5f3d-41bc-8bb5-92b48df69845 | successful=1/1 | failed=0 | time=1.4ms
+2025-09-06 21:42:02,641 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=f8f12335-0b1d-4715-a56b-05461965fe45 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=149.13ms
+2025-09-06 21:42:58,933 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | room_id=lobby | connection_id=0c11dd61-6c68-4d47-ac23-06aefc3e47dc | total_active=1 | duration=106.2s
+2025-09-06 21:42:58,934 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-06 21:42:58,934 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=28388d0d-5ed9-4da9-bb4f-154af5288b2d | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:42:58,935 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=28388d0d-5ed9-4da9-bb4f-154af5288b2d | successful=0/0 | failed=0 | time=0.48ms
+2025-09-06 21:43:52,809 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=f8f12335-0b1d-4715-a56b-05461965fe45 | user_id=68b2dcbdcccc321f815ea3f5 | duration=110.32s | messages_processed=0
+2025-09-06 21:43:52,810 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | room_id=lobby | connection_id=789c97bc-fc0a-40c9-92d0-421aae83eb25 | total_active=0 | duration=110.17s
+2025-09-06 21:43:52,811 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:43:52,812 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9245b645-abf6-4724-b4a1-7b1fbfdd83d0 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:43:52,812 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9245b645-abf6-4724-b4a1-7b1fbfdd83d0 | successful=0/0 | failed=0 | time=0.66ms
+2025-09-06 21:43:52,813 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=cdc74a54-1b41-467d-a5e1-2e05441ca38d | user_id=686a3396d20694199c01c06b | duration=160.22s | messages_processed=0
+2025-09-06 21:43:52,916 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:43:52,917 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:43:52,918 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:43:52,919 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:43:52,919 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:43:52,920 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:43:52,922 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:43:52,923 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:43:52,923 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:43:52,992 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:43:58,297 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:43:59,490 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:43:59,504 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:43:59,505 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:43:59,506 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:43:59,507 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:43:59,509 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:43:59,510 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:44:02,343 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:44:02,343 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:44:02,344 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:44:02,345 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:44:02,346 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:44:02,346 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:44:02,348 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:44:02,349 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:44:02,350 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:44:02,412 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:44:08,030 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:44:09,101 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:44:09,125 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:44:09,125 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:44:09,126 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:44:09,127 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:44:09,128 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:44:09,129 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:44:14,838 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:44:15,856 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:44:15,890 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:44:15,891 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:44:15,892 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:44:15,892 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:44:15,894 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:44:15,895 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:44:21,802 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:44:22,839 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:44:22,868 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:44:22,868 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:44:22,869 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:44:22,871 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:44:22,872 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:44:22,873 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:45:56,223 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=be6b698d-1507-46b2-98fd-0bb673e778c2 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:45:56,336 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=837ee37b-58bd-4e5a-bf6b-0286eb1970d4 | total_active=1 | connection_time=113.05ms
+2025-09-06 21:45:56,337 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:45:56,337 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=889c9fa3-77a7-4189-a6c9-ec035b1ab180 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 21:45:56,338 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=889c9fa3-77a7-4189-a6c9-ec035b1ab180 | successful=0/0 | failed=0 | time=0.52ms
+2025-09-06 21:45:56,339 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=be6b698d-1507-46b2-98fd-0bb673e778c2 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=115.96ms
+2025-09-06 21:46:06,533 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=be6b698d-1507-46b2-98fd-0bb673e778c2 | user_id=68b2dcbdcccc321f815ea3f5 | duration=10.31s | messages_processed=0
+2025-09-06 21:46:06,534 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | room_id=lobby | connection_id=837ee37b-58bd-4e5a-bf6b-0286eb1970d4 | total_active=0 | duration=10.2s
+2025-09-06 21:46:06,535 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:46:06,536 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=02abedf6-34cf-468d-b0c8-180231301539 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:46:06,537 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=02abedf6-34cf-468d-b0c8-180231301539 | successful=0/0 | failed=0 | time=0.78ms
+2025-09-06 21:46:06,641 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:46:06,642 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:46:06,643 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:46:06,644 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:46:06,645 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:46:06,645 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:46:06,647 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:46:06,648 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:46:06,649 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:46:06,725 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:46:17,567 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:46:18,637 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:46:18,644 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:46:18,646 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:46:18,646 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:46:18,647 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:46:18,647 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:46:18,648 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 21:47:15,415 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=5e035991-3927-4bf5-b5b7-f72377552660 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 21:47:15,586 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=b47a8511-cb86-41db-ab53-8f9a4a661c75 | total_active=1 | connection_time=169.51ms
+2025-09-06 21:47:15,587 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:47:15,588 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9dc6a5e2-68a3-49a2-8132-40061d996972 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 21:47:15,588 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9dc6a5e2-68a3-49a2-8132-40061d996972 | successful=0/0 | failed=0 | time=0.55ms
+2025-09-06 21:47:15,589 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=5e035991-3927-4bf5-b5b7-f72377552660 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=173.62ms
+2025-09-06 21:47:32,911 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=1dfccf97-39a0-4f76-a1f6-5219592eaae6 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 21:47:33,026 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | roles=['admin', 'teacher'] | room_id=lobby | connection_id=a9e4fabe-3821-48e1-a204-a2f1de78c67e | total_active=2 | connection_time=114.52ms
+2025-09-06 21:47:33,027 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 21:47:33,028 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5accad98-7b13-4fbd-81d7-9dd9a2b136c6 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:47:33,029 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5accad98-7b13-4fbd-81d7-9dd9a2b136c6 | successful=1/1 | failed=0 | time=1.52ms
+2025-09-06 21:47:33,033 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=1dfccf97-39a0-4f76-a1f6-5219592eaae6 | user_id=686a3396d20694199c01c06b | connection_time=122.66ms
+2025-09-06 21:48:01,623 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=1dfccf97-39a0-4f76-a1f6-5219592eaae6 | user_id=686a3396d20694199c01c06b | duration=28.71s | messages_processed=0
+2025-09-06 21:48:01,623 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | room_id=lobby | connection_id=a9e4fabe-3821-48e1-a204-a2f1de78c67e | total_active=1 | duration=28.6s
+2025-09-06 21:48:01,624 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-06 21:48:01,625 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5a7d2f82-0a02-4457-acbb-71ce2a4172e6 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:48:01,625 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5a7d2f82-0a02-4457-acbb-71ce2a4172e6 | successful=0/0 | failed=0 | time=0.53ms
+2025-09-06 21:48:10,419 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=ce3142bf-bcd4-406c-9cd9-1bbb53217fa8 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 21:48:10,542 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | roles=['admin', 'teacher'] | room_id=lobby | connection_id=7e083cae-2c4b-4814-9d6d-625ffc5a8153 | total_active=2 | connection_time=121.61ms
+2025-09-06 21:48:10,543 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 21:48:10,543 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1e60b784-d4a3-4514-806e-ab732008ea89 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 21:48:10,545 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1e60b784-d4a3-4514-806e-ab732008ea89 | successful=1/1 | failed=0 | time=1.55ms
+2025-09-06 21:48:10,546 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=ce3142bf-bcd4-406c-9cd9-1bbb53217fa8 | user_id=686a3396d20694199c01c06b | connection_time=127.48ms
+2025-09-06 21:48:48,690 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | room_id=lobby | connection_id=b47a8511-cb86-41db-ab53-8f9a4a661c75 | total_active=1 | duration=93.1s
+2025-09-06 21:48:48,690 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 21:48:48,691 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6b6afdcd-2e2d-418f-a39a-b8f1a6da576c | message_type=user_disconnected | target_roles=['admin'] | recipients=1
+2025-09-06 21:48:48,692 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6b6afdcd-2e2d-418f-a39a-b8f1a6da576c | successful=1/1 | failed=0 | time=1.22ms
+2025-09-06 21:48:48,693 [INFO] app.core.websocket:  Removed stale connection for user 68b2dcbdcccc321f815ea3f5
+2025-09-06 21:49:48,723 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | room_id=lobby | connection_id=7e083cae-2c4b-4814-9d6d-625ffc5a8153 | total_active=0 | duration=98.18s
+2025-09-06 21:49:48,723 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-06 21:49:48,724 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f988159b-7a0b-4a5a-92fa-d5490a978229 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 21:49:48,724 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f988159b-7a0b-4a5a-92fa-d5490a978229 | successful=0/0 | failed=0 | time=0.44ms
+2025-09-06 21:49:48,725 [INFO] app.core.websocket:  Removed stale connection for user 686a3396d20694199c01c06b
+2025-09-06 21:51:37,344 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=ce3142bf-bcd4-406c-9cd9-1bbb53217fa8 | user_id=686a3396d20694199c01c06b | duration=206.92s | messages_processed=0
+2025-09-06 21:51:37,346 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=5e035991-3927-4bf5-b5b7-f72377552660 | user_id=68b2dcbdcccc321f815ea3f5 | duration=261.93s | messages_processed=0
+2025-09-06 21:51:37,450 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 21:51:37,451 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 21:51:37,453 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 21:51:37,454 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 21:51:37,455 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 21:51:37,455 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 21:51:37,458 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 21:51:37,459 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 21:51:37,459 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 21:51:37,526 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 21:51:43,028 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 21:51:44,191 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 21:51:44,200 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 21:51:44,200 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 21:51:44,201 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 21:51:44,201 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 21:51:44,202 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 21:51:44,203 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 30s, timeout: 90s)
+2025-09-06 22:02:10,597 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-06 22:26:50,101 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 22:26:50,101 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 22:26:50,102 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 22:26:50,103 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 22:26:50,103 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 22:26:50,103 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 22:26:50,105 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 22:26:50,107 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 22:26:50,107 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 22:26:50,190 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 22:26:55,871 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 22:26:57,035 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 22:26:57,062 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 22:26:57,063 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 22:26:57,064 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 22:26:57,065 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 22:26:57,066 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 22:26:57,066 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, timeout: 300s)
+2025-09-06 22:28:42,586 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 22:28:42,586 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 22:28:42,587 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 22:28:42,587 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 22:28:42,588 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 22:28:42,588 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 22:28:42,589 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 22:28:42,591 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 22:28:42,592 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 22:28:42,667 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 22:28:48,055 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 22:28:49,216 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 22:28:49,233 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 22:28:49,234 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 22:28:49,235 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 22:28:49,235 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 22:28:49,236 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 22:28:49,237 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, timeout: 300s)
+2025-09-06 22:28:59,836 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 22:28:59,836 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 22:28:59,837 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 22:28:59,837 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 22:28:59,837 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 22:28:59,838 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 22:28:59,839 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 22:28:59,840 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 22:28:59,840 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 22:28:59,933 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 22:29:05,558 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 22:29:06,629 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 22:29:06,636 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 22:29:06,637 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 22:29:06,637 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 22:29:06,638 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 22:29:06,639 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 22:29:06,639 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-06 22:29:09,903 [INFO] app.main: Mematikan aplikasi...
+2025-09-06 22:29:09,904 [INFO] app.main: Menutup WebSocket manager...
+2025-09-06 22:29:09,904 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-06 22:29:09,904 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-06 22:29:09,905 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-06 22:29:09,905 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-06 22:29:09,906 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-06 22:29:09,908 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-06 22:29:09,915 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-06 22:29:10,013 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-06 22:29:15,612 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-06 22:29:16,660 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-06 22:29:16,681 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-06 22:29:16,682 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-06 22:29:16,683 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-06 22:29:16,684 [INFO] app.main: Startup aplikasi berhasil
+2025-09-06 22:29:16,685 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-06 22:29:16,686 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-06 22:49:32,114 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7eb14bca-6644-4674-bc55-4b0ff4fa3d02 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-06 22:49:32,115 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7eb14bca-6644-4674-bc55-4b0ff4fa3d02 | successful=0/0 | failed=0 | time=1.17ms
+2025-09-06 22:50:24,387 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e80887dc-c1f2-4054-83f2-fd3b8e0abb40 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 22:50:24,524 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | roles=['admin', 'teacher'] | room_id=lobby | connection_id=12ac11f9-c5d2-46c3-a25e-409be7f1d739 | total_active=1 | connection_time=135.69ms
+2025-09-06 22:50:24,525 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 22:50:24,526 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c9f767df-5eb7-437a-88c0-1e9be94166b7 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 22:50:24,527 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c9f767df-5eb7-437a-88c0-1e9be94166b7 | successful=1/1 | failed=0 | time=1.35ms
+2025-09-06 22:50:24,527 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e80887dc-c1f2-4054-83f2-fd3b8e0abb40 | user_id=686a3396d20694199c01c06b | connection_time=140.19ms
+2025-09-06 22:51:35,887 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=e80887dc-c1f2-4054-83f2-fd3b8e0abb40 | user_id=686a3396d20694199c01c06b | duration=71.5s | messages_processed=1
+2025-09-06 22:51:35,890 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | room_id=lobby | connection_id=12ac11f9-c5d2-46c3-a25e-409be7f1d739 | total_active=0 | duration=71.37s
+2025-09-06 22:51:35,897 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-06 22:51:35,899 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=62cd58dc-2b0d-4f86-8bfe-789a9e180a1c | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 22:51:35,906 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=62cd58dc-2b0d-4f86-8bfe-789a9e180a1c | successful=0/0 | failed=0 | time=6.78ms
+2025-09-06 22:51:52,214 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=46aa5e8c-8dc8-4341-9f82-d54b058f8f68 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-06 22:51:52,215 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=46aa5e8c-8dc8-4341-9f82-d54b058f8f68 | successful=0/0 | failed=0 | time=0.8ms
+2025-09-06 22:51:52,302 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=c038b257-603a-4d0b-9b7b-ab72f5342431 | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-06 22:51:52,436 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | roles=['admin', 'teacher'] | room_id=lobby | connection_id=900a0857-20a2-4859-9bc6-15e4a2bd859a | total_active=1 | connection_time=132.98ms
+2025-09-06 22:51:52,437 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-06 22:51:52,438 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e3d37a78-f44c-4627-bd86-3242373d216f | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 22:51:52,439 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e3d37a78-f44c-4627-bd86-3242373d216f | successful=1/1 | failed=0 | time=1.28ms
+2025-09-06 22:51:52,440 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=c038b257-603a-4d0b-9b7b-ab72f5342431 | user_id=686a3396d20694199c01c06b | connection_time=138.5ms
+2025-09-06 22:52:12,233 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=231f0e34-eca0-4afc-ad99-60afad409695 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 22:52:12,344 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=6002c0df-0884-435e-986b-a8fc2529acea | total_active=2 | connection_time=109.99ms
+2025-09-06 22:52:12,345 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 22:52:12,345 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9aba721f-7b60-45d9-9e4c-3371f26b0915 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 22:52:12,346 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9aba721f-7b60-45d9-9e4c-3371f26b0915 | successful=1/1 | failed=0 | time=1.03ms
+2025-09-06 22:52:12,347 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=231f0e34-eca0-4afc-ad99-60afad409695 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=114.35ms
+2025-09-06 22:55:50,809 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=231f0e34-eca0-4afc-ad99-60afad409695 | user_id=68b2dcbdcccc321f815ea3f5 | duration=218.58s | messages_processed=4
+2025-09-06 22:55:50,810 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | room_id=lobby | connection_id=6002c0df-0884-435e-986b-a8fc2529acea | total_active=1 | duration=218.47s
+2025-09-06 22:55:50,810 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 22:55:50,811 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0d08aa7c-e1c9-42d2-a337-69f89b3e1a67 | message_type=user_disconnected | target_roles=['admin'] | recipients=1
+2025-09-06 22:55:50,811 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0d08aa7c-e1c9-42d2-a337-69f89b3e1a67 | successful=1/1 | failed=0 | time=0.78ms
+2025-09-06 22:55:56,519 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a5b8f3d1-022b-46f4-82ca-edab8c94c380 | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 22:55:56,660 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=0e9c0ade-0249-493f-aa53-688c5a1cb0ff | total_active=2 | connection_time=140.4ms
+2025-09-06 22:55:56,665 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 22:55:56,669 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f911d970-b1bc-4315-942a-3d8cc7b61861 | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-06 22:55:56,671 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f911d970-b1bc-4315-942a-3d8cc7b61861 | successful=1/1 | failed=0 | time=1.79ms
+2025-09-06 22:55:56,676 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a5b8f3d1-022b-46f4-82ca-edab8c94c380 | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=157.25ms
+2025-09-06 22:57:55,932 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a11da16d-3945-4124-9b63-b72d3246832d | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 22:57:55,935 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a11da16d-3945-4124-9b63-b72d3246832d | successful=1/1 | failed=0 | time=2.83ms
+2025-09-06 22:57:56,137 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=782a4cff-d839-41ef-8485-444ded82ce2b | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 22:57:56,138 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=782a4cff-d839-41ef-8485-444ded82ce2b | successful=1/1 | failed=0 | time=0.88ms
+2025-09-06 22:57:56,438 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=946040c4-441d-4318-8be7-368445914712 | message_type=bulk_progress | target_roles=['admin'] | recipients=1
+2025-09-06 22:57:56,439 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=946040c4-441d-4318-8be7-368445914712 | successful=1/1 | failed=0 | time=1.01ms
+2025-09-06 22:57:56,554 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c47cfa5d-2743-49fa-bb22-67ad489ec63e | message_type=bulk_complete | target_roles=['admin'] | recipients=1
+2025-09-06 22:57:56,687 [INFO] app.core.websocket:  CLEANUP_COMPLETE | removed=1/1 failed connections
+2025-09-06 22:57:56,690 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c47cfa5d-2743-49fa-bb22-67ad489ec63e | successful=0/1 | failed=1 | time=136.29ms
+2025-09-06 22:58:38,234 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1b90d41f-86ed-4044-b6f9-eb8055cb37f4 | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 22:58:38,235 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1b90d41f-86ed-4044-b6f9-eb8055cb37f4 | successful=0/0 | failed=0 | time=0.81ms
+2025-09-06 22:58:38,567 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0459fed5-a942-4ab9-a9ba-209195e00521 | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 22:58:38,567 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0459fed5-a942-4ab9-a9ba-209195e00521 | successful=0/0 | failed=0 | time=0.94ms
+2025-09-06 22:58:38,859 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=843acddf-e74e-47c8-b0dc-5f1931358eb7 | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 22:58:38,860 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=843acddf-e74e-47c8-b0dc-5f1931358eb7 | successful=0/0 | failed=0 | time=0.81ms
+2025-09-06 22:58:39,143 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8f06d4ad-1f12-4899-851c-450338dcefaa | message_type=bulk_update_progress | target_roles=['admin'] | recipients=0
+2025-09-06 22:58:39,143 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8f06d4ad-1f12-4899-851c-450338dcefaa | successful=0/0 | failed=0 | time=0.64ms
+2025-09-06 22:58:39,308 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=efb528d6-94c0-4650-8961-4d041a147195 | message_type=bulk_update_complete | target_roles=['admin'] | recipients=0
+2025-09-06 22:58:39,309 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=efb528d6-94c0-4650-8961-4d041a147195 | successful=0/0 | failed=0 | time=0.67ms
+2025-09-06 22:59:25,500 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=a5b8f3d1-022b-46f4-82ca-edab8c94c380 | user_id=68b2dcbdcccc321f815ea3f5 | duration=208.98s | messages_processed=4
+2025-09-06 22:59:25,501 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | room_id=lobby | connection_id=0e9c0ade-0249-493f-aa53-688c5a1cb0ff | total_active=0 | duration=208.84s
+2025-09-06 22:59:25,502 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 22:59:25,502 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=91df1557-b504-4362-81b8-e6a3aca628fc | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-06 22:59:25,503 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=91df1557-b504-4362-81b8-e6a3aca628fc | successful=0/0 | failed=0 | time=0.56ms
+2025-09-06 22:59:31,242 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=db17c19f-a2d8-457e-a20c-6e7f34acb19c | user_id=68b2dcbdcccc321f815ea3f5 | username=00000012 | roles=['student']
+2025-09-06 22:59:31,344 [INFO] app.core.websocket: USER_CONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | roles=['student'] | room_id=lobby | connection_id=9536856b-a630-42b0-a817-a7e0724365db | total_active=1 | connection_time=101.72ms
+2025-09-06 22:59:31,345 [INFO] app.core.websocket: Broadcasting user connected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-06 22:59:31,346 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e9722b0b-3ff6-4b39-b4a2-49f73b8fdf50 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-09-06 22:59:31,346 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e9722b0b-3ff6-4b39-b4a2-49f73b8fdf50 | successful=0/0 | failed=0 | time=0.51ms
+2025-09-06 22:59:31,347 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=db17c19f-a2d8-457e-a20c-6e7f34acb19c | user_id=68b2dcbdcccc321f815ea3f5 | connection_time=105.28ms

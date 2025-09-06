@@ -123,7 +123,6 @@ async def bulk_update_assignments(
     current_user: dict = Depends(deps.get_current_active_admin),
     current_academic_period: dict = Depends(deps.get_current_academic_period)
 ):
-    print(request_in)
     """
     Memulai proses operasi massal (create, update, delete) untuk penugasan mengajar
     di latar belakang. Semua operasi dilakukan dalam periode akademik aktif.

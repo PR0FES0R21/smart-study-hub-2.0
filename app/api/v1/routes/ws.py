@@ -33,7 +33,7 @@ async def websocket_endpoint(
     username = user.get("login_id", f"user_{user_id[:8]}")
     
     logger.info(
-        f"🔌 WS_CONNECTION_ATTEMPT | session_id={session_id} | user_id={user_id} | "
+        f"  WS_CONNECTION_ATTEMPT | session_id={session_id} | user_id={user_id} | "
         f"username={username} | roles={roles}"
     )
     
@@ -70,6 +70,8 @@ async def websocket_endpoint(
                     f"📨 WS_MESSAGE_RECEIVED | session_id={session_id} | user_id={user_id} | "
                     f"message_type={message.get('type', 'unknown')} | message_count={message_count}"
                 )
+                # Update user activity on each message
+                await manager.update_user_activity(user_id)
                 await handle_incoming_message(websocket, user_id, roles, message, session_id)
                 
             except json.JSONDecodeError as e:
@@ -101,7 +103,7 @@ async def websocket_endpoint(
     except WebSocketDisconnect:
         session_duration = round(time.time() - start_time, 2)
         logger.info(
-            f"🔌 WS_DISCONNECT | session_id={session_id} | user_id={user_id} | "
+            f"  WS_DISCONNECT | session_id={session_id} | user_id={user_id} | "
             f"duration={session_duration}s | messages_processed={message_count}"
         )
     except Exception as e:
@@ -167,6 +169,8 @@ async def websocket_lobby(
                     f"📨 WS_LOBBY_MESSAGE | session_id={session_id} | user_id={user_id} | "
                     f"message_type={message.get('type', 'unknown')} | message_count={message_count}"
                 )
+                # Update user activity on each message
+                await manager.update_user_activity(user_id)
                 await handle_lobby_message(websocket, user_id, roles, message, session_id)
                 
             except json.JSONDecodeError as e:
@@ -183,7 +187,7 @@ async def websocket_lobby(
     except WebSocketDisconnect:
         session_duration = round(time.time() - start_time, 2)
         logger.info(
-            f"🔌 WS_LOBBY_DISCONNECT | session_id={session_id} | user_id={user_id} | "
+            f"  WS_LOBBY_DISCONNECT | session_id={session_id} | user_id={user_id} | "
             f"duration={session_duration}s | messages_processed={message_count}"
         )
     except Exception as e:
@@ -256,16 +260,23 @@ async def handle_incoming_message(websocket: WebSocket, user_id: str, roles: lis
         await websocket.send_text(json.dumps(all_users_message))
         logger.info(f"👥 WS_ALL_USERS_SENT | session_id={session_id} | user_id={user_id} | total_users={all_users_data['total_count']}")
         
-    elif message_type == "heartbeat":
-        # Simple heartbeat response
-        heartbeat_response = {
-            "type": "heartbeat_ack",
-            "timestamp": message.get("timestamp"),
-            "message_id": message_id,
-            "server_time": datetime.utcnow().isoformat()
-        }
-        await websocket.send_text(json.dumps(heartbeat_response))
-        logger.debug(f"💓 WS_HEARTBEAT_ACK | session_id={session_id} | user_id={user_id}")
+    elif message_type == "heartbeat" or message_type == "heartbeat_pong":
+        # Simple heartbeat response or pong acknowledgment
+        if message_type == "heartbeat":
+            # Client sent heartbeat, respond with ack
+            heartbeat_response = {
+                "type": "heartbeat_ack",
+                "timestamp": message.get("timestamp"),
+                "message_id": message_id,
+                "server_time": datetime.utcnow().isoformat()
+            }
+            await websocket.send_text(json.dumps(heartbeat_response))
+            logger.debug(f"💓 WS_HEARTBEAT_ACK | session_id={session_id} | user_id={user_id}")
+        else:
+            # Client responded to our ping
+            logger.debug(f"💓 WS_HEARTBEAT_PONG_RECEIVED | session_id={session_id} | user_id={user_id}")
+        
+        # Both cases reset heartbeat failure count (handled by update_user_activity above)
         
     else:
         # Unknown message type atau tidak ada permission
@@ -305,15 +316,20 @@ async def handle_lobby_message(websocket: WebSocket, user_id: str, roles: list, 
         await websocket.send_text(json.dumps(pong_message))
         logger.debug(f"🏓 WS_LOBBY_PONG | session_id={session_id} | user_id={user_id}")
         
-    elif message_type == "heartbeat":
-        heartbeat_response = {
-            "type": "heartbeat_ack",
-            "timestamp": message.get("timestamp"),
-            "message_id": message_id,
-            "server_time": datetime.utcnow().isoformat()
-        }
-        await websocket.send_text(json.dumps(heartbeat_response))
-        logger.debug(f"💓 WS_LOBBY_HEARTBEAT | session_id={session_id} | user_id={user_id}")
+    elif message_type == "heartbeat" or message_type == "heartbeat_pong":
+        # Simple heartbeat response or pong acknowledgment for lobby
+        if message_type == "heartbeat":
+            heartbeat_response = {
+                "type": "heartbeat_ack",
+                "timestamp": message.get("timestamp"),
+                "message_id": message_id,
+                "server_time": datetime.utcnow().isoformat()
+            }
+            await websocket.send_text(json.dumps(heartbeat_response))
+            logger.debug(f"💓 WS_LOBBY_HEARTBEAT_ACK | session_id={session_id} | user_id={user_id}")
+        else:
+            # Client responded to our ping
+            logger.debug(f"💓 WS_LOBBY_HEARTBEAT_PONG | session_id={session_id} | user_id={user_id}")
         
     else:
         logger.warning(
