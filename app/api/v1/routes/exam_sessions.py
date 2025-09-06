@@ -132,6 +132,8 @@ async def submit_exam_with_full_data(
     Submit ujian dengan data lengkap: answers + interaction logs + violations + metadata.
     Endpoint baru untuk approach 'submit all' dengan fraud detection.
     """
+
+    print("payload", payload)
     session = await crud_exam_sessions.get_session_by_id(db, session_id)
     if not session or session["student_id"] != current_user["_id"]:
         raise HTTPException(status_code=404, detail="Exam session not found or not owned by user")

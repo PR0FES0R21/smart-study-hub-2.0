@@ -831,10 +831,10 @@ class ExamAnalyticsCRUD:
         """Generate class comparison analytics"""
         db = await self._get_db()
         
-        # Get all sessions for this exam
+        # Get all sessions for this exam (both submitted and graded)
         all_sessions = await db.exam_sessions.find({
             "exam_id": exam["_id"],
-            "status": "submitted"
+            "status": {"$in": ["submitted", "graded"]}
         }).to_list(length=None)
         
         if not all_sessions:
@@ -851,8 +851,22 @@ class ExamAnalyticsCRUD:
             )
         
         # Calculate class statistics
-        scores = [session.get("score", 0) for session in all_sessions]
+        scores = [session.get("score", 0) for session in all_sessions if session.get("score") is not None]
         student_score = exam_session.get("score", 0)
+        
+        # Ensure current session is included in class statistics
+        current_session_id = exam_session.get("_id")
+        current_session_included = any(str(session.get("_id")) == str(current_session_id) for session in all_sessions)
+        
+        if not current_session_included and student_score is not None:
+            scores.append(student_score)
+            logger.info(f"Added current session score {student_score} to class statistics")
+        
+        # Debug logging
+        logger.info(f"Class comparison: Found {len(all_sessions)} total sessions, {len(scores)} with valid scores")
+        logger.info(f"All scores: {scores}")
+        logger.info(f"Current student score: {student_score}")
+        logger.info(f"Current session included: {current_session_included}")
         
         class_average = sum(scores) / len(scores)
         class_highest = max(scores)
@@ -860,31 +874,44 @@ class ExamAnalyticsCRUD:
         
         # Calculate rank (1 = highest)
         sorted_scores = sorted(scores, reverse=True)
-        student_rank = sorted_scores.index(student_score) + 1
+        try:
+            student_rank = sorted_scores.index(student_score) + 1
+        except ValueError:
+            # If student_score not found in sorted_scores, assign last rank
+            logger.warning(f"Student score {student_score} not found in class scores {sorted_scores}")
+            student_rank = len(sorted_scores)
         
         # Calculate percentile
         scores_below = len([s for s in scores if s < student_score])
         percentile = (scores_below / len(scores)) * 100 if len(scores) > 0 else 100
         
-        # Create score distribution
-        score_ranges = [(i*10, (i+1)*10) for i in range(10)]  # 0-10, 10-20, etc.
+        # Create score distribution (handle scores up to 100)
+        score_ranges = [(i*10, (i+1)*10) for i in range(10)]  # 0-10, 10-20, ..., 90-100
         distribution = []
         
         for min_score, max_score in score_ranges:
-            count = len([s for s in scores if min_score <= s < max_score])
-            if count > 0:
+            # For the last range (90-100), include scores equal to max_score
+            if max_score == 100:
+                count = len([s for s in scores if min_score <= s <= max_score])
+            else:
+                count = len([s for s in scores if min_score <= s < max_score])
+                
+            if count > 0 and len(scores) > 0:
                 distribution.append({
                     "range": f"{min_score}-{max_score}",
                     "count": count,
-                    "percentage": (count / len(scores)) * 100
+                    "percentage": round((count / len(scores)) * 100, 1)
                 })
+        
+        # Total participants should match the number of scores we're using for calculations
+        total_participants = len(scores)
         
         return ClassComparison(
             class_average_score=class_average,
             class_highest_score=class_highest,
             class_lowest_score=class_lowest,
             student_rank=student_rank,
-            total_participants=len(all_sessions),
+            total_participants=total_participants,
             percentile=percentile,
             above_average=student_score > class_average,
             score_distribution=distribution

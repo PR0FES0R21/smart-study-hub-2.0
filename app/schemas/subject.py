@@ -28,8 +28,8 @@ class SubjectUpdate(BaseModel):
 # Skema saat response: termasuk field internal
 class SubjectPublic(SubjectBase):
     id: PyObjectId = Field(alias="_id")
-    created_at: datetime
-    updated_at: datetime
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
 
     class Config:
         from_attributes = True
