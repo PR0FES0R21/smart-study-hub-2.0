@@ -270,6 +270,23 @@ class ScoreTrendAnalyticsCRUD:
             }
         })
         
+        # Lookup expertise program details
+        pipeline.append({
+            "$lookup": {
+                "from": "expertise_programs",
+                "localField": "class.expertise_id",
+                "foreignField": "_id",
+                "as": "expertise_program"
+            }
+        })
+        
+        pipeline.append({
+            "$unwind": {
+                "path": "$expertise_program",
+                "preserveNullAndEmptyArrays": True
+            }
+        })
+        
         # Add date formatting for grouping
         pipeline.append({
             "$addFields": {
@@ -323,7 +340,9 @@ class ScoreTrendAnalyticsCRUD:
                 "subject_code": {"$first": "$subject.code"},
                 "teacher_id": {"$first": "$teacher._id"},
                 "teacher_name": {"$first": "$teacher_profile.full_name"},
-                "expertise_id": {"$first": "$class.expertise_id"}
+                "expertise_id": {"$first": "$class.expertise_id"},
+                "expertise_name": {"$first": "$expertise_program.name"},
+                "expertise_abbreviation": {"$first": "$expertise_program.abbreviation"}
             }
         }
 
@@ -380,7 +399,14 @@ class ScoreTrendAnalyticsCRUD:
         if group_by == "class":
             class_name = result.get("class_name", "Unknown")
             grade_level = result.get("grade_level", "")
-            return f"Kelas {grade_level}-{class_name}" if grade_level else class_name
+            expertise_abbr = result.get("expertise_abbreviation", "")
+            
+            if grade_level and expertise_abbr and class_name:
+                return f"Kelas {grade_level} {expertise_abbr} {class_name}"
+            elif grade_level and class_name:
+                return f"Kelas {grade_level}-{class_name}"  # Fallback jika expertise tidak ada
+            else:
+                return class_name or "Unknown Class"
             
         elif group_by == "subject":
             return result.get("subject_name", "Unknown Subject")
@@ -410,7 +436,9 @@ class ScoreTrendAnalyticsCRUD:
             metadata.update({
                 "class_id": str(result.get("class_id", "")),
                 "grade_level": result.get("grade_level"),
-                "expertise_id": str(result.get("expertise_id", ""))
+                "expertise_id": str(result.get("expertise_id", "")),
+                "expertise_name": result.get("expertise_name"),
+                "expertise_abbreviation": result.get("expertise_abbreviation")
             })
         elif request.group_by == "subject":
             metadata.update({

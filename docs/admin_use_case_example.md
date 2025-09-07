@@ -18,21 +18,31 @@ GET /api/v1/analytics/score-trend?group_by=class&start_date=2025-08-01
 {
   "series": [
     {
-      "label": "Kelas 10-A",
+      "label": "Kelas 10 TKJ 1",
       "data": [
         {"date": "2025-08-05T10:00:00Z", "score": 82.3, "exam_title": "UTS Matematika"},
         {"date": "2025-08-12T10:00:00Z", "score": 79.5, "exam_title": "Quiz B.Indonesia"},
         {"date": "2025-08-19T10:00:00Z", "score": 85.1, "exam_title": "UTS Fisika"}
       ],
-      "metadata": {"student_count": 30, "grade_level": 10}
+      "metadata": {
+        "student_count": 30, 
+        "grade_level": 10,
+        "expertise_abbreviation": "TKJ",
+        "expertise_name": "Teknik Komputer dan Jaringan"
+      }
     },
     {
-      "label": "Kelas 10-B", 
+      "label": "Kelas 10 TKJ 2", 
       "data": [
         {"date": "2025-08-05T10:00:00Z", "score": 78.9, "exam_title": "UTS Matematika"},
         {"date": "2025-08-12T10:00:00Z", "score": 81.2, "exam_title": "Quiz B.Indonesia"}
       ],
-      "metadata": {"student_count": 29, "grade_level": 10}
+      "metadata": {
+        "student_count": 29, 
+        "grade_level": 10,
+        "expertise_abbreviation": "TKJ",
+        "expertise_name": "Teknik Komputer dan Jaringan"
+      }
     }
     // ... 20 kelas lainnya
   ],
@@ -157,20 +167,30 @@ GET /api/v1/analytics/score-trend?grade_level=12&group_by=class
 {
   "series": [
     {
-      "label": "Kelas 12-A",
+      "label": "Kelas 12 RPL 1",
       "data": [
         {"date": "2025-08-05T10:00:00Z", "score": 85.2, "exam_title": "UTS Matematika"},
         {"date": "2025-08-19T10:00:00Z", "score": 87.1, "exam_title": "UTS Fisika"}
       ],
-      "metadata": {"student_count": 30, "grade_level": 12}
+      "metadata": {
+        "student_count": 30, 
+        "grade_level": 12,
+        "expertise_abbreviation": "RPL",
+        "expertise_name": "Rekayasa Perangkat Lunak"
+      }
     },
     {
-      "label": "Kelas 12-B",
+      "label": "Kelas 12 TKJ 1",
       "data": [
         {"date": "2025-08-05T10:00:00Z", "score": 78.8, "exam_title": "UTS Matematika"},
         {"date": "2025-08-19T10:00:00Z", "score": 82.3, "exam_title": "UTS Fisika"}
       ],
-      "metadata": {"student_count": 30, "grade_level": 12}
+      "metadata": {
+        "student_count": 30, 
+        "grade_level": 12,
+        "expertise_abbreviation": "TKJ",
+        "expertise_name": "Teknik Komputer dan Jaringan"
+      }
     }
     // ... 5 kelas 12 lainnya (12-C sampai 12-G)
   ]
@@ -252,9 +272,9 @@ const chartData = {
 ## 💡 **Insights yang Didapat Admin**
 
 ### **Dari group_by=class:**
-- "Kelas 10-C consistently underperforming - butuh intervention"
-- "Kelas 12-A overachiever - bisa jadi role model"
-- "Gap performance antar kelas paralel terlalu besar"
+- "Kelas 10 TKJ 3 consistently underperforming - butuh intervention"
+- "Kelas 12 RPL 1 overachiever - bisa jadi role model"
+- "Gap performance antar kelas paralel (TKJ vs RPL) terlalu besar"
 
 ### **Dari group_by=grade:**
 - "Kelas 12 trend menurun mendekati UN - perlu intensive coaching"

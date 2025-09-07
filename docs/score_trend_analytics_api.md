@@ -44,7 +44,7 @@ Score Trend Analytics menyediakan analisis trend nilai ujian berdasarkan role pe
 {
   "series": [
     {
-      "label": "Kelas 12-A",
+      "label": "Kelas 12 RPL 1",
       "data": [
         {
           "date": "2025-08-01T00:00:00Z",
@@ -66,7 +66,9 @@ Score Trend Analytics menyediakan analisis trend nilai ujian berdasarkan role pe
       "metadata": {
         "class_id": "60d21b4667d0d8992e610c86",
         "grade_level": 12,
-        "total_students": 30
+        "student_count": 30,
+        "expertise_abbreviation": "RPL",
+        "expertise_name": "Rekayasa Perangkat Lunak"
       }
     }
   ],
