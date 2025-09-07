@@ -6,7 +6,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import JSONResponse
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from typing import List, Optional
+from typing import List, Optional, Union
 from datetime import datetime
 from bson import ObjectId
 import logging
@@ -21,6 +21,11 @@ from app.schemas.score_trend_analytics import (
     ScoreTrendAnalytics, ScoreTrendRequest
 )
 from app.crud.score_trend_analytics import score_trend_crud
+from app.schemas.subject_mastery_analytics import (
+    SubjectMasteryAnalytics, SubjectMasteryRequest, StudentMasteryResponse,
+    ClassMasteryResponse, SchoolMasteryResponse
+)
+from app.crud.subject_mastery_analytics import subject_mastery_crud
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -566,6 +571,154 @@ async def get_score_trend_analytics_post(
         logger.error(f"Unexpected error in score trend analytics (POST): {str(e)}")
         logger.exception(f"Full traceback for score trend analytics (POST):")
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+# ============================================================================
+# SUBJECT MASTERY ANALYTICS (RADAR CHART)
+# ============================================================================
+
+@router.get("/subject-mastery", response_model=Union[StudentMasteryResponse, ClassMasteryResponse, SchoolMasteryResponse])
+async def get_subject_mastery_analytics(
+    student_id: Optional[str] = Query(None, description="Specific student ID (admin/teacher only)"),
+    class_id: Optional[str] = Query(None, description="Filter by class ID"),
+    grade_level: Optional[int] = Query(None, description="Filter by grade level"),
+    expertise_id: Optional[str] = Query(None, description="Filter by expertise program"),
+    start_date: Optional[datetime] = Query(None, description="Start date for analysis"),
+    end_date: Optional[datetime] = Query(None, description="End date for analysis"),
+    academic_period_id: Optional[str] = Query(None, description="Filter by academic period"),
+    include_zero_scores: bool = Query(False, description="Include subjects with 0 exams"),
+    min_exams_per_subject: int = Query(1, ge=1, description="Minimum exams per subject"),
+    use_cache: bool = Query(True, description="Use cached results (15min TTL)"),
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Get Subject Mastery Analytics untuk Radar Chart visualization
+    
+    **Performance Optimized** dengan smart caching dan efficient aggregation.
+    
+    Features per role:
+    - **Student**: Personal subject mastery radar (own data only)
+    - **Teacher**: Class-level subject mastery comparison (classes taught only)
+    - **Admin**: School-wide subject mastery analysis dengan flexible filtering
+    
+    **Radar Chart Ready**: Output format optimized untuk Chart.js radar charts
+    
+    **Caching**: Results cached untuk 15 minutes untuk optimal performance
+    """
+    try:
+        # Build optimized request
+        request = SubjectMasteryRequest(
+            student_id=ObjectId(student_id) if student_id else None,
+            class_id=ObjectId(class_id) if class_id else None,
+            grade_level=grade_level,
+            expertise_id=ObjectId(expertise_id) if expertise_id else None,
+            start_date=start_date,
+            end_date=end_date,
+            academic_period_id=ObjectId(academic_period_id) if academic_period_id else None,
+            include_zero_scores=include_zero_scores,
+            min_exams_per_subject=min_exams_per_subject,
+            use_cache=use_cache
+        )
+        
+        # Get analytics with performance optimization
+        start_time = datetime.utcnow()
+        result = await subject_mastery_crud.get_subject_mastery_analytics(request, current_user)
+        end_time = datetime.utcnow()
+        
+        processing_time = (end_time - start_time).total_seconds()
+        logger.info(f"Subject mastery analytics completed in {processing_time:.3f}s for user {current_user['_id']}")
+        
+        return result
+        
+    except ValueError as e:
+        logger.error(f"ValueError in subject mastery analytics: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+    except PermissionError as e:
+        logger.error(f"PermissionError in subject mastery analytics: {e}")
+        raise HTTPException(status_code=403, detail=str(e))
+    except Exception as e:
+        logger.error(f"Unexpected error in subject mastery analytics: {str(e)}")
+        logger.exception(f"Full traceback for subject mastery analytics:")
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+@router.post("/subject-mastery", response_model=Union[StudentMasteryResponse, ClassMasteryResponse, SchoolMasteryResponse])
+async def get_subject_mastery_analytics_post(
+    request: SubjectMasteryRequest,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Alternative POST endpoint untuk Subject Mastery Analytics
+    
+    **Advanced Options**: Supports more complex filtering options through request body
+    
+    **Performance Features**:
+    - Smart caching dengan customizable TTL
+    - Role-based query optimization
+    - Minimal data transfer
+    - Efficient MongoDB aggregation pipelines
+    """
+    try:
+        start_time = datetime.utcnow()
+        result = await subject_mastery_crud.get_subject_mastery_analytics(request, current_user)
+        end_time = datetime.utcnow()
+        
+        processing_time = (end_time - start_time).total_seconds()
+        
+        # Log performance metrics
+        entity_count = 1 if hasattr(result, 'entity_id') else len(getattr(result, 'entities', []))
+        cache_status = "HIT" if processing_time < 0.1 else "MISS"
+        
+        logger.info(
+            f"Subject mastery (POST) - {processing_time:.3f}s, {entity_count} entities, "
+            f"Cache: {cache_status}, User: {current_user['_id']}"
+        )
+        
+        return result
+        
+    except ValueError as e:
+        logger.error(f"ValueError in subject mastery analytics (POST): {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+    except PermissionError as e:
+        logger.error(f"PermissionError in subject mastery analytics (POST): {e}")
+        raise HTTPException(status_code=403, detail=str(e))
+    except Exception as e:
+        logger.error(f"Unexpected error in subject mastery analytics (POST): {str(e)}")
+        logger.exception(f"Full traceback for subject mastery analytics (POST):")
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+@router.delete("/subject-mastery/cache")
+async def clear_subject_mastery_cache(
+    cache_pattern: str = Query("subject_mastery:*", description="Cache pattern to clear"),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Clear Subject Mastery Analytics cache (admin only)
+    
+    Useful untuk:
+    - Force refresh after data updates
+    - Performance troubleshooting
+    - Cache management
+    """
+    user_roles = current_user.get("roles", [])
+    if "admin" not in user_roles:
+        raise HTTPException(status_code=403, detail="Admin access required untuk cache management")
+    
+    try:
+        from app.core.cache import invalidate_cache
+        await invalidate_cache(cache_pattern)
+        
+        logger.info(f"Subject mastery cache cleared by admin {current_user['_id']}: {cache_pattern}")
+        
+        return {
+            "message": f"Cache cleared for pattern: {cache_pattern}",
+            "timestamp": datetime.utcnow().isoformat(),
+            "cleared_by": current_user.get("_id")
+        }
+        
+    except Exception as e:
+        logger.error(f"Error clearing subject mastery cache: {e}")
+        raise HTTPException(status_code=500, detail=f"Cache clear error: {str(e)}")
 
 # ============================================================================
 # MANAGEMENT ENDPOINTS
