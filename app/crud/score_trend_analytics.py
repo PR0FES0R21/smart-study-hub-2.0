@@ -354,42 +354,71 @@ class ScoreTrendAnalyticsCRUD:
     ) -> List[ScoreTrendSeries]:
         """Process aggregated results into chart series format"""
         if not results:
+            logger.warning("No results found for score trend analytics - empty data")
             return []
         
+        logger.info(f"Processing {len(results)} results for score trend series")
         series_dict = {}
         
         for result in results:
-            # Extract aggregated data
-            group_key = await self._get_group_key_from_aggregated(result, request)
-            
-            if group_key not in series_dict:
-                series_dict[group_key] = {
-                    "label": group_key,
-                    "data": [],
-                    "metadata": await self._get_group_metadata_from_aggregated(result, request)
-                }
-            
-            # Create data point from aggregated result
-            data_point = ScoreDataPoint(
-                date=result["exam_date"],  # This comes from aggregation
-                score=float(result.get("avg_score", 0)),  # Average score from aggregation
-                exam_id=result["_id"]["exam_id"],  # From group _id
-                exam_title=result.get("exam_title", "Unknown"),
-                subject_name=result.get("subject_name"),
-                subject_code=result.get("subject_code")
-            )
-            
-            series_dict[group_key]["data"].append(data_point)
+            try:
+                # Extract aggregated data
+                group_key = await self._get_group_key_from_aggregated(result, request)
+                
+                if group_key not in series_dict:
+                    series_dict[group_key] = {
+                        "label": group_key,
+                        "data": [],
+                        "metadata": await self._get_group_metadata_from_aggregated(result, request)
+                    }
+                
+                # Handle date field - check multiple possible formats
+                exam_date = result.get("exam_date")
+                if exam_date is None:
+                    # Try alternative date fields
+                    exam_date = result.get("_id", {}).get("exam_date")
+                    if exam_date is None:
+                        # Use submitted_at or current datetime as fallback
+                        exam_date = result.get("submitted_at") or datetime.utcnow()
+                
+                # Ensure exam_date is datetime object
+                if isinstance(exam_date, str):
+                    try:
+                        exam_date = datetime.fromisoformat(exam_date.replace('Z', '+00:00'))
+                    except:
+                        exam_date = datetime.utcnow()
+                
+                # Create data point from aggregated result
+                score_value = result.get("avg_score") or result.get("score", 0)
+                
+                data_point = ScoreDataPoint(
+                    date=exam_date,
+                    score=float(score_value),
+                    exam_id=result["_id"]["exam_id"] if "exam_id" in result["_id"] else result.get("exam_id", ObjectId()),
+                    exam_title=result.get("exam_title", "Unknown"),
+                    subject_name=result.get("subject_name"),
+                    subject_code=result.get("subject_code")
+                )
+                
+                series_dict[group_key]["data"].append(data_point)
+                
+            except Exception as e:
+                logger.warning(f"Error processing result item: {e}. Skipping this result.")
+                continue
         
-        # Convert to list of series
+        # Convert to list of series and sort data points by date
         series_list = []
         for key, series_data in series_dict.items():
+            # Sort data points by date
+            series_data["data"].sort(key=lambda x: x.date)
+            
             series_list.append(ScoreTrendSeries(
                 label=series_data["label"],
                 data=series_data["data"],
                 metadata=series_data["metadata"]
             ))
         
+        logger.info(f"Generated {len(series_list)} series for score trend chart")
         return series_list
 
     async def _get_group_key_from_aggregated(self, result: Dict, request: ScoreTrendRequest) -> str:

@@ -53,6 +53,9 @@ from bson import ObjectId
 from app.core.cache import get_cache, set_cache
 import pymongo
 from collections import defaultdict
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 # ============================================================================
@@ -1287,42 +1290,70 @@ async def get_student_class_exam_analytics(db: AsyncIOMotorDatabase, student_id:
         scores = exam.get("all_scores", [])
         exam["score_distribution"] = _build_score_distribution(scores)
         
-        # Pastikan field student_score ada (set default None dulu)
+        # Initialize dengan None sebagai default
         exam["student_score"] = None
         exam["student_percentile"] = None
-
+        
+        # Debug logging
+        logger.info(f"Processing exam {exam.get('exam_title')}: {len(exam.get('all_students', []))} students")
         
         # Cari student score dari data all_students
         all_students = exam.get("all_students", [])
+        student_found = False
+        
         if all_students:
             for student_data in all_students:
-                if student_data.get("student_id") == student_obj_id:
-                    exam["student_score"] = student_data.get("score")
+                student_data_id = student_data.get("student_id")
+                # Convert to ObjectId if needed for comparison
+                if isinstance(student_data_id, str):
+                    student_data_id = ObjectId(student_data_id)
+                
+                if student_data_id == student_obj_id:
+                    exam["student_score"] = float(student_data.get("score", 0))
+                    student_found = True
+                    logger.info(f"Found student score: {exam['student_score']} for exam {exam.get('exam_title')}")
                     break
         
-        # Hitung posisi siswa dalam distribusi
+        if not student_found:
+            logger.warning(f"Student {student_obj_id} not found in exam {exam.get('exam_title')} participants")
+        
+        # Hitung posisi siswa dalam distribusi hanya jika student ikut ujian
         student_score = exam.get("student_score")
-        if student_score is not None:
+        if student_score is not None and scores:
             better_scores = sum(1 for s in scores if s > student_score)
-            exam["student_percentile"] = round(((len(scores) - better_scores) / len(scores)) * 100, 1)
+            total_participants = len(scores)
+            if total_participants > 0:
+                exam["student_percentile"] = round(((total_participants - better_scores) / total_participants) * 100, 1)
+                logger.info(f"Calculated percentile: {exam['student_percentile']}% for score {student_score}")
+            else:
+                exam["student_percentile"] = None
+        else:
+            exam["student_percentile"] = None
         
         # Hapus data yang tidak perlu dari response
         exam.pop("all_scores", None)
         exam.pop("all_students", None)
     
     # Hitung trend performa kelas vs siswa (6 ujian terakhir)
-    recent_exams = exam_analytics[:6]
+    recent_exams = exam_analytics[:6] if len(exam_analytics) >= 6 else exam_analytics
     class_trend = []
-    student_trend = []
     
-    for exam in reversed(recent_exams):  # Urutkan dari lama ke baru untuk trend
-        if exam.get("student_score") is not None:
-            class_trend.append({
-                "exam_title": exam["exam_title"][:20] + "..." if len(exam["exam_title"]) > 20 else exam["exam_title"],
-                "class_average": exam["class_average"],
-                "student_score": exam["student_score"],
-                "exam_date": exam["exam_date"]
-            })
+    # Urutkan ujian berdasarkan tanggal untuk trend yang benar
+    recent_exams_sorted = sorted(recent_exams, key=lambda x: x.get('exam_date', datetime.min))
+    
+    logger.info(f"Building trend data from {len(recent_exams_sorted)} recent exams")
+    
+    for exam in recent_exams_sorted:
+        # Tambahkan ke trend data terlepas apakah siswa ikut ujian atau tidak
+        # Ini untuk menunjukkan trend kelas secara keseluruhan
+        class_trend.append({
+            "exam_title": exam["exam_title"][:20] + "..." if len(exam["exam_title"]) > 20 else exam["exam_title"],
+            "class_average": exam.get("class_average", 0),
+            "student_score": exam.get("student_score"),  # Bisa None jika siswa tidak ikut
+            "exam_date": exam["exam_date"]
+        })
+        
+        logger.info(f"Added to trend: {exam['exam_title']} - Class: {exam.get('class_average', 0)}, Student: {exam.get('student_score', 'N/A')}")
     
     # Statistik keseluruhan kelas
     if exam_analytics:

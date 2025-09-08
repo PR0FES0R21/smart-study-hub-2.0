@@ -182884,3 +182884,286 @@ pymongo.errors._OperationCancelled: operation cancelled
 2025-09-08 00:07:01,597 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=69e52ca8-3fdb-4b71-a800-437105fa9ee3 | message_type=new_activity_log | target_roles=['admin'] | recipients=1
 2025-09-08 00:07:01,598 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=69e52ca8-3fdb-4b71-a800-437105fa9ee3 | successful=1/1 | failed=0 | time=1.44ms
 2025-09-08 00:07:17,756 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 1 series
+2025-09-08 00:10:50,587 [WARNING] app.core.websocket: STALE_CONNECTION | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | role=user | inactive_for=324.91s | timeout_threshold=300s
+2025-09-08 00:10:50,588 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68b2dcbdcccc321f815ea3f5 | username=Drs. Titi Prasasta, S.Sos | room_id=lobby | connection_id=c27475a7-8459-4b02-a68d-e0cd0c8c2212 | total_active=2 | duration=625.49s
+2025-09-08 00:10:50,589 [INFO] app.core.websocket: Broadcasting user disconnected event for Drs. Titi Prasasta, S.Sos to admins (global)
+2025-09-08 00:10:50,590 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3ede5d8c-855f-4854-a4d6-ca14feb4ed6c | message_type=user_disconnected | target_roles=['admin'] | recipients=1
+2025-09-08 00:10:50,592 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3ede5d8c-855f-4854-a4d6-ca14feb4ed6c | successful=1/1 | failed=0 | time=1.95ms
+2025-09-08 00:10:50,593 [INFO] app.core.websocket:  Removed stale connection for user 68b2dcbdcccc321f815ea3f5
+2025-09-08 00:11:16,232 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 0 series
+2025-09-08 00:11:16,257 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 0 series
+2025-09-08 00:11:16,325 [INFO] app.crud.subject_mastery_analytics: Cache SET untuk subject mastery analytics: subject_mast...
+2025-09-08 00:11:16,326 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.161s for user 686a3396d20694199c01c06b
+2025-09-08 00:11:16,365 [INFO] app.crud.subject_mastery_analytics: Cache SET untuk subject mastery analytics: subject_mast...
+2025-09-08 00:11:16,369 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.185s for user 686a3396d20694199c01c06b
+2025-09-08 00:11:33,397 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=b67f18ad-1a96-4264-bc8b-dbe990e34c78 | user_id=686a3396d20694199c01c06b | duration=621.56s | messages_processed=11
+2025-09-08 00:11:33,413 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | room_id=lobby | connection_id=f3d134a0-5236-49ed-8a8b-80ba1ac263b7 | total_active=1 | duration=621.44s
+2025-09-08 00:11:33,417 [INFO] app.core.websocket: Broadcasting user disconnected event for sayoga pratama test final to admins (global)
+2025-09-08 00:11:33,423 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4bde0ee1-4820-4fbd-bc90-f98fd4423818 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-08 00:11:33,432 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4bde0ee1-4820-4fbd-bc90-f98fd4423818 | successful=0/0 | failed=0 | time=9.13ms
+2025-09-08 00:11:33,439 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=d3902307-1113-4a0d-8abf-49d87e95ea04 | user_id=688477a78a56906f19d02551 | duration=436.61s | messages_processed=7
+2025-09-08 00:11:33,441 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=688477a78a56906f19d02551 | username=alexander grahambel | room_id=lobby | connection_id=75469546-faf0-44cd-b2a5-8e4841467ec0 | total_active=0 | duration=436.49s
+2025-09-08 00:11:33,443 [INFO] app.core.websocket: Broadcasting user disconnected event for alexander grahambel to admins (global)
+2025-09-08 00:11:33,454 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b38bc97a-7eaf-463a-bca7-e87f9cf242af | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-09-08 00:11:33,457 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b38bc97a-7eaf-463a-bca7-e87f9cf242af | successful=0/0 | failed=0 | time=3.16ms
+2025-09-08 00:11:33,470 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=3953ab8d-4d1a-4cfa-9cd3-01d8583aba7f | user_id=68b2dcbdcccc321f815ea3f5 | duration=668.48s | messages_processed=6
+2025-09-08 00:11:33,523 [INFO] app.main: Mematikan aplikasi...
+2025-09-08 00:11:33,524 [INFO] app.main: Menutup WebSocket manager...
+2025-09-08 00:11:33,525 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-08 00:11:33,526 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-08 00:11:33,527 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-08 00:11:33,528 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-08 00:11:33,542 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-08 00:11:33,551 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-08 00:11:33,553 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-08 00:11:33,633 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-08 00:11:44,676 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-08 00:11:45,900 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-08 00:11:45,914 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-08 00:11:45,922 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-08 00:11:45,926 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-08 00:11:45,935 [INFO] app.main: Startup aplikasi berhasil
+2025-09-08 00:11:45,939 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-08 00:11:45,942 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-08 00:12:52,727 [INFO] app.main: Mematikan aplikasi...
+2025-09-08 00:12:52,730 [INFO] app.main: Menutup WebSocket manager...
+2025-09-08 00:12:52,734 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-08 00:12:52,738 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-08 00:12:52,738 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-08 00:12:52,746 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-08 00:12:52,756 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-08 00:12:52,772 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-08 00:12:52,789 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-08 00:12:52,927 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-08 00:13:00,178 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-08 00:13:01,365 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-08 00:13:01,385 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-08 00:13:01,386 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-08 00:13:01,386 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-08 00:13:01,387 [INFO] app.main: Startup aplikasi berhasil
+2025-09-08 00:13:01,388 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-08 00:13:01,389 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-08 00:13:06,949 [INFO] app.main: Mematikan aplikasi...
+2025-09-08 00:13:06,962 [INFO] app.main: Menutup WebSocket manager...
+2025-09-08 00:13:06,976 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-08 00:13:06,992 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-08 00:13:07,032 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-08 00:13:07,084 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-08 00:13:07,124 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-08 00:13:07,169 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-08 00:13:07,201 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-08 00:13:07,337 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-08 00:13:14,611 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-08 00:13:15,849 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-08 00:13:15,857 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-08 00:13:15,858 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-08 00:13:15,859 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-08 00:13:15,861 [INFO] app.main: Startup aplikasi berhasil
+2025-09-08 00:13:15,862 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-08 00:13:15,863 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-08 00:13:20,555 [INFO] app.main: Mematikan aplikasi...
+2025-09-08 00:13:20,555 [INFO] app.main: Menutup WebSocket manager...
+2025-09-08 00:13:20,556 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-08 00:13:20,558 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-08 00:13:20,559 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-08 00:13:20,560 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-08 00:13:20,566 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-08 00:13:20,573 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-08 00:13:20,583 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-08 00:13:20,699 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-08 00:13:28,091 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-08 00:13:29,211 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-08 00:13:29,237 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-08 00:13:29,238 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-08 00:13:29,238 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-08 00:13:29,239 [INFO] app.main: Startup aplikasi berhasil
+2025-09-08 00:13:29,240 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-08 00:13:29,241 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-08 00:14:38,757 [INFO] app.crud.score_trend_analytics: Processing 1 results for score trend series
+2025-09-08 00:14:38,760 [INFO] app.crud.score_trend_analytics: Generated 1 series for score trend chart
+2025-09-08 00:14:38,760 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 1 series
+2025-09-08 00:15:01,953 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e72aed98-0243-436c-957a-fbcbbb30b25d | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-08 00:15:01,956 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e72aed98-0243-436c-957a-fbcbbb30b25d | successful=0/0 | failed=0 | time=2.89ms
+2025-09-08 00:16:05,834 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,835 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,836 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,838 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,838 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,839 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,840 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,841 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,841 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,842 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,843 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,844 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,846 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,847 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,847 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,848 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,849 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,850 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,850 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,851 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,852 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,852 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,853 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,854 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,855 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,855 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,856 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 2 students
+2025-09-08 00:16:05,857 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,858 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,858 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,859 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,860 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,861 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,861 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,862 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 2 students
+2025-09-08 00:16:05,863 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,863 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,864 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,865 [INFO] app.crud.crud_score_analytics: Processing exam ujian testing 1: 1 students
+2025-09-08 00:16:05,866 [WARNING] app.crud.crud_score_analytics: Student 688477a78a56906f19d02551 not found in exam ujian testing 1 participants
+2025-09-08 00:16:05,866 [INFO] app.crud.crud_score_analytics: Building trend data from 6 recent exams
+2025-09-08 00:16:05,867 [INFO] app.crud.crud_score_analytics: Added to trend: ujian testing 1 - Class: 33.33, Student: None
+2025-09-08 00:16:05,868 [INFO] app.crud.crud_score_analytics: Added to trend: ujian testing 1 - Class: 0.0, Student: None
+2025-09-08 00:16:05,869 [INFO] app.crud.crud_score_analytics: Added to trend: ujian testing 1 - Class: 0.0, Student: None
+2025-09-08 00:16:05,869 [INFO] app.crud.crud_score_analytics: Added to trend: ujian testing 1 - Class: 66.67, Student: None
+2025-09-08 00:16:05,870 [INFO] app.crud.crud_score_analytics: Added to trend: ujian testing 1 - Class: 0.0, Student: None
+2025-09-08 00:16:05,870 [INFO] app.crud.crud_score_analytics: Added to trend: ujian testing 1 - Class: 0.0, Student: None
+2025-09-08 00:16:43,857 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-08 00:16:45,192 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-08 00:16:45,203 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-08 00:16:45,204 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-08 00:16:45,204 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-08 00:16:45,205 [INFO] app.main: Startup aplikasi berhasil
+2025-09-08 00:16:45,206 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-08 00:16:45,207 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-08 00:16:57,286 [INFO] app.main: Mematikan aplikasi...
+2025-09-08 00:16:57,287 [INFO] app.main: Menutup WebSocket manager...
+2025-09-08 00:16:57,288 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-08 00:16:57,290 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-08 00:16:57,290 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-08 00:16:57,291 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-08 00:16:57,293 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-08 00:16:57,294 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-08 00:16:57,294 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-08 00:16:57,361 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-08 00:17:04,887 [INFO] app.main: Mematikan aplikasi...
+2025-09-08 00:17:04,888 [INFO] app.main: Menutup WebSocket manager...
+2025-09-08 00:17:04,889 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-08 00:17:04,890 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-08 00:17:04,890 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-08 00:17:04,891 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-08 00:17:04,892 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-08 00:17:04,894 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-08 00:17:04,894 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-08 00:17:04,978 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-08 00:19:06,984 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-08 00:19:08,167 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-08 00:19:08,190 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-08 00:19:08,190 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-08 00:19:08,191 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-08 00:19:08,192 [INFO] app.main: Startup aplikasi berhasil
+2025-09-08 00:19:08,193 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-08 00:19:08,194 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-08 00:19:16,474 [INFO] app.main: Mematikan aplikasi...
+2025-09-08 00:19:16,475 [INFO] app.main: Menutup WebSocket manager...
+2025-09-08 00:19:16,476 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-08 00:19:16,477 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-08 00:19:16,478 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-08 00:19:16,479 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-08 00:19:16,481 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-08 00:19:16,482 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-08 00:19:16,483 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-08 00:19:16,538 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-08 00:25:42,931 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-08 00:25:44,085 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-08 00:25:44,095 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-08 00:25:44,096 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-08 00:25:44,096 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-08 00:25:44,097 [INFO] app.main: Startup aplikasi berhasil
+2025-09-08 00:25:44,098 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-08 00:25:44,099 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-08 00:27:50,892 [INFO] app.crud.score_trend_analytics: Processing 1 results for score trend series
+2025-09-08 00:27:50,893 [INFO] app.crud.score_trend_analytics: Generated 1 series for score trend chart
+2025-09-08 00:27:50,893 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 1 series
+2025-09-08 00:31:19,679 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:31:19,681 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 0 series
+2025-09-08 00:31:19,697 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:31:19,699 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 0 series
+2025-09-08 00:31:19,783 [INFO] app.crud.subject_mastery_analytics: Cache SET untuk subject mastery analytics: subject_mast...
+2025-09-08 00:31:19,784 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.157s for user 688477a78a56906f19d02551
+2025-09-08 00:31:19,865 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:31:19,866 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 0 series
+2025-09-08 00:31:19,867 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:31:19,868 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 0 series
+2025-09-08 00:31:19,871 [INFO] app.crud.subject_mastery_analytics: Cache HIT untuk subject mastery analytics: subject_mast...
+2025-09-08 00:31:19,872 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.008s for user 688477a78a56906f19d02551
+2025-09-08 00:31:31,385 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:31:31,386 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 0 series
+2025-09-08 00:31:33,220 [INFO] app.crud.subject_mastery_analytics: Cache SET untuk subject mastery analytics: subject_mast...
+2025-09-08 00:31:33,221 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.187s for user 686a3396d20694199c01c06b
+2025-09-08 00:31:48,703 [INFO] app.crud.subject_mastery_analytics: Cache SET untuk subject mastery analytics: subject_mast...
+2025-09-08 00:31:48,704 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.116s for user 688477a78a56906f19d02551
+2025-09-08 00:32:19,530 [INFO] app.crud.subject_mastery_analytics: Cache HIT untuk subject mastery analytics: subject_mast...
+2025-09-08 00:32:19,530 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.002s for user 688477a78a56906f19d02551
+2025-09-08 00:32:19,569 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:32:19,570 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 0 series
+2025-09-08 00:32:19,589 [INFO] app.crud.subject_mastery_analytics: Cache HIT untuk subject mastery analytics: subject_mast...
+2025-09-08 00:32:19,589 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.003s for user 688477a78a56906f19d02551
+2025-09-08 00:32:19,602 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:32:19,602 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 0 series
+2025-09-08 00:32:19,685 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:32:19,686 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 0 series
+2025-09-08 00:32:19,768 [WARNING] app.crud.score_trend_analytics: No results found for score trend analytics - empty data
+2025-09-08 00:32:19,770 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 0 series
+2025-09-08 00:32:59,600 [INFO] app.crud.score_trend_analytics: Processing 1 results for score trend series
+2025-09-08 00:32:59,601 [INFO] app.crud.score_trend_analytics: Generated 1 series for score trend chart
+2025-09-08 00:32:59,601 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 688477a78a56906f19d02551 with 1 series
+2025-09-08 00:33:13,488 [INFO] app.crud.subject_mastery_analytics: Cache HIT untuk subject mastery analytics: subject_mast...
+2025-09-08 00:33:13,489 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.003s for user 688477a78a56906f19d02551
+2025-09-08 14:12:43,100 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-08 14:12:44,878 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-08 14:12:44,924 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-08 14:12:44,963 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-08 14:12:44,972 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-08 14:12:44,978 [INFO] app.main: Startup aplikasi berhasil
+2025-09-08 14:12:44,987 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-08 14:12:44,997 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-08 14:27:51,914 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=567c3750-d171-424b-88ce-19ef3a9e5e0e | user_id=686a3396d20694199c01c06b | username=79111953 | roles=['admin', 'teacher']
+2025-09-08 14:27:52,210 [INFO] app.core.websocket: USER_CONNECTED | user_id=686a3396d20694199c01c06b | username=sayoga pratama test final | roles=['admin', 'teacher'] | room_id=lobby | connection_id=c819928b-257d-4568-b7c5-fd402664f8ac | total_active=1 | connection_time=291.17ms
+2025-09-08 14:27:52,220 [INFO] app.core.websocket: Broadcasting user connected event for sayoga pratama test final to admins (global)
+2025-09-08 14:27:52,268 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b7671000-f15b-41a5-86c1-b099cefe3bdf | message_type=user_connected | target_roles=['admin'] | recipients=1
+2025-09-08 14:27:52,295 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b7671000-f15b-41a5-86c1-b099cefe3bdf | successful=1/1 | failed=0 | time=26.96ms
+2025-09-08 14:27:52,319 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=567c3750-d171-424b-88ce-19ef3a9e5e0e | user_id=686a3396d20694199c01c06b | connection_time=405.34ms
+2025-09-08 14:28:28,124 [INFO] app.crud.score_trend_analytics: Processing 1 results for score trend series
+2025-09-08 14:28:28,128 [INFO] app.crud.score_trend_analytics: Generated 1 series for score trend chart
+2025-09-08 14:28:28,129 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-08 14:28:28,274 [INFO] app.crud.subject_mastery_analytics: Cache SET untuk subject mastery analytics: subject_mast...
+2025-09-08 14:28:28,275 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.244s for user 686a3396d20694199c01c06b
+2025-09-08 14:28:28,349 [INFO] app.crud.score_trend_analytics: Processing 1 results for score trend series
+2025-09-08 14:28:28,349 [INFO] app.crud.score_trend_analytics: Generated 1 series for score trend chart
+2025-09-08 14:28:28,350 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-08 14:28:28,353 [INFO] app.crud.subject_mastery_analytics: Cache HIT untuk subject mastery analytics: subject_mast...
+2025-09-08 14:28:28,354 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.007s for user 686a3396d20694199c01c06b
+2025-09-08 14:29:27,088 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f966dd13-74b6-4e05-b9b6-e092d3021604 | message_type=new_activity_log | target_roles=['admin'] | recipients=1
+2025-09-08 14:29:27,090 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f966dd13-74b6-4e05-b9b6-e092d3021604 | successful=1/1 | failed=0 | time=1.52ms
+2025-09-08 14:29:31,756 [INFO] app.crud.subject_mastery_analytics: Cache SET untuk subject mastery analytics: subject_mast...
+2025-09-08 14:29:31,757 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.229s for user 686a3396d20694199c01c06b
+2025-09-08 14:29:48,637 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.239s for user 686a3396d20694199c01c06b
+2025-09-08 14:29:55,518 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.252s for user 686a3396d20694199c01c06b
+2025-09-08 14:31:21,053 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.223s for user 686a3396d20694199c01c06b
+2025-09-08 14:31:42,247 [INFO] app.crud.score_trend_analytics: Processing 1 results for score trend series
+2025-09-08 14:31:42,247 [INFO] app.crud.score_trend_analytics: Generated 1 series for score trend chart
+2025-09-08 14:31:42,248 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-08 14:34:05,055 [INFO] app.crud.subject_mastery_analytics: Cache HIT untuk subject mastery analytics: subject_mast...
+2025-09-08 14:34:05,056 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.004s for user 686a3396d20694199c01c06b
+2025-09-08 14:34:05,132 [INFO] app.crud.subject_mastery_analytics: Cache HIT untuk subject mastery analytics: subject_mast...
+2025-09-08 14:34:05,133 [INFO] app.api.v1.routes.exam_analytics: Subject mastery analytics completed in 0.004s for user 686a3396d20694199c01c06b
+2025-09-08 14:34:05,157 [INFO] app.crud.score_trend_analytics: Processing 1 results for score trend series
+2025-09-08 14:34:05,158 [INFO] app.crud.score_trend_analytics: Generated 1 series for score trend chart
+2025-09-08 14:34:05,159 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series
+2025-09-08 14:34:05,487 [INFO] app.crud.score_trend_analytics: Processing 1 results for score trend series
+2025-09-08 14:34:05,488 [INFO] app.crud.score_trend_analytics: Generated 1 series for score trend chart
+2025-09-08 14:34:05,488 [INFO] app.api.v1.routes.exam_analytics: Score trend analytics retrieved for user 686a3396d20694199c01c06b with 1 series

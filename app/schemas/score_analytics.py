@@ -271,7 +271,7 @@ class StudentClassTrendData(BaseModel):
     """Data trend performa siswa vs kelas"""
     exam_title: str
     class_average: float
-    student_score: float
+    student_score: Optional[float] = None  # Bisa None jika siswa tidak ikut ujian
     exam_date: datetime
 
 class StudentClassExamAnalytics(BaseModel):
