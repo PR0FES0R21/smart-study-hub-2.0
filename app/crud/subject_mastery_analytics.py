@@ -340,6 +340,147 @@ class SubjectMasteryAnalyticsCRUD:
         else:
             return await self._get_school_wide_mastery(filters, db)
 
+    async def _get_school_wide_mastery(self, filters: Dict[str, Any], db: AsyncIOMotorDatabase) -> SchoolMasteryResponse:
+        """Get mastery for the entire school (helper)"""
+        pipeline = await self._build_school_aggregation_pipeline(filters)
+        cursor = db.exam_sessions.aggregate(pipeline, allowDiskUse=False)
+        results = await cursor.to_list(length=None)
+        
+        entities = await self._process_school_results(results, db)
+        comparison_metadata = self._calculate_comparison_metadata(entities)
+
+        return SchoolMasteryResponse(
+            entities=entities,
+            comparison_metadata=comparison_metadata
+        )
+
+    async def _build_school_aggregation_pipeline(self, filters: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Build efficient pipeline for school-wide aggregation"""
+        return [
+            {"$match": filters},
+            {
+                "$lookup": {
+                    "from": "exams",
+                    "localField": "exam_id",
+                    "foreignField": "_id",
+                    "as": "exam",
+                    "pipeline": [{"$project": {"teaching_assignment_id": 1}}]
+                }
+            },
+            {"$unwind": "$exam"},
+            {
+                "$lookup": {
+                    "from": "teaching_assignments",
+                    "localField": "exam.teaching_assignment_id",
+                    "foreignField": "_id",
+                    "as": "ta",
+                    "pipeline": [{"$project": {"subject_id": 1, "grade_level": 1, "class_id": 1}}]
+                }
+            },
+            {"$unwind": "$ta"},
+            {
+                "$lookup": {
+                    "from": "classes",
+                    "localField": "ta.class_id",
+                    "foreignField": "_id",
+                    "as": "class",
+                    "pipeline": [{"$project": {"grade_level": 1}}]
+                }
+            },
+            {
+                "$lookup": {
+                    "from": "subjects",
+                    "localField": "ta.subject_id",
+                    "foreignField": "_id",
+                    "as": "subject",
+                    "pipeline": [{"$project": {"name": 1}}]
+                }
+            },
+            {"$unwind": "$subject"},
+            {
+                "$addFields": {
+                    "final_grade_level": {
+                        "$ifNull": [
+                            "$ta.grade_level",
+                            {"$arrayElemAt": ["$class.grade_level", 0]}
+                        ]
+                    }
+                }
+            },
+            {
+                "$match": {
+                    "final_grade_level": {"$exists": True, "$ne": None}
+                }
+            },
+            {
+                "$group": {
+                    "_id": {
+                        "grade_level": "$final_grade_level",
+                        "subject_name": "$subject.name"
+                    },
+                    "avg_score": {"$avg": "$score"},
+                    "exam_count": {"$sum": 1}
+                }
+            },
+            {"$sort": {"_id.grade_level": 1, "_id.subject_name": 1}}
+        ]
+
+    async def _process_school_results(self, results: List[Dict], db: AsyncIOMotorDatabase) -> List[SubjectMasteryAnalytics]:
+        """Process aggregation results into entities for school-wide view"""
+        grade_data = {}
+
+        for result in results:
+            # Safely get grade_level with fallback to "Unknown" if missing
+            grade_level = result.get("_id", {}).get("grade_level", "Unknown")
+            subject_name = result.get("_id", {}).get("subject_name", "Unknown Subject")
+            avg_score = round(result.get("avg_score", 0), 1)
+            exam_count = result.get("exam_count", 0)
+
+            # Skip results with missing essential data
+            if grade_level == "Unknown" or subject_name == "Unknown Subject":
+                continue
+
+            if grade_level not in grade_data:
+                grade_data[grade_level] = {
+                    "subjects": {},
+                    "total_score": 0,
+                    "total_exams": 0,
+                    "entity_name": f"Grade {grade_level}"
+                }
+            grade_data[grade_level]["subjects"][subject_name] = avg_score
+            grade_data[grade_level]["total_score"] += avg_score * exam_count
+            grade_data[grade_level]["total_exams"] += exam_count
+        
+        entities = []
+        for grade_level, data in grade_data.items():
+            overall_avg = round(data["total_score"] / data["total_exams"], 1) if data["total_exams"] > 0 else 0
+
+            mastery_data = SubjectMasteryData(
+                subject_scores=data["subjects"],
+                overall_average=overall_avg,
+                total_exams=data["total_exams"]
+            )
+
+            entity = SubjectMasteryAnalytics(
+                entity_id=str(grade_level),
+                entity_type="grade_level",
+                entity_name=data["entity_name"],
+                mastery_data=mastery_data
+            )
+            entities.append(entity)
+
+        return entities
+
+    async def _get_single_class_mastery(self, filters: Dict[str, Any], class_id: ObjectId, db: AsyncIOMotorDatabase) -> ClassMasteryResponse:
+        """Get mastery for a single class (helper)"""
+        # Implementation similar to _get_teacher_mastery but with class_id override
+        pass
+
+    async def _get_grade_mastery(self, filters: Dict[str, Any], grade_level: int, db: AsyncIOMotorDatabase) -> SchoolMasteryResponse:
+        """Get mastery for a specific grade level (helper)"""
+        # Implementation similar to _get_school_wide_mastery but with grade_level override
+        pass
+
     async def _build_class_aggregation_pipeline(self, filters: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Build efficient pipeline untuk class-level aggregation"""
         return [

@@ -141,6 +141,7 @@ async def start_exam_session(db: AsyncIOMotorDatabase, exam: dict, student_id: O
     # 2. Fetch questions dan siapkan shuffle options
     questions_cursor = db["question_banks"].find({"_id": {"$in": working_question_ids}})
     questions_data = {q["_id"]: q for q in await questions_cursor.to_list(len(working_question_ids))}
+    print(f"questions_data: {questions_data}")
     
     # 3. Build question map dengan shuffled options
     question_map = []
@@ -151,6 +152,8 @@ async def start_exam_session(db: AsyncIOMotorDatabase, exam: dict, student_id: O
             
         question = questions_data[q_id]
         shuffled_option_ids = None
+
+        print(f"question: {question}")
         
         # Shuffle options jika diaktifkan dan ada options
         if shuffle_options and question.get("options"):
