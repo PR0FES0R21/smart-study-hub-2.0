@@ -17,6 +17,8 @@ from app.schemas.user import (
     StudentByClass, PaginatedStudentByClassResponse, PaginatedUserResponse
 )
 from app.core.logging import create_activity_log
+from app.schemas.student_stats import StudentStatsResponse
+from app.crud.student_stats import get_student_exam_stats
 from app.core import security
 
 router = APIRouter()
@@ -350,6 +352,56 @@ async def get_students_list(
     """
     students = await crud_users.get_all_students_basic(db=db, search=search, class_id=class_id)
     return students
+
+# ============================================================================
+# STUDENT STATS ENDPOINTS
+# ============================================================================
+
+@router.get("/students/me/stats", response_model=StudentStatsResponse)
+async def get_my_exam_stats(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_user),
+):
+    """
+    Mendapatkan statistik ujian untuk siswa yang sedang login (me):
+    - total ujian yang sudah dikerjakan
+    - nilai rata-rata
+    - nilai tertinggi
+    - nilai terendah
+    """
+    # Pastikan role adalah student
+    roles = current_user.get("roles", [])
+    if "student" not in roles:
+        raise HTTPException(status_code=403, detail="Only students can access their own stats")
+
+    stats = await get_student_exam_stats(db, current_user["_id"])  # student id dari deps
+    return stats
+
+@router.get("/students/{student_id}/stats", response_model=StudentStatsResponse)
+async def get_student_exam_stats_admin_teacher(
+    student_id: str,
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_user)
+):
+    """
+    Mendapatkan statistik ujian untuk siswa tertentu.
+    - Admin: dapat mengakses semua siswa
+    - Teacher: idealnya hanya siswa di kelas yang diajar (implementasi pembatasan bisa ditambah kemudian)
+    - Student: tidak diizinkan mengakses siswa lain
+    """
+    roles = current_user.get("roles", [])
+    if "admin" not in roles and "teacher" not in roles:
+        # Student tidak boleh akses siswa lain
+        raise HTTPException(status_code=403, detail="Insufficient permissions")
+
+    try:
+        from bson import ObjectId
+        student_obj_id = ObjectId(student_id)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid student_id")
+
+    stats = await get_student_exam_stats(db, student_obj_id)
+    return stats
 
 @router.get("/students/by-class", response_model=PaginatedStudentByClassResponse)
 async def get_students_by_class_for_teacher(
