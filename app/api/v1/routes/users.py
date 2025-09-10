@@ -13,9 +13,9 @@ from app.crud.crud_teaching_assignments import get_teaching_assignments_by_teach
 from app.schemas.user import (
     UserCreate, UserPublic, UserUpdate, 
     DataTablesUserResponse, PasswordChange, 
-    SelfDataUpdate, UserWithDetails, TeacherBasic
+    SelfDataUpdate, UserWithDetails, TeacherBasic, StudentBasic,
+    StudentByClass, PaginatedStudentByClassResponse, PaginatedUserResponse
 )
-from app.schemas.user import PaginatedUserResponse
 from app.core.logging import create_activity_log
 from app.core import security
 
@@ -327,10 +327,93 @@ async def get_teachers_list(
     search: Optional[str] = Query(None, description="Search teachers by name")
 ):
     """
-    Mengambil daftar semua guru aktif dengan informasi dasar (ID dan nama).
+    Mengambil daftar guru aktif dengan informasi dasar (ID dan nama) - maksimal 5 data.
     Endpoint ini bisa diakses oleh semua pengguna yang terautentikasi.
     Berguna untuk dropdown, autocomplete, atau referensi guru di form lain.
     Mendukung pencarian berdasarkan nama guru.
     """
     teachers = await crud_users.get_all_teachers_basic(db=db, search=search)
     return teachers
+
+@router.get("/students/basic", response_model=List[StudentBasic])
+async def get_students_list(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_user),
+    search: Optional[str] = Query(None, description="Search students by name"),
+    class_id: Optional[str] = Query(None, description="Filter students by class ID")
+):
+    """
+    Mengambil daftar siswa aktif dengan informasi dasar (ID dan nama) - maksimal 5 data.
+    Endpoint ini bisa diakses oleh semua pengguna yang terautentikasi.
+    Berguna untuk dropdown, autocomplete, atau referensi siswa di form lain.
+    Mendukung pencarian berdasarkan nama siswa dan filter berdasarkan kelas.
+    """
+    students = await crud_users.get_all_students_basic(db=db, search=search, class_id=class_id)
+    return students
+
+@router.get("/students/by-class", response_model=PaginatedStudentByClassResponse)
+async def get_students_by_class_for_teacher(
+    db: AsyncIOMotorDatabase = Depends(deps.get_database),
+    current_user: dict = Depends(deps.get_current_active_teacher),
+    active_periods: dict = Depends(deps.get_current_academic_period),
+    class_id: str = Query(..., description="ID of the class to get students from"),
+    search: Optional[str] = Query(None, description="Search students by name"),
+    page: int = Query(1, ge=1, description="Page number"),
+    limit: int = Query(10, ge=1, le=100, description="Number of items per page")
+):
+    """
+    Mengambil daftar siswa dalam kelas tertentu dengan data minimal.
+    Hanya dapat diakses oleh guru yang mengajar kelas tersebut.
+    
+    Endpoint ini mengembalikan data minimal siswa:
+    - Student ID
+    - Profile picture URL
+    - Full name 
+    - Expertise abbreviation
+    - Grade level
+    - Class name
+    
+    Dengan validasi otorisasi berdasarkan teaching assignments.
+    """
+    # Validasi teaching assignments untuk memastikan guru mengajar kelas ini
+    assignments = await get_teaching_assignments_by_teacher_id(
+        db, 
+        str(current_user["_id"]),
+        active_periods["_id"]
+    )
+    
+    if not assignments:
+        raise HTTPException(
+            status_code=404, 
+            detail="Anda belum memiliki penugasan mengajar di periode akademik ini."
+        )
+    
+    # Periksa apakah guru mengajar di kelas yang diminta
+    allowed_class_ids = [str(assignment["class_id"]) for assignment in assignments]
+    if class_id not in allowed_class_ids:
+        raise HTTPException(
+            status_code=403, 
+            detail="Anda tidak memiliki izin untuk mengakses data siswa di kelas ini."
+        )
+    
+    # Hitung pagination
+    skip = (page - 1) * limit
+    
+    # Ambil data siswa
+    result = await crud_users.get_students_by_class(
+        db=db,
+        class_id=class_id,
+        skip=skip,
+        limit=limit,
+        search=search
+    )
+    
+    total_pages = (result["total_items"] + limit - 1) // limit
+    
+    return {
+        "total_items": result["total_items"],
+        "total_pages": total_pages,
+        "current_page": page,
+        "limit": limit,
+        "data": result["data"]
+    }

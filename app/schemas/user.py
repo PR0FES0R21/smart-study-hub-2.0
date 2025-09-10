@@ -118,3 +118,30 @@ class TeacherBasic(BaseModel):
     class Config:
         from_attributes = True
         arbitrary_types_allowed = True
+
+class StudentBasic(BaseModel):
+    """Schema untuk daftar siswa sederhana (hanya ID dan nama)"""
+    id: PyObjectId = Field(alias="_id")
+    full_name: str
+    profile_picture_url: Optional[str] = None
+    
+    class Config:
+        from_attributes = True
+        arbitrary_types_allowed = True
+
+class StudentByClass(BaseModel):
+    """Schema minimal untuk teacher melihat siswa berdasarkan kelas yang diajar"""
+    id: PyObjectId = Field(alias="_id")
+    profile_picture_url: Optional[str] = None
+    full_name: str
+    expertise_abbreviation: str
+    grade_level: int
+    class_name: str
+    
+    class Config:
+        from_attributes = True
+        arbitrary_types_allowed = True
+
+class PaginatedStudentByClassResponse(PaginatedResponse[StudentByClass]):
+    """Response pagination untuk students by class - teacher view"""
+    pass

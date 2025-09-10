@@ -859,7 +859,7 @@ async def get_user_with_details_by_id(db: AsyncIOMotorDatabase, user_id: str) ->
 
 async def get_all_teachers_basic(db: AsyncIOMotorDatabase, search: Optional[str] = None) -> List[dict]:
     """
-    Mengambil daftar semua guru aktif dengan hanya ID dan nama lengkap.
+    Mengambil daftar guru aktif dengan hanya ID dan nama lengkap (maksimal 5 data).
     Fungsi ini efisien karena hanya mengambil data minimal yang diperlukan.
     Mendukung pencarian berdasarkan nama guru.
     """
@@ -888,7 +888,7 @@ async def get_all_teachers_basic(db: AsyncIOMotorDatabase, search: Optional[str]
             }
         })
     
-    # Tambahkan projection dan sorting
+    # Tambahkan projection, sorting, dan limit
     pipeline.extend([
         # Hanya ambil field yang diperlukan
         {"$project": {
@@ -898,8 +898,163 @@ async def get_all_teachers_basic(db: AsyncIOMotorDatabase, search: Optional[str]
         }},
         
         # Urutkan berdasarkan nama
-        {"$sort": {"full_name": 1}}
+        {"$sort": {"full_name": 1}},
+        
+        # Batasi maksimal 5 data
+        {"$limit": 5}
     ])
     
-    teachers = await db["users"].aggregate(pipeline).to_list(None)
+    teachers = await db["users"].aggregate(pipeline).to_list(5)
     return teachers
+
+async def get_students_by_class(
+    db: AsyncIOMotorDatabase, 
+    class_id: str, 
+    skip: int = 0, 
+    limit: int = 10,
+    search: Optional[str] = None
+) -> Dict[str, Any]:
+    """
+    Mengambil daftar siswa dalam kelas tertentu dengan data minimal.
+    Mengembalikan hanya field yang diperlukan: ID, profile picture URL, 
+    full name, expertise abbreviation, grade level, dan class name.
+    """
+    if not ObjectId.is_valid(class_id):
+        return {"data": [], "total_items": 0}
+    
+    class_obj_id = ObjectId(class_id)
+    
+    # Base pipeline untuk mengambil siswa dalam kelas tertentu
+    base_pipeline = [
+        # Join dengan profiles untuk mendapatkan data profil siswa
+        {"$lookup": {
+            "from": "profiles",
+            "localField": "profile_id",
+            "foreignField": "_id",
+            "as": "profile_details"
+        }},
+        {"$unwind": "$profile_details"},
+        
+        # Filter hanya siswa aktif dalam kelas yang diminta
+        {"$match": {
+            "roles": "student",
+            "is_active": True,
+            "profile_details.class_id": class_obj_id
+        }},
+        
+        # Join dengan classes untuk mendapatkan data kelas
+        {"$lookup": {
+            "from": "classes",
+            "localField": "profile_details.class_id",
+            "foreignField": "_id",
+            "as": "class_details"
+        }},
+        {"$unwind": "$class_details"},
+        
+        # Join dengan expertise_programs untuk mendapatkan data jurusan
+        {"$lookup": {
+            "from": "expertise_programs",
+            "localField": "class_details.expertise_id",
+            "foreignField": "_id",
+            "as": "expertise_details"
+        }},
+        {"$unwind": "$expertise_details"},
+    ]
+    
+    # Tambahkan filter pencarian jika ada
+    if search:
+        base_pipeline.append({
+            "$match": {
+                "profile_details.full_name": {"$regex": search, "$options": "i"}
+            }
+        })
+    
+    # Hitung total items
+    count_pipeline = base_pipeline + [{"$count": "count"}]
+    total_result = await db["users"].aggregate(count_pipeline).to_list(1)
+    total_items = total_result[0]['count'] if total_result else 0
+    
+    # Pipeline untuk mengambil data dengan pagination
+    data_pipeline = base_pipeline + [
+        # Hanya ambil field yang diperlukan
+        {"$project": {
+            "_id": 1,
+            "profile_picture_url": "$profile_details.profile_picture_url",
+            "full_name": "$profile_details.full_name",
+            "expertise_abbreviation": "$expertise_details.abbreviation",
+            "grade_level": "$class_details.grade_level",
+            "class_name": "$class_details.name"
+        }},
+        
+        # Urutkan berdasarkan nama
+        {"$sort": {"full_name": 1}},
+        
+        # Pagination
+        {"$skip": skip},
+        {"$limit": limit}
+    ]
+    
+    students = await db["users"].aggregate(data_pipeline).to_list(limit)
+    
+    return {
+        "data": students,
+        "total_items": total_items
+    }
+
+async def get_all_students_basic(db: AsyncIOMotorDatabase, search: Optional[str] = None, class_id: Optional[str] = None) -> List[dict]:
+    """
+    Mengambil daftar siswa aktif dengan hanya ID dan nama lengkap (maksimal 5 data).
+    Fungsi ini efisien karena hanya mengambil data minimal yang diperlukan.
+    Mendukung pencarian berdasarkan nama siswa dan filter berdasarkan kelas.
+    """
+    pipeline = [
+        # Filter hanya pengguna dengan role 'student' dan status aktif
+        {"$match": {
+            "roles": "student",
+            "is_active": True
+        }},
+        
+        # Join dengan collection profiles untuk mendapatkan nama lengkap
+        {"$lookup": {
+            "from": "profiles",
+            "localField": "profile_id",
+            "foreignField": "_id",
+            "as": "profile_details"
+        }},
+        {"$unwind": "$profile_details"},
+    ]
+    
+    # Filter berdasarkan class_id jika ada
+    if class_id and ObjectId.is_valid(class_id):
+        pipeline.append({
+            "$match": {
+                "profile_details.class_id": ObjectId(class_id)
+            }
+        })
+    
+    # Tambahkan filter pencarian jika ada search term
+    if search:
+        pipeline.append({
+            "$match": {
+                "profile_details.full_name": {"$regex": search, "$options": "i"}
+            }
+        })
+    
+    # Tambahkan projection, sorting, dan limit
+    pipeline.extend([
+        # Hanya ambil field yang diperlukan
+        {"$project": {
+            "_id": 1,
+            "full_name": "$profile_details.full_name",
+            "profile_picture_url": "$profile_details.profile_picture_url"
+        }},
+        
+        # Urutkan berdasarkan nama
+        {"$sort": {"full_name": 1}},
+        
+        # Batasi maksimal 5 data
+        {"$limit": 5}
+    ])
+    
+    students = await db["users"].aggregate(pipeline).to_list(5)
+    return students
