@@ -428,10 +428,12 @@ async def get_teacher_exams(
     current_period: dict = Depends(deps.get_current_academic_period),
     academic_period_id: Optional[str] = Query(None),
     class_id: Optional[str] = Query(None),
+    exam_type: Optional[str] = Query(None, description="Filter berdasarkan tipe ujian (quiz, uts, uas, practice, official_uts, official_uas)"),
+    search: Optional[str] = Query(None, description="Pencarian berdasarkan judul ujian atau nama mata pelajaran"),
     page: int = Query(1, ge=1),
     limit: int = Query(20, ge=1, le=100)
 ):
-    """Endpoint khusus guru untuk melihat ujian yang terkait dengan dia."""
+    """Endpoint khusus guru untuk melihat ujian yang terkait dengan dia dengan filter type dan search."""
     current_period_id = academic_period_id if academic_period_id else current_period["_id"]
     skip = (page - 1) * limit
 
@@ -440,6 +442,8 @@ async def get_teacher_exams(
         teacher_id=str(current_user["_id"]),
         academic_period_id=current_period_id,
         class_id=class_id,
+        exam_type=exam_type,
+        search=search,
         skip=skip,
         limit=limit
     )

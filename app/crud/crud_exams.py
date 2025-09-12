@@ -447,6 +447,8 @@ async def get_exams_by_teacher(
     teacher_id: str,
     academic_period_id: Optional[str] = None,
     class_id: Optional[str] = None,
+    exam_type: Optional[str] = None,
+    search: Optional[str] = None,
     skip: int = 0,
     limit: int = 20
 ) -> Dict[str, Any]:
@@ -472,11 +474,17 @@ async def get_exams_by_teacher(
         return {"data": [], "total_items": 0}
     
     # Filter ujian berdasarkan assignment IDs dengan analytics status
+    match_condition = {
+        "teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]},
+        "exam_type": {"$ne": None}  # PERBAIKAN: Filter out data dengan exam_type null
+    }
+    
+    # Tambahkan filter exam_type jika ada
+    if exam_type:
+        match_condition["exam_type"] = exam_type
+    
     pipeline = [
-        {"$match": {
-            "teaching_assignment_id": {"$in": [ObjectId(aid) for aid in assignment_ids]},
-            "exam_type": {"$ne": None}  # PERBAIKAN: Filter out data dengan exam_type null
-        }},
+        {"$match": match_condition},
         {"$lookup": {"from": "teaching_assignments", "localField": "teaching_assignment_id", "foreignField": "_id", "as": "teaching_assignment"}},
         {"$unwind": "$teaching_assignment"},
         {"$lookup": {"from": "subjects", "localField": "teaching_assignment.subject_id", "foreignField": "_id", "as": "subject_details"}},
@@ -568,6 +576,17 @@ async def get_exams_by_teacher(
             "analytics_tasks": 0
         }}
     ]
+    
+    # Tambahkan filter search jika ada
+    if search:
+        pipeline.append({
+            "$match": {
+                "$or": [
+                    {"title": {"$regex": search, "$options": "i"}},  # Search di judul ujian
+                    {"subject_details.name": {"$regex": search, "$options": "i"}}  # Search di nama mata pelajaran
+                ]
+            }
+        })
     
     # Filter berdasarkan academic_period_id
     if academic_period_id:
