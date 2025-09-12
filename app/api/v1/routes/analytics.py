@@ -80,12 +80,15 @@ async def get_top_students(
 @router.get("/student-performance-roster", response_model=List[StudentPerformanceRosterItem])
 async def get_student_performance(
     db: AsyncIOMotorDatabase = Depends(deps.get_database),
-    current_user: dict = Depends(deps.get_current_active_admin)
+    current_user: dict = Depends(deps.get_current_active_admin),
+    limit: Optional[int] = Query(default=None, ge=1, le=1000, description="Limit jumlah siswa yang ditampilkan (1-1000). Jika tidak diisi, akan mengambil semua data."),
+    student_ids: Optional[List[str]] = Query(default=None, description="Daftar student_ids yang spesifik untuk diambil datanya (untuk caching byids)")
 ):
     """
     Mengambil laporan rangkuman performa untuk semua siswa.
+    Mendukung limit dan caching byids untuk performa yang lebih baik.
     """
-    return await crud_analytics.get_student_performance_roster(db=db)
+    return await crud_analytics.get_student_performance_roster(db=db, limit=limit, student_ids=student_ids)
 
 @router.get("/major-distribution", response_model=MajorDistributionByGradeResponse)
 async def get_major_distribution(

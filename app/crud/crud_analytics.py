@@ -185,17 +185,35 @@ async def get_top_students_from_last_official_exam(db: AsyncIOMotorDatabase, lim
     top_students = await db["exam_sessions"].aggregate(pipeline).to_list(limit)
     return top_students
 
-async def get_student_performance_roster(db: AsyncIOMotorDatabase) -> List[dict]:
-    """Agregasi untuk membuat laporan rangkuman nilai semua siswa."""
-    cached_data = await get_cache(STUDENT_PERFORMANCE_ROSTER_CACHE_KEY)
+async def get_student_performance_roster(db: AsyncIOMotorDatabase, limit: int = None, student_ids: List[str] = None) -> List[dict]:
+    """Agregasi untuk membuat laporan rangkuman nilai semua siswa dengan dukungan limit dan caching byids."""
+    
+    # Buat cache key yang unik berdasarkan parameter
+    cache_key = _generate_performance_roster_cache_key(limit, student_ids)
+    
+    # Cek cache terlebih dahulu
+    cached_data = await get_cache(cache_key)
     if cached_data is not None:
-        print("HIT: Mengambil rangkuman performa siswa dari cache.")
+        print(f"HIT: Mengambil rangkuman performa siswa dari cache dengan key: {cache_key}")
         return cached_data
 
-    print("MISS: Menghitung rangkuman performa siswa dari database.")
+    print(f"MISS: Menghitung rangkuman performa siswa dari database dengan key: {cache_key}")
+    # Buat match condition untuk sesi ujian
+    match_condition = {"status": "graded", "score": {"$ne": None}}
+    
+    # Jika ada filter student_ids, konversi ke ObjectId dan tambahkan ke match condition
+    if student_ids:
+        try:
+            student_object_ids = [ObjectId(student_id) for student_id in student_ids]
+            match_condition["student_id"] = {"$in": student_object_ids}
+        except Exception as e:
+            print(f"Error converting student_ids to ObjectId: {e}")
+            # Jika ada error konversi, return empty list
+            return []
+    
     pipeline = [
-        # 1. Mulai dari sesi ujian yang sudah dinilai
-        {"$match": {"status": "graded", "score": {"$ne": None}}},
+        # 1. Mulai dari sesi ujian yang sudah dinilai dengan filter student_ids jika ada
+        {"$match": match_condition},
         # 2. Kelompokkan berdasarkan siswa untuk mengumpulkan skor dan menghitung rata-rata
         {"$group": {
             "_id": "$student_id",
@@ -227,9 +245,18 @@ async def get_student_performance_roster(db: AsyncIOMotorDatabase) -> List[dict]
         {"$sort": {"average_score": -1}}
     ]
     
-    results = await db["exam_sessions"].aggregate(pipeline).to_list(None)
+    # Tambahkan limit jika diperlukan
+    if limit is not None and limit > 0:
+        pipeline.append({"$limit": limit})
     
-    await set_cache(STUDENT_PERFORMANCE_ROSTER_CACHE_KEY, results)
+    # Eksekusi pipeline dengan atau tanpa limit
+    if limit is not None:
+        results = await db["exam_sessions"].aggregate(pipeline).to_list(limit)
+    else:
+        results = await db["exam_sessions"].aggregate(pipeline).to_list(None)
+    
+    # Cache hasil dengan key yang dinamis
+    await set_cache(cache_key, results)
     
     return results
 
@@ -542,3 +569,24 @@ async def get_teacher_dashboard_stats(db: AsyncIOMotorDatabase, academic_period:
             "total_exams": 0,
             "total_questions": 0
         }
+
+def _generate_performance_roster_cache_key(limit: int = None, student_ids: List[str] = None) -> str:
+    """Generate unique cache key for student performance roster based on parameters."""
+    key_parts = ["analytics:student_performance_roster"]
+    
+    if limit is not None:
+        key_parts.append(f"limit:{limit}")
+    else:
+        key_parts.append("limit:all")
+    
+    if student_ids and len(student_ids) > 0:
+        # Sort student_ids untuk konsistensi cache key
+        sorted_ids = sorted(student_ids)
+        # Buat hash dari student_ids untuk menghindari key yang terlalu panjang
+        import hashlib
+        ids_hash = hashlib.md5(",".join(sorted_ids).encode()).hexdigest()[:8]
+        key_parts.append(f"ids:{ids_hash}")
+    else:
+        key_parts.append("ids:all")
+    
+    return ":".join(key_parts)
