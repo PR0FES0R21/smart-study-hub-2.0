@@ -187407,3 +187407,256 @@ pymongo.errors.NetworkTimeout: SSL handshake failed: ac-fb6bqxt-shard-00-02.6kpp
 2025-09-15 20:30:50,712 [INFO] app.core.advanced_query_builder: Complexity score: 4
 2025-09-15 20:30:51,241 [INFO] app.core.export_handlers: Excel export completed: students_with_aliases.xlsx, 10 records
 2025-09-15 20:30:51,242 [INFO] app.api.v1.routes.admin_exports: Advanced async export 8672c9fe-eb3a-4540-8a4d-11d978e68acb completed successfully in 165ms
+2025-09-15 20:34:50,707 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 20:34:50,708 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 20:34:50,708 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 20:34:50,709 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 20:34:50,709 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 20:34:50,709 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 20:34:50,711 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 20:34:50,712 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 20:34:50,713 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 20:34:50,914 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 20:34:58,249 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 20:34:59,298 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 20:34:59,308 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 20:34:59,309 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 20:34:59,309 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 20:34:59,310 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 20:34:59,310 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 20:34:59,311 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 20:35:21,938 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 20:35:21,939 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 20:35:21,939 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 20:35:21,940 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 20:35:21,940 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 20:35:21,940 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 20:35:21,942 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 20:35:21,942 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 20:35:21,943 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 20:35:22,151 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 20:35:28,557 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 20:35:29,783 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 20:35:29,793 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 20:35:29,794 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 20:35:29,794 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 20:35:29,795 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 20:35:29,796 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 20:35:29,797 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 20:36:30,342 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 20:36:30,343 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 20:36:30,343 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 20:36:30,343 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 20:36:30,344 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 20:36:30,344 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 20:36:30,345 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 20:36:30,346 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 20:36:30,347 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 20:36:30,579 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 20:36:37,015 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 20:36:38,421 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 20:36:38,430 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 20:36:38,431 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 20:36:38,431 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 20:36:38,432 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 20:36:38,433 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 20:36:38,434 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 20:36:49,855 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 20:36:49,856 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 20:36:49,856 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 20:36:49,856 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 20:36:49,857 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 20:36:49,857 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 20:36:49,859 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 20:36:49,859 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 20:36:49,860 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 20:36:50,188 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 20:36:56,740 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 20:36:58,204 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 20:36:58,232 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 20:36:58,233 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 20:36:58,233 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 20:36:58,234 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 20:36:58,235 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 20:36:58,236 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 20:41:29,884 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:41:29,885 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'expertise_programs', 'profiles'}
+2025-09-15 20:41:29,886 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:41:29,886 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:41:29,887 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'expertise_programs', 'profiles'}
+2025-09-15 20:41:29,888 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 20:41:30,322 [INFO] app.core.export_handlers: Excel export completed: students_with_computed_fields.xlsx, 10 records
+2025-09-15 20:41:30,324 [INFO] app.api.v1.routes.admin_exports: Advanced async export 0754deae-66e2-434f-9053-17232c14fede completed successfully in 91ms
+2025-09-15 20:45:27,451 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 20:45:27,452 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 20:45:27,453 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 20:45:27,454 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 20:45:27,454 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 20:45:27,455 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 20:45:27,456 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 20:45:27,457 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 20:45:27,458 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 20:45:27,567 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 20:45:38,018 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 20:45:39,135 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 20:45:39,160 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 20:45:39,161 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 20:45:39,161 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 20:45:39,162 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 20:45:39,163 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 20:45:39,164 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 20:45:42,663 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-15 20:45:42,664 [INFO] app.core.advanced_query_builder: Collections involved: {'users'}
+2025-09-15 20:45:42,664 [INFO] app.core.advanced_query_builder: Complexity score: 0
+2025-09-15 20:45:42,665 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-15 20:45:42,666 [INFO] app.core.advanced_query_builder: Collections involved: {'users'}
+2025-09-15 20:45:42,666 [INFO] app.core.advanced_query_builder: Complexity score: 0
+2025-09-15 20:45:42,840 [INFO] app.core.export_handlers: Excel export completed: export_20250915_204542.xlsx, 5 records
+2025-09-15 20:45:42,859 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 5 records
+2025-09-15 20:47:33,772 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:47:33,773 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:47:33,774 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:47:33,774 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:47:33,775 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:47:33,776 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 20:47:34,267 [INFO] app.core.export_handlers: Excel export completed: students_with_class_computed.xlsx, 10 records
+2025-09-15 20:47:34,269 [INFO] app.api.v1.routes.admin_exports: Advanced async export 63add7a3-98e4-430d-8e04-75e1bd8d95d9 completed successfully in 123ms
+2025-09-15 20:48:54,760 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:48:54,761 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:48:54,762 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:48:54,763 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:48:54,763 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:48:54,763 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 20:48:55,239 [INFO] app.core.export_handlers: Excel export completed: students_with_computed_fields.xlsx, 10 records
+2025-09-15 20:48:55,241 [INFO] app.api.v1.routes.admin_exports: Advanced async export 32577641-ff19-4246-b051-8b7c538191d2 completed successfully in 117ms
+2025-09-15 20:49:27,941 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-15 20:49:27,942 [INFO] app.core.advanced_query_builder: Collections involved: {'users'}
+2025-09-15 20:49:27,943 [INFO] app.core.advanced_query_builder: Complexity score: 0
+2025-09-15 20:49:27,943 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-15 20:49:27,943 [INFO] app.core.advanced_query_builder: Collections involved: {'users'}
+2025-09-15 20:49:27,944 [INFO] app.core.advanced_query_builder: Complexity score: 0
+2025-09-15 20:49:28,068 [INFO] app.core.export_handlers: Excel export completed: export_20250915_204928.xlsx, 5 records
+2025-09-15 20:49:28,090 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 5 records
+2025-09-15 20:52:02,960 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:52:02,961 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:52:02,962 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:52:02,963 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:52:02,963 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:52:02,964 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 20:52:03,596 [INFO] app.core.export_handlers: Excel export completed: students_with_class_computed.xlsx, 10 records
+2025-09-15 20:52:03,598 [INFO] app.api.v1.routes.admin_exports: Advanced async export de6d15ea-e40c-4351-b3e7-ba96094a23e1 completed successfully in 145ms
+2025-09-15 20:52:50,265 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:52:50,265 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:52:50,266 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:52:50,266 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:52:50,266 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:52:50,267 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 20:52:50,782 [INFO] app.core.export_handlers: Excel export completed: students_with_class_computed.xlsx, 10 records
+2025-09-15 20:52:50,784 [INFO] app.api.v1.routes.admin_exports: Advanced async export e2e8aa45-a52f-4a1c-9fa7-daf3ebb12850 completed successfully in 122ms
+2025-09-15 20:55:09,491 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:55:09,492 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:55:09,492 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:55:09,493 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:55:09,493 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:55:09,494 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 20:55:10,015 [INFO] app.core.export_handlers: Excel export completed: students_with_class_computed.xlsx, 10 records
+2025-09-15 20:55:10,016 [INFO] app.api.v1.routes.admin_exports: Advanced async export cfe6b7eb-3568-41ce-83a4-5891dc822575 completed successfully in 93ms
+2025-09-15 20:56:24,924 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:56:24,925 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:56:24,925 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:56:24,926 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:56:24,926 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:56:24,926 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 20:56:25,369 [INFO] app.core.export_handlers: Excel export completed: students_with_class_computed.xlsx, 10 records
+2025-09-15 20:56:25,370 [INFO] app.api.v1.routes.admin_exports: Advanced async export 2c1c6f65-732a-4715-a147-782d3868f141 completed successfully in 78ms
+2025-09-15 20:58:02,021 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:58:02,022 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:58:02,023 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:58:02,024 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:58:02,024 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 20:58:02,025 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 20:58:02,599 [INFO] app.core.export_handlers: Excel export completed: students_with_class_computed.xlsx, 10 records
+2025-09-15 20:58:02,602 [INFO] app.api.v1.routes.admin_exports: Advanced async export b6ebc528-7b1f-4a29-b1f6-b3be6b4f6ace completed successfully in 216ms
+2025-09-15 20:59:03,290 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:59:03,291 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles'}
+2025-09-15 20:59:03,291 [INFO] app.core.advanced_query_builder: Complexity score: 1
+2025-09-15 20:59:03,292 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 20:59:03,292 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles'}
+2025-09-15 20:59:03,292 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 20:59:03,559 [INFO] app.core.export_handlers: Excel export completed: export_20250915_205903.xlsx, 5 records
+2025-09-15 20:59:03,582 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 5 records
+2025-09-15 21:00:18,194 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 21:00:18,195 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles'}
+2025-09-15 21:00:18,195 [INFO] app.core.advanced_query_builder: Complexity score: 1
+2025-09-15 21:00:18,196 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 21:00:18,196 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles'}
+2025-09-15 21:00:18,197 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 21:00:18,514 [INFO] app.core.export_handlers: Excel export completed: export_20250915_210018.xlsx, 2 records
+2025-09-15 21:00:18,552 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 2 records
+2025-09-15 21:03:18,275 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 21:03:18,276 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles'}
+2025-09-15 21:03:18,276 [INFO] app.core.advanced_query_builder: Complexity score: 1
+2025-09-15 21:03:18,277 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 21:03:18,277 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles'}
+2025-09-15 21:03:18,277 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 21:03:18,577 [INFO] app.core.export_handlers: Excel export completed: export_20250915_210318.xlsx, 2 records
+2025-09-15 21:03:18,616 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 2 records
+2025-09-15 21:04:20,825 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 21:04:20,826 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles'}
+2025-09-15 21:04:20,826 [INFO] app.core.advanced_query_builder: Complexity score: 1
+2025-09-15 21:04:20,827 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 21:04:20,828 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles'}
+2025-09-15 21:04:20,828 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 21:04:21,145 [INFO] app.core.export_handlers: Excel export completed: export_20250915_210421.xlsx, 2 records
+2025-09-15 21:04:21,169 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 2 records
+2025-09-15 21:11:58,641 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 21:11:58,642 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 21:11:58,643 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 21:11:58,644 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 21:11:58,645 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-15 21:11:58,646 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 21:11:59,129 [INFO] app.core.export_handlers: Excel export completed: export_20250915_211159.xlsx, 2 records
+2025-09-15 21:11:59,131 [INFO] app.api.v1.routes.admin_exports: Advanced async export 66eb7b83-7148-4688-a2ee-dc88f68fe64b completed successfully in 132ms
+2025-09-15 22:48:39,533 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 444, in _create_connection
+    raise err
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 437, in _create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-02.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-16 00:38:33,501 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=21fbdb54-a7c6-4fa6-b4e1-e43cb655d717 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-16 00:38:33,502 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=21fbdb54-a7c6-4fa6-b4e1-e43cb655d717 | successful=0/0 | failed=0 | time=0.64ms
+2025-09-16 00:40:53,152 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:40:53,153 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'expertise_programs', 'profiles'}
+2025-09-16 00:40:53,154 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-16 00:41:09,666 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:41:09,667 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:41:09,668 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-16 00:41:09,669 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:41:09,669 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:41:09,670 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-16 00:41:10,159 [INFO] app.core.export_handlers: Excel export completed: students_with_computed_fields.xlsx, 10 records
+2025-09-16 00:41:10,163 [INFO] app.api.v1.routes.admin_exports: Advanced async export 8cc81848-cb99-40bc-9995-6c76676ca861 completed successfully in 139ms

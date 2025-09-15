@@ -177,6 +177,22 @@ async def execute_advanced_export(
             if not data:
                 raise HTTPException(status_code=404, detail="No data found matching the criteria")
             
+            # Apply computed fields if specified
+            if request.formatting.computed_fields:
+                from app.core.computed_fields import computed_fields_system
+                
+                # Convert Pydantic models to dict format
+                computed_fields_list = [
+                    {
+                        "name": cf.name,
+                        "alias": cf.alias,
+                        "template": cf.template,
+                        "fields": cf.fields
+                    } for cf in request.formatting.computed_fields
+                ]
+                
+                data = computed_fields_system.add_computed_fields_to_data(data, computed_fields_list)
+            
             # Export data dengan user_id dan formatting options
             file_path = export_manager.export_data(
                 data, 
@@ -264,6 +280,61 @@ async def get_field_suggestions(
     except Exception as e:
         logger.error(f"Error getting field suggestions: {e}")
         raise HTTPException(status_code=500, detail="Failed to get field suggestions")
+
+@router.get("/computed-fields/{collection}")
+async def get_computed_fields(
+    collection: str,
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    """
+    Get available computed fields untuk collection - ADMIN ONLY.
+    """
+    try:
+        from app.core.computed_fields import computed_fields_system
+        
+        # Get available computed fields
+        computed_fields = computed_fields_system.get_available_computed_fields(collection)
+        
+        return {
+            "collection": collection,
+            "computed_fields": computed_fields,
+            "total_computed_fields": len(computed_fields)
+        }
+    
+    except Exception as e:
+        logger.error(f"Error getting computed fields: {e}")
+        raise HTTPException(status_code=500, detail="Failed to get computed fields")
+
+@router.post("/computed-fields/validate")
+async def validate_computed_field(
+    computed_field: dict,
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    """
+    Validate computed field template - ADMIN ONLY.
+    """
+    try:
+        from app.core.computed_fields import computed_fields_system
+        
+        template = computed_field.get("template", "")
+        fields = computed_field.get("fields", [])
+        
+        if not template or not fields:
+            raise HTTPException(status_code=400, detail="Template and fields are required")
+        
+        validation_result = computed_fields_system.validate_computed_field_template(template, fields)
+        
+        return {
+            "validation_result": validation_result,
+            "template": template,
+            "fields": fields
+        }
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error validating computed field: {e}")
+        raise HTTPException(status_code=500, detail="Failed to validate computed field")
 
 @router.post("/analyze")
 async def analyze_advanced_query(

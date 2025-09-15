@@ -154,12 +154,34 @@ class AdvancedExportConfig(BaseModel):
             }
         }
 
+class ComputedFieldConfig(BaseModel):
+    """Configuration untuk computed field"""
+    name: str = Field(..., description="Name of computed field")
+    alias: str = Field(..., description="Display alias for the computed field")
+    template: str = Field(..., description="Template for field computation with placeholders")
+    fields: List[str] = Field(..., description="Required fields for computation")
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "class_full_name",
+                "alias": "Nama Kelas Lengkap",
+                "template": "{grade_level} {abbreviation} {class_name}",
+                "fields": [
+                    "profile.class_detail.grade_level",
+                    "profile.class_detail.expertise.abbreviation",
+                    "profile.class_detail.name"
+                ]
+            }
+        }
+
 class ExportFormattingOptions(BaseModel):
     """Options untuk formatting export data"""
     exclude_ids: bool = Field(True, description="Exclude ObjectId fields from export")
     use_aliases: bool = Field(True, description="Use friendly field aliases (Indonesian)")
     flatten_nested: bool = Field(True, description="Flatten nested data structure")
     include_empty_fields: bool = Field(False, description="Include fields with null/empty values")
+    computed_fields: Optional[List[ComputedFieldConfig]] = Field(None, description="Custom computed fields to add")
     
     class Config:
         schema_extra = {
@@ -167,7 +189,19 @@ class ExportFormattingOptions(BaseModel):
                 "exclude_ids": True,
                 "use_aliases": True, 
                 "flatten_nested": True,
-                "include_empty_fields": False
+                "include_empty_fields": False,
+                "computed_fields": [
+                    {
+                        "name": "class_full_name",
+                        "alias": "Nama Kelas Lengkap",
+                        "template": "{grade_level} {abbreviation} {class_name}",
+                        "fields": [
+                            "profile.class_detail.grade_level",
+                            "profile.class_detail.expertise.abbreviation",
+                            "profile.class_detail.name"
+                        ]
+                    }
+                ]
             }
         }
 
