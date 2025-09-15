@@ -1,0 +1,33 @@
+{
+  "config": {
+    "main_collection": "profiles",
+    "fields": ["full_name"],
+    "joins": [
+      {
+        "collection": "users",
+        "local_field": "user_id",
+        "foreign_field": "_id",
+        "fields": ["username", "email"],
+        "join_type": "unwind",
+        "filters": [
+          {
+            "field": "roles",
+            "operator": "eq",
+            "value": "student"
+          }
+        ]
+      },
+      {
+        "collection": "classes",
+        "local_field": "class_id",
+        "foreign_field": "_id",
+        "fields": ["name", "grade_level"],
+        "join_type": "unwind"
+      }
+    ],
+    "sort": {"full_name": 1},
+    "limit": 10
+  },
+  "format": "excel",
+  "filename": "data_siswa_10"
+}

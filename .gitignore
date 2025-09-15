@@ -2,6 +2,7 @@
 .env
 venv/
 temp_uploads/
+storage/
 __pycache__/
 tests/
 test-summary.json

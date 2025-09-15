@@ -10,6 +10,7 @@ import tempfile
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 from bson import ObjectId
+from pathlib import Path
 import logging
 
 try:
@@ -29,7 +30,33 @@ class ExportHandler:
     """Base class untuk export handlers"""
     
     def __init__(self):
-        self.temp_dir = tempfile.gettempdir()
+        # Get project root directory (3 levels up from this file)
+        self.project_root = Path(__file__).parent.parent.parent
+        self.storage_dir = self.project_root / "storage"
+        self.export_dir = self.storage_dir / "exports" 
+        self.temp_dir = self.storage_dir / "temp"
+        
+        # Create directories if they don't exist
+        self.export_dir.mkdir(parents=True, exist_ok=True)
+        self.temp_dir.mkdir(parents=True, exist_ok=True)
+        
+        # For backwards compatibility, keep temp_dir as string
+        self.temp_dir_str = str(self.temp_dir)
+    
+    def get_user_export_dir(self, user_id: str) -> Path:
+        """Get user-specific export directory"""
+        user_dir = self.export_dir / "users" / f"user_{user_id}"
+        user_dir.mkdir(parents=True, exist_ok=True)
+        return user_dir
+    
+    def get_export_filepath(self, filename: str, user_id: str = None) -> str:
+        """Get full filepath for export (either user-specific or general)"""
+        if user_id:
+            export_dir = self.get_user_export_dir(user_id)
+        else:
+            export_dir = self.export_dir
+        
+        return str(export_dir / filename)
     
     def _serialize_value(self, value: Any) -> Any:
         """Convert MongoDB types to serializable types"""
@@ -101,7 +128,7 @@ class ExcelExportHandler(ExportHandler):
             worksheet.column_dimensions[get_column_letter(col_num)].width = min(max(len(str(header)) + 2, 10), 50)
     
     def export(self, data: List[Dict[str, Any]], filename: Optional[str] = None, 
-               sheet_name: str = "Export") -> str:
+               sheet_name: str = "Export", user_id: Optional[str] = None) -> str:
         """Export data to Excel format"""
         try:
             if not data:
@@ -136,8 +163,8 @@ class ExcelExportHandler(ExportHandler):
             # Apply formatting
             self._format_worksheet(worksheet, headers)
             
-            # Save to temporary file
-            filepath = os.path.join(self.temp_dir, filename)
+            # Save to project storage (not system temp!)
+            filepath = self.get_export_filepath(filename, user_id)
             workbook.save(filepath)
             
             logger.info(f"Excel export completed: {filename}, {len(data)} records")
@@ -151,7 +178,7 @@ class CSVExportHandler(ExportHandler):
     """Handler untuk export ke format CSV"""
     
     def export(self, data: List[Dict[str, Any]], filename: Optional[str] = None,
-               delimiter: str = ",", encoding: str = "utf-8") -> str:
+               delimiter: str = ",", encoding: str = "utf-8", user_id: Optional[str] = None) -> str:
         """Export data to CSV format"""
         try:
             if not data:
@@ -168,8 +195,8 @@ class CSVExportHandler(ExportHandler):
             flattened_data = [self._flatten_document(doc) for doc in data]
             headers = self._get_all_fields(data)
             
-            # Create CSV file
-            filepath = os.path.join(self.temp_dir, filename)
+            # Create CSV file in project storage
+            filepath = self.get_export_filepath(filename, user_id)
             
             with open(filepath, 'w', newline='', encoding=encoding) as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=headers, delimiter=delimiter)
@@ -191,7 +218,7 @@ class JSONExportHandler(ExportHandler):
     """Handler untuk export ke format JSON"""
     
     def export(self, data: List[Dict[str, Any]], filename: Optional[str] = None,
-               indent: int = 2, ensure_ascii: bool = False) -> str:
+               indent: int = 2, ensure_ascii: bool = False, user_id: Optional[str] = None) -> str:
         """Export data to JSON format"""
         try:
             if not data:
@@ -207,8 +234,8 @@ class JSONExportHandler(ExportHandler):
             # Serialize all data
             serialized_data = [self._serialize_value(doc) for doc in data]
             
-            # Create JSON file
-            filepath = os.path.join(self.temp_dir, filename)
+            # Create JSON file in project storage
+            filepath = self.get_export_filepath(filename, user_id)
             
             with open(filepath, 'w', encoding='utf-8') as jsonfile:
                 json.dump(serialized_data, jsonfile, indent=indent, ensure_ascii=ensure_ascii)
@@ -239,13 +266,13 @@ class ExportManager:
         return [fmt for fmt, handler in self.handlers.items() if handler is not None]
     
     def export_data(self, data: List[Dict[str, Any]], format: ExportFormat, 
-                   filename: Optional[str] = None, **kwargs) -> str:
+                   filename: Optional[str] = None, user_id: Optional[str] = None, **kwargs) -> str:
         """Export data using specified format"""
         if not self.is_format_supported(format):
             raise ValueError(f"Export format '{format}' is not supported")
         
         handler = self.handlers[format]
-        return handler.export(data, filename, **kwargs)
+        return handler.export(data, filename, user_id=user_id, **kwargs)
     
     def estimate_file_size(self, data: List[Dict[str, Any]], format: ExportFormat) -> str:
         """Estimate the file size of exported data"""

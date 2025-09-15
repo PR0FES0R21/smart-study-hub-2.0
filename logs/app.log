@@ -186214,3 +186214,936 @@ pymongo.errors.NetworkTimeout: SSL handshake failed: ac-fb6bqxt-shard-00-01.6kpp
 2025-09-15 12:45:21,371 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=556b712c-6dd2-4137-ab77-3c6d1367490d | successful=0/0 | failed=0 | time=0.6ms
 2025-09-15 12:45:24,224 [ERROR] app.core.export_query_builder: Error estimating result count: object of type '_asyncio.Future' has no len()
 2025-09-15 12:45:24,226 [ERROR] app.api.v1.routes.exports: Error validating export config: object NoneType can't be used in 'await' expression
+2025-09-15 12:47:29,629 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 12:47:31,124 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 12:47:31,137 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 12:47:31,139 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 12:47:31,140 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 12:47:31,141 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 12:47:31,145 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 12:47:31,145 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 12:48:39,171 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 12:48:39,172 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 12:48:39,174 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 12:48:39,174 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 12:48:39,175 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 12:48:39,176 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 12:48:39,178 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 12:48:39,181 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 12:48:39,181 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 12:48:39,258 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 12:49:03,967 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 12:49:03,967 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 12:49:03,968 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 12:49:03,969 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 12:49:03,969 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 12:49:03,970 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 12:49:03,971 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 12:49:03,972 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 12:49:03,973 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 12:49:04,065 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 12:50:09,313 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 12:50:10,549 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 12:50:10,561 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 12:50:10,561 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 12:50:10,562 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 12:50:10,563 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 12:50:10,564 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 12:50:10,566 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 12:50:12,764 [ERROR] app.core.export_query_builder: Error estimating result count: object of type '_asyncio.Future' has no len()
+2025-09-15 12:50:12,766 [ERROR] app.api.v1.routes.exports: Error validating export config: object NoneType can't be used in 'await' expression
+2025-09-15 12:56:34,123 [ERROR] app.core.export_query_builder: Error estimating result count: object of type '_asyncio.Future' has no len()
+2025-09-15 12:56:34,125 [ERROR] app.api.v1.routes.exports: Error validating export config: object NoneType can't be used in 'await' expression
+2025-09-15 12:57:08,657 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 12:57:08,657 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 12:57:08,658 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 12:57:08,658 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 12:57:08,659 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 12:57:08,659 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 12:57:08,660 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 12:57:08,661 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 12:57:08,662 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 12:57:08,857 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 12:57:15,555 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 12:57:16,662 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 12:57:16,677 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 12:57:16,678 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 12:57:16,678 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 12:57:16,679 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 12:57:16,680 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 12:57:16,680 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 12:58:51,134 [INFO] app.core.export_query_builder: Generated pipeline with 6 stages for collection 'users'
+2025-09-15 12:58:51,692 [INFO] app.core.export_handlers: Excel export completed: export_20250915_125851.xlsx, 200 records
+2025-09-15 12:58:51,694 [INFO] app.api.v1.routes.exports: Async export 26149224-ae2a-4cf3-ab50-bff2a8fa814b completed successfully
+2025-09-15 12:59:06,109 [ERROR] app.api.v1.routes.exports: Error getting export status: name 'tempfile' is not defined
+2025-09-15 13:00:22,197 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 13:00:22,197 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 13:00:22,198 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 13:00:22,198 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 13:00:22,199 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 13:00:22,199 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 13:00:22,201 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 13:00:22,202 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 13:00:22,202 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 13:00:22,560 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 13:00:29,352 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 13:00:30,829 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 13:00:30,839 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 13:00:30,839 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 13:00:30,840 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 13:00:30,840 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 13:00:30,841 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 13:00:30,842 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 13:01:37,394 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 13:01:37,394 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 13:01:37,395 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 13:01:37,395 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 13:01:37,396 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 13:01:37,396 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 13:01:37,398 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 13:01:37,399 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 13:01:37,399 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 13:01:37,933 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 13:01:44,468 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 13:01:46,583 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 13:01:46,612 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 13:01:46,613 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 13:01:46,614 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 13:01:46,615 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 13:01:46,616 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 13:01:46,617 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 13:04:47,132 [ERROR] app.api.v1.routes.exports: Error in quick student export: 400: Invalid export configuration: Join to 'classes' not allowed from 'users'
+2025-09-15 13:05:25,811 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 13:05:25,811 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 13:05:25,811 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 13:05:25,812 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 13:05:25,812 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 13:05:25,813 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 13:05:25,815 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 13:05:25,816 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 13:05:25,817 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 13:05:26,189 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 13:05:32,686 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 13:05:34,490 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 13:05:34,499 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 13:05:34,499 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 13:05:34,500 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 13:05:34,501 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 13:05:34,502 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 13:05:34,502 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 13:05:46,500 [INFO] app.core.export_query_builder: Generated pipeline with 6 stages for collection 'profiles'
+2025-09-15 13:06:28,381 [INFO] app.core.export_query_builder: Generated pipeline with 2 stages for collection 'users'
+2025-09-15 13:06:28,518 [INFO] app.core.export_handlers: JSON export completed: test_export.json, 5 records
+2025-09-15 13:06:28,521 [INFO] app.core.export_handlers: JSON export completed: temp_estimate.json, 5 records
+2025-09-15 13:10:04,988 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c398749f-18db-449a-bf4e-bc25ff3e5918 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-15 13:10:04,989 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c398749f-18db-449a-bf4e-bc25ff3e5918 | successful=0/0 | failed=0 | time=0.69ms
+2025-09-15 13:24:39,758 [INFO] app.core.export_query_builder: Generated pipeline with 7 stages for collection 'profiles'
+2025-09-15 13:24:40,237 [INFO] app.core.export_handlers: JSON export completed: siswa_10_data.json, 10 records
+2025-09-15 13:24:40,239 [INFO] app.api.v1.routes.exports: Async export 06a48fb6-7d31-4321-bce3-00a3034bc77a completed successfully
+2025-09-15 13:26:51,384 [INFO] app.core.export_query_builder: Generated pipeline with 7 stages for collection 'profiles'
+2025-09-15 13:26:51,854 [INFO] app.core.export_handlers: Excel export completed: data_siswa_10.xlsx, 10 records
+2025-09-15 13:26:51,856 [INFO] app.api.v1.routes.exports: Async export a2b0af0e-5b3b-4c9d-b980-2d7e2aaaee7d completed successfully
+2025-09-15 13:47:24,952 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 13:47:24,952 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 13:47:24,953 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 13:47:24,953 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 13:47:24,954 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 13:47:24,954 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 13:47:24,957 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 13:47:24,958 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 13:47:24,959 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 13:47:25,094 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 13:47:34,108 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 13:47:35,549 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 13:47:35,561 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 13:47:35,562 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 13:47:35,563 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 13:47:35,564 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 13:47:35,564 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 13:47:35,565 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 13:47:59,077 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 13:47:59,077 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 13:47:59,078 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 13:47:59,079 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 13:47:59,080 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 13:47:59,083 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 13:47:59,085 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 13:47:59,088 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 13:47:59,088 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 13:47:59,194 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 13:48:04,712 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 13:48:06,021 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 13:48:06,046 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 13:48:06,047 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 13:48:06,047 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 13:48:06,048 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 13:48:06,049 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 13:48:06,050 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 13:48:17,745 [ERROR] app.api.v1.routes.exports: Error getting enhanced collections: 'homeroom_teacher'
+2025-09-15 13:52:29,361 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 13:52:29,362 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 13:52:29,362 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 13:52:29,363 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 13:52:29,363 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 13:52:29,363 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 13:52:29,365 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 13:52:29,366 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 13:52:29,366 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 13:52:29,708 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 13:52:35,240 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 13:52:36,668 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 13:52:36,676 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 13:52:36,677 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 13:52:36,678 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 13:52:36,678 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 13:52:36,679 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 13:52:36,679 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:07:38,544 [INFO] app.core.export_query_builder: Generated pipeline with 4 stages for collection 'profiles'
+2025-09-15 14:07:38,904 [INFO] app.core.export_handlers: Excel export completed: export_20250915_140738.xlsx, 10 records
+2025-09-15 14:07:38,923 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 14:07:48,279 [INFO] app.core.export_query_builder: Generated pipeline with 4 stages for collection 'profiles'
+2025-09-15 14:07:48,578 [INFO] app.core.export_handlers: Excel export completed: export_20250915_140748.xlsx, 10 records
+2025-09-15 14:07:48,596 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 14:10:03,075 [INFO] app.core.export_query_builder: Generated pipeline with 4 stages for collection 'profiles'
+2025-09-15 14:10:03,396 [INFO] app.core.export_handlers: Excel export completed: export_20250915_141003.xlsx, 10 records
+2025-09-15 14:10:03,415 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 14:13:02,088 [INFO] app.core.export_query_builder: Generated pipeline with 7 stages for collection 'profiles'
+2025-09-15 14:13:02,626 [INFO] app.core.export_handlers: Excel export completed: data_siswa_10.xlsx, 10 records
+2025-09-15 14:13:02,628 [INFO] app.api.v1.routes.exports: Async export 646f5b43-5d63-4a66-896b-853a901bc3eb completed successfully
+2025-09-15 14:28:32,896 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:28:32,897 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:28:32,898 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:28:32,898 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:28:32,899 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:28:32,899 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:28:32,902 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:28:32,903 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:28:32,905 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:28:33,049 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:28:38,767 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:28:40,149 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:28:40,165 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:28:40,166 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:28:40,167 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:28:40,168 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:28:40,169 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:28:40,170 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:29:21,318 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:29:21,318 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:29:21,318 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:29:21,319 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:29:21,319 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:29:21,320 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:29:21,321 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:29:21,322 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:29:21,323 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:29:21,538 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:29:26,788 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:29:28,183 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:29:28,192 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:29:28,192 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:29:28,193 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:29:28,194 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:29:28,195 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:29:28,195 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:30:35,830 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:30:35,831 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:30:35,831 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:30:35,832 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:30:35,832 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:30:35,833 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:30:35,834 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:30:35,835 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:30:35,835 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:30:36,014 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:30:41,402 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:30:42,590 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:30:42,599 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:30:42,599 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:30:42,600 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:30:42,600 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:30:42,601 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:30:42,602 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:31:00,014 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:31:00,015 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:31:00,016 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:31:00,017 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:31:00,019 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:31:00,020 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:31:00,021 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:31:00,034 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:31:00,043 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:31:00,312 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:31:05,600 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:31:07,034 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:31:07,044 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:31:07,045 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:31:07,046 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:31:07,047 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:31:07,047 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:31:07,048 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:31:19,355 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:31:19,355 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:31:19,356 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:31:19,356 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:31:19,356 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:31:19,357 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:31:19,358 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:31:19,359 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:31:19,359 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:31:19,532 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:31:24,778 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:31:25,986 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:31:25,994 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:31:25,995 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:31:25,996 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:31:25,996 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:31:25,997 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:31:25,997 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:32:33,878 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:32:33,879 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:32:33,879 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:32:33,880 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:32:33,880 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:32:33,880 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:32:33,881 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:32:33,882 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:32:33,883 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:32:34,025 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:32:39,211 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:32:40,428 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:32:40,438 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:32:40,439 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:32:40,440 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:32:40,440 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:32:40,441 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:32:40,442 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:32:59,712 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:32:59,713 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:32:59,713 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:32:59,714 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:32:59,714 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:32:59,714 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:32:59,716 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:32:59,717 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:32:59,717 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:32:59,929 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:33:05,232 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:33:06,425 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:33:06,451 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:33:06,453 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:33:06,453 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:33:06,454 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:33:06,455 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:33:06,456 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:33:28,344 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:33:28,345 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:33:28,345 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:33:28,346 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:33:28,346 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:33:28,347 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:33:28,348 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:33:28,349 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:33:28,349 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:33:28,620 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:33:33,873 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:33:35,122 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:33:35,132 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:33:35,133 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:33:35,133 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:33:35,134 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:33:35,135 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:33:35,135 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:34:25,903 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:34:25,903 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:34:25,904 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:34:25,904 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:34:25,905 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:34:25,905 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:34:25,907 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:34:25,907 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:34:25,908 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:34:26,127 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:34:31,466 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:34:32,699 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:34:32,709 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:34:32,710 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:34:32,711 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:34:32,711 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:34:32,712 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:34:32,713 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:34:53,970 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:34:53,972 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:34:53,973 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:34:53,974 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:34:53,974 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:34:53,975 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:34:53,977 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:34:53,983 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:34:53,987 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:34:54,379 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:34:59,739 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:35:01,018 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:35:01,031 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:35:01,032 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:35:01,033 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:35:01,034 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:35:01,035 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:35:01,036 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:35:08,106 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:35:08,107 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:35:08,107 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:35:08,108 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:35:08,108 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:35:08,108 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:35:08,110 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:35:08,113 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:35:08,113 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:35:08,320 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:35:13,763 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:35:15,010 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:35:15,039 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:35:15,040 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:35:15,041 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:35:15,041 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:35:15,042 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:35:15,043 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:35:18,629 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:35:18,629 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:35:18,630 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:35:18,630 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:35:18,630 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:35:18,631 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:35:18,632 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:35:18,633 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:35:18,635 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:35:18,789 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:35:24,102 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:35:25,340 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:35:25,366 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:35:25,367 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:35:25,368 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:35:25,369 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:35:25,371 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:35:25,372 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:35:33,987 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 14:35:33,987 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 14:35:33,988 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 14:35:33,988 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 14:35:33,988 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 14:35:33,989 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 14:35:33,990 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 14:35:33,991 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 14:35:33,992 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 14:35:34,121 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 14:35:39,693 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 14:35:40,960 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 14:35:40,970 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 14:35:40,971 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 14:35:40,971 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 14:35:40,972 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 14:35:40,972 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 14:35:40,973 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 14:36:29,957 [INFO] app.core.export_query_builder: Generated pipeline with 2 stages for collection 'users'
+2025-09-15 14:36:30,167 [INFO] app.core.export_handlers: JSON export completed: test_fixed_storage.json, 3 records
+2025-09-15 14:36:30,170 [INFO] app.core.export_handlers: JSON export completed: temp_estimate.json, 3 records
+2025-09-15 14:40:53,861 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-15 16:48:31,495 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 444, in _create_connection
+    raise err
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 437, in _create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-15 16:48:39,911 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+    ~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+           ~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 318, in wait_for_read
+    raise _OperationCancelled("operation cancelled")
+pymongo.errors._OperationCancelled: operation cancelled
+2025-09-15 16:51:02,909 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+        self,
+    ...<20 lines>...
+        write_concern=write_concern,
+    )
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+                                                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\network_layer.py", line 322, in wait_for_read
+    raise socket.timeout("timed out")
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1073, in connect
+    conn.authenticate()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 526, in authenticate
+    auth.authenticate(creds, self, reauthenticate=reauthenticate)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 450, in authenticate
+    auth_func(credentials, conn)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 355, in _authenticate_default
+    return _authenticate_scram(credentials, conn, "SCRAM-SHA-1")
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\auth.py", line 96, in _authenticate_scram
+    res = conn.command(source, cmd)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 644, in _raise_connection_failure
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-00.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-15 17:04:33,643 [INFO] app.core.export_query_builder: Generated pipeline with 7 stages for collection 'profiles'
+2025-09-15 17:04:34,145 [INFO] app.core.export_handlers: Excel export completed: data_siswa_10.xlsx, 10 records
+2025-09-15 17:04:34,147 [INFO] app.api.v1.routes.exports: Async export fc0d89b5-3631-4698-a8c1-f8cba8731c53 completed successfully
+2025-09-15 17:47:52,970 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 17:47:52,971 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 17:47:52,972 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 17:47:52,973 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 17:47:52,973 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 17:47:52,974 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 17:47:52,979 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 17:47:52,988 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 17:47:52,989 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 17:47:53,427 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 17:48:02,368 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 17:48:03,551 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 17:48:03,561 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 17:48:03,562 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 17:48:03,562 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 17:48:03,563 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 17:48:03,564 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 17:48:03,564 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 17:48:55,255 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 17:48:55,255 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 17:48:55,255 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 17:48:55,256 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 17:48:55,257 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 17:48:55,257 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 17:48:55,259 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 17:48:55,260 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 17:48:55,260 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 17:48:55,442 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 17:49:01,202 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 17:49:02,206 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 17:49:02,234 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 17:49:02,235 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 17:49:02,236 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 17:49:02,237 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 17:49:02,238 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 17:49:02,239 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 17:50:14,438 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 17:50:14,439 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 17:50:14,439 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 17:50:14,440 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 17:50:14,440 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 17:50:14,441 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 17:50:14,442 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 17:50:14,443 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 17:50:14,443 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 17:50:16,905 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 17:50:17,276 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 521, in _configured_socket_interface
+    ssl_sock = ssl_context.wrap_socket(sock, server_hostname=host)
+  File "C:\Python313\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python313\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python313\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TimeoutError: _ssl.c:1001: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 535, in _configured_socket_interface
+    _raise_connection_failure(address, exc, "SSL handshake failed: ", timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: SSL handshake failed: ac-fb6bqxt-shard-00-02.6kpph5n.mongodb.net:27017: _ssl.c:1001: The handshake operation timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-15 17:50:22,346 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 17:50:23,387 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 17:50:23,397 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 17:50:23,398 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 17:50:23,398 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 17:50:23,399 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 17:50:23,400 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 17:50:23,400 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 17:51:34,286 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 17:51:34,286 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 17:51:34,287 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 17:51:34,287 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 17:51:34,288 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 17:51:34,288 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 17:51:34,290 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 17:51:34,291 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 17:51:34,291 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 17:51:34,460 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 17:51:39,811 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 17:51:40,742 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 17:51:40,751 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 17:51:40,752 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 17:51:40,753 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 17:51:40,753 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 17:51:40,754 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 17:51:40,755 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 17:53:30,672 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 17:53:30,672 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 17:53:30,673 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 17:53:30,673 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 17:53:30,674 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 17:53:30,674 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 17:53:30,675 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 17:53:30,676 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 17:53:30,677 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 17:53:31,285 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 17:53:36,832 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 17:53:37,963 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 17:53:37,993 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 17:53:37,994 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 17:53:37,995 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 17:53:37,996 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 17:53:37,998 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 17:53:37,999 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 17:53:43,347 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 17:53:44,247 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 17:53:44,256 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 17:53:44,257 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 17:53:44,258 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 17:53:44,258 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 17:53:44,259 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 17:53:44,260 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 17:56:48,697 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 17:56:51,152 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 17:56:51,163 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 17:56:51,164 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 17:56:51,165 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 17:56:51,166 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 17:56:51,167 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 17:56:51,168 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 17:59:35,767 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8b2ffa2b-28a7-4393-918d-7dea622825e3 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-15 17:59:35,768 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8b2ffa2b-28a7-4393-918d-7dea622825e3 | successful=0/0 | failed=0 | time=0.67ms
+2025-09-15 18:24:42,611 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 6 stages for collection 'users'
+2025-09-15 18:24:42,613 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes', 'expertise_programs'}
+2025-09-15 18:24:42,614 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 18:25:11,641 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 6 stages for collection 'users'
+2025-09-15 18:25:11,642 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes', 'expertise_programs'}
+2025-09-15 18:25:11,643 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 18:25:11,643 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 6 stages for collection 'users'
+2025-09-15 18:25:11,643 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes', 'expertise_programs'}
+2025-09-15 18:25:11,644 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 18:25:12,060 [INFO] app.core.export_handlers: Excel export completed: export_20250915_182511.xlsx, 10 records
+2025-09-15 18:25:12,083 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 18:28:37,723 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 6 stages for collection 'users'
+2025-09-15 18:28:37,723 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes', 'expertise_programs'}
+2025-09-15 18:28:37,724 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 18:28:37,725 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 6 stages for collection 'users'
+2025-09-15 18:28:37,725 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes', 'expertise_programs'}
+2025-09-15 18:28:37,726 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 18:28:38,100 [INFO] app.core.export_handlers: Excel export completed: export_20250915_182838.xlsx, 10 records
+2025-09-15 18:28:38,119 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 18:30:43,115 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 6 stages for collection 'users'
+2025-09-15 18:30:43,116 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes', 'expertise_programs'}
+2025-09-15 18:30:43,117 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 18:30:43,117 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 6 stages for collection 'users'
+2025-09-15 18:30:43,118 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes', 'expertise_programs'}
+2025-09-15 18:30:43,119 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 18:30:43,508 [INFO] app.core.export_handlers: Excel export completed: export_20250915_183043.xlsx, 10 records
+2025-09-15 18:30:43,529 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 18:40:22,552 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:40:22,553 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:40:22,554 [INFO] app.core.advanced_query_builder: Complexity score: 5
+2025-09-15 18:40:22,554 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:40:22,555 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:40:22,555 [INFO] app.core.advanced_query_builder: Complexity score: 10
+2025-09-15 18:40:23,013 [INFO] app.core.export_handlers: Excel export completed: export_20250915_184022.xlsx, 10 records
+2025-09-15 18:40:23,035 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 18:44:17,250 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:44:17,251 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:44:17,252 [INFO] app.core.advanced_query_builder: Complexity score: 5
+2025-09-15 18:44:17,252 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:44:17,253 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:44:17,253 [INFO] app.core.advanced_query_builder: Complexity score: 10
+2025-09-15 18:44:17,722 [INFO] app.core.export_handlers: Excel export completed: export_20250915_184417.xlsx, 10 records
+2025-09-15 18:44:17,744 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 18:50:47,200 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:50:47,201 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:50:47,202 [INFO] app.core.advanced_query_builder: Complexity score: 5
+2025-09-15 18:50:47,202 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:50:47,203 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:50:47,203 [INFO] app.core.advanced_query_builder: Complexity score: 10
+2025-09-15 18:50:47,663 [INFO] app.core.export_handlers: Excel export completed: export_20250915_185047.xlsx, 10 records
+2025-09-15 18:50:47,682 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 18:53:09,191 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:53:09,191 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:53:09,192 [INFO] app.core.advanced_query_builder: Complexity score: 5
+2025-09-15 18:53:09,192 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:53:09,192 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:53:09,193 [INFO] app.core.advanced_query_builder: Complexity score: 10
+2025-09-15 18:53:09,617 [INFO] app.core.export_handlers: Excel export completed: export_20250915_185309.xlsx, 10 records
+2025-09-15 18:53:09,641 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 18:59:56,259 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:59:56,260 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:59:56,260 [INFO] app.core.advanced_query_builder: Complexity score: 5
+2025-09-15 18:59:56,260 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 18:59:56,261 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'expertise_programs', 'profiles', 'classes'}
+2025-09-15 18:59:56,261 [INFO] app.core.advanced_query_builder: Complexity score: 10
+2025-09-15 18:59:56,702 [INFO] app.core.export_handlers: Excel export completed: export_20250915_185956.xlsx, 10 records
+2025-09-15 18:59:56,722 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:00:59,819 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 19:00:59,820 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 19:00:59,821 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 19:00:59,822 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 19:00:59,823 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 19:00:59,824 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 19:00:59,831 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 19:00:59,834 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 19:00:59,835 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 19:00:59,944 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 19:11:22,169 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 5 stages for collection 'users'
+2025-09-15 19:11:22,171 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'profiles', 'users', 'classes'}
+2025-09-15 19:11:22,171 [INFO] app.core.advanced_query_builder: Complexity score: 5
+2025-09-15 19:11:22,173 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 5 stages for collection 'users'
+2025-09-15 19:11:22,173 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'profiles', 'users', 'classes'}
+2025-09-15 19:11:22,174 [INFO] app.core.advanced_query_builder: Complexity score: 10
+2025-09-15 19:11:22,885 [INFO] app.core.export_handlers: Excel export completed: students_with_class_and_expertise.xlsx, 10 records
+2025-09-15 19:11:22,908 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:12:37,597 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 5 stages for collection 'users'
+2025-09-15 19:12:37,597 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'profiles', 'users', 'classes'}
+2025-09-15 19:12:37,598 [INFO] app.core.advanced_query_builder: Complexity score: 5
+2025-09-15 19:12:37,598 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 5 stages for collection 'users'
+2025-09-15 19:12:37,599 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'profiles', 'users', 'classes'}
+2025-09-15 19:12:37,599 [INFO] app.core.advanced_query_builder: Complexity score: 10
+2025-09-15 19:12:38,294 [INFO] app.core.export_handlers: Excel export completed: students_with_class_and_expertise.xlsx, 10 records
+2025-09-15 19:12:38,313 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:15:43,438 [INFO] app.main: Mematikan aplikasi...
+2025-09-15 19:15:43,439 [INFO] app.main: Menutup WebSocket manager...
+2025-09-15 19:15:43,440 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-15 19:15:43,441 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-15 19:15:43,441 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-15 19:15:43,442 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-15 19:15:43,445 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-15 19:15:43,448 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-15 19:15:43,448 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-15 19:15:44,020 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-15 19:15:54,512 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 19:15:55,681 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 19:15:55,691 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 19:15:55,691 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 19:15:55,692 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 19:15:55,693 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 19:15:55,694 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 19:15:55,694 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 19:18:28,826 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:18:28,826 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:18:28,827 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 19:18:28,828 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:18:28,828 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:18:28,828 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 19:18:29,276 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:18:29,305 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:19:29,718 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:19:29,720 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:19:29,720 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 19:19:29,721 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:19:29,722 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:19:29,722 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 19:19:30,173 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:19:30,200 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:20:16,777 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:20:16,778 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:20:16,778 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 19:20:16,778 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:20:16,779 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:20:16,779 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 19:20:17,220 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:20:17,239 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:21:08,576 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:21:08,576 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:21:08,577 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 19:21:08,577 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:21:08,578 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:21:08,578 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 19:21:09,019 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:21:09,044 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:21:51,418 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:21:51,419 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:21:51,419 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 19:21:51,420 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:21:51,420 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:21:51,420 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 19:21:51,863 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:21:51,888 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:23:03,319 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:23:03,320 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:23:03,321 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 19:23:03,321 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:23:03,322 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:23:03,322 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 19:23:03,788 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:23:03,844 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:24:22,158 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:24:22,159 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:24:22,159 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 19:24:22,160 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:24:22,160 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:24:22,160 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 19:24:22,597 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:24:22,636 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:26:56,870 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:26:56,871 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:26:56,871 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-15 19:26:56,872 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:26:56,872 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:26:56,873 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-15 19:26:57,288 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:26:57,308 [INFO] app.core.export_handlers: Excel export completed: temp_estimate.xlsx, 10 records
+2025-09-15 19:32:06,198 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:32:06,199 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:32:06,200 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-15 19:32:06,200 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-15 19:32:06,201 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-15 19:32:06,201 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-15 19:32:06,870 [INFO] app.core.export_handlers: Excel export completed: students_with_nested_joins.xlsx, 10 records
+2025-09-15 19:32:06,872 [INFO] app.api.v1.routes.admin_exports: Advanced async export 0afc8867-41aa-48c7-a204-e757096671a8 completed successfully in 296ms

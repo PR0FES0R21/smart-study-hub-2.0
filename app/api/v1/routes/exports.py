@@ -39,6 +39,86 @@ async def get_available_collections(
         logger.error(f"Error getting available collections: {e}")
         raise HTTPException(status_code=500, detail="Failed to get available collections")
 
+@router.get("/collections/enhanced")
+async def get_enhanced_collections(
+    current_user: dict = Depends(deps.get_current_active_user)
+):
+    """
+    Enhanced collection discovery dengan join relationship information.
+    """
+    try:
+        user_roles = current_user.get("roles", [])
+        enhanced_collections = []
+        
+        # Get all available collections with enhanced info
+        basic_collections = export_security.get_available_collections(user_roles)
+        
+        # For now, return enhanced version of basic collections
+        # TODO: Implement full join discovery when collection_relationships.py is ready
+        for collection_info in basic_collections:
+            enhanced_info = {
+                "name": collection_info["name"],
+                "display_name": collection_info["display_name"],
+                "description": collection_info["description"],
+                "accessible": True,
+                "available_fields": collection_info["available_fields"],
+                "sensitive_fields": collection_info["sensitive_fields"],
+                "common_filters": collection_info["common_filters"],
+                "joinable_collections": collection_info["joinable_collections"],
+                "available_joins": [
+                    {
+                        "target_collection": target,
+                        "display_name": target.replace("_", " ").title(),
+                        "description": f"Join to {target} collection"
+                    } for target in collection_info["joinable_collections"]
+                ],
+                "total_joinable_collections": len(collection_info["joinable_collections"])
+            }
+            enhanced_collections.append(enhanced_info)
+        
+        return {
+            "collections": enhanced_collections,
+            "total_collections": len(enhanced_collections)
+        }
+    
+    except Exception as e:
+        logger.error(f"Error getting enhanced collections: {e}")
+        raise HTTPException(status_code=500, detail="Failed to get enhanced collections")
+
+@router.post("/collections/join-suggestions")
+async def get_join_suggestions(
+    collections: List[str],
+    current_user: dict = Depends(deps.get_current_active_user)
+):
+    """
+    Get smart join suggestions untuk multiple collections.
+    """
+    try:
+        from app.core.collection_relationships import get_smart_join_suggestions
+        
+        user_roles = current_user.get("roles", [])
+        
+        # Validate user has access to all requested collections
+        for collection in collections:
+            if not export_security.validate_user_access(user_roles, collection):
+                raise HTTPException(
+                    status_code=403,
+                    detail=f"No access to collection '{collection}'"
+                )
+        
+        suggestions = get_smart_join_suggestions(collections)
+        
+        return {
+            "requested_collections": collections,
+            "suggestions": suggestions
+        }
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error getting join suggestions: {e}")
+        raise HTTPException(status_code=500, detail="Failed to get join suggestions")
+
 @router.get("/formats")
 async def get_supported_formats():
     """
@@ -180,8 +260,8 @@ async def execute_export(
             if not data:
                 raise HTTPException(status_code=404, detail="No data found matching the criteria")
             
-            # Export data
-            file_path = export_manager.export_data(data, request.format, request.filename)
+            # Export data dengan user_id untuk proper storage
+            file_path = export_manager.export_data(data, request.format, request.filename, user_id=user_id)
             
             # Generate file URL (adjust based on your file serving setup)
             file_url = f"/api/v1/exports/download/{os.path.basename(file_path)}"
@@ -206,22 +286,33 @@ async def download_export_file(
     current_user: dict = Depends(deps.get_current_active_user)
 ):
     """
-    Download file hasil export.
+    Download file hasil export dari project storage (bukan system temp!).
     """
     try:
         # Basic security check - prevent directory traversal
         if ".." in filename or "/" in filename or "\\" in filename:
             raise HTTPException(status_code=400, detail="Invalid filename")
         
-        # Construct file path (adjust based on your temp directory setup)
-        import tempfile
-        file_path = os.path.join(tempfile.gettempdir(), filename)
+        # Get user-specific storage path
+        user_id = str(current_user["_id"])
+        from pathlib import Path
         
-        if not os.path.exists(file_path):
-            raise HTTPException(status_code=404, detail="File not found")
+        # Try user-specific directory first
+        project_root = Path(__file__).parent.parent.parent.parent
+        user_file_path = project_root / "storage" / "exports" / "users" / f"user_{user_id}" / filename
+        
+        if user_file_path.exists():
+            file_path = user_file_path
+        else:
+            # Fallback to general exports directory
+            general_file_path = project_root / "storage" / "exports" / filename
+            if general_file_path.exists():
+                file_path = general_file_path
+            else:
+                raise HTTPException(status_code=404, detail="File not found")
         
         return FileResponse(
-            path=file_path,
+            path=str(file_path),
             filename=filename,
             media_type='application/octet-stream'
         )
@@ -240,6 +331,8 @@ async def get_export_status(
     """
     Mengambil status export yang sedang berjalan.
     """
+    import tempfile
+    import json
     try:
         # For MVP, we'll implement a simple file-based status tracking
         # In production, you might want to use Redis or database
@@ -249,7 +342,6 @@ async def get_export_status(
         if not os.path.exists(status_file):
             raise HTTPException(status_code=404, detail="Export task not found")
         
-        import json
         with open(status_file, 'r') as f:
             status_data = json.load(f)
         
@@ -326,7 +418,7 @@ async def _process_export_async(
         with open(status_file, 'w') as f:
             json.dump(status_data, f)
         
-        file_path = export_manager.export_data(data, format, filename)
+        file_path = export_manager.export_data(data, format, filename, user_id=user_id)
         
         # Update status to completed
         status_data["status"] = "completed"
@@ -370,20 +462,21 @@ async def quick_export_students(
     from app.schemas.export import FilterCondition, FilterOperator, JoinConfig
     
     try:
-        # Build basic student export config
-        filters = [FilterCondition(field="roles", operator=FilterOperator.EQ, value="student")]
+        # Build student export config using profiles as main collection
+        # This approach works better with the security validation
         
         joins = [
             JoinConfig(
-                collection="profiles",
-                local_field="profile_id",
+                collection="users",
+                local_field="user_id",
                 foreign_field="_id",
-                fields=["full_name", "birth_date", "gender", "class_id"],
-                join_type="unwind"
+                fields=["username", "email", "is_active"],
+                join_type="unwind",
+                filters=[FilterCondition(field="roles", operator=FilterOperator.EQ, value="student")]
             ),
             JoinConfig(
                 collection="classes",
-                local_field="profiles.class_id", 
+                local_field="class_id",
                 foreign_field="_id",
                 fields=["name", "grade_level"],
                 join_type="unwind",
@@ -392,11 +485,10 @@ async def quick_export_students(
         ]
         
         config = ExportConfig(
-            main_collection="users",
-            fields=["username", "email", "is_active"],
-            filters=filters,
+            main_collection="profiles",
+            fields=["full_name", "birth_date", "gender"],
             joins=joins,
-            sort={"profiles.full_name": 1}
+            sort={"full_name": 1}
         )
         
         request = ExportRequest(config=config, format=format)

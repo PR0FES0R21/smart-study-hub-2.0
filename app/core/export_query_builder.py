@@ -197,7 +197,7 @@ class ExportQueryBuilder:
         logger.info(f"Generated pipeline with {len(pipeline)} stages for collection '{config.main_collection}'")
         return pipeline
     
-    def estimate_result_count(self, db, config: ExportConfig) -> Optional[int]:
+    async def estimate_result_count(self, db, config: ExportConfig) -> Optional[int]:
         """Estimate the number of results that would be returned"""
         try:
             # Build pipeline without limit and skip for counting
@@ -217,7 +217,8 @@ class ExportQueryBuilder:
             count_pipeline.append({"$count": "total"})
             
             # Execute count pipeline
-            result = db[config.main_collection].aggregate(count_pipeline).to_list(1)
+            cursor = db[config.main_collection].aggregate(count_pipeline)
+            result = await cursor.to_list(1)
             
             if result and len(result) > 0:
                 estimated_count = result[0]["total"]
