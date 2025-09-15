@@ -177,8 +177,16 @@ async def execute_advanced_export(
             if not data:
                 raise HTTPException(status_code=404, detail="No data found matching the criteria")
             
-            # Export data dengan user_id untuk proper storage
-            file_path = export_manager.export_data(data, request.format, request.filename, user_id=user_id)
+            # Export data dengan user_id dan formatting options
+            file_path = export_manager.export_data(
+                data, 
+                request.format, 
+                request.filename, 
+                user_id=user_id,
+                exclude_ids=request.formatting.exclude_ids,
+                use_aliases=request.formatting.use_aliases,
+                include_empty_fields=request.formatting.include_empty_fields
+            )
             
             # Generate file URL
             file_url = f"/api/v1/exports/download/{os.path.basename(file_path)}"
@@ -228,6 +236,34 @@ async def get_collection_relationships(
     except Exception as e:
         logger.error(f"Error getting collection relationships: {e}")
         raise HTTPException(status_code=500, detail="Failed to get collection relationships")
+
+@router.get("/fields/suggestions/{collection}")
+async def get_field_suggestions(
+    collection: str,
+    current_user: dict = Depends(deps.get_current_active_admin)
+):
+    """
+    Get field suggestions dengan aliases untuk collection tertentu - ADMIN ONLY.
+    """
+    try:
+        from app.core.field_mapping import field_mapper
+        
+        # Get available fields with aliases
+        available_fields = field_mapper.get_available_fields_with_aliases(collection)
+        
+        # Get smart suggestions
+        suggestions = field_mapper.create_smart_field_suggestions(collection)
+        
+        return {
+            "collection": collection,
+            "available_fields": available_fields,
+            "smart_suggestions": suggestions,
+            "total_fields": len(available_fields)
+        }
+    
+    except Exception as e:
+        logger.error(f"Error getting field suggestions: {e}")
+        raise HTTPException(status_code=500, detail="Failed to get field suggestions")
 
 @router.post("/analyze")
 async def analyze_advanced_query(
@@ -396,7 +432,15 @@ async def _process_advanced_export_async(
         with open(status_file, 'w') as f:
             json.dump(status_data, f)
         
-        file_path = export_manager.export_data(data, format, filename, user_id=user_id)
+        file_path = export_manager.export_data(
+            data, 
+            format, 
+            filename, 
+            user_id=user_id,
+            exclude_ids=config.formatting.exclude_ids if hasattr(config, 'formatting') else True,
+            use_aliases=config.formatting.use_aliases if hasattr(config, 'formatting') else True,
+            include_empty_fields=config.formatting.include_empty_fields if hasattr(config, 'formatting') else False
+        )
         
         execution_time = int((time.time() - start_time) * 1000)
         

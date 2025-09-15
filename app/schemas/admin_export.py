@@ -154,6 +154,23 @@ class AdvancedExportConfig(BaseModel):
             }
         }
 
+class ExportFormattingOptions(BaseModel):
+    """Options untuk formatting export data"""
+    exclude_ids: bool = Field(True, description="Exclude ObjectId fields from export")
+    use_aliases: bool = Field(True, description="Use friendly field aliases (Indonesian)")
+    flatten_nested: bool = Field(True, description="Flatten nested data structure")
+    include_empty_fields: bool = Field(False, description="Include fields with null/empty values")
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "exclude_ids": True,
+                "use_aliases": True, 
+                "flatten_nested": True,
+                "include_empty_fields": False
+            }
+        }
+
 class AdvancedExportRequest(BaseModel):
     """Request schema untuk advanced export"""
     config: AdvancedExportConfig = Field(..., description="Advanced export configuration")
@@ -164,6 +181,12 @@ class AdvancedExportRequest(BaseModel):
     # Advanced options
     explain: bool = Field(False, description="Return query execution plan instead of executing")
     dry_run: bool = Field(False, description="Validate and estimate without executing")
+    
+    # NEW: Formatting options
+    formatting: ExportFormattingOptions = Field(
+        default_factory=ExportFormattingOptions,
+        description="Export formatting preferences"
+    )
     
     class Config:
         schema_extra = {

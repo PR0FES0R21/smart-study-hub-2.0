@@ -1,0 +1,55 @@
+{
+  "config": {
+    "main_collection": "users",
+    "fields": ["email", "login_id"],
+    "filters": [
+      {
+        "field": "roles",
+        "operator": "eq", 
+        "value": "student"
+      }
+    ],
+    "joins": [
+      {
+        "collection": "profiles",
+        "local_field": "profile_id",
+        "foreign_field": "_id",
+        "alias": "profile",
+        "join_type": "lookup",
+        "fields": ["full_name", "gender"],
+        "preserve_null_and_empty_arrays": false,
+        "joins": [
+          {
+            "collection": "classes",
+            "local_field": "class_id",
+            "foreign_field": "_id", 
+            "alias": "class_detail",
+            "join_type": "lookup",
+            "fields": ["name", "grade_level"],
+            "preserve_null_and_empty_arrays": true,
+            "joins": [
+               {
+            "collection": "expertise_programs",
+            "local_field": "expertise_id",
+            "foreign_field": "_id",
+            "alias": "expertise", 
+            "join_type": "lookup",
+            "fields": ["name", "abbreviation"],
+            "preserve_null_and_empty_arrays": true
+          }
+            ]
+          }
+        ]
+      }
+    ],
+    "limit": 10
+  },
+  "format": "excel",
+  "filename": "students_with_aliases",
+  "formatting": {
+    "exclude_ids": true,
+    "use_aliases": true,
+    "flatten_nested": true,
+    "include_empty_fields": false
+  }
+}

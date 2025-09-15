@@ -23,6 +23,7 @@ except ImportError:
     print("openpyxl not installed. Excel export will not be available.")
 
 from app.schemas.export import ExportFormat
+from app.core.field_mapping import field_mapper
 
 logger = logging.getLogger(__name__)
 
@@ -128,7 +129,9 @@ class ExcelExportHandler(ExportHandler):
             worksheet.column_dimensions[get_column_letter(col_num)].width = min(max(len(str(header)) + 2, 10), 50)
     
     def export(self, data: List[Dict[str, Any]], filename: Optional[str] = None, 
-               sheet_name: str = "Export", user_id: Optional[str] = None) -> str:
+               sheet_name: str = "Export", user_id: Optional[str] = None,
+               exclude_ids: bool = True, use_aliases: bool = True, 
+               include_empty_fields: bool = False) -> str:
         """Export data to Excel format"""
         try:
             if not data:
@@ -146,22 +149,38 @@ class ExcelExportHandler(ExportHandler):
             worksheet = workbook.active
             worksheet.title = sheet_name
             
-            # Flatten all documents and get all possible fields
+            # Flatten all documents using field_mapper
             flattened_data = [self._flatten_document(doc) for doc in data]
-            headers = self._get_all_fields(data)
+            all_fields = self._get_all_fields(data)
             
-            # Write headers
-            for col_num, header in enumerate(headers, 1):
+            # Process headers with field_mapper
+            header_mapping = field_mapper.process_export_headers(
+                all_fields,
+                exclude_ids=exclude_ids,
+                use_aliases=use_aliases
+            )
+            
+            # Apply flattening and header mapping
+            display_headers = list(header_mapping.values())
+            original_headers = list(header_mapping.keys())
+            
+            # Write headers (with aliases if use_aliases=True)
+            for col_num, header in enumerate(display_headers, 1):
                 worksheet.cell(row=1, column=col_num, value=header)
             
             # Write data
             for row_num, doc in enumerate(flattened_data, 2):
-                for col_num, header in enumerate(headers, 1):
-                    value = doc.get(header, "")
+                for col_num, original_header in enumerate(original_headers, 1):
+                    value = doc.get(original_header, "")
+                    
+                    # Skip empty fields if not include_empty_fields
+                    if not include_empty_fields and (value is None or value == ""):
+                        continue
+                        
                     worksheet.cell(row=row_num, column=col_num, value=value)
             
             # Apply formatting
-            self._format_worksheet(worksheet, headers)
+            self._format_worksheet(worksheet, display_headers)
             
             # Save to project storage (not system temp!)
             filepath = self.get_export_filepath(filename, user_id)
@@ -178,7 +197,9 @@ class CSVExportHandler(ExportHandler):
     """Handler untuk export ke format CSV"""
     
     def export(self, data: List[Dict[str, Any]], filename: Optional[str] = None,
-               delimiter: str = ",", encoding: str = "utf-8", user_id: Optional[str] = None) -> str:
+               delimiter: str = ",", encoding: str = "utf-8", user_id: Optional[str] = None,
+               exclude_ids: bool = True, use_aliases: bool = True, 
+               include_empty_fields: bool = False) -> str:
         """Export data to CSV format"""
         try:
             if not data:
@@ -193,18 +214,37 @@ class CSVExportHandler(ExportHandler):
             
             # Flatten all documents and get all possible fields
             flattened_data = [self._flatten_document(doc) for doc in data]
-            headers = self._get_all_fields(data)
+            all_fields = self._get_all_fields(data)
+            
+            # Process headers with field_mapper
+            header_mapping = field_mapper.process_export_headers(
+                all_fields,
+                exclude_ids=exclude_ids,
+                use_aliases=use_aliases
+            )
+            
+            display_headers = list(header_mapping.values())
+            original_headers = list(header_mapping.keys())
             
             # Create CSV file in project storage
             filepath = self.get_export_filepath(filename, user_id)
             
             with open(filepath, 'w', newline='', encoding=encoding) as csvfile:
-                writer = csv.DictWriter(csvfile, fieldnames=headers, delimiter=delimiter)
+                writer = csv.DictWriter(csvfile, fieldnames=display_headers, delimiter=delimiter)
                 writer.writeheader()
                 
                 for doc in flattened_data:
-                    # Ensure all fields exist in each row
-                    row = {header: doc.get(header, "") for header in headers}
+                    # Map original fields to display headers
+                    row = {}
+                    for orig_field, display_field in zip(original_headers, display_headers):
+                        value = doc.get(orig_field, "")
+                        
+                        # Skip empty fields if not include_empty_fields
+                        if not include_empty_fields and (value is None or value == ""):
+                            value = ""
+                            
+                        row[display_field] = value
+                    
                     writer.writerow(row)
             
             logger.info(f"CSV export completed: {filename}, {len(data)} records")
@@ -266,13 +306,24 @@ class ExportManager:
         return [fmt for fmt, handler in self.handlers.items() if handler is not None]
     
     def export_data(self, data: List[Dict[str, Any]], format: ExportFormat, 
-                   filename: Optional[str] = None, user_id: Optional[str] = None, **kwargs) -> str:
-        """Export data using specified format"""
+                   filename: Optional[str] = None, user_id: Optional[str] = None,
+                   exclude_ids: bool = True, use_aliases: bool = True, 
+                   include_empty_fields: bool = False, **kwargs) -> str:
+        """Export data using specified format with formatting options"""
         if not self.is_format_supported(format):
             raise ValueError(f"Export format '{format}' is not supported")
         
         handler = self.handlers[format]
-        return handler.export(data, filename, user_id=user_id, **kwargs)
+        
+        # Pass formatting options to handler
+        formatting_kwargs = {
+            'exclude_ids': exclude_ids,
+            'use_aliases': use_aliases,
+            'include_empty_fields': include_empty_fields,
+            **kwargs
+        }
+        
+        return handler.export(data, filename, user_id=user_id, **formatting_kwargs)
     
     def estimate_file_size(self, data: List[Dict[str, Any]], format: ExportFormat) -> str:
         """Estimate the file size of exported data"""
