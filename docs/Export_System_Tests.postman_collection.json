@@ -1,0 +1,652 @@
+{
+	"info": {
+		"_postman_id": "export-system-tests-2024",
+		"name": "Flexible Export System Tests",
+		"description": "Complete test collection for Flexible Export System API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Basic Endpoints",
+			"item": [
+				{
+					"name": "Get Available Collections",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/collections",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "collections"]
+						}
+					}
+				},
+				{
+					"name": "Get Supported Formats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/formats",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "formats"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Validation",
+			"item": [
+				{
+					"name": "Validate Basic Config",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"email\", \"is_active\"],\n    \"filters\": [\n      {\n        \"field\": \"roles\",\n        \"operator\": \"eq\",\n        \"value\": \"student\"\n      }\n    ],\n    \"limit\": 100\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/validate",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "validate"]
+						}
+					}
+				},
+				{
+					"name": "Validate Complex Config with Joins",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"email\"],\n    \"filters\": [\n      {\n        \"field\": \"roles\",\n        \"operator\": \"eq\",\n        \"value\": \"student\"\n      }\n    ],\n    \"joins\": [\n      {\n        \"collection\": \"profiles\",\n        \"local_field\": \"profile_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"full_name\", \"birth_date\", \"gender\"],\n        \"join_type\": \"unwind\"\n      },\n      {\n        \"collection\": \"classes\",\n        \"local_field\": \"profiles.class_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"name\", \"grade_level\"],\n        \"join_type\": \"unwind\"\n      }\n    ],\n    \"sort\": {\"profiles.full_name\": 1},\n    \"limit\": 200\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/validate",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "validate"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Export Execution",
+			"item": [
+				{
+					"name": "Simple Student Export (JSON)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"email\", \"is_active\", \"created_at\"],\n    \"filters\": [\n      {\n        \"field\": \"roles\",\n        \"operator\": \"eq\",\n        \"value\": \"student\"\n      }\n    ],\n    \"limit\": 10\n  },\n  \"format\": \"json\",\n  \"filename\": \"simple_students_test\",\n  \"async_export\": false\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Student Export with Profile Data (Excel)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"email\", \"is_active\"],\n    \"filters\": [\n      {\n        \"field\": \"roles\",\n        \"operator\": \"eq\",\n        \"value\": \"student\"\n      }\n    ],\n    \"joins\": [\n      {\n        \"collection\": \"profiles\",\n        \"local_field\": \"profile_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"full_name\", \"birth_date\", \"gender\", \"class_id\"],\n        \"join_type\": \"unwind\"\n      },\n      {\n        \"collection\": \"classes\",\n        \"local_field\": \"profiles.class_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"name\", \"grade_level\"],\n        \"join_type\": \"unwind\"\n      }\n    ],\n    \"sort\": {\"profiles.full_name\": 1},\n    \"limit\": 25\n  },\n  \"format\": \"excel\",\n  \"filename\": \"students_with_profile_test\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Teacher Data Export (CSV)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"email\", \"is_active\"],\n    \"filters\": [\n      {\n        \"field\": \"roles\",\n        \"operator\": \"eq\",\n        \"value\": \"teacher\"\n      }\n    ],\n    \"joins\": [\n      {\n        \"collection\": \"profiles\",\n        \"local_field\": \"profile_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"full_name\"],\n        \"join_type\": \"unwind\"\n      }\n    ],\n    \"sort\": {\"profiles.full_name\": 1},\n    \"limit\": 15\n  },\n  \"format\": \"csv\",\n  \"filename\": \"teachers_test\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Exam Results Export",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"exam_sessions\",\n    \"fields\": [\"score\", \"status\", \"started_at\", \"submitted_at\"],\n    \"filters\": [\n      {\n        \"field\": \"status\",\n        \"operator\": \"eq\",\n        \"value\": \"graded\"\n      }\n    ],\n    \"joins\": [\n      {\n        \"collection\": \"users\",\n        \"local_field\": \"student_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"username\"],\n        \"join_type\": \"unwind\"\n      },\n      {\n        \"collection\": \"profiles\",\n        \"local_field\": \"users.profile_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"full_name\"],\n        \"join_type\": \"unwind\"\n      },\n      {\n        \"collection\": \"exams\",\n        \"local_field\": \"exam_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"title\", \"exam_type\"],\n        \"join_type\": \"unwind\"\n      }\n    ],\n    \"sort\": {\"score\": -1},\n    \"limit\": 50\n  },\n  \"format\": \"excel\",\n  \"filename\": \"exam_results_test\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Advanced Filtering Example",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"email\", \"created_at\"],\n    \"filters\": [\n      {\n        \"field\": \"roles\",\n        \"operator\": \"eq\",\n        \"value\": \"student\"\n      },\n      {\n        \"field\": \"is_active\",\n        \"operator\": \"eq\",\n        \"value\": true\n      },\n      {\n        \"field\": \"created_at\",\n        \"operator\": \"gte\",\n        \"value\": \"2024-01-01\"\n      }\n    ],\n    \"joins\": [\n      {\n        \"collection\": \"profiles\",\n        \"local_field\": \"profile_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"full_name\", \"class_id\"],\n        \"join_type\": \"unwind\"\n      },\n      {\n        \"collection\": \"classes\",\n        \"local_field\": \"profiles.class_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"name\", \"grade_level\"],\n        \"join_type\": \"unwind\",\n        \"filters\": [\n          {\n            \"field\": \"grade_level\",\n            \"operator\": \"in\",\n            \"value\": [10, 11, 12]\n          }\n        ]\n      }\n    ],\n    \"sort\": {\"created_at\": -1},\n    \"limit\": 100\n  },\n  \"format\": \"excel\",\n  \"filename\": \"filtered_students_advanced\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Async Export Test",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"email\"],\n    \"filters\": [\n      {\n        \"field\": \"roles\",\n        \"operator\": \"eq\",\n        \"value\": \"student\"\n      }\n    ],\n    \"joins\": [\n      {\n        \"collection\": \"profiles\",\n        \"local_field\": \"profile_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"full_name\"],\n        \"join_type\": \"unwind\"\n      }\n    ],\n    \"limit\": 2000\n  },\n  \"format\": \"excel\",\n  \"filename\": \"large_async_export_test\",\n  \"async_export\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Async Status",
+			"item": [
+				{
+					"name": "Check Export Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/status/{{task_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "status", "{{task_id}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "File Download",
+			"item": [
+				{
+					"name": "Download Export File",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/download/{{filename}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "download", "{{filename}}"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Quick Exports",
+			"item": [
+				{
+					"name": "Quick Students Export (All)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/quick/students?format=excel",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "quick", "students"],
+							"query": [
+								{
+									"key": "format",
+									"value": "excel"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Quick Students Export (Grade 10)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/quick/students?format=csv&grade_level=10",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "quick", "students"],
+							"query": [
+								{
+									"key": "format",
+									"value": "csv"
+								},
+								{
+									"key": "grade_level",
+									"value": "10"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Quick Students Export (Grade 12 JSON)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/quick/students?format=json&grade_level=12",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "quick", "students"],
+							"query": [
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "grade_level",
+									"value": "12"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Quick Exam Results Export (All)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/quick/exam-results?format=excel",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "quick", "exam-results"],
+							"query": [
+								{
+									"key": "format",
+									"value": "excel"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Quick Exam Results Export (Specific Exam)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/quick/exam-results?format=csv&exam_id={{exam_id}}",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "quick", "exam-results"],
+							"query": [
+								{
+									"key": "format",
+									"value": "csv"
+								},
+								{
+									"key": "exam_id",
+									"value": "{{exam_id}}"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Error Testing",
+			"item": [
+				{
+					"name": "Invalid Collection",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"invalid_collection\",\n    \"fields\": [\"field1\", \"field2\"]\n  },\n  \"format\": \"excel\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Invalid Fields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"invalid_field\", \"another_invalid_field\"],\n    \"filters\": [{\"field\": \"roles\", \"operator\": \"eq\", \"value\": \"student\"}]\n  },\n  \"format\": \"excel\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Invalid Format",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"email\"]\n  },\n  \"format\": \"pdf\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Invalid Join",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\"],\n    \"joins\": [\n      {\n        \"collection\": \"invalid_collection\",\n        \"local_field\": \"profile_id\",\n        \"foreign_field\": \"_id\",\n        \"fields\": [\"full_name\"]\n      }\n    ]\n  },\n  \"format\": \"excel\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				},
+				{
+					"name": "Sensitive Fields (Non-Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{teacher_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"config\": {\n    \"main_collection\": \"users\",\n    \"fields\": [\"username\", \"hashed_password\"],\n    \"filters\": [{\"field\": \"roles\", \"operator\": \"eq\", \"value\": \"student\"}]\n  },\n  \"format\": \"excel\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/exports/execute",
+							"host": ["{{base_url}}"],
+							"path": ["api", "v1", "exports", "execute"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "YOUR_ACCESS_TOKEN_HERE",
+			"type": "string"
+		},
+		{
+			"key": "teacher_token",
+			"value": "TEACHER_ACCESS_TOKEN_HERE",
+			"type": "string"
+		},
+		{
+			"key": "task_id",
+			"value": "ASYNC_TASK_ID_HERE",
+			"type": "string"
+		},
+		{
+			"key": "filename",
+			"value": "EXPORT_FILENAME_HERE",
+			"type": "string"
+		},
+		{
+			"key": "exam_id",
+			"value": "SPECIFIC_EXAM_ID_HERE",
+			"type": "string"
+		}
+	]
+}

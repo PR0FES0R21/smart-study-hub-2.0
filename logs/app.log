@@ -186093,3 +186093,124 @@ pymongo.errors._OperationCancelled: operation cancelled
 2025-09-10 23:29:02,483 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
 2025-09-10 23:32:51,315 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8f6533ff-3a90-4bbd-8c8a-7addc2ad0612 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
 2025-09-10 23:32:51,316 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8f6533ff-3a90-4bbd-8c8a-7addc2ad0612 | successful=0/0 | failed=0 | time=0.61ms
+2025-09-12 17:26:24,496 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-12 17:26:26,471 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-12 17:26:26,493 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-12 17:26:26,494 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-12 17:26:26,495 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-12 17:26:26,495 [INFO] app.main: Startup aplikasi berhasil
+2025-09-12 17:26:26,497 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-12 17:26:26,498 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-12 17:27:25,949 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b249ca2f-56dc-4949-bf80-ff84038ac19f | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-12 17:27:25,950 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b249ca2f-56dc-4949-bf80-ff84038ac19f | successful=0/0 | failed=0 | time=0.63ms
+2025-09-12 17:29:43,830 [ERROR] app.core.export_query_builder: Error estimating result count: object of type '_asyncio.Future' has no len()
+2025-09-12 17:29:43,838 [ERROR] app.api.v1.routes.exports: Error validating export config: object NoneType can't be used in 'await' expression
+2025-09-12 17:30:25,207 [ERROR] app.api.v1.routes.exports: Error in quick student export: 400: Invalid export configuration: Join to 'classes' not allowed from 'users'
+2025-09-12 17:30:57,928 [ERROR] app.api.v1.routes.exports: Error in quick exam results export: 400: Invalid export configuration: Join to 'profiles' not allowed from 'exam_sessions'
+2025-09-12 18:47:06,804 [INFO] app.main: Mematikan aplikasi...
+2025-09-12 18:47:06,806 [INFO] app.main: Menutup WebSocket manager...
+2025-09-12 18:47:06,806 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-12 18:47:06,807 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-12 18:47:06,808 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-12 18:47:06,808 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-12 18:47:06,822 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-12 18:47:06,828 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-12 18:47:06,829 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-12 18:47:06,921 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-12 18:47:17,096 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-12 18:47:18,377 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-12 18:47:18,394 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-12 18:47:18,394 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-12 18:47:18,395 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-12 18:47:18,395 [INFO] app.main: Startup aplikasi berhasil
+2025-09-12 18:47:18,396 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-12 18:47:18,397 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-12 19:45:46,290 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 444, in _create_connection
+    raise err
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 437, in _create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-02.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-12 22:10:46,554 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 521, in _configured_socket_interface
+    ssl_sock = ssl_context.wrap_socket(sock, server_hostname=host)
+  File "C:\Python313\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python313\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Python313\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TimeoutError: _ssl.c:1001: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 535, in _configured_socket_interface
+    _raise_connection_failure(address, exc, "SSL handshake failed: ", timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: SSL handshake failed: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017: _ssl.c:1001: The handshake operation timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-12 22:56:40,751 [ERROR] app.api.v1.routes.exports: Error in quick student export: 400: Invalid export configuration: Join to 'classes' not allowed from 'users'
+2025-09-12 22:58:14,298 [ERROR] app.api.v1.routes.exports: Error in quick student export: 400: Invalid export configuration: Join to 'classes' not allowed from 'users'
+2025-09-12 22:58:37,289 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4b266828-6a68-449b-8d90-af9aa3e048e0 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-12 22:58:37,300 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4b266828-6a68-449b-8d90-af9aa3e048e0 | successful=0/0 | failed=0 | time=11.07ms
+2025-09-12 22:59:23,445 [ERROR] app.core.export_query_builder: Error estimating result count: object of type '_asyncio.Future' has no len()
+2025-09-12 22:59:23,447 [ERROR] app.api.v1.routes.exports: Error validating export config: object NoneType can't be used in 'await' expression
+2025-09-15 12:44:15,537 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-15 12:44:17,332 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-15 12:44:17,340 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-15 12:44:17,341 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-15 12:44:17,342 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-15 12:44:17,343 [INFO] app.main: Startup aplikasi berhasil
+2025-09-15 12:44:17,344 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-15 12:44:17,344 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-15 12:45:21,370 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=556b712c-6dd2-4137-ab77-3c6d1367490d | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-15 12:45:21,371 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=556b712c-6dd2-4137-ab77-3c6d1367490d | successful=0/0 | failed=0 | time=0.6ms
+2025-09-15 12:45:24,224 [ERROR] app.core.export_query_builder: Error estimating result count: object of type '_asyncio.Future' has no len()
+2025-09-15 12:45:24,226 [ERROR] app.api.v1.routes.exports: Error validating export config: object NoneType can't be used in 'await' expression
