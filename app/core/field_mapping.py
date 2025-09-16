@@ -11,7 +11,120 @@ class FieldMappingSystem:
     """System untuk mapping field names ke aliases yang lebih user-friendly"""
     
     def __init__(self):
-        # Field aliases dalam bahasa Indonesia
+        # Collection-specific field aliases dalam bahasa Indonesia
+        self.collection_fields = {
+            "users": {
+                "_id": "ID",
+                "login_id": "NIS/NIP",
+                "email": "Email",
+                "roles": "Peran",
+                "is_active": "Status Aktif",
+                "profile_id": "ID Profil",
+                "created_at": "Tanggal Dibuat",
+                "updated_at": "Tanggal Diperbarui",
+                "onboarding_completed": "Onboarding Selesai",
+                "password_last_changed_at": "Password Terakhir Diubah"
+            },
+            "profiles": {
+                "_id": "ID",
+                "full_name": "Nama Lengkap",
+                "gender": "Jenis Kelamin",
+                "birth_date": "Tanggal Lahir",
+                "birth_place": "Tempat Lahir",
+                "address": "Alamat",
+                "phone_number": "Nomor Telepon",
+                "start_year": "Tahun Masuk",
+                "end_year": "Tahun Lulus",
+                "user_id": "ID User",
+                "class_id": "ID Kelas",
+                "department_id": "ID Jurusan",
+                "profile_picture_url": "URL Foto Profil",
+                "created_at": "Tanggal Dibuat",
+                "updated_at": "Tanggal Diperbarui"
+            },
+            "classes": {
+                "_id": "ID",
+                "name": "Nama Kelas",
+                "grade_level": "Tingkat Kelas",
+                "academic_year": "Tahun Akademik",
+                "expertise_id": "ID Jurusan",
+                "homeroom_teacher_id": "ID Wali Kelas"
+            },
+            "expertise_programs": {
+                "_id": "ID",
+                "name": "Nama Jurusan",
+                "abbreviation": "Singkatan Jurusan",
+                "description": "Deskripsi Jurusan",
+                "head_of_department_id": "ID Ketua Jurusan"
+            },
+            "teaching_assignments": {
+                "_id": "ID",
+                "class_id": "ID Kelas",
+                "subject_id": "ID Mata Pelajaran",
+                "teacher_id": "ID Guru",
+                "academic_period_id": "ID Periode Akademik"
+            },
+            "question_banks": {
+                "_id": "ID",
+                "subject_id": "ID Mata Pelajaran",
+                "created_by_teacher_id": "ID Pembuat",
+                "question_type": "Jenis Soal",
+                "difficulty": "Tingkat Kesulitan",
+                "question_text": "Teks Soal",
+                "options": "Pilihan Jawaban",
+                "points": "Poin Soal",
+                "tags": "Tag Soal"
+            },
+            "question_sets": {
+                "_id": "ID",
+                "name": "Nama Set Soal",
+                "subject_id": "ID Mata Pelajaran",
+                "grade_level": "Tingkat Kelas",
+                "created_by_coordinator_id": "ID Pembuat",
+                "status": "Status Set",
+                "is_public": "Akses Publik",
+                "description": "Deskripsi",
+                "version": "Versi",
+                "published_date": "Tanggal Publikasi",
+                "created_at": "Tanggal Dibuat",
+                "updated_at": "Tanggal Diperbarui"
+            },
+            "exams": {
+                "_id": "ID",
+                "title": "Judul Ujian",
+                "exam_type": "Jenis Ujian",
+                "duration_minutes": "Durasi (Menit)",
+                "availability_start_time": "Mulai Tersedia",
+                "availability_end_time": "Selesai Tersedia",
+                "status": "Status Ujian",
+                "academic_period_id": "ID Periode Akademik",
+                "teaching_assignment_id": "ID Penugasan Mengajar",
+                "question_ids": "ID Soal",
+                "proctor_ids": "ID Pengawas",
+                "updated_at": "Tanggal Diperbarui",
+                "completed_at": "Tanggal Selesai"
+            },
+            "exam_sessions": {
+                "_id": "ID",
+                "exam_id": "ID Ujian",
+                "student_id": "ID Siswa",
+                "score": "Skor",
+                "started_at": "Waktu Mulai",
+                "submitted_at": "Waktu Submit",
+                "time_spent_minutes": "Durasi (Menit)",
+                "status": "Status",
+                "answers": "Jawaban"
+            },
+            "academic_periods": {
+                "_id": "ID",
+                "name": "Nama Periode",
+                "start_date": "Tanggal Mulai",
+                "end_date": "Tanggal Selesai",
+                "is_active": "Status Aktif"
+            }
+        }
+        
+        # Legacy field aliases untuk joined data (digunakan saat export)
         self.field_aliases = {
             # Users collection
             "_id": "ID",
@@ -22,7 +135,7 @@ class FieldMappingSystem:
             "created_at": "Tanggal Dibuat",
             "updated_at": "Tanggal Diperbarui",
             
-            # Profiles collection
+            # Profiles collection (dengan prefix untuk joined data)
             "profile._id": "ID Profil",
             "profile.full_name": "Nama Lengkap",
             "profile.gender": "Jenis Kelamin",
@@ -33,52 +146,50 @@ class FieldMappingSystem:
             "profile.start_year": "Tahun Masuk",
             "profile.end_year": "Tahun Lulus",
             
-            # Classes collection (nested)
+            # Classes collection (dengan prefix untuk joined data)
             "profile.class_detail._id": "ID Kelas",
             "profile.class_detail.name": "Nama Kelas",
             "profile.class_detail.grade_level": "Tingkat Kelas",
             "profile.class_detail.academic_year": "Tahun Akademik",
             
-            # Expertise Programs collection (deeply nested)
+            # Expertise Programs collection (dengan prefix untuk joined data)
             "profile.class_detail.expertise._id": "ID Jurusan",
             "profile.class_detail.expertise.name": "Nama Jurusan",
             "profile.class_detail.expertise.abbreviation": "Singkatan Jurusan",
             "profile.class_detail.expertise.description": "Deskripsi Jurusan",
-            
-            # Teaching Assignments
-            "teaching_assignment.class_id": "ID Kelas Mengajar",
-            "teaching_assignment.subject_id": "ID Mata Pelajaran",
-            "teaching_assignment.teacher_id": "ID Guru",
-            "teaching_assignment.academic_period_id": "ID Periode Akademik",
-            
-            # Question Banks
-            "question_bank.question_type": "Jenis Soal",
-            "question_bank.difficulty": "Tingkat Kesulitan",
-            "question_bank.question_text": "Teks Soal",
-            "question_bank.points": "Poin Soal",
-            "question_bank.tags": "Tag Soal",
-            
-            # Question Sets
-            "question_set.name": "Nama Set Soal",
-            "question_set.grade_level": "Tingkat Kelas",
-            "question_set.status": "Status Set",
-            "question_set.is_public": "Akses Publik",
-            "question_set.total_questions": "Total Soal",
-            "question_set.total_points": "Total Poin",
-            
-            # Exams
-            "exam.title": "Judul Ujian",
-            "exam.exam_type": "Jenis Ujian",
-            "exam.duration_minutes": "Durasi (Menit)",
-            "exam.availability_start_time": "Mulai Tersedia",
-            "exam.availability_end_time": "Selesai Tersedia",
-            "exam.status": "Status Ujian",
             
             # Common fields
             "created_by": "Dibuat Oleh",
             "updated_by": "Diperbarui Oleh",
             "deleted_at": "Tanggal Dihapus",
             "archived_at": "Tanggal Diarsipkan"
+        }
+        
+        # Field categories per collection
+        self.collection_categories = {
+            "users": {
+                "identity": ["_id", "login_id", "email"],
+                "access": ["roles", "is_active", "onboarding_completed"],
+                "relationships": ["profile_id"],
+                "timestamps": ["created_at", "updated_at", "password_last_changed_at"]
+            },
+            "profiles": {
+                "identity": ["_id", "full_name", "gender"],
+                "personal": ["birth_date", "birth_place", "address", "phone_number", "profile_picture_url"],
+                "academic": ["start_year", "end_year"],
+                "relationships": ["user_id", "class_id", "department_id"],
+                "timestamps": ["created_at", "updated_at"]
+            },
+            "classes": {
+                "identity": ["_id", "name", "grade_level"],
+                "academic": ["academic_year"],
+                "relationships": ["expertise_id", "homeroom_teacher_id"]
+            },
+            "expertise_programs": {
+                "identity": ["_id", "name", "abbreviation"],
+                "description": ["description"],
+                "relationships": ["head_of_department_id"]
+            }
         }
         
         # Fields yang biasanya tidak perlu di export (ObjectIds)
@@ -182,18 +293,32 @@ class FieldMappingSystem:
         return dict(items)
     
     def get_available_fields_with_aliases(self, collection: str) -> List[Dict[str, str]]:
-        """Get available fields for collection with their aliases"""
+        """Get available fields for specific collection with their aliases - COLLECTION SPECIFIC ONLY"""
         available_fields = []
         
-        for field_path, alias in self.field_aliases.items():
-            if field_path.startswith(collection) or '.' not in field_path:
+        # Get fields for the specific collection only
+        if collection in self.collection_fields:
+            collection_field_data = self.collection_fields[collection]
+            
+            for field_name, alias in collection_field_data.items():
                 available_fields.append({
-                    "field": field_path,
+                    "field": field_name,
                     "alias": alias,
-                    "category": self._get_field_category(field_path)
+                    "category": self._get_collection_field_category(collection, field_name)
                 })
         
         return available_fields
+    
+    def _get_collection_field_category(self, collection: str, field_name: str) -> str:
+        """Get category for field within specific collection"""
+        if collection in self.collection_categories:
+            categories = self.collection_categories[collection]
+            
+            for category_name, fields in categories.items():
+                if field_name in fields:
+                    return category_name
+        
+        return "other"
     
     def _get_field_category(self, field_path: str) -> str:
         """Get category for field"""
@@ -202,27 +327,44 @@ class FieldMappingSystem:
                 return category
         return "other"
     
-    def create_smart_field_suggestions(self, main_collection: str) -> Dict[str, List[str]]:
-        """Create smart field suggestions based on collection"""
+    def create_smart_field_suggestions(self, collection: str) -> Dict[str, List[str]]:
+        """Create smart field suggestions based on collection - COLLECTION SPECIFIC ONLY"""
         suggestions = {
             "recommended": [],
             "optional": [],
             "advanced": []
         }
         
-        if main_collection == "users":
-            suggestions["recommended"] = [
-                "login_id", "email", "profile.full_name", 
-                "profile.class_detail.name", "profile.class_detail.grade_level"
-            ]
-            suggestions["optional"] = [
-                "profile.gender", "profile.birth_date", 
-                "profile.class_detail.expertise.name"
-            ]
-            suggestions["advanced"] = [
-                "is_active", "created_at", "profile.phone_number",
-                "profile.address", "profile.class_detail.academic_year"
-            ]
+        # Collection-specific suggestions - hanya field milik collection itu sendiri
+        if collection == "users":
+            suggestions["recommended"] = ["login_id", "email", "roles"]
+            suggestions["optional"] = ["is_active", "profile_id"]
+            suggestions["advanced"] = ["created_at", "updated_at", "onboarding_completed"]
+        
+        elif collection == "profiles":
+            suggestions["recommended"] = ["full_name", "gender", "user_id"]
+            suggestions["optional"] = ["birth_date", "birth_place", "phone_number", "class_id"]
+            suggestions["advanced"] = ["address", "start_year", "end_year", "profile_picture_url"]
+        
+        elif collection == "classes":
+            suggestions["recommended"] = ["name", "grade_level", "academic_year"]
+            suggestions["optional"] = ["expertise_id", "homeroom_teacher_id"]
+            suggestions["advanced"] = ["_id"]
+        
+        elif collection == "expertise_programs":
+            suggestions["recommended"] = ["name", "abbreviation"]
+            suggestions["optional"] = ["description", "head_of_department_id"]
+            suggestions["advanced"] = ["_id"]
+        
+        elif collection == "exams":
+            suggestions["recommended"] = ["title", "exam_type", "status"]
+            suggestions["optional"] = ["duration_minutes", "availability_start_time", "availability_end_time"]
+            suggestions["advanced"] = ["academic_period_id", "teaching_assignment_id", "question_ids"]
+        
+        elif collection == "exam_sessions":
+            suggestions["recommended"] = ["exam_id", "student_id", "score", "status"]
+            suggestions["optional"] = ["started_at", "submitted_at", "time_spent_minutes"]
+            suggestions["advanced"] = ["answers", "_id"]
         
         return suggestions
 

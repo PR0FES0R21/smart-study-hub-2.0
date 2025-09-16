@@ -187660,3 +187660,191 @@ pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-02.6kpph5n.mongodb.net:27017:
 2025-09-16 00:41:09,670 [INFO] app.core.advanced_query_builder: Complexity score: 4
 2025-09-16 00:41:10,159 [INFO] app.core.export_handlers: Excel export completed: students_with_computed_fields.xlsx, 10 records
 2025-09-16 00:41:10,163 [INFO] app.api.v1.routes.admin_exports: Advanced async export 8cc81848-cb99-40bc-9995-6c76676ca861 completed successfully in 139ms
+2025-09-16 00:42:30,413 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:42:30,414 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:42:30,415 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-16 00:42:30,415 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:42:30,416 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:42:30,416 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-16 00:42:30,863 [INFO] app.core.export_handlers: Excel export completed: students_with_computed_fields.xlsx, 10 records
+2025-09-16 00:42:30,866 [INFO] app.api.v1.routes.admin_exports: Advanced async export 99242359-708b-45b4-b4c6-2657740b8064 completed successfully in 103ms
+2025-09-16 00:43:43,442 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:43:43,443 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:43:43,443 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-16 00:43:43,444 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:43:43,445 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:43:43,445 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-16 00:43:43,882 [INFO] app.core.export_handlers: Excel export completed: students_with_computed_fields.xlsx, 10 records
+2025-09-16 00:43:43,884 [INFO] app.api.v1.routes.admin_exports: Advanced async export 65c537f7-af01-4f62-8e24-df59baa864ed completed successfully in 87ms
+2025-09-16 00:44:22,487 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:44:22,488 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:44:22,488 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-16 00:44:22,489 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:44:22,489 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:44:22,490 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-16 00:44:22,957 [INFO] app.core.export_handlers: Excel export completed: students_with_computed_fields.xlsx, 10 records
+2025-09-16 00:44:22,960 [INFO] app.api.v1.routes.admin_exports: Advanced async export fad6abc3-0c3a-4fd7-a6dd-bc128c33ef29 completed successfully in 99ms
+2025-09-16 00:45:28,176 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:45:28,177 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:45:28,177 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-16 00:45:28,178 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 4 stages for collection 'users'
+2025-09-16 00:45:28,178 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'expertise_programs', 'users', 'profiles'}
+2025-09-16 00:45:28,179 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-16 00:45:28,676 [INFO] app.core.export_handlers: Excel export completed: students_with_computed_fields.xlsx, 10 records
+2025-09-16 00:45:28,679 [INFO] app.api.v1.routes.admin_exports: Advanced async export 3d8b6be6-f86f-45bb-886f-ced0b1317603 completed successfully in 123ms
+2025-09-16 02:00:49,874 [INFO] app.main: Mematikan aplikasi...
+2025-09-16 02:00:49,880 [INFO] app.main: Menutup WebSocket manager...
+2025-09-16 02:00:49,887 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-16 02:00:49,891 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-16 02:00:49,893 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-16 02:00:49,894 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-16 02:00:49,944 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-16 02:00:49,959 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-16 02:00:49,959 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-16 02:00:50,042 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-16 13:57:58,711 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-16 13:58:00,038 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-16 13:58:00,049 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-16 13:58:00,049 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-16 13:58:00,050 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-16 13:58:00,051 [INFO] app.main: Startup aplikasi berhasil
+2025-09-16 13:58:00,052 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-16 13:58:00,053 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-16 14:00:33,614 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=70c1147e-c441-4884-b60d-06dd4392dc34 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-16 14:00:33,615 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=70c1147e-c441-4884-b60d-06dd4392dc34 | successful=0/0 | failed=0 | time=0.93ms
+2025-09-16 15:30:52,009 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 521, in _configured_socket_interface
+    ssl_sock = ssl_context.wrap_socket(sock, server_hostname=host)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 512, in wrap_socket
+    return self.sslsocket_class._create(
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1070, in _create
+    self.do_handshake()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\ssl.py", line 1341, in do_handshake
+    self._sslobj.do_handshake()
+TimeoutError: _ssl.c:980: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 535, in _configured_socket_interface
+    _raise_connection_failure(address, exc, "SSL handshake failed: ", timeout_details=details)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: SSL handshake failed: ac-fb6bqxt-shard-00-00.6kpph5n.mongodb.net:27017: _ssl.c:980: The handshake operation timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-16 15:31:03,602 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 444, in _create_connection
+    raise err
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 437, in _create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-16 16:43:56,430 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 414, in command
+    return command(
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\network.py", line 198, in command
+    reply = receive_message(conn, request_id)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\network_layer.py", line 759, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(receive_data(conn, 16, deadline))
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\network_layer.py", line 343, in receive_data
+    wait_for_read(conn, deadline)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\network_layer.py", line 322, in wait_for_read
+    raise socket.timeout("timed out")
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1068, in connect
+    conn.hello()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 259, in hello
+    return self._hello(None, None)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 301, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 442, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 644, in _raise_connection_failure
+    _raise_connection_failure(self.address, error, timeout_details=details)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-00.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-16 18:11:34,749 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 413, in _create_connection
+    for res in socket.getaddrinfo(host, port, family=family, type=socket.SOCK_STREAM):  # type: ignore[attr-defined, unused-ignore]
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 149, in _raise_connection_failure
+    raise AutoReconnect(msg) from error
+pymongo.errors.AutoReconnect: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017: [Errno 11001] getaddrinfo failed (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-16 21:21:40,729 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 2 stages for collection 'users'
+2025-09-16 21:21:40,732 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-16 21:21:40,734 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-16 21:21:40,734 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 2 stages for collection 'users'
+2025-09-16 21:21:40,735 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-16 21:21:40,735 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-16 21:21:41,536 [INFO] app.core.export_handlers: Excel export completed: export_1758032272957.xlsx, 852 records
+2025-09-16 21:21:41,540 [INFO] app.api.v1.routes.admin_exports: Advanced async export 9de6c050-1e7d-477b-b10f-4fa032e2dc84 completed successfully in 595ms
+2025-09-16 21:24:43,059 [INFO] app.main: Mematikan aplikasi...
+2025-09-16 21:24:43,059 [INFO] app.main: Menutup WebSocket manager...
+2025-09-16 21:24:43,062 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-16 21:24:43,064 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-16 21:24:43,065 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-16 21:24:43,066 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-16 21:24:43,098 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-16 21:24:43,108 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-16 21:24:43,109 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-16 21:24:43,164 [INFO] app.main: Aplikasi berhasil dimatikan
