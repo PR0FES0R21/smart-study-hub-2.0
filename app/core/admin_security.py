@@ -4,6 +4,7 @@
 # ==============================================================================
 from typing import Dict, List, Set, Optional, Any
 from app.schemas.admin_export import AdvancedExportConfig, AdvancedJoinConfig, AdvancedFilterCondition
+from app.core.database_schema import database_schema
 import logging
 
 logger = logging.getLogger(__name__)
@@ -12,52 +13,8 @@ class AdminExportSecurityManager:
     """Enhanced security manager untuk admin export dengan flexible validation"""
     
     def __init__(self):
-        # Admin mendapat akses ke semua collections
-        self.admin_collections = {
-            "users", "profiles", "classes", "expertise_programs", "subjects",
-            "exam_sessions", "exams", "teaching_assignments", "academic_periods",
-            "departments", "notifications", "system_logs"  # Add more as needed
-        }
-        
-        # Collection relationship mapping untuk validation
-        self.collection_relationships = {
-            "users": {
-                "direct_joins": {"profiles": "profile_id", "exam_sessions": "_id", "teaching_assignments": "_id"},
-                "valid_foreign_keys": {"profile_id", "_id", "created_by", "updated_by"}
-            },
-            "profiles": {
-                "direct_joins": {"users": "user_id", "classes": "class_id"},
-                "valid_foreign_keys": {"user_id", "class_id", "_id"}
-            },
-            "classes": {
-                "direct_joins": {"expertise_programs": "expertise_id", "academic_periods": "academic_period_id", "profiles": "_id", "users": "homeroom_teacher_id"},
-                "valid_foreign_keys": {"expertise_id", "academic_period_id", "homeroom_teacher_id", "_id"}
-            },
-            "expertise_programs": {
-                "direct_joins": {"classes": "_id", "departments": "department_id"},
-                "valid_foreign_keys": {"department_id", "_id"}
-            },
-            "exam_sessions": {
-                "direct_joins": {"users": "student_id", "exams": "exam_id"},
-                "valid_foreign_keys": {"student_id", "exam_id", "_id"}
-            },
-            "exams": {
-                "direct_joins": {"teaching_assignments": "teaching_assignment_id", "academic_periods": "academic_period_id", "exam_sessions": "_id"},
-                "valid_foreign_keys": {"teaching_assignment_id", "academic_period_id", "_id"}
-            },
-            "teaching_assignments": {
-                "direct_joins": {"users": "teacher_id", "subjects": "subject_id", "classes": "class_id", "academic_periods": "academic_period_id", "exams": "_id"},
-                "valid_foreign_keys": {"teacher_id", "subject_id", "class_id", "academic_period_id", "_id"}
-            },
-            "subjects": {
-                "direct_joins": {"teaching_assignments": "_id"},
-                "valid_foreign_keys": {"_id"}
-            },
-            "academic_periods": {
-                "direct_joins": {"classes": "_id", "teaching_assignments": "_id", "exams": "_id"},
-                "valid_foreign_keys": {"_id"}
-            }
-        }
+        # Admin mendapat akses ke semua collections dari database schema
+        self.admin_collections = set(database_schema.get_all_collections())
     
     def validate_admin_access(self, user_roles: List[str]) -> bool:
         """Validate if user has admin access"""
@@ -282,23 +239,7 @@ class AdminExportSecurityManager:
     
     def get_collection_suggestions(self, current_collection: str) -> List[Dict[str, Any]]:
         """Get suggested collections that can be joined from current collection"""
-        if current_collection not in self.collection_relationships:
-            return []
-        
-        suggestions = []
-        rels = self.collection_relationships[current_collection]
-        direct_joins = rels.get("direct_joins", {})
-        
-        for target_collection, local_field in direct_joins.items():
-            suggestions.append({
-                "collection": target_collection,
-                "suggested_local_field": local_field,
-                "suggested_foreign_field": "_id",
-                "relationship_type": "direct",
-                "description": f"Join {current_collection} to {target_collection} via {local_field}"
-            })
-        
-        return suggestions
+        return database_schema.get_possible_joins(current_collection)
     
     def analyze_query_performance(self, config: AdvancedExportConfig) -> Dict[str, Any]:
         """Analyze query for potential performance issues"""

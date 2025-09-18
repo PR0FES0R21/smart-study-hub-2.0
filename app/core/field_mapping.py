@@ -3,6 +3,7 @@
 # Deskripsi: Field alias mapping system untuk export yang lebih user-friendly
 # ==============================================================================
 from typing import Dict, List, Optional, Any
+from app.core.database_schema import database_schema
 import logging
 
 logger = logging.getLogger(__name__)
@@ -53,9 +54,17 @@ class FieldMappingSystem:
             "expertise_programs": {
                 "_id": "ID",
                 "name": "Nama Jurusan",
-                "abbreviation": "Singkatan Jurusan",
-                "description": "Deskripsi Jurusan",
-                "head_of_department_id": "ID Ketua Jurusan"
+                "abbreviation": "Singkatan",
+                "description": "Deskripsi",
+                "head_of_department_id": "ID Kepala Jurusan"
+            },
+            "subjects": {
+                "_id": "ID",
+                "name": "Nama Mata Pelajaran",
+                "code": "Kode Mata Pelajaran",
+                "description": "Deskripsi",
+                "created_at": "Tanggal Dibuat",
+                "updated_at": "Tanggal Diperbarui"
             },
             "teaching_assignments": {
                 "_id": "ID",
@@ -63,6 +72,16 @@ class FieldMappingSystem:
                 "subject_id": "ID Mata Pelajaran",
                 "teacher_id": "ID Guru",
                 "academic_period_id": "ID Periode Akademik"
+            },
+            "academic_periods": {
+                "_id": "ID",
+                "year": "Tahun Akademik",
+                "semester": "Semester",
+                "status": "Status",
+                "start_date": "Tanggal Mulai",
+                "end_date": "Tanggal Selesai",
+                "created_at": "Tanggal Dibuat",
+                "updated_at": "Tanggal Diperbarui"
             },
             "question_banks": {
                 "_id": "ID",
@@ -75,17 +94,32 @@ class FieldMappingSystem:
                 "points": "Poin Soal",
                 "tags": "Tag Soal"
             },
+            "question_submissions": {
+                "_id": "ID",
+                "question_id": "ID Soal",
+                "submitted_by_teacher_id": "ID Guru Pengirim",
+                "coordination_assignment_id": "ID Tugas Koordinasi",
+                "academic_period_id": "ID Periode Akademik",
+                "purpose": "Tujuan",
+                "status": "Status",
+                "created_at": "Tanggal Dibuat",
+                "updated_at": "Tanggal Diperbarui"
+            },
             "question_sets": {
                 "_id": "ID",
                 "name": "Nama Set Soal",
                 "subject_id": "ID Mata Pelajaran",
                 "grade_level": "Tingkat Kelas",
                 "created_by_coordinator_id": "ID Pembuat",
+                "question_ids": "ID Soal-soal",
                 "status": "Status Set",
                 "is_public": "Akses Publik",
+                "access_permissions": "Izin Akses",
+                "metadata": "Metadata",
                 "description": "Deskripsi",
                 "version": "Versi",
                 "published_date": "Tanggal Publikasi",
+                "tags": "Tag",
                 "created_at": "Tanggal Dibuat",
                 "updated_at": "Tanggal Diperbarui"
             },
@@ -108,19 +142,28 @@ class FieldMappingSystem:
                 "_id": "ID",
                 "exam_id": "ID Ujian",
                 "student_id": "ID Siswa",
-                "score": "Skor",
+                "status": "Status",
                 "started_at": "Waktu Mulai",
                 "submitted_at": "Waktu Submit",
-                "time_spent_minutes": "Durasi (Menit)",
-                "status": "Status",
-                "answers": "Jawaban"
+                "score": "Skor",
+                "answers": "Jawaban",
+                "question_map": "Peta Soal",
+                "interaction_logs": "Log Interaksi",
+                "client_metadata": "Metadata Klien",
+                "completion_stats": "Statistik Penyelesaian",
+                "fraud_score": "Skor Kecurangan",
+                "is_flagged_for_review": "Ditandai untuk Review",
+                "violations": "Pelanggaran"
             },
             "academic_periods": {
                 "_id": "ID",
-                "name": "Nama Periode",
+                "year": "Tahun Akademik",
+                "semester": "Semester", 
+                "status": "Status",
                 "start_date": "Tanggal Mulai",
                 "end_date": "Tanggal Selesai",
-                "is_active": "Status Aktif"
+                "created_at": "Tanggal Dibuat",
+                "updated_at": "Tanggal Diperbarui"
             }
         }
         
@@ -302,16 +345,25 @@ class FieldMappingSystem:
         """Get available fields for specific collection with their aliases - COLLECTION SPECIFIC ONLY"""
         available_fields = []
         
-        # Get fields for the specific collection only
-        if collection in self.collection_fields:
-            collection_field_data = self.collection_fields[collection]
+        # Get fields from database schema
+        schema_fields = database_schema.get_collection_fields(collection)
+        collection_aliases = self.collection_fields.get(collection, {})
+        
+        for field_name, field_info in schema_fields.items():
+            # Skip sensitive fields unless explicitly requested
+            if field_info.get("sensitive", False):
+                continue
+                
+            alias = collection_aliases.get(field_name, field_name.replace("_", " ").title())
             
-            for field_name, alias in collection_field_data.items():
-                available_fields.append({
-                    "field": field_name,
-                    "alias": alias,
-                    "category": self._get_collection_field_category(collection, field_name)
-                })
+            available_fields.append({
+                "field": field_name,
+                "alias": alias,
+                "type": field_info.get("type", "unknown"),
+                "description": field_info.get("description", ""),
+                "category": self._get_collection_field_category(collection, field_name),
+                "sensitive": field_info.get("sensitive", False)
+            })
         
         return available_fields
     
@@ -333,7 +385,7 @@ class FieldMappingSystem:
                 return category
         return "other"
     
-    def create_smart_field_suggestions(self, collection: str) -> Dict[str, List[str]]:
+    def create_smart_field_suggestions(self, collection: str) -> Dict[str, List[Dict[str, Any]]]:
         """Create smart field suggestions based on collection - COLLECTION SPECIFIC ONLY"""
         suggestions = {
             "recommended": [],
@@ -341,36 +393,41 @@ class FieldMappingSystem:
             "advanced": []
         }
         
-        # Collection-specific suggestions - hanya field milik collection itu sendiri
-        if collection == "users":
-            suggestions["recommended"] = ["login_id", "email", "roles"]
-            suggestions["optional"] = ["is_active", "profile_id"]
-            suggestions["advanced"] = ["created_at", "updated_at", "onboarding_completed"]
+        # Get all fields from schema
+        schema_fields = database_schema.get_collection_fields(collection)
+        collection_aliases = self.collection_fields.get(collection, {})
         
-        elif collection == "profiles":
-            suggestions["recommended"] = ["full_name", "gender", "user_id"]
-            suggestions["optional"] = ["birth_date", "birth_place", "phone_number", "class_id"]
-            suggestions["advanced"] = ["address", "start_year", "end_year", "profile_picture_url"]
+        # Define field priority patterns
+        recommended_patterns = ["name", "title", "email", "login_id", "full_name", "status", "score"]
+        optional_patterns = ["date", "time", "level", "year", "type", "gender", "phone", "address"]
+        advanced_patterns = ["_id", "created_at", "updated_at", "metadata", "settings", "permissions"]
         
-        elif collection == "classes":
-            suggestions["recommended"] = ["name", "grade_level", "academic_year"]
-            suggestions["optional"] = ["expertise_id", "homeroom_teacher_id"]
-            suggestions["advanced"] = ["_id"]
-        
-        elif collection == "expertise_programs":
-            suggestions["recommended"] = ["name", "abbreviation"]
-            suggestions["optional"] = ["description", "head_of_department_id"]
-            suggestions["advanced"] = ["_id"]
-        
-        elif collection == "exams":
-            suggestions["recommended"] = ["title", "exam_type", "status"]
-            suggestions["optional"] = ["duration_minutes", "availability_start_time", "availability_end_time"]
-            suggestions["advanced"] = ["academic_period_id", "teaching_assignment_id", "question_ids"]
-        
-        elif collection == "exam_sessions":
-            suggestions["recommended"] = ["exam_id", "student_id", "score", "status"]
-            suggestions["optional"] = ["started_at", "submitted_at", "time_spent_minutes"]
-            suggestions["advanced"] = ["answers", "_id"]
+        for field_name, field_info in schema_fields.items():
+            # Skip sensitive fields
+            if field_info.get("sensitive", False):
+                continue
+            
+            alias = collection_aliases.get(field_name, field_name.replace("_", " ").title())
+            
+            field_suggestion = {
+                "field": field_name,
+                "alias": alias,
+                "type": field_info.get("type", "unknown"),
+                "description": field_info.get("description", "")
+            }
+            
+            # Categorize based on field name patterns
+            field_lower = field_name.lower()
+            
+            if any(pattern in field_lower for pattern in recommended_patterns):
+                suggestions["recommended"].append(field_suggestion)
+            elif any(pattern in field_lower for pattern in optional_patterns):
+                suggestions["optional"].append(field_suggestion)
+            elif any(pattern in field_lower for pattern in advanced_patterns):
+                suggestions["advanced"].append(field_suggestion)
+            else:
+                # Default to optional for unknown patterns
+                suggestions["optional"].append(field_suggestion)
         
         return suggestions
 
