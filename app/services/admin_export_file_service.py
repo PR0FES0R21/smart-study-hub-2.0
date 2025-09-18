@@ -49,11 +49,22 @@ class AdminExportFileService:
         """Generate unique file ID dengan prefix"""
         return f"adm_exp_{secrets.token_hex(4)}"
     
-    def generate_secure_filename(self, display_name: str, format_ext: str) -> Tuple[str, str]:
+    def get_file_extension(self, format: ExportFormat) -> str:
+        """Get proper file extension for export format"""
+        extension_map = {
+            ExportFormat.EXCEL: "xlsx",
+            ExportFormat.CSV: "csv",
+            ExportFormat.JSON: "json",
+            ExportFormat.PDF: "pdf"
+        }
+        return extension_map.get(format, format.value)
+    
+    def generate_secure_filename(self, display_name: str, format: ExportFormat) -> Tuple[str, str]:
         """Generate secure filename dan file_id"""
         file_id = self.generate_file_id()
         safe_name = self.sanitize_filename(display_name)
-        system_filename = f"{safe_name}_{file_id}.{format_ext}"
+        file_extension = self.get_file_extension(format)
+        system_filename = f"{safe_name}_{file_id}.{file_extension}"
         return file_id, system_filename
     
     def get_admin_export_path(self, system_filename: str) -> Path:
@@ -90,7 +101,7 @@ class AdminExportFileService:
             # Generate secure identifiers
             file_id, system_filename = self.generate_secure_filename(
                 display_name, 
-                format.value
+                format
             )
             
             # Calculate file size dan hash
@@ -205,7 +216,11 @@ class AdminExportFileService:
                 return None
             
             file_data["id"] = str(file_data["_id"])
-            return AdminExportFile(**file_data)
+            # Remove the MongoDB _id to avoid duplicate key issue
+            if '_id' in file_data:
+                del file_data['_id']
+            admin_file = AdminExportFile(**file_data)
+            return admin_file
             
         except Exception as e:
             logger.error(f"Error getting admin file {file_id}: {e}")
