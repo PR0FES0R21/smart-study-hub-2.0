@@ -189962,3 +189962,39 @@ pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-00.6kpph5n.mongodb.net:27017:
 2025-09-19 01:43:32,345 [INFO] app.main: Startup aplikasi berhasil
 2025-09-19 01:43:32,346 [INFO] app.core.redis_websocket: Starting Redis message listener
 2025-09-19 01:43:32,346 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-19 02:11:55,821 [INFO] app.main: Mematikan aplikasi...
+2025-09-19 02:11:55,835 [INFO] app.main: Menutup WebSocket manager...
+2025-09-19 02:11:55,842 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-19 02:11:55,850 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-19 02:11:55,853 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-19 02:11:55,856 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-19 02:11:55,898 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-19 02:11:55,912 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-19 02:11:55,913 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-19 02:11:56,023 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-19 02:12:08,263 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-19 02:12:09,511 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-19 02:12:09,536 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-19 02:12:09,537 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-19 02:12:09,537 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-19 02:12:09,538 [INFO] app.main: Startup aplikasi berhasil
+2025-09-19 02:12:09,539 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-19 02:12:09,540 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-19 02:12:39,394 [INFO] app.main: Mematikan aplikasi...
+2025-09-19 02:12:39,394 [INFO] app.main: Menutup WebSocket manager...
+2025-09-19 02:12:39,395 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-19 02:12:39,395 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-19 02:12:39,396 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-19 02:12:39,396 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-19 02:12:39,397 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-19 02:12:39,398 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-19 02:12:39,399 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-19 02:12:39,454 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-19 02:12:47,588 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-19 02:12:48,710 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-19 02:12:48,730 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-19 02:12:48,731 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-19 02:12:48,732 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-19 02:12:48,733 [INFO] app.main: Startup aplikasi berhasil
+2025-09-19 02:12:48,734 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-19 02:12:48,734 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)

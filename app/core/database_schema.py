@@ -267,8 +267,8 @@ class DatabaseSchemaManager:
         for target_collection, rel_info in relationships.items():
             joins.append({
                 "collection": target_collection,
-                "local_field": rel_info["local_field"],
-                "foreign_field": rel_info["foreign_field"],
+                "suggested_local_field": rel_info["local_field"],
+                "suggested_foreign_field": rel_info["foreign_field"],
                 "relationship_type": rel_info["type"],
                 "description": f"Join {collection} to {target_collection} via {rel_info['local_field']}"
             })

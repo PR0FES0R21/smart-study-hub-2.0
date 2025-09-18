@@ -58,12 +58,12 @@ class AdminExportSecurityManager:
         if errors:
             return {"valid": False, "errors": errors, "warnings": warnings}
         
-        # Check if this is a known relationship
-        from_rels = self.collection_relationships.get(from_collection, {})
-        direct_joins = from_rels.get("direct_joins", {})
+        # Get relationships from database schema
+        relationships = database_schema.get_collection_relationships(from_collection)
         
-        if to_collection in direct_joins:
-            expected_local_field = direct_joins[to_collection]
+        # Check if this is a known relationship
+        if to_collection in relationships:
+            expected_local_field = relationships[to_collection]["local_field"]
             if local_field != expected_local_field:
                 warnings.append(
                     f"Non-standard join: expected '{expected_local_field}' but got '{local_field}' "
@@ -71,24 +71,25 @@ class AdminExportSecurityManager:
                 )
         else:
             # This is a custom join - check if fields make sense
-            valid_fks = from_rels.get("valid_foreign_keys", set())
-            if local_field not in valid_fks and not local_field.endswith("_id") and local_field != "_id":
+            from_fields = database_schema.get_collection_fields(from_collection)
+            if local_field not in from_fields and not local_field.endswith("_id") and local_field != "_id":
                 warnings.append(
                     f"Unusual local field '{local_field}' for join from '{from_collection}'. "
-                    f"Consider using one of: {list(valid_fks)}"
+                    f"Field not found in collection schema."
                 )
         
         # Check foreign field (usually _id)
-        if foreign_field != "_id" and not foreign_field.endswith("_id"):
+        to_fields = database_schema.get_collection_fields(to_collection)
+        if foreign_field not in to_fields and foreign_field != "_id":
             warnings.append(
-                f"Unusual foreign field '{foreign_field}' in collection '{to_collection}'. "
+                f"Foreign field '{foreign_field}' not found in collection '{to_collection}'. "
                 f"Most joins use '_id' as foreign field."
             )
         
         return {
             "valid": True,
             "warnings": warnings,
-            "relationship_type": "known" if to_collection in direct_joins else "custom"
+            "relationship_type": "known" if to_collection in relationships else "custom"
         }
     
     def validate_nested_joins(self, joins: List[AdvancedJoinConfig], 
