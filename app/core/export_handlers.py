@@ -296,6 +296,7 @@ class ExportManager:
             ExportFormat.CSV: CSVExportHandler(),
             ExportFormat.JSON: JSONExportHandler()
         }
+        self._admin_file_service = None
     
     def is_format_supported(self, format: ExportFormat) -> bool:
         """Check if export format is supported"""
@@ -304,6 +305,10 @@ class ExportManager:
     def get_supported_formats(self) -> List[ExportFormat]:
         """Get list of supported export formats"""
         return [fmt for fmt, handler in self.handlers.items() if handler is not None]
+    
+    def set_admin_file_service(self, admin_file_service):
+        """Set admin file service untuk file tracking"""
+        self._admin_file_service = admin_file_service
     
     def export_data(self, data: List[Dict[str, Any]], format: ExportFormat, 
                    filename: Optional[str] = None, user_id: Optional[str] = None,
@@ -324,6 +329,42 @@ class ExportManager:
         }
         
         return handler.export(data, filename, user_id=user_id, **formatting_kwargs)
+    
+    async def export_data_with_admin_tracking(
+        self,
+        data: List[Dict[str, Any]],
+        format: ExportFormat,
+        display_name: str,
+        admin_id: str,
+        export_config: Dict[str, Any],
+        target_collections: List[str],
+        complexity_score: Optional[int] = None,
+        **export_kwargs
+    ) -> str:
+        """Export data dengan admin file tracking"""
+        if not self._admin_file_service:
+            # Fallback ke export biasa jika service tidak tersedia
+            return self.export_data(data, format, display_name, **export_kwargs)
+        
+        # Export data dulu
+        temp_file_path = self.export_data(data, format, display_name, **export_kwargs)
+        
+        # Save metadata ke database dengan file tracking
+        admin_file = await self._admin_file_service.save_export_file(
+            admin_id=admin_id,
+            display_name=display_name,
+            file_path=temp_file_path,
+            export_config=export_config,
+            target_collections=target_collections,
+            record_count=len(data),
+            format=format,
+            complexity_score=complexity_score
+        )
+        
+        logger.info(f"Admin export completed with tracking: {admin_file.file_id}")
+        
+        # Return path ke admin export file
+        return str(self._admin_file_service.get_admin_export_path(admin_file.system_filename))
     
     def estimate_file_size(self, data: List[Dict[str, Any]], format: ExportFormat) -> str:
         """Estimate the file size of exported data"""

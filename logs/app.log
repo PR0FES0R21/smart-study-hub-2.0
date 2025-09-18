@@ -187848,3 +187848,251 @@ pymongo.errors.AutoReconnect: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017: 
 2025-09-16 21:24:43,108 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
 2025-09-16 21:24:43,109 [INFO] app.main: WebSocket Redis bridge ditutup
 2025-09-16 21:24:43,164 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-16 22:30:22,483 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-16 22:30:24,086 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-16 22:30:24,105 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-16 22:30:24,106 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-16 22:30:24,107 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-16 22:30:24,108 [INFO] app.main: Startup aplikasi berhasil
+2025-09-16 22:30:24,109 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-16 22:30:24,109 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-16 23:20:45,853 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 444, in _create_connection
+    raise err
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 437, in _create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 141, in _raise_connection_failure
+    raise NetworkTimeout(msg) from error
+pymongo.errors.NetworkTimeout: ac-fb6bqxt-shard-00-00.6kpph5n.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-16 23:20:46,973 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 413, in _create_connection
+    for res in socket.getaddrinfo(host, port, family=family, type=socket.SOCK_STREAM):  # type: ignore[attr-defined, unused-ignore]
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+  File "C:\Users\sayog\AppData\Local\Programs\Python\Python310\lib\site-packages\pymongo\pool_shared.py", line 149, in _raise_connection_failure
+    raise AutoReconnect(msg) from error
+pymongo.errors.AutoReconnect: ac-fb6bqxt-shard-00-02.6kpph5n.mongodb.net:27017: [Errno 11001] getaddrinfo failed (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-17 01:35:57,235 [INFO] app.main: Mematikan aplikasi...
+2025-09-17 01:35:57,238 [INFO] app.main: Menutup WebSocket manager...
+2025-09-17 01:35:57,239 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-17 01:35:57,244 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-17 01:35:57,245 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-17 01:35:57,246 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-17 01:35:57,275 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-17 01:35:57,287 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-17 01:35:57,287 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-17 01:35:57,364 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-17 15:53:34,838 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-17 15:53:36,398 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-17 15:53:36,407 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-17 15:53:36,407 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-17 15:53:36,408 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-17 15:53:36,409 [INFO] app.main: Startup aplikasi berhasil
+2025-09-17 15:53:36,409 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-17 15:53:36,410 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-17 15:55:38,188 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5de7a959-f5c9-4379-94b9-47142dd7bc63 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-09-17 15:55:38,188 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5de7a959-f5c9-4379-94b9-47142dd7bc63 | successful=0/0 | failed=0 | time=0.71ms
+2025-09-17 15:58:38,176 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-17 15:58:38,177 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-17 15:58:38,178 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-17 15:58:38,178 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-17 15:58:38,179 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-17 15:58:38,179 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-17 15:58:39,196 [INFO] app.core.export_handlers: Excel export completed: export_1758099487540.xlsx, 714 records
+2025-09-17 15:58:39,198 [INFO] app.api.v1.routes.admin_exports: Advanced async export 5b6512c0-5253-4b1e-86dc-06868063cdea completed successfully in 764ms
+2025-09-17 16:09:16,841 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-17 16:09:16,842 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-17 16:09:16,843 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-17 16:09:16,845 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-17 16:09:16,845 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-17 16:09:16,846 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-17 16:09:17,880 [INFO] app.core.export_handlers: Excel export completed: export_1758099487540.xlsx, 714 records
+2025-09-17 16:09:17,882 [INFO] app.api.v1.routes.admin_exports: Advanced async export 7bc52e4c-d3b5-43a0-a1c0-22a60fa0d7e6 completed successfully in 786ms
+2025-09-17 16:18:28,946 [INFO] app.main: Mematikan aplikasi...
+2025-09-17 16:18:28,947 [INFO] app.main: Menutup WebSocket manager...
+2025-09-17 16:18:28,947 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-17 16:18:28,948 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-17 16:18:28,948 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-17 16:18:28,949 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-17 16:18:28,953 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-17 16:18:28,955 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-17 16:18:28,956 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-17 16:18:29,025 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-17 16:18:37,546 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-17 16:18:38,767 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-17 16:18:38,777 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-17 16:18:38,778 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-17 16:18:38,779 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-17 16:18:38,780 [INFO] app.main: Startup aplikasi berhasil
+2025-09-17 16:18:38,780 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-17 16:18:38,781 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-17 16:19:03,279 [INFO] app.main: Mematikan aplikasi...
+2025-09-17 16:19:03,281 [INFO] app.main: Menutup WebSocket manager...
+2025-09-17 16:19:03,281 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-17 16:19:03,282 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-17 16:19:03,283 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-17 16:19:03,284 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-17 16:19:03,286 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-17 16:19:03,288 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-17 16:19:03,290 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-17 16:19:03,399 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-17 16:19:13,476 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-17 16:19:15,050 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-17 16:19:15,060 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-17 16:19:15,061 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-17 16:19:15,062 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-17 16:19:15,063 [INFO] app.main: Startup aplikasi berhasil
+2025-09-17 16:19:15,064 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-17 16:19:15,065 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-17 16:19:30,456 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-17 16:19:30,457 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-17 16:19:30,458 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-17 16:19:30,458 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-17 16:19:30,459 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-17 16:19:30,459 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-17 16:19:31,529 [INFO] app.core.export_handlers: Excel export completed: export_1758099487540.xlsx, 714 records
+2025-09-17 16:19:31,669 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_c5503235 by admin 686a3396d20694199c01c06b
+2025-09-17 16:19:31,669 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_c5503235
+2025-09-17 16:19:31,673 [INFO] app.api.v1.routes.admin_exports: Advanced async export 6b020da4-df6f-4d74-b5d5-c953e2df4a59 completed successfully in 960ms
+2025-09-17 16:19:43,101 [ERROR] app.services.admin_export_file_service: Error listing admin files: 1 validation error for AdminExportFile
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('68ca7d234be538c293bcd47d'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+2025-09-17 16:19:43,102 [ERROR] app.api.v1.routes.admin_export_files: Error listing admin files: 1 validation error for AdminExportFile
+_id
+  Input should be a valid string [type=string_type, input_value=ObjectId('68ca7d234be538c293bcd47d'), input_type=ObjectId]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+2025-09-17 16:20:04,148 [INFO] app.main: Mematikan aplikasi...
+2025-09-17 16:20:04,148 [INFO] app.main: Menutup WebSocket manager...
+2025-09-17 16:20:04,149 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-17 16:20:04,150 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-17 16:20:04,151 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-17 16:20:04,151 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-17 16:20:04,153 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-17 16:20:04,154 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-17 16:20:04,154 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-17 16:20:04,219 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-17 16:21:28,445 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-17 16:21:29,393 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-17 16:21:29,404 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-17 16:21:29,405 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-17 16:21:29,406 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-17 16:21:29,406 [INFO] app.main: Startup aplikasi berhasil
+2025-09-17 16:21:29,407 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-17 16:21:29,408 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-17 16:23:11,549 [INFO] app.main: Mematikan aplikasi...
+2025-09-17 16:23:11,550 [INFO] app.main: Menutup WebSocket manager...
+2025-09-17 16:23:11,550 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-17 16:23:11,551 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-17 16:23:11,552 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-17 16:23:11,552 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-17 16:23:11,554 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-17 16:23:11,556 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-17 16:23:11,557 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-17 16:23:11,646 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 00:41:32,896 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 00:41:34,569 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 00:41:34,581 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 00:41:34,581 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 00:41:34,582 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 00:41:34,583 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 00:41:34,584 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 00:41:34,584 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 01:10:39,583 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 413, in _create_connection
+    for res in socket.getaddrinfo(host, port, family=family, type=socket.SOCK_STREAM):  # type: ignore[attr-defined, unused-ignore]
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 149, in _raise_connection_failure
+    raise AutoReconnect(msg) from error
+pymongo.errors.AutoReconnect: ac-fb6bqxt-shard-00-01.6kpph5n.mongodb.net:27017: [Errno 11001] getaddrinfo failed (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)
+2025-09-18 01:10:51,805 [ERROR] pymongo.client: MongoClient background task encountered an error:
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1033, in connect
+    networking_interface = _configured_socket_interface(self.address, self.opts)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 509, in _configured_socket_interface
+    sock = _create_connection(address, options)
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 413, in _create_connection
+    for res in socket.getaddrinfo(host, port, family=family, type=socket.SOCK_STREAM):  # type: ignore[attr-defined, unused-ignore]
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\mongo_client.py", line 2227, in _process_periodic_tasks
+    self._topology.update_pool()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\topology.py", line 688, in update_pool
+    server.pool.remove_stale_sockets(generation)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 979, in remove_stale_sockets
+    conn = self.connect()
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\synchronous\pool.py", line 1056, in connect
+    _raise_connection_failure(self.address, error, timeout_details=details)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sayog\OneDrive\Dokumen\code\SMART STUDY HUB 2.2\smart-study-hub-2.0\venv\Lib\site-packages\pymongo\pool_shared.py", line 149, in _raise_connection_failure
+    raise AutoReconnect(msg) from error
+pymongo.errors.AutoReconnect: ac-fb6bqxt-shard-00-02.6kpph5n.mongodb.net:27017: [Errno 11001] getaddrinfo failed (configured timeouts: socketTimeoutMS: 10000.0ms, connectTimeoutMS: 3000.0ms)

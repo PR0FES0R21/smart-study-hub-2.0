@@ -20,6 +20,7 @@ from app.schemas.admin_export import (
 from app.core.admin_security import admin_export_security
 from app.core.advanced_query_builder import AdvancedExportQueryBuilder
 from app.core.export_handlers import export_manager
+from app.services.admin_export_file_service import AdminExportFileService
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -193,19 +194,40 @@ async def execute_advanced_export(
                 
                 data = computed_fields_system.add_computed_fields_to_data(data, computed_fields_list)
             
-            # Export data dengan user_id dan formatting options
-            file_path = export_manager.export_data(
-                data, 
-                request.format, 
-                request.filename, 
-                user_id=user_id,
+            # Setup admin file service
+            admin_file_service = AdminExportFileService(db)
+            export_manager.set_admin_file_service(admin_file_service)
+            
+            # Extract target collections from config
+            target_collections = [request.config.main_collection]
+            if hasattr(request.config, 'joins') and request.config.joins:
+                target_collections.extend([join.collection for join in request.config.joins])
+            
+            # Prepare display name
+            display_name = request.filename or f"Admin Export {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+            if display_name.endswith(f'.{request.format.value}'):
+                display_name = display_name[:-len(f'.{request.format.value}')]
+            
+            # Export data dengan admin tracking
+            file_path = await export_manager.export_data_with_admin_tracking(
+                data=data,
+                format=request.format,
+                display_name=display_name,
+                admin_id=user_id,
+                export_config=request.config.model_dump(),
+                target_collections=list(set(target_collections)),
+                complexity_score=query_analysis.get("complexity_score"),
                 exclude_ids=request.formatting.exclude_ids,
                 use_aliases=request.formatting.use_aliases,
                 include_empty_fields=request.formatting.include_empty_fields
             )
             
-            # Generate file URL
-            file_url = f"/api/v1/exports/download/{os.path.basename(file_path)}"
+            # Extract file_id from filename for URL generation
+            filename_parts = os.path.basename(file_path).split('_')
+            file_id = '_'.join(filename_parts[-2:]).split('.')[0]  # Get the adm_exp_xxxx part
+            
+            # Generate secure file URL
+            file_url = f"/api/v1/admin/exports/files/{file_id}/download"
             
             execution_time = int((time.time() - start_time) * 1000)
             
@@ -497,17 +519,34 @@ async def _process_advanced_export_async(
                 json.dump(status_data, f)
             return
         
-        # Export data
+        # Export data dengan admin tracking
         status_data["progress"] = 75
         status_data["message"] = f"Exporting {len(data)} records..."
         with open(status_file, 'w') as f:
             json.dump(status_data, f)
         
-        file_path = export_manager.export_data(
-            data, 
-            format, 
-            filename, 
-            user_id=user_id,
+        # Setup admin file service
+        admin_file_service = AdminExportFileService(db)
+        export_manager.set_admin_file_service(admin_file_service)
+        
+        # Extract target collections from config
+        target_collections = [config.main_collection]
+        if hasattr(config, 'joins') and config.joins:
+            target_collections.extend([join.collection for join in config.joins])
+        
+        # Prepare display name
+        display_name = filename or f"Admin Export {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+        if display_name.endswith(f'.{format.value}'):
+            display_name = display_name[:-len(f'.{format.value}')]
+        
+        file_path = await export_manager.export_data_with_admin_tracking(
+            data=data,
+            format=format,
+            display_name=display_name,
+            admin_id=user_id,
+            export_config=config.model_dump(),
+            target_collections=list(set(target_collections)),
+            complexity_score=query_analysis.get("complexity_score"),
             exclude_ids=config.formatting.exclude_ids if hasattr(config, 'formatting') else True,
             use_aliases=config.formatting.use_aliases if hasattr(config, 'formatting') else True,
             include_empty_fields=config.formatting.include_empty_fields if hasattr(config, 'formatting') else False
@@ -519,7 +558,11 @@ async def _process_advanced_export_async(
         status_data["status"] = "completed"
         status_data["progress"] = 100
         status_data["message"] = f"Advanced export completed. {len(data)} records exported."
-        status_data["file_url"] = f"/api/v1/exports/download/{os.path.basename(file_path)}"
+        # Extract file_id dari filename untuk URL generation
+        filename_parts = os.path.basename(file_path).split('_')
+        file_id = '_'.join(filename_parts[-2:]).split('.')[0]  # Get the adm_exp_xxxx part
+        
+        status_data["file_url"] = f"/api/v1/admin/exports/files/{file_id}/download"
         status_data["completed_at"] = datetime.utcnow().isoformat()
         status_data["execution_time_ms"] = execution_time
         status_data["record_count"] = len(data)
