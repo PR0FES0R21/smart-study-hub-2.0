@@ -208,6 +208,51 @@ async def execute_advanced_export(
             if display_name.endswith(f'.{request.format.value}'):
                 display_name = display_name[:-len(f'.{request.format.value}')]
             
+            # Extract requested fields from config
+            requested_fields = []
+            join_aliases = {join.alias or join.collection for join in request.config.joins}
+            
+            def extract_join_fields(joins, parent_alias=""):
+                """Recursively extract fields from nested joins"""
+                for join in joins:
+                    alias = join.alias or join.collection
+                    full_alias = f"{parent_alias}.{alias}" if parent_alias else alias
+                    
+                    if join.fields:
+                        # Add specific join fields with full alias prefix
+                        for field in join.fields:
+                            field_path = f"{full_alias}.{field}"
+                            requested_fields.append(field_path)
+                            logger.debug(f"Added join field: {field_path}")
+                        # DON'T add the join alias itself if we have specific fields
+                    else:
+                        # If no specific fields, include the join alias
+                        requested_fields.append(full_alias)
+                        logger.debug(f"Added join alias: {full_alias}")
+                    
+                    # Handle nested joins recursively
+                    if hasattr(join, 'joins') and join.joins:
+                        extract_join_fields(join.joins, full_alias)
+            
+            # Add main collection fields (exclude join aliases)
+            logger.debug(f"Processing main collection fields: {request.config.fields}")
+            logger.debug(f"Join aliases to exclude: {join_aliases}")
+            if request.config.fields:
+                for field in request.config.fields:
+                    # Skip if this is a join alias, not an actual field
+                    if field not in join_aliases:
+                        requested_fields.append(field)
+                        logger.debug(f"✅ Added main field: {field}")
+                    else:
+                        logger.debug(f"❌ Skipped join alias: {field}")
+            
+            # Extract fields from all joins (including nested)
+            logger.debug(f"Processing joins: {len(request.config.joins)} joins found")
+            extract_join_fields(request.config.joins)
+            
+            logger.info(f"DEBUG FINAL REQUESTED FIELDS: {requested_fields}")
+            logger.info(f"DEBUG JOIN ALIASES EXCLUDED: {join_aliases}")
+            
             # Export data dengan admin tracking
             file_path = await export_manager.export_data_with_admin_tracking(
                 data=data,
@@ -219,7 +264,8 @@ async def execute_advanced_export(
                 complexity_score=query_analysis.get("complexity_score"),
                 exclude_ids=request.formatting.exclude_ids,
                 use_aliases=request.formatting.use_aliases,
-                include_empty_fields=request.formatting.include_empty_fields
+                include_empty_fields=request.formatting.include_empty_fields,
+                requested_fields=requested_fields if requested_fields else None
             )
             
             # Extract file_id from filename for URL generation
@@ -418,8 +464,56 @@ async def _execute_advanced_query(db: AsyncIOMotorDatabase, collection: str,
         if config.max_time_ms:
             options['maxTimeMS'] = config.max_time_ms
         
+        # Debug: Check sample data before aggregation
+        sample_user = await db[collection].find_one({'roles': 'student'})
+        if sample_user:
+            logger.info(f"DEBUG SAMPLE USER BEFORE LOOKUP: {sample_user}")
+            if 'profile_id' in sample_user:
+                logger.info(f"DEBUG USER HAS PROFILE_ID: {sample_user['profile_id']}")
+                # Check if profile exists
+                profile = await db['profiles'].find_one({'_id': sample_user['profile_id']})
+                if profile:
+                    logger.info(f"DEBUG PROFILE FOUND: {profile}")
+                else:
+                    logger.info("DEBUG: Profile not found for this user")
+            else:
+                logger.info("DEBUG: User has no profile_id field")
+        
         cursor = db[collection].aggregate(pipeline, **options)
         results = await cursor.to_list(length=None)
+        
+        # Debug logging
+        if results:
+            logger.info(f"DEBUG QUERY RESULTS: Found {len(results)} records")
+            logger.info(f"DEBUG FIRST RECORD KEYS: {list(results[0].keys())}")
+            if 'profiles' in results[0]:
+                profiles_data = results[0]['profiles']
+                logger.info(f"DEBUG PROFILES DATA: {profiles_data}")
+                
+                # Check if profiles is array and has classes data
+                if isinstance(profiles_data, list) and len(profiles_data) > 0:
+                    profile = profiles_data[0]
+                    logger.info(f"DEBUG FIRST PROFILE KEYS: {list(profile.keys())}")
+                    if 'classes' in profile:
+                        logger.info(f"DEBUG CLASSES DATA: {profile['classes']}")
+                    else:
+                        logger.info("DEBUG: No 'classes' field in profile")
+                        # Check if class_id exists for debugging
+                        if 'class_id' in profile:
+                            logger.info(f"DEBUG PROFILE HAS CLASS_ID: {profile['class_id']}")
+                            # Check if class exists in database
+                            class_doc = await db['classes'].find_one({'_id': profile['class_id']})
+                            if class_doc:
+                                logger.info(f"DEBUG CLASS FOUND: {class_doc}")
+                            else:
+                                logger.info("DEBUG: Class not found for this profile")
+                        else:
+                            logger.info("DEBUG: Profile has no class_id field")
+            else:
+                logger.info("DEBUG: No 'profiles' field in results")
+        else:
+            logger.info("DEBUG: No results returned from query")
+        
         return results
     
     except Exception as e:
@@ -519,6 +613,45 @@ async def _process_advanced_export_async(
                 json.dump(status_data, f)
             return
         
+        # Extract requested fields from config
+        requested_fields = []
+        join_aliases = {join.alias or join.collection for join in config.joins}
+        
+        def extract_join_fields(joins, parent_alias=""):
+            """Recursively extract fields from nested joins"""
+            for join in joins:
+                alias = join.alias or join.collection
+                full_alias = f"{parent_alias}.{alias}" if parent_alias else alias
+                
+                if join.fields:
+                    # Add specific join fields with full alias prefix
+                    for field in join.fields:
+                        field_path = f"{full_alias}.{field}"
+                        requested_fields.append(field_path)
+                        logger.debug(f"Added join field: {field_path}")
+                else:
+                    # If no specific fields, include the join alias
+                    requested_fields.append(full_alias)
+                    logger.debug(f"Added join alias: {full_alias}")
+                
+                # Handle nested joins recursively
+                if hasattr(join, 'joins') and join.joins:
+                    extract_join_fields(join.joins, full_alias)
+        
+        # Add main collection fields (exclude join aliases)
+        if config.fields:
+            for field in config.fields:
+                # Skip if this is a join alias, not an actual field
+                if field not in join_aliases:
+                    requested_fields.append(field)
+                    logger.debug(f"Added main field: {field}")
+        
+        # Extract fields from all joins (including nested)
+        extract_join_fields(config.joins)
+        
+        logger.debug(f"Final requested fields: {requested_fields}")
+        logger.debug(f"Join aliases excluded: {join_aliases}")
+        
         # Export data dengan admin tracking
         status_data["progress"] = 75
         status_data["message"] = f"Exporting {len(data)} records..."
@@ -549,7 +682,8 @@ async def _process_advanced_export_async(
             complexity_score=query_analysis.get("complexity_score"),
             exclude_ids=config.formatting.exclude_ids if hasattr(config, 'formatting') else True,
             use_aliases=config.formatting.use_aliases if hasattr(config, 'formatting') else True,
-            include_empty_fields=config.formatting.include_empty_fields if hasattr(config, 'formatting') else False
+            include_empty_fields=config.formatting.include_empty_fields if hasattr(config, 'formatting') else False,
+            requested_fields=requested_fields if requested_fields else None
         )
         
         execution_time = int((time.time() - start_time) * 1000)

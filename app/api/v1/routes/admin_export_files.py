@@ -126,13 +126,19 @@ async def download_admin_export_file(
         
         logger.info(f"Admin file download: {file_id} by {admin_id}")
         
+        # Get proper file extension for download filename
+        from app.schemas.export import ExportFormat
+        format_enum = ExportFormat(admin_file.file_metadata.format)
+        file_extension = admin_file_service.get_file_extension(format_enum)
+        download_filename = f"{admin_file.display_name}.{file_extension}"
+        
         # Return file dengan proper headers
         return FileResponse(
             path=str(file_path),
-            filename=f"{admin_file.display_name}.{admin_file.file_metadata.format}",
+            filename=download_filename,
             media_type='application/octet-stream',
             headers={
-                "Content-Disposition": f"attachment; filename=\"{admin_file.display_name}.{admin_file.file_metadata.format}\""
+                "Content-Disposition": f"attachment; filename=\"{download_filename}\""
             }
         )
     

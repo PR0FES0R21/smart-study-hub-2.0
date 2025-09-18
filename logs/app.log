@@ -188136,3 +188136,1164 @@ pymongo.errors.AutoReconnect: ac-fb6bqxt-shard-00-02.6kpph5n.mongodb.net:27017: 
 2025-09-18 20:10:30,939 [INFO] app.main: Startup aplikasi berhasil
 2025-09-18 20:10:30,941 [INFO] app.core.redis_websocket: Starting Redis message listener
 2025-09-18 20:10:30,942 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 20:14:35,353 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 20:14:35,353 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 20:14:35,354 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 20:14:35,355 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 20:14:35,355 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 20:14:35,356 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 20:14:36,403 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 2.xlsx, 714 records
+2025-09-18 20:14:36,532 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_18a16d05 by admin 686a3396d20694199c01c06b
+2025-09-18 20:14:36,533 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_18a16d05
+2025-09-18 20:14:36,536 [INFO] app.api.v1.routes.admin_exports: Advanced async export e6f7601a-164f-4346-9aef-c48610bc09a8 completed successfully in 916ms
+2025-09-18 20:15:03,347 [INFO] app.services.admin_export_file_service: Download logged: adm_exp_18a16d05 by admin 686a3396d20694199c01c06b
+2025-09-18 20:15:03,348 [INFO] app.api.v1.routes.admin_export_files: Admin file download: adm_exp_18a16d05 by 686a3396d20694199c01c06b
+2025-09-18 20:15:21,229 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 20:15:21,230 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 20:15:21,231 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 20:15:21,231 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 20:15:21,232 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 20:15:21,232 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 20:15:21,234 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 20:15:21,235 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 20:15:21,235 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 20:15:21,296 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 20:15:31,328 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 20:15:32,465 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 20:15:32,477 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 20:15:32,478 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 20:15:32,479 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 20:15:32,479 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 20:15:32,480 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 20:15:32,480 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 20:16:38,436 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 20:16:38,437 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 20:16:38,438 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 20:16:38,439 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 20:16:38,440 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 20:16:38,441 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 20:16:38,443 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 20:16:38,444 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 20:16:38,445 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 20:16:38,497 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 20:16:45,661 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 20:16:46,914 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 20:16:46,927 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 20:16:46,927 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 20:16:46,928 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 20:16:46,929 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 20:16:46,931 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 20:16:46,932 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 20:23:15,732 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 20:23:15,733 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 20:23:15,734 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 20:23:15,735 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 20:23:15,735 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 20:23:15,736 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 20:23:15,738 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 20:23:15,739 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 20:23:15,740 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 20:23:15,800 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 20:23:23,161 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 20:23:24,417 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 20:23:24,434 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 20:23:24,435 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 20:23:24,435 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 20:23:24,436 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 20:23:24,437 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 20:23:24,437 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 20:25:23,372 [INFO] app.services.admin_export_file_service: Download logged: adm_exp_18a16d05 by admin 686a3396d20694199c01c06b
+2025-09-18 20:25:23,373 [INFO] app.api.v1.routes.admin_export_files: Admin file download: adm_exp_18a16d05 by 686a3396d20694199c01c06b
+2025-09-18 20:27:20,965 [INFO] app.services.admin_export_file_service: Download logged: adm_exp_18a16d05 by admin 686a3396d20694199c01c06b
+2025-09-18 20:27:20,966 [INFO] app.api.v1.routes.admin_export_files: Admin file download: adm_exp_18a16d05 by 686a3396d20694199c01c06b
+2025-09-18 20:28:14,030 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 20:28:14,030 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 20:28:14,031 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 20:28:14,031 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 20:28:14,032 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 20:28:14,033 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 20:28:15,090 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 2.xlsx, 714 records
+2025-09-18 20:28:15,206 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_062430d0 by admin 686a3396d20694199c01c06b
+2025-09-18 20:28:15,207 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_062430d0
+2025-09-18 20:28:15,209 [INFO] app.api.v1.routes.admin_exports: Advanced async export e3ace178-6781-4adb-8bea-a08a7713492c completed successfully in 919ms
+2025-09-18 20:29:15,903 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 20:29:15,912 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 20:29:15,925 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 20:29:15,937 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 20:29:15,953 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 20:29:15,960 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 20:29:17,057 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 2.xlsx, 714 records
+2025-09-18 20:29:17,181 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_bbf091cd by admin 686a3396d20694199c01c06b
+2025-09-18 20:29:17,183 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_bbf091cd
+2025-09-18 20:29:17,188 [INFO] app.api.v1.routes.admin_exports: Advanced async export ef796d86-c201-44ec-9a85-db2e31c968c9 completed successfully in 938ms
+2025-09-18 20:29:54,595 [INFO] app.services.admin_export_file_service: Download logged: adm_exp_bbf091cd by admin 686a3396d20694199c01c06b
+2025-09-18 20:29:54,596 [INFO] app.api.v1.routes.admin_export_files: Admin file download: adm_exp_bbf091cd by 686a3396d20694199c01c06b
+2025-09-18 20:35:58,987 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 20:35:58,988 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 20:35:58,988 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 20:35:58,989 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 20:35:58,989 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 20:35:58,990 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 20:35:58,991 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 20:35:58,992 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 20:35:58,993 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 20:35:59,047 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 20:36:06,432 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 20:36:07,562 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 20:36:07,593 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 20:36:07,594 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 20:36:07,594 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 20:36:07,594 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 20:36:07,595 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 20:36:07,596 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 20:36:34,379 [INFO] app.services.admin_export_file_service: Download logged: adm_exp_bbf091cd by admin 686a3396d20694199c01c06b
+2025-09-18 20:36:34,379 [INFO] app.api.v1.routes.admin_export_files: Admin file download: adm_exp_bbf091cd by 686a3396d20694199c01c06b
+2025-09-18 20:59:21,405 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 20:59:21,406 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 20:59:21,407 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 20:59:21,409 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 20:59:21,410 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 20:59:21,410 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 20:59:21,412 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 20:59:21,413 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 20:59:21,414 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 20:59:21,475 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 20:59:29,093 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 20:59:30,373 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 20:59:30,390 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 20:59:30,391 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 20:59:30,392 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 20:59:30,392 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 20:59:30,393 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 20:59:30,393 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:00:36,202 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:00:36,203 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'classes', 'profiles'}
+2025-09-18 21:00:36,203 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:00:36,204 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:00:36,204 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'classes', 'profiles'}
+2025-09-18 21:00:36,205 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:00:37,313 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 2.xlsx, 714 records
+2025-09-18 21:00:37,471 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_9a76f361 by admin 686a3396d20694199c01c06b
+2025-09-18 21:00:37,472 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_9a76f361
+2025-09-18 21:00:37,475 [INFO] app.api.v1.routes.admin_exports: Advanced async export 3eda3b1c-8d68-4c2a-b740-d309e56adf6e completed successfully in 1025ms
+2025-09-18 21:00:54,918 [INFO] app.services.admin_export_file_service: Download logged: adm_exp_9a76f361 by admin 686a3396d20694199c01c06b
+2025-09-18 21:00:54,919 [INFO] app.api.v1.routes.admin_export_files: Admin file download: adm_exp_9a76f361 by 686a3396d20694199c01c06b
+2025-09-18 21:32:16,992 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:32:16,993 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:32:16,993 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:32:16,994 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:32:16,994 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:32:16,995 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:32:16,996 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:32:16,997 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:32:16,997 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:32:17,065 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:32:24,500 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:32:25,706 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:32:25,718 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:32:25,719 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:32:25,719 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:32:25,720 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:32:25,721 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:32:25,722 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:34:02,202 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:34:02,202 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:34:02,203 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:34:02,203 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:34:02,204 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:34:02,205 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:34:02,206 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:34:02,207 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:34:02,207 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:34:02,262 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:34:10,046 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:34:11,333 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:34:11,356 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:34:11,357 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:34:11,358 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:34:11,359 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:34:11,360 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:34:11,361 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:34:24,306 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:34:24,307 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:34:24,307 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:34:24,308 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:34:24,308 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:34:24,309 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:34:24,310 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:34:24,311 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:34:24,312 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:34:24,385 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:34:32,155 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:34:33,305 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:34:33,329 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:34:33,330 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:34:33,330 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:34:33,331 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:34:33,332 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:34:33,333 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:34:37,785 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:34:37,786 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:34:37,786 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:34:37,787 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:34:37,787 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:34:37,788 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:34:37,789 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:34:37,790 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:34:37,790 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:34:37,858 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:34:44,759 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:34:45,916 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:34:45,938 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:34:45,939 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:34:45,939 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:34:45,941 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:34:45,944 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:34:45,944 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:35:56,774 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:35:56,775 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 21:35:56,775 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:35:56,776 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:35:56,776 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 21:35:56,777 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:35:57,938 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 2.xlsx, 714 records
+2025-09-18 21:35:58,079 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_f666017b by admin 686a3396d20694199c01c06b
+2025-09-18 21:35:58,080 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_f666017b
+2025-09-18 21:35:58,085 [INFO] app.api.v1.routes.admin_exports: Advanced async export ad752346-3073-4724-8f33-ea6709a140b3 completed successfully in 1034ms
+2025-09-18 21:36:59,945 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:36:59,946 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:36:59,947 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:36:59,947 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:36:59,948 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:36:59,948 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:36:59,950 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:36:59,951 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:36:59,952 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:37:00,005 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:37:12,702 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:37:13,871 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:37:13,888 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:37:13,889 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:37:13,890 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:37:13,890 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:37:13,892 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:37:13,892 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:37:24,139 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:37:24,140 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 21:37:24,140 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:37:24,141 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:37:24,141 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 21:37:24,142 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:37:25,308 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025.xlsx, 714 records
+2025-09-18 21:37:25,442 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_86ef167e by admin 686a3396d20694199c01c06b
+2025-09-18 21:37:25,443 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_86ef167e
+2025-09-18 21:37:25,450 [INFO] app.api.v1.routes.admin_exports: Advanced async export fe356829-b85e-452d-b7a5-f8fbae90a3a7 completed successfully in 1039ms
+2025-09-18 21:38:24,390 [INFO] app.services.admin_export_file_service: Download logged: adm_exp_86ef167e by admin 686a3396d20694199c01c06b
+2025-09-18 21:38:24,392 [INFO] app.api.v1.routes.admin_export_files: Admin file download: adm_exp_86ef167e by 686a3396d20694199c01c06b
+2025-09-18 21:38:32,973 [INFO] app.services.admin_export_file_service: Download logged: adm_exp_86ef167e by admin 686a3396d20694199c01c06b
+2025-09-18 21:38:32,974 [INFO] app.api.v1.routes.admin_export_files: Admin file download: adm_exp_86ef167e by 686a3396d20694199c01c06b
+2025-09-18 21:42:48,929 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:42:48,930 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:42:48,930 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:42:48,931 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:42:48,931 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:42:48,932 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:42:48,933 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:42:48,934 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:42:48,934 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:42:49,027 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:42:56,896 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:42:58,086 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:42:58,111 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:42:58,112 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:42:58,113 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:42:58,114 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:42:58,118 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:42:58,119 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:43:02,789 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:43:02,790 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:43:02,790 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:43:02,791 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:43:02,791 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:43:02,792 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:43:02,793 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:43:02,793 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:43:02,794 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:43:02,874 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:43:10,215 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:43:11,362 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:43:11,378 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:43:11,380 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:43:11,381 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:43:11,382 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:43:11,386 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:43:11,388 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:44:44,181 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:44:44,182 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-18 21:44:44,182 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:44:44,183 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:44:44,183 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-18 21:44:44,183 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:44:45,001 [ERROR] app.core.export_handlers: Excel export failed: name 'worksheet' is not defined
+2025-09-18 21:44:45,002 [ERROR] app.api.v1.routes.admin_exports: Advanced async export 60191d37-2ed4-447f-9680-24091be1fb1a failed: name 'worksheet' is not defined
+2025-09-18 21:46:10,640 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:46:10,641 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-18 21:46:10,641 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:46:10,642 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:46:10,642 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-18 21:46:10,643 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:46:11,307 [ERROR] app.core.export_handlers: Excel export failed: name 'worksheet' is not defined
+2025-09-18 21:46:11,308 [ERROR] app.api.v1.routes.admin_exports: Advanced async export 42c26b1a-e42f-4425-b1dc-8e05faaed6a3 failed: name 'worksheet' is not defined
+2025-09-18 21:47:13,173 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:47:13,174 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:47:13,175 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:47:13,175 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:47:13,176 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:47:13,176 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:47:13,178 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:47:13,179 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:47:13,180 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:47:13,262 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:47:21,249 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:47:22,612 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:47:22,642 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:47:22,647 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:47:22,648 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:47:22,649 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:47:22,651 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:47:22,652 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:47:22,746 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:47:22,750 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'classes', 'users'}
+2025-09-18 21:47:22,760 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:47:22,770 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:47:22,774 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'classes', 'users'}
+2025-09-18 21:47:22,776 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:47:23,841 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 1.xlsx, 714 records
+2025-09-18 21:47:23,968 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_6fd7e786 by admin 686a3396d20694199c01c06b
+2025-09-18 21:47:23,969 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_6fd7e786
+2025-09-18 21:47:23,971 [INFO] app.api.v1.routes.admin_exports: Advanced async export 7f01f088-dba8-4389-be11-cdb62b2ba78f completed successfully in 897ms
+2025-09-18 21:48:59,582 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:48:59,586 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:48:59,593 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:48:59,600 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:48:59,605 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:48:59,610 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:48:59,620 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:48:59,636 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:48:59,653 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:48:59,764 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:49:08,686 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:49:09,893 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:49:09,908 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:49:09,909 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:49:09,909 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:49:09,910 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:49:09,911 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:49:09,911 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:49:30,667 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:49:30,667 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:49:30,667 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:49:30,669 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:49:30,669 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:49:30,670 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:49:30,672 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:49:30,676 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:49:30,679 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:49:30,786 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:49:38,792 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:49:39,967 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:49:39,988 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:49:39,990 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:49:39,991 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:49:39,992 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:49:39,993 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:49:39,994 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:49:46,951 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:49:46,952 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 21:49:46,953 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:49:46,955 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:49:46,956 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 21:49:46,957 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:49:47,893 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 3.xlsx, 714 records
+2025-09-18 21:49:48,006 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_91a67d3c by admin 686a3396d20694199c01c06b
+2025-09-18 21:49:48,007 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_91a67d3c
+2025-09-18 21:49:48,011 [INFO] app.api.v1.routes.admin_exports: Advanced async export 70b884e3-4f3e-4d5c-a2b6-bd642625f64c completed successfully in 722ms
+2025-09-18 21:52:57,925 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:52:57,929 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:52:57,929 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:52:57,931 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:52:57,933 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:52:57,937 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:52:57,943 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:52:57,948 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:52:57,954 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:52:58,033 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:53:06,369 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:53:07,552 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:53:07,577 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:53:07,582 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:53:07,585 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:53:07,587 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:53:07,588 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:53:07,589 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:54:00,080 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:54:00,081 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:54:00,083 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:54:00,085 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:54:00,086 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:54:00,088 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:54:00,089 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:54:00,093 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:54:00,097 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:54:00,169 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:54:08,931 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:54:10,100 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:54:10,109 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:54:10,110 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:54:10,111 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:54:10,112 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:54:10,113 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:54:10,115 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:54:21,720 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:54:21,722 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:54:21,723 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:54:21,725 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:54:21,727 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:54:21,730 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:54:21,731 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:54:21,733 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:54:21,733 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:54:21,804 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:54:30,433 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:54:31,601 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:54:31,627 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:54:31,631 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:54:31,635 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:54:31,637 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:54:31,641 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:54:31,643 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:54:49,907 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:54:49,908 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-18 21:54:49,909 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:54:49,910 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:54:49,910 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-18 21:54:49,911 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:54:50,913 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 4.xlsx, 714 records
+2025-09-18 21:54:51,108 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_a3ede4f4 by admin 686a3396d20694199c01c06b
+2025-09-18 21:54:51,109 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_a3ede4f4
+2025-09-18 21:54:51,113 [INFO] app.api.v1.routes.admin_exports: Advanced async export 65c06ca4-c8ec-4dac-8fa7-d8bae8decdda completed successfully in 950ms
+2025-09-18 21:55:09,349 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:55:09,349 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:55:09,350 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:55:09,351 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:55:09,352 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:55:09,352 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:55:09,354 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:55:09,355 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:55:09,356 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:55:09,436 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:55:19,641 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:55:20,955 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:55:20,972 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:55:20,974 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:55:20,975 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:55:20,975 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:55:20,976 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:55:20,977 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:55:21,143 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:55:21,144 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes'}
+2025-09-18 21:55:21,145 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:55:21,146 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:55:21,146 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes'}
+2025-09-18 21:55:21,147 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:55:21,990 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 5.xlsx, 714 records
+2025-09-18 21:55:22,076 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_716f50db by admin 686a3396d20694199c01c06b
+2025-09-18 21:55:22,077 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_716f50db
+2025-09-18 21:55:22,079 [INFO] app.api.v1.routes.admin_exports: Advanced async export d3dbce34-962f-4e7f-b74a-cf51ca91cad0 completed successfully in 661ms
+2025-09-18 21:56:07,825 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:56:07,826 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:56:07,827 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:56:07,827 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:56:07,828 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:56:07,828 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:56:07,830 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:56:07,831 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:56:07,831 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:56:07,892 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:56:31,396 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:56:32,842 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:56:32,853 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:56:32,854 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:56:32,855 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:56:32,856 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:56:32,857 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:56:32,858 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:56:41,430 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:56:42,696 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:56:42,706 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:56:42,707 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:56:42,707 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:56:42,707 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:56:42,708 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:56:42,708 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:56:44,211 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:56:44,212 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:56:44,213 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:56:44,214 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:56:44,214 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:56:44,215 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:56:44,216 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:56:44,217 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:56:44,218 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:56:44,289 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:56:51,935 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:56:52,928 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:56:52,936 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:56:52,937 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:56:52,937 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:56:52,938 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:56:52,939 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:56:52,939 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:57:04,388 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:57:04,389 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'classes', 'users'}
+2025-09-18 21:57:04,389 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:57:04,390 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:57:04,391 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'classes', 'users'}
+2025-09-18 21:57:04,392 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:57:05,410 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 6.xlsx, 714 records
+2025-09-18 21:57:05,528 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_ad8f7e0d by admin 686a3396d20694199c01c06b
+2025-09-18 21:57:05,529 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_ad8f7e0d
+2025-09-18 21:57:05,532 [INFO] app.api.v1.routes.admin_exports: Advanced async export 47a1974b-2a54-4808-93de-debf188d9982 completed successfully in 869ms
+2025-09-18 21:58:08,720 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:58:08,720 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:58:08,721 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:58:08,721 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:58:08,722 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:58:08,723 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:58:08,724 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:58:08,725 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:58:08,726 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:58:08,824 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:58:16,739 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:58:18,227 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:58:18,244 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:58:18,244 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:58:18,245 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:58:18,245 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:58:18,246 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:58:18,247 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:58:19,002 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:58:19,003 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:58:19,003 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:58:19,004 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:58:19,004 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:58:19,005 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:58:19,006 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:58:19,007 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:58:19,008 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:58:19,109 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 21:58:26,818 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:58:28,352 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:58:28,366 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:58:28,367 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:58:28,368 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:58:28,369 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:58:28,371 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:58:28,372 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:58:36,788 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:58:38,122 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:58:38,134 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:58:38,135 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:58:38,135 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:58:38,136 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:58:38,137 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:58:38,138 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:58:45,560 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 21:58:46,768 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 21:58:46,777 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 21:58:46,777 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 21:58:46,778 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 21:58:46,778 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 21:58:46,779 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 21:58:46,780 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 21:59:08,726 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:59:08,726 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'classes', 'users'}
+2025-09-18 21:59:08,727 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 21:59:08,727 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 21:59:08,728 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'classes', 'users'}
+2025-09-18 21:59:08,728 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 21:59:09,957 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 7.xlsx, 714 records
+2025-09-18 21:59:10,072 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_88e2edbb by admin 686a3396d20694199c01c06b
+2025-09-18 21:59:10,073 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_88e2edbb
+2025-09-18 21:59:10,076 [INFO] app.api.v1.routes.admin_exports: Advanced async export c4a00cf3-d10b-4c26-93ae-35c6a4d6d283 completed successfully in 1076ms
+2025-09-18 21:59:31,796 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 21:59:31,796 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 21:59:31,797 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 21:59:31,798 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 21:59:31,799 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 21:59:31,799 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 21:59:31,801 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 21:59:31,801 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 21:59:31,802 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 21:59:31,859 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:00:36,611 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:00:37,969 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:00:38,005 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:00:38,006 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:00:38,010 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:00:38,011 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:00:38,012 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:00:38,013 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:00:38,152 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 22:00:38,153 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-18 22:00:38,153 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:00:38,156 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 22:00:38,157 [INFO] app.core.advanced_query_builder: Collections involved: {'profiles', 'users', 'classes'}
+2025-09-18 22:00:38,160 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:00:39,146 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:00:39,305 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_7bdf6600 by admin 686a3396d20694199c01c06b
+2025-09-18 22:00:39,305 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_7bdf6600
+2025-09-18 22:00:39,307 [INFO] app.api.v1.routes.admin_exports: Advanced async export 5739aa57-12ee-477b-bad0-429b5ebd7173 completed successfully in 891ms
+2025-09-18 22:00:45,165 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:00:45,166 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:00:45,167 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:00:45,168 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:00:45,169 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:00:45,169 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:00:45,171 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:00:45,172 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:00:45,173 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:00:45,248 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:04:10,868 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:04:12,165 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:04:12,190 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:04:12,191 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:04:12,191 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:04:12,192 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:04:12,193 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:04:12,193 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:04:12,435 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 22:04:12,436 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 22:04:12,437 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:04:12,438 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 22:04:12,438 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 22:04:12,439 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:04:13,124 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email']
+2025-09-18 22:04:13,124 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email']
+2025-09-18 22:04:13,128 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (3): ['_id', 'email', 'login_id']
+2025-09-18 22:04:13,128 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (5): ['email', 'login_id', 'profiles.full_name', 'profiles.birth_date', 'profiles.classes.grade_level']
+2025-09-18 22:04:13,129 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (3): ['_id', 'email', 'login_id']
+2025-09-18 22:04:13,286 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:04:13,398 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_2824cd38 by admin 686a3396d20694199c01c06b
+2025-09-18 22:04:13,399 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_2824cd38
+2025-09-18 22:04:13,401 [INFO] app.api.v1.routes.admin_exports: Advanced async export 36da6f68-3f7f-409a-a78d-a39ee37e15dc completed successfully in 730ms
+2025-09-18 22:06:27,406 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:06:27,407 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:06:27,408 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:06:27,409 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:06:27,410 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:06:27,411 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:06:27,413 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:06:27,414 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:06:27,415 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:06:27,482 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:06:35,255 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:06:36,430 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:06:36,438 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:06:36,438 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:06:36,439 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:06:36,439 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:06:36,440 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:06:36,441 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:06:42,346 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:06:42,347 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:06:42,347 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:06:42,348 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:06:42,348 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:06:42,349 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:06:42,351 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:06:42,352 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:06:42,352 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:06:42,424 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:06:50,093 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:06:52,093 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:06:52,133 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:06:52,133 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:06:52,134 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:06:52,134 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:06:52,135 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:06:52,135 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:07:00,543 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 22:07:00,544 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 22:07:00,544 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:07:00,545 [INFO] app.core.advanced_query_builder: Generated advanced pipeline with 3 stages for collection 'users'
+2025-09-18 22:07:00,545 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 22:07:00,546 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:07:01,193 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email']
+2025-09-18 22:07:01,193 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email']
+2025-09-18 22:07:01,196 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (3): ['_id', 'email', 'login_id']
+2025-09-18 22:07:01,197 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (5): ['email', 'login_id', 'profiles.full_name', 'profiles.birth_date', 'profiles.classes.grade_level']
+2025-09-18 22:07:01,197 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (3): ['_id', 'email', 'login_id']
+2025-09-18 22:07:01,350 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:07:01,473 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_2f702480 by admin 686a3396d20694199c01c06b
+2025-09-18 22:07:01,473 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_2f702480
+2025-09-18 22:07:01,475 [INFO] app.api.v1.routes.admin_exports: Advanced async export 72d683d7-904b-4dba-96f0-16a8f821893f completed successfully in 691ms
+2025-09-18 22:07:38,672 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:07:38,673 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:07:38,673 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:07:38,674 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:07:38,675 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:07:38,675 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:07:38,676 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:07:38,677 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:07:38,678 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:07:38,749 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:07:46,024 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:07:47,474 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:07:47,497 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:07:47,498 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:07:47,499 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:07:47,500 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:07:47,502 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:07:47,503 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:08:13,658 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:08:13,659 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:08:13,659 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:08:13,660 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:08:13,660 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:08:13,661 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:08:13,662 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:08:13,663 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:08:13,664 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:08:13,722 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:08:21,138 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:08:23,008 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:08:23,016 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:08:23,016 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:08:23,017 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:08:23,018 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:08:23,019 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:08:23,020 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:09:08,677 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:09:08,677 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1}}]
+2025-09-18 22:09:08,678 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes'}
+2025-09-18 22:09:08,678 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:09:08,679 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:09:08,679 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1}}]
+2025-09-18 22:09:08,680 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'profiles', 'classes'}
+2025-09-18 22:09:08,681 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:09:09,390 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:09:09,391 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email']
+2025-09-18 22:09:09,392 [INFO] app.api.v1.routes.admin_exports: DEBUG: No 'profiles' field in results
+2025-09-18 22:09:09,400 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email']
+2025-09-18 22:09:09,401 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email']
+2025-09-18 22:09:09,405 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (3): ['_id', 'email', 'login_id']
+2025-09-18 22:09:09,406 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (5): ['email', 'login_id', 'profiles.full_name', 'profiles.birth_date', 'profiles.classes.grade_level']
+2025-09-18 22:09:09,407 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (3): ['_id', 'email', 'login_id']
+2025-09-18 22:09:09,578 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:09:09,687 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_922fd864 by admin 686a3396d20694199c01c06b
+2025-09-18 22:09:09,687 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_922fd864
+2025-09-18 22:09:09,690 [INFO] app.api.v1.routes.admin_exports: Advanced async export 42af3342-eea8-4bf7-9b7a-bea0fc7ab200 completed successfully in 750ms
+2025-09-18 22:09:53,053 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:09:53,054 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:09:53,055 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:09:53,056 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:09:53,057 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:09:53,057 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:09:53,059 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:09:53,060 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:09:53,061 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:09:53,148 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:10:01,353 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:10:02,765 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:10:02,793 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:10:02,794 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:10:02,795 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:10:02,795 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:10:02,796 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:10:02,797 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:10:19,647 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:10:19,648 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:10:19,648 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:10:19,648 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:10:19,649 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:10:19,649 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:10:19,651 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:10:19,651 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:10:19,652 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:10:19,706 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:10:35,534 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:10:36,952 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:10:36,969 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:10:36,970 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:10:36,972 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:10:36,975 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:10:36,979 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:10:36,981 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:10:44,466 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:10:44,467 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1}}]
+2025-09-18 22:10:44,468 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'classes', 'profiles'}
+2025-09-18 22:10:44,469 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:10:44,470 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:10:44,471 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1}}]
+2025-09-18 22:10:44,472 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'classes', 'profiles'}
+2025-09-18 22:10:44,474 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:10:44,823 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:10:44,825 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:10:44,906 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:10:45,383 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:10:45,387 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email']
+2025-09-18 22:10:45,393 [INFO] app.api.v1.routes.admin_exports: DEBUG: No 'profiles' field in results
+2025-09-18 22:10:45,440 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email']
+2025-09-18 22:10:45,445 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email']
+2025-09-18 22:10:45,454 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (3): ['_id', 'email', 'login_id']
+2025-09-18 22:10:45,455 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (5): ['email', 'login_id', 'profiles.full_name', 'profiles.birth_date', 'profiles.classes.grade_level']
+2025-09-18 22:10:45,458 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (3): ['_id', 'email', 'login_id']
+2025-09-18 22:10:45,717 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:10:45,818 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_00cba0b1 by admin 686a3396d20694199c01c06b
+2025-09-18 22:10:45,819 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_00cba0b1
+2025-09-18 22:10:45,822 [INFO] app.api.v1.routes.admin_exports: Advanced async export b86664e6-c613-4715-bc80-0a58b50abb9d completed successfully in 1082ms
+2025-09-18 22:11:19,764 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:11:19,765 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:11:19,765 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:11:19,766 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:11:19,766 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:11:19,767 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:11:19,768 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:11:19,769 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:11:19,769 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:11:19,850 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:11:27,105 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:11:28,386 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:11:28,398 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:11:28,398 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:11:28,399 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:11:28,400 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:11:28,401 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:11:28,402 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:11:51,804 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:11:51,804 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1, 'profiles': 1}}]
+2025-09-18 22:11:51,805 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'classes', 'profiles'}
+2025-09-18 22:11:51,805 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:11:51,806 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:11:51,807 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1, 'profiles': 1}}]
+2025-09-18 22:11:51,807 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'classes', 'profiles'}
+2025-09-18 22:11:51,808 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:11:52,133 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:11:52,134 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:11:52,185 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:11:52,882 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:11:52,883 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:11:52,884 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILES DATA: [{'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'class_id': ObjectId('687e01044593234141867820')}]
+2025-09-18 22:11:52,895 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:11:52,896 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email', 'profiles._id', 'profiles.full_name', 'profiles.birth_date', 'profiles.class_id']
+2025-09-18 22:11:52,903 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (7): ['_id', 'email', 'login_id', 'profiles._id', 'profiles.birth_date', 'profiles.class_id', 'profiles.full_name']
+2025-09-18 22:11:52,904 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (5): ['email', 'login_id', 'profiles.full_name', 'profiles.birth_date', 'profiles.classes.grade_level']
+2025-09-18 22:11:52,905 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (5): ['_id', 'email', 'login_id', 'profiles.birth_date', 'profiles.full_name']
+2025-09-18 22:11:53,158 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:11:53,394 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_e6779d6f by admin 686a3396d20694199c01c06b
+2025-09-18 22:11:53,395 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_e6779d6f
+2025-09-18 22:11:53,397 [INFO] app.api.v1.routes.admin_exports: Advanced async export 586088d3-5a90-4a37-870c-11e8cd7756a7 completed successfully in 1334ms
+2025-09-18 22:15:01,202 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:15:01,204 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:15:01,205 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:15:01,205 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:15:01,206 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:15:01,206 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:15:01,208 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:15:01,208 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:15:01,209 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:15:01,275 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:15:08,662 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:15:10,155 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:15:10,165 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:15:10,166 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:15:10,167 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:15:10,167 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:15:10,169 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:15:10,169 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:15:57,956 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:15:57,957 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1, 'profiles': 1}}]
+2025-09-18 22:15:57,960 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'classes', 'profiles'}
+2025-09-18 22:15:57,962 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:15:57,964 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:15:57,966 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1, 'profiles': 1}}]
+2025-09-18 22:15:57,969 [INFO] app.core.advanced_query_builder: Collections involved: {'users', 'classes', 'profiles'}
+2025-09-18 22:15:57,972 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:15:58,442 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:15:58,442 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:15:58,530 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:15:59,371 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:15:59,371 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:15:59,372 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILES DATA: [{'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'class_id': ObjectId('687e01044593234141867820')}]
+2025-09-18 22:15:59,372 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST PROFILE KEYS: ['_id', 'full_name', 'birth_date', 'class_id']
+2025-09-18 22:15:59,373 [INFO] app.api.v1.routes.admin_exports: DEBUG: No 'classes' field in profile
+2025-09-18 22:15:59,373 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE HAS CLASS_ID: 687e01044593234141867820
+2025-09-18 22:15:59,449 [INFO] app.api.v1.routes.admin_exports: DEBUG CLASS FOUND: {'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'academic_year': '2025/2026', 'homeroom_teacher_id': ObjectId('686a3396d20694199c01c06b')}
+2025-09-18 22:15:59,465 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:15:59,466 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email', 'profiles._id', 'profiles.full_name', 'profiles.birth_date', 'profiles.class_id']
+2025-09-18 22:15:59,475 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (7): ['_id', 'email', 'login_id', 'profiles._id', 'profiles.birth_date', 'profiles.class_id', 'profiles.full_name']
+2025-09-18 22:15:59,476 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (5): ['email', 'login_id', 'profiles.full_name', 'profiles.birth_date', 'profiles.classes.grade_level']
+2025-09-18 22:15:59,477 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (5): ['_id', 'email', 'login_id', 'profiles.birth_date', 'profiles.full_name']
+2025-09-18 22:15:59,622 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:15:59,764 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_8f715a14 by admin 686a3396d20694199c01c06b
+2025-09-18 22:15:59,765 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_8f715a14
+2025-09-18 22:15:59,767 [INFO] app.api.v1.routes.admin_exports: Advanced async export dccb045f-24e9-4dac-9d6b-8796d8d57b93 completed successfully in 1493ms
+2025-09-18 22:16:44,303 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:16:44,303 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:16:44,304 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:16:44,305 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:16:44,305 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:16:44,306 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:16:44,307 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:16:44,308 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:16:44,309 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:16:44,386 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:16:51,840 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:16:53,222 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:16:53,248 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:16:53,249 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:16:53,250 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:16:53,250 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:16:53,251 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:16:53,252 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:17:15,693 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:17:15,693 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:17:15,694 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:17:15,694 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:17:15,695 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:17:15,695 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:17:15,697 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:17:15,698 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:17:15,698 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:17:15,776 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:17:23,230 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:17:24,424 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:17:24,450 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:17:24,451 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:17:24,451 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:17:24,452 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:17:24,452 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:17:24,453 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:17:45,186 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:17:45,187 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1, 'classes': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1, 'profiles': 1}}]
+2025-09-18 22:17:45,188 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 22:17:45,188 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:17:45,189 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:17:45,189 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1, 'classes': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1, 'profiles': 1}}]
+2025-09-18 22:17:45,190 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'users', 'profiles'}
+2025-09-18 22:17:45,190 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:17:45,619 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:17:45,623 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:17:45,691 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:17:46,227 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:17:46,228 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:17:46,229 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILES DATA: [{'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'class_id': ObjectId('687e01044593234141867820'), 'classes': [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12}]}]
+2025-09-18 22:17:46,230 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST PROFILE KEYS: ['_id', 'full_name', 'birth_date', 'class_id', 'classes']
+2025-09-18 22:17:46,231 [INFO] app.api.v1.routes.admin_exports: DEBUG CLASSES DATA: [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12}]
+2025-09-18 22:17:46,313 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:17:46,317 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email', 'profiles._id', 'profiles.full_name', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes._id', 'profiles.classes.grade_level']
+2025-09-18 22:17:46,359 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (10): ['_id', 'email', 'login_id', 'profiles._id', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes', 'profiles.classes._id', 'profiles.classes.grade_level', 'profiles.full_name']
+2025-09-18 22:17:46,360 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (5): ['email', 'login_id', 'profiles.full_name', 'profiles.birth_date', 'profiles.classes.grade_level']
+2025-09-18 22:17:46,362 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (7): ['_id', 'email', 'login_id', 'profiles.birth_date', 'profiles.classes', 'profiles.classes.grade_level', 'profiles.full_name']
+2025-09-18 22:17:46,829 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:17:47,001 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_2b34703c by admin 686a3396d20694199c01c06b
+2025-09-18 22:17:47,004 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_2b34703c
+2025-09-18 22:17:47,006 [INFO] app.api.v1.routes.admin_exports: Advanced async export b8c73f4b-0252-44ad-88cf-79e824fb829f completed successfully in 1454ms
+2025-09-18 22:19:42,689 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:19:42,690 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:19:42,690 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:19:42,691 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:19:42,691 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:19:42,692 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:19:42,693 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:19:42,694 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:19:42,694 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:19:42,766 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:19:50,219 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:19:51,614 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:19:51,623 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:19:51,624 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:19:51,625 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:19:51,626 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:19:51,627 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:19:51,627 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:20:15,805 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:20:15,806 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:20:15,806 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:20:15,807 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:20:15,807 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:20:15,808 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:20:15,809 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:20:15,810 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:20:15,811 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:20:15,875 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:20:23,536 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:20:24,626 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:20:24,639 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:20:24,640 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:20:24,641 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:20:24,642 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:20:24,643 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:20:24,645 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:20:59,225 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:20:59,227 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1, 'classes': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1, 'profiles': 1}}]
+2025-09-18 22:20:59,228 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 22:20:59,229 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:20:59,231 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:20:59,232 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$project': {'grade_level': 1, '_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, '_id': 1, 'class_id': 1, 'classes': 1}}]}}, {'$project': {'_id': 1, 'email': 1, 'login_id': 1, 'profiles': 1}}]
+2025-09-18 22:20:59,233 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'users'}
+2025-09-18 22:20:59,235 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:20:59,604 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:20:59,605 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:20:59,684 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:21:00,398 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:21:00,399 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:21:00,400 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILES DATA: [{'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'class_id': ObjectId('687e01044593234141867820'), 'classes': [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12}]}]
+2025-09-18 22:21:00,400 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST PROFILE KEYS: ['_id', 'full_name', 'birth_date', 'class_id', 'classes']
+2025-09-18 22:21:00,401 [INFO] app.api.v1.routes.admin_exports: DEBUG CLASSES DATA: [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12}]
+2025-09-18 22:21:00,421 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:21:00,422 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email', 'profiles._id', 'profiles.full_name', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes._id', 'profiles.classes.grade_level']
+2025-09-18 22:21:00,433 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (10): ['_id', 'email', 'login_id', 'profiles._id', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes', 'profiles.classes._id', 'profiles.classes.grade_level', 'profiles.full_name']
+2025-09-18 22:21:00,433 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (5): ['email', 'login_id', 'profiles.full_name', 'profiles.birth_date', 'profiles.classes.grade_level']
+2025-09-18 22:21:00,434 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (5): ['email', 'login_id', 'profiles.birth_date', 'profiles.classes.grade_level', 'profiles.full_name']
+2025-09-18 22:21:00,630 [INFO] app.core.export_handlers: Excel export completed: import data 18 september 2025 8.xlsx, 714 records
+2025-09-18 22:21:00,775 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_639f3bcd by admin 686a3396d20694199c01c06b
+2025-09-18 22:21:00,775 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_639f3bcd
+2025-09-18 22:21:00,778 [INFO] app.api.v1.routes.admin_exports: Advanced async export 8fa73748-8b0b-42a0-abba-30824158c4f9 completed successfully in 1285ms
+2025-09-18 22:24:40,620 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:24:40,621 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$lookup': {'from': 'expertise_programs', 'localField': 'expertise_id', 'foreignField': '_id', 'as': 'expertise_programs', 'pipeline': [{'$project': {'abbreviation': 1, '_id': 1}}]}}, {'$project': {'name': 1, 'grade_level': 1, '_id': 1, 'expertise_id': 1, 'expertise_programs': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, 'gender': 1, '_id': 1, 'class_id': 1, 'classes': 1}}]}}, {'$project': {'_id': 1, 'login_id': 1, 'email': 1, 'profiles': 1}}]
+2025-09-18 22:24:40,622 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-18 22:24:40,622 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:24:40,623 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:24:40,623 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$lookup': {'from': 'expertise_programs', 'localField': 'expertise_id', 'foreignField': '_id', 'as': 'expertise_programs', 'pipeline': [{'$project': {'abbreviation': 1, '_id': 1}}]}}, {'$project': {'name': 1, 'grade_level': 1, '_id': 1, 'expertise_id': 1, 'expertise_programs': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, 'gender': 1, '_id': 1, 'class_id': 1, 'classes': 1}}]}}, {'$project': {'_id': 1, 'login_id': 1, 'email': 1, 'profiles': 1}}]
+2025-09-18 22:24:40,624 [INFO] app.core.advanced_query_builder: Collections involved: {'classes', 'profiles', 'expertise_programs', 'users'}
+2025-09-18 22:24:40,624 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:24:41,210 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:24:41,211 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:24:41,257 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:24:42,140 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:24:42,141 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:24:42,142 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILES DATA: [{'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'class_id': ObjectId('687e01044593234141867820'), 'classes': [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'expertise_programs': [{'_id': ObjectId('68824cd9ed968052635f41b9'), 'abbreviation': 'TKJ'}]}]}]
+2025-09-18 22:24:42,143 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST PROFILE KEYS: ['_id', 'full_name', 'gender', 'birth_date', 'class_id', 'classes']
+2025-09-18 22:24:42,143 [INFO] app.api.v1.routes.admin_exports: DEBUG CLASSES DATA: [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'expertise_programs': [{'_id': ObjectId('68824cd9ed968052635f41b9'), 'abbreviation': 'TKJ'}]}]
+2025-09-18 22:24:42,166 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:24:42,167 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email', 'profiles._id', 'profiles.full_name', 'profiles.gender', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes._id', 'profiles.classes.grade_level', 'profiles.classes.expertise_id', 'profiles.classes.name', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation']
+2025-09-18 22:24:42,188 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (15): ['_id', 'email', 'login_id', 'profiles._id', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes', 'profiles.classes._id', 'profiles.classes.expertise_id', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation', 'profiles.classes.grade_level', 'profiles.classes.name', 'profiles.full_name', 'profiles.gender']
+2025-09-18 22:24:42,189 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (8): ['login_id', 'email', 'profiles.full_name', 'profiles.birth_date', 'profiles.gender', 'profiles.classes.name', 'profiles.classes.grade_level', 'profiles.classes.expertise_programs.abbreviation']
+2025-09-18 22:24:42,190 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (9): ['email', 'login_id', 'profiles.birth_date', 'profiles.classes', 'profiles.classes.expertise_programs.abbreviation', 'profiles.classes.grade_level', 'profiles.classes.name', 'profiles.full_name', 'profiles.gender']
+2025-09-18 22:24:42,463 [INFO] app.core.export_handlers: Excel export completed: export_1758209006353.xlsx, 714 records
+2025-09-18 22:24:42,586 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_16fe20bb by admin 686a3396d20694199c01c06b
+2025-09-18 22:24:42,586 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_16fe20bb
+2025-09-18 22:24:42,588 [INFO] app.api.v1.routes.admin_exports: Advanced async export ddc238af-7067-481e-a71c-bf16c0cdfec6 completed successfully in 1467ms
+2025-09-18 22:27:46,970 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:27:46,970 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:27:46,971 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:27:46,972 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:27:46,972 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:27:46,973 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:27:46,974 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:27:46,975 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:27:46,975 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:27:47,055 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:27:54,919 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:27:56,458 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:27:56,488 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:27:56,489 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:27:56,490 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:27:56,490 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:27:56,492 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:27:56,493 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:28:06,844 [INFO] app.main: Mematikan aplikasi...
+2025-09-18 22:28:06,844 [INFO] app.main: Menutup WebSocket manager...
+2025-09-18 22:28:06,845 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-09-18 22:28:06,845 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-09-18 22:28:06,846 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-09-18 22:28:06,846 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-09-18 22:28:06,848 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-09-18 22:28:06,849 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-09-18 22:28:06,849 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-09-18 22:28:06,956 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-09-18 22:28:14,799 [INFO] app.main: Memulai aplikasi: School Management System
+2025-09-18 22:28:16,044 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-09-18 22:28:16,052 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-09-18 22:28:16,053 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-09-18 22:28:16,054 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-09-18 22:28:16,054 [INFO] app.main: Startup aplikasi berhasil
+2025-09-18 22:28:16,055 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-09-18 22:28:16,055 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-09-18 22:29:24,512 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:29:24,513 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$lookup': {'from': 'expertise_programs', 'localField': 'expertise_id', 'foreignField': '_id', 'as': 'expertise_programs', 'pipeline': [{'$project': {'abbreviation': 1, '_id': 1}}]}}, {'$project': {'name': 1, 'grade_level': 1, '_id': 1, 'expertise_id': 1, 'expertise_programs': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, 'gender': 1, '_id': 1, 'class_id': 1, 'classes': 1}}]}}, {'$project': {'_id': 1, 'login_id': 1, 'email': 1, 'profiles': 1}}]
+2025-09-18 22:29:24,513 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'profiles', 'classes', 'users'}
+2025-09-18 22:29:24,514 [INFO] app.core.advanced_query_builder: Complexity score: 2
+2025-09-18 22:29:24,515 [INFO] app.core.advanced_query_builder: Generated pipeline with 3 stages for collection 'users'
+2025-09-18 22:29:24,515 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$lookup': {'from': 'expertise_programs', 'localField': 'expertise_id', 'foreignField': '_id', 'as': 'expertise_programs', 'pipeline': [{'$project': {'abbreviation': 1, '_id': 1}}]}}, {'$project': {'name': 1, 'grade_level': 1, '_id': 1, 'expertise_id': 1, 'expertise_programs': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, 'gender': 1, '_id': 1, 'class_id': 1, 'classes': 1}}]}}, {'$project': {'_id': 1, 'login_id': 1, 'email': 1, 'profiles': 1}}]
+2025-09-18 22:29:24,516 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'profiles', 'classes', 'users'}
+2025-09-18 22:29:24,517 [INFO] app.core.advanced_query_builder: Complexity score: 4
+2025-09-18 22:29:24,973 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:29:24,974 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:29:25,069 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:29:26,053 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:29:26,054 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:29:26,054 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILES DATA: [{'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'class_id': ObjectId('687e01044593234141867820'), 'classes': [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'expertise_programs': [{'_id': ObjectId('68824cd9ed968052635f41b9'), 'abbreviation': 'TKJ'}]}]}]
+2025-09-18 22:29:26,055 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST PROFILE KEYS: ['_id', 'full_name', 'gender', 'birth_date', 'class_id', 'classes']
+2025-09-18 22:29:26,055 [INFO] app.api.v1.routes.admin_exports: DEBUG CLASSES DATA: [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'expertise_programs': [{'_id': ObjectId('68824cd9ed968052635f41b9'), 'abbreviation': 'TKJ'}]}]
+2025-09-18 22:29:26,079 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email', 'profiles']
+2025-09-18 22:29:26,079 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email', 'profiles._id', 'profiles.full_name', 'profiles.gender', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes._id', 'profiles.classes.grade_level', 'profiles.classes.expertise_id', 'profiles.classes.name', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation']
+2025-09-18 22:29:26,102 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (15): ['_id', 'email', 'login_id', 'profiles._id', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes', 'profiles.classes._id', 'profiles.classes.expertise_id', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation', 'profiles.classes.grade_level', 'profiles.classes.name', 'profiles.full_name', 'profiles.gender']
+2025-09-18 22:29:26,103 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (8): ['login_id', 'email', 'profiles.full_name', 'profiles.birth_date', 'profiles.gender', 'profiles.classes.name', 'profiles.classes.grade_level', 'profiles.classes.expertise_programs.abbreviation']
+2025-09-18 22:29:26,104 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (8): ['email', 'login_id', 'profiles.birth_date', 'profiles.classes.expertise_programs.abbreviation', 'profiles.classes.grade_level', 'profiles.classes.name', 'profiles.full_name', 'profiles.gender']
+2025-09-18 22:29:26,311 [INFO] app.core.export_handlers: Excel export completed: export_1758209006353.xlsx, 714 records
+2025-09-18 22:29:26,425 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_eff0ae79 by admin 686a3396d20694199c01c06b
+2025-09-18 22:29:26,425 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_eff0ae79
+2025-09-18 22:29:26,427 [INFO] app.api.v1.routes.admin_exports: Advanced async export c1aebd5e-e7c8-4016-8ff3-03a163f5eed5 completed successfully in 1527ms
+2025-09-18 22:34:49,347 [INFO] app.core.advanced_query_builder: Generated pipeline with 4 stages for collection 'users'
+2025-09-18 22:34:49,348 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$lookup': {'from': 'expertise_programs', 'localField': 'expertise_id', 'foreignField': '_id', 'as': 'expertise_programs', 'pipeline': [{'$project': {'abbreviation': 1, '_id': 1}}]}}, {'$project': {'name': 1, 'grade_level': 1, 'expertise_programs': 1, '_id': 1, 'expertise_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, 'gender': 1, 'classes': 1, '_id': 1, 'class_id': 1}}]}}, {'$lookup': {'from': 'exam_sessions', 'localField': '_id', 'foreignField': '_id', 'as': 'exam_sessions', 'pipeline': [{'$project': {'score': 1, '_id': 1}}]}}, {'$project': {'_id': 1, 'login_id': 1, 'email': 1, 'profiles': 1, 'exam_sessions': 1}}]
+2025-09-18 22:34:49,349 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'classes', 'users', 'exam_sessions', 'profiles'}
+2025-09-18 22:34:49,349 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-18 22:34:49,350 [INFO] app.core.advanced_query_builder: Generated pipeline with 4 stages for collection 'users'
+2025-09-18 22:34:49,350 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$lookup': {'from': 'expertise_programs', 'localField': 'expertise_id', 'foreignField': '_id', 'as': 'expertise_programs', 'pipeline': [{'$project': {'abbreviation': 1, '_id': 1}}]}}, {'$project': {'name': 1, 'grade_level': 1, 'expertise_programs': 1, '_id': 1, 'expertise_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, 'gender': 1, 'classes': 1, '_id': 1, 'class_id': 1}}]}}, {'$lookup': {'from': 'exam_sessions', 'localField': '_id', 'foreignField': '_id', 'as': 'exam_sessions', 'pipeline': [{'$project': {'score': 1, '_id': 1}}]}}, {'$project': {'_id': 1, 'login_id': 1, 'email': 1, 'profiles': 1, 'exam_sessions': 1}}]
+2025-09-18 22:34:49,351 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'classes', 'users', 'exam_sessions', 'profiles'}
+2025-09-18 22:34:49,352 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-18 22:34:49,911 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:34:49,912 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:34:49,985 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:34:51,252 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:34:51,254 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email', 'profiles', 'exam_sessions']
+2025-09-18 22:34:51,255 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILES DATA: [{'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'class_id': ObjectId('687e01044593234141867820'), 'classes': [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'expertise_programs': [{'_id': ObjectId('68824cd9ed968052635f41b9'), 'abbreviation': 'TKJ'}]}]}]
+2025-09-18 22:34:51,256 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST PROFILE KEYS: ['_id', 'full_name', 'gender', 'birth_date', 'class_id', 'classes']
+2025-09-18 22:34:51,256 [INFO] app.api.v1.routes.admin_exports: DEBUG CLASSES DATA: [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'expertise_programs': [{'_id': ObjectId('68824cd9ed968052635f41b9'), 'abbreviation': 'TKJ'}]}]
+2025-09-18 22:34:51,290 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email', 'profiles', 'exam_sessions']
+2025-09-18 22:34:51,291 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email', 'profiles._id', 'profiles.full_name', 'profiles.gender', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes._id', 'profiles.classes.grade_level', 'profiles.classes.expertise_id', 'profiles.classes.name', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation', 'exam_sessions']
+2025-09-18 22:34:51,310 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (16): ['_id', 'email', 'exam_sessions', 'login_id', 'profiles._id', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes', 'profiles.classes._id', 'profiles.classes.expertise_id', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation', 'profiles.classes.grade_level', 'profiles.classes.name', 'profiles.full_name', 'profiles.gender']
+2025-09-18 22:34:51,311 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (11): ['login_id', 'email', 'profiles.full_name', 'profiles.birth_date', 'profiles.gender', 'profiles.classes', 'profiles.classes.name', 'profiles.classes.grade_level', 'profiles.classes.expertise_programs', 'profiles.classes.expertise_programs.abbreviation', 'exam_sessions.score']
+2025-09-18 22:34:51,311 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (11): ['email', 'login_id', 'profiles.birth_date', 'profiles.classes._id', 'profiles.classes.expertise_id', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation', 'profiles.classes.grade_level', 'profiles.classes.name', 'profiles.full_name', 'profiles.gender']
+2025-09-18 22:34:51,591 [INFO] app.core.export_handlers: Excel export completed: export_1758209661739.xlsx, 714 records
+2025-09-18 22:34:51,776 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_d95a9054 by admin 686a3396d20694199c01c06b
+2025-09-18 22:34:51,776 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_d95a9054
+2025-09-18 22:34:51,778 [INFO] app.api.v1.routes.admin_exports: Advanced async export a49d25b7-4096-4c15-9e0e-fb0b993f763a completed successfully in 1949ms
+2025-09-18 22:37:31,630 [INFO] app.core.advanced_query_builder: Generated pipeline with 4 stages for collection 'users'
+2025-09-18 22:37:31,631 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$lookup': {'from': 'expertise_programs', 'localField': 'expertise_id', 'foreignField': '_id', 'as': 'expertise_programs', 'pipeline': [{'$project': {'abbreviation': 1, '_id': 1}}]}}, {'$project': {'name': 1, 'grade_level': 1, 'expertise_programs': 1, '_id': 1, 'expertise_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, 'gender': 1, 'classes': 1, '_id': 1, 'class_id': 1}}]}}, {'$lookup': {'from': 'exam_sessions', 'localField': '_id', 'foreignField': 'student_id', 'as': 'exam_sessions', 'pipeline': [{'$project': {'score': 1, '_id': 1}}]}}, {'$project': {'_id': 1, 'login_id': 1, 'email': 1, 'profiles': 1, 'exam_sessions': 1}}]
+2025-09-18 22:37:31,632 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'classes', 'users', 'exam_sessions', 'profiles'}
+2025-09-18 22:37:31,633 [INFO] app.core.advanced_query_builder: Complexity score: 3
+2025-09-18 22:37:31,637 [INFO] app.core.advanced_query_builder: Generated pipeline with 4 stages for collection 'users'
+2025-09-18 22:37:31,638 [INFO] app.core.advanced_query_builder: DEBUG ADVANCED PIPELINE: [{'$match': {'roles': 'student'}}, {'$lookup': {'from': 'profiles', 'localField': 'profile_id', 'foreignField': '_id', 'as': 'profiles', 'pipeline': [{'$lookup': {'from': 'classes', 'localField': 'class_id', 'foreignField': '_id', 'as': 'classes', 'pipeline': [{'$lookup': {'from': 'expertise_programs', 'localField': 'expertise_id', 'foreignField': '_id', 'as': 'expertise_programs', 'pipeline': [{'$project': {'abbreviation': 1, '_id': 1}}]}}, {'$project': {'name': 1, 'grade_level': 1, 'expertise_programs': 1, '_id': 1, 'expertise_id': 1}}]}}, {'$project': {'full_name': 1, 'birth_date': 1, 'gender': 1, 'classes': 1, '_id': 1, 'class_id': 1}}]}}, {'$lookup': {'from': 'exam_sessions', 'localField': '_id', 'foreignField': 'student_id', 'as': 'exam_sessions', 'pipeline': [{'$project': {'score': 1, '_id': 1}}]}}, {'$project': {'_id': 1, 'login_id': 1, 'email': 1, 'profiles': 1, 'exam_sessions': 1}}]
+2025-09-18 22:37:31,639 [INFO] app.core.advanced_query_builder: Collections involved: {'expertise_programs', 'classes', 'users', 'exam_sessions', 'profiles'}
+2025-09-18 22:37:31,639 [INFO] app.core.advanced_query_builder: Complexity score: 6
+2025-09-18 22:37:32,229 [INFO] app.api.v1.routes.admin_exports: DEBUG SAMPLE USER BEFORE LOOKUP: {'_id': ObjectId('688477a78a56906f19d02551'), 'login_id': '79111967', 'email': 'alexander@gmail.com', 'hashed_password': '$2b$04$vN.Oi2nU7TRgqXxVGxKok.BrSxL0/02sex5PrKkP8BZluC7MjLU2q', 'roles': ['student'], 'is_active': True, 'profile_id': ObjectId('688477a68a56906f19d02550'), 'onboarding_completed': True, 'password_last_changed_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000), 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 9, 10, 15, 50, 56, 720000)}
+2025-09-18 22:37:32,230 [INFO] app.api.v1.routes.admin_exports: DEBUG USER HAS PROFILE_ID: 688477a68a56906f19d02550
+2025-09-18 22:37:32,282 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILE FOUND: {'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'birth_place': 'jerman utara', 'address': 'jalan menuju roma', 'phone_number': '087687987836', 'class_id': ObjectId('687e01044593234141867820'), 'department_id': None, 'start_year': 2020, 'end_year': 2023, 'created_at': datetime.datetime(2025, 7, 26, 6, 37, 26, 555000), 'updated_at': datetime.datetime(2025, 8, 31, 6, 39, 43, 877000), 'user_id': ObjectId('688477a78a56906f19d02551')}
+2025-09-18 22:37:33,534 [INFO] app.api.v1.routes.admin_exports: DEBUG QUERY RESULTS: Found 714 records
+2025-09-18 22:37:33,535 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST RECORD KEYS: ['_id', 'login_id', 'email', 'profiles', 'exam_sessions']
+2025-09-18 22:37:33,535 [INFO] app.api.v1.routes.admin_exports: DEBUG PROFILES DATA: [{'_id': ObjectId('688477a68a56906f19d02550'), 'full_name': 'alexander grahambel', 'gender': 'Laki Laki', 'birth_date': datetime.datetime(2005, 6, 5, 0, 0), 'class_id': ObjectId('687e01044593234141867820'), 'classes': [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'expertise_programs': [{'_id': ObjectId('68824cd9ed968052635f41b9'), 'abbreviation': 'TKJ'}]}]}]
+2025-09-18 22:37:33,536 [INFO] app.api.v1.routes.admin_exports: DEBUG FIRST PROFILE KEYS: ['_id', 'full_name', 'gender', 'birth_date', 'class_id', 'classes']
+2025-09-18 22:37:33,536 [INFO] app.api.v1.routes.admin_exports: DEBUG CLASSES DATA: [{'_id': ObjectId('687e01044593234141867820'), 'grade_level': 12, 'expertise_id': ObjectId('68824cd9ed968052635f41b9'), 'name': '2', 'expertise_programs': [{'_id': ObjectId('68824cd9ed968052635f41b9'), 'abbreviation': 'TKJ'}]}]
+2025-09-18 22:37:33,562 [INFO] app.core.export_handlers: DEBUG SAMPLE RAW DATA (first record keys): ['_id', 'login_id', 'email', 'profiles', 'exam_sessions']
+2025-09-18 22:37:33,563 [INFO] app.core.export_handlers: DEBUG SAMPLE FLATTENED DATA (first record keys): ['_id', 'login_id', 'email', 'profiles._id', 'profiles.full_name', 'profiles.gender', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes._id', 'profiles.classes.grade_level', 'profiles.classes.expertise_id', 'profiles.classes.name', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation', 'exam_sessions._id', 'exam_sessions.score']
+2025-09-18 22:37:33,579 [INFO] app.core.export_handlers: DEBUG ALL AVAILABLE FIELDS (18): ['_id', 'email', 'exam_sessions', 'exam_sessions._id', 'exam_sessions.score', 'login_id', 'profiles._id', 'profiles.birth_date', 'profiles.class_id', 'profiles.classes', 'profiles.classes._id', 'profiles.classes.expertise_id', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation', 'profiles.classes.grade_level', 'profiles.classes.name', 'profiles.full_name', 'profiles.gender']
+2025-09-18 22:37:33,580 [INFO] app.core.export_handlers: DEBUG REQUESTED FIELDS (11): ['login_id', 'email', 'profiles.full_name', 'profiles.birth_date', 'profiles.gender', 'profiles.classes', 'profiles.classes.name', 'profiles.classes.grade_level', 'profiles.classes.expertise_programs', 'profiles.classes.expertise_programs.abbreviation', 'exam_sessions.score']
+2025-09-18 22:37:33,581 [INFO] app.core.export_handlers: DEBUG FINAL FILTERED FIELDS (12): ['email', 'exam_sessions.score', 'login_id', 'profiles.birth_date', 'profiles.classes._id', 'profiles.classes.expertise_id', 'profiles.classes.expertise_programs._id', 'profiles.classes.expertise_programs.abbreviation', 'profiles.classes.grade_level', 'profiles.classes.name', 'profiles.full_name', 'profiles.gender']
+2025-09-18 22:37:33,812 [INFO] app.core.export_handlers: Excel export completed: export_1758209661739.xlsx, 714 records
+2025-09-18 22:37:33,972 [INFO] app.services.admin_export_file_service: Admin export file saved: adm_exp_2e005086 by admin 686a3396d20694199c01c06b
+2025-09-18 22:37:33,973 [INFO] app.core.export_handlers: Admin export completed with tracking: adm_exp_2e005086
+2025-09-18 22:37:33,975 [INFO] app.api.v1.routes.admin_exports: Advanced async export 88b2bce2-d69f-42d7-8ae0-e13c4df1da32 completed successfully in 1867ms

@@ -379,6 +379,9 @@ class AdminExportFileService:
             logs = []
             for log_data in logs_data:
                 log_data["id"] = str(log_data["_id"])
+                # Remove the MongoDB _id to avoid duplicate key issue
+                if '_id' in log_data:
+                    del log_data['_id']
                 logs.append(AdminFileDownloadLog(**log_data))
             
             return logs

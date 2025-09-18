@@ -194,11 +194,17 @@ class FieldMappingSystem:
         
         # Fields yang biasanya tidak perlu di export (ObjectIds)
         self.id_fields = [
-            "_id", "profile._id", "profile.class_detail._id", 
+            "_id", "id", "profile._id", "profile.class_detail._id", 
             "profile.class_detail.expertise._id", "user_id", "profile_id",
             "class_id", "subject_id", "teacher_id", "academic_period_id",
             "created_by_teacher_id", "created_by_coordinator_id",
-            "head_of_department_id", "homeroom_teacher_id"
+            "head_of_department_id", "homeroom_teacher_id",
+            # Additional ID fields that might appear in joined data
+            "profile.id", "class_detail.id", "class_detail._id",
+            "expertise.id", "expertise._id", "department_id",
+            "student_id", "exam_id", "question_id", "session_id",
+            # Common ID patterns
+            "Id", "ID", "profile.Id", "class_detail.Id", "expertise.Id"
         ]
         
         # Field categories untuk grouping

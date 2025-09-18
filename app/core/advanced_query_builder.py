@@ -211,6 +211,17 @@ class AdvancedExportQueryBuilder:
                     if nested_join.fields:
                         nested_projection = {field: 1 for field in nested_join.fields}
                         nested_projection["_id"] = 1
+                        
+                        # CRITICAL FIX: Include fields needed for deeply nested joins
+                        if nested_join.joins:
+                            for deep_join in nested_join.joins:
+                                # Add local_field needed for deep join
+                                nested_projection[deep_join.local_field] = 1
+                                # CRITICAL FIX: Include the nested join result field
+                                deep_alias = deep_join.alias or deep_join.collection
+                                nested_projection[deep_alias] = 1
+                                logger.debug(f"Added field for deep join: {deep_join.local_field}")
+                                logger.debug(f"Added nested join result: {deep_alias}")
                     if nested_join.exclude_fields:
                         for field in nested_join.exclude_fields:
                             nested_projection[field] = 0
@@ -243,6 +254,17 @@ class AdvancedExportQueryBuilder:
                 # Include only specified fields
                 projection = {field: 1 for field in join.fields}
                 projection["_id"] = 1  # Always include _id for joins
+                
+                # CRITICAL FIX: Include fields needed for nested joins
+                if join.joins:
+                    for nested_join in join.joins:
+                        # Add local_field needed for nested join
+                        projection[nested_join.local_field] = 1
+                        # CRITICAL FIX: Include the nested join result field
+                        nested_alias = nested_join.alias or nested_join.collection
+                        projection[nested_alias] = 1
+                        logger.debug(f"Added field for nested join: {nested_join.local_field}")
+                        logger.debug(f"Added nested join result: {nested_alias}")
             
             if join.exclude_fields:
                 # Exclude specified fields
@@ -304,8 +326,12 @@ class AdvancedExportQueryBuilder:
             for field in config.exclude_fields:
                 projection[field] = 0
         
-        # Handle joined collection fields (automatically handled by lookup stages)
-        # No need for manual projection of joined fields since lookup handles it
+        # CRITICAL FIX: Include joined collection fields
+        if config.joins:
+            for join in config.joins:
+                alias = join.alias or join.collection
+                projection[alias] = 1  # Include the entire joined collection
+                logger.debug(f"Added joined collection to projection: {alias}")
         
         return {"$project": projection} if len(projection) > 1 or config.exclude_fields else {}
     
@@ -408,7 +434,8 @@ class AdvancedExportQueryBuilder:
             # This would be handled at the aggregation execution level
             pass
         
-        logger.info(f"Generated advanced pipeline with {len(pipeline)} stages for collection '{config.main_collection}'")
+        logger.info(f"Generated pipeline with {len(pipeline)} stages for collection '{config.main_collection}'")
+        logger.info(f"DEBUG ADVANCED PIPELINE: {pipeline}")
         logger.info(f"Collections involved: {self.collections_used}")
         logger.info(f"Complexity score: {self.complexity_score}")
         

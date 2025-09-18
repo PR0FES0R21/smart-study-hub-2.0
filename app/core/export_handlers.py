@@ -131,11 +131,14 @@ class ExcelExportHandler(ExportHandler):
     def export(self, data: List[Dict[str, Any]], filename: Optional[str] = None, 
                sheet_name: str = "Export", user_id: Optional[str] = None,
                exclude_ids: bool = True, use_aliases: bool = True, 
-               include_empty_fields: bool = False) -> str:
+               include_empty_fields: bool = False, requested_fields: Optional[List[str]] = None) -> str:
         """Export data to Excel format"""
         try:
             if not data:
                 raise ValueError("No data to export")
+            
+            if not HAS_OPENPYXL:
+                raise ValueError("openpyxl is required for Excel export")
             
             # Generate filename if not provided
             if not filename:
@@ -151,7 +154,84 @@ class ExcelExportHandler(ExportHandler):
             
             # Flatten all documents using field_mapper
             flattened_data = [self._flatten_document(doc) for doc in data]
-            all_fields = self._get_all_fields(data)
+            
+            # Debug: Show sample of raw data and flattened data
+            if data:
+                logger.info(f"DEBUG SAMPLE RAW DATA (first record keys): {list(data[0].keys())}")
+                logger.info(f"DEBUG SAMPLE FLATTENED DATA (first record keys): {list(flattened_data[0].keys())}")
+            
+            # Use requested_fields if provided, otherwise get all fields from data
+            if requested_fields:
+                # Get all available fields from flattened data
+                all_available_fields = self._get_all_fields(data)
+                logger.info(f"DEBUG ALL AVAILABLE FIELDS ({len(all_available_fields)}): {all_available_fields}")
+                logger.info(f"DEBUG REQUESTED FIELDS ({len(requested_fields)}): {requested_fields}")
+                
+                # Filter to only include requested fields and their flattened versions
+                filtered_fields = []
+                for available_field in all_available_fields:
+                    should_include = False
+                    match_reason = ""
+                    
+                    # Check if field is directly requested
+                    if available_field in requested_fields:
+                        should_include = True
+                        match_reason = "direct match"
+                    else:
+                        # Check if field matches any requested field pattern
+                        for requested_field in requested_fields:
+                            # Handle exact matches
+                            if available_field == requested_field:
+                                should_include = True
+                                match_reason = f"exact match with {requested_field}"
+                                break
+                            # Handle prefix matches (e.g., "profiles.full_name" matches available "profiles.full_name")
+                            elif available_field.startswith(f"{requested_field}."):
+                                should_include = True
+                                match_reason = f"prefix match with {requested_field}"
+                                break
+                            # Handle parent field matches (e.g., requested "profiles.classes.grade_level" includes available "profiles.classes.grade_level")
+                            elif requested_field.startswith(f"{available_field}."):
+                                # Only include if this is a specific nested field, not a container
+                                remaining_path = requested_field[len(available_field)+1:]
+                                if "." in remaining_path:  # Has more nesting
+                                    should_include = True
+                                    match_reason = f"parent match with {requested_field}"
+                                    break
+                    
+                    # Additional check: exclude container fields that are not specifically requested
+                    if should_include:
+                        # Check if this is a container field (e.g., "profiles.classes") 
+                        # when we only want specific nested fields (e.g., "profiles.classes.name")
+                        is_container_field = False
+                        for requested_field in requested_fields:
+                            if (requested_field.startswith(f"{available_field}.") and 
+                                available_field != requested_field and
+                                available_field.count('.') >= 1):  # Is a nested container
+                                is_container_field = True
+                                break
+                        
+                        if is_container_field:
+                            # Only include if there's no more specific field requested
+                            has_specific_child = any(
+                                req.startswith(f"{available_field}.") and req != available_field
+                                for req in requested_fields
+                            )
+                            if has_specific_child:
+                                should_include = False
+                                match_reason = "excluded container field (has specific children)"
+                    
+                    if should_include:
+                        filtered_fields.append(available_field)
+                        logger.debug(f"✅ Including field: {available_field} ({match_reason})")
+                    else:
+                        logger.debug(f"❌ Excluding field: {available_field}")
+                
+                all_fields = filtered_fields
+                logger.info(f"DEBUG FINAL FILTERED FIELDS ({len(filtered_fields)}): {filtered_fields}")
+            else:
+                all_fields = self._get_all_fields(data)
+                logger.debug(f"Using all fields (no filtering): {all_fields}")
             
             # Process headers with field_mapper
             header_mapping = field_mapper.process_export_headers(
@@ -160,7 +240,6 @@ class ExcelExportHandler(ExportHandler):
                 use_aliases=use_aliases
             )
             
-            # Apply flattening and header mapping
             display_headers = list(header_mapping.values())
             original_headers = list(header_mapping.keys())
             

@@ -104,6 +104,19 @@ class ExportQueryBuilder:
         """Build $lookup and optional $unwind stages for a join"""
         stages = []
         
+        # Build lookup pipeline for nested joins
+        lookup_pipeline = []
+        
+        # Add filters to lookup pipeline if specified
+        if join.filters:
+            lookup_pipeline.append({"$match": self._build_match_stage(join.filters)})
+        
+        # Handle nested joins recursively
+        if hasattr(join, 'joins') and join.joins:
+            for nested_join in join.joins:
+                nested_stages = self._build_lookup_stage(nested_join)
+                lookup_pipeline.extend(nested_stages)
+        
         # Basic lookup stage
         lookup_stage = {
             "$lookup": {
@@ -113,13 +126,12 @@ class ExportQueryBuilder:
                 "as": join.alias or join.collection
             }
         }
-        stages.append(lookup_stage)
         
-        # Add filters to lookup if specified
-        if join.filters:
-            lookup_stage["$lookup"]["pipeline"] = [
-                {"$match": self._build_match_stage(join.filters)}
-            ]
+        # Add pipeline if we have filters or nested joins
+        if lookup_pipeline:
+            lookup_stage["$lookup"]["pipeline"] = lookup_pipeline
+        
+        stages.append(lookup_stage)
         
         # Add unwind if specified
         if join.join_type == "unwind":
@@ -135,11 +147,40 @@ class ExportQueryBuilder:
     
     def _build_projection_stage(self, config: ExportConfig) -> Dict[str, Any]:
         """Build $project stage to select only required fields"""
-        projection = {"_id": 1}  # Always include _id
+        projection = {}
+        
+        # Collect all fields needed for lookups
+        lookup_fields = set()
+        
+        def collect_lookup_fields(joins, prefix=""):
+            for join in joins:
+                # Add local_field for this join
+                local_field = f"{prefix}.{join.local_field}" if prefix else join.local_field
+                lookup_fields.add(local_field)
+                
+                # Recursively collect fields from nested joins
+                if join.joins:
+                    alias = join.alias or join.collection
+                    collect_lookup_fields(join.joins, alias)
+        
+        collect_lookup_fields(config.joins)
+        
+        # Only include _id if explicitly requested
+        if "_id" in config.fields:
+            projection["_id"] = 1
+        else:
+            projection["_id"] = 0  # Explicitly exclude _id
         
         # Add fields from main collection
         for field in config.fields:
-            projection[field] = 1
+            if field != "_id":  # _id already handled above
+                projection[field] = 1
+        
+        # Add lookup fields (but don't expose them in final output if not requested)
+        for field in lookup_fields:
+            if field not in config.fields and field != "_id":
+                # Include field for lookup but mark it for later removal
+                projection[field] = 1
         
         # Add fields from joins
         for join in config.joins:
@@ -148,12 +189,13 @@ class ExportQueryBuilder:
             if join.fields:
                 # Specific fields from join
                 for field in join.fields:
-                    projection[f"{alias}.{field}"] = 1
+                    if field != "_id":  # Don't include _id from joins unless explicitly requested
+                        projection[f"{alias}.{field}"] = 1
             else:
                 # All fields from join
                 projection[alias] = 1
         
-        return {"$project": projection} if len(projection) > 1 else {}
+        return {"$project": projection} if projection else {}
     
     def _build_sort_stage(self, sort_config: Dict[str, int]) -> Dict[str, Any]:
         """Build $sort stage from sort configuration"""
@@ -195,6 +237,7 @@ class ExportQueryBuilder:
             pipeline.append({"$limit": config.limit})
         
         logger.info(f"Generated pipeline with {len(pipeline)} stages for collection '{config.main_collection}'")
+        logger.info(f"DEBUG GENERATED PIPELINE: {pipeline}")
         return pipeline
     
     async def estimate_result_count(self, db, config: ExportConfig) -> Optional[int]:
