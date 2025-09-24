@@ -18,7 +18,6 @@ class DatabaseSchemaManager:
                     "_id": {"type": "ObjectId", "description": "User ID"},
                     "login_id": {"type": "string", "description": "NIS/NIP"},
                     "email": {"type": "string", "description": "Email address"},
-                    "hashed_password": {"type": "string", "description": "Hashed password", "sensitive": True},
                     "roles": {"type": "array", "description": "User roles"},
                     "is_active": {"type": "boolean", "description": "Active status"},
                     "profile_id": {"type": "ObjectId", "description": "Profile reference"},
@@ -30,7 +29,6 @@ class DatabaseSchemaManager:
                 "relationships": {
                     "profiles": {"local_field": "profile_id", "foreign_field": "_id", "type": "one_to_one"},
                     "teaching_assignments": {"local_field": "_id", "foreign_field": "teacher_id", "type": "one_to_many"},
-                    "classes": {"local_field": "_id", "foreign_field": "homeroom_teacher_id", "type": "one_to_many"},
                     "question_banks": {"local_field": "_id", "foreign_field": "created_by_teacher_id", "type": "one_to_many"},
                     "question_submissions": {"local_field": "_id", "foreign_field": "submitted_by_teacher_id", "type": "one_to_many"},
                     "question_sets": {"local_field": "_id", "foreign_field": "created_by_coordinator_id", "type": "one_to_many"},
@@ -58,6 +56,7 @@ class DatabaseSchemaManager:
                 },
                 "relationships": {
                     "users": {"local_field": "user_id", "foreign_field": "_id", "type": "one_to_one"},
+                    "classes": {"local_field": "class_id", "foreign_field": "_id", "type": "one_to_many"},
                     "expertise_programs": {"local_field": "department_id", "foreign_field": "_id", "type": "many_to_one"}
                 }
             },
