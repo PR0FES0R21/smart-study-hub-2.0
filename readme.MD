@@ -103,7 +103,7 @@ python-jose>=3.3.0
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/your-username/smart-study-hub-2.0.git
+   git clone https://github.com/PR0FES0R21/smart-study-hub-2.0.git
    cd smart-study-hub-2.0
    ```
 
@@ -363,4 +363,4 @@ For questions atau support, please contact the development team atau create an i
 
 ---
 
-*Built dengan ❤️ oleh Smart Study Hub Team*
+*Dibangun oleh PROFESORDS Team*
