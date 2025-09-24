@@ -1,0 +1,96 @@
+# Smart Study Hub 2.0 - Development Docker Compose
+version: '3.8'
+
+services:
+  # FastAPI Application (Development)
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: smart-study-hub-dev
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URL=mongodb://mongodb-dev:27017/smart_study_hub_dev
+      - REDIS_URL=redis://redis-dev:6379/0
+      - DEBUG=True
+      - RELOAD_ON_CHANGE=True
+    volumes:
+      - .:/app
+      - /app/__pycache__
+      - /app/.pytest_cache
+    depends_on:
+      - mongodb-dev
+      - redis-dev
+    networks:
+      - smart-study-hub-dev-network
+    restart: unless-stopped
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+  # MongoDB Database (Development)
+  mongodb-dev:
+    image: mongo:5.0
+    container_name: smart-study-hub-mongodb-dev
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=smart_study_hub_dev
+    volumes:
+      - mongodb_dev_data:/data/db
+    networks:
+      - smart-study-hub-dev-network
+    restart: unless-stopped
+
+  # Redis Cache (Development)
+  redis-dev:
+    image: redis:6.2-alpine
+    container_name: smart-study-hub-redis-dev
+    ports:
+      - "6380:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_dev_data:/data
+    networks:
+      - smart-study-hub-dev-network
+    restart: unless-stopped
+
+  # MongoDB Admin Interface (Development)
+  mongo-express:
+    image: mongo-express:latest
+    container_name: smart-study-hub-mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb-dev
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin
+    depends_on:
+      - mongodb-dev
+    networks:
+      - smart-study-hub-dev-network
+    restart: unless-stopped
+
+  # Redis Commander (Development)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: smart-study-hub-redis-commander
+    ports:
+      - "8082:8081"
+    environment:
+      - REDIS_HOSTS=local:redis-dev:6379
+    depends_on:
+      - redis-dev
+    networks:
+      - smart-study-hub-dev-network
+    restart: unless-stopped
+
+volumes:
+  mongodb_dev_data:
+    driver: local
+  redis_dev_data:
+    driver: local
+
+networks:
+  smart-study-hub-dev-network:
+    driver: bridge

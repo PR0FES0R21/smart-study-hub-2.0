@@ -1,0 +1,47 @@
+# Smart Study Hub 2.0 - Development Dockerfile
+FROM python:3.9-slim
+
+# Set environment variables for development
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    DEBUG=True
+
+# Set work directory
+WORKDIR /app
+
+# Install system dependencies including development tools
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Install development dependencies
+RUN pip install --no-cache-dir \
+    pytest \
+    pytest-cov \
+    pytest-asyncio \
+    black \
+    isort \
+    flake8 \
+    mypy \
+    pre-commit
+
+# Copy project files
+COPY . .
+
+# Create necessary directories
+RUN mkdir -p /app/logs /app/uploads /app/exports
+
+# Expose port
+EXPOSE 8000
+
+# Development command with hot reload
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

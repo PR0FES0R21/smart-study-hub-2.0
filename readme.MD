@@ -1,234 +1,366 @@
-Arsitektur Database: School Management System 1.0
-Dokumen ini merincikan arsitektur database MongoDB yang dirancang untuk aplikasi School Management System. Arsitektur ini menggunakan pendekatan normalisasi dengan referensi dokumen (ObjectId) untuk memastikan integritas data, skalabilitas, dan efisiensi query.
+# Smart Study Hub 2.0 🎓
 
-Bagian 1: Entitas Inti (Core Entities)
-Kumpulan collection ini membentuk fondasi data utama yang mendefinisikan pengguna dan struktur dasar sekolah.
+[![Version](https://img.shields.io/badge/version-1.0.0--MVP-blue.svg)](./VERSION.md)
+[![Python](https://img.shields.io/badge/python-3.8+-green.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-red.svg)](https://fastapi.tiangolo.com)
+[![MongoDB](https://img.shields.io/badge/MongoDB-4.4+-green.svg)](https://mongodb.com)
+[![Redis](https://img.shields.io/badge/Redis-6.0+-red.svg)](https://redis.io)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-1. users
-Menyimpan data otentikasi dan peran untuk setiap individu yang dapat login ke sistem.
+> **Sistem Manajemen Pendidikan Modern** - Comprehensive educational management system dengan advanced analytics, real-time features, dan powerful export capabilities.
 
-// Collection: users
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e1a01"),
-  "email": "budi.santoso@school.com",      // String, Required, Unique
-  "phone_number": "+6281234567890",        // String, Optional, Unique
-  "password": "hashed_password_from_bcrypt", // String, Required
-  "roles": ["teacher", "department_head"], // Array of Strings, Required
-  "profile_id": ObjectId("66854d3e5e1a7c8c8f5e1b02"), // ObjectId, Ref: 'profiles'
-  "status": "active",                      // String, Enum: ["active", "inactive", "suspended"]
-  "created_at": ISODate("2024-07-03T12:00:00Z"),
-  "updated_at": ISODate("2024-07-03T12:00:00Z")
-}
+---
 
-2. profiles
-Menyimpan data demografis dan informasi spesifik peran yang terhubung ke users.
+## 🌟 Overview
 
-// Collection: profiles
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e1b02"),
-  "user_id": ObjectId("66854d3e5e1a7c8c8f5e1a01"), // ObjectId, Ref: 'users'
-  "full_name": "Dr. Budi Santoso, M.Pd.",    // String
-  "gender": "male",                         // String, Enum: ["male", "female"]
-  "birth_date": ISODate("1985-05-10T00:00:00Z"),
-  "birth_place": "Bandung",
-  "address": {
-    "street": "Jl. Merdeka No. 45",
-    "city": "Bandung",
-    "province": "Jawa Barat",
-    "postal_code": "40115"
-  },
-  "profile_picture_url": "https://storage.googleapis.com/bucket/profiles/budi.jpg",
-  
-  // --- Fields untuk Guru/Staf ---
-  "employee_id": "T850510", // NIP/NKTAM, String, Unique, Sparse
-  "job_title": "Guru Matematika",
-  "subjects_taught_ids": [
-    ObjectId("66854d3e5e1a7c8c8f5e1d04") // Ref: 'subjects' (Matematika)
-  ],
+Smart Study Hub 2.0 adalah sistem manajemen pendidikan yang dirancang untuk memfasilitasi proses pembelajaran, ujian online, dan analitik pendidikan. Sistem ini mendukung multi-role (Admin, Teacher, Student) dengan fitur-fitur canggih untuk manajemen akademik yang efisien dan modern.
 
-  // --- Fields untuk Siswa ---
-  "nis": "S2223001", // Nomor Induk Siswa, String, Unique, Sparse
-  "class_id": ObjectId("66854d3e5e1a7c8c8f5e1c03"), // Ref: 'classes'
-  "start_year": 2022,
-  "end_year": 2025
-}
+### ✨ Key Highlights
+- 🚀 **Production Ready MVP** - Fully tested dan siap untuk deployment
+- 📊 **Advanced Analytics** - Comprehensive performance tracking dan insights
+- 📤 **Powerful Export System** - Multi-format exports dengan advanced query builder
+- ⚡ **High Performance** - Redis caching dan optimized database queries
+- 🔒 **Enterprise Security** - JWT authentication dengan role-based access control
+- 🌐 **Real-time Updates** - WebSocket support untuk live notifications
 
-3. expertise_programs (Jurusan)
-Mendefinisikan program keahlian atau jurusan yang ada di sekolah.
+---
 
-// Collection: expertise_programs
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e1e05"),
-  "name": "Teknik Komputer dan Jaringan",
-  "abbreviation": "TKJ",
-  "description": "Program keahlian yang berfokus pada perakitan komputer, jaringan dasar, dan administrasi server.",
-  "head_of_department_id": ObjectId("66854d3e5e1a7c8c8f5e1b02") // Ref: 'profiles' (Guru Budi)
-}
+## 🎯 Features
 
-4. subjects (Mata Pelajaran)
-Daftar semua mata pelajaran yang diajarkan di sekolah.
+### 👥 User Management
+- **Multi-role Authentication**: Admin, Teacher, Student dengan granular permissions
+- **Profile Management**: Comprehensive user profiles dengan demographic data
+- **Secure Authentication**: JWT-based dengan bcrypt password hashing
+- **Role-based Access Control**: Fine-grained permission system
 
-// Collection: subjects
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e1d04"),
-  "name": "Matematika Wajib",
-  "code": "MTK-01"
-}
+### 🏫 Academic Management
+- **Class Organization**: Grade levels, expertise programs, dan class management
+- **Subject Management**: Comprehensive subject definitions dan categorization
+- **Academic Periods**: Semester/year management dengan flexible scheduling
+- **Teaching Assignments**: Advanced teacher-class-subject assignment system
 
-5. classes
-Mendefinisikan sebuah rombongan belajar (rombel) atau kelas.
+### 📝 Exam System
+- **Question Banks**: Reusable question repository dengan advanced categorization
+- **Flexible Exam Creation**: Multiple question types dan customizable settings
+- **Real-time Exam Taking**: Live exam sessions dengan automatic scoring
+- **Anti-cheating Features**: Tab switch detection dan session monitoring
 
-// Collection: classes
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e1c03"),
-  "grade_level": 11, // Number (10, 11, 12)
-  "expertise_id": ObjectId("66854d3e5e1a7c8c8f5e1e05"), // Ref: 'expertise_programs' (TKJ)
-  "name": "1", // Nama unik kelas, misal: "1", "2", "A"
-  "academic_year": "2024/2025",
-  "homeroom_teacher_id": ObjectId("66854d3e5e1a7c8c8f5e1b02") // Ref: 'profiles' (Wali Kelas)
-}
+### 📊 Analytics & Reporting
+- **Student Performance Analytics**: Individual dan class-wide performance tracking
+- **Teacher Analytics**: Teaching effectiveness dan class performance insights
+- **Score Trend Analysis**: Historical performance tracking dengan visualizations
+- **Subject Mastery Analysis**: Detailed subject-wise performance breakdown
+- **Class Comparison**: Comparative analysis antar kelas dan periods
 
-Bagian 2: Entitas Operasional & Transaksional
-Kumpulan collection ini mengelola alur kerja harian sekolah, menghubungkan entitas inti dalam konteks waktu dan kegiatan.
+### 📤 Advanced Export System
+- **Multi-format Support**: Excel, CSV, JSON, PDF exports
+- **Advanced Query Builder**: Complex data filtering dengan nested joins
+- **Custom Field Selection**: User-defined field selection untuk precise exports
+- **Secure File Management**: Encrypted file storage dengan access logging
 
-6. academic_periods
-Mendefinisikan periode waktu akademik (semester, tahun ajaran) untuk mengorganisir data transaksional.
+### ⚡ Performance & Scalability
+- **Redis Caching**: Intelligent caching system untuk optimal performance
+- **Background Tasks**: Asynchronous processing untuk heavy operations
+- **Database Optimization**: Indexed queries dan optimized aggregations
+- **WebSocket Support**: Real-time communication dan notifications
 
-// Collection: academic_periods
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e1f06"),
-  "year": "2024/2025",
-  "semester": "ganjil", // String, Enum: ["ganjil", "genap"]
-  "status": "active",   // String, Enum: ["planning", "active", "archived"]
-  "start_date": ISODate("2024-07-15T00:00:00Z"),
-  "end_date": ISODate("2024-12-20T00:00:00Z")
-}
+---
 
-7. teaching_assignments
-Collection "jembatan" yang krusial, mendefinisikan penugasan mengajar spesifik. Ini adalah sumber kebenaran untuk jadwal dan kewenangan.
+## 🛠 Tech Stack
 
-// Collection: teaching_assignments
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e2a07"),
-  "academic_period_id": ObjectId("66854d3e5e1a7c8c8f5e1f06"), // Ref: 'academic_periods'
-  "class_id": ObjectId("66854d3e5e1a7c8c8f5e1c03"),           // Ref: 'classes' (XI TKJ 1)
-  "subject_id": ObjectId("66854d3e5e1a7c8c8f5e1d04"),         // Ref: 'subjects' (Matematika)
-  "teacher_profile_id": ObjectId("66854d3e5e1a7c8c8f5e1b02"), // Ref: 'profiles' (Guru Budi)
-  "day_of_week": "monday",
-  "start_time": "07:30",
-  "end_time": "09:00"
-}
+### Backend
+- **Framework**: FastAPI (Python 3.8+)
+- **Database**: MongoDB 4.4+ dengan advanced aggregation pipelines
+- **Caching**: Redis 6.0+ untuk session dan data caching
+- **Authentication**: JWT dengan bcrypt password hashing
+- **File Processing**: Pandas, OpenpyXL, ReportLab
+- **WebSocket**: Real-time communication support
 
-8. student_records
-Log untuk mencatat kejadian non-akademik siswa (pelanggaran, prestasi, dll).
+### Key Dependencies
+```
+fastapi>=0.104.0
+motor>=3.3.0
+redis>=4.5.0
+pydantic>=2.0.0
+pandas>=2.0.0
+openpyxl>=3.1.0
+reportlab>=4.0.0
+bcrypt>=4.0.0
+python-jose>=3.3.0
+```
 
-// Collection: student_records
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e2b08"),
-  "student_profile_id": ObjectId("..."), // Ref: 'profiles' (Siswa)
-  "record_type": "achievement",        // String, Enum: ["disciplinary", "achievement", "counseling"]
-  "date": ISODate("2024-10-28T09:00:00Z"),
-  "description": "Juara 1 Lomba Kompetensi Siswa (LKS) tingkat Kabupaten.",
-  "reported_by_id": ObjectId("66854d3e5e1a7c8c8f5e1b02"), // Ref: 'profiles' (Guru)
-  "details": {
-    "competition_name": "LKS Web Technologies 2024",
-    "certificate_url": "https://storage.googleapis.com/bucket/sertifikat/lks.pdf"
-  }
-}
+---
 
-Bagian 3: Modul Ujian dan Penilaian
-Kumpulan collection yang didedikasikan untuk alur kerja ujian online, dari pembuatan soal hingga rekap nilai akhir.
+## 🚀 Quick Start
 
-9. question_banks
-Bank soal yang dapat digunakan kembali untuk berbagai ujian.
+### Prerequisites
+- Python 3.8+
+- MongoDB 4.4+
+- Redis 6.0+
+- Git
 
-// Collection: question_banks
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e3c09"),
-  "subject_id": ObjectId("66854d3e5e1a7c8c8f5e1d04"),
-  "created_by_teacher_id": ObjectId("66854d3e5e1a7c8c8f5e1b02"),
-  "question_type": "multiple_choice",
-  "difficulty": "medium",
-  "question_text": "Jika f(x) = 2x + 3, maka f(4) adalah...",
-  "options": [
-    { "text": "11", "is_correct": true },
-    { "text": "8", "is_correct": false },
-    { "text": "10", "is_correct": false }
-  ],
-  "points": 10,
-  "tags": ["fungsi", "aljabar"],
-  "created_at": ISODate("2024-09-01T10:00:00Z")
-}
+### Installation
 
-10. exams
-Mendefinisikan sebuah sesi ujian, termasuk pengaturan dan daftar soalnya.
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/your-username/smart-study-hub-2.0.git
+   cd smart-study-hub-2.0
+   ```
 
-// Collection: exams
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e3d10"),
-  "title": "Ujian Tengah Semester Matematika",
-  "teaching_assignment_id": ObjectId("66854d3e5e1a7c8c8f5e2a07"), // Kunci penghubung
-  "exam_type": "multiple_choice",
-  "duration_minutes": 90,
-  "availability_start_time": ISODate("2024-10-15T08:00:00Z"),
-  "availability_end_time": ISODate("2024-10-15T12:00:00Z"),
-  "status": "published",
-  "question_ids": [
-    ObjectId("66854d3e5e1a7c8c8f5e3c09"),
-    ObjectId("...")
-  ],
-  "settings": {
-    "shuffle_questions": true,
-    "tab_switch_detection": true
-  },
-  "created_at": ISODate("2024-10-01T14:00:00Z")
-}
+2. **Setup Virtual Environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
 
-11. exam_sessions
-Mencatat progres dan jawaban setiap siswa yang sedang atau telah mengerjakan ujian.
+3. **Environment Configuration**
+   ```bash
+   cp .env.example .env
+   # Edit .env dengan your configuration
+   ```
 
-// Collection: exam_sessions
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e3e11"),
-  "exam_id": ObjectId("66854d3e5e1a7c8c8f5e3d10"),
-  "student_profile_id": ObjectId("..."), // Ref: 'profiles' (Siswa)
-  "status": "submitted",
-  "started_at": ISODate("2024-10-15T08:05:10Z"),
-  "submitted_at": ISODate("2024-10-15T09:30:00Z"),
-  "answers": [
-    {
-      "question_id": ObjectId("66854d3e5e1a7c8c8f5e3c09"),
-      "answer": "11",
-      "is_correct": true,
-      "points_awarded": 10
-    }
-  ],
-  "final_score": 95.0,
-  "cheating_logs": [],
-  "is_graded": true,
-  "graded_at": ISODate("2024-10-15T09:30:01Z")
-}
+4. **Database Setup**
+   ```bash
+   # Start MongoDB dan Redis
+   # Create first admin user
+   python create_first_admin.py
+   
+   # Create database indexes
+   python scripts/create_analytics_indexes.py
+   ```
 
-12. grades
-Buku nilai digital (Rapor) yang mengagregasi semua komponen penilaian menjadi nilai akhir.
+5. **Run Application**
+   ```bash
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   ```
 
-// Collection: grades
-{
-  "_id": ObjectId("66854d3e5e1a7c8c8f5e3f12"),
-  "student_profile_id": ObjectId("..."), // Ref: 'profiles' (Siswa)
-  "teaching_assignment_id": ObjectId("66854d3e5e1a7c8c8f5e2a07"),
-  "academic_period_id": ObjectId("66854d3e5e1a7c8c8f5e1f06"),
-  "components": {
-    "assignments": 90,
-    "mid_term_exam": 95, // Diambil dari 'exam_sessions'
-    "final_exam": 88,
-    "attendance": 100
-  },
-  "final_score": 91.25,
-  "letter_grade": "A",
-  "teacher_notes": "Pemahaman konsep sangat baik.",
-  "last_updated_at": ISODate("2024-12-18T11:00:00Z")
-}
+6. **Access Application**
+   - API Documentation: http://localhost:8000/docs
+   - Health Check: http://localhost:8000/api/v1/system/health
 
+---
 
-oh iya, bagaimana kita menerapkan cacheing pada redis, dimana nantinya kita akan menyimpan data didalam redis agar tidak terlalu membebani database. kita akan pantau secara cerdas, dimana setiap kali data berubah atau setiap kali ada request yang merubah data (berhubungan dengan data tertentu) maka data tertentu yang disimpan di redis akan di hapus dan di set ulang.
+## 📁 Project Structure
+
+```
+smart-study-hub-2.0/
+├── app/
+│   ├── api/v1/routes/          # API endpoints
+│   ├── core/                   # Core functionality
+│   │   ├── cache.py           # Redis caching
+│   │   ├── database_schema.py # Database schema definitions
+│   │   ├── export_handlers.py # Export system
+│   │   └── security.py        # Authentication & authorization
+│   ├── crud/                   # Database operations
+│   ├── models/                 # Pydantic models
+│   ├── services/              # Business logic
+│   └── main.py                # FastAPI application
+├── docs/                      # Documentation
+├── scripts/                   # Utility scripts
+├── tests/                     # Test suite
+├── requirements.txt           # Dependencies
+├── RELEASE_NOTES.md          # Release documentation
+├── VERSION.md                # Version information
+├── DEPLOYMENT_GUIDE.md       # Deployment instructions
+└── README.md                 # This file
+```
+
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+
+```bash
+# Application
+APP_NAME="Smart Study Hub 2.0"
+APP_VERSION="1.0.0-MVP"
+DEBUG=False
+SECRET_KEY="your-secret-key"
+
+# Database
+MONGODB_URL="mongodb://localhost:27017/smart_study_hub"
+REDIS_URL="redis://localhost:6379/0"
+
+# Security
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+REFRESH_TOKEN_EXPIRE_DAYS=7
+
+# Performance
+WORKERS=4
+MAX_CONNECTIONS=100
+```
+
+### Database Collections
+
+The system uses 12 core MongoDB collections:
+- `users` - Authentication & roles
+- `profiles` - User demographic data
+- `classes` - Class organization
+- `subjects` - Subject definitions
+- `expertise_programs` - Department programs
+- `academic_periods` - Semester management
+- `teaching_assignments` - Teacher assignments
+- `question_banks` - Question repository
+- `exams` - Exam definitions
+- `exam_sessions` - Student exam attempts
+- `grades` - Grade calculations
+- `activity_logs` - System audit logs
+
+---
+
+## 📊 API Documentation
+
+### Core Endpoints
+
+#### Authentication
+```
+POST /api/v1/auth/login          # User login
+POST /api/v1/auth/refresh        # Token refresh
+POST /api/v1/auth/logout         # User logout
+```
+
+#### User Management
+```
+GET  /api/v1/users               # List users
+POST /api/v1/users               # Create user
+GET  /api/v1/users/{id}          # Get user details
+PUT  /api/v1/users/{id}          # Update user
+```
+
+#### Exam System
+```
+GET  /api/v1/exams               # List exams
+POST /api/v1/exams               # Create exam
+GET  /api/v1/exams/{id}/start    # Start exam session
+POST /api/v1/exams/{id}/submit   # Submit exam
+```
+
+#### Analytics
+```
+GET  /api/v1/analytics/students/{id}/performance
+GET  /api/v1/analytics/teachers/{id}/effectiveness
+GET  /api/v1/analytics/classes/{id}/comparison
+```
+
+#### Export System
+```
+POST /api/v1/admin/exports       # Create export
+GET  /api/v1/admin/exports/{id}  # Download export
+GET  /api/v1/admin/exports/collections/relationships
+```
+
+### Interactive Documentation
+- **Swagger UI**: `/docs`
+- **ReDoc**: `/redoc`
+
+---
+
+## 🚀 Deployment
+
+### Production Deployment
+
+For detailed production deployment instructions, see [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md).
+
+#### Quick Production Setup
+```bash
+# Using Docker (recommended)
+docker-compose up -d
+
+# Or manual deployment
+gunicorn -c gunicorn.conf.py app.main:app
+```
+
+#### Environment Requirements
+- **OS**: Ubuntu 20.04+ / CentOS 8+ / Windows Server 2019+
+- **RAM**: 4GB minimum, 8GB+ recommended
+- **Storage**: 20GB+ SSD
+- **CPU**: 2+ cores
+
+### Monitoring & Health Checks
+```bash
+# Health check endpoint
+curl http://localhost:8000/api/v1/system/health
+
+# System metrics
+curl http://localhost:8000/api/v1/system/metrics
+
+# Database status
+curl http://localhost:8000/api/v1/system/db-status
+```
+
+---
+
+## 📚 Documentation
+
+### Available Documentation
+- [Release Notes](./RELEASE_NOTES.md) - MVP release information
+- [Version Information](./VERSION.md) - Version tracking dan roadmap
+- [Deployment Guide](./DEPLOYMENT_GUIDE.md) - Production deployment
+- [API Documentation](./docs/ADMIN_EXPORT_API_DOCUMENTATION.md) - Detailed API guide
+- [Quick Reference](./docs/ADMIN_EXPORT_QUICK_REFERENCE.md) - Quick start guide
+
+### Additional Resources
+- Database Schema: Detailed in `app/core/database_schema.py`
+- Field Mapping: Available in `app/core/field_mapping.py`
+- Export System: Documented in `docs/reports/`
+
+---
+
+## 📞 Support
+
+### Getting Help
+- **Documentation**: Check `/docs` endpoint untuk API documentation
+- **Issues**: Report bugs via GitHub Issues
+- **Discussions**: Use GitHub Discussions untuk questions
+- **Email**: Contact development team
+
+### Community
+- GitHub Repository: [smart-study-hub-2.0](https://github.com/your-username/smart-study-hub-2.0)
+- Issue Tracker: Report bugs dan feature requests
+- Wiki: Additional documentation dan tutorials
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🏆 Acknowledgments
+
+- **Development Team**: Smart Study Hub engineering team
+- **Beta Testers**: Educational institutions yang provided valuable feedback
+- **Open Source Community**: Amazing tools dan libraries yang made this possible
+- **Contributors**: All developers yang contributed to this project
+
+---
+
+## 🎯 What's Next?
+
+### Upcoming Features (Post-MVP)
+- Mobile application support
+- Advanced AI-powered analytics
+- Automated question generation
+- Video conferencing integration
+- Multi-language support
+- Advanced reporting templates
+
+### Roadmap
+- **v1.1.0**: Enhanced UX & mobile support
+- **v1.2.0**: AI features & advanced analytics
+- **v2.0.0**: Microservices architecture & multi-tenant support
+
+---
+
+**🚀 Ready untuk Production!**
+
+Smart Study Hub 2.0 MVP telah melalui extensive testing dan ready untuk production deployment. Sistem ini telah dioptimasi untuk performance, security, dan scalability.
+
+For questions atau support, please contact the development team atau create an issue di GitHub repository.
+
+---
+
+*Built dengan ❤️ oleh Smart Study Hub Team*
