@@ -13,6 +13,7 @@ from .routes import (
         question_sets, question_submissions, score_analytics, exam_analytics,
         teacher_analytics, exports, admin_exports, admin_export_files
     )
+from .endpoints import lessons
 
 api_router = APIRouter()
 api_router.include_router(auth.router, prefix="/auth", tags=["auth"])
@@ -42,3 +43,13 @@ api_router.include_router(question_submissions.router, prefix="/question-submiss
 api_router.include_router(exports.router, prefix="/exports", tags=["exports"])
 api_router.include_router(admin_exports.router, prefix="/admin/exports", tags=["admin-exports"])
 api_router.include_router(admin_export_files.router, prefix="/admin/exports", tags=["admin-export-files"])
+
+# LMS Endpoints - Modular Architecture
+from .endpoints import modules, courses
+api_router.include_router(lessons.router, prefix="/lessons", tags=["lessons"])
+api_router.include_router(modules.router, prefix="/modules", tags=["modules"])
+api_router.include_router(courses.router, prefix="/courses", tags=["courses"])
+
+# LMS Endpoints - Legacy Course Management System
+from .routes import course_management
+api_router.include_router(course_management.router, tags=["Course Management System - Legacy"])
