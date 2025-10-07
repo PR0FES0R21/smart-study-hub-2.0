@@ -179,8 +179,9 @@ class LessonDetailResponse(BaseModel):
     grade_level: int
     topic_tags: List[str]
     
-    # Content
-    pages: List[LessonPageResponse]
+    # Content - DEPRECATED: Pages are now in separate collection
+    # Use GET /lessons/{id}/pages to retrieve pages
+    pages: List[LessonPageResponse] = []  # Empty list for backward compatibility
     
     # Lesson settings
     difficulty_level: str

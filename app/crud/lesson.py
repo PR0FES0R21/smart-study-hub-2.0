@@ -135,8 +135,6 @@ class LessonCRUD:
             if not lesson_data:
                 return None
             
-            lesson = Lesson.from_mongo(lesson_data)
-            
             # Add usage information if requested
             if include_usage:
                 # Find modules using this lesson
@@ -144,9 +142,12 @@ class LessonCRUD:
                     "lesson_refs.lesson_id": ObjectId(lesson_id)
                 }).to_list(100)
                 
-                # Add usage info to lesson (could add to response later)
-                lesson.metadata.usage_count = len(module_usage)
+                # Update metadata in lesson_data before converting to model
+                if "metadata" not in lesson_data:
+                    lesson_data["metadata"] = {}
+                lesson_data["metadata"]["usage_count"] = len(module_usage)
             
+            lesson = Lesson.from_mongo(lesson_data)
             return lesson
             
         except Exception as e:

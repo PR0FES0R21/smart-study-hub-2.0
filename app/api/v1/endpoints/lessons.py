@@ -3,7 +3,7 @@
 # Deskripsi: API endpoints untuk Lesson management (Modular Architecture)
 # ==============================================================================
 from typing import List, Optional, Dict, Any
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from fastapi import status as http_status
 from fastapi.responses import JSONResponse
 
@@ -179,15 +179,24 @@ async def get_lesson(
             )
         
         # Check access permissions
-        user_id = current_user["_id"]
+        user_id_str = str(current_user["_id"])  # Convert to string for comparison
+        user_roles = current_user.get("roles", [])
+        
+        # Teachers and admins can view all lessons (for management purposes)
+        # Students can only view public lessons or lessons they're enrolled in
         can_view = (
+            "admin" in user_roles or
+            "teacher" in user_roles or
             lesson.visibility == "public" or
-            lesson.created_by == user_id or
-            user_id in lesson.collaborators or
-            "admin" in current_user.get("roles", [])
+            lesson.created_by == user_id_str or
+            user_id_str in lesson.collaborators
         )
         
         if not can_view:
+            # Add debug info to help troubleshoot
+            import logging
+            logging.error(f"Permission denied - User: {user_id_str}, Roles: {user_roles}, Lesson visibility: {lesson.visibility}, Creator: {lesson.created_by}")
+            
             raise HTTPException(
                 status_code=http_status.HTTP_403_FORBIDDEN,
                 detail="Not authorized to view this lesson"
@@ -196,24 +205,32 @@ async def get_lesson(
         # Format response dengan user permissions
         response_data = lesson.dict(by_alias=False)
         
-        # Convert ObjectId fields to strings
+        # Convert ObjectId fields to strings (if not already)
         if "_id" in response_data:
             response_data["id"] = str(response_data["_id"])
             del response_data["_id"]
         elif "id" in response_data and response_data["id"] is not None:
             response_data["id"] = str(response_data["id"])
         
-        if "subject_id" in response_data:
+        # These should already be strings from Lesson.from_mongo(), but ensure it
+        if "subject_id" in response_data and response_data["subject_id"]:
             response_data["subject_id"] = str(response_data["subject_id"])
-        if "created_by" in response_data:
+        if "created_by" in response_data and response_data["created_by"]:
             response_data["created_by"] = str(response_data["created_by"])
-        if "collaborators" in response_data:
-            response_data["collaborators"] = [str(c) for c in response_data["collaborators"]]
+        if "collaborators" in response_data and response_data["collaborators"]:
+            response_data["collaborators"] = [str(c) if c else c for c in response_data["collaborators"]]
+        
+        # Pages are now in separate collection - set empty for backward compatibility
+        response_data["pages"] = []
+        
+        # Add additional fields expected by response schema
+        response_data["subject_name"] = None  # TODO: Populate from subject lookup
+        response_data["created_by_name"] = None  # TODO: Populate from user lookup
         
         # Add user permissions
-        response_data["can_edit"] = lesson.is_editable_by(user_id)
-        response_data["can_delete"] = lesson.created_by == user_id
-        response_data["can_collaborate"] = lesson.is_editable_by(user_id)
+        response_data["can_edit"] = lesson.is_editable_by(user_id_str)
+        response_data["can_delete"] = lesson.created_by == user_id_str
+        response_data["can_collaborate"] = lesson.is_editable_by(user_id_str)
         
         return LessonDetailResponse(**response_data)
         
@@ -627,7 +644,7 @@ async def create_lesson_page(
 @router.get("/{lesson_id}/pages/{page_number}", response_model=PageWithNavigationResponse)
 async def get_lesson_page(
     lesson_id: str,
-    page_number: int = Query(..., ge=1),
+    page_number: int = Path(..., ge=1, description="Page number to retrieve"),
     prefetch_next: bool = Query(False, description="Include next page in response"),
     db: AsyncIOMotorDatabase = Depends(get_database),
     current_user: Dict[str, Any] = Depends(get_current_user)
@@ -710,7 +727,7 @@ async def get_pages_batch(
 @router.put("/{lesson_id}/pages/{page_number}", response_model=PageResponse)
 async def update_lesson_page(
     lesson_id: str,
-    page_number: int = Query(..., ge=1),
+    page_number: int = Path(..., ge=1, description="Page number to update"),
     page_data: UpdatePageRequest = None,
     db: AsyncIOMotorDatabase = Depends(get_database),
     current_user: Dict[str, Any] = Depends(get_current_user)
@@ -795,7 +812,7 @@ async def reorder_lesson_pages(
 @router.delete("/{lesson_id}/pages/{page_number}")
 async def delete_lesson_page(
     lesson_id: str,
-    page_number: int = Query(..., ge=1),
+    page_number: int = Path(..., ge=1, description="Page number to delete"),
     db: AsyncIOMotorDatabase = Depends(get_database),
     current_user: Dict[str, Any] = Depends(get_current_user)
 ):
