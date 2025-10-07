@@ -263,6 +263,22 @@ class Module(BaseModel):
         """Convert MongoDB document to Pydantic model"""
         if '_id' in data:
             data['id'] = str(data['_id'])
+            del data['_id']  # Remove _id after converting to id
+        
+        # Convert all ObjectId fields to strings
+        if 'subject_id' in data and data['subject_id']:
+            data['subject_id'] = str(data['subject_id'])
+        if 'created_by' in data and data['created_by']:
+            data['created_by'] = str(data['created_by'])
+        if 'collaborators' in data:
+            data['collaborators'] = [str(c) for c in data['collaborators']]
+        
+        # Convert lesson_refs ObjectIds
+        if 'lesson_refs' in data:
+            for ref in data['lesson_refs']:
+                if 'lesson_id' in ref and ref['lesson_id']:
+                    ref['lesson_id'] = str(ref['lesson_id'])
+        
         return cls(**data)
     
     def to_mongo(self) -> dict:

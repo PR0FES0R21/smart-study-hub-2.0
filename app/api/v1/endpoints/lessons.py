@@ -3,7 +3,8 @@
 # Deskripsi: API endpoints untuk Lesson management (Modular Architecture)
 # ==============================================================================
 from typing import List, Optional, Dict, Any
-from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import status as http_status
 from fastapi.responses import JSONResponse
 
 from app.api.v1.deps import get_database, get_current_user
@@ -23,7 +24,7 @@ router = APIRouter()
 
 # ==================== LESSON CRUD ENDPOINTS ====================
 
-@router.post("/", response_model=LessonDetailResponse, status_code=status.HTTP_201_CREATED)
+@router.post("/", response_model=LessonDetailResponse, status_code=http_status.HTTP_201_CREATED)
 async def create_lesson(
     lesson_data: LessonCreateRequest,
     db: AsyncIOMotorDatabase = Depends(get_database),
@@ -34,7 +35,7 @@ async def create_lesson(
     # Check permissions - teachers dapat create lessons
     if "teacher" not in current_user.get("roles", []) and "admin" not in current_user.get("roles", []):
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
+            status_code=http_status.HTTP_403_FORBIDDEN,
             detail="Only teachers can create lessons"
         )
     
@@ -43,8 +44,20 @@ async def create_lesson(
         lesson = await lesson_crud.create_lesson(db, lesson_data, str(current_user["_id"]))
         
         # Convert to response format
-        response_data = lesson.dict()
-        response_data["id"] = lesson.id
+        response_data = lesson.dict(by_alias=False)  # Use field names, not aliases
+        
+        # Ensure id is set (convert _id if needed)
+        if "id" not in response_data and "_id" in response_data:
+            response_data["id"] = str(response_data["_id"])
+        elif "id" in response_data and response_data["id"] is not None:
+            response_data["id"] = str(response_data["id"])
+        
+        # Convert all ObjectId fields to strings
+        if "subject_id" in response_data:
+            response_data["subject_id"] = str(response_data["subject_id"])
+        if "created_by" in response_data:
+            response_data["created_by"] = str(response_data["created_by"])
+        
         response_data["subject_name"] = None  # Would be populated by subject lookup
         response_data["created_by_name"] = f"{current_user.get('profile', {}).get('first_name', '')} {current_user.get('profile', {}).get('last_name', '')}"
         response_data["can_edit"] = True
@@ -55,7 +68,7 @@ async def create_lesson(
         
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to create lesson: {str(e)}"
         )
 
@@ -124,7 +137,7 @@ async def list_lessons(
         
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to retrieve lessons: {str(e)}"
         )
 
@@ -141,7 +154,7 @@ async def get_lesson_library(
         
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to retrieve lesson library: {str(e)}"
         )
 
@@ -161,7 +174,7 @@ async def get_lesson(
         
         if not lesson:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
+                status_code=http_status.HTTP_404_NOT_FOUND,
                 detail="Lesson not found"
             )
         
@@ -176,13 +189,28 @@ async def get_lesson(
         
         if not can_view:
             raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
+                status_code=http_status.HTTP_403_FORBIDDEN,
                 detail="Not authorized to view this lesson"
             )
         
         # Format response dengan user permissions
-        response_data = lesson.dict()
-        response_data["id"] = lesson.id
+        response_data = lesson.dict(by_alias=False)
+        
+        # Convert ObjectId fields to strings
+        if "_id" in response_data:
+            response_data["id"] = str(response_data["_id"])
+            del response_data["_id"]
+        elif "id" in response_data and response_data["id"] is not None:
+            response_data["id"] = str(response_data["id"])
+        
+        if "subject_id" in response_data:
+            response_data["subject_id"] = str(response_data["subject_id"])
+        if "created_by" in response_data:
+            response_data["created_by"] = str(response_data["created_by"])
+        if "collaborators" in response_data:
+            response_data["collaborators"] = [str(c) for c in response_data["collaborators"]]
+        
+        # Add user permissions
         response_data["can_edit"] = lesson.is_editable_by(user_id)
         response_data["can_delete"] = lesson.created_by == user_id
         response_data["can_collaborate"] = lesson.is_editable_by(user_id)
@@ -193,7 +221,7 @@ async def get_lesson(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to retrieve lesson: {str(e)}"
         )
 
@@ -212,8 +240,22 @@ async def update_lesson(
         )
         
         # Format response
-        response_data = lesson.dict()
-        response_data["id"] = lesson.id
+        response_data = lesson.dict(by_alias=False)
+        
+        # Convert ObjectId fields to strings
+        if "_id" in response_data:
+            response_data["id"] = str(response_data["_id"])
+            del response_data["_id"]
+        elif "id" in response_data and response_data["id"] is not None:
+            response_data["id"] = str(response_data["id"])
+        
+        if "subject_id" in response_data:
+            response_data["subject_id"] = str(response_data["subject_id"])
+        if "created_by" in response_data:
+            response_data["created_by"] = str(response_data["created_by"])
+        if "collaborators" in response_data:
+            response_data["collaborators"] = [str(c) for c in response_data["collaborators"]]
+        
         response_data["can_edit"] = lesson.is_editable_by(current_user["_id"])
         response_data["can_delete"] = lesson.created_by == current_user["_id"]
         
@@ -223,7 +265,7 @@ async def update_lesson(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to update lesson: {str(e)}"
         )
 
@@ -246,7 +288,7 @@ async def delete_lesson(
             )
         else:
             raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail="Failed to delete lesson"
             )
             
@@ -254,13 +296,13 @@ async def delete_lesson(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to delete lesson: {str(e)}"
         )
 
 # ==================== LESSON PAGE MANAGEMENT ====================
 
-@router.post("/{lesson_id}/pages", status_code=status.HTTP_201_CREATED)
+@router.post("/{lesson_id}/pages", status_code=http_status.HTTP_201_CREATED)
 async def add_page_to_lesson(
     lesson_id: str,
     page_data: LessonPageAddRequest,
@@ -284,7 +326,7 @@ async def add_page_to_lesson(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to add page: {str(e)}"
         )
 
@@ -313,7 +355,7 @@ async def update_lesson_page(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to update page: {str(e)}"
         )
 
@@ -428,7 +470,7 @@ async def get_lesson_analytics(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to retrieve analytics: {str(e)}"
         )
 
@@ -486,6 +528,305 @@ async def get_lesson_usage(
         
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Failed to retrieve usage information: {str(e)}"
         )
+
+
+# ==================== LESSON PAGES ENDPOINTS (NEW - SEPARATED) ====================
+
+from app.crud.lesson_page import lesson_page_crud
+from app.schemas.lesson_page import (
+    CreatePageRequest, UpdatePageRequest, ReorderPagesRequest,
+    PageResponse, PageSummaryResponse, PagesListResponse,
+    PageWithNavigationResponse, BatchPagesResponse
+)
+
+@router.get("/{lesson_id}/pages", response_model=PagesListResponse)
+async def list_lesson_pages(
+    lesson_id: str,
+    status_filter: Optional[str] = Query(None, description="Filter by status: draft | published | archived"),
+    summary_only: bool = Query(True, description="Return summary only (no content)"),
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
+    """
+    Get list of all pages for a lesson.
+    
+    **Default: Returns summary only (fast, lightweight)**
+    - Set summary_only=false to get full content (slower)
+    """
+    
+    # Get lesson info
+    lesson = await lesson_crud.get_lesson_by_id(db, lesson_id)
+    if not lesson:
+        raise HTTPException(status_code=404, detail="Lesson not found")
+    
+    # Get pages
+    pages = await lesson_page_crud.list_pages(
+        db, 
+        lesson_id, 
+        status_filter=status_filter,
+        summary_only=summary_only
+    )
+    
+    if summary_only:
+        return PagesListResponse(
+            lesson_id=lesson_id,
+            lesson_title=lesson.title,
+            total_pages=len(pages),
+            pages=pages
+        )
+    else:
+        # Return full pages
+        return {
+            "lesson_id": lesson_id,
+            "lesson_title": lesson.title,
+            "total_pages": len(pages),
+            "pages": [page.dict() for page in pages]
+        }
+
+
+@router.post("/{lesson_id}/pages", response_model=PageResponse, status_code=http_status.HTTP_201_CREATED)
+async def create_lesson_page(
+    lesson_id: str,
+    page_data: CreatePageRequest,
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
+    """
+    Add new page to lesson.
+    
+    **Permissions:** Only lesson creator or collaborators can add pages.
+    """
+    
+    # Check lesson exists and permissions
+    lesson = await lesson_crud.get_lesson_by_id(db, lesson_id)
+    if not lesson:
+        raise HTTPException(status_code=404, detail="Lesson not found")
+    
+    # Check permissions
+    user_id = str(current_user["_id"])
+    if not lesson.is_editable_by(user_id):
+        raise HTTPException(
+            status_code=403,
+            detail="You don't have permission to edit this lesson"
+        )
+    
+    # Create page
+    page = await lesson_page_crud.create_page(
+        db,
+        lesson_id,
+        page_data.dict(),
+        user_id
+    )
+    
+    return page.dict()
+
+
+@router.get("/{lesson_id}/pages/{page_number}", response_model=PageWithNavigationResponse)
+async def get_lesson_page(
+    lesson_id: str,
+    page_number: int = Query(..., ge=1),
+    prefetch_next: bool = Query(False, description="Include next page in response"),
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
+    """
+    Get single page content.
+    
+    **Efficient:** Only loads requested page (not entire lesson).
+    **Performance:** ~5-20KB response vs 250KB+ for full lesson.
+    """
+    
+    # Get lesson info
+    lesson = await lesson_crud.get_lesson_by_id(db, lesson_id)
+    if not lesson:
+        raise HTTPException(status_code=404, detail="Lesson not found")
+    
+    # Get page
+    page = await lesson_page_crud.get_page(db, lesson_id, page_number)
+    if not page:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Page {page_number} not found"
+        )
+    
+    # Get total pages
+    total_pages = lesson.metadata.total_pages
+    
+    # Navigation info
+    has_previous = page_number > 1
+    has_next = page_number < total_pages
+    previous_page = page_number - 1 if has_previous else None
+    next_page = page_number + 1 if has_next else None
+    
+    return PageWithNavigationResponse(
+        lesson_id=lesson_id,
+        lesson_title=lesson.title,
+        total_pages=total_pages,
+        current_page=page_number,
+        has_previous=has_previous,
+        has_next=has_next,
+        previous_page=previous_page,
+        next_page=next_page,
+        page=PageResponse(**page.dict())
+    )
+
+
+@router.get("/{lesson_id}/pages/batch", response_model=BatchPagesResponse)
+async def get_pages_batch(
+    lesson_id: str,
+    page_numbers: str = Query(..., description="Comma-separated page numbers (e.g., '1,2,3')"),
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
+    """
+    Get multiple pages at once (for prefetching).
+    
+    **Use case:** Prefetch next 2-3 pages for smooth navigation.
+    **Example:** ?page_numbers=1,2,3
+    """
+    
+    # Parse page numbers
+    try:
+        page_nums = [int(n.strip()) for n in page_numbers.split(',')]
+    except ValueError:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid page numbers format"
+        )
+    
+    # Get pages
+    pages = await lesson_page_crud.get_pages_batch(db, lesson_id, page_nums)
+    
+    return BatchPagesResponse(
+        lesson_id=lesson_id,
+        pages=[PageResponse(**p.dict()) for p in pages],
+        page_numbers=page_nums
+    )
+
+
+@router.put("/{lesson_id}/pages/{page_number}", response_model=PageResponse)
+async def update_lesson_page(
+    lesson_id: str,
+    page_number: int = Query(..., ge=1),
+    page_data: UpdatePageRequest = None,
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
+    """
+    Update page content.
+    
+    **Efficient:** Only updates single page (not entire lesson).
+    **Versioning:** Version number auto-incremented on content changes.
+    """
+    
+    # Check lesson permissions
+    lesson = await lesson_crud.get_lesson_by_id(db, lesson_id)
+    if not lesson:
+        raise HTTPException(status_code=404, detail="Lesson not found")
+    
+    user_id = str(current_user["_id"])
+    if not lesson.is_editable_by(user_id):
+        raise HTTPException(
+            status_code=403,
+            detail="You don't have permission to edit this lesson"
+        )
+    
+    # Update page
+    updates = page_data.dict(exclude_unset=True)
+    page = await lesson_page_crud.update_page(
+        db,
+        lesson_id,
+        page_number,
+        updates,
+        user_id
+    )
+    
+    if not page:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Page {page_number} not found"
+        )
+    
+    return page.dict()
+
+
+@router.put("/{lesson_id}/pages/reorder")
+async def reorder_lesson_pages(
+    lesson_id: str,
+    reorder_data: ReorderPagesRequest,
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
+    """
+    Reorder pages (change page numbers).
+    
+    **Example:** Change order from [1,2,3] to [3,1,2]
+    """
+    
+    # Check permissions
+    lesson = await lesson_crud.get_lesson_by_id(db, lesson_id)
+    if not lesson:
+        raise HTTPException(status_code=404, detail="Lesson not found")
+    
+    user_id = str(current_user["_id"])
+    if not lesson.is_editable_by(user_id):
+        raise HTTPException(
+            status_code=403,
+            detail="You don't have permission to edit this lesson"
+        )
+    
+    # Reorder
+    success = await lesson_page_crud.reorder_pages(
+        db,
+        lesson_id,
+        reorder_data.page_numbers
+    )
+    
+    return {
+        "success": success,
+        "message": "Pages reordered successfully",
+        "new_order": reorder_data.page_numbers
+    }
+
+
+@router.delete("/{lesson_id}/pages/{page_number}")
+async def delete_lesson_page(
+    lesson_id: str,
+    page_number: int = Query(..., ge=1),
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
+    """
+    Delete a page.
+    
+    **Note:** Remaining pages will be automatically renumbered.
+    """
+    
+    # Check permissions
+    lesson = await lesson_crud.get_lesson_by_id(db, lesson_id)
+    if not lesson:
+        raise HTTPException(status_code=404, detail="Lesson not found")
+    
+    user_id = str(current_user["_id"])
+    if not lesson.is_editable_by(user_id):
+        raise HTTPException(
+            status_code=403,
+            detail="You don't have permission to edit this lesson"
+        )
+    
+    # Delete page
+    success = await lesson_page_crud.delete_page(db, lesson_id, page_number)
+    
+    if not success:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Page {page_number} not found"
+        )
+    
+    return {
+        "success": True,
+        "message": f"Page {page_number} deleted successfully"
+    }

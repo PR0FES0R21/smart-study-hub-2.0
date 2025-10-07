@@ -45,11 +45,17 @@ api_router.include_router(admin_exports.router, prefix="/admin/exports", tags=["
 api_router.include_router(admin_export_files.router, prefix="/admin/exports", tags=["admin-export-files"])
 
 # LMS Endpoints - Modular Architecture
-from .endpoints import modules, courses
-api_router.include_router(lessons.router, prefix="/lessons", tags=["lessons"])
-api_router.include_router(modules.router, prefix="/modules", tags=["modules"])
-api_router.include_router(courses.router, prefix="/courses", tags=["courses"])
+from .endpoints import modules, courses, lesson_progress, module_progress, course_progress, media
+api_router.include_router(lessons.router, prefix="/lessons", tags=["LMS - Lessons"])
+api_router.include_router(modules.router, prefix="/modules", tags=["LMS - Modules"])
+api_router.include_router(courses.router, prefix="/courses", tags=["LMS - Courses"])
+api_router.include_router(media.router, prefix="/media", tags=["LMS - Media Upload"])
+
+# LMS Progress Tracking
+api_router.include_router(lesson_progress.router, prefix="/progress", tags=["LMS - Progress Tracking"])
+api_router.include_router(module_progress.router, prefix="/progress", tags=["LMS - Progress Tracking"])
+api_router.include_router(course_progress.router, prefix="/progress", tags=["LMS - Progress Tracking"])
 
 # LMS Endpoints - Legacy Course Management System
-from .routes import course_management
-api_router.include_router(course_management.router, tags=["Course Management System - Legacy"])
+# from .routes import course_management
+# api_router.include_router(course_management.router, tags=["Course Management System - Legacy"])

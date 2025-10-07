@@ -80,7 +80,7 @@ class LessonMetadata(BaseModel):
     calculated_at: datetime = Field(default_factory=datetime.utcnow)
 
 class Lesson(BaseModel):
-    """Main lesson model - contains pages and metadata"""
+    """Main lesson model - metadata only (pages stored separately)"""
     id: Optional[str] = Field(None, alias="_id")
     
     # Basic lesson info
@@ -93,8 +93,9 @@ class Lesson(BaseModel):
     grade_level: int = Field(..., ge=1, le=12, description="Target grade level")
     topic_tags: List[str] = Field(default_factory=list, description="Topik tags untuk categorization")
     
-    # Content structure
-    pages: List[LessonPage] = Field(default_factory=list, description="Lesson pages")
+    # NOTE: Pages are NOW stored in separate 'lesson_pages' collection!
+    # This field is REMOVED for performance (was: List[LessonPage])
+    # Use /lessons/{id}/pages endpoints to access page content
     
     # Lesson settings
     difficulty_level: str = Field(default="medium", description="Overall lesson difficulty")
@@ -211,6 +212,16 @@ class Lesson(BaseModel):
         """Convert MongoDB document to Pydantic model"""
         if '_id' in data:
             data['id'] = str(data['_id'])
+            del data['_id']  # Remove _id after converting to id
+        
+        # Convert all ObjectId fields to strings
+        if 'subject_id' in data and data['subject_id']:
+            data['subject_id'] = str(data['subject_id'])
+        if 'created_by' in data and data['created_by']:
+            data['created_by'] = str(data['created_by'])
+        if 'collaborators' in data:
+            data['collaborators'] = [str(c) for c in data['collaborators']]
+        
         return cls(**data)
     
     def to_mongo(self) -> dict:

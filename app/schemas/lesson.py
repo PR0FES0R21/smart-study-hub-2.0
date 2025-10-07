@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field, validator
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 from app.schemas.base import PyObjectId
-from app.schemas.pagination import PaginatedResponse
+from app.schemas.pagination import LMSPaginatedResponse
 
 # ==================== REQUEST SCHEMAS ====================
 
@@ -293,7 +293,7 @@ class LessonReviewRequest(BaseModel):
 
 # ==================== PAGINATED RESPONSES ====================
 
-class PaginatedLessonResponse(PaginatedResponse[LessonSummaryResponse]):
+class PaginatedLessonResponse(LMSPaginatedResponse[LessonSummaryResponse]):
     """Paginated lesson response dengan additional stats"""
     total_by_subject: Optional[Dict[str, int]] = None
     total_by_difficulty: Optional[Dict[str, int]] = None

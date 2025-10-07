@@ -14,3 +14,13 @@ class PaginatedResponse(BaseModel, Generic[DataType]):
     current_page: int
     limit: int
     data: List[DataType]
+
+class LMSPaginatedResponse(BaseModel, Generic[DataType]):
+    """Pagination response for LMS endpoints (different field names)"""
+    items: List[DataType]
+    total: int
+    page: int
+    per_page: int
+    total_pages: int
+    has_next: bool
+    has_prev: bool

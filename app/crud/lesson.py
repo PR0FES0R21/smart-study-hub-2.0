@@ -574,6 +574,7 @@ class LessonCRUD:
             "total_pages": lesson_data.get("metadata", {}).get("total_pages", 0),
             "total_duration": lesson_data.get("metadata", {}).get("total_duration", 0),
             "difficulty_level": lesson_data.get("difficulty_level", "medium"),
+            "created_by": str(lesson_data.get("created_by", "")),  # Required field
             "visibility": lesson_data.get("visibility", "public"),
             "status": lesson_data.get("status", "draft"),
             "created_at": lesson_data.get("created_at"),

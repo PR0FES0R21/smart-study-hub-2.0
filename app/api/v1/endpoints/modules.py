@@ -129,8 +129,22 @@ async def get_module(
             if not module:
                 raise HTTPException(status_code=404, detail="Module not found")
             
+            # Convert module to dict and handle ObjectIds
+            module_dict = module.dict(by_alias=False)
+            
+            # Convert ObjectId fields to strings
+            if "_id" in module_dict:
+                module_dict["id"] = str(module_dict["_id"])
+                del module_dict["_id"]
+            if "subject_id" in module_dict:
+                module_dict["subject_id"] = str(module_dict["subject_id"])
+            if "created_by" in module_dict:
+                module_dict["created_by"] = str(module_dict["created_by"])
+            if "collaborators" in module_dict:
+                module_dict["collaborators"] = [str(c) for c in module_dict["collaborators"]]
+            
             result = {
-                "module": module.dict(),
+                "module": module_dict,
                 "lessons": [],
                 "total_lessons": len(module.lesson_refs),
                 "total_duration": module.metadata.total_duration

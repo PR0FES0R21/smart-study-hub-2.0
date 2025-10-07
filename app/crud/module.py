@@ -252,6 +252,7 @@ class ModuleCRUD:
             # Project needed fields
             {
                 "$project": {
+                    "_id": 0,  # Exclude original ObjectId _id field
                     "id": 1,
                     "title": 1,
                     "description": 1,
@@ -269,7 +270,13 @@ class ModuleCRUD:
                     "status": 1,
                     "created_at": 1,
                     "updated_at": 1,
-                    "lesson_count": {"$size": "$lesson_refs"}
+                    "lesson_count": {
+                        "$cond": {
+                            "if": {"$isArray": "$lesson_refs"},
+                            "then": {"$size": "$lesson_refs"},
+                            "else": 0
+                        }
+                    }
                 }
             }
         ]
@@ -335,8 +342,28 @@ class ModuleCRUD:
                     }
                     lesson_details.append(lesson_info)
         
+        # Convert module to dict with all ObjectIds as strings
+        module_dict = module.dict(by_alias=False)
+        
+        # Ensure all ObjectId fields are strings
+        if "_id" in module_dict:
+            module_dict["id"] = str(module_dict["_id"])
+            del module_dict["_id"]
+        if "subject_id" in module_dict:
+            module_dict["subject_id"] = str(module_dict["subject_id"])
+        if "created_by" in module_dict:
+            module_dict["created_by"] = str(module_dict["created_by"])
+        if "collaborators" in module_dict:
+            module_dict["collaborators"] = [str(c) for c in module_dict["collaborators"]]
+        
+        # Convert lesson_refs ObjectIds to strings
+        if "lesson_refs" in module_dict:
+            for ref in module_dict["lesson_refs"]:
+                if "lesson_id" in ref:
+                    ref["lesson_id"] = str(ref["lesson_id"])
+        
         return {
-            "module": module.dict(),
+            "module": module_dict,
             "lessons": lesson_details,
             "total_lessons": len(lesson_details),
             "total_duration": sum(lesson.get("total_duration", 0) for lesson in lesson_details)
