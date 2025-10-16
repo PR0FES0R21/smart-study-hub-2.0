@@ -179,9 +179,17 @@ async def get_lesson(
     """Get lesson by ID"""
     
     try:
-        lesson = await lesson_crud.get_lesson_by_id(
+        # Get lesson (may return tuple if include_usage=True)
+        result = await lesson_crud.get_lesson_by_id(
             db, lesson_id, str(current_user["_id"]), include_usage
         )
+        
+        # Handle return value (either Lesson or (Lesson, usage_details))
+        if include_usage:
+            lesson, usage_details = result if result else (None, None)
+        else:
+            lesson = result
+            usage_details = None
         
         if not lesson:
             raise HTTPException(
@@ -237,9 +245,8 @@ async def get_lesson(
         # Pages are now in separate collection - set empty for backward compatibility
         response_data["pages"] = []
         
-        # Add additional fields expected by response schema
-        response_data["subject_name"] = None  # TODO: Populate from subject lookup
-        response_data["created_by_name"] = None  # TODO: Populate from user lookup
+        # Note: subject_name and created_by_name are now populated by CRUD layer
+        # Don't overwrite with None - they should already be set
         
         # Add user permissions (convert to string for comparison)
         response_data["can_edit"] = lesson.is_editable_by(user_id_str)
@@ -247,9 +254,9 @@ async def get_lesson(
         response_data["can_collaborate"] = lesson.is_editable_by(user_id_str)
         
         # Add usage information if requested
-        if include_usage and hasattr(lesson, 'usage_details'):
-            response_data["usage_in_modules"] = lesson.usage_details.get("modules", [])
-            response_data["usage_in_courses"] = lesson.usage_details.get("courses", [])
+        if include_usage and usage_details:
+            response_data["usage_in_modules"] = usage_details.get("modules", [])
+            response_data["usage_in_courses"] = usage_details.get("courses", [])
         else:
             response_data["usage_in_modules"] = None
         

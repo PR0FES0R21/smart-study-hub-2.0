@@ -58,25 +58,9 @@ class LessonCRUD:
         result = await db[self.collection].insert_one(lesson.to_mongo())
         lesson.id = str(result.inserted_id)
         
-        # Create pages separately if provided
-        if lesson_data.pages:
-            from app.crud.lesson_page import lesson_page_crud
-            for i, page_data in enumerate(lesson_data.pages):
-                page_dict = {
-                    "page_number": i + 1,
-                    "title": page_data.title,
-                    "content_markdown": page_data.content_markdown,
-                    "media_references": [media.dict() for media in page_data.media_references],
-                    "embedded_components": [comp.dict() for comp in page_data.embedded_components],
-                    "estimated_duration": page_data.estimated_duration,
-                    "difficulty_level": page_data.difficulty_level,
-                    "learning_objectives": page_data.learning_objectives,
-                    "status": "published"
-                }
-                await lesson_page_crud.create_page(db, lesson.id, page_dict, creator_id)
-        
-        # Refresh lesson to get updated metadata
-        lesson = await self.get_lesson_by_id(db, lesson.id)
+        # Note: Pages are NOT created here.
+        # Frontend should use POST /lessons/{id}/pages to add pages after lesson creation.
+        # This ensures clean separation: lessons collection = metadata, lesson_pages collection = content.
         
         return lesson
     
@@ -109,13 +93,45 @@ class LessonCRUD:
         lesson_id: str,
         user_id: Optional[str] = None,
         include_usage: bool = False
-    ) -> Optional[Lesson]:
-        """Get lesson by ID with optional user context"""
+    ):
+        """Get lesson by ID with optional user context
+        
+        Returns:
+            If include_usage=False: Lesson object
+            If include_usage=True: Tuple of (Lesson object, usage_details dict)
+        """
         
         try:
             lesson_data = await db[self.collection].find_one({"_id": ObjectId(lesson_id)})
             if not lesson_data:
-                return None
+                return None if not include_usage else (None, None)
+            
+            # Populate subject_name
+            if "subject_id" in lesson_data and lesson_data["subject_id"]:
+                subject = await db["subjects"].find_one(
+                    {"_id": ObjectId(lesson_data["subject_id"])},
+                    {"name": 1}
+                )
+                lesson_data["subject_name"] = subject["name"] if subject else None
+            else:
+                lesson_data["subject_name"] = None
+            
+            # Populate created_by_name
+            if "created_by" in lesson_data and lesson_data["created_by"]:
+                creator = await db["users"].find_one(
+                    {"_id": ObjectId(lesson_data["created_by"])},
+                    {"profile.first_name": 1, "profile.last_name": 1}
+                )
+                if creator and "profile" in creator:
+                    first_name = creator["profile"].get("first_name", "")
+                    last_name = creator["profile"].get("last_name", "")
+                    lesson_data["created_by_name"] = f"{first_name} {last_name}".strip()
+                else:
+                    lesson_data["created_by_name"] = None
+            else:
+                lesson_data["created_by_name"] = None
+            
+            usage_details = None
             
             # Add usage information if requested
             if include_usage:
@@ -145,8 +161,8 @@ class LessonCRUD:
                     lesson_data["metadata"] = {}
                 lesson_data["metadata"]["usage_count"] = len(module_usage)
                 
-                # Store usage details for later use in endpoint
-                lesson_data["_usage_details"] = {
+                # Build usage details dict
+                usage_details = {
                     "modules": [
                         {
                             "id": str(m["_id"]),
@@ -167,11 +183,11 @@ class LessonCRUD:
             
             lesson = Lesson.from_mongo(lesson_data)
             
-            # Attach usage details if they were generated
-            if include_usage and "_usage_details" in lesson_data:
-                lesson.usage_details = lesson_data["_usage_details"]
-            
-            return lesson
+            # Return lesson only or tuple with usage details
+            if include_usage:
+                return (lesson, usage_details)
+            else:
+                return lesson
             
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error retrieving lesson: {str(e)}")

@@ -40,7 +40,7 @@ class LessonPage(BaseModel):
     id: Optional[str] = Field(None, alias="_id")
     
     # Reference to parent lesson
-    lesson_id: PyObjectId = Field(..., description="Parent lesson ID")
+    lesson_id: str = Field(..., description="Parent lesson ID (converted from ObjectId)")
     
     # Page identification
     page_number: int = Field(..., ge=1, description="Page number dalam lesson")
@@ -68,8 +68,8 @@ class LessonPage(BaseModel):
     published_at: Optional[datetime] = Field(None, description="When it was published")
     
     # Author tracking
-    created_by: Optional[PyObjectId] = Field(None, description="User who created this page")
-    updated_by: Optional[PyObjectId] = Field(None, description="User who last updated")
+    created_by: Optional[str] = Field(None, description="User who created this page (converted from ObjectId)")
+    updated_by: Optional[str] = Field(None, description="User who last updated (converted from ObjectId)")
     
     class Config:
         populate_by_name = True

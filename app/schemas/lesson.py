@@ -39,15 +39,17 @@ class LessonPageRequest(BaseModel):
     learning_objectives: List[str] = Field(default_factory=list)
 
 class LessonCreateRequest(BaseModel):
-    """Request untuk creating lesson"""
+    """Request untuk creating lesson
+    
+    NOTE: Pages are NOT created via this endpoint.
+    After creating a lesson, use POST /lessons/{id}/pages to add pages.
+    This ensures clean separation between lesson metadata and page content.
+    """
     title: str = Field(..., min_length=1, max_length=200)
     description: str = Field(..., max_length=2000)
     subject_id: PyObjectId = Field(..., description="Subject ID")
     grade_level: int = Field(..., ge=1, le=12)
     topic_tags: List[str] = Field(default_factory=list)
-    
-    # Content
-    pages: List[LessonPageRequest] = Field(default_factory=list)
     
     # Settings
     difficulty_level: str = Field(default="medium")
@@ -56,11 +58,17 @@ class LessonCreateRequest(BaseModel):
     visibility: str = Field(default="public", description="public | private | shared")
 
 class LessonUpdateRequest(BaseModel):
-    """Request untuk updating lesson"""
+    """Request untuk updating lesson metadata
+    
+    NOTE: Pages CANNOT be updated via this endpoint.
+    Use dedicated page endpoints:
+    - POST /lessons/{id}/pages - Add new page
+    - PUT /lessons/{id}/pages/{number} - Update existing page
+    - DELETE /lessons/{id}/pages/{number} - Delete page
+    """
     title: Optional[str] = Field(None, min_length=1, max_length=200)
     description: Optional[str] = Field(None, max_length=2000)
     topic_tags: Optional[List[str]] = Field(None)
-    pages: Optional[List[LessonPageRequest]] = Field(None)
     difficulty_level: Optional[str] = Field(None)
     learning_objectives: Optional[List[str]] = Field(None)
     prerequisites: Optional[List[str]] = Field(None)

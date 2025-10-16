@@ -90,6 +90,7 @@ class Lesson(BaseModel):
     
     # Academic classification
     subject_id: PyObjectId = Field(..., description="Subject this lesson belongs to")
+    subject_name: Optional[str] = Field(None, description="Subject name (populated from lookup)")
     grade_level: int = Field(..., ge=1, le=12, description="Target grade level")
     topic_tags: List[str] = Field(default_factory=list, description="Topik tags untuk categorization")
     
@@ -105,6 +106,7 @@ class Lesson(BaseModel):
     # Sharing dan visibility
     visibility: str = Field(default="public", description="public | private | shared")
     created_by: PyObjectId = Field(..., description="Teacher who created this lesson")
+    created_by_name: Optional[str] = Field(None, description="Creator name (populated from lookup)")
     collaborators: List[PyObjectId] = Field(default_factory=list, description="Teachers who can edit")
     
     # Auto-calculated metadata
