@@ -119,78 +119,26 @@ class Lesson(BaseModel):
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
     
-    def calculate_metadata(self) -> LessonMetadata:
-        """Calculate and update lesson metadata"""
-        metadata = LessonMetadata()
-        
-        # Basic counts
-        metadata.total_pages = len(self.pages)
-        metadata.total_duration = sum(page.estimated_duration for page in self.pages)
-        
-        # Component analysis
-        all_components = []
-        all_media = []
-        difficulty_count = {"easy": 0, "medium": 0, "hard": 0}
-        
-        for page in self.pages:
-            all_components.extend(page.embedded_components)
-            all_media.extend(page.media_references)
-            difficulty_count[page.difficulty_level] += 1
-        
-        metadata.total_components = len(all_components)
-        metadata.total_media = len(all_media)
-        
-        # Breakdown analysis
-        metadata.component_breakdown = {}
-        for component in all_components:
-            metadata.component_breakdown[component.type] = metadata.component_breakdown.get(component.type, 0) + 1
-        
-        metadata.media_breakdown = {}
-        for media in all_media:
-            metadata.media_breakdown[media.file_type] = metadata.media_breakdown.get(media.file_type, 0) + 1
-        
-        metadata.difficulty_distribution = difficulty_count
-        metadata.calculated_at = datetime.utcnow()
-        
-        self.metadata = metadata
-        return metadata
+    # NOTE: Metadata calculation is now handled by lesson_page_crud
+    # when pages are added/updated/deleted in lesson_pages collection
     
-    def add_page(self, page: LessonPage) -> None:
-        """Add new page to lesson"""
-        # Auto-assign page number
-        if not page.page_number:
-            page.page_number = len(self.pages) + 1
+    def is_editable_by(self, user_id) -> bool:
+        """Check if user can edit this lesson
         
-        self.pages.append(page)
-        self.updated_at = datetime.utcnow()
-        self.calculate_metadata()
-    
-    def reorder_pages(self, new_order: List[int]) -> None:
-        """Reorder pages based on new page numbers"""
-        if len(new_order) != len(self.pages):
-            raise ValueError("New order must include all pages")
+        Args:
+            user_id: Can be string or PyObjectId
         
-        # Reorder pages
-        reordered_pages = [None] * len(self.pages)
-        for i, new_pos in enumerate(new_order):
-            self.pages[i].page_number = new_pos
-            reordered_pages[new_pos - 1] = self.pages[i]
+        Returns:
+            bool: True if user can edit, False otherwise
+        """
+        # Convert to string for comparison (handles both string and ObjectId)
+        user_id_str = str(user_id)
+        created_by_str = str(self.created_by)
+        collaborators_str = [str(c) for c in self.collaborators]
         
-        self.pages = reordered_pages
-        self.updated_at = datetime.utcnow()
-    
-    def get_page_by_number(self, page_number: int) -> Optional[LessonPage]:
-        """Get page by its number"""
-        for page in self.pages:
-            if page.page_number == page_number:
-                return page
-        return None
-    
-    def is_editable_by(self, user_id: PyObjectId) -> bool:
-        """Check if user can edit this lesson"""
         return (
-            self.created_by == user_id or 
-            user_id in self.collaborators
+            created_by_str == user_id_str or 
+            user_id_str in collaborators_str
         )
     
     @validator('visibility')

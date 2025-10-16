@@ -197,35 +197,50 @@ class LessonPageCRUD:
         lesson_id: str,
         new_order: List[int]
     ) -> bool:
-        """Reorder pages (change page numbers)"""
+        """Reorder pages (change page numbers) - TRANSACTION-SAFE"""
         
         # Get all pages
         pages = await db[self.collection].find({
             "lesson_id": ObjectId(lesson_id)
-        }).to_list(None)
+        }).sort("page_number", 1).to_list(None)
         
         if len(pages) != len(new_order):
             raise HTTPException(
                 status_code=400,
-                detail="New order must include all pages"
+                detail=f"New order must include all {len(pages)} pages, but got {len(new_order)}"
             )
         
-        # Create mapping of old to new page numbers
-        old_to_new = {old: new for old, new in enumerate(new_order, 1)}
+        # Validate new_order contains valid page numbers
+        if set(new_order) != set(range(1, len(pages) + 1)):
+            raise HTTPException(
+                status_code=400,
+                detail="New order must be a permutation of page numbers 1 to N"
+            )
         
-        # Update each page
-        for page in pages:
-            old_number = page["page_number"]
-            new_number = old_to_new.get(old_number)
-            
-            if new_number:
-                await db[self.collection].update_one(
-                    {"_id": page["_id"]},
-                    {"$set": {
-                        "page_number": new_number,
-                        "updated_at": datetime.utcnow()
-                    }}
-                )
+        # Use transaction to prevent race conditions
+        async with await db.client.start_session() as session:
+            async with session.start_transaction():
+                # Step 1: Temporarily set all page numbers to negative (to avoid collisions)
+                for i, page in enumerate(pages):
+                    await db[self.collection].update_one(
+                        {"_id": page["_id"]},
+                        {"$set": {"page_number": -(i + 1)}},
+                        session=session
+                    )
+                
+                # Step 2: Set new page numbers according to new_order
+                for new_pos, old_pos in enumerate(new_order, 1):
+                    # Find the page that was at old_pos (now at -old_pos)
+                    page_to_move = pages[old_pos - 1]
+                    
+                    await db[self.collection].update_one(
+                        {"_id": page_to_move["_id"]},
+                        {"$set": {
+                            "page_number": new_pos,
+                            "updated_at": datetime.utcnow()
+                        }},
+                        session=session
+                    )
         
         return True
     

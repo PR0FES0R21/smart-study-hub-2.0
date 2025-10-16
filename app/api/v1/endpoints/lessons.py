@@ -124,6 +124,17 @@ async def list_lessons(
             user_id=str(current_user["_id"])
         )
         
+        # Add user permissions to each lesson
+        user_id_str = str(current_user["_id"])
+        for item in result["items"]:
+            # Set permissions based on ownership and collaboration
+            item["can_edit"] = (
+                item["created_by"] == user_id_str or
+                user_id_str in item.get("collaborators", [])
+            )
+            item["can_delete"] = item["created_by"] == user_id_str
+            item["is_favorited"] = False  # TODO: Implement favorites feature
+        
         # Format response
         return PaginatedLessonResponse(
             items=[LessonSummaryResponse(**item) for item in result["items"]],
@@ -182,14 +193,17 @@ async def get_lesson(
         user_id_str = str(current_user["_id"])  # Convert to string for comparison
         user_roles = current_user.get("roles", [])
         
-        # Teachers and admins can view all lessons (for management purposes)
-        # Students can only view public lessons or lessons they're enrolled in
+        # Authorization logic:
+        # - Admin: can view ALL lessons
+        # - Creator: can view own lessons regardless of visibility
+        # - Collaborator: can view shared lessons
+        # - Anyone: can view public lessons
+        # - Students: only public lessons or lessons in enrolled courses (TODO: implement course enrollment check)
         can_view = (
-            "admin" in user_roles or
-            "teacher" in user_roles or
-            lesson.visibility == "public" or
-            lesson.created_by == user_id_str or
-            user_id_str in lesson.collaborators
+            "admin" in user_roles or  # Admin see all
+            lesson.created_by == user_id_str or  # Creator see own
+            user_id_str in lesson.collaborators or  # Collaborator see shared
+            lesson.visibility == "public"  # Anyone see public
         )
         
         if not can_view:
@@ -227,10 +241,17 @@ async def get_lesson(
         response_data["subject_name"] = None  # TODO: Populate from subject lookup
         response_data["created_by_name"] = None  # TODO: Populate from user lookup
         
-        # Add user permissions
+        # Add user permissions (convert to string for comparison)
         response_data["can_edit"] = lesson.is_editable_by(user_id_str)
-        response_data["can_delete"] = lesson.created_by == user_id_str
+        response_data["can_delete"] = str(lesson.created_by) == user_id_str
         response_data["can_collaborate"] = lesson.is_editable_by(user_id_str)
+        
+        # Add usage information if requested
+        if include_usage and hasattr(lesson, 'usage_details'):
+            response_data["usage_in_modules"] = lesson.usage_details.get("modules", [])
+            response_data["usage_in_courses"] = lesson.usage_details.get("courses", [])
+        else:
+            response_data["usage_in_modules"] = None
         
         return LessonDetailResponse(**response_data)
         
@@ -273,8 +294,10 @@ async def update_lesson(
         if "collaborators" in response_data:
             response_data["collaborators"] = [str(c) for c in response_data["collaborators"]]
         
-        response_data["can_edit"] = lesson.is_editable_by(current_user["_id"])
-        response_data["can_delete"] = lesson.created_by == current_user["_id"]
+        # Set user permissions (convert to string for comparison)
+        user_id_str = str(current_user["_id"])
+        response_data["can_edit"] = lesson.is_editable_by(user_id_str)
+        response_data["can_delete"] = str(lesson.created_by) == user_id_str
         
         return LessonDetailResponse(**response_data)
         
@@ -318,81 +341,9 @@ async def delete_lesson(
         )
 
 # ==================== LESSON PAGE MANAGEMENT ====================
-
-@router.post("/{lesson_id}/pages", status_code=http_status.HTTP_201_CREATED)
-async def add_page_to_lesson(
-    lesson_id: str,
-    page_data: LessonPageAddRequest,
-    db: AsyncIOMotorDatabase = Depends(get_database),
-    current_user: Dict[str, Any] = Depends(get_current_user)
-):
-    """Add new page to lesson"""
-    
-    try:
-        page = await lesson_crud.add_page_to_lesson(
-            db, lesson_id, page_data.dict(), str(current_user["_id"])
-        )
-        
-        return {
-            "success": True,
-            "message": "Page added successfully",
-            "page": page.dict()
-        }
-        
-    except HTTPException:
-        raise
-    except Exception as e:
-        raise HTTPException(
-            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to add page: {str(e)}"
-        )
-
-@router.put("/{lesson_id}/pages/{page_number}")
-async def update_lesson_page(
-    lesson_id: str,
-    page_number: int,
-    page_updates: Dict[str, Any],
-    db: AsyncIOMotorDatabase = Depends(get_database),
-    current_user: Dict[str, Any] = Depends(get_current_user)
-):
-    """Update specific page dalam lesson"""
-    
-    try:
-        page = await lesson_crud.update_lesson_page(
-            db, lesson_id, page_number, page_updates, str(current_user["_id"])
-        )
-        
-        return {
-            "success": True,
-            "message": "Page updated successfully",
-            "page": page.dict()
-        }
-        
-    except HTTPException:
-        raise
-    except Exception as e:
-        raise HTTPException(
-            status_code=http_status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to update page: {str(e)}"
-        )
-
-@router.post("/{lesson_id}/pages/{page_number}/components")
-async def add_component_to_page(
-    lesson_id: str,
-    page_number: int,
-    component_data: ComponentAddRequest,
-    db: AsyncIOMotorDatabase = Depends(get_database),
-    current_user: Dict[str, Any] = Depends(get_current_user)
-):
-    """Add component to lesson page"""
-    
-    # This would be implemented similarly to page updates
-    # For now, return a placeholder
-    return {
-        "success": True,
-        "message": "Component addition functionality to be implemented",
-        "component_id": component_data.component_id
-    }
+# NOTE: Old page management endpoints have been removed.
+# Use the new endpoints below (starting from line 520+) which use lesson_page_crud
+# and support the separated pages architecture.
 
 # ==================== COLLABORATION ENDPOINTS ====================
 

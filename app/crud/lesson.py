@@ -31,10 +31,15 @@ class LessonCRUD:
     ) -> Lesson:
         """Create new lesson"""
         
+        # Validate subject exists
+        subject = await db["subjects"].find_one({"_id": ObjectId(lesson_data.subject_id)})
+        if not subject:
+            raise HTTPException(status_code=400, detail="Subject not found")
+        
         # Generate slug from title
         slug = self._generate_slug(lesson_data.title)
         
-        # Create lesson object
+        # Create lesson object (without pages - they're stored separately)
         lesson = Lesson(
             title=lesson_data.title,
             description=lesson_data.description,
@@ -42,22 +47,6 @@ class LessonCRUD:
             subject_id=lesson_data.subject_id,
             grade_level=lesson_data.grade_level,
             topic_tags=lesson_data.topic_tags,
-            pages=[
-                LessonPage(
-                    page_number=i + 1,
-                    title=page.title,
-                    content_markdown=page.content_markdown,
-                    media_references=[
-                        MediaReference(**media.dict()) for media in page.media_references
-                    ],
-                    embedded_components=[
-                        EmbeddedComponent(**comp.dict()) for comp in page.embedded_components
-                    ],
-                    estimated_duration=page.estimated_duration,
-                    difficulty_level=page.difficulty_level,
-                    learning_objectives=page.learning_objectives
-                ) for i, page in enumerate(lesson_data.pages)
-            ],
             difficulty_level=lesson_data.difficulty_level,
             learning_objectives=lesson_data.learning_objectives,
             prerequisites=lesson_data.prerequisites,
@@ -65,12 +54,29 @@ class LessonCRUD:
             created_by=PyObjectId(creator_id)
         )
         
-        # Calculate metadata
-        lesson.calculate_metadata()
-        
-        # Insert to database
+        # Insert lesson to database
         result = await db[self.collection].insert_one(lesson.to_mongo())
         lesson.id = str(result.inserted_id)
+        
+        # Create pages separately if provided
+        if lesson_data.pages:
+            from app.crud.lesson_page import lesson_page_crud
+            for i, page_data in enumerate(lesson_data.pages):
+                page_dict = {
+                    "page_number": i + 1,
+                    "title": page_data.title,
+                    "content_markdown": page_data.content_markdown,
+                    "media_references": [media.dict() for media in page_data.media_references],
+                    "embedded_components": [comp.dict() for comp in page_data.embedded_components],
+                    "estimated_duration": page_data.estimated_duration,
+                    "difficulty_level": page_data.difficulty_level,
+                    "learning_objectives": page_data.learning_objectives,
+                    "status": "published"
+                }
+                await lesson_page_crud.create_page(db, lesson.id, page_dict, creator_id)
+        
+        # Refresh lesson to get updated metadata
+        lesson = await self.get_lesson_by_id(db, lesson.id)
         
         return lesson
     
@@ -80,8 +86,9 @@ class LessonCRUD:
         lesson_id: str,
         page_data: Dict[str, Any],
         user_id: str
-    ) -> LessonPage:
-        """Add new page to existing lesson"""
+    ):
+        """Add new page to existing lesson - DEPRECATED: Use lesson_page_crud.create_page() instead"""
+        from app.crud.lesson_page import lesson_page_crud
         
         # Get lesson and verify permissions
         lesson = await self.get_lesson_by_id(db, lesson_id)
@@ -91,33 +98,8 @@ class LessonCRUD:
         if not lesson.is_editable_by(PyObjectId(user_id)):
             raise HTTPException(status_code=403, detail="Not authorized to edit this lesson")
         
-        # Create new page
-        page_number = page_data.get("page_number", len(lesson.pages) + 1)
-        new_page = LessonPage(
-            page_number=page_number,
-            title=page_data["title"],
-            content_markdown=page_data["content_markdown"],
-            estimated_duration=page_data.get("estimated_duration", 10),
-            difficulty_level=page_data.get("difficulty_level", "medium"),
-            learning_objectives=page_data.get("learning_objectives", [])
-        )
-        
-        # Add page and recalculate metadata
-        lesson.add_page(new_page)
-        
-        # Update in database
-        await db[self.collection].update_one(
-            {"_id": ObjectId(lesson_id)},
-            {
-                "$set": {
-                    "pages": [page.dict() for page in lesson.pages],
-                    "metadata": lesson.metadata.dict(),
-                    "updated_at": datetime.utcnow()
-                }
-            }
-        )
-        
-        return new_page
+        # Delegate to lesson_page_crud
+        return await lesson_page_crud.create_page(db, lesson_id, page_data, user_id)
     
     # ==================== READ OPERATIONS ====================
     
@@ -140,14 +122,55 @@ class LessonCRUD:
                 # Find modules using this lesson
                 module_usage = await db["modules"].find({
                     "lesson_refs.lesson_id": ObjectId(lesson_id)
+                }, {
+                    "title": 1,
+                    "status": 1,
+                    "created_by": 1
                 }).to_list(100)
+                
+                # Find courses using these modules
+                module_ids = [str(m["_id"]) for m in module_usage]
+                course_usage = []
+                if module_ids:
+                    course_usage = await db["courses"].find({
+                        "module_refs.module_id": {"$in": module_ids}
+                    }, {
+                        "title": 1,
+                        "status": 1,
+                        "coordinator_id": 1
+                    }).to_list(100)
                 
                 # Update metadata in lesson_data before converting to model
                 if "metadata" not in lesson_data:
                     lesson_data["metadata"] = {}
                 lesson_data["metadata"]["usage_count"] = len(module_usage)
+                
+                # Store usage details for later use in endpoint
+                lesson_data["_usage_details"] = {
+                    "modules": [
+                        {
+                            "id": str(m["_id"]),
+                            "title": m["title"],
+                            "status": m.get("status", "draft")
+                        }
+                        for m in module_usage
+                    ],
+                    "courses": [
+                        {
+                            "id": str(c["_id"]),
+                            "title": c["title"],
+                            "status": c.get("status", "draft")
+                        }
+                        for c in course_usage
+                    ]
+                }
             
             lesson = Lesson.from_mongo(lesson_data)
+            
+            # Attach usage details if they were generated
+            if include_usage and "_usage_details" in lesson_data:
+                lesson.usage_details = lesson_data["_usage_details"]
+            
             return lesson
             
         except Exception as e:
@@ -291,6 +314,13 @@ class LessonCRUD:
                     "difficulty_level": 1,
                     "created_by": {"$toString": "$created_by"},
                     "created_by_name": 1,
+                    "collaborators": {
+                        "$map": {
+                            "input": {"$ifNull": ["$collaborators", []]},
+                            "as": "collab",
+                            "in": {"$toString": "$$collab"}
+                        }
+                    },
                     "visibility": 1,
                     "status": 1,
                     "created_at": 1,
@@ -423,31 +453,13 @@ class LessonCRUD:
             elif updates.status == "archived":
                 update_doc["archived_at"] = datetime.utcnow()
         
-        # Update pages if provided
+        # NOTE: Pages are no longer updated via lesson update
+        # Use /lessons/{id}/pages endpoints to manage pages
         if updates.pages is not None:
-            pages = [
-                LessonPage(
-                    page_number=i + 1,
-                    title=page.title,
-                    content_markdown=page.content_markdown,
-                    media_references=[
-                        MediaReference(**media.dict()) for media in page.media_references
-                    ],
-                    embedded_components=[
-                        EmbeddedComponent(**comp.dict()) for comp in page.embedded_components
-                    ],
-                    estimated_duration=page.estimated_duration,
-                    difficulty_level=page.difficulty_level,
-                    learning_objectives=page.learning_objectives
-                ) for i, page in enumerate(updates.pages)
-            ]
-            
-            # Update lesson object untuk metadata calculation
-            lesson.pages = pages
-            lesson.calculate_metadata()
-            
-            update_doc["pages"] = [page.dict() for page in pages]
-            update_doc["metadata"] = lesson.metadata.dict()
+            raise HTTPException(
+                status_code=400,
+                detail="Pages cannot be updated via lesson update. Use /lessons/{id}/pages endpoints instead."
+            )
         
         # Update in database
         await db[self.collection].update_one(
@@ -465,8 +477,9 @@ class LessonCRUD:
         page_number: int,
         page_updates: Dict[str, Any],
         user_id: str
-    ) -> LessonPage:
-        """Update specific page dalam lesson"""
+    ):
+        """Update specific page dalam lesson - DEPRECATED: Use lesson_page_crud.update_page() instead"""
+        from app.crud.lesson_page import lesson_page_crud
         
         # Get lesson and verify permissions
         lesson = await self.get_lesson_by_id(db, lesson_id)
@@ -476,41 +489,8 @@ class LessonCRUD:
         if not lesson.is_editable_by(PyObjectId(user_id)):
             raise HTTPException(status_code=403, detail="Not authorized to edit this lesson")
         
-        # Find and update page
-        page = lesson.get_page_by_number(page_number)
-        if not page:
-            raise HTTPException(status_code=404, detail="Page not found")
-        
-        # Apply updates
-        if "title" in page_updates:
-            page.title = page_updates["title"]
-        if "content_markdown" in page_updates:
-            page.content_markdown = page_updates["content_markdown"]
-        if "estimated_duration" in page_updates:
-            page.estimated_duration = page_updates["estimated_duration"]
-        if "difficulty_level" in page_updates:
-            page.difficulty_level = page_updates["difficulty_level"]
-        if "learning_objectives" in page_updates:
-            page.learning_objectives = page_updates["learning_objectives"]
-        
-        page.updated_at = datetime.utcnow()
-        
-        # Recalculate metadata
-        lesson.calculate_metadata()
-        
-        # Update in database
-        await db[self.collection].update_one(
-            {"_id": ObjectId(lesson_id)},
-            {
-                "$set": {
-                    "pages": [p.dict() for p in lesson.pages],
-                    "metadata": lesson.metadata.dict(),
-                    "updated_at": datetime.utcnow()
-                }
-            }
-        )
-        
-        return page
+        # Delegate to lesson_page_crud
+        return await lesson_page_crud.update_page(db, lesson_id, page_number, page_updates, user_id)
     
     # ==================== DELETE OPERATIONS ====================
     
@@ -520,7 +500,7 @@ class LessonCRUD:
         lesson_id: str,
         user_id: str
     ) -> bool:
-        """Delete lesson (with safety checks)"""
+        """Delete lesson (with safety checks and cascade delete)"""
         
         # Get lesson and verify permissions
         lesson = await self.get_lesson_by_id(db, lesson_id)
@@ -540,6 +520,10 @@ class LessonCRUD:
                 status_code=400,
                 detail=f"Cannot delete lesson. It is being used in {usage_count} modules. Remove from modules first."
             )
+        
+        # CASCADE DELETE: Delete all lesson pages first
+        from app.crud.lesson_page import lesson_page_crud
+        await lesson_page_crud.delete_all_pages(db, lesson_id)
         
         # Delete related progress data
         await db[self.progress_collection].delete_many({"lesson_id": ObjectId(lesson_id)})
