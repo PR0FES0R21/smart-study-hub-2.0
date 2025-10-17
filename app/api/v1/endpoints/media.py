@@ -303,7 +303,7 @@ async def confirm_media_upload(
             "content_type": request.content_type,
             "category": request.category.value,
             "public_url": public_url,
-            "uploaded_by": current_user["id"],
+            "uploaded_by": str(current_user["_id"]),
             "uploaded_at": datetime.utcnow(),
             "context": request.context,
             "alt_text": request.alt_text,
@@ -352,7 +352,7 @@ async def get_my_media_files(
     try:
         # Build query
         query = {
-            "uploaded_by": current_user["id"],
+            "uploaded_by": str(current_user["_id"]),
             "status": "active"
         }
         if category:
@@ -411,7 +411,7 @@ async def delete_media_file(
         # Find media file
         media = await db["media_files"].find_one({
             "file_key": file_key,
-            "uploaded_by": current_user["id"]
+            "uploaded_by": str(current_user["_id"])
         })
         
         if not media:
@@ -435,7 +435,7 @@ async def delete_media_file(
             {"$set": {
                 "status": "deleted",
                 "deleted_at": datetime.utcnow(),
-                "deleted_by": current_user["id"]
+                "deleted_by": str(current_user["_id"])
             }}
         )
         

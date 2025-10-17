@@ -194551,3 +194551,831 @@ bridge closed
 2025-10-16 23:35:09,717 [INFO] app.main: Startup aplikasi berhasil
 2025-10-16 23:35:09,718 [INFO] app.core.redis_websocket: Starting Redis message listener
 2025-10-16 23:35:09,719 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 00:39:35,284 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=77f422d2-afa4-47a8-9f0c-f18cf78a0523 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-10-17 00:39:35,285 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=77f422d2-afa4-47a8-9f0c-f18cf78a0523 | successful=0/0 | failed=0 | time=0.8ms
+2025-10-17 00:43:14,850 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=433b1d40-de44-4329-931b-31b346355dc0 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-10-17 00:43:14,851 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=433b1d40-de44-4329-931b-31b346355dc0 | successful=0/0 | failed=0 | time=0.68ms
+2025-10-17 00:43:17,326 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=945fe5c0-b8d6-493e-bbd3-9b9ae3a42932 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 00:43:17,335 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=31894a42-031e-44f1-bf77-91779108c572 | total_active=1 | connection_time=8.83ms
+2025-10-17 00:43:17,336 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 00:43:17,338 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7f53eafa-c700-4f09-8775-108059ba8516 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 00:43:17,339 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7f53eafa-c700-4f09-8775-108059ba8516 | successful=0/0 | failed=0 | time=1.38ms
+2025-10-17 00:43:17,340 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=945fe5c0-b8d6-493e-bbd3-9b9ae3a42932 | user_id=68822f07979cbba23e6db950 | connection_time=14.24ms
+2025-10-17 00:54:09,279 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=f5baeb4e-c8c3-4b34-bf5c-c3e19ad3d607 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 00:54:09,285 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=e541da32-3c59-46d1-9ee3-5dac7eeec7a9 | total_active=1 | connection_time=5.35ms
+2025-10-17 00:54:09,285 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 00:54:09,286 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0294563b-f86a-4c0f-9d81-672c1cd3f220 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 00:54:09,289 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0294563b-f86a-4c0f-9d81-672c1cd3f220 | successful=0/0 | failed=0 | time=3.07ms
+2025-10-17 00:54:09,289 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=f5baeb4e-c8c3-4b34-bf5c-c3e19ad3d607 | user_id=68822f07979cbba23e6db950 | connection_time=10.86ms
+2025-10-17 00:54:10,684 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=945fe5c0-b8d6-493e-bbd3-9b9ae3a42932 | user_id=68822f07979cbba23e6db950 | duration=653.36s | messages_processed=11
+2025-10-17 00:54:10,685 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=e541da32-3c59-46d1-9ee3-5dac7eeec7a9 | total_active=0 | duration=1.4s
+2025-10-17 00:54:10,685 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 00:54:10,686 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e89b6e1a-df9a-4ceb-97eb-3d37a8adbc84 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 00:54:10,687 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e89b6e1a-df9a-4ceb-97eb-3d37a8adbc84 | successful=0/0 | failed=0 | time=0.6ms
+2025-10-17 01:06:03,505 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=f5baeb4e-c8c3-4b34-bf5c-c3e19ad3d607 | user_id=68822f07979cbba23e6db950 | duration=714.23s | messages_processed=14
+2025-10-17 01:10:33,430 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=ea5966c5-80ee-4a6a-b710-dd2a3eaf00e1 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:10:33,440 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=860125eb-fd69-43ee-b290-a5a6d73eb6f2 | total_active=1 | connection_time=9.38ms
+2025-10-17 01:10:33,441 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:10:33,442 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f8511a62-e576-4afb-8ffb-4fc1e8050b90 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:10:33,443 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f8511a62-e576-4afb-8ffb-4fc1e8050b90 | successful=0/0 | failed=0 | time=0.75ms
+2025-10-17 01:10:33,443 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=ea5966c5-80ee-4a6a-b710-dd2a3eaf00e1 | user_id=68822f07979cbba23e6db950 | connection_time=13.43ms
+2025-10-17 01:11:43,774 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=ea5966c5-80ee-4a6a-b710-dd2a3eaf00e1 | user_id=68822f07979cbba23e6db950 | duration=70.34s | messages_processed=1
+2025-10-17 01:11:43,780 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=860125eb-fd69-43ee-b290-a5a6d73eb6f2 | total_active=0 | duration=70.34s
+2025-10-17 01:11:43,780 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 01:11:43,781 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ef377575-cc3e-4653-a6cd-527b7501effe | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 01:11:43,782 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ef377575-cc3e-4653-a6cd-527b7501effe | successful=0/0 | failed=0 | time=0.4ms
+2025-10-17 01:12:02,232 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a94f831b-f0a8-4f22-83a0-37f1094c76c0 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:12:02,238 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=4eb4fbd9-a18e-4be4-9bf5-1e3e29fd3eec | total_active=1 | connection_time=5.31ms
+2025-10-17 01:12:02,238 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:12:02,239 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e06b4930-d468-4589-a666-246f79d75fe1 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:12:02,240 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e06b4930-d468-4589-a666-246f79d75fe1 | successful=0/0 | failed=0 | time=1.68ms
+2025-10-17 01:12:02,241 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a94f831b-f0a8-4f22-83a0-37f1094c76c0 | user_id=68822f07979cbba23e6db950 | connection_time=9.15ms
+2025-10-17 01:14:16,527 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=a94f831b-f0a8-4f22-83a0-37f1094c76c0 | user_id=68822f07979cbba23e6db950 | duration=134.29s | messages_processed=2
+2025-10-17 01:14:16,527 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=4eb4fbd9-a18e-4be4-9bf5-1e3e29fd3eec | total_active=0 | duration=134.29s
+2025-10-17 01:14:16,528 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 01:14:16,528 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=dee156ba-ca44-45e5-b220-29e10d177478 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 01:14:16,529 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=dee156ba-ca44-45e5-b220-29e10d177478 | successful=0/0 | failed=0 | time=0.33ms
+2025-10-17 01:14:29,507 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e07ef69b-fad6-47cb-826a-66602d9928f5 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:14:29,522 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=ccb4aba1-88c4-4b4c-988a-0e12417151a5 | total_active=1 | connection_time=14.22ms
+2025-10-17 01:14:29,523 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:14:29,523 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=04c86945-e1ee-4dc0-ad77-845a4fca693b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:14:29,524 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=04c86945-e1ee-4dc0-ad77-845a4fca693b | successful=0/0 | failed=0 | time=0.54ms
+2025-10-17 01:14:29,524 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e07ef69b-fad6-47cb-826a-66602d9928f5 | user_id=68822f07979cbba23e6db950 | connection_time=17.36ms
+2025-10-17 01:23:45,147 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=e07ef69b-fad6-47cb-826a-66602d9928f5 | user_id=68822f07979cbba23e6db950 | duration=555.64s | messages_processed=9
+2025-10-17 01:23:45,148 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=ccb4aba1-88c4-4b4c-988a-0e12417151a5 | total_active=0 | duration=555.63s
+2025-10-17 01:23:45,148 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 01:23:45,148 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=84471ae3-3e2e-48da-9298-d584fd28bff9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 01:23:45,149 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=84471ae3-3e2e-48da-9298-d584fd28bff9 | successful=0/0 | failed=0 | time=0.25ms
+2025-10-17 01:23:59,540 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=9ede7abc-c959-4804-8dc0-26d364f31ee8 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:23:59,547 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=261c0e25-8326-4b5d-bef1-7677a220b398 | total_active=1 | connection_time=6.5ms
+2025-10-17 01:23:59,548 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:23:59,549 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5980106a-5925-4e58-b550-fb185ba41784 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:23:59,549 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5980106a-5925-4e58-b550-fb185ba41784 | successful=0/0 | failed=0 | time=0.46ms
+2025-10-17 01:23:59,551 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=9ede7abc-c959-4804-8dc0-26d364f31ee8 | user_id=68822f07979cbba23e6db950 | connection_time=10.57ms
+2025-10-17 01:27:19,393 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=76a8f018-eeb8-4f6b-ba09-08289b06fa24 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:27:19,403 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=3dd62a33-0de2-48af-a80d-ffeca736bb59 | total_active=1 | connection_time=8.74ms
+2025-10-17 01:27:19,404 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:27:19,404 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4d01b90c-d3ca-4c50-a440-5636928c546b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:27:19,405 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4d01b90c-d3ca-4c50-a440-5636928c546b | successful=0/0 | failed=0 | time=0.73ms
+2025-10-17 01:27:19,406 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=76a8f018-eeb8-4f6b-ba09-08289b06fa24 | user_id=68822f07979cbba23e6db950 | connection_time=12.76ms
+2025-10-17 01:27:20,989 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=9ede7abc-c959-4804-8dc0-26d364f31ee8 | user_id=68822f07979cbba23e6db950 | duration=201.45s | messages_processed=1
+2025-10-17 01:27:20,990 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=3dd62a33-0de2-48af-a80d-ffeca736bb59 | total_active=0 | duration=1.59s
+2025-10-17 01:27:20,990 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 01:27:20,991 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=63fdbbb5-ea68-449a-9c31-973c11b384c1 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 01:27:20,991 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=63fdbbb5-ea68-449a-9c31-973c11b384c1 | successful=0/0 | failed=0 | time=0.44ms
+2025-10-17 01:33:19,350 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=76a8f018-eeb8-4f6b-ba09-08289b06fa24 | user_id=68822f07979cbba23e6db950 | duration=359.96s | messages_processed=7
+2025-10-17 01:33:20,808 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b88f1848-a918-45bf-9deb-724bcfaa157c | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-10-17 01:33:20,809 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b88f1848-a918-45bf-9deb-724bcfaa157c | successful=0/0 | failed=0 | time=0.67ms
+2025-10-17 01:33:26,283 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=936cae44-a880-4ec7-ba4c-ad7f7883dad2 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:33:26,293 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=08596831-3825-41eb-ad46-32c24b894e80 | total_active=1 | connection_time=7.81ms
+2025-10-17 01:33:26,293 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:33:26,294 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=82064ae7-b655-4e24-a954-91183e1e8ea6 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:33:26,294 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=82064ae7-b655-4e24-a954-91183e1e8ea6 | successful=0/0 | failed=0 | time=0.52ms
+2025-10-17 01:33:26,295 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=936cae44-a880-4ec7-ba4c-ad7f7883dad2 | user_id=68822f07979cbba23e6db950 | connection_time=12.04ms
+2025-10-17 01:33:37,327 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=44402c03-49ff-40f1-9bcb-ced8e13efb39 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:33:37,338 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=416de85e-08d4-4273-9afe-81e87c8c91e4 | total_active=1 | connection_time=10.33ms
+2025-10-17 01:33:37,339 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:33:37,340 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e30054ea-ed26-4b8a-a9c6-a14000f9ea25 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:33:37,340 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e30054ea-ed26-4b8a-a9c6-a14000f9ea25 | successful=0/0 | failed=0 | time=0.42ms
+2025-10-17 01:33:37,340 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=44402c03-49ff-40f1-9bcb-ced8e13efb39 | user_id=68822f07979cbba23e6db950 | connection_time=13.74ms
+2025-10-17 01:33:38,975 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=936cae44-a880-4ec7-ba4c-ad7f7883dad2 | user_id=68822f07979cbba23e6db950 | duration=12.69s | messages_processed=0
+2025-10-17 01:33:38,976 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=416de85e-08d4-4273-9afe-81e87c8c91e4 | total_active=0 | duration=1.64s
+2025-10-17 01:33:38,976 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 01:33:38,977 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=195cce6b-60cf-4292-b768-8eb49513f38f | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 01:33:38,977 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=195cce6b-60cf-4292-b768-8eb49513f38f | successful=0/0 | failed=0 | time=0.4ms
+2025-10-17 01:41:02,943 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=44402c03-49ff-40f1-9bcb-ced8e13efb39 | user_id=68822f07979cbba23e6db950 | duration=445.62s | messages_processed=8
+2025-10-17 01:41:04,704 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=18f1d422-42e8-4c29-b4d6-9acf398d0352 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:41:04,721 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=a56891c8-49f3-44e3-aaad-b1f9d6628200 | total_active=1 | connection_time=15.92ms
+2025-10-17 01:41:04,722 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:41:04,722 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2f7da548-3b92-4959-8d45-4c17168aba0e | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:41:04,723 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2f7da548-3b92-4959-8d45-4c17168aba0e | successful=0/0 | failed=0 | time=0.93ms
+2025-10-17 01:41:04,724 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=18f1d422-42e8-4c29-b4d6-9acf398d0352 | user_id=68822f07979cbba23e6db950 | connection_time=19.36ms
+2025-10-17 01:41:10,090 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=cd9fff98-b0db-4050-ac53-b4e8c76db3f6 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:41:10,098 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=63487e97-69fe-4271-9588-04d1a90ee941 | total_active=1 | connection_time=6.6ms
+2025-10-17 01:41:10,100 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:41:10,101 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=59c287c6-21b8-4cd0-b582-46cc7e53ac64 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:41:10,101 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=59c287c6-21b8-4cd0-b582-46cc7e53ac64 | successful=0/0 | failed=0 | time=0.42ms
+2025-10-17 01:41:10,102 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=cd9fff98-b0db-4050-ac53-b4e8c76db3f6 | user_id=68822f07979cbba23e6db950 | connection_time=11.92ms
+2025-10-17 01:41:11,634 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=18f1d422-42e8-4c29-b4d6-9acf398d0352 | user_id=68822f07979cbba23e6db950 | duration=6.93s | messages_processed=0
+2025-10-17 01:41:11,635 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=63487e97-69fe-4271-9588-04d1a90ee941 | total_active=0 | duration=1.54s
+2025-10-17 01:41:11,636 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 01:41:11,636 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5d81b19c-6dab-47a3-9510-4378e9b95b29 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 01:41:11,637 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5d81b19c-6dab-47a3-9510-4378e9b95b29 | successful=0/0 | failed=0 | time=0.66ms
+2025-10-17 01:43:02,719 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=9700c12f-04fd-4ca2-9233-4c051873da2a | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 01:43:02,726 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=1a267dff-98d2-4e10-85c5-fdc1cbb37c4a | total_active=1 | connection_time=5.18ms
+2025-10-17 01:43:02,726 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 01:43:02,727 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=6789361a-8d9b-4a65-aed1-30481c1f6e97 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 01:43:02,728 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=6789361a-8d9b-4a65-aed1-30481c1f6e97 | successful=0/0 | failed=0 | time=0.6ms
+2025-10-17 01:43:02,729 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=9700c12f-04fd-4ca2-9233-4c051873da2a | user_id=68822f07979cbba23e6db950 | connection_time=9.18ms
+2025-10-17 01:43:57,211 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=9700c12f-04fd-4ca2-9233-4c051873da2a | user_id=68822f07979cbba23e6db950 | duration=54.49s | messages_processed=1
+2025-10-17 01:43:57,212 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=1a267dff-98d2-4e10-85c5-fdc1cbb37c4a | total_active=0 | duration=54.49s
+2025-10-17 01:43:57,213 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 01:43:57,213 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2d62a6af-405f-47b0-89c4-12e7bad14e0b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 01:43:57,214 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2d62a6af-405f-47b0-89c4-12e7bad14e0b | successful=0/0 | failed=0 | time=0.55ms
+2025-10-17 01:43:58,189 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=cd9fff98-b0db-4050-ac53-b4e8c76db3f6 | user_id=68822f07979cbba23e6db950 | duration=168.1s | messages_processed=3
+2025-10-17 20:29:50,045 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 20:29:50,195 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 20:29:50,204 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 20:29:50,204 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 20:29:50,205 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 20:29:50,205 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 20:29:50,206 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 20:29:50,207 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 20:31:17,635 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 20:31:46,305 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 20:31:46,412 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 20:31:46,426 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 20:31:46,428 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 20:31:46,429 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 20:31:46,430 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 20:31:46,432 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 20:31:46,433 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 20:37:39,942 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=6218fd50-208d-4274-82f2-b7f0336d3a12 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 20:37:39,955 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=20608884-421c-4a74-893d-935288fb61c8 | total_active=1 | connection_time=11.79ms
+2025-10-17 20:37:39,956 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 20:37:39,956 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=861b457f-6e2e-4776-a82f-fcf975299ede | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 20:37:39,957 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=861b457f-6e2e-4776-a82f-fcf975299ede | successful=0/0 | failed=0 | time=0.41ms
+2025-10-17 20:37:39,957 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=6218fd50-208d-4274-82f2-b7f0336d3a12 | user_id=68822f07979cbba23e6db950 | connection_time=14.74ms
+2025-10-17 20:40:32,702 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=6ef76b7c-74d8-4f1f-a204-1f84223f33d6 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 20:40:32,717 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=1e565af5-9825-4e47-812c-5bc1f8492b8a | total_active=1 | connection_time=13.57ms
+2025-10-17 20:40:32,718 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 20:40:32,718 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=82aead9a-a287-40bd-8886-8a212f98448f | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 20:40:32,719 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=82aead9a-a287-40bd-8886-8a212f98448f | successful=0/0 | failed=0 | time=0.48ms
+2025-10-17 20:40:32,719 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=6ef76b7c-74d8-4f1f-a204-1f84223f33d6 | user_id=68822f07979cbba23e6db950 | connection_time=17.09ms
+2025-10-17 20:40:34,337 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=6218fd50-208d-4274-82f2-b7f0336d3a12 | user_id=68822f07979cbba23e6db950 | duration=174.39s | messages_processed=3
+2025-10-17 20:40:34,338 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=1e565af5-9825-4e47-812c-5bc1f8492b8a | total_active=0 | duration=1.62s
+2025-10-17 20:40:34,338 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 20:40:34,339 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=644bd899-097f-40a4-8a2b-73ce91eb4666 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 20:40:34,340 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=644bd899-097f-40a4-8a2b-73ce91eb4666 | successful=0/0 | failed=0 | time=0.5ms
+2025-10-17 20:54:56,176 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=5bf180ba-c516-4861-883b-f2fb34018c0c | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 20:54:56,184 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=223e9cb2-92d4-4ecd-951c-ca08a72b4588 | total_active=1 | connection_time=6.77ms
+2025-10-17 20:54:56,184 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 20:54:56,185 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=12d847e3-737b-462e-ab99-bcee8650d33b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 20:54:56,186 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=12d847e3-737b-462e-ab99-bcee8650d33b | successful=0/0 | failed=0 | time=0.57ms
+2025-10-17 20:54:56,186 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=5bf180ba-c516-4861-883b-f2fb34018c0c | user_id=68822f07979cbba23e6db950 | connection_time=10.55ms
+2025-10-17 20:58:18,633 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=5bf180ba-c516-4861-883b-f2fb34018c0c | user_id=68822f07979cbba23e6db950 | duration=202.46s | messages_processed=4
+2025-10-17 20:58:18,633 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=223e9cb2-92d4-4ecd-951c-ca08a72b4588 | total_active=0 | duration=202.45s
+2025-10-17 20:58:18,634 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 20:58:18,634 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4664947d-ba1e-460d-abb7-abc08f47101e | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 20:58:18,635 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4664947d-ba1e-460d-abb7-abc08f47101e | successful=0/0 | failed=0 | time=0.5ms
+2025-10-17 20:58:26,559 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a08b6cac-19b3-4cf6-aea8-e6ed098deffa | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 20:58:26,566 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=40506f1b-7112-4a83-96b4-a44572567526 | total_active=1 | connection_time=6.63ms
+2025-10-17 20:58:26,567 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 20:58:26,568 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=db841953-3fac-4488-8c64-02b1075d4f14 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 20:58:26,570 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=db841953-3fac-4488-8c64-02b1075d4f14 | successful=0/0 | failed=0 | time=2.09ms
+2025-10-17 20:58:26,573 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a08b6cac-19b3-4cf6-aea8-e6ed098deffa | user_id=68822f07979cbba23e6db950 | connection_time=14.41ms
+2025-10-17 21:00:16,559 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=a08b6cac-19b3-4cf6-aea8-e6ed098deffa | user_id=68822f07979cbba23e6db950 | duration=110.0s | messages_processed=2
+2025-10-17 21:00:16,560 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=40506f1b-7112-4a83-96b4-a44572567526 | total_active=0 | duration=109.99s
+2025-10-17 21:00:16,561 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:00:16,561 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d73faa26-3539-4a39-902c-02cc230d8210 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:00:16,562 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d73faa26-3539-4a39-902c-02cc230d8210 | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 21:00:29,500 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=6ef76b7c-74d8-4f1f-a204-1f84223f33d6 | user_id=68822f07979cbba23e6db950 | duration=1196.8s | messages_processed=22
+2025-10-17 21:01:10,140 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b88140a8-9c54-44f0-84fe-0d11337b2cc5 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:01:10,150 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=ddeb8a18-44ec-49f1-8168-ba667caff0a3 | total_active=1 | connection_time=9.69ms
+2025-10-17 21:01:10,151 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:01:10,151 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=86622588-a290-4b1e-ae54-ded438824077 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:01:10,152 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=86622588-a290-4b1e-ae54-ded438824077 | successful=0/0 | failed=0 | time=0.47ms
+2025-10-17 21:01:10,153 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b88140a8-9c54-44f0-84fe-0d11337b2cc5 | user_id=68822f07979cbba23e6db950 | connection_time=13.12ms
+2025-10-17 21:01:18,873 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=72927b2b-7ba4-4a9f-8284-527f80bf0bed | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:01:18,880 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=8bba2a68-39fa-4ade-b346-070ff2e12e6b | total_active=1 | connection_time=6.01ms
+2025-10-17 21:01:18,881 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:01:18,881 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7a42b9f2-797a-4f5e-aedb-5207eb314646 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:01:18,882 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7a42b9f2-797a-4f5e-aedb-5207eb314646 | successful=0/0 | failed=0 | time=0.5ms
+2025-10-17 21:01:18,882 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=72927b2b-7ba4-4a9f-8284-527f80bf0bed | user_id=68822f07979cbba23e6db950 | connection_time=9.41ms
+2025-10-17 21:01:20,646 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=b88140a8-9c54-44f0-84fe-0d11337b2cc5 | user_id=68822f07979cbba23e6db950 | duration=10.51s | messages_processed=0
+2025-10-17 21:01:20,647 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=8bba2a68-39fa-4ade-b346-070ff2e12e6b | total_active=0 | duration=1.77s
+2025-10-17 21:01:20,647 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:01:20,648 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=334bf853-a697-4ce8-a730-0c9232fcb8e9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:01:20,649 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=334bf853-a697-4ce8-a730-0c9232fcb8e9 | successful=0/0 | failed=0 | time=0.81ms
+2025-10-17 21:16:20,939 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=72927b2b-7ba4-4a9f-8284-527f80bf0bed | user_id=68822f07979cbba23e6db950 | duration=902.07s | messages_processed=17
+2025-10-17 21:16:29,721 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=9a74709a-1fb1-4514-a163-9334ab0640ed | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:16:29,731 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=8517f910-4178-470f-961e-4eeb88ba6418 | total_active=1 | connection_time=8.82ms
+2025-10-17 21:16:29,731 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:16:29,732 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b44e7110-4b46-4a35-adab-18fdc6bd18b3 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:16:29,733 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b44e7110-4b46-4a35-adab-18fdc6bd18b3 | successful=0/0 | failed=0 | time=0.68ms
+2025-10-17 21:16:29,733 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=9a74709a-1fb1-4514-a163-9334ab0640ed | user_id=68822f07979cbba23e6db950 | connection_time=12.37ms
+2025-10-17 21:21:51,920 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=9a74709a-1fb1-4514-a163-9334ab0640ed | user_id=68822f07979cbba23e6db950 | duration=322.2s | messages_processed=6
+2025-10-17 21:21:51,921 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=8517f910-4178-470f-961e-4eeb88ba6418 | total_active=0 | duration=322.19s
+2025-10-17 21:21:51,921 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:21:51,922 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=bcaccd28-ff1e-48bd-823c-d83ba43b2d2f | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:21:51,923 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=bcaccd28-ff1e-48bd-823c-d83ba43b2d2f | successful=0/0 | failed=0 | time=1.01ms
+2025-10-17 21:21:57,198 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=4cc5cb1f-ff65-48ac-ace0-372a8789c975 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:21:57,204 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=3ae89436-e600-4b6e-810d-2c8b90b6b2d7 | total_active=1 | connection_time=5.4ms
+2025-10-17 21:21:57,204 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:21:57,205 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9da58ea1-9c00-4406-8de1-7390a87edd10 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:21:57,205 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9da58ea1-9c00-4406-8de1-7390a87edd10 | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 21:21:57,206 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=4cc5cb1f-ff65-48ac-ace0-372a8789c975 | user_id=68822f07979cbba23e6db950 | connection_time=8.0ms
+2025-10-17 21:23:56,564 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=4cc5cb1f-ff65-48ac-ace0-372a8789c975 | user_id=68822f07979cbba23e6db950 | duration=119.37s | messages_processed=2
+2025-10-17 21:23:56,565 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=3ae89436-e600-4b6e-810d-2c8b90b6b2d7 | total_active=0 | duration=119.36s
+2025-10-17 21:23:56,565 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:23:56,566 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=fd87675b-6fe8-4717-ac98-6b6e4c945190 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:23:56,566 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=fd87675b-6fe8-4717-ac98-6b6e4c945190 | successful=0/0 | failed=0 | time=0.49ms
+2025-10-17 21:24:02,743 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=f3f72ab2-b9e3-4210-bf85-6116f36b94a2 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:24:02,751 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=98d348a7-4a03-4664-bff7-87d7e3ae452e | total_active=1 | connection_time=7.2ms
+2025-10-17 21:24:02,752 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:24:02,752 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=986a3dfa-45fd-48cf-af9b-5bc26e5c867c | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:24:02,753 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=986a3dfa-45fd-48cf-af9b-5bc26e5c867c | successful=0/0 | failed=0 | time=0.69ms
+2025-10-17 21:24:02,754 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=f3f72ab2-b9e3-4210-bf85-6116f36b94a2 | user_id=68822f07979cbba23e6db950 | connection_time=11.6ms
+2025-10-17 21:25:03,505 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=f3f72ab2-b9e3-4210-bf85-6116f36b94a2 | user_id=68822f07979cbba23e6db950 | duration=60.76s | messages_processed=1
+2025-10-17 21:25:03,505 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=98d348a7-4a03-4664-bff7-87d7e3ae452e | total_active=0 | duration=60.75s
+2025-10-17 21:25:03,506 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:25:03,506 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3f8f6ccf-e1e6-4b5c-86d6-85f98aed38de | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:25:03,507 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3f8f6ccf-e1e6-4b5c-86d6-85f98aed38de | successful=0/0 | failed=0 | time=0.33ms
+2025-10-17 21:25:09,870 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7aa3146e-7187-4f57-998c-d7b9b492dcfe | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:25:09,876 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=49c61c27-4f9a-4056-99cd-625c8a16c080 | total_active=1 | connection_time=5.56ms
+2025-10-17 21:25:09,877 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:25:09,878 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7f80a000-cfca-41d5-89ea-e493b506c642 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:25:09,879 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7f80a000-cfca-41d5-89ea-e493b506c642 | successful=0/0 | failed=0 | time=0.56ms
+2025-10-17 21:25:09,879 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7aa3146e-7187-4f57-998c-d7b9b492dcfe | user_id=68822f07979cbba23e6db950 | connection_time=9.08ms
+2025-10-17 21:36:19,579 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=7aa3146e-7187-4f57-998c-d7b9b492dcfe | user_id=68822f07979cbba23e6db950 | duration=669.71s | messages_processed=13
+2025-10-17 21:36:19,580 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=49c61c27-4f9a-4056-99cd-625c8a16c080 | total_active=0 | duration=669.7s
+2025-10-17 21:36:19,581 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:36:19,581 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b711e420-5b0d-469a-82fb-e91077a7826e | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:36:19,582 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b711e420-5b0d-469a-82fb-e91077a7826e | successful=0/0 | failed=0 | time=0.47ms
+2025-10-17 21:36:26,335 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=50601fa0-80fd-40f2-a2eb-dbaabae459e4 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:36:26,346 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=9505c730-78b2-4339-a269-f38d4d931b74 | total_active=1 | connection_time=10.67ms
+2025-10-17 21:36:26,348 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:36:26,349 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=72e1b893-b3e5-4b4d-912c-d036f8eb1e33 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:36:26,350 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=72e1b893-b3e5-4b4d-912c-d036f8eb1e33 | successful=0/0 | failed=0 | time=0.98ms
+2025-10-17 21:36:26,351 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=50601fa0-80fd-40f2-a2eb-dbaabae459e4 | user_id=68822f07979cbba23e6db950 | connection_time=15.99ms
+2025-10-17 21:37:54,672 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=50601fa0-80fd-40f2-a2eb-dbaabae459e4 | user_id=68822f07979cbba23e6db950 | duration=88.34s | messages_processed=1
+2025-10-17 21:37:54,673 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=9505c730-78b2-4339-a269-f38d4d931b74 | total_active=0 | duration=88.33s
+2025-10-17 21:37:54,673 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:37:54,674 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0f5664d1-5e52-4daf-b22c-ffed01e18714 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:37:54,674 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0f5664d1-5e52-4daf-b22c-ffed01e18714 | successful=0/0 | failed=0 | time=0.42ms
+2025-10-17 21:38:02,459 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=65c68043-5aac-4dd5-b569-a6c1de982f10 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:38:02,465 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=d9b5f2aa-6670-4ee4-80ec-6aac563b29bc | total_active=1 | connection_time=5.49ms
+2025-10-17 21:38:02,465 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:38:02,466 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5cc0e38d-308a-44c0-a27e-5bc35a4c601e | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:38:02,466 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5cc0e38d-308a-44c0-a27e-5bc35a4c601e | successful=0/0 | failed=0 | time=0.46ms
+2025-10-17 21:38:02,467 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=65c68043-5aac-4dd5-b569-a6c1de982f10 | user_id=68822f07979cbba23e6db950 | connection_time=8.14ms
+2025-10-17 21:39:01,674 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=65c68043-5aac-4dd5-b569-a6c1de982f10 | user_id=68822f07979cbba23e6db950 | duration=59.22s | messages_processed=1
+2025-10-17 21:39:01,675 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=d9b5f2aa-6670-4ee4-80ec-6aac563b29bc | total_active=0 | duration=59.21s
+2025-10-17 21:39:01,675 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:39:01,675 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b680c996-fa82-4735-bb17-1af922cc8904 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:39:01,676 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b680c996-fa82-4735-bb17-1af922cc8904 | successful=0/0 | failed=0 | time=0.45ms
+2025-10-17 21:39:07,125 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=f3310094-e6a4-4ae0-ab38-77c16263e158 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:39:07,130 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=beb2d809-5c0d-4078-85dd-23dfebb69980 | total_active=1 | connection_time=5.09ms
+2025-10-17 21:39:07,131 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:39:07,131 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=43c08400-dd7c-4151-b5c5-f532ac2d86bb | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:39:07,132 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=43c08400-dd7c-4151-b5c5-f532ac2d86bb | successful=0/0 | failed=0 | time=0.51ms
+2025-10-17 21:39:07,132 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=f3310094-e6a4-4ae0-ab38-77c16263e158 | user_id=68822f07979cbba23e6db950 | connection_time=7.53ms
+2025-10-17 21:40:08,521 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=f3310094-e6a4-4ae0-ab38-77c16263e158 | user_id=68822f07979cbba23e6db950 | duration=61.4s | messages_processed=1
+2025-10-17 21:40:08,522 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=beb2d809-5c0d-4078-85dd-23dfebb69980 | total_active=0 | duration=61.39s
+2025-10-17 21:40:08,522 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:40:08,523 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ecfc16b3-44da-43cd-911d-6ebe7512d1e1 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:40:08,523 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ecfc16b3-44da-43cd-911d-6ebe7512d1e1 | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 21:40:15,912 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e4a1adc5-3fcc-47a2-bafe-3acd705fd5c5 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:40:15,921 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=acf05a5a-4fa3-4913-a0c1-2a6ae49ad09b | total_active=1 | connection_time=8.03ms
+2025-10-17 21:40:15,922 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:40:15,923 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9c75b8ce-1af7-4eb8-9805-60273843a842 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:40:15,924 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9c75b8ce-1af7-4eb8-9805-60273843a842 | successful=0/0 | failed=0 | time=0.72ms
+2025-10-17 21:40:15,924 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e4a1adc5-3fcc-47a2-bafe-3acd705fd5c5 | user_id=68822f07979cbba23e6db950 | connection_time=11.86ms
+2025-10-17 21:41:15,607 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=e4a1adc5-3fcc-47a2-bafe-3acd705fd5c5 | user_id=68822f07979cbba23e6db950 | duration=59.69s | messages_processed=1
+2025-10-17 21:41:15,608 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=acf05a5a-4fa3-4913-a0c1-2a6ae49ad09b | total_active=0 | duration=59.69s
+2025-10-17 21:41:15,608 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:41:15,609 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4c00bb57-5cc0-4bbc-9832-95abf85bcdfd | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:41:15,609 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4c00bb57-5cc0-4bbc-9832-95abf85bcdfd | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 21:41:21,873 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=b19ad4eb-83f8-4bbb-b92c-6b56580399a4 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:41:21,880 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=f8886607-82be-4e55-b09b-82cdf6af9dc4 | total_active=1 | connection_time=6.41ms
+2025-10-17 21:41:21,881 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:41:21,882 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b3450bb1-bc3f-430d-aaa8-5e4072aa7584 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:41:21,882 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b3450bb1-bc3f-430d-aaa8-5e4072aa7584 | successful=0/0 | failed=0 | time=0.54ms
+2025-10-17 21:41:21,883 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=b19ad4eb-83f8-4bbb-b92c-6b56580399a4 | user_id=68822f07979cbba23e6db950 | connection_time=9.41ms
+2025-10-17 21:43:52,662 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=b19ad4eb-83f8-4bbb-b92c-6b56580399a4 | user_id=68822f07979cbba23e6db950 | duration=150.79s | messages_processed=2
+2025-10-17 21:43:52,662 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=f8886607-82be-4e55-b09b-82cdf6af9dc4 | total_active=0 | duration=150.78s
+2025-10-17 21:43:52,663 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:43:52,663 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=39a71fad-cc7f-49c0-a622-45bd34b68ecd | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:43:52,664 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=39a71fad-cc7f-49c0-a622-45bd34b68ecd | successful=0/0 | failed=0 | time=0.4ms
+2025-10-17 21:43:59,088 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=8f7aa936-899f-40b1-aea5-de7f88807251 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:43:59,095 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=512d2af3-27d3-4863-abfc-3cfd002fc247 | total_active=1 | connection_time=6.42ms
+2025-10-17 21:43:59,096 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:43:59,096 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c8434834-32c9-4e35-b642-5b5049c5b8cc | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:43:59,097 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c8434834-32c9-4e35-b642-5b5049c5b8cc | successful=0/0 | failed=0 | time=0.85ms
+2025-10-17 21:43:59,098 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=8f7aa936-899f-40b1-aea5-de7f88807251 | user_id=68822f07979cbba23e6db950 | connection_time=9.68ms
+2025-10-17 21:44:58,582 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=8f7aa936-899f-40b1-aea5-de7f88807251 | user_id=68822f07979cbba23e6db950 | duration=59.49s | messages_processed=1
+2025-10-17 21:44:58,583 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=512d2af3-27d3-4863-abfc-3cfd002fc247 | total_active=0 | duration=59.49s
+2025-10-17 21:44:58,583 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:44:58,584 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d1450be5-6df9-4dd3-9918-dd3ba13f529a | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:44:58,585 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d1450be5-6df9-4dd3-9918-dd3ba13f529a | successful=0/0 | failed=0 | time=0.51ms
+2025-10-17 21:45:09,821 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=31af1a09-b5d8-43c8-a69a-3abea3fe47b7 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:45:09,826 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=cbaa7acf-9438-46ff-a1b2-ddc18aff6465 | total_active=1 | connection_time=4.97ms
+2025-10-17 21:45:09,827 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:45:09,828 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=086296f5-7680-4d68-ba3d-6806834c4199 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:45:09,829 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=086296f5-7680-4d68-ba3d-6806834c4199 | successful=0/0 | failed=0 | time=0.86ms
+2025-10-17 21:45:09,831 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=31af1a09-b5d8-43c8-a69a-3abea3fe47b7 | user_id=68822f07979cbba23e6db950 | connection_time=10.04ms
+2025-10-17 21:45:54,200 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=a9ba1a0a-626e-46cf-a2bd-fa2d822bc41d | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:45:54,209 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=932c33db-ec4d-4e81-99e7-6d776b835493 | total_active=1 | connection_time=7.98ms
+2025-10-17 21:45:54,210 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:45:54,211 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3eb58933-7b2d-49ae-823a-5b17d8b76834 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:45:54,211 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3eb58933-7b2d-49ae-823a-5b17d8b76834 | successful=0/0 | failed=0 | time=0.74ms
+2025-10-17 21:45:54,212 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=a9ba1a0a-626e-46cf-a2bd-fa2d822bc41d | user_id=68822f07979cbba23e6db950 | connection_time=12.2ms
+2025-10-17 21:45:55,486 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=31af1a09-b5d8-43c8-a69a-3abea3fe47b7 | user_id=68822f07979cbba23e6db950 | duration=45.67s | messages_processed=0
+2025-10-17 21:45:55,487 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=932c33db-ec4d-4e81-99e7-6d776b835493 | total_active=0 | duration=1.28s
+2025-10-17 21:45:55,488 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:45:55,489 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4806109f-ae28-4179-a725-df0a94538339 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:45:55,489 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4806109f-ae28-4179-a725-df0a94538339 | successful=0/0 | failed=0 | time=0.6ms
+2025-10-17 21:46:52,622 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=a9ba1a0a-626e-46cf-a2bd-fa2d822bc41d | user_id=68822f07979cbba23e6db950 | duration=58.42s | messages_processed=1
+2025-10-17 21:46:59,160 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=d2877823-515a-431b-8c7a-4a23393baacd | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:46:59,167 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=217c12a7-ef6f-4a7b-a302-5c53bf24594a | total_active=1 | connection_time=6.49ms
+2025-10-17 21:46:59,167 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:46:59,168 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=694ee691-47fd-42e0-abf8-68c69e469e0f | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:46:59,169 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=694ee691-47fd-42e0-abf8-68c69e469e0f | successful=0/0 | failed=0 | time=0.53ms
+2025-10-17 21:46:59,169 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=d2877823-515a-431b-8c7a-4a23393baacd | user_id=68822f07979cbba23e6db950 | connection_time=9.22ms
+2025-10-17 21:47:02,264 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=bd8dcef8-f4b9-4aa5-a89f-180f2f8cce4e | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:47:02,270 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=b1132d66-31eb-4c96-b5b5-76bd38ae5bb4 | total_active=1 | connection_time=5.89ms
+2025-10-17 21:47:02,271 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:47:02,272 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c8ba69ad-2234-4e79-8725-52d19f790000 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:47:02,272 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c8ba69ad-2234-4e79-8725-52d19f790000 | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 21:47:02,273 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=bd8dcef8-f4b9-4aa5-a89f-180f2f8cce4e | user_id=68822f07979cbba23e6db950 | connection_time=8.86ms
+2025-10-17 21:47:03,618 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=d2877823-515a-431b-8c7a-4a23393baacd | user_id=68822f07979cbba23e6db950 | duration=4.46s | messages_processed=0
+2025-10-17 21:47:03,618 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=b1132d66-31eb-4c96-b5b5-76bd38ae5bb4 | total_active=0 | duration=1.35s
+2025-10-17 21:47:03,619 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:47:03,619 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=285595f3-ee16-465e-a6e2-fd4e959265f9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:47:03,620 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=285595f3-ee16-465e-a6e2-fd4e959265f9 | successful=0/0 | failed=0 | time=0.44ms
+2025-10-17 21:48:01,623 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=bd8dcef8-f4b9-4aa5-a89f-180f2f8cce4e | user_id=68822f07979cbba23e6db950 | duration=59.36s | messages_processed=1
+2025-10-17 21:48:07,761 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e26ebe46-ded2-48d4-9f63-9262f787b36a | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:48:07,774 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=84ebda38-64bf-4e31-84f9-3d6404ceeddb | total_active=1 | connection_time=12.53ms
+2025-10-17 21:48:07,775 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:48:07,776 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0c222ebb-46bb-456b-9fd4-f527a0087fec | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:48:07,776 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0c222ebb-46bb-456b-9fd4-f527a0087fec | successful=0/0 | failed=0 | time=0.54ms
+2025-10-17 21:48:07,777 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e26ebe46-ded2-48d4-9f63-9262f787b36a | user_id=68822f07979cbba23e6db950 | connection_time=15.16ms
+2025-10-17 21:49:08,563 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=e26ebe46-ded2-48d4-9f63-9262f787b36a | user_id=68822f07979cbba23e6db950 | duration=60.8s | messages_processed=1
+2025-10-17 21:49:08,564 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=84ebda38-64bf-4e31-84f9-3d6404ceeddb | total_active=0 | duration=60.79s
+2025-10-17 21:49:08,564 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:49:08,565 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5694c678-8167-45c7-9bba-433610904742 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:49:08,565 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5694c678-8167-45c7-9bba-433610904742 | successful=0/0 | failed=0 | time=0.57ms
+2025-10-17 21:49:14,787 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=50c7a657-8b57-4fd5-ab62-3773fc2805bc | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:49:14,794 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=86ade2c3-167b-4a1a-ad3b-e7bcf1f20ca2 | total_active=1 | connection_time=5.82ms
+2025-10-17 21:49:14,795 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:49:14,795 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f1a28e63-d086-4dad-83d3-d91d7c80c7e3 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:49:14,796 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f1a28e63-d086-4dad-83d3-d91d7c80c7e3 | successful=0/0 | failed=0 | time=0.71ms
+2025-10-17 21:49:14,797 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=50c7a657-8b57-4fd5-ab62-3773fc2805bc | user_id=68822f07979cbba23e6db950 | connection_time=9.57ms
+2025-10-17 21:50:04,044 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=c2e6748b-6323-484a-ab29-451dda85a287 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:50:04,051 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=d1840cbe-1ca4-4128-8e71-2e153d14e428 | total_active=1 | connection_time=6.48ms
+2025-10-17 21:50:04,052 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:50:04,053 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8cc8cbc5-b180-4e74-9c76-5dd6a259521b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:50:04,053 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8cc8cbc5-b180-4e74-9c76-5dd6a259521b | successful=0/0 | failed=0 | time=0.54ms
+2025-10-17 21:50:04,054 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=c2e6748b-6323-484a-ab29-451dda85a287 | user_id=68822f07979cbba23e6db950 | connection_time=9.51ms
+2025-10-17 21:50:05,954 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=50c7a657-8b57-4fd5-ab62-3773fc2805bc | user_id=68822f07979cbba23e6db950 | duration=51.17s | messages_processed=0
+2025-10-17 21:50:05,955 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=d1840cbe-1ca4-4128-8e71-2e153d14e428 | total_active=0 | duration=1.9s
+2025-10-17 21:50:05,956 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:50:05,957 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=fa81846f-fdf7-4915-b4d2-ad218a948fa1 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:50:05,957 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=fa81846f-fdf7-4915-b4d2-ad218a948fa1 | successful=0/0 | failed=0 | time=0.57ms
+2025-10-17 21:50:20,726 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7ae5ae6b-c20b-4d9d-be0a-db6377d0cd8b | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:50:20,732 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=1eda94b0-839b-4c7b-9073-a534bdc9edb8 | total_active=1 | connection_time=5.7ms
+2025-10-17 21:50:20,733 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:50:20,734 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5eebbbb2-b5ea-47bd-abe7-d914b65a5c8c | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:50:20,734 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5eebbbb2-b5ea-47bd-abe7-d914b65a5c8c | successful=0/0 | failed=0 | time=0.61ms
+2025-10-17 21:50:20,735 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7ae5ae6b-c20b-4d9d-be0a-db6377d0cd8b | user_id=68822f07979cbba23e6db950 | connection_time=8.87ms
+2025-10-17 21:51:22,820 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=7ae5ae6b-c20b-4d9d-be0a-db6377d0cd8b | user_id=68822f07979cbba23e6db950 | duration=62.09s | messages_processed=1
+2025-10-17 21:51:22,821 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=1eda94b0-839b-4c7b-9073-a534bdc9edb8 | total_active=0 | duration=62.09s
+2025-10-17 21:51:22,821 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:51:22,822 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b35d3ae6-a57b-4b32-8e58-baf253c7dfae | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:51:22,822 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b35d3ae6-a57b-4b32-8e58-baf253c7dfae | successful=0/0 | failed=0 | time=0.46ms
+2025-10-17 21:51:35,890 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=ccf9fdca-40ef-466b-801f-a6ca8c10490c | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:51:35,897 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=b347f623-409a-40b4-aa52-872f94275582 | total_active=1 | connection_time=6.33ms
+2025-10-17 21:51:35,898 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:51:35,899 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1ff98d3d-c599-42eb-a504-c5a37ba8f40a | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:51:35,900 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1ff98d3d-c599-42eb-a504-c5a37ba8f40a | successful=0/0 | failed=0 | time=0.68ms
+2025-10-17 21:51:35,900 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=ccf9fdca-40ef-466b-801f-a6ca8c10490c | user_id=68822f07979cbba23e6db950 | connection_time=9.94ms
+2025-10-17 21:52:55,515 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=ccf9fdca-40ef-466b-801f-a6ca8c10490c | user_id=68822f07979cbba23e6db950 | duration=79.62s | messages_processed=1
+2025-10-17 21:52:55,516 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=b347f623-409a-40b4-aa52-872f94275582 | total_active=0 | duration=79.62s
+2025-10-17 21:52:55,516 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:52:55,517 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c9bc5e25-e487-42b7-b876-0ecb4e96c88b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:52:55,517 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c9bc5e25-e487-42b7-b876-0ecb4e96c88b | successful=0/0 | failed=0 | time=0.53ms
+2025-10-17 21:53:02,474 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=c9f2674f-53ad-4456-b774-ddcc97ded1db | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:53:02,482 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=1d87f9ac-e582-4dfe-82df-b3a8948566c1 | total_active=1 | connection_time=7.23ms
+2025-10-17 21:53:02,483 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:53:02,483 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=97c80d08-0667-468d-8158-34f035c0b30d | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:53:02,484 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=97c80d08-0667-468d-8158-34f035c0b30d | successful=0/0 | failed=0 | time=0.8ms
+2025-10-17 21:53:02,485 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=c9f2674f-53ad-4456-b774-ddcc97ded1db | user_id=68822f07979cbba23e6db950 | connection_time=11.01ms
+2025-10-17 21:54:02,540 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=c9f2674f-53ad-4456-b774-ddcc97ded1db | user_id=68822f07979cbba23e6db950 | duration=60.07s | messages_processed=1
+2025-10-17 21:54:02,540 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=1d87f9ac-e582-4dfe-82df-b3a8948566c1 | total_active=0 | duration=60.06s
+2025-10-17 21:54:02,541 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:54:02,541 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5ae62c88-9d7a-4e81-9e0e-aee9f37b681d | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:54:02,542 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5ae62c88-9d7a-4e81-9e0e-aee9f37b681d | successful=0/0 | failed=0 | time=0.48ms
+2025-10-17 21:54:09,269 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=0b6203fe-8d99-4e8b-9f07-6195198138a8 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:54:09,276 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=dd483344-e3ae-4c10-b95f-3d41e1296c29 | total_active=1 | connection_time=6.07ms
+2025-10-17 21:54:09,277 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:54:09,278 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=867eeda7-b2df-4dc1-9cf1-48462ec461ab | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:54:09,278 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=867eeda7-b2df-4dc1-9cf1-48462ec461ab | successful=0/0 | failed=0 | time=0.64ms
+2025-10-17 21:54:09,279 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=0b6203fe-8d99-4e8b-9f07-6195198138a8 | user_id=68822f07979cbba23e6db950 | connection_time=9.47ms
+2025-10-17 21:54:30,517 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=c2e6748b-6323-484a-ab29-451dda85a287 | user_id=68822f07979cbba23e6db950 | duration=266.47s | messages_processed=5
+2025-10-17 21:54:30,518 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=dd483344-e3ae-4c10-b95f-3d41e1296c29 | total_active=0 | duration=21.24s
+2025-10-17 21:54:30,518 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:54:30,519 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9b7f2425-dd48-4451-a725-41939c6c0e49 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:54:30,519 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9b7f2425-dd48-4451-a725-41939c6c0e49 | successful=0/0 | failed=0 | time=0.55ms
+2025-10-17 21:54:55,894 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e8de2999-ff68-42b8-b55e-e208b2b77057 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:54:55,904 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=3eb4973b-fdd2-4920-9cb1-bbc0ac7cd731 | total_active=1 | connection_time=8.6ms
+2025-10-17 21:54:55,904 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:54:55,905 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=69572a3e-10da-4e02-bc17-336e2d20f9aa | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:54:55,905 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=69572a3e-10da-4e02-bc17-336e2d20f9aa | successful=0/0 | failed=0 | time=0.6ms
+2025-10-17 21:54:55,906 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e8de2999-ff68-42b8-b55e-e208b2b77057 | user_id=68822f07979cbba23e6db950 | connection_time=11.5ms
+2025-10-17 21:55:09,655 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=0b6203fe-8d99-4e8b-9f07-6195198138a8 | user_id=68822f07979cbba23e6db950 | duration=60.39s | messages_processed=1
+2025-10-17 21:55:09,655 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=3eb4973b-fdd2-4920-9cb1-bbc0ac7cd731 | total_active=0 | duration=13.75s
+2025-10-17 21:55:09,656 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:55:09,656 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c96f0030-83b7-4c3c-90bf-0870d5ba0e55 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:55:09,657 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c96f0030-83b7-4c3c-90bf-0870d5ba0e55 | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 21:55:14,424 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=135653e5-6835-4c11-999f-ba608faae138 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:55:14,430 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=041738fb-c427-48a1-8a7a-b0434689ddec | total_active=1 | connection_time=5.15ms
+2025-10-17 21:55:14,431 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:55:14,431 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=49ac220b-195c-49a8-b1b0-181fa5428a59 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:55:14,432 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=49ac220b-195c-49a8-b1b0-181fa5428a59 | successful=0/0 | failed=0 | time=0.48ms
+2025-10-17 21:55:14,432 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=135653e5-6835-4c11-999f-ba608faae138 | user_id=68822f07979cbba23e6db950 | connection_time=7.88ms
+2025-10-17 21:56:16,298 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=135653e5-6835-4c11-999f-ba608faae138 | user_id=68822f07979cbba23e6db950 | duration=61.87s | messages_processed=1
+2025-10-17 21:56:16,299 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=041738fb-c427-48a1-8a7a-b0434689ddec | total_active=0 | duration=61.87s
+2025-10-17 21:56:16,299 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:56:16,300 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=13e56abf-97a6-4548-ab43-e3380f43678d | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:56:16,300 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=13e56abf-97a6-4548-ab43-e3380f43678d | successful=0/0 | failed=0 | time=0.51ms
+2025-10-17 21:56:21,817 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=40e96f77-20f9-4d09-8de0-3b97bc88a594 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:56:21,822 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=140b2351-46de-4f07-9628-8b7a47135925 | total_active=1 | connection_time=5.17ms
+2025-10-17 21:56:21,823 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:56:21,824 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ab75173b-1c9a-4674-a7cc-c79b4abe0566 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:56:21,824 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ab75173b-1c9a-4674-a7cc-c79b4abe0566 | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 21:56:21,824 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=40e96f77-20f9-4d09-8de0-3b97bc88a594 | user_id=68822f07979cbba23e6db950 | connection_time=7.91ms
+2025-10-17 21:56:50,776 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=7c0025ec-9c23-435e-a2bf-8dea14878dc8 | message_type=new_activity_log | target_roles=['admin'] | recipients=0
+2025-10-17 21:56:50,777 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=7c0025ec-9c23-435e-a2bf-8dea14878dc8 | successful=0/0 | failed=0 | time=0.65ms
+2025-10-17 21:56:52,894 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=6a202ef5-ad83-400d-9284-fe3f38c67ca2 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:56:52,901 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=5d273751-7877-4c45-ac16-9d34cb122007 | total_active=1 | connection_time=6.29ms
+2025-10-17 21:56:52,902 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:56:52,903 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9aab92cd-9c14-4986-9a86-48918c9daab4 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:56:52,903 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9aab92cd-9c14-4986-9a86-48918c9daab4 | successful=0/0 | failed=0 | time=0.47ms
+2025-10-17 21:56:52,904 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=6a202ef5-ad83-400d-9284-fe3f38c67ca2 | user_id=68822f07979cbba23e6db950 | connection_time=9.53ms
+2025-10-17 21:56:54,122 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=40e96f77-20f9-4d09-8de0-3b97bc88a594 | user_id=68822f07979cbba23e6db950 | duration=32.31s | messages_processed=0
+2025-10-17 21:56:54,123 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=5d273751-7877-4c45-ac16-9d34cb122007 | total_active=0 | duration=1.22s
+2025-10-17 21:56:54,123 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:56:54,124 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=9f661325-2f71-4659-933b-e9f529f10db4 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:56:54,124 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=9f661325-2f71-4659-933b-e9f529f10db4 | successful=0/0 | failed=0 | time=0.51ms
+2025-10-17 21:57:57,603 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=fc652a92-1aa8-4434-b996-29f676af65a1 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 21:57:57,609 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=4eaead77-9380-41bc-9c74-2dba32915bb8 | total_active=1 | connection_time=5.29ms
+2025-10-17 21:57:57,610 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 21:57:57,610 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2c5e53d4-1b12-4c02-b91d-4531e8a0f271 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 21:57:57,611 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2c5e53d4-1b12-4c02-b91d-4531e8a0f271 | successful=0/0 | failed=0 | time=0.5ms
+2025-10-17 21:57:57,611 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=fc652a92-1aa8-4434-b996-29f676af65a1 | user_id=68822f07979cbba23e6db950 | connection_time=8.22ms
+2025-10-17 21:58:57,876 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=fc652a92-1aa8-4434-b996-29f676af65a1 | user_id=68822f07979cbba23e6db950 | duration=60.27s | messages_processed=1
+2025-10-17 21:58:57,877 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=4eaead77-9380-41bc-9c74-2dba32915bb8 | total_active=0 | duration=60.27s
+2025-10-17 21:58:57,878 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 21:58:57,878 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=0d16762d-e1b9-45d0-be96-d74597dcaf69 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 21:58:57,879 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=0d16762d-e1b9-45d0-be96-d74597dcaf69 | successful=0/0 | failed=0 | time=0.55ms
+2025-10-17 22:05:00,338 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=e8de2999-ff68-42b8-b55e-e208b2b77057 | user_id=68822f07979cbba23e6db950 | duration=604.44s | messages_processed=11
+2025-10-17 22:05:06,410 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=42e1288b-378c-46d6-8a6b-2da3cfd1617b | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 22:05:06,416 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=2ea3f30b-99a4-4825-89f5-5fb30ea281b4 | total_active=1 | connection_time=5.77ms
+2025-10-17 22:05:06,417 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 22:05:06,417 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2df78244-964e-4f81-827d-40eba7ed33ee | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 22:05:06,418 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2df78244-964e-4f81-827d-40eba7ed33ee | successful=0/0 | failed=0 | time=0.65ms
+2025-10-17 22:05:06,419 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=42e1288b-378c-46d6-8a6b-2da3cfd1617b | user_id=68822f07979cbba23e6db950 | connection_time=8.84ms
+2025-10-17 22:09:02,951 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=42e1288b-378c-46d6-8a6b-2da3cfd1617b | user_id=68822f07979cbba23e6db950 | duration=236.54s | messages_processed=4
+2025-10-17 22:09:02,952 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=2ea3f30b-99a4-4825-89f5-5fb30ea281b4 | total_active=0 | duration=236.54s
+2025-10-17 22:09:02,953 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 22:09:02,953 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=60e17c6d-7f71-41c4-a0d0-26e21e6af02d | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 22:09:02,954 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=60e17c6d-7f71-41c4-a0d0-26e21e6af02d | successful=0/0 | failed=0 | time=0.52ms
+2025-10-17 22:09:08,050 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=2476ecef-991b-4f56-a545-5e79bc97943c | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 22:09:08,059 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=21f1145d-ff5c-4249-a46d-5b640b96b510 | total_active=1 | connection_time=8.19ms
+2025-10-17 22:09:08,060 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 22:09:08,061 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=33797171-3834-4dde-b76e-800e0366aff5 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 22:09:08,062 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=33797171-3834-4dde-b76e-800e0366aff5 | successful=0/0 | failed=0 | time=0.63ms
+2025-10-17 22:09:08,062 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=2476ecef-991b-4f56-a545-5e79bc97943c | user_id=68822f07979cbba23e6db950 | connection_time=11.93ms
+2025-10-17 22:09:33,271 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=6a202ef5-ad83-400d-9284-fe3f38c67ca2 | user_id=68822f07979cbba23e6db950 | duration=760.38s | messages_processed=15
+2025-10-17 22:09:33,272 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=21f1145d-ff5c-4249-a46d-5b640b96b510 | total_active=0 | duration=25.21s
+2025-10-17 22:09:33,273 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 22:09:33,274 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b1d60cb4-51d5-4608-b6b8-d600027b9e05 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 22:09:33,275 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b1d60cb4-51d5-4608-b6b8-d600027b9e05 | successful=0/0 | failed=0 | time=0.9ms
+2025-10-17 22:09:42,196 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=dc0e3fd5-0650-42f1-9039-623f1fdbbbe8 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 22:09:42,201 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=d933a364-c4b7-4777-b414-d38e29e0d810 | total_active=1 | connection_time=4.44ms
+2025-10-17 22:09:42,201 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 22:09:42,202 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1b8a33b0-e6b2-47de-9a77-576d64be8f2c | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 22:09:42,203 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1b8a33b0-e6b2-47de-9a77-576d64be8f2c | successful=0/0 | failed=0 | time=0.96ms
+2025-10-17 22:09:42,204 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=dc0e3fd5-0650-42f1-9039-623f1fdbbbe8 | user_id=68822f07979cbba23e6db950 | connection_time=8.49ms
+2025-10-17 22:31:34,318 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=dc0e3fd5-0650-42f1-9039-623f1fdbbbe8 | user_id=68822f07979cbba23e6db950 | duration=1312.12s | messages_processed=23
+2025-10-17 22:31:34,319 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=d933a364-c4b7-4777-b414-d38e29e0d810 | total_active=0 | duration=1312.12s
+2025-10-17 22:31:34,319 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 22:31:34,320 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ea058f25-9bd6-4f01-b841-fe6deba103b5 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 22:31:34,320 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ea058f25-9bd6-4f01-b841-fe6deba103b5 | successful=0/0 | failed=0 | time=0.42ms
+2025-10-17 22:31:34,321 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=2476ecef-991b-4f56-a545-5e79bc97943c | user_id=68822f07979cbba23e6db950 | duration=1346.27s | messages_processed=23
+2025-10-17 22:31:34,438 [INFO] app.main: Mematikan aplikasi...
+2025-10-17 22:31:34,438 [INFO] app.main: Menutup WebSocket manager...
+2025-10-17 22:31:34,439 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-17 22:31:34,440 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-17 22:31:34,441 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-17 22:31:34,442 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-17 22:31:34,452 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-17 22:31:34,455 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-17 22:31:34,456 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-17 22:31:34,471 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-17 22:31:45,263 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 22:31:45,362 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 22:31:45,384 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 22:31:45,384 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 22:31:45,385 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 22:31:45,386 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 22:31:45,387 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 22:31:45,387 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 22:32:03,491 [INFO] app.main: Mematikan aplikasi...
+2025-10-17 22:32:03,492 [INFO] app.main: Menutup WebSocket manager...
+2025-10-17 22:32:03,492 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-17 22:32:03,493 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-17 22:32:03,493 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-17 22:32:03,494 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-17 22:32:03,495 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-17 22:32:03,496 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-17 22:32:03,496 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-17 22:32:03,502 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-17 22:32:10,641 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 22:32:10,705 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 22:32:10,721 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 22:32:10,722 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 22:32:10,723 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 22:32:10,724 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 22:32:10,726 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 22:32:10,726 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 22:32:18,798 [INFO] app.main: Mematikan aplikasi...
+2025-10-17 22:32:18,799 [INFO] app.main: Menutup WebSocket manager...
+2025-10-17 22:32:18,799 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-17 22:32:18,799 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-17 22:32:18,800 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-17 22:32:18,800 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-17 22:32:18,801 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-17 22:32:18,802 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-17 22:32:18,802 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-17 22:32:18,807 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-17 22:32:25,884 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 22:32:26,000 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 22:32:26,014 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 22:32:26,016 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 22:32:26,017 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 22:32:26,017 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 22:32:26,019 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 22:32:26,020 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 22:32:33,970 [INFO] app.main: Mematikan aplikasi...
+2025-10-17 22:32:33,971 [INFO] app.main: Menutup WebSocket manager...
+2025-10-17 22:32:33,971 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-17 22:32:33,972 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-17 22:32:33,972 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-17 22:32:33,973 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-17 22:32:33,974 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-17 22:32:33,975 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-17 22:32:33,975 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-17 22:32:33,980 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-17 22:32:40,892 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 22:32:40,964 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 22:32:40,978 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 22:32:40,978 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 22:32:40,979 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 22:32:40,980 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 22:32:40,981 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 22:32:40,982 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 22:33:11,187 [INFO] app.main: Mematikan aplikasi...
+2025-10-17 22:33:11,188 [INFO] app.main: Menutup WebSocket manager...
+2025-10-17 22:33:11,189 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-17 22:33:11,190 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-17 22:33:11,190 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-17 22:33:11,191 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-17 22:33:11,193 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-17 22:33:11,194 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-17 22:33:11,195 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-17 22:33:11,202 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-17 22:33:18,614 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 22:33:18,680 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 22:33:18,698 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 22:33:18,699 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 22:33:18,700 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 22:33:18,701 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 22:33:18,703 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 22:33:18,704 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 22:33:34,972 [INFO] app.main: Mematikan aplikasi...
+2025-10-17 22:33:34,973 [INFO] app.main: Menutup WebSocket manager...
+2025-10-17 22:33:34,974 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-17 22:33:34,976 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-17 22:33:34,977 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-17 22:33:34,977 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-17 22:33:34,979 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-17 22:33:34,980 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-17 22:33:34,980 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-17 22:33:34,986 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-17 22:33:42,010 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 22:33:42,087 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 22:33:42,099 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 22:33:42,100 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 22:33:42,101 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 22:33:42,101 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 22:33:42,102 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 22:33:42,103 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 22:33:44,492 [INFO] app.main: Mematikan aplikasi...
+2025-10-17 22:33:44,493 [INFO] app.main: Menutup WebSocket manager...
+2025-10-17 22:33:44,494 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-17 22:33:44,495 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-17 22:33:44,496 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-17 22:33:44,497 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-17 22:33:44,498 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-17 22:33:44,499 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-17 22:33:44,500 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-17 22:33:44,507 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-17 22:33:51,274 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-17 22:33:51,345 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-17 22:33:51,356 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-17 22:33:51,357 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-17 22:33:51,357 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-17 22:33:51,358 [INFO] app.main: Startup aplikasi berhasil
+2025-10-17 22:33:51,359 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-17 22:33:51,359 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-17 22:56:27,350 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=615d561a-7056-4ef6-9696-4e08c5d9d306 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 22:56:27,361 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=3e6fe890-f21c-4e0b-a9b4-bb5199cc7c78 | total_active=1 | connection_time=10.0ms
+2025-10-17 22:56:27,362 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 22:56:27,363 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4fa78013-022b-4b96-88e6-8a587030861b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 22:56:27,363 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4fa78013-022b-4b96-88e6-8a587030861b | successful=0/0 | failed=0 | time=0.58ms
+2025-10-17 22:56:27,364 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=615d561a-7056-4ef6-9696-4e08c5d9d306 | user_id=68822f07979cbba23e6db950 | connection_time=14.22ms
+2025-10-17 22:56:50,193 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=942333b7-6634-47ea-9839-3997adda00c8 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 22:56:50,201 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=b89c9923-ce05-45fe-a1c8-7f129270c085 | total_active=1 | connection_time=7.42ms
+2025-10-17 22:56:50,202 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 22:56:50,202 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f5ce71b7-b111-47a9-8933-564e689081d1 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 22:56:50,203 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f5ce71b7-b111-47a9-8933-564e689081d1 | successful=0/0 | failed=0 | time=0.73ms
+2025-10-17 22:56:50,203 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=942333b7-6634-47ea-9839-3997adda00c8 | user_id=68822f07979cbba23e6db950 | connection_time=10.38ms
+2025-10-17 22:56:50,964 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=615d561a-7056-4ef6-9696-4e08c5d9d306 | user_id=68822f07979cbba23e6db950 | duration=23.61s | messages_processed=0
+2025-10-17 22:56:50,965 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=b89c9923-ce05-45fe-a1c8-7f129270c085 | total_active=0 | duration=0.76s
+2025-10-17 22:56:50,966 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 22:56:50,966 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1ee82863-005e-4bbc-9369-bc6837dd8dd3 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 22:56:50,967 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1ee82863-005e-4bbc-9369-bc6837dd8dd3 | successful=0/0 | failed=0 | time=0.48ms
+2025-10-17 23:00:09,352 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=942333b7-6634-47ea-9839-3997adda00c8 | user_id=68822f07979cbba23e6db950 | duration=199.16s | messages_processed=3
+2025-10-17 23:00:14,510 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=bb59259b-2535-4e6c-81ce-a08e67d9bbda | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:00:14,519 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=57249ef6-6df1-42e3-9eda-7ee7474572a7 | total_active=1 | connection_time=7.47ms
+2025-10-17 23:00:14,520 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:00:14,521 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c2f1937b-cc0b-4666-bdd5-900325437d25 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:00:14,521 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c2f1937b-cc0b-4666-bdd5-900325437d25 | successful=0/0 | failed=0 | time=0.61ms
+2025-10-17 23:00:14,522 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=bb59259b-2535-4e6c-81ce-a08e67d9bbda | user_id=68822f07979cbba23e6db950 | connection_time=11.6ms
+2025-10-17 23:01:15,433 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=bb59259b-2535-4e6c-81ce-a08e67d9bbda | user_id=68822f07979cbba23e6db950 | duration=60.92s | messages_processed=1
+2025-10-17 23:01:15,433 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=57249ef6-6df1-42e3-9eda-7ee7474572a7 | total_active=0 | duration=60.91s
+2025-10-17 23:01:15,434 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:01:15,435 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=79cc02f0-4027-4426-bce9-59416bd17a81 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:01:15,435 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=79cc02f0-4027-4426-bce9-59416bd17a81 | successful=0/0 | failed=0 | time=0.51ms
+2025-10-17 23:01:19,717 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=c1ccfcdd-ed54-4545-b4d7-4829ef4372c8 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:01:19,723 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=b729e9a2-dd18-4bc2-8b17-744037c58e38 | total_active=1 | connection_time=5.13ms
+2025-10-17 23:01:19,723 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:01:19,724 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5004098d-15b4-471f-b913-41f8b2bd4eee | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:01:19,724 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5004098d-15b4-471f-b913-41f8b2bd4eee | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 23:01:19,725 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=c1ccfcdd-ed54-4545-b4d7-4829ef4372c8 | user_id=68822f07979cbba23e6db950 | connection_time=7.94ms
+2025-10-17 23:02:50,363 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=c1ccfcdd-ed54-4545-b4d7-4829ef4372c8 | user_id=68822f07979cbba23e6db950 | duration=90.65s | messages_processed=1
+2025-10-17 23:02:50,364 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=b729e9a2-dd18-4bc2-8b17-744037c58e38 | total_active=0 | duration=90.64s
+2025-10-17 23:02:50,364 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:02:50,365 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=dc4dff8e-ded5-443f-936c-25cd06b028dd | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:02:50,366 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=dc4dff8e-ded5-443f-936c-25cd06b028dd | successful=0/0 | failed=0 | time=0.53ms
+2025-10-17 23:02:54,758 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=d8cd439f-8fac-4b04-88ed-644ce46bf813 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:02:54,765 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=0e4ac7b9-b932-43c9-816e-26db5a169024 | total_active=1 | connection_time=5.5ms
+2025-10-17 23:02:54,765 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:02:54,766 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=badfdd8d-1794-4fa0-948b-9839b74999cf | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:02:54,766 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=badfdd8d-1794-4fa0-948b-9839b74999cf | successful=0/0 | failed=0 | time=0.49ms
+2025-10-17 23:02:54,767 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=d8cd439f-8fac-4b04-88ed-644ce46bf813 | user_id=68822f07979cbba23e6db950 | connection_time=8.35ms
+2025-10-17 23:10:23,244 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=d8cd439f-8fac-4b04-88ed-644ce46bf813 | user_id=68822f07979cbba23e6db950 | duration=448.49s | messages_processed=8
+2025-10-17 23:10:23,246 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=0e4ac7b9-b932-43c9-816e-26db5a169024 | total_active=0 | duration=448.48s
+2025-10-17 23:10:23,246 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:10:23,247 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=eb87ef2f-f73a-4664-ab9f-52e9ee839c67 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:10:23,248 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=eb87ef2f-f73a-4664-ab9f-52e9ee839c67 | successful=0/0 | failed=0 | time=0.82ms
+2025-10-17 23:10:28,237 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=fb6e566d-3bb6-44f2-bc3f-b69b6d23cb34 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:10:28,250 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=4dcd60d5-0d38-43f3-8c5b-59b6062251bb | total_active=1 | connection_time=11.73ms
+2025-10-17 23:10:28,251 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:10:28,253 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=f6d36845-e433-4496-a85b-31a994b0d891 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:10:28,254 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=f6d36845-e433-4496-a85b-31a994b0d891 | successful=0/0 | failed=0 | time=0.74ms
+2025-10-17 23:10:28,255 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=fb6e566d-3bb6-44f2-bc3f-b69b6d23cb34 | user_id=68822f07979cbba23e6db950 | connection_time=18.23ms
+2025-10-17 23:11:51,712 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=fb6e566d-3bb6-44f2-bc3f-b69b6d23cb34 | user_id=68822f07979cbba23e6db950 | duration=83.48s | messages_processed=1
+2025-10-17 23:11:51,713 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=4dcd60d5-0d38-43f3-8c5b-59b6062251bb | total_active=0 | duration=83.46s
+2025-10-17 23:11:51,714 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:11:51,714 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=48d46076-56df-47b5-b832-1ccd53d3f7c5 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:11:51,715 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=48d46076-56df-47b5-b832-1ccd53d3f7c5 | successful=0/0 | failed=0 | time=0.48ms
+2025-10-17 23:11:55,751 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=f9c133df-5abe-4df6-aec4-0e5995008129 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:11:55,757 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=345579d6-0c16-4439-bd66-ae8dbd458a16 | total_active=1 | connection_time=5.61ms
+2025-10-17 23:11:55,758 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:11:55,759 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=930f332e-d405-448b-8925-90f1672f25a5 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:11:55,759 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=930f332e-d405-448b-8925-90f1672f25a5 | successful=0/0 | failed=0 | time=0.5ms
+2025-10-17 23:11:55,760 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=f9c133df-5abe-4df6-aec4-0e5995008129 | user_id=68822f07979cbba23e6db950 | connection_time=8.85ms
+2025-10-17 23:12:58,555 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=f9c133df-5abe-4df6-aec4-0e5995008129 | user_id=68822f07979cbba23e6db950 | duration=62.8s | messages_processed=1
+2025-10-17 23:12:58,556 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=345579d6-0c16-4439-bd66-ae8dbd458a16 | total_active=0 | duration=62.8s
+2025-10-17 23:12:58,556 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:12:58,556 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=39765e10-6d19-4f76-96ea-41162b849dd8 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:12:58,557 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=39765e10-6d19-4f76-96ea-41162b849dd8 | successful=0/0 | failed=0 | time=0.47ms
+2025-10-17 23:13:02,897 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=e15d465c-2ac8-4c3e-8263-6764142fa249 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:13:02,903 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=56916f19-d316-4847-a7af-fd045c6f5927 | total_active=1 | connection_time=4.97ms
+2025-10-17 23:13:02,904 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:13:02,904 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=2c6d49f0-6860-402d-a307-952a11e9335f | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:13:02,905 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=2c6d49f0-6860-402d-a307-952a11e9335f | successful=0/0 | failed=0 | time=0.63ms
+2025-10-17 23:13:02,906 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=e15d465c-2ac8-4c3e-8263-6764142fa249 | user_id=68822f07979cbba23e6db950 | connection_time=8.33ms
+2025-10-17 23:14:05,712 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=e15d465c-2ac8-4c3e-8263-6764142fa249 | user_id=68822f07979cbba23e6db950 | duration=62.82s | messages_processed=1
+2025-10-17 23:14:05,713 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=56916f19-d316-4847-a7af-fd045c6f5927 | total_active=0 | duration=62.81s
+2025-10-17 23:14:05,714 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:14:05,714 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5cca61d4-53df-4cf9-b3c7-f8a2d467063c | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:14:05,715 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5cca61d4-53df-4cf9-b3c7-f8a2d467063c | successful=0/0 | failed=0 | time=0.57ms
+2025-10-17 23:14:11,137 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=92ee6f3c-f00e-4c9b-8980-db84df508f85 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:14:11,143 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=c164ce1a-8f85-4cb3-b682-164489aec4cb | total_active=1 | connection_time=5.7ms
+2025-10-17 23:14:11,144 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:14:11,144 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=01914907-0cde-4b68-9342-058802195aa6 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:14:11,145 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=01914907-0cde-4b68-9342-058802195aa6 | successful=0/0 | failed=0 | time=0.43ms
+2025-10-17 23:14:11,145 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=92ee6f3c-f00e-4c9b-8980-db84df508f85 | user_id=68822f07979cbba23e6db950 | connection_time=8.35ms
+2025-10-17 23:19:21,383 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=92ee6f3c-f00e-4c9b-8980-db84df508f85 | user_id=68822f07979cbba23e6db950 | duration=310.25s | messages_processed=6
+2025-10-17 23:19:21,384 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=c164ce1a-8f85-4cb3-b682-164489aec4cb | total_active=0 | duration=310.24s
+2025-10-17 23:19:21,384 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:19:21,385 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3a312080-7fbb-42d0-9660-f702e50b2021 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:19:21,385 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3a312080-7fbb-42d0-9660-f702e50b2021 | successful=0/0 | failed=0 | time=0.64ms
+2025-10-17 23:19:25,981 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=84acc2bf-de1f-4b28-9c94-92c09859ede0 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:19:25,990 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=7ab82bfc-e041-4fe6-ba2f-b4cec5c70e8c | total_active=1 | connection_time=8.0ms
+2025-10-17 23:19:25,991 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:19:25,991 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=32c5cb68-3296-4911-8440-3a6af4d87e04 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:19:25,992 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=32c5cb68-3296-4911-8440-3a6af4d87e04 | successful=0/0 | failed=0 | time=0.61ms
+2025-10-17 23:19:25,993 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=84acc2bf-de1f-4b28-9c94-92c09859ede0 | user_id=68822f07979cbba23e6db950 | connection_time=11.9ms
+2025-10-17 23:20:56,356 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=84acc2bf-de1f-4b28-9c94-92c09859ede0 | user_id=68822f07979cbba23e6db950 | duration=90.37s | messages_processed=1
+2025-10-17 23:20:56,356 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=7ab82bfc-e041-4fe6-ba2f-b4cec5c70e8c | total_active=0 | duration=90.37s
+2025-10-17 23:20:56,357 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:20:56,358 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ad49a946-136e-41c7-909b-07aa71b6b19c | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:20:56,359 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ad49a946-136e-41c7-909b-07aa71b6b19c | successful=0/0 | failed=0 | time=0.73ms
+2025-10-17 23:21:00,892 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=62f0ddc4-01cb-4402-b972-659c60a077ee | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:21:00,898 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=0bc808e5-ce80-470f-89db-622ab9c81109 | total_active=1 | connection_time=5.14ms
+2025-10-17 23:21:00,898 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:21:00,899 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8bbf2c17-a900-46d0-9983-89f9d57954c7 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:21:00,899 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8bbf2c17-a900-46d0-9983-89f9d57954c7 | successful=0/0 | failed=0 | time=0.45ms
+2025-10-17 23:21:00,900 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=62f0ddc4-01cb-4402-b972-659c60a077ee | user_id=68822f07979cbba23e6db950 | connection_time=7.68ms
+2025-10-17 23:22:03,360 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=62f0ddc4-01cb-4402-b972-659c60a077ee | user_id=68822f07979cbba23e6db950 | duration=62.47s | messages_processed=1
+2025-10-17 23:22:03,360 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=0bc808e5-ce80-470f-89db-622ab9c81109 | total_active=0 | duration=62.46s
+2025-10-17 23:22:03,361 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:22:03,362 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=3cb525f3-c12d-4e9c-b11f-1db01030c598 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:22:03,363 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=3cb525f3-c12d-4e9c-b11f-1db01030c598 | successful=0/0 | failed=0 | time=0.68ms
+2025-10-17 23:22:07,948 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=7b088a80-cc51-41b2-80ed-5055f80ef096 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:22:07,954 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=53c395ef-0903-4ec9-b19f-ab9e48e3bbcb | total_active=1 | connection_time=4.82ms
+2025-10-17 23:22:07,954 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:22:07,955 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=536c72d5-4fa6-4cfb-8c55-822fff487a6c | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:22:07,955 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=536c72d5-4fa6-4cfb-8c55-822fff487a6c | successful=0/0 | failed=0 | time=0.39ms
+2025-10-17 23:22:07,956 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=7b088a80-cc51-41b2-80ed-5055f80ef096 | user_id=68822f07979cbba23e6db950 | connection_time=7.54ms
+2025-10-17 23:23:10,382 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=7b088a80-cc51-41b2-80ed-5055f80ef096 | user_id=68822f07979cbba23e6db950 | duration=62.43s | messages_processed=1
+2025-10-17 23:23:10,383 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=53c395ef-0903-4ec9-b19f-ab9e48e3bbcb | total_active=0 | duration=62.43s
+2025-10-17 23:23:10,384 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:23:10,385 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1a6dcd4e-4215-4b20-84d3-62a1c831e74f | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:23:10,385 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1a6dcd4e-4215-4b20-84d3-62a1c831e74f | successful=0/0 | failed=0 | time=0.67ms
+2025-10-17 23:23:14,772 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=938637f1-3273-4fdc-b48a-20d4f7fbda75 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:23:14,779 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=256add78-c1cb-4a57-af2c-787f6156dcec | total_active=1 | connection_time=6.19ms
+2025-10-17 23:23:14,780 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:23:14,780 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=1ac3de0f-2e2d-43a7-b6bf-46b01bc69501 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:23:14,781 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=1ac3de0f-2e2d-43a7-b6bf-46b01bc69501 | successful=0/0 | failed=0 | time=0.67ms
+2025-10-17 23:23:14,782 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=938637f1-3273-4fdc-b48a-20d4f7fbda75 | user_id=68822f07979cbba23e6db950 | connection_time=9.5ms
+2025-10-17 23:24:16,349 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=938637f1-3273-4fdc-b48a-20d4f7fbda75 | user_id=68822f07979cbba23e6db950 | duration=61.58s | messages_processed=1
+2025-10-17 23:24:16,350 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=256add78-c1cb-4a57-af2c-787f6156dcec | total_active=0 | duration=61.57s
+2025-10-17 23:24:16,350 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:24:16,351 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a220ab54-7076-4948-8f39-d729414afd8b | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:24:16,352 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a220ab54-7076-4948-8f39-d729414afd8b | successful=0/0 | failed=0 | time=0.61ms
+2025-10-17 23:24:21,177 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=d62779e2-5738-41dd-bf65-f466e733be8b | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:24:21,187 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=158a0851-7fd4-49db-90b0-16881712b603 | total_active=1 | connection_time=9.0ms
+2025-10-17 23:24:21,187 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:24:21,188 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=326967a5-8f08-4e5d-9422-7136b5a5b9b7 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:24:21,189 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=326967a5-8f08-4e5d-9422-7136b5a5b9b7 | successful=0/0 | failed=0 | time=0.63ms
+2025-10-17 23:24:21,189 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=d62779e2-5738-41dd-bf65-f466e733be8b | user_id=68822f07979cbba23e6db950 | connection_time=12.1ms
+2025-10-17 23:25:51,382 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=d62779e2-5738-41dd-bf65-f466e733be8b | user_id=68822f07979cbba23e6db950 | duration=90.21s | messages_processed=1
+2025-10-17 23:25:51,383 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=158a0851-7fd4-49db-90b0-16881712b603 | total_active=0 | duration=90.2s
+2025-10-17 23:25:51,384 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:25:51,384 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=05f2d92c-5b3e-4346-986e-98748d409c2a | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:25:51,385 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=05f2d92c-5b3e-4346-986e-98748d409c2a | successful=0/0 | failed=0 | time=0.48ms
+2025-10-17 23:25:57,234 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=d5f3ab65-acd7-4041-a38a-5e3d6e823c5f | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:25:57,241 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=3bb9a6ef-c606-4d4a-81b5-5b03a657ede7 | total_active=1 | connection_time=6.2ms
+2025-10-17 23:25:57,242 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:25:57,242 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=71f047f4-b792-4dac-9677-9227bc9a975a | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:25:57,243 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=71f047f4-b792-4dac-9677-9227bc9a975a | successful=0/0 | failed=0 | time=0.51ms
+2025-10-17 23:25:57,244 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=d5f3ab65-acd7-4041-a38a-5e3d6e823c5f | user_id=68822f07979cbba23e6db950 | connection_time=9.5ms
+2025-10-17 23:26:58,349 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=d5f3ab65-acd7-4041-a38a-5e3d6e823c5f | user_id=68822f07979cbba23e6db950 | duration=61.12s | messages_processed=1
+2025-10-17 23:26:58,350 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=3bb9a6ef-c606-4d4a-81b5-5b03a657ede7 | total_active=0 | duration=61.11s
+2025-10-17 23:26:58,351 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:26:58,351 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c99ba8b0-c583-4ece-8dd6-6edf389a1903 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:26:58,352 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c99ba8b0-c583-4ece-8dd6-6edf389a1903 | successful=0/0 | failed=0 | time=0.62ms
+2025-10-17 23:27:03,034 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=3c534563-7b59-4b96-a80d-0d52e25d4d6d | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:27:03,041 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=40739916-e1f1-47af-b522-5163d363d017 | total_active=1 | connection_time=6.75ms
+2025-10-17 23:27:03,042 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:27:03,043 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=c69ac1f9-a05e-43a5-8209-1b00a742e9ab | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:27:03,043 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=c69ac1f9-a05e-43a5-8209-1b00a742e9ab | successful=0/0 | failed=0 | time=0.5ms
+2025-10-17 23:27:03,044 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=3c534563-7b59-4b96-a80d-0d52e25d4d6d | user_id=68822f07979cbba23e6db950 | connection_time=10.22ms
+2025-10-17 23:28:05,391 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=3c534563-7b59-4b96-a80d-0d52e25d4d6d | user_id=68822f07979cbba23e6db950 | duration=62.36s | messages_processed=1
+2025-10-17 23:28:05,392 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=40739916-e1f1-47af-b522-5163d363d017 | total_active=0 | duration=62.35s
+2025-10-17 23:28:05,392 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:28:05,393 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5fdd3753-002e-4cd1-93e2-73f9c12f59cd | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:28:05,394 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5fdd3753-002e-4cd1-93e2-73f9c12f59cd | successful=0/0 | failed=0 | time=0.62ms
+2025-10-17 23:28:09,690 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=d9c32c01-0545-403b-b574-e5bea785a675 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:28:09,697 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=1eaf2355-dc8e-4c96-b61f-2173d4d11b79 | total_active=1 | connection_time=6.72ms
+2025-10-17 23:28:09,698 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:28:09,699 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d52d47b9-99b5-4f64-8ee2-551ed0ee9fe3 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:28:09,700 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d52d47b9-99b5-4f64-8ee2-551ed0ee9fe3 | successful=0/0 | failed=0 | time=0.64ms
+2025-10-17 23:28:09,700 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=d9c32c01-0545-403b-b574-e5bea785a675 | user_id=68822f07979cbba23e6db950 | connection_time=10.41ms
+2025-10-17 23:29:10,593 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=d9c32c01-0545-403b-b574-e5bea785a675 | user_id=68822f07979cbba23e6db950 | duration=60.9s | messages_processed=1
+2025-10-17 23:29:10,593 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=1eaf2355-dc8e-4c96-b61f-2173d4d11b79 | total_active=0 | duration=60.9s
+2025-10-17 23:29:10,594 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:29:10,594 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=e45dce06-aeb0-4edb-9dc2-58d7cf9ae1c9 | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:29:10,595 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=e45dce06-aeb0-4edb-9dc2-58d7cf9ae1c9 | successful=0/0 | failed=0 | time=0.45ms
+2025-10-17 23:29:15,894 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=1d27b64c-2366-4b07-9aee-13ac10514f0e | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:29:15,898 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=93fdbf0f-ad1a-41a8-97f1-7b3922508b5a | total_active=1 | connection_time=3.92ms
+2025-10-17 23:29:15,899 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:29:15,899 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=b3164209-b31a-4e1e-9e36-379ea3ade22e | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:29:15,900 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=b3164209-b31a-4e1e-9e36-379ea3ade22e | successful=0/0 | failed=0 | time=0.38ms
+2025-10-17 23:29:15,900 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=1d27b64c-2366-4b07-9aee-13ac10514f0e | user_id=68822f07979cbba23e6db950 | connection_time=6.42ms
+2025-10-17 23:33:57,455 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=1d27b64c-2366-4b07-9aee-13ac10514f0e | user_id=68822f07979cbba23e6db950 | duration=281.56s | messages_processed=5
+2025-10-17 23:33:57,456 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=93fdbf0f-ad1a-41a8-97f1-7b3922508b5a | total_active=0 | duration=281.56s
+2025-10-17 23:33:57,456 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-17 23:33:57,457 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=4faa3201-bb5d-4fab-b1e8-572c7b8e5e2a | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-17 23:33:57,458 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=4faa3201-bb5d-4fab-b1e8-572c7b8e5e2a | successful=0/0 | failed=0 | time=0.69ms
+2025-10-17 23:34:02,582 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=02148bab-86d5-4257-9f51-a01f3e306357 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-17 23:34:02,592 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=f2f09ae7-9783-4494-85f4-73e3f5a9cce3 | total_active=1 | connection_time=8.63ms
+2025-10-17 23:34:02,593 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-17 23:34:02,594 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=5e84cd86-2e27-42de-b448-44f00ceb7ac6 | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-17 23:34:02,595 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=5e84cd86-2e27-42de-b448-44f00ceb7ac6 | successful=0/0 | failed=0 | time=0.98ms
+2025-10-17 23:34:02,596 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=02148bab-86d5-4257-9f51-a01f3e306357 | user_id=68822f07979cbba23e6db950 | connection_time=14.48ms
