@@ -71,3 +71,4 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+docs/traceback/1.txt

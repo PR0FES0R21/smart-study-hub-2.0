@@ -153,8 +153,8 @@ class LessonPageCRUD:
     ) -> Optional[LessonPage]:
         """Update page content"""
         
-        # Build update document
-        update_doc = {
+        # Build update document for $set
+        set_doc = {
             "updated_at": datetime.utcnow(),
             "updated_by": ObjectId(user_id)
         }
@@ -168,18 +168,21 @@ class LessonPageCRUD:
         
         for field in allowed_fields:
             if field in updates:
-                update_doc[field] = updates[field]
+                set_doc[field] = updates[field]
         
-        # If content changed, increment version
+        # Build final update operations
+        update_operations = {"$set": set_doc}
+        
+        # If content changed, increment version (separate operator)
         if "content_markdown" in updates:
-            update_doc["$inc"] = {"version": 1}
+            update_operations["$inc"] = {"version": 1}
         
         result = await db[self.collection].find_one_and_update(
             {
                 "lesson_id": ObjectId(lesson_id),
                 "page_number": page_number
             },
-            {"$set": update_doc},
+            update_operations,
             return_document=True
         )
         

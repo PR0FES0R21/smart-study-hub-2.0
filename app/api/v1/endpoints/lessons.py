@@ -599,6 +599,54 @@ async def create_lesson_page(
     return page.dict()
 
 
+@router.get("/{lesson_id}/pages/batch", response_model=BatchPagesResponse)
+async def get_pages_batch(
+    lesson_id: str,
+    page_numbers: str = Query(..., description="Comma-separated page numbers (e.g., '1,2,3')"),
+    db: AsyncIOMotorDatabase = Depends(get_database),
+    current_user: Dict[str, Any] = Depends(get_current_user)
+):
+    """
+    Get multiple pages at once (for prefetching).
+    
+    **Use case:** Prefetch next 2-3 pages for smooth navigation.
+    **Example:** ?page_numbers=1,2,3
+    
+    **IMPORTANT:** This route must be defined BEFORE /{page_number} route
+    to avoid route matching conflicts.
+    """
+    
+    # Parse page numbers
+    try:
+        page_nums = [int(n.strip()) for n in page_numbers.split(',')]
+    except ValueError:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid page numbers format"
+        )
+    
+    # Get pages
+    pages = await lesson_page_crud.get_pages_batch(db, lesson_id, page_nums)
+    
+    # Convert to response format - ensure all fields are proper types
+    page_responses = []
+    for p in pages:
+        try:
+            # Use model_dump for Pydantic v2, fallback to dict for v1
+            page_dict = p.model_dump() if hasattr(p, 'model_dump') else p.dict()
+            page_responses.append(page_dict)
+        except Exception as e:
+            # Log error but continue with other pages
+            print(f"Error converting page {p.page_number}: {str(e)}")
+            continue
+    
+    return BatchPagesResponse(
+        lesson_id=lesson_id,
+        pages=page_responses,
+        page_numbers=page_nums
+    )
+
+
 @router.get("/{lesson_id}/pages/{page_number}", response_model=PageWithNavigationResponse)
 async def get_lesson_page(
     lesson_id: str,
@@ -649,39 +697,6 @@ async def get_lesson_page(
     )
 
 
-@router.get("/{lesson_id}/pages/batch", response_model=BatchPagesResponse)
-async def get_pages_batch(
-    lesson_id: str,
-    page_numbers: str = Query(..., description="Comma-separated page numbers (e.g., '1,2,3')"),
-    db: AsyncIOMotorDatabase = Depends(get_database),
-    current_user: Dict[str, Any] = Depends(get_current_user)
-):
-    """
-    Get multiple pages at once (for prefetching).
-    
-    **Use case:** Prefetch next 2-3 pages for smooth navigation.
-    **Example:** ?page_numbers=1,2,3
-    """
-    
-    # Parse page numbers
-    try:
-        page_nums = [int(n.strip()) for n in page_numbers.split(',')]
-    except ValueError:
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid page numbers format"
-        )
-    
-    # Get pages
-    pages = await lesson_page_crud.get_pages_batch(db, lesson_id, page_nums)
-    
-    return BatchPagesResponse(
-        lesson_id=lesson_id,
-        pages=[PageResponse(**p.dict()) for p in pages],
-        page_numbers=page_nums
-    )
-
-
 @router.put("/{lesson_id}/pages/{page_number}", response_model=PageResponse)
 async def update_lesson_page(
     lesson_id: str,
@@ -710,7 +725,7 @@ async def update_lesson_page(
         )
     
     # Update page
-    updates = page_data.dict(exclude_unset=True)
+    updates = page_data.model_dump(exclude_unset=True) if hasattr(page_data, 'model_dump') else page_data.dict(exclude_unset=True)
     page = await lesson_page_crud.update_page(
         db,
         lesson_id,
@@ -725,7 +740,9 @@ async def update_lesson_page(
             detail=f"Page {page_number} not found"
         )
     
-    return page.dict()
+    # Convert to dict for response
+    page_dict = page.model_dump() if hasattr(page, 'model_dump') else page.dict()
+    return page_dict
 
 
 @router.put("/{lesson_id}/pages/reorder")

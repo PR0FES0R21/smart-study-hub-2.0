@@ -469,13 +469,8 @@ class LessonCRUD:
             elif updates.status == "archived":
                 update_doc["archived_at"] = datetime.utcnow()
         
-        # NOTE: Pages are no longer updated via lesson update
-        # Use /lessons/{id}/pages endpoints to manage pages
-        if updates.pages is not None:
-            raise HTTPException(
-                status_code=400,
-                detail="Pages cannot be updated via lesson update. Use /lessons/{id}/pages endpoints instead."
-            )
+        # NOTE: Pages are managed via separate endpoints (/lessons/{id}/pages)
+        # LessonUpdateRequest schema does not include 'pages' field (strict separation)
         
         # Update in database
         await db[self.collection].update_one(
