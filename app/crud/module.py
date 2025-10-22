@@ -132,6 +132,18 @@ class ModuleCRUD:
             if not module_data:
                 return None
             
+            # Populate subject_name from database
+            if module_data.get("subject_id"):
+                subject = await db["subjects"].find_one({"_id": ObjectId(module_data["subject_id"])})
+                if subject:
+                    module_data["subject_name"] = subject.get("name")
+            
+            # Populate created_by_name from database
+            if module_data.get("created_by"):
+                creator = await db["users"].find_one({"_id": ObjectId(module_data["created_by"])})
+                if creator:
+                    module_data["created_by_name"] = creator.get("full_name") or creator.get("username")
+            
             module = Module.from_mongo(module_data)
             
             # Include lesson details if requested
