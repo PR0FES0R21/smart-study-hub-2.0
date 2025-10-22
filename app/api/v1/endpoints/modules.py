@@ -143,6 +143,12 @@ async def get_module(
             if "collaborators" in module_dict:
                 module_dict["collaborators"] = [str(c) for c in module_dict["collaborators"]]
             
+            # Convert lesson_refs ObjectIds to strings
+            if "lesson_refs" in module_dict:
+                for ref in module_dict["lesson_refs"]:
+                    if "lesson_id" in ref and ref["lesson_id"]:
+                        ref["lesson_id"] = str(ref["lesson_id"])
+            
             result = {
                 "module": module_dict,
                 "lessons": [],

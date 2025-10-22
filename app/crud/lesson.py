@@ -120,12 +120,17 @@ class LessonCRUD:
             if "created_by" in lesson_data and lesson_data["created_by"]:
                 creator = await db["users"].find_one(
                     {"_id": ObjectId(lesson_data["created_by"])},
-                    {"profile.first_name": 1, "profile.last_name": 1}
+                    {"profile_id": 1}
                 )
-                if creator and "profile" in creator:
-                    first_name = creator["profile"].get("first_name", "")
-                    last_name = creator["profile"].get("last_name", "")
-                    lesson_data["created_by_name"] = f"{first_name} {last_name}".strip()
+                if creator and creator.get("profile_id"):
+                    profile = await db["profiles"].find_one(
+                        {"_id": ObjectId(creator["profile_id"])},
+                        {"full_name": 1}
+                    )
+                    if profile:
+                        lesson_data["created_by_name"] = profile.get("full_name", "Unknown")
+                    else:
+                        lesson_data["created_by_name"] = None
                 else:
                     lesson_data["created_by_name"] = None
             else:

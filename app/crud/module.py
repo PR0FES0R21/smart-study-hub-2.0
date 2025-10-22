@@ -140,9 +140,17 @@ class ModuleCRUD:
             
             # Populate created_by_name from database
             if module_data.get("created_by"):
-                creator = await db["users"].find_one({"_id": ObjectId(module_data["created_by"])})
-                if creator:
-                    module_data["created_by_name"] = creator.get("full_name") or creator.get("username")
+                creator = await db["users"].find_one(
+                    {"_id": ObjectId(module_data["created_by"])},
+                    {"profile_id": 1}
+                )
+                if creator and creator.get("profile_id"):
+                    profile = await db["profiles"].find_one(
+                        {"_id": ObjectId(creator["profile_id"])},
+                        {"full_name": 1}
+                    )
+                    if profile:
+                        module_data["created_by_name"] = profile.get("full_name", "Unknown")
             
             module = Module.from_mongo(module_data)
             
