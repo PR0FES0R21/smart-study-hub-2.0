@@ -45,6 +45,7 @@ class ModuleCRUD:
             difficulty_level=module_data.get("difficulty_level", "medium"),
             learning_objectives=module_data.get("learning_objectives", []),
             prerequisites=module_data.get("prerequisites", []),
+            completion_criteria=module_data.get("completion_criteria"),
             visibility=module_data.get("visibility", "public"),
             created_by=PyObjectId(creator_id)
         )
@@ -424,6 +425,8 @@ class ModuleCRUD:
             update_doc["learning_objectives"] = updates["learning_objectives"]
         if "prerequisites" in updates:
             update_doc["prerequisites"] = updates["prerequisites"]
+        if "completion_criteria" in updates:
+            update_doc["completion_criteria"] = updates["completion_criteria"]
         if "visibility" in updates:
             update_doc["visibility"] = updates["visibility"]
         if "status" in updates:

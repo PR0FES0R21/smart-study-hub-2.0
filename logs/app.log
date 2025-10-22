@@ -198877,3 +198877,56 @@ bridge closed
 2025-10-22 21:23:23,573 [INFO] app.main: Startup aplikasi berhasil
 2025-10-22 21:23:23,574 [INFO] app.core.redis_websocket: Starting Redis message listener
 2025-10-22 21:23:23,575 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-22 22:55:14,979 [INFO] app.main: Mematikan aplikasi...
+2025-10-22 22:55:14,990 [INFO] app.main: Menutup WebSocket manager...
+2025-10-22 22:55:14,996 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-22 22:55:15,004 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-22 22:55:15,004 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-22 22:55:15,007 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-22 22:55:15,126 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-22 22:55:15,177 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-22 22:55:15,182 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-22 22:55:15,286 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-22 22:55:31,253 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-22 22:55:31,435 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-22 22:55:31,470 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-22 22:55:31,481 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-22 22:55:31,495 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-22 22:55:31,513 [INFO] app.main: Startup aplikasi berhasil
+2025-10-22 22:55:31,521 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-22 22:55:31,522 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-22 22:55:35,119 [INFO] app.main: Mematikan aplikasi...
+2025-10-22 22:55:35,119 [INFO] app.main: Menutup WebSocket manager...
+2025-10-22 22:55:35,120 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-22 22:55:35,120 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-22 22:55:35,121 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-22 22:55:35,121 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-22 22:55:35,122 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-22 22:55:35,123 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-22 22:55:35,125 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-22 22:55:35,135 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-22 22:55:45,604 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-22 22:55:45,652 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-22 22:55:45,663 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-22 22:55:45,664 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-22 22:55:45,664 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-22 22:55:45,664 [INFO] app.main: Startup aplikasi berhasil
+2025-10-22 22:55:45,665 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-22 22:55:45,666 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-22 23:56:31,458 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=04b86823-f0f6-44b4-a7d5-949d2f0ae07d | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-22 23:56:31,602 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=1a575be2-18d2-47db-b793-1c6336328e30 | total_active=1 | connection_time=131.52ms
+2025-10-22 23:56:31,610 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-22 23:56:31,616 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=ae14e263-c12d-43b2-9fe9-da54efb9e23b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-22 23:56:31,625 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=ae14e263-c12d-43b2-9fe9-da54efb9e23b | successful=0/0 | failed=0 | time=8.64ms
+2025-10-22 23:56:31,627 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=04b86823-f0f6-44b4-a7d5-949d2f0ae07d | user_id=68822f07979cbba23e6db950 | connection_time=171.18ms
+2025-10-23 00:05:45,143 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=04b86823-f0f6-44b4-a7d5-949d2f0ae07d | user_id=68822f07979cbba23e6db950 | duration=553.69s | messages_processed=10
+2025-10-23 00:05:45,146 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=1a575be2-18d2-47db-b793-1c6336328e30 | total_active=0 | duration=553.55s
+2025-10-23 00:05:45,147 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-23 00:05:45,148 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=a5141e26-e8b4-4b91-974c-f943dc25bcbd | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-23 00:05:45,148 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=a5141e26-e8b4-4b91-974c-f943dc25bcbd | successful=0/0 | failed=0 | time=0.46ms
+2025-10-23 00:05:53,705 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=4fc52259-b2a3-46b1-b925-6c7da27157e6 | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-23 00:05:53,721 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=21abe270-a221-4ea3-ad08-1901f9d78acc | total_active=1 | connection_time=14.66ms
+2025-10-23 00:05:53,723 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-23 00:05:53,724 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=d1918b41-1130-4ae2-ba11-f8cdb580be2c | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-23 00:05:53,726 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=d1918b41-1130-4ae2-ba11-f8cdb580be2c | successful=0/0 | failed=0 | time=1.22ms
+2025-10-23 00:05:53,727 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=4fc52259-b2a3-46b1-b925-6c7da27157e6 | user_id=68822f07979cbba23e6db950 | connection_time=21.15ms
