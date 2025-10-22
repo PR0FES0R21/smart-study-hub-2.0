@@ -198794,3 +198794,86 @@ bridge closed
 2025-10-22 20:48:10,856 [INFO] app.main: Startup aplikasi berhasil
 2025-10-22 20:48:10,857 [INFO] app.core.redis_websocket: Starting Redis message listener
 2025-10-22 20:48:10,858 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-22 21:15:47,561 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_ATTEMPT | session_id=dad3c967-5140-4ffd-a675-746ff30ca4de | user_id=68822f07979cbba23e6db950 | username=202507001 | roles=['teacher']
+2025-10-22 21:15:47,567 [INFO] app.core.websocket: USER_CONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | roles=['teacher'] | room_id=lobby | connection_id=44c45862-a4d5-4ab3-9cda-90491993afbb | total_active=1 | connection_time=5.21ms
+2025-10-22 21:15:47,568 [INFO] app.core.websocket: Broadcasting user connected event for Agus Santoso to admins (global)
+2025-10-22 21:15:47,568 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=8fa2acef-2187-424d-aa2a-b52ede33678b | message_type=user_connected | target_roles=['admin'] | recipients=0
+2025-10-22 21:15:47,569 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=8fa2acef-2187-424d-aa2a-b52ede33678b | successful=0/0 | failed=0 | time=0.38ms
+2025-10-22 21:15:47,569 [INFO] app.api.v1.routes.ws: WS_LOBBY_CONNECTION_SUCCESS | session_id=dad3c967-5140-4ffd-a675-746ff30ca4de | user_id=68822f07979cbba23e6db950 | connection_time=8.08ms
+2025-10-22 21:20:16,692 [INFO] app.api.v1.routes.ws:   WS_LOBBY_DISCONNECT | session_id=dad3c967-5140-4ffd-a675-746ff30ca4de | user_id=68822f07979cbba23e6db950 | duration=269.13s | messages_processed=5
+2025-10-22 21:20:16,693 [INFO] app.core.websocket: USER_DISCONNECTED | user_id=68822f07979cbba23e6db950 | username=Agus Santoso | room_id=lobby | connection_id=44c45862-a4d5-4ab3-9cda-90491993afbb | total_active=0 | duration=269.13s
+2025-10-22 21:20:16,694 [INFO] app.core.websocket: Broadcasting user disconnected event for Agus Santoso to admins (global)
+2025-10-22 21:20:16,695 [INFO] app.core.websocket: BROADCAST_START | broadcast_id=cb2dd1f6-8d77-461b-a648-d707be5dbb1f | message_type=user_disconnected | target_roles=['admin'] | recipients=0
+2025-10-22 21:20:16,695 [INFO] app.core.websocket: BROADCAST_COMPLETE | broadcast_id=cb2dd1f6-8d77-461b-a648-d707be5dbb1f | successful=0/0 | failed=0 | time=0.87ms
+2025-10-22 21:20:16,799 [INFO] app.main: Mematikan aplikasi...
+2025-10-22 21:20:16,799 [INFO] app.main: Menutup WebSocket manager...
+2025-10-22 21:20:16,800 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-22 21:20:16,801 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-22 21:20:16,802 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-22 21:20:16,802 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-22 21:20:16,804 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-22 21:20:16,805 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-22 21:20:16,805 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-22 21:20:16,810 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-22 21:20:29,163 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-22 21:20:29,246 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-22 21:20:29,254 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-22 21:20:29,255 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-22 21:20:29,256 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-22 21:20:29,256 [INFO] app.main: Startup aplikasi berhasil
+2025-10-22 21:20:29,257 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-22 21:20:29,258 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-22 21:22:10,320 [INFO] app.main: Mematikan aplikasi...
+2025-10-22 21:22:10,321 [INFO] app.main: Menutup WebSocket manager...
+2025-10-22 21:22:10,321 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-22 21:22:10,322 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-22 21:22:10,322 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-22 21:22:10,323 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-22 21:22:10,324 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-22 21:22:10,325 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-22 21:22:10,325 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-22 21:22:10,330 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-22 21:22:18,069 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-22 21:22:18,133 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-22 21:22:18,142 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-22 21:22:18,142 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-22 21:22:18,143 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-22 21:22:18,143 [INFO] app.main: Startup aplikasi berhasil
+2025-10-22 21:22:18,144 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-22 21:22:18,145 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-22 21:22:32,762 [INFO] app.main: Mematikan aplikasi...
+2025-10-22 21:22:32,762 [INFO] app.main: Menutup WebSocket manager...
+2025-10-22 21:22:32,763 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-22 21:22:32,763 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-22 21:22:32,764 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-22 21:22:32,764 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-22 21:22:32,766 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-22 21:22:32,766 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-22 21:22:32,767 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-22 21:22:32,772 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-22 21:22:40,267 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-22 21:22:40,363 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-22 21:22:40,372 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-22 21:22:40,373 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-22 21:22:40,374 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-22 21:22:40,374 [INFO] app.main: Startup aplikasi berhasil
+2025-10-22 21:22:40,375 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-22 21:22:40,375 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)
+2025-10-22 21:23:15,722 [INFO] app.main: Mematikan aplikasi...
+2025-10-22 21:23:15,722 [INFO] app.main: Menutup WebSocket manager...
+2025-10-22 21:23:15,723 [INFO] app.core.websocket: Shutting down WebSocket manager...
+2025-10-22 21:23:15,724 [INFO] app.core.websocket: Heartbeat monitor stopped
+2025-10-22 21:23:15,724 [INFO] app.core.websocket: WebSocket manager shutdown complete. Disconnected 0 users.
+2025-10-22 21:23:15,725 [INFO] app.main: Menutup WebSocket Redis bridge...
+2025-10-22 21:23:15,726 [ERROR] app.core.redis_websocket: Redis listener error: Connection closed by server.
+2025-10-22 21:23:15,727 [INFO] app.core.redis_websocket: Redis WebSocket bridge closed
+2025-10-22 21:23:15,727 [INFO] app.main: WebSocket Redis bridge ditutup
+2025-10-22 21:23:15,732 [INFO] app.main: Aplikasi berhasil dimatikan
+2025-10-22 21:23:23,495 [INFO] app.main: Memulai aplikasi: School Management System
+2025-10-22 21:23:23,563 [INFO] app.main: Menginisialisasi WebSocket Redis bridge...
+2025-10-22 21:23:23,572 [INFO] app.core.redis_websocket: Redis WebSocket bridge initialized
+2025-10-22 21:23:23,572 [INFO] app.core.websocket: WebSocket manager initialized with Redis bridge and heartbeat monitoring
+2025-10-22 21:23:23,573 [INFO] app.main: WebSocket Redis bridge berhasil diinisialisasi
+2025-10-22 21:23:23,573 [INFO] app.main: Startup aplikasi berhasil
+2025-10-22 21:23:23,574 [INFO] app.core.redis_websocket: Starting Redis message listener
+2025-10-22 21:23:23,575 [INFO] app.core.websocket: Starting heartbeat monitor (interval: 60s, student_timeout: 300s, admin_timeout: 600s)

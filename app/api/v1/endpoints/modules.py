@@ -33,8 +33,26 @@ async def create_module(
     try:
         module = await module_crud.create_module(db, module_data, str(current_user["_id"]))
         
-        response_data = module.dict()
-        response_data["id"] = module.id
+        # Convert module to dict and handle ObjectIds
+        response_data = module.dict(by_alias=False)
+        
+        # Convert ObjectId fields to strings
+        if "_id" in response_data:
+            response_data["id"] = str(response_data["_id"])
+            del response_data["_id"]
+        if "subject_id" in response_data:
+            response_data["subject_id"] = str(response_data["subject_id"])
+        if "created_by" in response_data:
+            response_data["created_by"] = str(response_data["created_by"])
+        if "collaborators" in response_data:
+            response_data["collaborators"] = [str(c) for c in response_data["collaborators"]]
+        
+        # Convert lesson_refs ObjectIds to strings
+        if "lesson_refs" in response_data:
+            for ref in response_data["lesson_refs"]:
+                if "lesson_id" in ref and ref["lesson_id"]:
+                    ref["lesson_id"] = str(ref["lesson_id"])
+        
         response_data["can_edit"] = True
         response_data["can_delete"] = True
         
@@ -184,10 +202,28 @@ async def update_module(
     try:
         module = await module_crud.update_module(db, module_id, updates, str(current_user["_id"]))
         
-        response_data = module.dict()
-        response_data["id"] = module.id
+        # Convert module to dict and handle ObjectIds
+        response_data = module.dict(by_alias=False)
+        
+        # Convert ObjectId fields to strings
+        if "_id" in response_data:
+            response_data["id"] = str(response_data["_id"])
+            del response_data["_id"]
+        if "subject_id" in response_data:
+            response_data["subject_id"] = str(response_data["subject_id"])
+        if "created_by" in response_data:
+            response_data["created_by"] = str(response_data["created_by"])
+        if "collaborators" in response_data:
+            response_data["collaborators"] = [str(c) for c in response_data["collaborators"]]
+        
+        # Convert lesson_refs ObjectIds to strings
+        if "lesson_refs" in response_data:
+            for ref in response_data["lesson_refs"]:
+                if "lesson_id" in ref and ref["lesson_id"]:
+                    ref["lesson_id"] = str(ref["lesson_id"])
+        
         response_data["can_edit"] = module.is_editable_by(current_user["_id"])
-        response_data["can_delete"] = module.created_by == current_user["_id"]
+        response_data["can_delete"] = str(module.created_by) == str(current_user["_id"])
         
         return {
             "success": True,
