@@ -1,0 +1,318 @@
+### ============================================================================
+### API TEST COLLECTION - New Course System
+### ============================================================================
+### VS Code REST Client Extension format
+### Install: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+### ============================================================================
+
+@baseUrl = http://localhost:8000/api/v1
+@teacherToken = {{login_teacher.response.body.access_token}}
+@student1Token = {{login_student1.response.body.access_token}}
+@student2Token = {{login_student2.response.body.access_token}}
+@assignmentId = {{assign_course.response.body.assignment.id}}
+@courseId = REPLACE_WITH_COURSE_ID
+@classId = REPLACE_WITH_CLASS_ID
+@student1Id = REPLACE_WITH_STUDENT1_ID
+@lessonId = REPLACE_WITH_FIRST_LESSON_ID
+
+
+### ============================================================================
+### AUTHENTICATION
+### ============================================================================
+
+### Login as Teacher
+# @name login_teacher
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "teacher.test@school.com",
+  "password": "password123"
+}
+
+### Login as Student 1
+# @name login_student1
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "student1.test@school.com",
+  "password": "password123"
+}
+
+### Login as Student 2
+# @name login_student2
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "student2.test@school.com",
+  "password": "password123"
+}
+
+
+### ============================================================================
+### TEACHER: COURSE ASSIGNMENTS
+### ============================================================================
+
+### Assign Course to Class
+# @name assign_course
+POST {{baseUrl}}/course-assignments
+Authorization: Bearer {{teacherToken}}
+Content-Type: application/json
+
+{
+  "course_id": "{{courseId}}",
+  "class_id": "{{classId}}",
+  "start_date": "2024-01-10T00:00:00Z",
+  "end_date": "2024-06-30T00:00:00Z",
+  "settings": {}
+}
+
+### Get Assignment Details
+GET {{baseUrl}}/course-assignments/{{assignmentId}}
+Authorization: Bearer {{teacherToken}}
+
+### List Assignments by Class
+GET {{baseUrl}}/course-assignments/class/{{classId}}
+Authorization: Bearer {{teacherToken}}
+
+### List Assignments by Course
+GET {{baseUrl}}/course-assignments/course/{{courseId}}
+Authorization: Bearer {{teacherToken}}
+
+### Update Assignment Settings
+PUT {{baseUrl}}/course-assignments/{{assignmentId}}/settings
+Authorization: Bearer {{teacherToken}}
+Content-Type: application/json
+
+{
+  "end_date": "2024-07-31T00:00:00Z",
+  "settings": {
+    "allow_skip": false,
+    "custom_setting": "test_value"
+  }
+}
+
+### Archive Assignment
+DELETE {{baseUrl}}/course-assignments/{{assignmentId}}
+Authorization: Bearer {{teacherToken}}
+
+### Restore Assignment
+POST {{baseUrl}}/course-assignments/{{assignmentId}}/restore
+Authorization: Bearer {{teacherToken}}
+
+
+### ============================================================================
+### TEACHER: STUDENT OVERRIDES
+### ============================================================================
+
+### Add Student Override (Unlock Module)
+POST {{baseUrl}}/course-assignments/{{assignmentId}}/overrides
+Authorization: Bearer {{teacherToken}}
+Content-Type: application/json
+
+{
+  "student_id": "{{student1Id}}",
+  "unlocked_modules": ["REPLACE_WITH_MODULE3_ID"],
+  "unlocked_lessons": [],
+  "reason": "Student request untuk persiapan ujian"
+}
+
+### Remove Student Override
+DELETE {{baseUrl}}/course-assignments/{{assignmentId}}/overrides/{{student1Id}}
+Authorization: Bearer {{teacherToken}}
+
+
+### ============================================================================
+### STUDENT: MY COURSES
+### ============================================================================
+
+### List My Courses
+GET {{baseUrl}}/my/courses
+Authorization: Bearer {{student1Token}}
+
+### Get Course Detail (with lock status)
+GET {{baseUrl}}/my/courses/{{courseId}}
+Authorization: Bearer {{student1Token}}
+
+### Get Course Progress
+GET {{baseUrl}}/my/courses/{{courseId}}/progress
+Authorization: Bearer {{student1Token}}
+
+### Complete Lesson & Get Next
+POST {{baseUrl}}/my/courses/{{courseId}}/lessons/{{lessonId}}/next
+Authorization: Bearer {{student1Token}}
+
+
+### ============================================================================
+### TEST SCENARIOS
+### ============================================================================
+
+### ===== SCENARIO 1: Teacher Assigns Course =====
+
+### 1. Login as Teacher
+# @name scenario1_login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "teacher.test@school.com",
+  "password": "password123"
+}
+
+### 2. Assign Course
+# @name scenario1_assign
+POST {{baseUrl}}/course-assignments
+Authorization: Bearer {{scenario1_login.response.body.access_token}}
+Content-Type: application/json
+
+{
+  "course_id": "{{courseId}}",
+  "class_id": "{{classId}}",
+  "start_date": "2024-01-10T00:00:00Z",
+  "end_date": "2024-06-30T00:00:00Z"
+}
+
+### 3. Verify Assignment Created
+GET {{baseUrl}}/course-assignments/{{scenario1_assign.response.body.assignment.id}}
+Authorization: Bearer {{scenario1_login.response.body.access_token}}
+
+
+### ===== SCENARIO 2: Student Lists & Accesses Course =====
+
+### 1. Login as Student
+# @name scenario2_login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "student1.test@school.com",
+  "password": "password123"
+}
+
+### 2. List My Courses
+GET {{baseUrl}}/my/courses
+Authorization: Bearer {{scenario2_login.response.body.access_token}}
+
+### 3. Get Course Detail
+GET {{baseUrl}}/my/courses/{{courseId}}
+Authorization: Bearer {{scenario2_login.response.body.access_token}}
+
+### Expected:
+### - Module 1: accessible=true, locked=false
+### - Module 2: accessible=false, locked=true
+### - Module 3: accessible=false, locked=true
+
+
+### ===== SCENARIO 3: Student Completes Lessons =====
+
+### 1. Complete First Lesson
+# @name scenario3_complete1
+POST {{baseUrl}}/my/courses/{{courseId}}/lessons/{{lessonId}}/next
+Authorization: Bearer {{scenario2_login.response.body.access_token}}
+
+### 2. Verify Progress Updated
+GET {{baseUrl}}/my/courses/{{courseId}}
+Authorization: Bearer {{scenario2_login.response.body.access_token}}
+
+### Expected:
+### - First lesson: completed=true
+### - Second lesson: accessible=true, locked=false
+
+
+### ===== SCENARIO 4: Teacher Overrides Student Lock =====
+
+### 1. Before Override - Student View
+GET {{baseUrl}}/my/courses/{{courseId}}
+Authorization: Bearer {{scenario2_login.response.body.access_token}}
+
+### Expected: Module 3 locked
+
+### 2. Teacher Adds Override
+POST {{baseUrl}}/course-assignments/{{scenario1_assign.response.body.assignment.id}}/overrides
+Authorization: Bearer {{scenario1_login.response.body.access_token}}
+Content-Type: application/json
+
+{
+  "student_id": "{{student1Id}}",
+  "unlocked_modules": ["REPLACE_WITH_MODULE3_ID"],
+  "reason": "Student request"
+}
+
+### 3. After Override - Student View
+GET {{baseUrl}}/my/courses/{{courseId}}
+Authorization: Bearer {{scenario2_login.response.body.access_token}}
+
+### Expected: Module 3 accessible=true, override_unlocked=true
+
+
+### ===== SCENARIO 5: Archive & Restore =====
+
+### 1. Archive Assignment
+DELETE {{baseUrl}}/course-assignments/{{scenario1_assign.response.body.assignment.id}}
+Authorization: Bearer {{scenario1_login.response.body.access_token}}
+
+### 2. Student Can't Access
+GET {{baseUrl}}/my/courses
+Authorization: Bearer {{scenario2_login.response.body.access_token}}
+
+### Expected: total=0, courses=[]
+
+### 3. Restore Assignment
+POST {{baseUrl}}/course-assignments/{{scenario1_assign.response.body.assignment.id}}/restore
+Authorization: Bearer {{scenario1_login.response.body.access_token}}
+
+### 4. Student Can Access Again
+GET {{baseUrl}}/my/courses
+Authorization: Bearer {{scenario2_login.response.body.access_token}}
+
+### Expected: total=1
+
+
+### ============================================================================
+### ERROR CASES
+### ============================================================================
+
+### Error: Assign to already assigned class
+POST {{baseUrl}}/course-assignments
+Authorization: Bearer {{teacherToken}}
+Content-Type: application/json
+
+{
+  "course_id": "{{courseId}}",
+  "class_id": "{{classId}}"
+}
+### Expected: 400 "Course already assigned to this class"
+
+### Error: Non-teacher tries to assign
+POST {{baseUrl}}/course-assignments
+Authorization: Bearer {{student1Token}}
+Content-Type: application/json
+
+{
+  "course_id": "{{courseId}}",
+  "class_id": "{{classId}}"
+}
+### Expected: 403 "Only teachers of this class can assign courses"
+
+### Error: Non-student accesses /my/courses
+GET {{baseUrl}}/my/courses
+Authorization: Bearer {{teacherToken}}
+### Expected: 403 "This endpoint is for students only"
+
+### Error: Invalid course_id
+GET {{baseUrl}}/my/courses/invalid_id
+Authorization: Bearer {{student1Token}}
+### Expected: 404 "Course not found"
+
+
+### ============================================================================
+### CLEANUP (Optional)
+### ============================================================================
+
+### Delete Test Assignment
+DELETE {{baseUrl}}/course-assignments/{{assignmentId}}
+Authorization: Bearer {{teacherToken}}
+
+### Note: Data cleanup should be done via database script

@@ -45,10 +45,12 @@ api_router.include_router(admin_exports.router, prefix="/admin/exports", tags=["
 api_router.include_router(admin_export_files.router, prefix="/admin/exports", tags=["admin-export-files"])
 
 # LMS Endpoints - Modular Architecture
-from .endpoints import modules, courses, lesson_progress, module_progress, course_progress, media
+from .endpoints import modules, courses, lesson_progress, module_progress, course_progress, media, course_assignments, my_courses
 api_router.include_router(lessons.router, prefix="/lessons", tags=["LMS - Lessons"])
 api_router.include_router(modules.router, prefix="/modules", tags=["LMS - Modules"])
 api_router.include_router(courses.router, prefix="/courses", tags=["LMS - Courses"])
+api_router.include_router(course_assignments.router, prefix="/course-assignments", tags=["LMS - Course Assignments"])
+api_router.include_router(my_courses.router, prefix="/my", tags=["LMS - Student Access"])
 api_router.include_router(media.router, prefix="/media", tags=["LMS - Media Upload"])
 
 # LMS Progress Tracking

@@ -24,22 +24,57 @@ class ModuleReference(BaseModel):
     # Snapshot of module data untuk stability (optional)
     module_snapshot: Optional[Dict[str, Any]] = Field(None, description="Cached module metadata")
 
+class AssessmentConfig(BaseModel):
+    """Configuration untuk assessment"""
+    time_limit: int = Field(default=120, description="Time limit in minutes")
+    max_score: float = Field(default=100.0, description="Maximum score")
+    passing_score: float = Field(default=70.0, description="Minimum score to pass")
+    allow_retake: bool = Field(default=False, description="Allow retake (always False for final)")
+    max_attempts: int = Field(default=1, description="Maximum attempts (always 1 for final)")
+    shuffle_questions: bool = Field(default=True, description="Shuffle question order")
+    show_correct_answers: bool = Field(default=False, description="Show correct answers after submit")
+
 class CourseAssessment(BaseModel):
-    """Course-level assessment (final exam, project, etc.)"""
+    """
+    Course-level assessment (final exam, project, etc.)
+    
+    Linked to question_sets collection for quiz questions.
+    Position: after all modules completed (displayed at course end).
+    """
     assessment_id: str = Field(..., description="Unique assessment identifier")
-    type: str = Field(..., description="final_exam | capstone_project | comprehensive_quiz")
+    question_set_id: Optional[PyObjectId] = Field(
+        None,
+        description="Reference to question_sets collection (for quiz/exam)"
+    )
+    type: str = Field(default="quiz", description="quiz | assignment")
     title: str = Field(..., description="Assessment title")
-    description: str = Field(..., description="Assessment description")
+    description: Optional[str] = Field(None, description="Assessment description")
     required: bool = Field(default=True, description="Required for course completion")
-    weight: float = Field(default=1.0, description="Weight dalam course scoring")
-    estimated_duration: int = Field(default=120, description="Estimated completion time (minutes)")
-    prerequisite_modules: List[PyObjectId] = Field(default_factory=list, description="Modules that must be completed first")
+    
+    # Configuration
+    config: AssessmentConfig = Field(
+        default_factory=AssessmentConfig,
+        description="Assessment configuration"
+    )
+    
+    # Position (always after modules for MVP)
+    position: str = Field(
+        default="after_modules",
+        description="after_modules (displayed when all modules completed)"
+    )
     
     @validator('type')
     def validate_assessment_type(cls, v):
-        allowed_types = ['final_exam', 'capstone_project', 'comprehensive_quiz', 'presentation', 'portfolio']
+        allowed_types = ['quiz', 'assignment']
         if v not in allowed_types:
             raise ValueError(f'Assessment type must be one of {allowed_types}')
+        return v
+    
+    @validator('position')
+    def validate_position(cls, v):
+        # For MVP, only after_modules allowed
+        if v != "after_modules":
+            raise ValueError('Position must be "after_modules" for final assessment')
         return v
 
 class CourseMetadata(BaseModel):
